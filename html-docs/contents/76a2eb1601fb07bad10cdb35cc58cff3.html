@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>Streaming Data</title>
+    <title>timestamp</title>
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic|Source+Code+Pro:300,400,700' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="../assets/css/bootstrap.css">
 <link rel="stylesheet" href="../assets/css/jquery.bonsai.css">
@@ -18,14 +18,14 @@
 
       <!-- Name Title -->
 
-      <h1>Streaming Data</h1>
+      <h1>timestamp</h1>
 
       <!-- Type and Stereotype -->
 
       <section style="margin-top: .5em;">
         <span class="alert alert-info">
-          <span class="node-icon staruml-icon icon-UMLModel"></span>
-          UMLModel
+          <span class="node-icon staruml-icon icon-UMLObjectFlow"></span>
+          UMLObjectFlow
         </span>
         
       </section>
@@ -44,6 +44,12 @@
         
           <span>::</span>
           <span class="label label-info"><a href='de06cf8365dcf38151df9a3581ac6571.html'><span class='node-icon staruml-icon icon-UMLModel'></span>Streaming Data</a></span>
+        
+          <span>::</span>
+          <span class="label label-info"><a href='bdc6456a86a1a8487d111c6a0bf88377.html'><span class='node-icon staruml-icon icon-UMLActivity'></span>Streaming Events</a></span>
+        
+          <span>::</span>
+          <span class="label label-info"><a href='76a2eb1601fb07bad10cdb35cc58cff3.html'><span class='node-icon staruml-icon icon-UMLObjectFlow'></span>timestamp (Event→Set Event Timestamp UTC)</a></span>
         
       </section>
 
@@ -70,6 +76,25 @@
 
       <!-- Directed Relationship -->
 
+      
+      <section class="element-list">
+        <table width="100%">
+          <tr>
+            <td width="50%">
+              <h3>Source</h3>
+              <ul class="nav nav-list">
+                <li><a href='0ff391f65586a7d306abf9707cbfefa5.html'><span class='node-icon staruml-icon icon-UMLObjectNode'></span>«MTConnect XML»Event</a></a></li>
+              </ul>
+            </td>
+            <td width="50%">
+              <h3>Target</h3>
+              <ul class="nav nav-list">
+                <li><a href='b7ed2f07c6f6dff8686c6fdfb9a37920.html'><span class='node-icon staruml-icon icon-UMLAction'></span>Set Event Timestamp UTC</a></a></li>
+              </ul>
+            </td>
+          </tr>
+        </table>
+      </section>
       
 
       <!-- Undirected Relationship -->
@@ -212,7 +237,7 @@
     
     <tr>
         <td>name</td>
-        <td>Streaming Data</td>
+        <td>timestamp</td>
     </tr>
     
     
@@ -220,6 +245,24 @@
     
     
     
+    
+    
+    
+    
+    
+    <tr>
+        <td>source</td>
+        <td><a href='0ff391f65586a7d306abf9707cbfefa5.html'><span class='node-icon staruml-icon icon-UMLObjectNode'></span>«MTConnect XML»Event</a></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>target</td>
+        <td><a href='b7ed2f07c6f6dff8686c6fdfb9a37920.html'><span class='node-icon staruml-icon icon-UMLAction'></span>Set Event Timestamp UTC</a></td>
+    </tr>
     
     
     
@@ -243,13 +286,9 @@
     
     
     
-    
-    
     <tr>
-        <td>importedElements</td>
-        <td>
-            
-        </td>
+        <td>guard</td>
+        <td></td>
     </tr>
     
     
@@ -257,7 +296,7 @@
     
     
     <tr>
-        <td>viewpoint</td>
+        <td>weight</td>
         <td></td>
     </tr>
     
@@ -274,18 +313,6 @@
       <!-- Constraints, Dependencies, Dependants -->
 
       
-        
-        
-
-
-        
-        
-
-
-        
-        
-
-      
 
       <!-- Relationships -->
 
@@ -297,15 +324,6 @@
 
       
       
-<section class="element-list">
-    <h3>Owned Elements</h3>
-    <ul class="nav nav-list">
-        
-        <li><a href='bdc6456a86a1a8487d111c6a0bf88377.html'><span class='node-icon staruml-icon icon-UMLActivity'></span>Streaming Events</a></li>
-        
-    </ul>
-</section>
-
 
 
     </div>

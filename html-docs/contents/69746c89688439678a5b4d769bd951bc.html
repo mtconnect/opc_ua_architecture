@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>DataItemTypeFactory</title>
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic|Source+Code+Pro:300,400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../assets/css/jquery.bonsai.css">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/icon-font/icons.css">
+<script type="text/javascript" src="../assets/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.bonsai.js"></script>
+
+  </head>
+  <body>
+    <div>
+
+      <!-- Name Title -->
+
+      <h1>DataItemTypeFactory</h1>
+
+      <!-- Type and Stereotype -->
+
+      <section style="margin-top: .5em;">
+        <span class="alert alert-info">
+          <span class="node-icon staruml-icon icon-UMLClass"></span>
+          UMLClass
+        </span>
+        
+          <span style="margin-left: 10px" class="alert alert-info"><a href='6f8e61e33f54910ddcdf8b97ac8631f2.html'><span class='node-icon staruml-icon icon-UMLStereotype'></span>««Type Factory»Type Factory»</a></span>
+        
+      </section>
+
+      <!-- Path -->
+
+      <section style="margin-top: 10px">
+        
+        
+        
+          
+          <span class="label label-info"><a href='cf9c8b720f3815adeccaf3ef6e48c6c4.html'><span class='node-icon staruml-icon icon-Project'></span>MTConnect</a></span>
+        
+          <span>::</span>
+          <span class="label label-info"><a href='4278fed5693bf13749066b9ff19e2a9e.html'><span class='node-icon staruml-icon icon-UMLPackage'></span>MTConnectDevices</a></span>
+        
+          <span>::</span>
+          <span class="label label-info"><a href='92e305b8a33ebafdaba089063fade0a5.html'><span class='node-icon staruml-icon icon-UMLModel'></span>Factories</a></span>
+        
+          <span>::</span>
+          <span class="label label-info"><a href='69746c89688439678a5b4d769bd951bc.html'><span class='node-icon staruml-icon icon-UMLClass'></span>«Type Factory»DataItemTypeFactory</a></span>
+        
+      </section>
+
+      <!-- Diagram -->
+
+      
+
+      <!-- Description -->
+
+      
+      <section>
+        <h3>Description</h3>
+        <div>
+          
+            <p>Based on the data item category, type, and subType, this class creates a new OPC/UA type and also provides the template parameter for the ParentType from which this type is derived. </p>
+
+<p>See the Data Item Type Factory.</p>
+          
+        </div>
+      </section>
+      
+
+      <!-- Specification -->
+
+      
+
+      <!-- Directed Relationship -->
+
+      
+
+      <!-- Undirected Relationship -->
+
+      
+
+      <!-- Classifier -->
+
+      
+        
+        
+<section class="element-list">
+    <h3>Generalized Elements</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='a4929470659b71070104eee7fc228b4f.html'><span class='node-icon staruml-icon icon-UMLClass'></span>«Type Factory»TypeFactory</a></li>
+        
+    </ul>
+</section>
+
+
+
+        
+        
+
+
+        
+        
+
+
+        
+        
+
+
+        
+        
+
+      
+
+      <!-- Interface -->
+
+      
+
+      <!-- Component -->
+
+      
+
+      <!-- Node -->
+
+      
+
+      <!-- Actor -->
+
+      
+
+      <!-- Use Case -->
+
+      
+
+      <!-- Template Parameters -->
+
+      
+
+      <!-- Literals -->
+
+      
+
+      <!-- Attributes -->
+
+      
+
+      <!-- Operations -->
+
+      
+      <section>
+        <h3>Operations</h3>
+        <table class="table table-striped table-bordered">
+          <tr>
+            <th>Visibility</th>
+            <th>Name</th>
+            <th>Description</th>
+          </tr>
+          
+          <tr>
+            <td>public</td>
+            <td><a href="75759c7c4775fe0c0f6a160d555ae7c9.html">deriveParentType(type, subType)</a></td>
+            <td><p>The parent type is derived from the category as follows: </p>
+
+<ul><li>SAMPLE -&gt; SampleType</li><li>EVENT -&gt; <ul><li>Enumerated Value -&gt; MTEnumeratedEventType</li><li>Integer Value -&gt; MTNumericEventType</li><li>Otherwise -&gt; MTStringEventType</li></ul></li></ul></td>
+          </tr>
+          
+          <tr>
+            <td>public</td>
+            <td><a href="f756163e2f233709c02f103ff3a2b71c.html">deriveTypeName(type, subType)</a></td>
+            <td><p>Used to derive the class name for creating a pascal case name from the sub type and the type. For example type ROTARY_VELOCITY and subType ACTUAL will become ActualRotaryVelocity.</p></td>
+          </tr>
+          
+        </table>
+      </section>
+      
+
+      <!-- Receptions -->
+
+      
+
+      <!-- Extension Points -->
+
+      
+
+      <!-- Parameters -->
+
+      
+
+      <!-- Diagrams -->
+
+      
+      
+
+      <!-- Behavior -->
+
+      
+
+      <!-- Action -->
+
+      
+
+      <!-- Interaction -->
+
+      
+
+      <!-- CombinedFragment -->
+
+      
+
+      <!-- Activity -->
+
+      
+
+      <!-- State Machine -->
+
+      
+
+      <!-- State Machine -->
+
+      
+
+      <!-- State -->
+
+      
+
+      <!-- Vertex -->
+
+      
+
+      <!-- Transition -->
+
+      
+
+      <!-- Data Model (ERD) -->
+
+      
+
+      <!-- Columns (ERD) -->
+
+      
+
+      <!-- Related Entities (ERD) -->
+
+      
+
+      <!-- Data Flows (DFD) -->
+
+      
+
+      <!-- Flows (Flowchart) -->
+
+      
+
+      <!-- Properties -->
+
+      <section>
+        <h3>Properties</h3>
+        
+        <table class="table table-striped table-bordered">
+    <tr>
+        <th width="50%">Name</th>
+        <th width="50%">Value</th>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>name</td>
+        <td>DataItemTypeFactory</td>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>stereotype</td>
+        <td><a href='6f8e61e33f54910ddcdf8b97ac8631f2.html'><span class='node-icon staruml-icon icon-UMLStereotype'></span>««Type Factory»Type Factory»</a></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>visibility</td>
+        <td>public</td>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>isAbstract</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isFinalSpecialization</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isLeaf</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isActive</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+</table>                
+
+      </section>
+
+      <!-- Tags -->
+
+      
+
+      <!-- Constraints, Dependencies, Dependants -->
+
+      
+        
+        
+
+
+        
+        
+<section class="element-list">
+    <h3>Dependencies</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='622313b383e41cf055fc9fb7f54f900d.html'><span class='node-icon staruml-icon icon-UMLClass'></span>«Dynamic Type»{DataItem}Type</a></li>
+        
+    </ul>
+</section>
+
+
+
+        
+        
+<section class="element-list">
+    <h3>Dependants</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='9f2539b70d3ec8d18c179c0185f53f75.html'><span class='node-icon staruml-icon icon-UMLClass'></span>MTComponentType</a></li>
+        
+        <li><a href='622313b383e41cf055fc9fb7f54f900d.html'><span class='node-icon staruml-icon icon-UMLClass'></span>«Dynamic Type»{DataItem}Type</a></li>
+        
+    </ul>
+</section>
+
+
+      
+
+      <!-- Relationships -->
+
+      
+      
+<section class="element-list">
+    <h3>Relationships</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='0d8648d8b900c3ce0c97b60df4bdff4f.html'><span class='node-icon staruml-icon icon-UMLDependency'></span>(MTComponentType→DataItemTypeFactory)</a></li>
+        
+        <li><a href='285146e132030e7cfb3fe68ffa345200.html'><span class='node-icon staruml-icon icon-UMLDependency'></span>({DataItem}Type→DataItemTypeFactory)</a></li>
+        
+        <li><a href='0e180209865c8a1688e89ee10fb6922b.html'><span class='node-icon staruml-icon icon-UMLDependency'></span>(DataItemTypeFactory→{DataItem}Type)</a></li>
+        
+        <li><a href='168c083673b3423080fdfa4851d4fa9f.html'><span class='node-icon staruml-icon icon-UMLGeneralization'></span>(DataItemTypeFactory→TypeFactory)</a></li>
+        
+    </ul>
+</section>
+
+
+
+      <!-- Owned Elements -->
+
+      
+      
+<section class="element-list">
+    <h3>Owned Elements</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='0e180209865c8a1688e89ee10fb6922b.html'><span class='node-icon staruml-icon icon-UMLDependency'></span>(DataItemTypeFactory→{DataItem}Type)</a></li>
+        
+        <li><a href='cc654e150a6a93db249794af92c60526.html'><span class='node-icon staruml-icon icon-UMLDependency'></span>(DataItemObjectFactory→{DataItem}Type)</a></li>
+        
+        <li><a href='168c083673b3423080fdfa4851d4fa9f.html'><span class='node-icon staruml-icon icon-UMLGeneralization'></span>(DataItemTypeFactory→TypeFactory)</a></li>
+        
+    </ul>
+</section>
+
+
+
+    </div>
+  </body>
+</html>

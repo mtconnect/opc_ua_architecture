@@ -61,11 +61,22 @@
         <h3>Description</h3>
         <div>
           
-            <p>The base Component Type from which all MTConnect Components are derrived from. The XML QName in the template parameter is  used to derrive the browse name of the Component when instantiated.</p>
+            <p>The base Component Type from which all MTConnect Components are derrived from. The 
+component type factory is used to create the specific OPC/UA types as subtypes of the 
+MTConnect <code>MTComponentType</code>. The component types will be created once for all Component objects 
+of that type based on the <code>QName</code> of the MTConnect XML element. </p>
 
-<p>The component type factory is used to create the specific OPC/UA types as subtypes of the MTConnect <code>MTComponentType</code>. These types will be created once for all components of that type. </p>
+<p>The object factory will instantiate the Component Objects and insert them into the Components 
+folder with a browse name of the Component QName and the <code>name</code> element if specified surrounded 
+by square brackets, <code>[]</code>. For example if the MTConnect Element is:</p>
 
-<p>The object factory will instantiate the Component Objects and insert them into the Components folder with a browse name of the Component QName and the <code>name</code> element if specified. </p>
+<p><code>&lt;Linear name=&#39;X&#39;&gt;...&lt;/...&gt;</code></p>
+
+<p>The OPC/UA Object with browse name <code>Linear[X]</code> will be created with the HasTypeDefinition 
+referencing the <code>Linear</code> OPC/UA type. </p>
+
+<p>The meta data for the component and it&#39;s relationships are static. The dynamic data will be 
+represented using the <em>OPC/UA Part 8</em> </p>
           
         </div>
       </section>

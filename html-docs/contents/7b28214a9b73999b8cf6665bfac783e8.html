@@ -63,7 +63,13 @@
         <h3>Description</h3>
         <div>
           
-            <span class="label label-info">none</span>
+            <p>The <code>ComponentTypeFactory</code> creates component types using the MTConnect XML element as an input. 
+The factory takes the <code>QName</code> (or qualified name) of the XML element and then appends <code>Type</code>. For 
+example an <code>&lt;Controller id=&#39;...&#39;&gt;&lt;/...&gt;</code> element will create an OPC/UA <code>ControllerType</code> type definition 
+as an extension of the base <code>MTControllerType</code>. </p>
+
+<p>Currently there is no additional abstractions or super types required by the companion specification. 
+The types will be a single level where each Component is a sub-type of the base <code>MTComponentType</code>.</p>
           
         </div>
       </section>

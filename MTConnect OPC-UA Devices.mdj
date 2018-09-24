@@ -13581,8 +13581,17 @@
 									}
 								}
 							],
-							"documentation": "The base Component Type from which all MTConnect Components are derrived from. The XML QName in the template parameter is  used to derrive the browse name of the Component when instantiated.\n\nThe component type factory is used to create the specific OPC/UA types as subtypes of the MTConnect `MTComponentType`. These types will be created once for all components of that type. \n\nThe object factory will instantiate the Component Objects and insert them into the Components folder with a browse name of the Component QName and the `name` element if specified. ",
+							"documentation": "The base Component Type from which all MTConnect Components are derived from. The \ncomponent type factory is used to create the specific OPC/UA types as subtypes of the \nMTConnect `MTComponentType`. The component types will be created once for all Component objects \nof that type based on the `QName` of the MTConnect XML element. \n\nThe object factory will instantiate the Component Objects and insert them into the Components \nfolder with a browse name of the Component QName and the `name` element if specified surrounded \nby square brackets, `[]`. For example if the MTConnect Element is:\n\n`<Linear name='X'>...</...>`\n\nThe OPC/UA Object with browse name `Linear[X]` will be created with the HasTypeDefinition \nreferencing the `Linear` OPC/UA type. \n\nThe meta data for the component and it's relationships are static. The dynamic data will be \nrepresented using the _OPC/UA Part 8_ \n\n",
 							"attributes": [
+								{
+									"_type": "UMLAttribute",
+									"_id": "AAAAAAFmDX1eY+aMJC4=",
+									"_parent": {
+										"$ref": "AAAAAAFl6KeUmMPbZZQ="
+									},
+									"name": "id",
+									"type": "IdType"
+								},
 								{
 									"_type": "UMLAttribute",
 									"_id": "AAAAAAFl6KjDYsQFOAQ=",
@@ -14443,6 +14452,23 @@
 											"subViews": [
 												{
 													"_type": "UMLAttributeView",
+													"_id": "AAAAAAFmDX1elOaP+tM=",
+													"_parent": {
+														"$ref": "AAAAAAFl9IO6QuwL5XQ="
+													},
+													"model": {
+														"$ref": "AAAAAAFmDX1eY+aMJC4="
+													},
+													"font": "Arial;13;0",
+													"left": 507,
+													"top": 245,
+													"width": 219.33056640625,
+													"height": 13,
+													"text": "+id: IdType",
+													"horizontalAlignment": 0
+												},
+												{
+													"_type": "UMLAttributeView",
 													"_id": "AAAAAAFl9IO6Z+xZN/M=",
 													"_parent": {
 														"$ref": "AAAAAAFl9IO6QuwL5XQ="
@@ -14452,7 +14478,7 @@
 													},
 													"font": "Arial;13;0",
 													"left": 507,
-													"top": 245,
+													"top": 260,
 													"width": 219.33056640625,
 													"height": 13,
 													"text": "+name: String[0..1]",
@@ -14469,7 +14495,7 @@
 													},
 													"font": "Arial;13;0",
 													"left": 507,
-													"top": 260,
+													"top": 275,
 													"width": 219.33056640625,
 													"height": 13,
 													"text": "+nativeName: String[0..1]",
@@ -14486,7 +14512,7 @@
 													},
 													"font": "Arial;13;0",
 													"left": 507,
-													"top": 275,
+													"top": 290,
 													"width": 219.33056640625,
 													"height": 13,
 													"text": "+uuid: String[0..1] {unique}",
@@ -14503,7 +14529,7 @@
 													},
 													"font": "Arial;13;0",
 													"left": 507,
-													"top": 290,
+													"top": 305,
 													"width": 219.33056640625,
 													"height": 13,
 													"text": "«Deprecated»+sampleRate: float[0..1]",
@@ -14520,7 +14546,7 @@
 													},
 													"font": "Arial;13;0",
 													"left": 507,
-													"top": 305,
+													"top": 320,
 													"width": 219.33056640625,
 													"height": 13,
 													"text": "+sampleInterval: float[0..1]",
@@ -14531,7 +14557,7 @@
 											"left": 502,
 											"top": 240,
 											"width": 229.33056640625,
-											"height": 83
+											"height": 98
 										},
 										{
 											"_type": "UMLOperationCompartmentView",
@@ -31275,7 +31301,7 @@
 													"font": "Arial;13;0",
 													"left": 1717,
 													"top": 349,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
 													"text": "«enumeration»"
 												},
@@ -31288,7 +31314,7 @@
 													"font": "Arial;13;1",
 													"left": 1717,
 													"top": 364,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
 													"text": "DataItemResetValueType"
 												},
@@ -31301,9 +31327,9 @@
 													"font": "Arial;13;0",
 													"left": 1717,
 													"top": 379,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
-													"text": "(from MTConnectDeviceProfile)"
+													"text": "(from MTConnect Device Profile)"
 												},
 												{
 													"_type": "LabelView",
@@ -31322,7 +31348,7 @@
 											"font": "Arial;13;0",
 											"left": 1712,
 											"top": 344,
-											"width": 192.04443359375,
+											"width": 199.26806640625,
 											"height": 53,
 											"stereotypeLabel": {
 												"$ref": "AAAAAAFl+Y3PjdO+IBQ="
@@ -31423,7 +31449,7 @@
 													"font": "Arial;13;0",
 													"left": 1717,
 													"top": 402,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
 													"text": "ACTION_COMPLETE",
 													"horizontalAlignment": 0
@@ -31440,7 +31466,7 @@
 													"font": "Arial;13;0",
 													"left": 1717,
 													"top": 417,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
 													"text": "ANNUAL",
 													"horizontalAlignment": 0
@@ -31457,7 +31483,7 @@
 													"font": "Arial;13;0",
 													"left": 1717,
 													"top": 432,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
 													"text": "DAY",
 													"horizontalAlignment": 0
@@ -31474,7 +31500,7 @@
 													"font": "Arial;13;0",
 													"left": 1717,
 													"top": 447,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
 													"text": "MAINTENANCE",
 													"horizontalAlignment": 0
@@ -31491,7 +31517,7 @@
 													"font": "Arial;13;0",
 													"left": 1717,
 													"top": 462,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
 													"text": "MANUAL",
 													"horizontalAlignment": 0
@@ -31508,7 +31534,7 @@
 													"font": "Arial;13;0",
 													"left": 1717,
 													"top": 477,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
 													"text": "MONTH",
 													"horizontalAlignment": 0
@@ -31525,7 +31551,7 @@
 													"font": "Arial;13;0",
 													"left": 1717,
 													"top": 492,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
 													"text": "POWER_ON",
 													"horizontalAlignment": 0
@@ -31542,7 +31568,7 @@
 													"font": "Arial;13;0",
 													"left": 1717,
 													"top": 507,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
 													"text": "SHIFT",
 													"horizontalAlignment": 0
@@ -31559,7 +31585,7 @@
 													"font": "Arial;13;0",
 													"left": 1717,
 													"top": 522,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
 													"text": "WEEK",
 													"horizontalAlignment": 0
@@ -31568,7 +31594,7 @@
 											"font": "Arial;13;0",
 											"left": 1712,
 											"top": 397,
-											"width": 192.04443359375,
+											"width": 199.26806640625,
 											"height": 143
 										}
 									],
@@ -31576,7 +31602,7 @@
 									"containerChangeable": true,
 									"left": 1712,
 									"top": 344,
-									"width": 192.04443359375,
+									"width": 199.26806640625,
 									"height": 196,
 									"showNamespace": true,
 									"nameCompartment": {
@@ -40432,9 +40458,9 @@
 													"font": "Arial;13;0",
 													"left": -976,
 													"top": 80,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
-													"text": "(from MTConnectDeviceProfile)"
+													"text": "(from MTConnect Device Profile)"
 												},
 												{
 													"_type": "LabelView",
@@ -40611,9 +40637,9 @@
 													"font": "Arial;13;0",
 													"left": -736,
 													"top": 48,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
-													"text": "(from MTConnectDeviceProfile)"
+													"text": "(from MTConnect Device Profile)"
 												},
 												{
 													"_type": "LabelView",
@@ -40790,9 +40816,9 @@
 													"font": "Arial;13;0",
 													"left": -736,
 													"top": 48,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
-													"text": "(from MTConnectDeviceProfile)"
+													"text": "(from MTConnect Device Profile)"
 												},
 												{
 													"_type": "LabelView",
@@ -41241,9 +41267,9 @@
 													"font": "Arial;13;0",
 													"left": -736,
 													"top": 48,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
-													"text": "(from MTConnectDeviceProfile)"
+													"text": "(from MTConnect Device Profile)"
 												},
 												{
 													"_type": "LabelView",
@@ -41420,9 +41446,9 @@
 													"font": "Arial;13;0",
 													"left": -736,
 													"top": 48,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
-													"text": "(from MTConnectDeviceProfile)"
+													"text": "(from MTConnect Device Profile)"
 												},
 												{
 													"_type": "LabelView",
@@ -41599,9 +41625,9 @@
 													"font": "Arial;13;0",
 													"left": 2480,
 													"top": -780,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
-													"text": "(from MTConnectDeviceProfile)"
+													"text": "(from MTConnect Device Profile)"
 												},
 												{
 													"_type": "LabelView",
@@ -41798,9 +41824,9 @@
 													"font": "Arial;13;0",
 													"left": 1724,
 													"top": -870,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
-													"text": "(from MTConnectDeviceProfile)"
+													"text": "(from MTConnect Device Profile)"
 												},
 												{
 													"_type": "LabelView",
@@ -42033,9 +42059,9 @@
 													"font": "Arial;13;0",
 													"left": 942,
 													"top": -960,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
-													"text": "(from MTConnectDeviceProfile)"
+													"text": "(from MTConnect Device Profile)"
 												},
 												{
 													"_type": "LabelView",
@@ -42285,9 +42311,9 @@
 													"font": "Arial;13;0",
 													"left": 2090,
 													"top": -818,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
-													"text": "(from MTConnectDeviceProfile)"
+													"text": "(from MTConnect Device Profile)"
 												},
 												{
 													"_type": "LabelView",
@@ -42537,9 +42563,9 @@
 													"font": "Arial;13;0",
 													"left": 1118,
 													"top": -562,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
-													"text": "(from MTConnectDeviceProfile)"
+													"text": "(from MTConnect Device Profile)"
 												},
 												{
 													"_type": "LabelView",
@@ -42891,9 +42917,9 @@
 													"font": "Arial;13;0",
 													"left": 1042,
 													"top": -532,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
-													"text": "(from MTConnectDeviceProfile)"
+													"text": "(from MTConnect Device Profile)"
 												},
 												{
 													"_type": "LabelView",
@@ -43090,9 +43116,9 @@
 													"font": "Arial;13;0",
 													"left": 384,
 													"top": -240,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
-													"text": "(from MTConnectDeviceProfile)"
+													"text": "(from MTConnect Device Profile)"
 												},
 												{
 													"_type": "LabelView",
@@ -43269,9 +43295,9 @@
 													"font": "Arial;13;0",
 													"left": 768,
 													"top": -464,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
-													"text": "(from MTConnectDeviceProfile)"
+													"text": "(from MTConnect Device Profile)"
 												},
 												{
 													"_type": "LabelView",
@@ -43448,9 +43474,9 @@
 													"font": "Arial;13;0",
 													"left": 1200,
 													"top": -704,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
-													"text": "(from MTConnectDeviceProfile)"
+													"text": "(from MTConnect Device Profile)"
 												},
 												{
 													"_type": "LabelView",
@@ -43625,9 +43651,9 @@
 													},
 													"visible": false,
 													"font": "Arial;13;0",
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
-													"text": "(from MTConnectDeviceProfile)"
+													"text": "(from MTConnect Device Profile)"
 												},
 												{
 													"_type": "LabelView",
@@ -43795,9 +43821,9 @@
 													"visible": false,
 													"font": "Arial;13;0",
 													"left": 16,
-													"width": 182.04443359375,
+													"width": 189.26806640625,
 													"height": 13,
-													"text": "(from MTConnectDeviceProfile)"
+													"text": "(from MTConnect Device Profile)"
 												},
 												{
 													"_type": "LabelView",
@@ -57665,6 +57691,7 @@
 									}
 								}
 							],
+							"documentation": "The `ComponentTypeFactory` creates component types using the MTConnect XML element as an input. \nThe factory takes the `QName` (or qualified name) of the XML element and then appends `Type`. For \nexample an `<Controller id='...'></...>` element will create an OPC/UA `ControllerType` type definition \nas an extension of the base `MTControllerType`. \n\nCurrently there is no additional abstractions or super types required by the companion specification. \nThe types will be a single level where each Component is a sub-type of the base `MTComponentType`.\n",
 							"stereotype": {
 								"$ref": "AAAAAAFl+T1HIYG6VGo="
 							},

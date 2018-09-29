@@ -1,0 +1,84 @@
+% ************************************************************************* %
+% ********************** MTCONNECT DOCUMENT TEMPLATE ********************** %
+% ************************************************************************* %
+% 	FILENAME: 		mtconnect.tex											%
+%	VERSION:		0.1														%
+% 	DATE:			02/13/2018												%
+%	PORTED BY:		Moneer Helu												%
+%	ADDRESS:		Engineering Laboratory									%
+%					National Institute of Standards and Technology (NIST)	%
+%					100 Bureau Drive										%
+%					Mailstop 8260											%
+%					Gaithersburg, MD 20899									%
+%					United States of America								%
+% 	EMAIL:			moneer.helu@nist.gov									%
+% 	DESCRIPTION:	Template for MTConnect documentation;					%
+% 					Initial attempt for testing and discussion				%
+% 	USAGE:			\documentclass[options]{mtconnect}						%
+% ************************************************************************* %
+
+\documentclass{mtconnect}	% Load mtconnect document class
+
+\begin{document}			% Begin document here
+
+% ************************************************************************* %
+% *********************** REQUIRED INITIAL INPUTS ************************* %
+% ************************************************************************* %
+
+\docnum{Guide}							% Document "number"
+\doctitle{MTConnect and OPC/UA Companion Specification}	% Full document title
+\doctitleshort{Style Guide}				% Shortened document title
+\versionnum{2.0}						% MTConnect version
+\preparedfor{MTConnect Institute}		% Should not change!!!
+\preparedby{William Sobel}				% Author
+\preparedon{September 29, 2018}			% Date prepared
+
+% ************************************************************************* %
+% ******************* FRONT MATTER (DO NOT CHANGE!!!) ********************* %
+% ************************************************************************* %
+
+\begin{nolinenumbers}
+	\maketitle				% Title page
+\end{nolinenumbers}
+
+\pagenumbering{roman}
+
+% MTConnect Specification and Material Statement:
+\textbf{\color{mtc1}\Large \mtconnect Specification and Materials} \\
+
+AMT -- The Association For Manufacturing Technology (``AMT'') owns the copyright in this \mtconnect Specification or Material. AMT grants to you a non-exclusive, non-transferable, revocable, non-sublicensable, fully-paid-up copyright license to reproduce, copy and redistribute this \mtconnect Specification or Material, provided that you may only copy or redistribute the \mtconnect Specification or Material in the form in which you received it, without modifications, and with all copyright notices and other notices and disclaimers contained in the \mtconnect Specification or Material.
+
+If you intend to adopt or implement an \mtconnect Specification or Material in a product, whether hardware, software or firmware, which complies with an \mtconnect Specification, you \shall agree to the \mtconnect Specification Implementer License Agreement (``Implementer License'') or to the \mtconnect Intellectual Property Policy and Agreement (``IP Policy''). The Implementer License and IP Policy each sets forth the license terms and other terms of use for \mtconnect Implementers to adopt or implement the \mtconnect Specifications, including certain license rights covering necessary patent claims for that purpose. These materials can be found at \url{www.MTConnect.org}, or by contacting Paul Warndorf at \url{mailto:pwarndorf@mtconnect.hyperoffice.com}. 
+
+\mtconnect Institute and AMT have no responsibility to identify patents, patent claims or patent applications which may relate to or be required to implement a Specification, or to determine the legal validity or scope of any such patent claims brought to their attention. Each \mtconnect Implementer is responsible for securing its own licenses or rights to any patent or other intellectual property rights that may be necessary for such use, and neither AMT nor \mtconnect Institute have any obligation to secure any such rights.
+
+This Material and all \mtconnect Specifications and Materials are provided ``as is'' and \mtconnect Institute and AMT, and each of their respective members, officers, affiliates, sponsors and agents, make no representation or warranty of any kind relating to these materials or to any implementation of the \mtconnect Specifications or Materials in any product, including, without limitation, any expressed or implied warranty of noninfringement, merchantability, or fitness for particular purpose, or of the accuracy, reliability, or completeness of information contained herein. In no event shall \mtconnect Institute or AMT be liable to any user or implementer of \mtconnect Specifications or Materials for the cost of procuring substitute goods or services, lost profits, loss of use, loss of data or any incidental, consequential, indirect, special or punitive damages or other direct damages, whether under contract, tort, warranty or otherwise, arising in any way out of access, use or inability to use the \mtconnect Specification or other \mtconnect Materials, whether or not they had advance notice of the possibility of such damage.
+
+\clearpage
+\tableofcontents
+\thispagestyle{fancy}
+\clearpage
+\listoffigures
+\thispagestyle{fancy}
+\clearpage
+%\listoftables
+%\clearpage
+\pagenumbering{arabic}
+
+% ************************************************************************* %
+% ******************** ENTER DOCUMENT CONTENT BELOW *********************** %
+% ************************************************************************* %
+
+\section{Introduction}\label{intro}
+
+The following conventions will be used throughout the document to provide a clear and consistent understanding of the use of each type of data and information used to define the \mtconnect standard and associated data.
+
+\subsection{Overview}\label{overview}
+
+Overview of the standards...
+
+\section{Types}\label{types}
+
+\input ./types.tex
+
+\end{document}

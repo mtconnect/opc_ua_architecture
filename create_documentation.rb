@@ -197,8 +197,8 @@ class Type
         f.print "  \\item \\texttt{#{op['name']}("
         if op['parameters']
           f.print op['parameters'].map { |param|
-            (param['type'] and !param['type'].empty? ? "#{param['type']} " : "") +
-              "#{param['name']}"
+            ((param['type'] and !param['type'].empty?) ? param['type'] : "") +
+              param['name']
           }.join(', ')
         end
         f.print ")}"

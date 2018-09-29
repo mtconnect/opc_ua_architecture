@@ -31668,9 +31668,9 @@
 												"$ref": "AAAAAAFl+ZG+ctev4Nc="
 											},
 											"font": "Arial;13;0",
-											"left": 1296,
+											"left": 1294,
 											"top": 1088,
-											"width": 63.58447265625,
+											"width": 66.47265625,
 											"height": 13,
 											"alpha": -4.570491853015278,
 											"distance": 98.99494936611666,
@@ -31678,7 +31678,7 @@
 												"$ref": "AAAAAAFl+ZG+c9ex6rI="
 											},
 											"edgePosition": 1,
-											"text": "«MIxes In»"
+											"text": "«Mixes  In»"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -31763,9 +31763,9 @@
 												"$ref": "AAAAAAFl+ZKGm9mZPqc="
 											},
 											"font": "Arial;13;0",
-											"left": 1096,
+											"left": 1094,
 											"top": 992,
-											"width": 63.58447265625,
+											"width": 66.47265625,
 											"height": 13,
 											"alpha": -4.644568491798136,
 											"distance": 265.6106172576691,
@@ -31773,7 +31773,7 @@
 												"$ref": "AAAAAAFl+ZKGm9mb1Qs="
 											},
 											"edgePosition": 1,
-											"text": "«MIxes In»"
+											"text": "«Mixes  In»"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -31858,9 +31858,9 @@
 												"$ref": "AAAAAAFl+ZK4LNnXXVM="
 											},
 											"font": "Arial;13;0",
-											"left": 624,
+											"left": 622,
 											"top": 888,
-											"width": 63.58447265625,
+											"width": 66.47265625,
 											"height": 13,
 											"alpha": -3.7143936067544554,
 											"distance": 164.21023110634732,
@@ -31868,7 +31868,7 @@
 												"$ref": "AAAAAAFl+ZK4LdnZgXQ="
 											},
 											"edgePosition": 1,
-											"text": "«MIxes In»"
+											"text": "«Mixes  In»"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -31953,9 +31953,9 @@
 												"$ref": "AAAAAAFl+ZLCPdoV2Ag="
 											},
 											"font": "Arial;13;0",
-											"left": 776,
+											"left": 774,
 											"top": 911,
-											"width": 63.58447265625,
+											"width": 66.47265625,
 											"height": 13,
 											"alpha": -1.435268578482668,
 											"distance": 288.6468430452687,
@@ -31963,7 +31963,7 @@
 												"$ref": "AAAAAAFl+ZLCPdoXoHw="
 											},
 											"edgePosition": 1,
-											"text": "«MIxes In»"
+											"text": "«Mixes  In»"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -34249,7 +34249,7 @@
 										"$ref": "AAAAAAFl6lwe8mydXaI="
 									},
 									"name": "getStatusCode",
-									"documentation": "The OPC/UA status code will be created using the following process:\n\n* If the value of the data item is `UNAVAILABLE` a status code of `Uncertain_NoCommunicationLastUsable`.\n* When a reset trigger is specified, new `Good_` status codes will be created. See `ResetTrigger` enumeration."
+									"documentation": "The OPC/UA status code will be created using the following process:\n\n\\begin{itemize}\n  \\item If the value of the data item is \\texttt{UNAVAILABLE} a status code of \\texttt{Uncertain_NoCommunicationLastUsable}\n  \\item When a reset trigger is specified, new \\texttt{Good_} status codes will be created. See \\texttt{ResetTrigger} enumeration.\n\\end{itemize}"
 								}
 							]
 						},
@@ -34399,7 +34399,7 @@
 										"$ref": "AAAAAAFl7ltOhSl2b3Q="
 									},
 									"name": "deriveEURange",
-									"documentation": "Uses the MTConnect Constraints element if present to derive the minimum and maximum values for the numeric values. This applies to both the Numeric Event and the Sample types.",
+									"documentation": "Uses the MTConnect Constraints element if present to derive the minimum \nand maximum values for the numeric values. This applies to both the Numeric \nEvent and the Sample types.",
 									"isStatic": true,
 									"parameters": [
 										{
@@ -57587,7 +57587,7 @@
 										"$ref": "AAAAAAFl+TvjCIFfc3s="
 									},
 									"name": "deriveParentType",
-									"documentation": "The parent type is derived from the category as follows: \n\n\\begin{itemize}\n  \\item \\texttt{SAMPLE} -> \\texttt{SampleType}\n  \\item \\texttt{EVENT} -> \n    \\begin{itemize}\n      \\item Enumerated Value -> \\texttt{MTEnumeratedEventType}\n      \\item Integer Value -> \\texttt{MTNumericEventType}\n      \\item Otherwise -> \\texttt{MTStringEventType}\n    \\end{itemize}\n\\end{itemize}",
+									"documentation": "The parent type is derived from the category as follows: \n\n\\begin{itemize}\n  \\item \\texttt{SAMPLE} -> \\texttt{SampleType}\n  \\item \\texttt{EVENT} ->\n  \\begin{itemize}\n   \\item Enumerated Value -> \\texttt{MTEnumeratedEventType}\n   \\item Integer Value -> \\texttt{MTNumericEventType}\n   \\item Otherwise -> \\texttt{MTStringEventType}\n  \\end{itemize}\n\\end{itemize}",
 									"parameters": [
 										{
 											"_type": "UMLParameter",
@@ -57616,7 +57616,7 @@
 										"$ref": "AAAAAAFl+TvjCIFfc3s="
 									},
 									"name": "deriveTypeName",
-									"documentation": "Used to derive the class name for creating a pascal case name from the sub type and the type. For example type ROTARY_VELOCITY and subType ACTUAL will become ActualRotaryVelocity.",
+									"documentation": "Used to derive the class name for creating a pascal case name from the sub type and the type. \nFor example type \\texttt{ROTARY_VELOCITY} and subType \\texttt{ACTUAL} will become \\texttt{ActualRotaryVelocity}.",
 									"parameters": [
 										{
 											"_type": "UMLParameter",
@@ -57624,8 +57624,7 @@
 											"_parent": {
 												"$ref": "AAAAAAFl7mg18EKNrHY="
 											},
-											"name": "type",
-											"type": ""
+											"name": "type"
 										},
 										{
 											"_type": "UMLParameter",
@@ -57633,8 +57632,7 @@
 											"_parent": {
 												"$ref": "AAAAAAFl7mg18EKNrHY="
 											},
-											"name": "subType",
-											"type": ""
+											"name": "subType"
 										}
 									],
 									"specification": "concat(pascalCase(subType), pascalCase(type))"

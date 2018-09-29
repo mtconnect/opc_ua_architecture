@@ -454,8 +454,10 @@ HasComponent & Object & source &   & BaseObjectType & Optional \\
   \item \texttt{getStatusCode()}\\
     Documentation: The OPC/UA status code will be created using the following process:
 
-* If the value of the data item is `UNAVAILABLE` a status code of `Uncertain_NoCommunicationLastUsable`.
-* When a reset trigger is specified, new `Good_` status codes will be created. See `ResetTrigger` enumeration.
+\begin{itemize}
+  \item If the value of the data item is \texttt{UNAVAILABLE} a status code of \texttt{Uncertain_NoCommunicationLastUsable}
+  \item When a reset trigger is specified, new \texttt{Good_} status codes will be created. See \texttt{ResetTrigger} enumeration.
+\end{itemize}
 
 \end{itemize}
 \subsubsection{Defintion of \texttt{MTEnumeratedEventType}} \label{type:MTEnumeratedEventType}
@@ -590,7 +592,9 @@ HasProperty & Variable & Nominal &  Double & PropertyType & Optional \\
     Specification: \texttt{EURange.Low <- self.Constraints.Minimum
 EURange.High <- self.Constraints.Maximum}
 \\
-    Documentation: Uses the MTConnect Constraints element if present to derive the minimum and maximum values for the numeric values. This applies to both the Numeric Event and the Sample types.
+    Documentation: Uses the MTConnect Constraints element if present to derive the minimum 
+and maximum values for the numeric values. This applies to both the Numeric 
+Event and the Sample types.
 
 \end{itemize}
 \subsubsection{Defintion of \texttt{MTNumericEventType}} \label{type:MTNumericEventType}
@@ -1030,18 +1034,19 @@ and also provides the template parameter for the ParentType from which this type
 
 \begin{itemize}
   \item \texttt{SAMPLE} -> \texttt{SampleType}
-  \item \texttt{EVENT} -> 
-    \begin{itemize}
-      \item Enumerated Value -> \texttt{MTEnumeratedEventType}
-      \item Integer Value -> \texttt{MTNumericEventType}
-      \item Otherwise -> \texttt{MTStringEventType}
-    \end{itemize}
+  \item \texttt{EVENT} ->
+  \begin{itemize}
+   \item Enumerated Value -> \texttt{MTEnumeratedEventType}
+   \item Integer Value -> \texttt{MTNumericEventType}
+   \item Otherwise -> \texttt{MTStringEventType}
+  \end{itemize}
 \end{itemize}
 
   \item \texttt{deriveTypeName(type, subType)}\\
     Specification: \texttt{concat(pascalCase(subType), pascalCase(type))}
 \\
-    Documentation: Used to derive the class name for creating a pascal case name from the sub type and the type. For example type ROTARY_VELOCITY and subType ACTUAL will become ActualRotaryVelocity.
+    Documentation: Used to derive the class name for creating a pascal case name from the sub type and the type. 
+For example type \texttt{ROTARY_VELOCITY} and subType \texttt{ACTUAL} will become \texttt{ActualRotaryVelocity}.
 
 \end{itemize}
 \subsubsection{Defintion of \texttt{DeviceObjectFactory}} \label{type:DeviceObjectFactory}

@@ -190,18 +190,18 @@ class Type
 
   def generate_operations(f)
     if @operations
-      f.puts "\\paragraph{Operations}\n\n"
+      f.puts "\\paragraph{Operations}\n"
       
       f.puts "\\begin{itemize}"
       @operations.each do |op|
-        f.print "  \\item #{op['name']}("
+        f.print "  \\item \\texttt{#{op['name']}("
         if op['parameters']
           f.print op['parameters'].map { |param|
             (param['type'] and !param['type'].empty? ? "#{param['type']} " : "") +
               "#{param['name']}"
           }.join(', ')
         end
-        f.print ")"
+        f.print ")}"
         if op['specification']
           f.puts "\\\\\n    Specification: \\texttt{#{op['specification']}}"
         end
@@ -218,7 +218,7 @@ class Type
     f.puts <<EOT
 \\begin{table}
 \\centering 
-  \\caption{#{@name} Definition}
+  \\caption{\\texttt{#{@name}} Definition}
   \\label{table:#{@name}}
 \\footnotesize
 \\tabulinesep=3pt
@@ -248,7 +248,7 @@ EOT
     
   def generate_latex(f = STDOUT)
     f.puts <<EOT
-\\subsubsection{Defintion of #{@name}} \\label{type:#{@name}}
+\\subsubsection{Defintion of \\texttt{#{@name}}} \\label{type:#{@name}}
 
 \\FloatBarrier
 

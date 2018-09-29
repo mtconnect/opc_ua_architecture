@@ -21036,23 +21036,6 @@
 													"height": 13,
 													"text": "+deriveNodeId(element)",
 													"horizontalAlignment": 0
-												},
-												{
-													"_type": "UMLOperationView",
-													"_id": "AAAAAAFl/esfcj5Zr3g=",
-													"_parent": {
-														"$ref": "AAAAAAFl/akxSzG3Ooo="
-													},
-													"model": {
-														"$ref": "AAAAAAFl/dqEHDzAs24="
-													},
-													"font": "Arial;13;0",
-													"left": 501,
-													"top": 1040,
-													"width": 175.931640625,
-													"height": 13,
-													"text": "+Operation1()",
-													"horizontalAlignment": 0
 												}
 											],
 											"font": "Arial;13;0",
@@ -21838,7 +21821,7 @@
 													"top": 631,
 													"width": 248.244140625,
 													"height": 13,
-													"text": "+Category: MTCategoryType[0..1]",
+													"text": "+Category: MTCategoryType",
 													"horizontalAlignment": 0
 												}
 											],
@@ -30545,7 +30528,7 @@
 													"font": "Arial;13;3",
 													"left": 1389,
 													"top": 1495,
-													"width": 142.7080078125,
+													"width": 161.47802734375,
 													"height": 13,
 													"text": "MTCompositionType"
 												},
@@ -30558,7 +30541,7 @@
 													"font": "Arial;13;0",
 													"left": 1389,
 													"top": 1510,
-													"width": 142.7080078125,
+													"width": 161.47802734375,
 													"height": 13,
 													"text": "(from Components)"
 												},
@@ -30579,7 +30562,7 @@
 											"font": "Arial;13;0",
 											"left": 1384,
 											"top": 1488,
-											"width": 152.7080078125,
+											"width": 171.47802734375,
 											"height": 40,
 											"stereotypeLabel": {
 												"$ref": "AAAAAAFl+Wgl56jto4k="
@@ -30616,7 +30599,7 @@
 													"font": "Arial;13;0",
 													"left": 1389,
 													"top": 1533,
-													"width": 142.7080078125,
+													"width": 161.47802734375,
 													"height": 13,
 													"text": "+Uuid: String[0..1]",
 													"horizontalAlignment": 0
@@ -30633,7 +30616,7 @@
 													"font": "Arial;13;0",
 													"left": 1389,
 													"top": 1548,
-													"width": 142.7080078125,
+													"width": 161.47802734375,
 													"height": 13,
 													"text": "+Name: String[0..1]",
 													"horizontalAlignment": 0
@@ -30650,16 +30633,16 @@
 													"font": "Arial;13;0",
 													"left": 1389,
 													"top": 1563,
-													"width": 142.7080078125,
+													"width": 161.47802734375,
 													"height": 13,
-													"text": "+Description: String[0..1]",
+													"text": "+MTDescription: String[0..1]",
 													"horizontalAlignment": 0
 												}
 											],
 											"font": "Arial;13;0",
 											"left": 1384,
 											"top": 1528,
-											"width": 152.7080078125,
+											"width": 171.47802734375,
 											"height": 53
 										},
 										{
@@ -30715,7 +30698,7 @@
 									"containerChangeable": true,
 									"left": 1384,
 									"top": 1488,
-									"width": 152.7080078125,
+									"width": 171.47802734375,
 									"height": 93,
 									"showNamespace": true,
 									"nameCompartment": {
@@ -34233,8 +34216,7 @@
 										"$ref": "AAAAAAFl6lwe8mydXaI="
 									},
 									"name": "Category",
-									"type": "MTCategoryType",
-									"multiplicity": "0..1"
+									"type": "MTCategoryType"
 								}
 							],
 							"operations": [
@@ -40643,7 +40625,7 @@
 													"top": 316,
 													"width": 150,
 													"height": 13,
-													"text": "MIxes In"
+													"text": "Mixes  In"
 												},
 												{
 													"_type": "LabelView",
@@ -43967,7 +43949,7 @@
 								"$ref": "AAAAAAFl6pwSmxBAvc4="
 							},
 							"name": "mixin",
-							"documentation": "The contents properties and the behavior of the class are combined with another class.",
+							"documentation": "The mixin pattern injects the properties and operations into the types \nthat are related to the using the \\texttt{Mixes In} dependency. Mixins allow for\nlightweight multiple inheritance. Since OPC/UA does not allow for multiple inheritance \nand the MTConnect  types require the same set of properties when they are sub-typed\nfrom existing OPC/UA types, this mechanism allows for this relationship to be expressed.\n",
 							"icon": {
 								"_type": "UMLImage",
 								"_id": "AAAAAAFl7lnYlSjs2gI=",
@@ -43984,7 +43966,8 @@
 							"_parent": {
 								"$ref": "AAAAAAFl6pwSmxBAvc4="
 							},
-							"name": "MIxes In",
+							"name": "Mixes  In",
+							"documentation": "This stereotype is associated with the dependency between a type and a mixin. See Section \\ref{type:mixin} for a complete \ndescription of the mixin.",
 							"icon": {
 								"_type": "UMLImage",
 								"_id": "AAAAAAFl7mDPwza3hC0=",
@@ -44051,6 +44034,7 @@
 								"$ref": "AAAAAAFl6pwSmxBAvc4="
 							},
 							"name": "bind",
+							"documentation": "When a dynamic type (See Section \\ref{type:Dynamic Type}) creates an instance where the super-type\ncan be associated based on the data item category and type, the \\texttt{Type Factory} will \nspecify which supertype is to be referenced.\n\nThe \\texttt{bind} stereotype indicates the relationship between the dynamic sub-type and the \nparent type are resolved baed on the MTConnect DataItem meta data.",
 							"icon": {
 								"_type": "UMLImage",
 								"_id": "AAAAAAFl8xUMMbqW3bA=",
@@ -56978,30 +56962,13 @@
 													"height": 13,
 													"text": "+deriveNodeId(element)",
 													"horizontalAlignment": 0
-												},
-												{
-													"_type": "UMLOperationView",
-													"_id": "AAAAAAFl/esgMT7I0AM=",
-													"_parent": {
-														"$ref": "AAAAAAFl/acuqjDDcZ4="
-													},
-													"model": {
-														"$ref": "AAAAAAFl/dqEHDzAs24="
-													},
-													"font": "Arial;13;0",
-													"left": 1285,
-													"top": 1105,
-													"width": 175.931640625,
-													"height": 13,
-													"text": "+Operation1()",
-													"horizontalAlignment": 0
 												}
 											],
 											"font": "Arial;13;0",
 											"left": 1280,
 											"top": 1070,
 											"width": 185.931640625,
-											"height": 53
+											"height": 38
 										},
 										{
 											"_type": "UMLReceptionCompartmentView",
@@ -57378,7 +57345,7 @@
 										"$ref": "AAAAAAFl+ausX/pE7cw="
 									},
 									"name": "deriveSourceRelation",
-									"documentation": "Use the source composition,  component id, or data item id to locate the source node id for this relationship. If one exists, add an object with  browse name \"source\" that relates to the entity referenced by the id. \n\nThe most specific identity should be used in the following order:\n* DataItemId\n* CompositionId\n* ComponentId \n\nSince the data item implies composition and component and the composition implies component, there should only be one attribute given for the source.\n",
+									"documentation": "Use the source composition,  component id, or data item id to locate the source node id for this relationship. If one exists, add an object with  browse name \"source\" that relates to the entity referenced by the id. \n\nThe most specific identity should be used in the following order:\n\\begin{itemize}\n\\item \\texttt{DataItemId}\n\\item \\texttt{CompositionId}\n\\item \\texttt{ComponentId}\n\\end{itemize}\n\nSince the data item implies composition and component and the composition implies component, there should only be one attribute given for the source.\n",
 									"parameters": [
 										{
 											"_type": "UMLParameter",
@@ -57438,7 +57405,7 @@
 										"$ref": "AAAAAAFl+ausX/pE7cw="
 									},
 									"name": "deriveBrowseName",
-									"documentation": "The browse name will be composed of the following parts of the model:\n\n1. If the compositionId is present, the compositionId will be resolved the the Composition element and the pascal case of the type attribute will be placed first.\n2. If the subType is present, the pascal case of the subType will be placed next.\n3. The pascal case of the type will be placed last.\n\nFor example, for a data item with the following attributes:\n\n* type: TEMPERATURE\n* composition type: STORAGE_BATTERY\n\nwill have the browseName \"StorageBatteryTemperature\"\n\nFor the data item with the following attributes:\n\n* type: ANGLE\n* subType: ACTUAL\n* composition type: ENCODER\n\nwill have the following browse name: \"EncoderActualAngle\"\n\n",
+									"documentation": "The browse name will be composed of the following parts of the model:\n\n\\begin{enumerate}\n\\item If the compositionId is present, the compositionId will be resolved the the Composition element and the pascal case of the type attribute will be placed first.\n\\item If the subType is present, the pascal case of the subType will be placed next.\n\\item The pascal case of the type will be placed last.\n\\end{enumerate}\n\nFor example, for a data item with the following attributes:\n\n\\begin{itemize}\n\\item type: \\texttt{TEMPERATURE}\n\\item composition type: \\texttt{STORAGE_BATTERY}\n\\end{itemize}\n\nwill have the following browse name: \\texttt{StorageBatteryTemperature}\n\nFor the data item with the following attributes:\n\n\\begin{itemize}\n\\item type: \\texttt{ANGLE}\n\\item subType: \\texttt{ACTUAL}\n\\item composition type: \\texttt{ENCODER}\n\\end{itemize}\n\nwill have the following browse name: \\texttt{EncoderActualAngle}\n\n",
 									"parameters": [
 										{
 											"_type": "UMLParameter",
@@ -57608,7 +57575,7 @@
 									}
 								}
 							],
-							"documentation": "Based on the data item category, type, and subType, this class creates a new OPC/UA type and also provides the template parameter for the ParentType from which this type is derived. \n\nSee the Data Item Type Factory.",
+							"documentation": "Based on the data item category, type, and subType, this class creates a new OPC/UA type \nand also provides the template parameter for the ParentType from which this type is derived. \n",
 							"stereotype": {
 								"$ref": "AAAAAAFl+T1HIYG6VGo="
 							},
@@ -57620,7 +57587,7 @@
 										"$ref": "AAAAAAFl+TvjCIFfc3s="
 									},
 									"name": "deriveParentType",
-									"documentation": "The parent type is derived from the category as follows: \n\n* SAMPLE -> SampleType\n* EVENT -> \n  * Enumerated Value -> MTEnumeratedEventType\n  * Integer Value -> MTNumericEventType\n  * Otherwise -> MTStringEventType\n",
+									"documentation": "The parent type is derived from the category as follows: \n\n\\begin{itemize}\n  \\item \\texttt{SAMPLE} -> \\texttt{SampleType}\n  \\item \\texttt{EVENT} -> \n    \\begin{itemize}\n      \\item Enumerated Value -> \\texttt{MTEnumeratedEventType}\n      \\item Integer Value -> \\texttt{MTNumericEventType}\n      \\item Otherwise -> \\texttt{MTStringEventType}\n    \\end{itemize}\n\\end{itemize}",
 									"parameters": [
 										{
 											"_type": "UMLParameter",
@@ -58372,14 +58339,6 @@
 										}
 									],
 									"specification": "derive: element.uuid"
-								},
-								{
-									"_type": "UMLOperation",
-									"_id": "AAAAAAFl/dqEHDzAs24=",
-									"_parent": {
-										"$ref": "AAAAAAFl/acuqDC6r1M="
-									},
-									"name": "Operation1"
 								}
 							]
 						},

@@ -12,7 +12,7 @@
 
 The Components documents the Component models and the owned objects.
 
-\subsubsection{Defintion of ChannelType} \label{type:ChannelType}
+\subsubsection{Defintion of \texttt{ChannelType}} \label{type:ChannelType}
 
 \FloatBarrier
 
@@ -20,7 +20,7 @@ The Components documents the Component models and the owned objects.
 
 \begin{table}
 \centering 
-  \caption{ChannelType Definition}
+  \caption{\texttt{ChannelType} Definition}
   \label{table:ChannelType}
 \footnotesize
 \tabulinesep=3pt
@@ -44,7 +44,7 @@ HasProperty & Variable & CalibrationInitials &  String & PropertyType & Optional
 
 \FloatBarrier
 
-\subsubsection{Defintion of DescriptionType} \label{type:DescriptionType}
+\subsubsection{Defintion of \texttt{DescriptionType}} \label{type:DescriptionType}
 
 \FloatBarrier
 
@@ -54,7 +54,7 @@ text that is represented in the \texttt{Data} Property of the Description Object
 
 \begin{table}
 \centering 
-  \caption{DescriptionType Definition}
+  \caption{\texttt{DescriptionType} Definition}
   \label{table:DescriptionType}
 \footnotesize
 \tabulinesep=3pt
@@ -77,16 +77,15 @@ HasProperty & Variable & Data &  String & PropertyType & Optional \\
 \FloatBarrier
 
 \paragraph{Operations}
-
 \begin{itemize}
-  \item deriveBrowseName(element)\\
+  \item \texttt{deriveBrowseName(element)}\\
     Specification: \texttt{"Description"}
 
-  \item deriveNodeId(element)\\
+  \item \texttt{deriveNodeId(element)}\\
     Specification: \texttt{concat(self.parent.NodeId, BrowseName)}
 
 \end{itemize}
-\subsubsection{Defintion of MTComponentType} \label{type:MTComponentType}
+\subsubsection{Defintion of \texttt{MTComponentType}} \label{type:MTComponentType}
 
 \FloatBarrier
 
@@ -111,7 +110,7 @@ represented using the _OPC/UA Part 8_
 
 \begin{table}
 \centering 
-  \caption{MTComponentType Definition}
+  \caption{\texttt{MTComponentType} Definition}
   \label{table:MTComponentType}
 \footnotesize
 \tabulinesep=3pt
@@ -142,7 +141,7 @@ HasProperty & Variable & <Dynamic> &  {DataItem}Type & <Dynamic> & Manditory \\
 
 \FloatBarrier
 
-\subsubsection{Defintion of MTCompositionType} \label{type:MTCompositionType}
+\subsubsection{Defintion of \texttt{MTCompositionType}} \label{type:MTCompositionType}
 
 \FloatBarrier
 
@@ -150,7 +149,7 @@ HasProperty & Variable & <Dynamic> &  {DataItem}Type & <Dynamic> & Manditory \\
 
 \begin{table}
 \centering 
-  \caption{MTCompositionType Definition}
+  \caption{\texttt{MTCompositionType} Definition}
   \label{table:MTCompositionType}
 \footnotesize
 \tabulinesep=3pt
@@ -172,7 +171,7 @@ NonHierarchialReferenceType & Object & composition &  {DataItem}Type & NonHierar
 
 \FloatBarrier
 
-\subsubsection{Defintion of MTConfigurationType} \label{type:MTConfigurationType}
+\subsubsection{Defintion of \texttt{MTConfigurationType}} \label{type:MTConfigurationType}
 
 \FloatBarrier
 
@@ -180,7 +179,7 @@ NonHierarchialReferenceType & Object & composition &  {DataItem}Type & NonHierar
 
 \begin{table}
 \centering 
-  \caption{MTConfigurationType Definition}
+  \caption{\texttt{MTConfigurationType} Definition}
   \label{table:MTConfigurationType}
 \footnotesize
 \tabulinesep=3pt
@@ -198,7 +197,7 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 
 \FloatBarrier
 
-\subsubsection{Defintion of MTDeviceType} \label{type:MTDeviceType}
+\subsubsection{Defintion of \texttt{MTDeviceType}} \label{type:MTDeviceType}
 
 \FloatBarrier
 
@@ -208,7 +207,7 @@ The  compositions, relationships, and data items are then recursively created as
 
 \begin{table}
 \centering 
-  \caption{MTDeviceType Definition}
+  \caption{\texttt{MTDeviceType} Definition}
   \label{table:MTDeviceType}
 \footnotesize
 \tabulinesep=3pt
@@ -229,16 +228,15 @@ HasProperty & Variable & Iso841Class &  String & PropertyType & Optional \\
 \FloatBarrier
 
 \paragraph{Operations}
-
 \begin{itemize}
-  \item deriveBrowseName(element)\\
+  \item \texttt{deriveBrowseName(element)}\\
     Specification: \texttt{self.name}
 
-  \item deriveNodeId(element)\\
+  \item \texttt{deriveNodeId(element)}\\
     Specification: \texttt{self.uuid}
 
 \end{itemize}
-\subsubsection{Defintion of SensorConfigurationType} \label{type:SensorConfigurationType}
+\subsubsection{Defintion of \texttt{SensorConfigurationType}} \label{type:SensorConfigurationType}
 
 \FloatBarrier
 
@@ -246,7 +244,7 @@ The SensorConfiguration browse name will be created as an Object relationship wi
 
 \begin{table}
 \centering 
-  \caption{SensorConfigurationType Definition}
+  \caption{\texttt{SensorConfigurationType} Definition}
   \label{table:SensorConfigurationType}
 \footnotesize
 \tabulinesep=3pt
@@ -269,7 +267,7 @@ Organizes & Object & Channels &  ChannelType & FolderType & Optional \\
 
 \FloatBarrier
 
-\subsubsection{Defintion of {Component}Type} \label{type:{Component}Type}
+\subsubsection{Defintion of \texttt{{Component}Type}} \label{type:{Component}Type}
 
 \FloatBarrier
 
@@ -277,7 +275,7 @@ Organizes & Object & Channels &  ChannelType & FolderType & Optional \\
 
 \begin{table}
 \centering 
-  \caption{{Component}Type Definition}
+  \caption{\texttt{{Component}Type} Definition}
   \label{table:{Component}Type}
 \footnotesize
 \tabulinesep=3pt
@@ -295,7 +293,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-\subsubsection{Defintion of {Composition}Type} \label{type:{Composition}Type}
+\subsubsection{Defintion of \texttt{{Composition}Type}} \label{type:{Composition}Type}
 
 \FloatBarrier
 
@@ -303,7 +301,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \begin{table}
 \centering 
-  \caption{{Composition}Type Definition}
+  \caption{\texttt{{Composition}Type} Definition}
   \label{table:{Composition}Type}
 \footnotesize
 \tabulinesep=3pt
@@ -335,7 +333,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 
-\subsubsection{Defintion of AssetChangedType} \label{type:AssetChangedType}
+\subsubsection{Defintion of \texttt{AssetChangedType}} \label{type:AssetChangedType}
 
 \FloatBarrier
 
@@ -343,7 +341,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \begin{table}
 \centering 
-  \caption{AssetChangedType Definition}
+  \caption{\texttt{AssetChangedType} Definition}
   \label{table:AssetChangedType}
 \footnotesize
 \tabulinesep=3pt
@@ -361,7 +359,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-\subsubsection{Defintion of AssetEventType} \label{type:AssetEventType}
+\subsubsection{Defintion of \texttt{AssetEventType}} \label{type:AssetEventType}
 
 \FloatBarrier
 
@@ -369,7 +367,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \begin{table}
 \centering 
-  \caption{AssetEventType Definition}
+  \caption{\texttt{AssetEventType} Definition}
   \label{table:AssetEventType}
 \footnotesize
 \tabulinesep=3pt
@@ -388,7 +386,7 @@ HasProperty & Variable & AssetType &  String & PropertyType & Manditory \\
 
 \FloatBarrier
 
-\subsubsection{Defintion of AssetRemovedType} \label{type:AssetRemovedType}
+\subsubsection{Defintion of \texttt{AssetRemovedType}} \label{type:AssetRemovedType}
 
 \FloatBarrier
 
@@ -396,7 +394,7 @@ HasProperty & Variable & AssetType &  String & PropertyType & Manditory \\
 
 \begin{table}
 \centering 
-  \caption{AssetRemovedType Definition}
+  \caption{\texttt{AssetRemovedType} Definition}
   \label{table:AssetRemovedType}
 \footnotesize
 \tabulinesep=3pt
@@ -414,7 +412,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-\subsubsection{Defintion of MTDataItemType} \label{type:MTDataItemType}
+\subsubsection{Defintion of \texttt{MTDataItemType}} \label{type:MTDataItemType}
 
 \FloatBarrier
 
@@ -422,7 +420,7 @@ The data item mixin will inject the properties and the methods into the related 
 
 \begin{table}
 \centering 
-  \caption{MTDataItemType Definition}
+  \caption{\texttt{MTDataItemType} Definition}
   \label{table:MTDataItemType}
 \footnotesize
 \tabulinesep=3pt
@@ -438,7 +436,7 @@ HasProperty & Variable & SourceName &  String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate &  Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate &  Double & PropertyType & Optional \\
 HasProperty & Variable & Representation &  RepresentationType & PropertyType & Optional \\
-HasProperty & Variable & Category &  MTCategoryType & PropertyType & Optional \\
+HasProperty & Variable & Category &  MTCategoryType & PropertyType & Manditory \\
 HasProperty & Variable & <Dynamic> &  MTFilterType & <Dynamic> & Optional \\
 HasComponent & Object & source &   & BaseObjectType & Optional \\
 \end{tabu}
@@ -447,21 +445,20 @@ HasComponent & Object & source &   & BaseObjectType & Optional \\
 \FloatBarrier
 
 \paragraph{Operations}
-
 \begin{itemize}
-  \item deriveSourceName(element)\\
+  \item \texttt{deriveSourceName(element)}\\
     Specification: \texttt{self.Source.CDATA}
 \\
     Documentation: Derive the source name from the Source element CDATA. This will represent the alternative long name for the data item's source.
 
-  \item getStatusCode()\\
+  \item \texttt{getStatusCode()}\\
     Documentation: The OPC/UA status code will be created using the following process:
 
 * If the value of the data item is `UNAVAILABLE` a status code of `Uncertain_NoCommunicationLastUsable`.
 * When a reset trigger is specified, new `Good_` status codes will be created. See `ResetTrigger` enumeration.
 
 \end{itemize}
-\subsubsection{Defintion of MTEnumeratedEventType} \label{type:MTEnumeratedEventType}
+\subsubsection{Defintion of \texttt{MTEnumeratedEventType}} \label{type:MTEnumeratedEventType}
 
 \FloatBarrier
 
@@ -469,7 +466,7 @@ All Data Items with Category EVENT having a Controlled Vocabularies will be of t
 
 \begin{table}
 \centering 
-  \caption{MTEnumeratedEventType Definition}
+  \caption{\texttt{MTEnumeratedEventType} Definition}
   \label{table:MTEnumeratedEventType}
 \footnotesize
 \tabulinesep=3pt
@@ -488,7 +485,7 @@ HasProperty & Variable & ConstrainedValues &  EnumValuesType & PropertyType & Ma
 
 \FloatBarrier
 
-\subsubsection{Defintion of MTFilterType} \label{type:MTFilterType}
+\subsubsection{Defintion of \texttt{MTFilterType}} \label{type:MTFilterType}
 
 \FloatBarrier
 
@@ -496,7 +493,7 @@ These features will be subsumed by the OPC/UA client filtering directives.
 
 \begin{table}
 \centering 
-  \caption{MTFilterType Definition}
+  \caption{\texttt{MTFilterType} Definition}
   \label{table:MTFilterType}
 \footnotesize
 \tabulinesep=3pt
@@ -515,16 +512,15 @@ HasProperty & Variable & Value &  float & PropertyType & Manditory \\
 \FloatBarrier
 
 \paragraph{Operations}
-
 \begin{itemize}
-  \item deriveBrowseName(element)\\
+  \item \texttt{deriveBrowseName(element)}\\
     Specification: \texttt{concat(parent.BrowseName, pascalCase(element.type))}
 
-  \item deriveNodeId(element)\\
+  \item \texttt{deriveNodeId(element)}\\
     Specification: \texttt{concat(parent.NodeId, pascalCase(element.type))}
 
 \end{itemize}
-\subsubsection{Defintion of MTMessageType} \label{type:MTMessageType}
+\subsubsection{Defintion of \texttt{MTMessageType}} \label{type:MTMessageType}
 
 \FloatBarrier
 
@@ -532,7 +528,7 @@ HasProperty & Variable & Value &  float & PropertyType & Manditory \\
 
 \begin{table}
 \centering 
-  \caption{MTMessageType Definition}
+  \caption{\texttt{MTMessageType} Definition}
   \label{table:MTMessageType}
 \footnotesize
 \tabulinesep=3pt
@@ -551,7 +547,7 @@ HasProperty & Variable & NativeCode &  String & PropertyType & Optional \\
 
 \FloatBarrier
 
-\subsubsection{Defintion of MTNumericDataItemType} \label{type:MTNumericDataItemType}
+\subsubsection{Defintion of \texttt{MTNumericDataItemType}} \label{type:MTNumericDataItemType}
 
 \FloatBarrier
 
@@ -559,7 +555,7 @@ These are the additional attributes that are relevent to numeric data items. The
 
 \begin{table}
 \centering 
-  \caption{MTNumericDataItemType Definition}
+  \caption{\texttt{MTNumericDataItemType} Definition}
   \label{table:MTNumericDataItemType}
 \footnotesize
 \tabulinesep=3pt
@@ -586,19 +582,18 @@ HasProperty & Variable & Nominal &  Double & PropertyType & Optional \\
 \FloatBarrier
 
 \paragraph{Operations}
-
 \begin{itemize}
-  \item deriveEngineeringUnits(units)\\
+  \item \texttt{deriveEngineeringUnits(units)}\\
     Specification: \texttt{EngineeringUnits <- self.units}
 
-  \item deriveEURange(constraints)\\
+  \item \texttt{deriveEURange(constraints)}\\
     Specification: \texttt{EURange.Low <- self.Constraints.Minimum
 EURange.High <- self.Constraints.Maximum}
 \\
     Documentation: Uses the MTConnect Constraints element if present to derive the minimum and maximum values for the numeric values. This applies to both the Numeric Event and the Sample types.
 
 \end{itemize}
-\subsubsection{Defintion of MTNumericEventType} \label{type:MTNumericEventType}
+\subsubsection{Defintion of \texttt{MTNumericEventType}} \label{type:MTNumericEventType}
 
 \FloatBarrier
 
@@ -606,7 +601,7 @@ All data items with category EVENT and a numeric value.
 
 \begin{table}
 \centering 
-  \caption{MTNumericEventType Definition}
+  \caption{\texttt{MTNumericEventType} Definition}
   \label{table:MTNumericEventType}
 \footnotesize
 \tabulinesep=3pt
@@ -626,7 +621,7 @@ HasProperty & Variable & EngineeringUnits &  EUInformation & PropertyType & Opti
 
 \FloatBarrier
 
-\subsubsection{Defintion of MTSampleType} \label{type:MTSampleType}
+\subsubsection{Defintion of \texttt{MTSampleType}} \label{type:MTSampleType}
 
 \FloatBarrier
 
@@ -634,7 +629,7 @@ Data Items with category SAMPLE
 
 \begin{table}
 \centering 
-  \caption{MTSampleType Definition}
+  \caption{\texttt{MTSampleType} Definition}
   \label{table:MTSampleType}
 \footnotesize
 \tabulinesep=3pt
@@ -652,7 +647,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-\subsubsection{Defintion of MTStringEventType} \label{type:MTStringEventType}
+\subsubsection{Defintion of \texttt{MTStringEventType}} \label{type:MTStringEventType}
 
 \FloatBarrier
 
@@ -660,7 +655,7 @@ All data items with category EVENT where the data is freeform text. The set_data
 
 \begin{table}
 \centering 
-  \caption{MTStringEventType Definition}
+  \caption{\texttt{MTStringEventType} Definition}
   \label{table:MTStringEventType}
 \footnotesize
 \tabulinesep=3pt
@@ -678,7 +673,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-\subsubsection{Defintion of MinimumDeltaFilterType} \label{type:MinimumDeltaFilterType}
+\subsubsection{Defintion of \texttt{MinimumDeltaFilterType}} \label{type:MinimumDeltaFilterType}
 
 \FloatBarrier
 
@@ -686,7 +681,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \begin{table}
 \centering 
-  \caption{MinimumDeltaFilterType Definition}
+  \caption{\texttt{MinimumDeltaFilterType} Definition}
   \label{table:MinimumDeltaFilterType}
 \footnotesize
 \tabulinesep=3pt
@@ -704,7 +699,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-\subsubsection{Defintion of PeriodFilterType} \label{type:PeriodFilterType}
+\subsubsection{Defintion of \texttt{PeriodFilterType}} \label{type:PeriodFilterType}
 
 \FloatBarrier
 
@@ -712,7 +707,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \begin{table}
 \centering 
-  \caption{PeriodFilterType Definition}
+  \caption{\texttt{PeriodFilterType} Definition}
   \label{table:PeriodFilterType}
 \footnotesize
 \tabulinesep=3pt
@@ -730,7 +725,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-\subsubsection{Defintion of {DataItem}Type} \label{type:{DataItem}Type}
+\subsubsection{Defintion of \texttt{{DataItem}Type}} \label{type:{DataItem}Type}
 
 \FloatBarrier
 
@@ -738,7 +733,7 @@ For each DataItem the Sub Type, and the Type will be composed to be the  HasType
 
 \begin{table}
 \centering 
-  \caption{{DataItem}Type Definition}
+  \caption{\texttt{{DataItem}Type} Definition}
   \label{table:{DataItem}Type}
 \footnotesize
 \tabulinesep=3pt
@@ -770,7 +765,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 
-\subsubsection{Defintion of MTExclusiveLimitConditionType} \label{type:MTExclusiveLimitConditionType}
+\subsubsection{Defintion of \texttt{MTExclusiveLimitConditionType}} \label{type:MTExclusiveLimitConditionType}
 
 \FloatBarrier
 
@@ -778,7 +773,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \begin{table}
 \centering 
-  \caption{MTExclusiveLimitConditionType Definition}
+  \caption{\texttt{MTExclusiveLimitConditionType} Definition}
   \label{table:MTExclusiveLimitConditionType}
 \footnotesize
 \tabulinesep=3pt
@@ -796,7 +791,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-\subsubsection{Defintion of MTNonExclusiveConditionType} \label{type:MTNonExclusiveConditionType}
+\subsubsection{Defintion of \texttt{MTNonExclusiveConditionType}} \label{type:MTNonExclusiveConditionType}
 
 \FloatBarrier
 
@@ -804,7 +799,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \begin{table}
 \centering 
-  \caption{MTNonExclusiveConditionType Definition}
+  \caption{\texttt{MTNonExclusiveConditionType} Definition}
   \label{table:MTNonExclusiveConditionType}
 \footnotesize
 \tabulinesep=3pt
@@ -822,7 +817,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-\subsubsection{Defintion of {ConditionClass}Type} \label{type:{ConditionClass}Type}
+\subsubsection{Defintion of \texttt{{ConditionClass}Type}} \label{type:{ConditionClass}Type}
 
 \FloatBarrier
 
@@ -830,7 +825,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \begin{table}
 \centering 
-  \caption{{ConditionClass}Type Definition}
+  \caption{\texttt{{ConditionClass}Type} Definition}
   \label{table:{ConditionClass}Type}
 \footnotesize
 \tabulinesep=3pt
@@ -875,23 +870,22 @@ This is especially evident when mapping the DataItems and the Conditions to the
 MTConnect Information Models and providing sufficent definition to allow for 
 unambiguous implementation.
 
-\subsubsection{Defintion of ComponentObjectFactory} \label{type:ComponentObjectFactory}
+\subsubsection{Defintion of \texttt{ComponentObjectFactory}} \label{type:ComponentObjectFactory}
 
 \FloatBarrier
 
 
 
 \paragraph{Operations}
-
 \begin{itemize}
-  \item deriveBrowseName(element)\\
+  \item \texttt{deriveBrowseName(element)}\\
     Specification: \texttt{concat(element.QName, (if self.name.notEmpty() then concat('[', self.name, ']')) else  '' endif))}
 
-  \item deriveNodeId(element)\\
+  \item \texttt{deriveNodeId(element)}\\
     Specification: \texttt{concat(self.findDevice().uuid, element.id)}
 
 \end{itemize}
-\subsubsection{Defintion of ComponentTypeFactory} \label{type:ComponentTypeFactory}
+\subsubsection{Defintion of \texttt{ComponentTypeFactory}} \label{type:ComponentTypeFactory}
 
 \FloatBarrier
 
@@ -905,236 +899,234 @@ The types will be a single level where each Component is a sub-type of the base 
 
 
 \paragraph{Operations}
-
 \begin{itemize}
-  \item deriveTypeName(element)\\
+  \item \texttt{deriveTypeName(element)}\\
     Specification: \texttt{derive: Component <- element.QName}
 \\
     Documentation: The QName of the element for the component will be used to derive the type of the node.
 
 \end{itemize}
-\subsubsection{Defintion of CompositionObjectFactory} \label{type:CompositionObjectFactory}
+\subsubsection{Defintion of \texttt{CompositionObjectFactory}} \label{type:CompositionObjectFactory}
 
 \FloatBarrier
 
 
 
 \paragraph{Operations}
-
 \begin{itemize}
-  \item deriveBrowseName(element)\\
+  \item \texttt{deriveBrowseName(element)}\\
     Specification: \texttt{concat(pascalCase(element.type), (if self.name.notEmpty() then concat('[', self.name, ']')) else  '' endif))}
 
-  \item deriveNodeId(element)\\
+  \item \texttt{deriveNodeId(element)}\\
     Specification: \texttt{concat(self.findDevice().uuid, element.id)}
 
 \end{itemize}
-\subsubsection{Defintion of CompositionTypeFactory} \label{type:CompositionTypeFactory}
+\subsubsection{Defintion of \texttt{CompositionTypeFactory}} \label{type:CompositionTypeFactory}
 
 \FloatBarrier
 
 
 
 \paragraph{Operations}
-
 \begin{itemize}
-  \item deriveTypeName(element)\\
+  \item \texttt{deriveTypeName(element)}\\
     Specification: \texttt{derive: Composition <-
  pascalCase(element.type)}
 \\
     Documentation: The type for the composition will be created using the pascal case of the `type` from the composition element.
 
 \end{itemize}
-\subsubsection{Defintion of ConditionClassFactory} \label{type:ConditionClassFactory}
+\subsubsection{Defintion of \texttt{ConditionClassFactory}} \label{type:ConditionClassFactory}
 
 \FloatBarrier
 
 
 
 \paragraph{Operations}
-
 \begin{itemize}
-  \item deriveTypeName(element)\\
+  \item \texttt{deriveTypeName(element)}\\
     Documentation: Create condition classes based on the OPC/UA three condition  types.
 
 \end{itemize}
-\subsubsection{Defintion of ConditionObjectFactory} \label{type:ConditionObjectFactory}
+\subsubsection{Defintion of \texttt{ConditionObjectFactory}} \label{type:ConditionObjectFactory}
 
 \FloatBarrier
 
 
 
 \paragraph{Operations}
-
 \begin{itemize}
-  \item deriveBrowseName(element)
-  \item deriveNodeId(element)
+  \item \texttt{deriveBrowseName(element)}
+  \item \texttt{deriveNodeId(element)}
 \end{itemize}
-\subsubsection{Defintion of DataItemObjectFactory} \label{type:DataItemObjectFactory}
+\subsubsection{Defintion of \texttt{DataItemObjectFactory}} \label{type:DataItemObjectFactory}
 
 \FloatBarrier
 
 
 
 \paragraph{Operations}
-
 \begin{itemize}
-  \item deriveSourceRelation(element)\\
+  \item \texttt{deriveSourceRelation(element)}\\
     Documentation: Use the source composition,  component id, or data item id to locate the source node id for this relationship. If one exists, add an object with  browse name "source" that relates to the entity referenced by the id. 
 
 The most specific identity should be used in the following order:
-* DataItemId
-* CompositionId
-* ComponentId 
+\begin{itemize}
+\item \texttt{DataItemId}
+\item \texttt{CompositionId}
+\item \texttt{ComponentId}
+\end{itemize}
 
 Since the data item implies composition and component and the composition implies component, there should only be one attribute given for the source.
 
-  \item deriveDisplayName(element)\\
+  \item \texttt{deriveDisplayName(element)}\\
     Documentation: Same as the BrowseName.
 
-  \item deriveNodeId(element)\\
+  \item \texttt{deriveNodeId(element)}\\
     Documentation: The nodeId will be given by the device uuid and the DataItem id attribute.
 
-  \item deriveBrowseName(element)\\
+  \item \texttt{deriveBrowseName(element)}\\
     Documentation: The browse name will be composed of the following parts of the model:
 
-1. If the compositionId is present, the compositionId will be resolved the the Composition element and the pascal case of the type attribute will be placed first.
-2. If the subType is present, the pascal case of the subType will be placed next.
-3. The pascal case of the type will be placed last.
+\begin{enumerate}
+\item If the compositionId is present, the compositionId will be resolved the the Composition element and the pascal case of the type attribute will be placed first.
+\item If the subType is present, the pascal case of the subType will be placed next.
+\item The pascal case of the type will be placed last.
+\end{enumerate}
 
 For example, for a data item with the following attributes:
 
-* type: TEMPERATURE
-* composition type: STORAGE_BATTERY
+\begin{itemize}
+\item type: \texttt{TEMPERATURE}
+\item composition type: \texttt{STORAGE_BATTERY}
+\end{itemize}
 
-will have the browseName "StorageBatteryTemperature"
+will have the following browse name: \texttt{StorageBatteryTemperature}
 
 For the data item with the following attributes:
 
-* type: ANGLE
-* subType: ACTUAL
-* composition type: ENCODER
+\begin{itemize}
+\item type: \texttt{ANGLE}
+\item subType: \texttt{ACTUAL}
+\item composition type: \texttt{ENCODER}
+\end{itemize}
 
-will have the following browse name: "EncoderActualAngle"
+will have the following browse name: \texttt{EncoderActualAngle}
 
 
 \end{itemize}
-\subsubsection{Defintion of DataItemTypeFactory} \label{type:DataItemTypeFactory}
+\subsubsection{Defintion of \texttt{DataItemTypeFactory}} \label{type:DataItemTypeFactory}
 
 \FloatBarrier
 
-Based on the data item category, type, and subType, this class creates a new OPC/UA type and also provides the template parameter for the ParentType from which this type is derived. 
+Based on the data item category, type, and subType, this class creates a new OPC/UA type 
+and also provides the template parameter for the ParentType from which this type is derived. 
 
-See the Data Item Type Factory.
 
 \paragraph{Operations}
-
 \begin{itemize}
-  \item deriveParentType(type, subType)\\
+  \item \texttt{deriveParentType(type, subType)}\\
     Documentation: The parent type is derived from the category as follows: 
 
-* SAMPLE -> SampleType
-* EVENT -> 
-  * Enumerated Value -> MTEnumeratedEventType
-  * Integer Value -> MTNumericEventType
-  * Otherwise -> MTStringEventType
+\begin{itemize}
+  \item \texttt{SAMPLE} -> \texttt{SampleType}
+  \item \texttt{EVENT} -> 
+    \begin{itemize}
+      \item Enumerated Value -> \texttt{MTEnumeratedEventType}
+      \item Integer Value -> \texttt{MTNumericEventType}
+      \item Otherwise -> \texttt{MTStringEventType}
+    \end{itemize}
+\end{itemize}
 
-  \item deriveTypeName(type, subType)\\
+  \item \texttt{deriveTypeName(type, subType)}\\
     Specification: \texttt{concat(pascalCase(subType), pascalCase(type))}
 \\
     Documentation: Used to derive the class name for creating a pascal case name from the sub type and the type. For example type ROTARY_VELOCITY and subType ACTUAL will become ActualRotaryVelocity.
 
 \end{itemize}
-\subsubsection{Defintion of DeviceObjectFactory} \label{type:DeviceObjectFactory}
+\subsubsection{Defintion of \texttt{DeviceObjectFactory}} \label{type:DeviceObjectFactory}
 
 \FloatBarrier
 
 The model instantiation for MTConnect begins with the `Device` MTConnect element and then recursively traverses the sub-elements. The device will the capabilities in the component factory to generate all the data items and component types. 
 
 \paragraph{Operations}
-
 \begin{itemize}
-  \item deriveBrowseName(element)\\
+  \item \texttt{deriveBrowseName(element)}\\
     Specification: \texttt{derive: element.name}
 
-  \item deriveNodeId(element)\\
+  \item \texttt{deriveNodeId(element)}\\
     Specification: \texttt{derive: element.uuid}
 
-  \item Operation1()
 \end{itemize}
-\subsubsection{Defintion of FilterObjectFactory} \label{type:FilterObjectFactory}
+\subsubsection{Defintion of \texttt{FilterObjectFactory}} \label{type:FilterObjectFactory}
 
 \FloatBarrier
 
 Creates filters based on the type attribute of the Filter element. 
 
 \paragraph{Operations}
-
 \begin{itemize}
-  \item deriveBrowseName(element)
-  \item deriveNodeId(element)\\
+  \item \texttt{deriveBrowseName(element)}
+  \item \texttt{deriveNodeId(element)}\\
     Documentation: The node id is composed of the data item id and the browse name.
 
 \end{itemize}
-\subsubsection{Defintion of ObjectFactory} \label{type:ObjectFactory}
+\subsubsection{Defintion of \texttt{ObjectFactory}} \label{type:ObjectFactory}
 
 \FloatBarrier
 
 
 
 \paragraph{Operations}
-
 \begin{itemize}
-  \item deriveBrowseName(element)
-  \item deriveNodeId(element)
-  \item deriveDisplayName(element)\\
+  \item \texttt{deriveBrowseName(element)}
+  \item \texttt{deriveNodeId(element)}
+  \item \texttt{deriveDisplayName(element)}\\
     Specification: \texttt{deriveBrowseName(element)}
 
-  \item createObject(element)
+  \item \texttt{createObject(element)}
 \end{itemize}
-\subsubsection{Defintion of SensorChannelObjectFactory} \label{type:SensorChannelObjectFactory}
+\subsubsection{Defintion of \texttt{SensorChannelObjectFactory}} \label{type:SensorChannelObjectFactory}
 
 \FloatBarrier
 
 
 
 \paragraph{Operations}
-
 \begin{itemize}
-  \item deriveBrowseName(element)\\
+  \item \texttt{deriveBrowseName(element)}\\
     Specification: \texttt{concat('Channel', self.number)}
 
-  \item deriveNodeId(element)\\
+  \item \texttt{deriveNodeId(element)}\\
     Specification: \texttt{concat(self.parent.NodeId, BrowseName)}
 
 \end{itemize}
-\subsubsection{Defintion of SensorObjectFactory} \label{type:SensorObjectFactory}
+\subsubsection{Defintion of \texttt{SensorObjectFactory}} \label{type:SensorObjectFactory}
 
 \FloatBarrier
 
 
 
 \paragraph{Operations}
-
 \begin{itemize}
-  \item deriveBrowseName(element)\\
+  \item \texttt{deriveBrowseName(element)}\\
     Specification: \texttt{element.QName}
 
-  \item deriveNodeId(element)\\
+  \item \texttt{deriveNodeId(element)}\\
     Specification: \texttt{concat(self.parent.NodeId, BrowseName)}
 
 \end{itemize}
-\subsubsection{Defintion of TypeFactory} \label{type:TypeFactory}
+\subsubsection{Defintion of \texttt{TypeFactory}} \label{type:TypeFactory}
 
 \FloatBarrier
 
 
 
 \paragraph{Operations}
-
 \begin{itemize}
-  \item deriveTypeName(element)
-  \item createType(element)
+  \item \texttt{deriveTypeName(element)}
+  \item \texttt{createType(element)}
 \end{itemize}
 \subsection{MTConnect Device Profile}
 
@@ -1159,61 +1151,72 @@ Stereotypes are used throughout the model to provide additional information that
 will halp provide context and definition to aid in better understanding the
 data model.
 
-\subsubsection{Defintion of Dynamic Type} \label{type:Dynamic Type}
+\subsubsection{Defintion of \texttt{Dynamic Type}} \label{type:Dynamic Type}
 
 \FloatBarrier
 
 
 
-\subsubsection{Defintion of MIxes In} \label{type:MIxes In}
+\subsubsection{Defintion of \texttt{MTConnect XML}} \label{type:MTConnect XML}
 
 \FloatBarrier
 
 
 
-\subsubsection{Defintion of MTConnect XML} \label{type:MTConnect XML}
+\subsubsection{Defintion of \texttt{MTRelationshipType}} \label{type:MTRelationshipType}
 
 \FloatBarrier
 
 
 
-\subsubsection{Defintion of MTRelationshipType} \label{type:MTRelationshipType}
+\subsubsection{Defintion of \texttt{Mixes  In}} \label{type:Mixes  In}
+
+\FloatBarrier
+
+This stereotype is associated with the dependency between a type and a mixin. See Section \ref{type:mixin} for a complete 
+description of the mixin.
+
+\subsubsection{Defintion of \texttt{Object Factory}} \label{type:Object Factory}
 
 \FloatBarrier
 
 
 
-\subsubsection{Defintion of Object Factory} \label{type:Object Factory}
+\subsubsection{Defintion of \texttt{Type Factory}} \label{type:Type Factory}
 
 \FloatBarrier
 
 
 
-\subsubsection{Defintion of Type Factory} \label{type:Type Factory}
+\subsubsection{Defintion of \texttt{bind}} \label{type:bind}
+
+\FloatBarrier
+
+When a dynamic type (See Section \ref{type:Dynamic Type}) creates an instance where the super-type
+can be associated based on the data item category and type, the \texttt{Type Factory} will 
+specify which supertype is to be referenced.
+
+The \texttt{bind} stereotype indicates the relationship between the dynamic sub-type and the 
+parent type are resolved baed on the MTConnect DataItem meta data.
+
+\subsubsection{Defintion of \texttt{constrains}} \label{type:constrains}
 
 \FloatBarrier
 
 
 
-\subsubsection{Defintion of bind} \label{type:bind}
+\subsubsection{Defintion of \texttt{mixin}} \label{type:mixin}
 
 \FloatBarrier
 
+The mixin pattern injects the properties and operations into the types 
+that are related to the using the \texttt{Mixes In} dependency. Mixins allow for
+lightweight multiple inheritance. Since OPC/UA does not allow for multiple inheritance 
+and the MTConnect  types require the same set of properties when they are sub-typed
+from existing OPC/UA types, this mechanism allows for this relationship to be expressed.
 
 
-\subsubsection{Defintion of constrains} \label{type:constrains}
-
-\FloatBarrier
-
-
-
-\subsubsection{Defintion of mixin} \label{type:mixin}
-
-\FloatBarrier
-
-The contents properties and the behavior of the class are combined with another class.
-
-\subsubsection{Defintion of use} \label{type:use}
+\subsubsection{Defintion of \texttt{use}} \label{type:use}
 
 \FloatBarrier
 

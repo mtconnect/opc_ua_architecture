@@ -15,7 +15,7 @@ class Model
   end
 
   def initialize(e)
-    @name = e['name']
+    @name = e['name'].gsub('{', '\{').gsub('}'. '\}')
     @documentation = e['documentation']
     @type = e['_type']
     @json = e

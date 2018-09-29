@@ -69,6 +69,10 @@ class Type
     @abstract = e['isAbstract'] || false
     @model = model
 
+    if e['stereotype']
+      @stereotype = resolve_type(e['stereotype'])
+    end
+
     @children = []
 
     @json = e
@@ -80,8 +84,16 @@ class Type
     @children << c
   end
 
+  def stereotype_name
+    if @stereotype
+      "<<#{@stereotype.name}>>"
+    else
+      ''
+    end
+  end
+
   def to_s
-    "#{@model}::#{@name} -> #{@type}"
+    "#{@model}::#{@name} -> #{stereotype_name} #{@type}"
   end
 
   def resolve_type(ref)
@@ -173,23 +185,38 @@ class Type
     end
   end
 
-  def generate_chuldren(f)
+  def generate_children(f)
   end
 
   def generate_operations(f)
+    if @operations
+      f.puts "\\paragraph{Operations}\n\n"
+      
+      f.puts "\\begin{itemize}"
+      @operations.each do |op|
+        f.print "  \\item #{op['name']}("
+        if op['parameters']
+          f.print op['parameters'].map { |param|
+            (param['type'] and !param['type'].empty? ? "#{param['type']} " : "") +
+              "#{param['name']}"
+          }.join(', ')
+        end
+        f.print ")"
+        if op['specification']
+          f.puts "\\\\\n    Specification: \\texttt{#{op['specification']}}"
+        end
+        if op['documentation']
+          f.puts "\\\\\n    Documentation: #{op['documentation']}"
+        end
+        f.puts
+      end
+      f.puts "\\end{itemize}"
+    end
   end
 
-  def generate_latex(f = STDOUT)
+  def generate_type_table(f)
     f.puts <<EOT
-\\subsubsection{Defintion of #{@name}} \\label{type:#{@name}}
-
-\\FloatBarrier
-
-#{@documentation}
-
-Refer to Table \\ref{table:#{@name}} for detailed definition.
-
-\\begin{table}[h]
+\\begin{table}
 \\centering 
   \\caption{#{@name} Definition}
   \\label{table:#{@name}}
@@ -207,16 +234,32 @@ EOT
 
     generate_supertype(f)
     generate_properties(f)
-    generate_relations(f)  
-    
-  f.puts <<EOT
+    generate_relations(f)
+    generate_children(f)
+
+    f.puts <<EOT
 \\end{tabu}
 \\end{table} 
 
 \\FloatBarrier
 
 EOT
+  end
+    
+  def generate_latex(f = STDOUT)
+    f.puts <<EOT
+\\subsubsection{Defintion of #{@name}} \\label{type:#{@name}}
 
+\\FloatBarrier
+
+#{@documentation}
+
+EOT
+
+    if stereotype_name !~ /Factory/o and @model.name !~ /Profile/
+      generate_type_table(f) 
+    end
+      
     generate_operations(f)
   
   end

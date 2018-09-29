@@ -18,9 +18,7 @@ The Components documents the Component models and the owned objects.
 
 
 
-Refer to Table \ref{table:ChannelType} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{ChannelType Definition}
   \label{table:ChannelType}
@@ -54,9 +52,7 @@ The desription provides some general information about the
 manufacture and serial number of the component. In the XML, the \texttt{CDATA} is freeform 
 text that is represented in the \texttt{Data} Property of the Description Object.
 
-Refer to Table \ref{table:DescriptionType} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{DescriptionType Definition}
   \label{table:DescriptionType}
@@ -80,6 +76,16 @@ HasProperty & Variable & Data &  String & PropertyType & Optional \\
 
 \FloatBarrier
 
+\paragraph{Operations}
+
+\begin{itemize}
+  \item deriveBrowseName(element)\\
+    Specification: \texttt{"Description"}
+
+  \item deriveNodeId(element)\\
+    Specification: \texttt{concat(self.parent.NodeId, BrowseName)}
+
+\end{itemize}
 \subsubsection{Defintion of MTComponentType} \label{type:MTComponentType}
 
 \FloatBarrier
@@ -103,9 +109,7 @@ represented using the _OPC/UA Part 8_
 
 
 
-Refer to Table \ref{table:MTComponentType} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{MTComponentType Definition}
   \label{table:MTComponentType}
@@ -144,9 +148,7 @@ HasProperty & Variable & <Dynamic> &  {DataItem}Type & <Dynamic> & Manditory \\
 
 
 
-Refer to Table \ref{table:MTCompositionType} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{MTCompositionType Definition}
   \label{table:MTCompositionType}
@@ -176,9 +178,7 @@ NonHierarchialReferenceType & Object & composition &  {DataItem}Type & NonHierar
 
 
 
-Refer to Table \ref{table:MTConfigurationType} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{MTConfigurationType Definition}
   \label{table:MTConfigurationType}
@@ -206,9 +206,7 @@ The MTDevice is a special type whose object will be the root of the device graph
 
 The  compositions, relationships, and data items are then recursively created as one decendes the MTConnect informaiton model.
 
-Refer to Table \ref{table:MTDeviceType} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{MTDeviceType Definition}
   \label{table:MTDeviceType}
@@ -230,15 +228,23 @@ HasProperty & Variable & Iso841Class &  String & PropertyType & Optional \\
 
 \FloatBarrier
 
+\paragraph{Operations}
+
+\begin{itemize}
+  \item deriveBrowseName(element)\\
+    Specification: \texttt{self.name}
+
+  \item deriveNodeId(element)\\
+    Specification: \texttt{self.uuid}
+
+\end{itemize}
 \subsubsection{Defintion of SensorConfigurationType} \label{type:SensorConfigurationType}
 
 \FloatBarrier
 
 The SensorConfiguration browse name will be created as an Object relationship with the parent component.
 
-Refer to Table \ref{table:SensorConfigurationType} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{SensorConfigurationType Definition}
   \label{table:SensorConfigurationType}
@@ -269,9 +275,7 @@ Organizes & Object & Channels &  ChannelType & FolderType & Optional \\
 
 
 
-Refer to Table \ref{table:{Component}Type} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{{Component}Type Definition}
   \label{table:{Component}Type}
@@ -297,9 +301,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 
-Refer to Table \ref{table:{Composition}Type} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{{Composition}Type Definition}
   \label{table:{Composition}Type}
@@ -339,9 +341,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 
-Refer to Table \ref{table:AssetChangedType} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{AssetChangedType Definition}
   \label{table:AssetChangedType}
@@ -367,9 +367,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 
-Refer to Table \ref{table:AssetEventType} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{AssetEventType Definition}
   \label{table:AssetEventType}
@@ -396,9 +394,7 @@ HasProperty & Variable & AssetType &  String & PropertyType & Manditory \\
 
 
 
-Refer to Table \ref{table:AssetRemovedType} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{AssetRemovedType Definition}
   \label{table:AssetRemovedType}
@@ -424,9 +420,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The data item mixin will inject the properties and the methods into the related classes. This facility is similar to the Ruby module mixin or the Scala traits.
 
-Refer to Table \ref{table:MTDataItemType} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{MTDataItemType Definition}
   \label{table:MTDataItemType}
@@ -452,15 +446,28 @@ HasComponent & Object & source &   & BaseObjectType & Optional \\
 
 \FloatBarrier
 
+\paragraph{Operations}
+
+\begin{itemize}
+  \item deriveSourceName(element)\\
+    Specification: \texttt{self.Source.CDATA}
+\\
+    Documentation: Derive the source name from the Source element CDATA. This will represent the alternative long name for the data item's source.
+
+  \item getStatusCode()\\
+    Documentation: The OPC/UA status code will be created using the following process:
+
+* If the value of the data item is `UNAVAILABLE` a status code of `Uncertain_NoCommunicationLastUsable`.
+* When a reset trigger is specified, new `Good_` status codes will be created. See `ResetTrigger` enumeration.
+
+\end{itemize}
 \subsubsection{Defintion of MTEnumeratedEventType} \label{type:MTEnumeratedEventType}
 
 \FloatBarrier
 
 All Data Items with Category EVENT having a Controlled Vocabularies will be of this type. Otherwise, MTString
 
-Refer to Table \ref{table:MTEnumeratedEventType} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{MTEnumeratedEventType Definition}
   \label{table:MTEnumeratedEventType}
@@ -487,9 +494,7 @@ HasProperty & Variable & ConstrainedValues &  EnumValuesType & PropertyType & Ma
 
 These features will be subsumed by the OPC/UA client filtering directives.
 
-Refer to Table \ref{table:MTFilterType} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{MTFilterType Definition}
   \label{table:MTFilterType}
@@ -509,15 +514,23 @@ HasProperty & Variable & Value &  float & PropertyType & Manditory \\
 
 \FloatBarrier
 
+\paragraph{Operations}
+
+\begin{itemize}
+  \item deriveBrowseName(element)\\
+    Specification: \texttt{concat(parent.BrowseName, pascalCase(element.type))}
+
+  \item deriveNodeId(element)\\
+    Specification: \texttt{concat(parent.NodeId, pascalCase(element.type))}
+
+\end{itemize}
 \subsubsection{Defintion of MTMessageType} \label{type:MTMessageType}
 
 \FloatBarrier
 
 
 
-Refer to Table \ref{table:MTMessageType} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{MTMessageType Definition}
   \label{table:MTMessageType}
@@ -544,9 +557,7 @@ HasProperty & Variable & NativeCode &  String & PropertyType & Optional \\
 
 These are the additional attributes that are relevent to numeric data items. The factory will evaluate these values and will set the engineering units and the range associated with the parent entity.
 
-Refer to Table \ref{table:MTNumericDataItemType} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{MTNumericDataItemType Definition}
   \label{table:MTNumericDataItemType}
@@ -574,15 +585,26 @@ HasProperty & Variable & Nominal &  Double & PropertyType & Optional \\
 
 \FloatBarrier
 
+\paragraph{Operations}
+
+\begin{itemize}
+  \item deriveEngineeringUnits(units)\\
+    Specification: \texttt{EngineeringUnits <- self.units}
+
+  \item deriveEURange(constraints)\\
+    Specification: \texttt{EURange.Low <- self.Constraints.Minimum
+EURange.High <- self.Constraints.Maximum}
+\\
+    Documentation: Uses the MTConnect Constraints element if present to derive the minimum and maximum values for the numeric values. This applies to both the Numeric Event and the Sample types.
+
+\end{itemize}
 \subsubsection{Defintion of MTNumericEventType} \label{type:MTNumericEventType}
 
 \FloatBarrier
 
 All data items with category EVENT and a numeric value.
 
-Refer to Table \ref{table:MTNumericEventType} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{MTNumericEventType Definition}
   \label{table:MTNumericEventType}
@@ -610,9 +632,7 @@ HasProperty & Variable & EngineeringUnits &  EUInformation & PropertyType & Opti
 
 Data Items with category SAMPLE
 
-Refer to Table \ref{table:MTSampleType} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{MTSampleType Definition}
   \label{table:MTSampleType}
@@ -638,9 +658,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 All data items with category EVENT where the data is freeform text. The set_data_type constraint derives  makes the data type a string for this type.
 
-Refer to Table \ref{table:MTStringEventType} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{MTStringEventType Definition}
   \label{table:MTStringEventType}
@@ -666,9 +684,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 
-Refer to Table \ref{table:MinimumDeltaFilterType} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{MinimumDeltaFilterType Definition}
   \label{table:MinimumDeltaFilterType}
@@ -694,9 +710,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 
-Refer to Table \ref{table:PeriodFilterType} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{PeriodFilterType Definition}
   \label{table:PeriodFilterType}
@@ -722,9 +736,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 For each DataItem the Sub Type, and the Type will be composed to be the  HasTypeDefinition relationship of the object. The BrowseName will also include the Composition Type if a composition Id is provided.
 
-Refer to Table \ref{table:{DataItem}Type} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{{DataItem}Type Definition}
   \label{table:{DataItem}Type}
@@ -764,9 +776,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 
-Refer to Table \ref{table:MTExclusiveLimitConditionType} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{MTExclusiveLimitConditionType Definition}
   \label{table:MTExclusiveLimitConditionType}
@@ -792,9 +802,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 
-Refer to Table \ref{table:MTNonExclusiveConditionType} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{MTNonExclusiveConditionType Definition}
   \label{table:MTNonExclusiveConditionType}
@@ -820,9 +828,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 
-Refer to Table \ref{table:{ConditionClass}Type} for detailed definition.
-
-\begin{table}[h]
+\begin{table}
 \centering 
   \caption{{ConditionClass}Type Definition}
   \label{table:{ConditionClass}Type}
@@ -875,28 +881,16 @@ unambiguous implementation.
 
 
 
-Refer to Table \ref{table:ComponentObjectFactory} for detailed definition.
+\paragraph{Operations}
 
-\begin{table}[h]
-\centering 
-  \caption{ComponentObjectFactory Definition}
-  \label{table:ComponentObjectFactory}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{ComponentObjectFactory} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of ObjectFactory (see section \ref{type:ObjectFactory})} \\
-\end{tabu}
-\end{table} 
+\begin{itemize}
+  \item deriveBrowseName(element)\\
+    Specification: \texttt{concat(element.QName, (if self.name.notEmpty() then concat('[', self.name, ']')) else  '' endif))}
 
-\FloatBarrier
+  \item deriveNodeId(element)\\
+    Specification: \texttt{concat(self.findDevice().uuid, element.id)}
 
+\end{itemize}
 \subsubsection{Defintion of ComponentTypeFactory} \label{type:ComponentTypeFactory}
 
 \FloatBarrier
@@ -910,167 +904,121 @@ Currently there is no additional abstractions or super types required by the com
 The types will be a single level where each Component is a sub-type of the base `MTComponentType`.
 
 
-Refer to Table \ref{table:ComponentTypeFactory} for detailed definition.
+\paragraph{Operations}
 
-\begin{table}[h]
-\centering 
-  \caption{ComponentTypeFactory Definition}
-  \label{table:ComponentTypeFactory}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{ComponentTypeFactory} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of TypeFactory (see section \ref{type:TypeFactory})} \\
-\end{tabu}
-\end{table} 
+\begin{itemize}
+  \item deriveTypeName(element)\\
+    Specification: \texttt{derive: Component <- element.QName}
+\\
+    Documentation: The QName of the element for the component will be used to derive the type of the node.
 
-\FloatBarrier
-
+\end{itemize}
 \subsubsection{Defintion of CompositionObjectFactory} \label{type:CompositionObjectFactory}
 
 \FloatBarrier
 
 
 
-Refer to Table \ref{table:CompositionObjectFactory} for detailed definition.
+\paragraph{Operations}
 
-\begin{table}[h]
-\centering 
-  \caption{CompositionObjectFactory Definition}
-  \label{table:CompositionObjectFactory}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{CompositionObjectFactory} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of ObjectFactory (see section \ref{type:ObjectFactory})} \\
-\end{tabu}
-\end{table} 
+\begin{itemize}
+  \item deriveBrowseName(element)\\
+    Specification: \texttt{concat(pascalCase(element.type), (if self.name.notEmpty() then concat('[', self.name, ']')) else  '' endif))}
 
-\FloatBarrier
+  \item deriveNodeId(element)\\
+    Specification: \texttt{concat(self.findDevice().uuid, element.id)}
 
+\end{itemize}
 \subsubsection{Defintion of CompositionTypeFactory} \label{type:CompositionTypeFactory}
 
 \FloatBarrier
 
 
 
-Refer to Table \ref{table:CompositionTypeFactory} for detailed definition.
+\paragraph{Operations}
 
-\begin{table}[h]
-\centering 
-  \caption{CompositionTypeFactory Definition}
-  \label{table:CompositionTypeFactory}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{CompositionTypeFactory} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\end{tabu}
-\end{table} 
+\begin{itemize}
+  \item deriveTypeName(element)\\
+    Specification: \texttt{derive: Composition <-
+ pascalCase(element.type)}
+\\
+    Documentation: The type for the composition will be created using the pascal case of the `type` from the composition element.
 
-\FloatBarrier
-
+\end{itemize}
 \subsubsection{Defintion of ConditionClassFactory} \label{type:ConditionClassFactory}
 
 \FloatBarrier
 
 
 
-Refer to Table \ref{table:ConditionClassFactory} for detailed definition.
+\paragraph{Operations}
 
-\begin{table}[h]
-\centering 
-  \caption{ConditionClassFactory Definition}
-  \label{table:ConditionClassFactory}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{ConditionClassFactory} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of TypeFactory (see section \ref{type:TypeFactory})} \\
-\end{tabu}
-\end{table} 
+\begin{itemize}
+  \item deriveTypeName(element)\\
+    Documentation: Create condition classes based on the OPC/UA three condition  types.
 
-\FloatBarrier
-
+\end{itemize}
 \subsubsection{Defintion of ConditionObjectFactory} \label{type:ConditionObjectFactory}
 
 \FloatBarrier
 
 
 
-Refer to Table \ref{table:ConditionObjectFactory} for detailed definition.
+\paragraph{Operations}
 
-\begin{table}[h]
-\centering 
-  \caption{ConditionObjectFactory Definition}
-  \label{table:ConditionObjectFactory}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{ConditionObjectFactory} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of ObjectFactory (see section \ref{type:ObjectFactory})} \\
-\end{tabu}
-\end{table} 
-
-\FloatBarrier
-
+\begin{itemize}
+  \item deriveBrowseName(element)
+  \item deriveNodeId(element)
+\end{itemize}
 \subsubsection{Defintion of DataItemObjectFactory} \label{type:DataItemObjectFactory}
 
 \FloatBarrier
 
 
 
-Refer to Table \ref{table:DataItemObjectFactory} for detailed definition.
+\paragraph{Operations}
 
-\begin{table}[h]
-\centering 
-  \caption{DataItemObjectFactory Definition}
-  \label{table:DataItemObjectFactory}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{DataItemObjectFactory} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of ObjectFactory (see section \ref{type:ObjectFactory})} \\
-\end{tabu}
-\end{table} 
+\begin{itemize}
+  \item deriveSourceRelation(element)\\
+    Documentation: Use the source composition,  component id, or data item id to locate the source node id for this relationship. If one exists, add an object with  browse name "source" that relates to the entity referenced by the id. 
 
-\FloatBarrier
+The most specific identity should be used in the following order:
+* DataItemId
+* CompositionId
+* ComponentId 
 
+Since the data item implies composition and component and the composition implies component, there should only be one attribute given for the source.
+
+  \item deriveDisplayName(element)\\
+    Documentation: Same as the BrowseName.
+
+  \item deriveNodeId(element)\\
+    Documentation: The nodeId will be given by the device uuid and the DataItem id attribute.
+
+  \item deriveBrowseName(element)\\
+    Documentation: The browse name will be composed of the following parts of the model:
+
+1. If the compositionId is present, the compositionId will be resolved the the Composition element and the pascal case of the type attribute will be placed first.
+2. If the subType is present, the pascal case of the subType will be placed next.
+3. The pascal case of the type will be placed last.
+
+For example, for a data item with the following attributes:
+
+* type: TEMPERATURE
+* composition type: STORAGE_BATTERY
+
+will have the browseName "StorageBatteryTemperature"
+
+For the data item with the following attributes:
+
+* type: ANGLE
+* subType: ACTUAL
+* composition type: ENCODER
+
+will have the following browse name: "EncoderActualAngle"
+
+
+\end{itemize}
 \subsubsection{Defintion of DataItemTypeFactory} \label{type:DataItemTypeFactory}
 
 \FloatBarrier
@@ -1079,194 +1027,115 @@ Based on the data item category, type, and subType, this class creates a new OPC
 
 See the Data Item Type Factory.
 
-Refer to Table \ref{table:DataItemTypeFactory} for detailed definition.
+\paragraph{Operations}
 
-\begin{table}[h]
-\centering 
-  \caption{DataItemTypeFactory Definition}
-  \label{table:DataItemTypeFactory}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{DataItemTypeFactory} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of TypeFactory (see section \ref{type:TypeFactory})} \\
-\end{tabu}
-\end{table} 
+\begin{itemize}
+  \item deriveParentType(type, subType)\\
+    Documentation: The parent type is derived from the category as follows: 
 
-\FloatBarrier
+* SAMPLE -> SampleType
+* EVENT -> 
+  * Enumerated Value -> MTEnumeratedEventType
+  * Integer Value -> MTNumericEventType
+  * Otherwise -> MTStringEventType
 
+  \item deriveTypeName(type, subType)\\
+    Specification: \texttt{concat(pascalCase(subType), pascalCase(type))}
+\\
+    Documentation: Used to derive the class name for creating a pascal case name from the sub type and the type. For example type ROTARY_VELOCITY and subType ACTUAL will become ActualRotaryVelocity.
+
+\end{itemize}
 \subsubsection{Defintion of DeviceObjectFactory} \label{type:DeviceObjectFactory}
 
 \FloatBarrier
 
 The model instantiation for MTConnect begins with the `Device` MTConnect element and then recursively traverses the sub-elements. The device will the capabilities in the component factory to generate all the data items and component types. 
 
-Refer to Table \ref{table:DeviceObjectFactory} for detailed definition.
+\paragraph{Operations}
 
-\begin{table}[h]
-\centering 
-  \caption{DeviceObjectFactory Definition}
-  \label{table:DeviceObjectFactory}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{DeviceObjectFactory} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of ComponentObjectFactory (see section \ref{type:ComponentObjectFactory})} \\
-\end{tabu}
-\end{table} 
+\begin{itemize}
+  \item deriveBrowseName(element)\\
+    Specification: \texttt{derive: element.name}
 
-\FloatBarrier
+  \item deriveNodeId(element)\\
+    Specification: \texttt{derive: element.uuid}
 
+  \item Operation1()
+\end{itemize}
 \subsubsection{Defintion of FilterObjectFactory} \label{type:FilterObjectFactory}
 
 \FloatBarrier
 
 Creates filters based on the type attribute of the Filter element. 
 
-Refer to Table \ref{table:FilterObjectFactory} for detailed definition.
+\paragraph{Operations}
 
-\begin{table}[h]
-\centering 
-  \caption{FilterObjectFactory Definition}
-  \label{table:FilterObjectFactory}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{FilterObjectFactory} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of ObjectFactory (see section \ref{type:ObjectFactory})} \\
-\end{tabu}
-\end{table} 
+\begin{itemize}
+  \item deriveBrowseName(element)
+  \item deriveNodeId(element)\\
+    Documentation: The node id is composed of the data item id and the browse name.
 
-\FloatBarrier
-
+\end{itemize}
 \subsubsection{Defintion of ObjectFactory} \label{type:ObjectFactory}
 
 \FloatBarrier
 
 
 
-Refer to Table \ref{table:ObjectFactory} for detailed definition.
+\paragraph{Operations}
 
-\begin{table}[h]
-\centering 
-  \caption{ObjectFactory Definition}
-  \label{table:ObjectFactory}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{ObjectFactory} \\
-IsAbstract & \multicolumn{5}{|l|}{True} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\end{tabu}
-\end{table} 
+\begin{itemize}
+  \item deriveBrowseName(element)
+  \item deriveNodeId(element)
+  \item deriveDisplayName(element)\\
+    Specification: \texttt{deriveBrowseName(element)}
 
-\FloatBarrier
-
+  \item createObject(element)
+\end{itemize}
 \subsubsection{Defintion of SensorChannelObjectFactory} \label{type:SensorChannelObjectFactory}
 
 \FloatBarrier
 
 
 
-Refer to Table \ref{table:SensorChannelObjectFactory} for detailed definition.
+\paragraph{Operations}
 
-\begin{table}[h]
-\centering 
-  \caption{SensorChannelObjectFactory Definition}
-  \label{table:SensorChannelObjectFactory}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{SensorChannelObjectFactory} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of ObjectFactory (see section \ref{type:ObjectFactory})} \\
-\end{tabu}
-\end{table} 
+\begin{itemize}
+  \item deriveBrowseName(element)\\
+    Specification: \texttt{concat('Channel', self.number)}
 
-\FloatBarrier
+  \item deriveNodeId(element)\\
+    Specification: \texttt{concat(self.parent.NodeId, BrowseName)}
 
+\end{itemize}
 \subsubsection{Defintion of SensorObjectFactory} \label{type:SensorObjectFactory}
 
 \FloatBarrier
 
 
 
-Refer to Table \ref{table:SensorObjectFactory} for detailed definition.
+\paragraph{Operations}
 
-\begin{table}[h]
-\centering 
-  \caption{SensorObjectFactory Definition}
-  \label{table:SensorObjectFactory}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{SensorObjectFactory} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of ObjectFactory (see section \ref{type:ObjectFactory})} \\
-\end{tabu}
-\end{table} 
+\begin{itemize}
+  \item deriveBrowseName(element)\\
+    Specification: \texttt{element.QName}
 
-\FloatBarrier
+  \item deriveNodeId(element)\\
+    Specification: \texttt{concat(self.parent.NodeId, BrowseName)}
 
+\end{itemize}
 \subsubsection{Defintion of TypeFactory} \label{type:TypeFactory}
 
 \FloatBarrier
 
 
 
-Refer to Table \ref{table:TypeFactory} for detailed definition.
+\paragraph{Operations}
 
-\begin{table}[h]
-\centering 
-  \caption{TypeFactory Definition}
-  \label{table:TypeFactory}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{TypeFactory} \\
-IsAbstract & \multicolumn{5}{|l|}{True} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\end{tabu}
-\end{table} 
-
-\FloatBarrier
-
+\begin{itemize}
+  \item deriveTypeName(element)
+  \item createType(element)
+\end{itemize}
 \subsection{MTConnect Device Profile}
 
 \begin{figure}
@@ -1296,53 +1165,11 @@ data model.
 
 
 
-Refer to Table \ref{table:Dynamic Type} for detailed definition.
-
-\begin{table}[h]
-\centering 
-  \caption{Dynamic Type Definition}
-  \label{table:Dynamic Type}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{Dynamic Type} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\end{tabu}
-\end{table} 
-
-\FloatBarrier
-
 \subsubsection{Defintion of MIxes In} \label{type:MIxes In}
 
 \FloatBarrier
 
 
-
-Refer to Table \ref{table:MIxes In} for detailed definition.
-
-\begin{table}[h]
-\centering 
-  \caption{MIxes In Definition}
-  \label{table:MIxes In}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{MIxes In} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\end{tabu}
-\end{table} 
-
-\FloatBarrier
 
 \subsubsection{Defintion of MTConnect XML} \label{type:MTConnect XML}
 
@@ -1350,54 +1177,11 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 
-Refer to Table \ref{table:MTConnect XML} for detailed definition.
-
-\begin{table}[h]
-\centering 
-  \caption{MTConnect XML Definition}
-  \label{table:MTConnect XML}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{MTConnect XML} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\end{tabu}
-\end{table} 
-
-\FloatBarrier
-
 \subsubsection{Defintion of MTRelationshipType} \label{type:MTRelationshipType}
 
 \FloatBarrier
 
 
-
-Refer to Table \ref{table:MTRelationshipType} for detailed definition.
-
-\begin{table}[h]
-\centering 
-  \caption{MTRelationshipType Definition}
-  \label{table:MTRelationshipType}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{MTRelationshipType} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of NonHierarchialReferenceType (See OPCUA Profile Documentation)} \\
-\end{tabu}
-\end{table} 
-
-\FloatBarrier
 
 \subsubsection{Defintion of Object Factory} \label{type:Object Factory}
 
@@ -1405,53 +1189,11 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 
-Refer to Table \ref{table:Object Factory} for detailed definition.
-
-\begin{table}[h]
-\centering 
-  \caption{Object Factory Definition}
-  \label{table:Object Factory}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{Object Factory} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\end{tabu}
-\end{table} 
-
-\FloatBarrier
-
 \subsubsection{Defintion of Type Factory} \label{type:Type Factory}
 
 \FloatBarrier
 
 
-
-Refer to Table \ref{table:Type Factory} for detailed definition.
-
-\begin{table}[h]
-\centering 
-  \caption{Type Factory Definition}
-  \label{table:Type Factory}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{Type Factory} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\end{tabu}
-\end{table} 
-
-\FloatBarrier
 
 \subsubsection{Defintion of bind} \label{type:bind}
 
@@ -1459,80 +1201,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 
-Refer to Table \ref{table:bind} for detailed definition.
-
-\begin{table}[h]
-\centering 
-  \caption{bind Definition}
-  \label{table:bind}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{bind} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\end{tabu}
-\end{table} 
-
-\FloatBarrier
-
 \subsubsection{Defintion of constrains} \label{type:constrains}
 
 \FloatBarrier
 
 
 
-Refer to Table \ref{table:constrains} for detailed definition.
-
-\begin{table}[h]
-\centering 
-  \caption{constrains Definition}
-  \label{table:constrains}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{constrains} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\end{tabu}
-\end{table} 
-
-\FloatBarrier
-
 \subsubsection{Defintion of mixin} \label{type:mixin}
 
 \FloatBarrier
 
 The contents properties and the behavior of the class are combined with another class.
-
-Refer to Table \ref{table:mixin} for detailed definition.
-
-\begin{table}[h]
-\centering 
-  \caption{mixin Definition}
-  \label{table:mixin}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{mixin} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\end{tabu}
-\end{table} 
-
-\FloatBarrier
 
 \subsubsection{Defintion of use} \label{type:use}
 
@@ -1542,25 +1221,4 @@ The use stereotype indicates that one class uses as a helper to perform
 a specific operation or activity. This stereotype is mainly used to indicate
 that a specific factory is being employed by another type to create dynamic
 properties or relationships.
-
-Refer to Table \ref{table:use} for detailed definition.
-
-\begin{table}[h]
-\centering 
-  \caption{use Definition}
-  \label{table:use}
-\footnotesize
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{use} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\end{tabu}
-\end{table} 
-
-\FloatBarrier
 

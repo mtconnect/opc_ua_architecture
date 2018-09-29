@@ -26,6 +26,7 @@
 
 \LoadClass[12pt,letterpaper,twoside]{article}
 
+\RequirePackage{placeins}
 \RequirePackage{booktabs}
 \RequirePackage{tabu}
 \RequirePackage{times}					% Loads Adobe Times Roman Font (clone of Times New Roman)

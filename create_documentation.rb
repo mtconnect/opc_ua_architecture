@@ -183,11 +183,13 @@ class Type
     f.puts <<EOT
 \\subsubsection{Defintion of #{@name}} \\label{type:#{@name}}
 
+\\FloatBarrier
+
 #{@documentation}
 
 Refer to Table \\ref{table:#{@name}} for detailed definition.
 
-\\begin{table}
+\\begin{table}[h]
 \\centering 
   \\caption{#{@name} Definition}
   \\label{table:#{@name}}
@@ -210,6 +212,8 @@ EOT
   f.puts <<EOT
 \\end{tabu}
 \\end{table} 
+
+\\FloatBarrier
 
 EOT
 
@@ -271,6 +275,8 @@ def generate_section(f, models, name)
   \\caption{#{name} Diagram}
   \\label{fig:#{name}}
 \\end{figure}
+
+\\FloatBarrier
 
 EOT
   

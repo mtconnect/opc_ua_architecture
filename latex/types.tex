@@ -7,16 +7,20 @@
   \label{fig:Components}
 \end{figure}
 
+\FloatBarrier
+
 
 The Components documents the Component models and the owned objects.
 
 \subsubsection{Defintion of ChannelType} \label{type:ChannelType}
 
+\FloatBarrier
+
 
 
 Refer to Table \ref{table:ChannelType} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{ChannelType Definition}
   \label{table:ChannelType}
@@ -33,20 +37,26 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \multicolumn{6}{|l|}{Subtype of BaseObjectType (See OPCUA Documentation)} \\
 HasProperty & Variable & Number &  Int32 & PropertyType & Manditory \\
 HasProperty & Variable & Name &  String & PropertyType & Optional \\
-HasProperty & Variable & Description &  String & PropertyType & Optional \\
+HasProperty & Variable & MTDescription &  String & PropertyType & Optional \\
 HasProperty & Variable & CalibrationDate &  UtcTime & PropertyType & Optional \\
 HasProperty & Variable & NextCalibrationDate &  UtcTime & PropertyType & Optional \\
 HasProperty & Variable & CalibrationInitials &  String & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of DescriptionType} \label{type:DescriptionType}
 
-Exact mirror of the MTConnect Type.
+\FloatBarrier
+
+The desription provides some general information about the 
+manufacture and serial number of the component. In the XML, the \texttt{CDATA} is freeform 
+text that is represented in the \texttt{Data} Property of the Description Object.
 
 Refer to Table \ref{table:DescriptionType} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{DescriptionType Definition}
   \label{table:DescriptionType}
@@ -68,7 +78,11 @@ HasProperty & Variable & Data &  String & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of MTComponentType} \label{type:MTComponentType}
+
+\FloatBarrier
 
 The base Component Type from which all MTConnect Components are derived from. The 
 component type factory is used to create the specific OPC/UA types as subtypes of the 
@@ -91,7 +105,7 @@ represented using the _OPC/UA Part 8_
 
 Refer to Table \ref{table:MTComponentType} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{MTComponentType Definition}
   \label{table:MTComponentType}
@@ -122,13 +136,17 @@ HasProperty & Variable & <Dynamic> &  {DataItem}Type & <Dynamic> & Manditory \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of MTCompositionType} \label{type:MTCompositionType}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:MTCompositionType} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{MTCompositionType Definition}
   \label{table:MTCompositionType}
@@ -145,18 +163,22 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 \multicolumn{6}{|l|}{Subtype of BaseObjectType (See OPCUA Documentation)} \\
 HasProperty & Variable & Uuid &  String & PropertyType & Optional \\
 HasProperty & Variable & Name &  String & PropertyType & Optional \\
-HasProperty & Variable & Description &  String & PropertyType & Optional \\
+HasProperty & Variable & MTDescription &  String & PropertyType & Optional \\
 NonHierarchialReferenceType & Object & composition &  {DataItem}Type & NonHierarchialReferenceType & Optional \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of MTConfigurationType} \label{type:MTConfigurationType}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:MTConfigurationType} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{MTConfigurationType Definition}
   \label{table:MTConfigurationType}
@@ -174,7 +196,11 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of MTDeviceType} \label{type:MTDeviceType}
+
+\FloatBarrier
 
 The MTDevice is a special type whose object will be the root of the device graph. The Device uses the component type factory and the component object factories to create each of the first level components. 
 
@@ -182,7 +208,7 @@ The  compositions, relationships, and data items are then recursively created as
 
 Refer to Table \ref{table:MTDeviceType} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{MTDeviceType Definition}
   \label{table:MTDeviceType}
@@ -202,13 +228,17 @@ HasProperty & Variable & Iso841Class &  String & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of SensorConfigurationType} \label{type:SensorConfigurationType}
+
+\FloatBarrier
 
 The SensorConfiguration browse name will be created as an Object relationship with the parent component.
 
 Refer to Table \ref{table:SensorConfigurationType} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{SensorConfigurationType Definition}
   \label{table:SensorConfigurationType}
@@ -231,13 +261,17 @@ Organizes & Object & Channels &  ChannelType & FolderType & Optional \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of {Component}Type} \label{type:{Component}Type}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:{Component}Type} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{{Component}Type Definition}
   \label{table:{Component}Type}
@@ -255,13 +289,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of {Composition}Type} \label{type:{Composition}Type}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:{Composition}Type} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{{Composition}Type Definition}
   \label{table:{Composition}Type}
@@ -279,6 +317,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsection{Data Items}
 
 \begin{figure}
@@ -288,16 +328,20 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{fig:Data Items}
 \end{figure}
 
+\FloatBarrier
+
 
 
 
 \subsubsection{Defintion of AssetChangedType} \label{type:AssetChangedType}
 
+\FloatBarrier
+
 
 
 Refer to Table \ref{table:AssetChangedType} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{AssetChangedType Definition}
   \label{table:AssetChangedType}
@@ -315,13 +359,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of AssetEventType} \label{type:AssetEventType}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:AssetEventType} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{AssetEventType Definition}
   \label{table:AssetEventType}
@@ -340,13 +388,17 @@ HasProperty & Variable & AssetType &  String & PropertyType & Manditory \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of AssetRemovedType} \label{type:AssetRemovedType}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:AssetRemovedType} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{AssetRemovedType Definition}
   \label{table:AssetRemovedType}
@@ -364,13 +416,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of MTDataItemType} \label{type:MTDataItemType}
+
+\FloatBarrier
 
 The data item mixin will inject the properties and the methods into the related classes. This facility is similar to the Ruby module mixin or the Scala traits.
 
 Refer to Table \ref{table:MTDataItemType} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{MTDataItemType Definition}
   \label{table:MTDataItemType}
@@ -394,13 +450,17 @@ HasComponent & Object & source &   & BaseObjectType & Optional \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of MTEnumeratedEventType} \label{type:MTEnumeratedEventType}
+
+\FloatBarrier
 
 All Data Items with Category EVENT having a Controlled Vocabularies will be of this type. Otherwise, MTString
 
 Refer to Table \ref{table:MTEnumeratedEventType} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{MTEnumeratedEventType Definition}
   \label{table:MTEnumeratedEventType}
@@ -419,13 +479,17 @@ HasProperty & Variable & ConstrainedValues &  EnumValuesType & PropertyType & Ma
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of MTFilterType} \label{type:MTFilterType}
+
+\FloatBarrier
 
 These features will be subsumed by the OPC/UA client filtering directives.
 
 Refer to Table \ref{table:MTFilterType} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{MTFilterType Definition}
   \label{table:MTFilterType}
@@ -443,13 +507,17 @@ HasProperty & Variable & Value &  float & PropertyType & Manditory \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of MTMessageType} \label{type:MTMessageType}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:MTMessageType} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{MTMessageType Definition}
   \label{table:MTMessageType}
@@ -468,13 +536,17 @@ HasProperty & Variable & NativeCode &  String & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of MTNumericDataItemType} \label{type:MTNumericDataItemType}
+
+\FloatBarrier
 
 These are the additional attributes that are relevent to numeric data items. The factory will evaluate these values and will set the engineering units and the range associated with the parent entity.
 
 Refer to Table \ref{table:MTNumericDataItemType} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{MTNumericDataItemType Definition}
   \label{table:MTNumericDataItemType}
@@ -500,13 +572,17 @@ HasProperty & Variable & Nominal &  Double & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of MTNumericEventType} \label{type:MTNumericEventType}
+
+\FloatBarrier
 
 All data items with category EVENT and a numeric value.
 
 Refer to Table \ref{table:MTNumericEventType} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{MTNumericEventType Definition}
   \label{table:MTNumericEventType}
@@ -526,13 +602,17 @@ HasProperty & Variable & EngineeringUnits &  EUInformation & PropertyType & Opti
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of MTSampleType} \label{type:MTSampleType}
+
+\FloatBarrier
 
 Data Items with category SAMPLE
 
 Refer to Table \ref{table:MTSampleType} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{MTSampleType Definition}
   \label{table:MTSampleType}
@@ -550,13 +630,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of MTStringEventType} \label{type:MTStringEventType}
+
+\FloatBarrier
 
 All data items with category EVENT where the data is freeform text. The set_data_type constraint derives  makes the data type a string for this type.
 
 Refer to Table \ref{table:MTStringEventType} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{MTStringEventType Definition}
   \label{table:MTStringEventType}
@@ -574,13 +658,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of MinimumDeltaFilterType} \label{type:MinimumDeltaFilterType}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:MinimumDeltaFilterType} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{MinimumDeltaFilterType Definition}
   \label{table:MinimumDeltaFilterType}
@@ -598,13 +686,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of PeriodFilterType} \label{type:PeriodFilterType}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:PeriodFilterType} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{PeriodFilterType Definition}
   \label{table:PeriodFilterType}
@@ -622,13 +714,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of {DataItem}Type} \label{type:{DataItem}Type}
+
+\FloatBarrier
 
 For each DataItem the Sub Type, and the Type will be composed to be the  HasTypeDefinition relationship of the object. The BrowseName will also include the Composition Type if a composition Id is provided.
 
 Refer to Table \ref{table:{DataItem}Type} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{{DataItem}Type Definition}
   \label{table:{DataItem}Type}
@@ -646,6 +742,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsection{Conditions}
 
 \begin{figure}
@@ -655,16 +753,20 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{fig:Conditions}
 \end{figure}
 
+\FloatBarrier
+
 
 
 
 \subsubsection{Defintion of MTExclusiveLimitConditionType} \label{type:MTExclusiveLimitConditionType}
 
+\FloatBarrier
+
 
 
 Refer to Table \ref{table:MTExclusiveLimitConditionType} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{MTExclusiveLimitConditionType Definition}
   \label{table:MTExclusiveLimitConditionType}
@@ -682,13 +784,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of MTNonExclusiveConditionType} \label{type:MTNonExclusiveConditionType}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:MTNonExclusiveConditionType} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{MTNonExclusiveConditionType Definition}
   \label{table:MTNonExclusiveConditionType}
@@ -706,13 +812,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of {ConditionClass}Type} \label{type:{ConditionClass}Type}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:{ConditionClass}Type} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{{ConditionClass}Type Definition}
   \label{table:{ConditionClass}Type}
@@ -730,6 +840,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsection{Factories}
 
 \begin{figure}
@@ -738,6 +850,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \caption{Factories Diagram}
   \label{fig:Factories}
 \end{figure}
+
+\FloatBarrier
 
 
 The factories are not part of the OPC/UA information model. They are a set of helper 
@@ -757,11 +871,13 @@ unambiguous implementation.
 
 \subsubsection{Defintion of ComponentObjectFactory} \label{type:ComponentObjectFactory}
 
+\FloatBarrier
+
 
 
 Refer to Table \ref{table:ComponentObjectFactory} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{ComponentObjectFactory Definition}
   \label{table:ComponentObjectFactory}
@@ -779,7 +895,11 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of ComponentTypeFactory} \label{type:ComponentTypeFactory}
+
+\FloatBarrier
 
 The `ComponentTypeFactory` creates component types using the MTConnect XML element as an input. 
 The factory takes the `QName` (or qualified name) of the XML element and then appends `Type`. For 
@@ -792,7 +912,7 @@ The types will be a single level where each Component is a sub-type of the base 
 
 Refer to Table \ref{table:ComponentTypeFactory} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{ComponentTypeFactory Definition}
   \label{table:ComponentTypeFactory}
@@ -810,13 +930,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of CompositionObjectFactory} \label{type:CompositionObjectFactory}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:CompositionObjectFactory} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{CompositionObjectFactory Definition}
   \label{table:CompositionObjectFactory}
@@ -834,13 +958,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of CompositionTypeFactory} \label{type:CompositionTypeFactory}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:CompositionTypeFactory} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{CompositionTypeFactory Definition}
   \label{table:CompositionTypeFactory}
@@ -857,13 +985,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of ConditionClassFactory} \label{type:ConditionClassFactory}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:ConditionClassFactory} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{ConditionClassFactory Definition}
   \label{table:ConditionClassFactory}
@@ -881,13 +1013,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of ConditionObjectFactory} \label{type:ConditionObjectFactory}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:ConditionObjectFactory} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{ConditionObjectFactory Definition}
   \label{table:ConditionObjectFactory}
@@ -905,13 +1041,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of DataItemObjectFactory} \label{type:DataItemObjectFactory}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:DataItemObjectFactory} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{DataItemObjectFactory Definition}
   \label{table:DataItemObjectFactory}
@@ -929,7 +1069,11 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of DataItemTypeFactory} \label{type:DataItemTypeFactory}
+
+\FloatBarrier
 
 Based on the data item category, type, and subType, this class creates a new OPC/UA type and also provides the template parameter for the ParentType from which this type is derived. 
 
@@ -937,7 +1081,7 @@ See the Data Item Type Factory.
 
 Refer to Table \ref{table:DataItemTypeFactory} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{DataItemTypeFactory Definition}
   \label{table:DataItemTypeFactory}
@@ -955,13 +1099,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of DeviceObjectFactory} \label{type:DeviceObjectFactory}
+
+\FloatBarrier
 
 The model instantiation for MTConnect begins with the `Device` MTConnect element and then recursively traverses the sub-elements. The device will the capabilities in the component factory to generate all the data items and component types. 
 
 Refer to Table \ref{table:DeviceObjectFactory} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{DeviceObjectFactory Definition}
   \label{table:DeviceObjectFactory}
@@ -979,13 +1127,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of FilterObjectFactory} \label{type:FilterObjectFactory}
+
+\FloatBarrier
 
 Creates filters based on the type attribute of the Filter element. 
 
 Refer to Table \ref{table:FilterObjectFactory} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{FilterObjectFactory Definition}
   \label{table:FilterObjectFactory}
@@ -1003,13 +1155,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of ObjectFactory} \label{type:ObjectFactory}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:ObjectFactory} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{ObjectFactory Definition}
   \label{table:ObjectFactory}
@@ -1026,13 +1182,17 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of SensorChannelObjectFactory} \label{type:SensorChannelObjectFactory}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:SensorChannelObjectFactory} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{SensorChannelObjectFactory Definition}
   \label{table:SensorChannelObjectFactory}
@@ -1050,13 +1210,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of SensorObjectFactory} \label{type:SensorObjectFactory}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:SensorObjectFactory} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{SensorObjectFactory Definition}
   \label{table:SensorObjectFactory}
@@ -1074,13 +1238,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of TypeFactory} \label{type:TypeFactory}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:TypeFactory} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{TypeFactory Definition}
   \label{table:TypeFactory}
@@ -1097,6 +1265,8 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsection{MTConnect Device Profile}
 
 \begin{figure}
@@ -1105,6 +1275,8 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
   \caption{MTConnect Device Profile Diagram}
   \label{fig:MTConnect Device Profile}
 \end{figure}
+
+\FloatBarrier
 
 
 The device profile documents the common data types and stereotypes that are 
@@ -1120,11 +1292,13 @@ data model.
 
 \subsubsection{Defintion of Dynamic Type} \label{type:Dynamic Type}
 
+\FloatBarrier
+
 
 
 Refer to Table \ref{table:Dynamic Type} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{Dynamic Type Definition}
   \label{table:Dynamic Type}
@@ -1141,13 +1315,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of MIxes In} \label{type:MIxes In}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:MIxes In} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{MIxes In Definition}
   \label{table:MIxes In}
@@ -1164,13 +1342,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of MTConnect XML} \label{type:MTConnect XML}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:MTConnect XML} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{MTConnect XML Definition}
   \label{table:MTConnect XML}
@@ -1187,13 +1369,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of MTRelationshipType} \label{type:MTRelationshipType}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:MTRelationshipType} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{MTRelationshipType Definition}
   \label{table:MTRelationshipType}
@@ -1211,13 +1397,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of Object Factory} \label{type:Object Factory}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:Object Factory} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{Object Factory Definition}
   \label{table:Object Factory}
@@ -1234,13 +1424,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of Type Factory} \label{type:Type Factory}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:Type Factory} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{Type Factory Definition}
   \label{table:Type Factory}
@@ -1257,13 +1451,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of bind} \label{type:bind}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:bind} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{bind Definition}
   \label{table:bind}
@@ -1280,13 +1478,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of constrains} \label{type:constrains}
+
+\FloatBarrier
 
 
 
 Refer to Table \ref{table:constrains} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{constrains Definition}
   \label{table:constrains}
@@ -1303,13 +1505,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of mixin} \label{type:mixin}
+
+\FloatBarrier
 
 The contents properties and the behavior of the class are combined with another class.
 
 Refer to Table \ref{table:mixin} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{mixin Definition}
   \label{table:mixin}
@@ -1326,7 +1532,11 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+
 \subsubsection{Defintion of use} \label{type:use}
+
+\FloatBarrier
 
 The use stereotype indicates that one class uses as a helper to perform 
 a specific operation or activity. This stereotype is mainly used to indicate
@@ -1335,7 +1545,7 @@ properties or relationships.
 
 Refer to Table \ref{table:use} for detailed definition.
 
-\begin{table}
+\begin{table}[h]
 \centering 
   \caption{use Definition}
   \label{table:use}
@@ -1351,4 +1561,6 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \end{tabu}
 \end{table} 
+
+\FloatBarrier
 

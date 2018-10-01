@@ -115,9 +115,7 @@
 								"$ref": "AAAAAAFl6oVqNdm+ClE="
 							},
 							"name": "Definition",
-							"stereotype": {
-								"$ref": "AAAAAAFl7tiDe3Ue2Oc="
-							},
+							"stereotype": "",
 							"type": "String",
 							"multiplicity": "0..1"
 						},
@@ -128,9 +126,7 @@
 								"$ref": "AAAAAAFl6oVqNdm+ClE="
 							},
 							"name": "ValuePrecision",
-							"stereotype": {
-								"$ref": "AAAAAAFl7tiDe3Ue2Oc="
-							},
+							"stereotype": "",
 							"type": "Double",
 							"multiplicity": "0..1"
 						}
@@ -166,9 +162,7 @@
 								"$ref": "AAAAAAFl7lFKXhuQ2CY="
 							},
 							"name": "InstrumentRange",
-							"stereotype": {
-								"$ref": "AAAAAAFl7tiDe3Ue2Oc="
-							},
+							"stereotype": "",
 							"type": {
 								"$ref": "AAAAAAFl7uXMNysB0eQ="
 							},
@@ -181,9 +175,7 @@
 								"$ref": "AAAAAAFl7lFKXhuQ2CY="
 							},
 							"name": "EURange",
-							"stereotype": {
-								"$ref": "AAAAAAFl7tiDe3Ue2Oc="
-							},
+							"stereotype": "",
 							"type": {
 								"$ref": "AAAAAAFl7uXMNysB0eQ="
 							}
@@ -195,9 +187,7 @@
 								"$ref": "AAAAAAFl7lFKXhuQ2CY="
 							},
 							"name": "EngineeringUnits",
-							"stereotype": {
-								"$ref": "AAAAAAFl7tiDe3Ue2Oc="
-							},
+							"stereotype": "",
 							"type": {
 								"$ref": "AAAAAAFl7ubWHis9O+4="
 							},
@@ -244,6 +234,9 @@
 								"$ref": "AAAAAAFl6LDnrMQ0joU="
 							},
 							"name": "NodeId",
+							"stereotype": {
+								"$ref": "AAAAAAFl7thdFHTxSes="
+							},
 							"type": "NodeId",
 							"isUnique": true,
 							"isID": true
@@ -255,6 +248,9 @@
 								"$ref": "AAAAAAFl6LDnrMQ0joU="
 							},
 							"name": "NodeClass",
+							"stereotype": {
+								"$ref": "AAAAAAFl7thdFHTxSes="
+							},
 							"type": {
 								"$ref": "AAAAAAFl6er3FA+78so="
 							}
@@ -266,6 +262,9 @@
 								"$ref": "AAAAAAFl6LDnrMQ0joU="
 							},
 							"name": "BrowseName",
+							"stereotype": {
+								"$ref": "AAAAAAFl7thdFHTxSes="
+							},
 							"type": {
 								"$ref": "AAAAAAFl6ekGow5ILP8="
 							}
@@ -277,6 +276,9 @@
 								"$ref": "AAAAAAFl6LDnrMQ0joU="
 							},
 							"name": "DisplayName",
+							"stereotype": {
+								"$ref": "AAAAAAFl7thdFHTxSes="
+							},
 							"type": "LocalizedText"
 						},
 						{
@@ -286,6 +288,9 @@
 								"$ref": "AAAAAAFl6LDnrMQ0joU="
 							},
 							"name": "Description",
+							"stereotype": {
+								"$ref": "AAAAAAFl7thdFHTxSes="
+							},
 							"type": "LocalizedText",
 							"multiplicity": "0..1"
 						},
@@ -296,6 +301,9 @@
 								"$ref": "AAAAAAFl6LDnrMQ0joU="
 							},
 							"name": "WriteMask",
+							"stereotype": {
+								"$ref": "AAAAAAFl7thdFHTxSes="
+							},
 							"type": "UInt32",
 							"multiplicity": "0..1"
 						},
@@ -306,6 +314,9 @@
 								"$ref": "AAAAAAFl6LDnrMQ0joU="
 							},
 							"name": "UserWriteMask",
+							"stereotype": {
+								"$ref": "AAAAAAFl7thdFHTxSes="
+							},
 							"type": "UInt32",
 							"multiplicity": "0..1"
 						}
@@ -365,6 +376,9 @@
 								"$ref": "AAAAAAFl6lRww2IS+YM="
 							},
 							"name": "ValueRank",
+							"stereotype": {
+								"$ref": "AAAAAAFl7thdFHTxSes="
+							},
 							"type": "Int32"
 						},
 						{
@@ -374,6 +388,9 @@
 								"$ref": "AAAAAAFl6lRww2IS+YM="
 							},
 							"name": "DataType",
+							"stereotype": {
+								"$ref": "AAAAAAFl7thdFHTxSes="
+							},
 							"type": "BaseDataType"
 						}
 					],
@@ -2781,6 +2798,7 @@
 								"$ref": "AAAAAAFl7lVrmSQTeNE="
 							},
 							"name": "Attribute",
+							"documentation": "This element of the UML class represents an OPC/UA attribute. ",
 							"icon": {
 								"_type": "UMLImage",
 								"_id": "AAAAAAFl7thdFHTynYg=",
@@ -2798,6 +2816,7 @@
 								"$ref": "AAAAAAFl7lVrmSQTeNE="
 							},
 							"name": "Property",
+							"documentation": "This element of the UML class represents an OPC/UA Property using a \\texttt{HasProperty} relationship.",
 							"icon": {
 								"_type": "UMLImage",
 								"_id": "AAAAAAFl7tiDe3Uf8p8=",
@@ -2876,7 +2895,7 @@
 											"font": "Arial;13;3",
 											"left": 1045,
 											"top": 423,
-											"width": 187.51611328125,
+											"width": 250.3896484375,
 											"height": 13,
 											"text": "Node"
 										},
@@ -2911,7 +2930,7 @@
 									"font": "Arial;13;0",
 									"left": 1040,
 									"top": 416,
-									"width": 197.51611328125,
+									"width": 260.3896484375,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFl7naHrm8pOKg="
@@ -2948,9 +2967,9 @@
 											"font": "Arial;13;0",
 											"left": 1045,
 											"top": 446,
-											"width": 187.51611328125,
+											"width": 250.3896484375,
 											"height": 13,
-											"text": "+NodeId: NodeId {id, unique}",
+											"text": "«Attribute»+NodeId: NodeId {id, unique}",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2965,9 +2984,9 @@
 											"font": "Arial;13;0",
 											"left": 1045,
 											"top": 461,
-											"width": 187.51611328125,
+											"width": 250.3896484375,
 											"height": 13,
-											"text": "+NodeClass: NodeClass",
+											"text": "«Attribute»+NodeClass: NodeClass",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2982,9 +3001,9 @@
 											"font": "Arial;13;0",
 											"left": 1045,
 											"top": 476,
-											"width": 187.51611328125,
+											"width": 250.3896484375,
 											"height": 13,
-											"text": "+BrowseName: QualifiedName",
+											"text": "«Attribute»+BrowseName: QualifiedName",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2999,9 +3018,9 @@
 											"font": "Arial;13;0",
 											"left": 1045,
 											"top": 491,
-											"width": 187.51611328125,
+											"width": 250.3896484375,
 											"height": 13,
-											"text": "+DisplayName: LocalizedText",
+											"text": "«Attribute»+DisplayName: LocalizedText",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3016,9 +3035,9 @@
 											"font": "Arial;13;0",
 											"left": 1045,
 											"top": 506,
-											"width": 187.51611328125,
+											"width": 250.3896484375,
 											"height": 13,
-											"text": "+Description: LocalizedText[0..1]",
+											"text": "«Attribute»+Description: LocalizedText[0..1]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3033,9 +3052,9 @@
 											"font": "Arial;13;0",
 											"left": 1045,
 											"top": 521,
-											"width": 187.51611328125,
+											"width": 250.3896484375,
 											"height": 13,
-											"text": "+WriteMask: UInt32[0..1]",
+											"text": "«Attribute»+WriteMask: UInt32[0..1]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3050,16 +3069,16 @@
 											"font": "Arial;13;0",
 											"left": 1045,
 											"top": 536,
-											"width": 187.51611328125,
+											"width": 250.3896484375,
 											"height": 13,
-											"text": "+UserWriteMask: UInt32[0..1]",
+											"text": "«Attribute»+UserWriteMask: UInt32[0..1]",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1040,
 									"top": 441,
-									"width": 197.51611328125,
+									"width": 260.3896484375,
 									"height": 113
 								},
 								{
@@ -3115,7 +3134,7 @@
 							"containerChangeable": true,
 							"left": 1040,
 							"top": 416,
-							"width": 197.51611328125,
+							"width": 260.3896484375,
 							"height": 138,
 							"nameCompartment": {
 								"$ref": "AAAAAAFl7naHrm8oIzA="
@@ -3447,7 +3466,7 @@
 											"font": "Arial;13;3",
 											"left": 907,
 											"top": 639,
-											"width": 155.7333984375,
+											"width": 218.60693359375,
 											"height": 13,
 											"text": "BaseVariableType"
 										},
@@ -3482,7 +3501,7 @@
 									"font": "Arial;13;0",
 									"left": 902,
 									"top": 632,
-									"width": 165.7333984375,
+									"width": 228.60693359375,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFl7na5kW+bp1Y="
@@ -3519,9 +3538,9 @@
 											"font": "Arial;13;0",
 											"left": 907,
 											"top": 662,
-											"width": 155.7333984375,
+											"width": 218.60693359375,
 											"height": 13,
-											"text": "+ValueRank: Int32",
+											"text": "«Attribute»+ValueRank: Int32",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3536,16 +3555,16 @@
 											"font": "Arial;13;0",
 											"left": 907,
 											"top": 677,
-											"width": 155.7333984375,
+											"width": 218.60693359375,
 											"height": 13,
-											"text": "+DataType: BaseDataType",
+											"text": "«Attribute»+DataType: BaseDataType",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 902,
 									"top": 657,
-									"width": 165.7333984375,
+									"width": 228.60693359375,
 									"height": 38
 								},
 								{
@@ -3601,7 +3620,7 @@
 							"containerChangeable": true,
 							"left": 902,
 							"top": 632,
-							"width": 165.7333984375,
+							"width": 228.60693359375,
 							"height": 65,
 							"nameCompartment": {
 								"$ref": "AAAAAAFl7na5kW+aNK8="
@@ -4438,7 +4457,7 @@
 											"top": 1030,
 											"width": 289.40869140625,
 											"height": 13,
-											"text": "«Property»+InstrumentRange: Range[0..1]",
+											"text": "+InstrumentRange: Range[0..1]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4455,7 +4474,7 @@
 											"top": 1045,
 											"width": 289.40869140625,
 											"height": 13,
-											"text": "«Property»+EURange: Range",
+											"text": "+EURange: Range",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4472,7 +4491,7 @@
 											"top": 1060,
 											"width": 289.40869140625,
 											"height": 13,
-											"text": "«Property»+EngineeringUnits: EUInformation[0..1]",
+											"text": "+EngineeringUnits: EUInformation[0..1]",
 											"horizontalAlignment": 0
 										}
 									],
@@ -4669,7 +4688,7 @@
 											"top": 1190,
 											"width": 258.33056640625,
 											"height": 13,
-											"text": "«Property»+EnumStrings: LocalizedText[1..*]",
+											"text": "+EnumStrings: LocalizedText[1..*]",
 											"horizontalAlignment": 0
 										}
 									],
@@ -5138,7 +5157,7 @@
 											"top": 878,
 											"width": 234.26025390625,
 											"height": 13,
-											"text": "«Property»+Definition: String[0..1]",
+											"text": "+Definition: String[0..1]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5155,7 +5174,7 @@
 											"top": 893,
 											"width": 234.26025390625,
 											"height": 13,
-											"text": "«Property»+ValuePrecision: Double[0..1]",
+											"text": "+ValuePrecision: Double[0..1]",
 											"horizontalAlignment": 0
 										}
 									],
@@ -5560,7 +5579,7 @@
 											"font": "Arial;13;3",
 											"left": 1149,
 											"top": 639,
-											"width": 246,
+											"width": 262.67236328125,
 											"height": 13,
 											"text": "Reference"
 										},
@@ -5595,7 +5614,7 @@
 									"font": "Arial;13;0",
 									"left": 1144,
 									"top": 632,
-									"width": 256,
+									"width": 272.67236328125,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFl7o7Q2nPRhr4="
@@ -5632,9 +5651,9 @@
 											"font": "Arial;13;0",
 											"left": 1149,
 											"top": 662,
-											"width": 246,
+											"width": 262.67236328125,
 											"height": 13,
-											"text": "+IsAbstract: Boolean",
+											"text": "«Attribute»+IsAbstract: Boolean",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5649,9 +5668,9 @@
 											"font": "Arial;13;0",
 											"left": 1149,
 											"top": 677,
-											"width": 246,
+											"width": 262.67236328125,
 											"height": 13,
-											"text": "+Symmetric: Boolean",
+											"text": "«Attribute»+Symmetric: Boolean",
 											"horizontalAlignment": 0
 										},
 										{
@@ -5666,16 +5685,16 @@
 											"font": "Arial;13;0",
 											"left": 1149,
 											"top": 692,
-											"width": 246,
+											"width": 262.67236328125,
 											"height": 13,
-											"text": "+InverseName: LocalizedText[0..1]",
+											"text": "«Attribute»+InverseName: LocalizedText[0..1]",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1144,
 									"top": 657,
-									"width": 256,
+									"width": 272.67236328125,
 									"height": 53
 								},
 								{
@@ -5731,7 +5750,7 @@
 							"containerChangeable": true,
 							"left": 1144,
 							"top": 632,
-							"width": 256,
+							"width": 272.67236328125,
 							"height": 80,
 							"nameCompartment": {
 								"$ref": "AAAAAAFl7o7Q2nPQUJA="
@@ -5885,7 +5904,7 @@
 											"font": "Arial;13;3",
 											"left": 1437,
 											"top": 639,
-											"width": 246,
+											"width": 254.71240234375,
 											"height": 13,
 											"text": "Object"
 										},
@@ -5920,7 +5939,7 @@
 									"font": "Arial;13;0",
 									"left": 1432,
 									"top": 632,
-									"width": 256,
+									"width": 264.71240234375,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFl7pDnwnQlXgs="
@@ -5957,16 +5976,16 @@
 											"font": "Arial;13;0",
 											"left": 1437,
 											"top": 662,
-											"width": 246,
+											"width": 254.71240234375,
 											"height": 13,
-											"text": "+EventNotifier: EventNotifierType",
+											"text": "«Attribute»+EventNotifier: EventNotifierType",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1432,
 									"top": 657,
-									"width": 256,
+									"width": 264.71240234375,
 									"height": 23
 								},
 								{
@@ -6022,7 +6041,7 @@
 							"containerChangeable": true,
 							"left": 1432,
 							"top": 632,
-							"width": 256,
+							"width": 264.71240234375,
 							"height": 80,
 							"nameCompartment": {
 								"$ref": "AAAAAAFl7pDnwnQk+Hw="
@@ -6163,7 +6182,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": -1232,
+											"left": -1472,
 											"top": 192,
 											"height": 13
 										},
@@ -6174,9 +6193,9 @@
 												"$ref": "AAAAAAFl7stkYHRxDdM="
 											},
 											"font": "Arial;13;1",
-											"left": 621,
+											"left": 501,
 											"top": 639,
-											"width": 242.41064453125,
+											"width": 305.2841796875,
 											"height": 13,
 											"text": "Varible"
 										},
@@ -6188,7 +6207,7 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": -1232,
+											"left": -1472,
 											"top": 192,
 											"width": 84.5,
 											"height": 13,
@@ -6202,16 +6221,16 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": -1232,
+											"left": -1472,
 											"top": 192,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 616,
+									"left": 496,
 									"top": 632,
-									"width": 252.41064453125,
+									"width": 315.2841796875,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFl7stkYXRyOOM="
@@ -6246,11 +6265,11 @@
 												"$ref": "AAAAAAFl7suIiHSYzFk="
 											},
 											"font": "Arial;13;0",
-											"left": 621,
+											"left": 501,
 											"top": 662,
-											"width": 242.41064453125,
+											"width": 305.2841796875,
 											"height": 13,
-											"text": "+Value: SeeDataType",
+											"text": "«Attribute»+Value: SeeDataType",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6263,11 +6282,11 @@
 												"$ref": "AAAAAAFl7swyn3SfkKQ="
 											},
 											"font": "Arial;13;0",
-											"left": 621,
+											"left": 501,
 											"top": 677,
-											"width": 242.41064453125,
+											"width": 305.2841796875,
 											"height": 13,
-											"text": "+DataType: NodeId",
+											"text": "«Attribute»+DataType: NodeId",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6280,11 +6299,11 @@
 												"$ref": "AAAAAAFl7sxSRnSmuto="
 											},
 											"font": "Arial;13;0",
-											"left": 621,
+											"left": 501,
 											"top": 692,
-											"width": 242.41064453125,
+											"width": 305.2841796875,
 											"height": 13,
-											"text": "+ValueRank: Int32",
+											"text": "«Attribute»+ValueRank: Int32",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6297,11 +6316,11 @@
 												"$ref": "AAAAAAFl7sx3x3StydI="
 											},
 											"font": "Arial;13;0",
-											"left": 621,
+											"left": 501,
 											"top": 707,
-											"width": 242.41064453125,
+											"width": 305.2841796875,
 											"height": 13,
-											"text": "+ArrayDimensions: Uint32[0..*]",
+											"text": "«Attribute»+ArrayDimensions: Uint32[0..*]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6314,11 +6333,11 @@
 												"$ref": "AAAAAAFl7s0IZHS2laM="
 											},
 											"font": "Arial;13;0",
-											"left": 621,
+											"left": 501,
 											"top": 722,
-											"width": 242.41064453125,
+											"width": 305.2841796875,
 											"height": 13,
-											"text": "+AccessLevel: AccessLevelType",
+											"text": "«Attribute»+AccessLevel: AccessLevelType",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6331,11 +6350,11 @@
 												"$ref": "AAAAAAFl7s1glXS9ukQ="
 											},
 											"font": "Arial;13;0",
-											"left": 621,
+											"left": 501,
 											"top": 737,
-											"width": 242.41064453125,
+											"width": 305.2841796875,
 											"height": 13,
-											"text": "+UserAccessLevel: AccessLevelType",
+											"text": "«Attribute»+UserAccessLevel: AccessLevelType",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6348,11 +6367,11 @@
 												"$ref": "AAAAAAFl7s2U+3TETYQ="
 											},
 											"font": "Arial;13;0",
-											"left": 621,
+											"left": 501,
 											"top": 752,
-											"width": 242.41064453125,
+											"width": 305.2841796875,
 											"height": 13,
-											"text": "+MinimumSamplingInterval: Duration[0..1]",
+											"text": "«Attribute»+MinimumSamplingInterval: Duration[0..1]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6365,18 +6384,18 @@
 												"$ref": "AAAAAAFl7s3IpXTLOqA="
 											},
 											"font": "Arial;13;0",
-											"left": 621,
+											"left": 501,
 											"top": 767,
-											"width": 242.41064453125,
+											"width": 305.2841796875,
 											"height": 13,
-											"text": "+Historizing: Boolean",
+											"text": "«Attribute»+Historizing: Boolean",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
-									"left": 616,
+									"left": 496,
 									"top": 657,
-									"width": 252.41064453125,
+									"width": 315.2841796875,
 									"height": 128
 								},
 								{
@@ -6390,7 +6409,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -616,
+									"left": -736,
 									"top": 96,
 									"width": 10,
 									"height": 10
@@ -6406,7 +6425,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -616,
+									"left": -736,
 									"top": 96,
 									"width": 10,
 									"height": 10
@@ -6422,7 +6441,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": -616,
+									"left": -736,
 									"top": 96,
 									"width": 10,
 									"height": 10
@@ -6430,9 +6449,9 @@
 							],
 							"font": "Arial;13;0",
 							"containerChangeable": true,
-							"left": 616,
+							"left": 496,
 							"top": 632,
-							"width": 252.41064453125,
+							"width": 315.2841796875,
 							"height": 168,
 							"nameCompartment": {
 								"$ref": "AAAAAAFl7stkYHRxDdM="
@@ -7153,7 +7172,7 @@
 											"top": 1182,
 											"width": 222,
 											"height": 13,
-											"text": "«Property»+TrueState: LocalizedText",
+											"text": "+TrueState: LocalizedText",
 											"horizontalAlignment": 0
 										},
 										{
@@ -7170,7 +7189,7 @@
 											"top": 1197,
 											"width": 222,
 											"height": 13,
-											"text": "«Property»+FalseState: LocalizedText",
+											"text": "+FalseState: LocalizedText",
 											"horizontalAlignment": 0
 										}
 									],
@@ -7490,7 +7509,7 @@
 											"top": 1182,
 											"width": 272.314453125,
 											"height": 13,
-											"text": "«Property»+EnumValues: EnumValueType[1..*]",
+											"text": "+EnumValues: EnumValueType[1..*]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -7507,7 +7526,7 @@
 											"top": 1197,
 											"width": 272.314453125,
 											"height": 13,
-											"text": "«Property»+ValueAsText: LocalizedText",
+											"text": "+ValueAsText: LocalizedText",
 											"horizontalAlignment": 0
 										}
 									],
@@ -8005,7 +8024,7 @@
 											"top": 670,
 											"width": 280.4775390625,
 											"height": 13,
-											"text": "«Property»+EventId: ByteString",
+											"text": "+EventId: ByteString",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8022,7 +8041,7 @@
 											"top": 685,
 											"width": 280.4775390625,
 											"height": 13,
-											"text": "«Property»+EventType: NodeId",
+											"text": "+EventType: NodeId",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8039,7 +8058,7 @@
 											"top": 700,
 											"width": 280.4775390625,
 											"height": 13,
-											"text": "«Properety»+SourceNode: NodeId",
+											"text": "+SourceNode: NodeId",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8056,7 +8075,7 @@
 											"top": 715,
 											"width": 280.4775390625,
 											"height": 13,
-											"text": "«Property»+SourceName: String",
+											"text": "+SourceName: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8073,7 +8092,7 @@
 											"top": 730,
 											"width": 280.4775390625,
 											"height": 13,
-											"text": "«Property»+Time: UtcTime",
+											"text": "+Time: UtcTime",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8090,7 +8109,7 @@
 											"top": 745,
 											"width": 280.4775390625,
 											"height": 13,
-											"text": "«Property»+ReceiveTime: UtcTime",
+											"text": "+ReceiveTime: UtcTime",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8107,7 +8126,7 @@
 											"top": 760,
 											"width": 280.4775390625,
 											"height": 13,
-											"text": "«Property»+LocalTime: TimeZoneDataType[0..1]",
+											"text": "+LocalTime: TimeZoneDataType[0..1]",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8124,7 +8143,7 @@
 											"top": 775,
 											"width": 280.4775390625,
 											"height": 13,
-											"text": "«Property»+Message: LocalizedText",
+											"text": "+Message: LocalizedText",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8141,7 +8160,7 @@
 											"top": 790,
 											"width": 280.4775390625,
 											"height": 13,
-											"text": "«Property»+Severity: UInt16",
+											"text": "+Severity: UInt16",
 											"horizontalAlignment": 0
 										}
 									],
@@ -11163,9 +11182,7 @@
 								"$ref": "AAAAAAFl7nmYO3DOTR8="
 							},
 							"name": "EnumStrings",
-							"stereotype": {
-								"$ref": "AAAAAAFl7tiDe3Ue2Oc="
-							},
+							"stereotype": "",
 							"type": "LocalizedText",
 							"multiplicity": "1..*"
 						}
@@ -11224,6 +11241,9 @@
 								"$ref": "AAAAAAFl7o7Q2nPNC4w="
 							},
 							"name": "IsAbstract",
+							"stereotype": {
+								"$ref": "AAAAAAFl7thdFHTxSes="
+							},
 							"type": "Boolean"
 						},
 						{
@@ -11233,6 +11253,9 @@
 								"$ref": "AAAAAAFl7o7Q2nPNC4w="
 							},
 							"name": "Symmetric",
+							"stereotype": {
+								"$ref": "AAAAAAFl7thdFHTxSes="
+							},
 							"type": "Boolean"
 						},
 						{
@@ -11242,6 +11265,9 @@
 								"$ref": "AAAAAAFl7o7Q2nPNC4w="
 							},
 							"name": "InverseName",
+							"stereotype": {
+								"$ref": "AAAAAAFl7thdFHTxSes="
+							},
 							"type": "LocalizedText",
 							"multiplicity": "0..1"
 						}
@@ -11278,6 +11304,9 @@
 								"$ref": "AAAAAAFl7pDnwXQh1W4="
 							},
 							"name": "EventNotifier",
+							"stereotype": {
+								"$ref": "AAAAAAFl7thdFHTxSes="
+							},
 							"type": "EventNotifierType"
 						}
 					],
@@ -11313,6 +11342,9 @@
 								"$ref": "AAAAAAFl7stkX3Ru27g="
 							},
 							"name": "Value",
+							"stereotype": {
+								"$ref": "AAAAAAFl7thdFHTxSes="
+							},
 							"type": "SeeDataType"
 						},
 						{
@@ -11322,6 +11354,9 @@
 								"$ref": "AAAAAAFl7stkX3Ru27g="
 							},
 							"name": "DataType",
+							"stereotype": {
+								"$ref": "AAAAAAFl7thdFHTxSes="
+							},
 							"type": "NodeId"
 						},
 						{
@@ -11331,6 +11366,9 @@
 								"$ref": "AAAAAAFl7stkX3Ru27g="
 							},
 							"name": "ValueRank",
+							"stereotype": {
+								"$ref": "AAAAAAFl7thdFHTxSes="
+							},
 							"type": "Int32"
 						},
 						{
@@ -11340,6 +11378,9 @@
 								"$ref": "AAAAAAFl7stkX3Ru27g="
 							},
 							"name": "ArrayDimensions",
+							"stereotype": {
+								"$ref": "AAAAAAFl7thdFHTxSes="
+							},
 							"type": "Uint32",
 							"multiplicity": "0..*"
 						},
@@ -11350,6 +11391,9 @@
 								"$ref": "AAAAAAFl7stkX3Ru27g="
 							},
 							"name": "AccessLevel",
+							"stereotype": {
+								"$ref": "AAAAAAFl7thdFHTxSes="
+							},
 							"type": "AccessLevelType"
 						},
 						{
@@ -11359,6 +11403,9 @@
 								"$ref": "AAAAAAFl7stkX3Ru27g="
 							},
 							"name": "UserAccessLevel",
+							"stereotype": {
+								"$ref": "AAAAAAFl7thdFHTxSes="
+							},
 							"type": "AccessLevelType"
 						},
 						{
@@ -11368,6 +11415,9 @@
 								"$ref": "AAAAAAFl7stkX3Ru27g="
 							},
 							"name": "MinimumSamplingInterval",
+							"stereotype": {
+								"$ref": "AAAAAAFl7thdFHTxSes="
+							},
 							"type": "Duration",
 							"multiplicity": "0..1"
 						},
@@ -11378,6 +11428,9 @@
 								"$ref": "AAAAAAFl7stkX3Ru27g="
 							},
 							"name": "Historizing",
+							"stereotype": {
+								"$ref": "AAAAAAFl7thdFHTxSes="
+							},
 							"type": "Boolean"
 						}
 					]
@@ -11486,9 +11539,7 @@
 								"$ref": "AAAAAAFl7upraCuZTLI="
 							},
 							"name": "TrueState",
-							"stereotype": {
-								"$ref": "AAAAAAFl7tiDe3Ue2Oc="
-							},
+							"stereotype": "",
 							"type": "LocalizedText"
 						},
 						{
@@ -11498,9 +11549,7 @@
 								"$ref": "AAAAAAFl7upraCuZTLI="
 							},
 							"name": "FalseState",
-							"stereotype": {
-								"$ref": "AAAAAAFl7tiDe3Ue2Oc="
-							},
+							"stereotype": "",
 							"type": "LocalizedText"
 						}
 					]
@@ -11535,9 +11584,7 @@
 								"$ref": "AAAAAAFl7u2bxCv2JY0="
 							},
 							"name": "EnumValues",
-							"stereotype": {
-								"$ref": "AAAAAAFl7tiDe3Ue2Oc="
-							},
+							"stereotype": "",
 							"type": "EnumValueType",
 							"multiplicity": "1..*"
 						},
@@ -11548,9 +11595,7 @@
 								"$ref": "AAAAAAFl7u2bxCv2JY0="
 							},
 							"name": "ValueAsText",
-							"stereotype": {
-								"$ref": "AAAAAAFl7tiDe3Ue2Oc="
-							},
+							"stereotype": "",
 							"type": "LocalizedText"
 						}
 					]
@@ -11610,9 +11655,7 @@
 								"$ref": "AAAAAAFl8txfOW5nBuE="
 							},
 							"name": "EventId",
-							"stereotype": {
-								"$ref": "AAAAAAFl7tiDe3Ue2Oc="
-							},
+							"stereotype": "",
 							"type": "ByteString"
 						},
 						{
@@ -11622,9 +11665,7 @@
 								"$ref": "AAAAAAFl8txfOW5nBuE="
 							},
 							"name": "EventType",
-							"stereotype": {
-								"$ref": "AAAAAAFl7tiDe3Ue2Oc="
-							},
+							"stereotype": "",
 							"type": "NodeId"
 						},
 						{
@@ -11634,7 +11675,7 @@
 								"$ref": "AAAAAAFl8txfOW5nBuE="
 							},
 							"name": "SourceNode",
-							"stereotype": "Properety",
+							"stereotype": "",
 							"type": "NodeId"
 						},
 						{
@@ -11644,9 +11685,7 @@
 								"$ref": "AAAAAAFl8txfOW5nBuE="
 							},
 							"name": "SourceName",
-							"stereotype": {
-								"$ref": "AAAAAAFl7tiDe3Ue2Oc="
-							},
+							"stereotype": "",
 							"type": "String"
 						},
 						{
@@ -11656,9 +11695,7 @@
 								"$ref": "AAAAAAFl8txfOW5nBuE="
 							},
 							"name": "Time",
-							"stereotype": {
-								"$ref": "AAAAAAFl7tiDe3Ue2Oc="
-							},
+							"stereotype": "",
 							"type": "UtcTime"
 						},
 						{
@@ -11668,9 +11705,7 @@
 								"$ref": "AAAAAAFl8txfOW5nBuE="
 							},
 							"name": "ReceiveTime",
-							"stereotype": {
-								"$ref": "AAAAAAFl7tiDe3Ue2Oc="
-							},
+							"stereotype": "",
 							"type": "UtcTime"
 						},
 						{
@@ -11680,9 +11715,7 @@
 								"$ref": "AAAAAAFl8txfOW5nBuE="
 							},
 							"name": "LocalTime",
-							"stereotype": {
-								"$ref": "AAAAAAFl7tiDe3Ue2Oc="
-							},
+							"stereotype": "",
 							"type": "TimeZoneDataType",
 							"multiplicity": "0..1"
 						},
@@ -11693,9 +11726,7 @@
 								"$ref": "AAAAAAFl8txfOW5nBuE="
 							},
 							"name": "Message",
-							"stereotype": {
-								"$ref": "AAAAAAFl7tiDe3Ue2Oc="
-							},
+							"stereotype": "",
 							"type": "LocalizedText"
 						},
 						{
@@ -11705,9 +11736,7 @@
 								"$ref": "AAAAAAFl8txfOW5nBuE="
 							},
 							"name": "Severity",
-							"stereotype": {
-								"$ref": "AAAAAAFl7tiDe3Ue2Oc="
-							},
+							"stereotype": "",
 							"type": "UInt16"
 						}
 					],
@@ -13581,7 +13610,7 @@
 									}
 								}
 							],
-							"documentation": "The base Component Type from which all MTConnect Components are derived from. The \ncomponent type factory is used to create the specific OPC/UA types as subtypes of the \nMTConnect `MTComponentType`. The component types will be created once for all Component objects \nof that type based on the `QName` of the MTConnect XML element. \n\nThe object factory will instantiate the Component Objects and insert them into the Components \nfolder with a browse name of the Component QName and the `name` element if specified surrounded \nby square brackets, `[]`. For example if the MTConnect Element is:\n\n`<Linear name='X'>...</...>`\n\nThe OPC/UA Object with browse name `Linear[X]` will be created with the HasTypeDefinition \nreferencing the `Linear` OPC/UA type. \n\nThe meta data for the component and it's relationships are static. The dynamic data will be \nrepresented using the _OPC/UA Part 8_ \n\n",
+							"documentation": "The base Component Type from which all MTConnect Components are derived. The \ncomponent type factory is used to create the specific OPC/UA Types as subtypes of the \nMTConnect \\texttt{MTComponentType}. The component types will be created once for all Component objects \nof that type based on the \\texttt{QName} of the MTConnect XML element. \n\nThe object factory will instantiate the Component Objects and insert them into the Components \nfolder with a browse name of the Component QName and the \\texttt{name} element if specified surrounded \nby square brackets, \\texttt{[]}. For example if the MTConnect Element is:\n\n\\texttt{<Linear name='X'>...</...>}\n\nThe OPC/UA Object with browse name \\texttt{Linear[X]} will be created with the HasTypeDefinition \nreferencing the \\texttt{Linear} OPC/UA type. \n\nThe meta data for the component and it's relationships are static. The dynamic data will be \nrepresented using the \\textit{OPC/UA Part 8}.\n\n",
 							"attributes": [
 								{
 									"_type": "UMLAttribute",
@@ -13589,7 +13618,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFl6KeUmMPbZZQ="
 									},
-									"name": "Id",
+									"name": "XmlId",
 									"type": "IdType"
 								},
 								{
@@ -13796,7 +13825,7 @@
 									}
 								}
 							],
-							"documentation": "The desription provides some general information about the \nmanufacture and serial number of the component. In the XML, the \\texttt{CDATA} is freeform \ntext that is represented in the \\texttt{Data} Property of the Description Object.",
+							"documentation": "The desription provides some general information about the \nmanufacture and serial number of the component. In the XML, the \\texttt{CDATA} is freeform \ntext that is represented in the \\texttt{Data} Property of the Description Object. The description is \nrelated to the component with the OPC/UA \\texttt{HasComponent} relationship.",
 							"attributes": [
 								{
 									"_type": "UMLAttribute",
@@ -14464,7 +14493,7 @@
 													"top": 245,
 													"width": 221.50146484375,
 													"height": 13,
-													"text": "+Id: IdType",
+													"text": "+XmlId: IdType",
 													"horizontalAlignment": 0
 												},
 												{
@@ -16684,7 +16713,7 @@
 													"visible": false,
 													"font": "Arial;13;0",
 													"left": -452,
-													"top": -1450,
+													"top": -1466,
 													"height": 13
 												},
 												{
@@ -16695,7 +16724,7 @@
 													},
 													"font": "Arial;13;1",
 													"left": 45,
-													"top": 759,
+													"top": 751,
 													"width": 207.9619140625,
 													"height": 13,
 													"text": "ChannelType"
@@ -16709,7 +16738,7 @@
 													"visible": false,
 													"font": "Arial;13;0",
 													"left": -452,
-													"top": -1450,
+													"top": -1466,
 													"width": 111.97900390625,
 													"height": 13,
 													"text": "(from Components)"
@@ -16723,14 +16752,14 @@
 													"visible": false,
 													"font": "Arial;13;0",
 													"left": -452,
-													"top": -1450,
+													"top": -1466,
 													"height": 13,
 													"horizontalAlignment": 1
 												}
 											],
 											"font": "Arial;13;0",
 											"left": 40,
-											"top": 752,
+											"top": 744,
 											"width": 217.9619140625,
 											"height": 25,
 											"stereotypeLabel": {
@@ -16767,7 +16796,7 @@
 													},
 													"font": "Arial;13;0",
 													"left": 45,
-													"top": 782,
+													"top": 774,
 													"width": 207.9619140625,
 													"height": 13,
 													"text": "+Number: Int32",
@@ -16784,7 +16813,7 @@
 													},
 													"font": "Arial;13;0",
 													"left": 45,
-													"top": 797,
+													"top": 789,
 													"width": 207.9619140625,
 													"height": 13,
 													"text": "+Name: String[0..1]",
@@ -16801,7 +16830,7 @@
 													},
 													"font": "Arial;13;0",
 													"left": 45,
-													"top": 812,
+													"top": 804,
 													"width": 207.9619140625,
 													"height": 13,
 													"text": "+MTDescription: String[0..1]",
@@ -16818,7 +16847,7 @@
 													},
 													"font": "Arial;13;0",
 													"left": 45,
-													"top": 827,
+													"top": 819,
 													"width": 207.9619140625,
 													"height": 13,
 													"text": "+CalibrationDate: UtcTime[0..1]",
@@ -16835,7 +16864,7 @@
 													},
 													"font": "Arial;13;0",
 													"left": 45,
-													"top": 842,
+													"top": 834,
 													"width": 207.9619140625,
 													"height": 13,
 													"text": "+NextCalibrationDate: UtcTime[0..1]",
@@ -16852,7 +16881,7 @@
 													},
 													"font": "Arial;13;0",
 													"left": 45,
-													"top": 857,
+													"top": 849,
 													"width": 207.9619140625,
 													"height": 13,
 													"text": "+CalibrationInitials: String[0..1]",
@@ -16861,7 +16890,7 @@
 											],
 											"font": "Arial;13;0",
 											"left": 40,
-											"top": 777,
+											"top": 769,
 											"width": 217.9619140625,
 											"height": 98
 										},
@@ -16877,7 +16906,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 32,
-											"top": 843,
+											"top": 835,
 											"width": 215.8037109375,
 											"height": 10
 										},
@@ -16893,7 +16922,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": -234,
-											"top": -757,
+											"top": -765,
 											"width": 10,
 											"height": 10
 										},
@@ -16909,7 +16938,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": -234,
-											"top": -757,
+											"top": -765,
 											"width": 10,
 											"height": 10
 										}
@@ -16917,7 +16946,7 @@
 									"font": "Arial;13;0",
 									"containerChangeable": true,
 									"left": 40,
-									"top": 752,
+									"top": 744,
 									"width": 217.9619140625,
 									"height": 129,
 									"nameCompartment": {
@@ -16958,7 +16987,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 135,
-											"top": 664,
+											"top": 660,
 											"width": 62.51806640625,
 											"height": 13,
 											"alpha": 1.83475984345821,
@@ -16980,7 +17009,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 135,
-											"top": 680,
+											"top": 676,
 											"width": 79.49169921875,
 											"height": 13,
 											"alpha": 1.4410936786311306,
@@ -17003,7 +17032,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 114,
-											"top": 674,
+											"top": 670,
 											"height": 13,
 											"alpha": -1.5707963267948966,
 											"distance": 15,
@@ -17087,7 +17116,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 151,
-											"top": 730,
+											"top": 722,
 											"width": 85.63623046875,
 											"height": 13,
 											"alpha": -1.34399742153978,
@@ -17109,7 +17138,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": 157,
-											"top": 717,
+											"top": 709,
 											"height": 13,
 											"alpha": -0.7853981633974483,
 											"distance": 40,
@@ -17128,7 +17157,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 107,
-											"top": 724,
+											"top": 716,
 											"width": 19.5126953125,
 											"height": 13,
 											"alpha": 0.5235987755982988,
@@ -17179,7 +17208,7 @@
 										"$ref": "AAAAAAFl9IWZhe9PoJ0="
 									},
 									"lineStyle": 2,
-									"points": "129:608;129:752",
+									"points": "129:608;129:744",
 									"showVisibility": true,
 									"nameLabel": {
 										"$ref": "AAAAAAFl9IXeC+/9GXU="
@@ -21042,7 +21071,7 @@
 											"left": 496,
 											"top": 1005,
 											"width": 185.931640625,
-											"height": 53
+											"height": 38
 										},
 										{
 											"_type": "UMLReceptionCompartmentView",
@@ -22324,7 +22353,7 @@
 													"top": 477,
 													"width": 234.26025390625,
 													"height": 13,
-													"text": "«Property»+Definition: String[0..1]",
+													"text": "+Definition: String[0..1]",
 													"horizontalAlignment": 0
 												},
 												{
@@ -22341,7 +22370,7 @@
 													"top": 492,
 													"width": 234.26025390625,
 													"height": 13,
-													"text": "«Property»+ValuePrecision: Double[0..1]",
+													"text": "+ValuePrecision: Double[0..1]",
 													"horizontalAlignment": 0
 												}
 											],
@@ -22538,7 +22567,7 @@
 													"top": 813,
 													"width": 289.40869140625,
 													"height": 13,
-													"text": "«Property»+InstrumentRange: Range[0..1]",
+													"text": "+InstrumentRange: Range[0..1]",
 													"horizontalAlignment": 0
 												},
 												{
@@ -22555,7 +22584,7 @@
 													"top": 828,
 													"width": 289.40869140625,
 													"height": 13,
-													"text": "«Property»+EURange: Range",
+													"text": "+EURange: Range",
 													"horizontalAlignment": 0
 												},
 												{
@@ -22572,7 +22601,7 @@
 													"top": 843,
 													"width": 289.40869140625,
 													"height": 13,
-													"text": "«Property»+EngineeringUnits: EUInformation[0..1]",
+													"text": "+EngineeringUnits: EUInformation[0..1]",
 													"horizontalAlignment": 0
 												}
 											],
@@ -22957,7 +22986,7 @@
 													"top": 805,
 													"width": 272.314453125,
 													"height": 13,
-													"text": "«Property»+EnumValues: EnumValueType[1..*]",
+													"text": "+EnumValues: EnumValueType[1..*]",
 													"horizontalAlignment": 0
 												},
 												{
@@ -22974,7 +23003,7 @@
 													"top": 820,
 													"width": 272.314453125,
 													"height": 13,
-													"text": "«Property»+ValueAsText: LocalizedText",
+													"text": "+ValueAsText: LocalizedText",
 													"horizontalAlignment": 0
 												}
 											],
@@ -25045,7 +25074,7 @@
 													"top": 918,
 													"width": 314.95166015625,
 													"height": 13,
-													"text": "«Property»+ConstrainedValues: EnumValuesType[0..*]",
+													"text": "+ConstrainedValues: EnumValuesType[0..*]",
 													"horizontalAlignment": 0
 												}
 											],
@@ -28814,7 +28843,7 @@
 													"top": 1749,
 													"width": 221.50146484375,
 													"height": 13,
-													"text": "+Id: IdType",
+													"text": "+XmlId: IdType",
 													"horizontalAlignment": 0
 												},
 												{
@@ -34001,9 +34030,7 @@
 									},
 									"name": "ConstrainedValues",
 									"documentation": "The set of constrained values for this MTConnect enumeration. The common parent type will contain the superset of all the values permissible in the type. This will constrain the values forr the specific data item instance.",
-									"stereotype": {
-										"$ref": "AAAAAAFl7tiDe3Ue2Oc="
-									},
+									"stereotype": "",
 									"type": "EnumValuesType",
 									"multiplicity": "0..*"
 								}
@@ -34275,7 +34302,7 @@
 									}
 								}
 							],
-							"documentation": "These are the additional attributes that are relevent to numeric data items. The factory will evaluate these values and will set the engineering units and the range associated with the parent entity.",
+							"documentation": "These are the additional attributes that are relevent to numeric data items. \nThe factory will evaluate these values and will set the engineering units and the \nrange associated with the parent entity.",
 							"stereotype": {
 								"$ref": "AAAAAAFl7lnYlSjr7WI="
 							},
@@ -34505,7 +34532,7 @@
 									}
 								}
 							],
-							"documentation": "For each DataItem the Sub Type, and the Type will be composed to be the  HasTypeDefinition relationship of the object. The BrowseName will also include the Composition Type if a composition Id is provided.",
+							"documentation": "For each DataItem the Sub Type, and the Type will be composed to be the \\texttt{HasTypeDefinition}\nrelationship of the object. The \\texttt{BrowseName} will also include the Composition Type \nif a composition Id is provided.",
 							"stereotype": {
 								"$ref": "AAAAAAFl8xQ2vrlfSuc="
 							},
@@ -36604,7 +36631,7 @@
 													"top": 518,
 													"width": 248.244140625,
 													"height": 13,
-													"text": "+Category: MTCategoryType[0..1]",
+													"text": "+Category: MTCategoryType",
 													"horizontalAlignment": 0
 												}
 											],
@@ -36767,9 +36794,9 @@
 												"$ref": "AAAAAAFl/Pv+vHa9rRo="
 											},
 											"font": "Arial;13;0",
-											"left": 1088,
+											"left": 1086,
 											"top": 888,
-											"width": 63.58447265625,
+											"width": 66.47265625,
 											"height": 13,
 											"alpha": -4.415324681852772,
 											"distance": 51.24451190127583,
@@ -36777,7 +36804,7 @@
 												"$ref": "AAAAAAFl/Pv+vHa/qO8="
 											},
 											"edgePosition": 1,
-											"text": "«MIxes In»"
+											"text": "«Mixes  In»"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -38287,9 +38314,9 @@
 												"$ref": "AAAAAAFl/RgIfH9MKQg="
 											},
 											"font": "Arial;13;0",
-											"left": 480,
+											"left": 478,
 											"top": 800,
-											"width": 63.58447265625,
+											"width": 66.47265625,
 											"height": 13,
 											"alpha": -1.6901099236308268,
 											"distance": 344.4488350974641,
@@ -38297,7 +38324,7 @@
 												"$ref": "AAAAAAFl/RgIfX9OWPo="
 											},
 											"edgePosition": 1,
-											"text": "«MIxes In»"
+											"text": "«Mixes  In»"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -38382,7 +38409,7 @@
 													"font": "Arial;13;3",
 													"left": 293,
 													"top": 255,
-													"width": 187.51611328125,
+													"width": 250.3896484375,
 													"height": 13,
 													"text": "Node"
 												},
@@ -38395,7 +38422,7 @@
 													"font": "Arial;13;0",
 													"left": 293,
 													"top": 270,
-													"width": 187.51611328125,
+													"width": 250.3896484375,
 													"height": 13,
 													"text": "(from OPCUA)"
 												},
@@ -38416,7 +38443,7 @@
 											"font": "Arial;13;0",
 											"left": 288,
 											"top": 248,
-											"width": 197.51611328125,
+											"width": 260.3896484375,
 											"height": 40,
 											"stereotypeLabel": {
 												"$ref": "AAAAAAFl/XhbWiFwIqI="
@@ -38453,9 +38480,9 @@
 													"font": "Arial;13;0",
 													"left": 293,
 													"top": 293,
-													"width": 187.51611328125,
+													"width": 250.3896484375,
 													"height": 13,
-													"text": "+NodeId: NodeId {id, unique}",
+													"text": "«Attribute»+NodeId: NodeId {id, unique}",
 													"horizontalAlignment": 0
 												},
 												{
@@ -38470,9 +38497,9 @@
 													"font": "Arial;13;0",
 													"left": 293,
 													"top": 308,
-													"width": 187.51611328125,
+													"width": 250.3896484375,
 													"height": 13,
-													"text": "+NodeClass: NodeClass",
+													"text": "«Attribute»+NodeClass: NodeClass",
 													"horizontalAlignment": 0
 												},
 												{
@@ -38487,9 +38514,9 @@
 													"font": "Arial;13;0",
 													"left": 293,
 													"top": 323,
-													"width": 187.51611328125,
+													"width": 250.3896484375,
 													"height": 13,
-													"text": "+BrowseName: QualifiedName",
+													"text": "«Attribute»+BrowseName: QualifiedName",
 													"horizontalAlignment": 0
 												},
 												{
@@ -38504,9 +38531,9 @@
 													"font": "Arial;13;0",
 													"left": 293,
 													"top": 338,
-													"width": 187.51611328125,
+													"width": 250.3896484375,
 													"height": 13,
-													"text": "+DisplayName: LocalizedText",
+													"text": "«Attribute»+DisplayName: LocalizedText",
 													"horizontalAlignment": 0
 												},
 												{
@@ -38521,9 +38548,9 @@
 													"font": "Arial;13;0",
 													"left": 293,
 													"top": 353,
-													"width": 187.51611328125,
+													"width": 250.3896484375,
 													"height": 13,
-													"text": "+Description: LocalizedText[0..1]",
+													"text": "«Attribute»+Description: LocalizedText[0..1]",
 													"horizontalAlignment": 0
 												},
 												{
@@ -38538,9 +38565,9 @@
 													"font": "Arial;13;0",
 													"left": 293,
 													"top": 368,
-													"width": 187.51611328125,
+													"width": 250.3896484375,
 													"height": 13,
-													"text": "+WriteMask: UInt32[0..1]",
+													"text": "«Attribute»+WriteMask: UInt32[0..1]",
 													"horizontalAlignment": 0
 												},
 												{
@@ -38555,16 +38582,16 @@
 													"font": "Arial;13;0",
 													"left": 293,
 													"top": 383,
-													"width": 187.51611328125,
+													"width": 250.3896484375,
 													"height": 13,
-													"text": "+UserWriteMask: UInt32[0..1]",
+													"text": "«Attribute»+UserWriteMask: UInt32[0..1]",
 													"horizontalAlignment": 0
 												}
 											],
 											"font": "Arial;13;0",
 											"left": 288,
 											"top": 288,
-											"width": 197.51611328125,
+											"width": 260.3896484375,
 											"height": 113
 										},
 										{
@@ -38620,7 +38647,7 @@
 									"containerChangeable": true,
 									"left": 288,
 									"top": 248,
-									"width": 197.51611328125,
+									"width": 260.3896484375,
 									"height": 153,
 									"showNamespace": true,
 									"nameCompartment": {
@@ -38932,7 +38959,7 @@
 													"top": 501,
 													"width": 280.4775390625,
 													"height": 13,
-													"text": "«Property»+EventId: ByteString",
+													"text": "+EventId: ByteString",
 													"horizontalAlignment": 0
 												},
 												{
@@ -38949,7 +38976,7 @@
 													"top": 516,
 													"width": 280.4775390625,
 													"height": 13,
-													"text": "«Property»+EventType: NodeId",
+													"text": "+EventType: NodeId",
 													"horizontalAlignment": 0
 												},
 												{
@@ -38966,7 +38993,7 @@
 													"top": 531,
 													"width": 280.4775390625,
 													"height": 13,
-													"text": "«Properety»+SourceNode: NodeId",
+													"text": "+SourceNode: NodeId",
 													"horizontalAlignment": 0
 												},
 												{
@@ -38983,7 +39010,7 @@
 													"top": 546,
 													"width": 280.4775390625,
 													"height": 13,
-													"text": "«Property»+SourceName: String",
+													"text": "+SourceName: String",
 													"horizontalAlignment": 0
 												},
 												{
@@ -39000,7 +39027,7 @@
 													"top": 561,
 													"width": 280.4775390625,
 													"height": 13,
-													"text": "«Property»+Time: UtcTime",
+													"text": "+Time: UtcTime",
 													"horizontalAlignment": 0
 												},
 												{
@@ -39017,7 +39044,7 @@
 													"top": 576,
 													"width": 280.4775390625,
 													"height": 13,
-													"text": "«Property»+ReceiveTime: UtcTime",
+													"text": "+ReceiveTime: UtcTime",
 													"horizontalAlignment": 0
 												},
 												{
@@ -39034,7 +39061,7 @@
 													"top": 591,
 													"width": 280.4775390625,
 													"height": 13,
-													"text": "«Property»+LocalTime: TimeZoneDataType[0..1]",
+													"text": "+LocalTime: TimeZoneDataType[0..1]",
 													"horizontalAlignment": 0
 												},
 												{
@@ -39051,7 +39078,7 @@
 													"top": 606,
 													"width": 280.4775390625,
 													"height": 13,
-													"text": "«Property»+Message: LocalizedText",
+													"text": "+Message: LocalizedText",
 													"horizontalAlignment": 0
 												},
 												{
@@ -39068,7 +39095,7 @@
 													"top": 621,
 													"width": 280.4775390625,
 													"height": 13,
-													"text": "«Property»+Severity: UInt16",
+													"text": "+Severity: UInt16",
 													"horizontalAlignment": 0
 												}
 											],
@@ -44453,7 +44480,7 @@
 											"top": 278,
 											"width": 351,
 											"height": 13,
-											"text": "+Id: IdType",
+											"text": "+MTId: IdType",
 											"horizontalAlignment": 0
 										},
 										{
@@ -46681,7 +46708,7 @@
 											"top": 436,
 											"width": 230,
 											"height": 13,
-											"text": "+Description: String[0..1]",
+											"text": "+MTDescription: String[0..1]",
 											"horizontalAlignment": 0
 										}
 									],

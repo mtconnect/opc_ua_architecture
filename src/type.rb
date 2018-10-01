@@ -1,32 +1,4 @@
-require 'json'
 
-uml = File.open('MTConnect OPC-UA Devices.mdj').read
-doc = JSON.parse(uml)
-
-models = doc['ownedElements'].select { |e| e['name'] != 'UMLStandardProfile' }
-
-class Model
-  attr_reader :name, :documentation
-
-  @@models = {}
-
-  def self.models
-    @@models
-  end
-
-  def initialize(e)
-    @name = e['name']
-    @documentation = e['documentation']
-    @type = e['_type']
-    @json = e
-
-    @@models[@name] = self
-  end
-
-  def to_s
-    @name
-  end
-end
 
 class Type
   attr_reader :name, :id, :type, :model
@@ -79,6 +51,8 @@ class Type
     @json = e
 
     @@types[@id] = self
+
+    @model.add_type(self)
   end
 
   def escape_name
@@ -223,7 +197,7 @@ class Type
     f.puts <<EOT
 \\begin{table}
 \\centering 
-  \\caption{\\texttt{escape_name} Definition}
+  \\caption{\\texttt{#{escape_name}} Definition}
   \\label{table:#{@name}}
 \\footnotesize
 \\tabulinesep=3pt
@@ -268,84 +242,4 @@ EOT
     generate_operations(f)
   
   end
-end
-
-def recurse(e, depth, model)
-  if e.include?('ownedElements')
-    e['ownedElements'].each do |f|      
-      find_definitions(f, depth + 1, model)
-    end
-  end
-end
-
-def find_definitions(e, depth = 0, model = nil)
-#  puts "#{'  ' * depth}#{model}::#{e['name']} #{e['_type']}"
-
-  case e['_type']
-  when 'UMLClass'
-    Type.new(model, e)
-
-  when 'UMLStereotype'
-    Type.new(model, e)
-
-  when 'UMLDataType', 'UMLEnumeration'
-#   puts "#{'  ' * depth}  Adding data type: #{e['name']}  id: #{e['_id']}"
-    Type.new(model, e)
-
-  when 'UMLModel', 'UMLProfile'
-#   puts "#{'  ' * depth}Model #{e['name']} - #{e['documentation']}"
-    model = Model.new(e)
-    recurse(e, depth, model)
-    
-  else
-    recurse(e, depth, model)
-  end
-end
-
-models.each do |e|
-  find_definitions(e)
-end
-
-Type.connect_children
-
-Type.types_by_model
-
-puts "\nGenerating LaTex"
-
-def generate_section(f, models, name)
-  f.puts "\\subsection{#{name}}"
-
-  f.puts <<EOT
-
-\\begin{figure}
-  \\centering
-    \\includegraphics[width=1.0\\textwidth]{diagrams/#{name}.png}
-  \\caption{#{name} Diagram}
-  \\label{fig:#{name}}
-\\end{figure}
-
-\\FloatBarrier
-
-EOT
-  
-  model = Model.models[name]
-  f.puts "\n#{model.documentation}\n\n"
-  
-  models[name].each do |type|
-    if type.type == 'UMLClass' or type.type == 'UMLStereotype'
-      puts type
-      type.generate_latex(f) 
-    end
-  end
-end
-
-File.open('./latex/types.tex', 'w') do |f|
-  models = Type.types_by_model
-
-  generate_section(f, models, 'Components')
-  generate_section(f, models, 'Data Items')
-  generate_section(f, models, 'Conditions')
-  generate_section(f, models, 'Factories')
-  generate_section(f, models, 'MTConnect Device Profile')
-  
 end

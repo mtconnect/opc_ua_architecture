@@ -1,3 +1,4 @@
+% Generated 2018-10-01 16:32:05 -0700
 \subsection{Components}
 
 \begin{figure}
@@ -20,7 +21,7 @@ The Components documents the Component models and the owned objects.
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{ChannelType} Definition}
   \label{table:ChannelType}
 \footnotesize
 \tabulinesep=3pt
@@ -50,11 +51,12 @@ HasProperty & Variable & CalibrationInitials &  String & PropertyType & Optional
 
 The desription provides some general information about the 
 manufacture and serial number of the component. In the XML, the \texttt{CDATA} is freeform 
-text that is represented in the \texttt{Data} Property of the Description Object.
+text that is represented in the \texttt{Data} Property of the Description Object. The description is 
+related to the component with the OPC/UA \texttt{HasComponent} relationship.
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{DescriptionType} Definition}
   \label{table:DescriptionType}
 \footnotesize
 \tabulinesep=3pt
@@ -89,28 +91,28 @@ HasProperty & Variable & Data &  String & PropertyType & Optional \\
 
 \FloatBarrier
 
-The base Component Type from which all MTConnect Components are derived from. The 
-component type factory is used to create the specific OPC/UA types as subtypes of the 
-MTConnect `MTComponentType`. The component types will be created once for all Component objects 
-of that type based on the `QName` of the MTConnect XML element. 
+The base Component Type from which all MTConnect Components are derived. The 
+component type factory is used to create the specific OPC/UA Types as subtypes of the 
+MTConnect \texttt{MTComponentType}. The component types will be created once for all Component objects 
+of that type based on the \texttt{QName} of the MTConnect XML element. 
 
 The object factory will instantiate the Component Objects and insert them into the Components 
-folder with a browse name of the Component QName and the `name` element if specified surrounded 
-by square brackets, `[]`. For example if the MTConnect Element is:
+folder with a browse name of the Component QName and the \texttt{name} element if specified surrounded 
+by square brackets, \texttt{[]}. For example if the MTConnect Element is:
 
-`<Linear name='X'>...</...>`
+\texttt{<Linear name='X'>...</...>}
 
-The OPC/UA Object with browse name `Linear[X]` will be created with the HasTypeDefinition 
-referencing the `Linear` OPC/UA type. 
+The OPC/UA Object with browse name \texttt{Linear[X]} will be created with the HasTypeDefinition 
+referencing the \texttt{Linear} OPC/UA type. 
 
 The meta data for the component and it's relationships are static. The dynamic data will be 
-represented using the _OPC/UA Part 8_ 
+represented using the \textit{OPC/UA Part 8}.
 
 
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{MTComponentType} Definition}
   \label{table:MTComponentType}
 \footnotesize
 \tabulinesep=3pt
@@ -122,7 +124,7 @@ BrowseName & \multicolumn{5}{|l|}{MTComponentType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-HasProperty & Variable & Id &  IdType & PropertyType & Manditory \\
+HasProperty & Variable & XmlId &  IdType & PropertyType & Manditory \\
 HasProperty & Variable & Name &  String & PropertyType & Optional \\
 HasProperty & Variable & NativeName &  String & PropertyType & Optional \\
 HasProperty & Variable & Uuid &  String & PropertyType & Optional \\
@@ -149,7 +151,7 @@ HasProperty & Variable & <Dynamic> &  {DataItem}Type & <Dynamic> & Manditory \\
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{MTCompositionType} Definition}
   \label{table:MTCompositionType}
 \footnotesize
 \tabulinesep=3pt
@@ -179,7 +181,7 @@ NonHierarchialReferenceType & Object & composition &  {DataItem}Type & NonHierar
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{MTConfigurationType} Definition}
   \label{table:MTConfigurationType}
 \footnotesize
 \tabulinesep=3pt
@@ -207,7 +209,7 @@ The  compositions, relationships, and data items are then recursively created as
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{MTDeviceType} Definition}
   \label{table:MTDeviceType}
 \footnotesize
 \tabulinesep=3pt
@@ -244,7 +246,7 @@ The SensorConfiguration browse name will be created as an Object relationship wi
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{SensorConfigurationType} Definition}
   \label{table:SensorConfigurationType}
 \footnotesize
 \tabulinesep=3pt
@@ -275,7 +277,7 @@ Organizes & Object & Channels &  ChannelType & FolderType & Optional \\
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{\{Component\}Type} Definition}
   \label{table:{Component}Type}
 \footnotesize
 \tabulinesep=3pt
@@ -301,7 +303,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{\{Composition\}Type} Definition}
   \label{table:{Composition}Type}
 \footnotesize
 \tabulinesep=3pt
@@ -341,7 +343,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{AssetChangedType} Definition}
   \label{table:AssetChangedType}
 \footnotesize
 \tabulinesep=3pt
@@ -367,7 +369,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{AssetEventType} Definition}
   \label{table:AssetEventType}
 \footnotesize
 \tabulinesep=3pt
@@ -394,7 +396,7 @@ HasProperty & Variable & AssetType &  String & PropertyType & Manditory \\
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{AssetRemovedType} Definition}
   \label{table:AssetRemovedType}
 \footnotesize
 \tabulinesep=3pt
@@ -420,7 +422,7 @@ The data item mixin will inject the properties and the methods into the related 
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{MTDataItemType} Definition}
   \label{table:MTDataItemType}
 \footnotesize
 \tabulinesep=3pt
@@ -468,7 +470,7 @@ All Data Items with Category EVENT having a Controlled Vocabularies will be of t
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{MTEnumeratedEventType} Definition}
   \label{table:MTEnumeratedEventType}
 \footnotesize
 \tabulinesep=3pt
@@ -495,7 +497,7 @@ These features will be subsumed by the OPC/UA client filtering directives.
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{MTFilterType} Definition}
   \label{table:MTFilterType}
 \footnotesize
 \tabulinesep=3pt
@@ -530,7 +532,7 @@ HasProperty & Variable & Value &  float & PropertyType & Manditory \\
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{MTMessageType} Definition}
   \label{table:MTMessageType}
 \footnotesize
 \tabulinesep=3pt
@@ -553,11 +555,13 @@ HasProperty & Variable & NativeCode &  String & PropertyType & Optional \\
 
 \FloatBarrier
 
-These are the additional attributes that are relevent to numeric data items. The factory will evaluate these values and will set the engineering units and the range associated with the parent entity.
+These are the additional attributes that are relevent to numeric data items. 
+The factory will evaluate these values and will set the engineering units and the 
+range associated with the parent entity.
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{MTNumericDataItemType} Definition}
   \label{table:MTNumericDataItemType}
 \footnotesize
 \tabulinesep=3pt
@@ -605,7 +609,7 @@ All data items with category EVENT and a numeric value.
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{MTNumericEventType} Definition}
   \label{table:MTNumericEventType}
 \footnotesize
 \tabulinesep=3pt
@@ -633,7 +637,7 @@ Data Items with category SAMPLE
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{MTSampleType} Definition}
   \label{table:MTSampleType}
 \footnotesize
 \tabulinesep=3pt
@@ -659,7 +663,7 @@ All data items with category EVENT where the data is freeform text. The set_data
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{MTStringEventType} Definition}
   \label{table:MTStringEventType}
 \footnotesize
 \tabulinesep=3pt
@@ -685,7 +689,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{MinimumDeltaFilterType} Definition}
   \label{table:MinimumDeltaFilterType}
 \footnotesize
 \tabulinesep=3pt
@@ -711,7 +715,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{PeriodFilterType} Definition}
   \label{table:PeriodFilterType}
 \footnotesize
 \tabulinesep=3pt
@@ -733,11 +737,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-For each DataItem the Sub Type, and the Type will be composed to be the  HasTypeDefinition relationship of the object. The BrowseName will also include the Composition Type if a composition Id is provided.
+For each DataItem the Sub Type, and the Type will be composed to be the \texttt{HasTypeDefinition}
+relationship of the object. The \texttt{BrowseName} will also include the Composition Type 
+if a composition Id is provided.
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{\{DataItem\}Type} Definition}
   \label{table:{DataItem}Type}
 \footnotesize
 \tabulinesep=3pt
@@ -777,7 +783,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{MTExclusiveLimitConditionType} Definition}
   \label{table:MTExclusiveLimitConditionType}
 \footnotesize
 \tabulinesep=3pt
@@ -803,7 +809,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{MTNonExclusiveConditionType} Definition}
   \label{table:MTNonExclusiveConditionType}
 \footnotesize
 \tabulinesep=3pt
@@ -829,7 +835,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \begin{table}
 \centering 
-  \caption{\texttt{escape_name} Definition}
+  \caption{\texttt{\{ConditionClass\}Type} Definition}
   \label{table:{ConditionClass}Type}
 \footnotesize
 \tabulinesep=3pt

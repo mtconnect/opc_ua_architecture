@@ -15,7 +15,7 @@ class Model
   end
 
   def initialize(e)
-    @name = e['name'].gsub('{', '\{').gsub('}'. '\}')
+    @name = e['name']
     @documentation = e['documentation']
     @type = e['_type']
     @json = e
@@ -70,6 +70,7 @@ class Type
     @model = model
 
     if e['stereotype']
+      p e['stereotype']
       @stereotype = resolve_type(e['stereotype'])
     end
 
@@ -78,6 +79,10 @@ class Type
     @json = e
 
     @@types[@id] = self
+  end
+
+  def escape_name
+    @name.gsub('{', '\{').gsub('}', '\}')
   end
 
   def add_child(c)
@@ -218,7 +223,7 @@ class Type
     f.puts <<EOT
 \\begin{table}
 \\centering 
-  \\caption{\\texttt{#{@name}} Definition}
+  \\caption{\\texttt{escape_name} Definition}
   \\label{table:#{@name}}
 \\footnotesize
 \\tabulinesep=3pt
@@ -248,7 +253,7 @@ EOT
     
   def generate_latex(f = STDOUT)
     f.puts <<EOT
-\\subsubsection{Defintion of \\texttt{#{@name}}} \\label{type:#{@name}}
+\\subsubsection{Defintion of #{stereotype_name} \\texttt{#{escape_name}}} \\label{type:#{@name}}
 
 \\FloatBarrier
 

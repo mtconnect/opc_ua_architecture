@@ -322,7 +322,7 @@ EOT
 
             else
               f.puts "\\paragraph{Dependency on #{target.name}}\n\n"
-              f.puts "This class relies on \\texttt{#{target.name}} (#{target.reference}) for \\texttt{#{stereo.name}} relationship.\n\n"
+              f.puts "This class relates to \\texttt{#{target.name}} (#{target.reference}) for a(n) \\texttt{#{stereo.name}} relationship.\n\n"
             end
           end
         end

@@ -1,4 +1,4 @@
-% Generated 2018-10-02 11:59:13 -0700
+% Generated 2018-10-02 12:04:21 -0700
 \subsection{Components}
 
 \begin{figure}
@@ -165,19 +165,19 @@ Documentation: The NodeId SHALL be derrived from the combination of the device U
 \end{itemize}
 \paragraph{Dependency on DataItemTypeFactory}
 
-This class relies on \texttt{DataItemTypeFactory} (See section \ref{type:DataItemTypeFactory}) for \texttt{use} relationship.
+This class relates to \texttt{DataItemTypeFactory} (See section \ref{type:DataItemTypeFactory}) for a(n) \texttt{use} relationship.
 
 \paragraph{Dependency on DataItemObjectFactory}
 
-This class relies on \texttt{DataItemObjectFactory} (See section \ref{type:DataItemObjectFactory}) for \texttt{use} relationship.
+This class relates to \texttt{DataItemObjectFactory} (See section \ref{type:DataItemObjectFactory}) for a(n) \texttt{use} relationship.
 
 \paragraph{Dependency on CompositionObjectFactory}
 
-This class relies on \texttt{CompositionObjectFactory} (See section \ref{type:CompositionObjectFactory}) for \texttt{use} relationship.
+This class relates to \texttt{CompositionObjectFactory} (See section \ref{type:CompositionObjectFactory}) for a(n) \texttt{use} relationship.
 
 \paragraph{Dependency on CompositionTypeFactory}
 
-This class relies on \texttt{CompositionTypeFactory} (See section \ref{type:CompositionTypeFactory}) for \texttt{use} relationship.
+This class relates to \texttt{CompositionTypeFactory} (See section \ref{type:CompositionTypeFactory}) for a(n) \texttt{use} relationship.
 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTCompositionType}} \label{type:MTCompositionType}
@@ -310,11 +310,11 @@ Documentation: The name of the Device SHALL be given.
 \end{itemize}
 \paragraph{Dependency on ComponentTypeFactory}
 
-This class relies on \texttt{ComponentTypeFactory} (See section \ref{type:ComponentTypeFactory}) for \texttt{use} relationship.
+This class relates to \texttt{ComponentTypeFactory} (See section \ref{type:ComponentTypeFactory}) for a(n) \texttt{use} relationship.
 
 \paragraph{Dependency on ComponentObjectFactory}
 
-This class relies on \texttt{ComponentObjectFactory} (See section \ref{type:ComponentObjectFactory}) for \texttt{use} relationship.
+This class relates to \texttt{ComponentObjectFactory} (See section \ref{type:ComponentObjectFactory}) for a(n) \texttt{use} relationship.
 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ SensorConfigurationType}} \label{type:SensorConfigurationType}
@@ -622,7 +622,7 @@ self.Source.CDATA
 \end{itemize}
 \paragraph{Dependency on FilterObjectFactory}
 
-This class relies on \texttt{FilterObjectFactory} (See section \ref{type:FilterObjectFactory}) for \texttt{use} relationship.
+This class relates to \texttt{FilterObjectFactory} (See section \ref{type:FilterObjectFactory}) for a(n) \texttt{use} relationship.
 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTEnumeratedEventType}} \label{type:MTEnumeratedEventType}
@@ -957,7 +957,7 @@ DataType & \multicolumn{5}{|l|}{String} \\
 
 \paragraph{Dependency on DataItemTypeFactory}
 
-This class relies on \texttt{DataItemTypeFactory} (See section \ref{type:DataItemTypeFactory}) for \texttt{use} relationship.
+This class relates to \texttt{DataItemTypeFactory} (See section \ref{type:DataItemTypeFactory}) for a(n) \texttt{use} relationship.
 
 \FloatBarrier
 \subsection{Conditions}
@@ -1001,7 +1001,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \paragraph{Dependency on MTDataItemType}
 
-This class relies on \texttt{MTDataItemType} (See section \ref{type:MTDataItemType}) for \texttt{Mixes  In} relationship.
+This class relates to \texttt{MTDataItemType} (See section \ref{type:MTDataItemType}) for a(n) \texttt{Mixes  In} relationship.
 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTNonExclusiveConditionType}} \label{type:MTNonExclusiveConditionType}
@@ -1031,7 +1031,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \paragraph{Dependency on MTDataItemType}
 
-This class relies on \texttt{MTDataItemType} (See section \ref{type:MTDataItemType}) for \texttt{Mixes  In} relationship.
+This class relates to \texttt{MTDataItemType} (See section \ref{type:MTDataItemType}) for a(n) \texttt{Mixes  In} relationship.
 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<Dynamic Type>> \{ConditionClass\}Type}} \label{type:{ConditionClass}Type}
@@ -1135,7 +1135,7 @@ derive: Component <- element.QName
 \end{itemize}
 \paragraph{Dependency on {Component}Type}
 
-This class relies on \texttt{{Component}Type} (See section \ref{type:{Component}Type}) for \texttt{Instantiates} relationship.
+This class relates to \texttt{{Component}Type} (See section \ref{type:{Component}Type}) for a(n) \texttt{Instantiates} relationship.
 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<Object Factory>> CompositionObjectFactory}} \label{type:CompositionObjectFactory}
@@ -1161,7 +1161,7 @@ concat(self.findDevice().uuid, element.id)
 \end{itemize}
 \paragraph{Dependency on {Composition}Type}
 
-This class relies on \texttt{{Composition}Type} (See section \ref{type:{Composition}Type}) for \texttt{Instantiates} relationship.
+This class relates to \texttt{{Composition}Type} (See section \ref{type:{Composition}Type}) for a(n) \texttt{Instantiates} relationship.
 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<Type Factory>> CompositionTypeFactory}} \label{type:CompositionTypeFactory}
@@ -1209,11 +1209,11 @@ derive: Composition <-
 \end{itemize}
 \paragraph{Dependency on MTExclusiveLimitConditionType}
 
-This class relies on \texttt{MTExclusiveLimitConditionType} (See section \ref{type:MTExclusiveLimitConditionType}) for \texttt{Instantiates} relationship.
+This class relates to \texttt{MTExclusiveLimitConditionType} (See section \ref{type:MTExclusiveLimitConditionType}) for a(n) \texttt{Instantiates} relationship.
 
 \paragraph{Dependency on MTNonExclusiveConditionType}
 
-This class relies on \texttt{MTNonExclusiveConditionType} (See section \ref{type:MTNonExclusiveConditionType}) for \texttt{Instantiates} relationship.
+This class relates to \texttt{MTNonExclusiveConditionType} (See section \ref{type:MTNonExclusiveConditionType}) for a(n) \texttt{Instantiates} relationship.
 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<Object Factory>> DataItemObjectFactory}} \label{type:DataItemObjectFactory}
@@ -1274,15 +1274,15 @@ will have the following browse name: \texttt{EncoderActualAngle}
 \end{itemize}
 \paragraph{Dependency on MTMessageType}
 
-This class relies on \texttt{MTMessageType} (See section \ref{type:MTMessageType}) for \texttt{Instantiates} relationship.
+This class relates to \texttt{MTMessageType} (See section \ref{type:MTMessageType}) for a(n) \texttt{Instantiates} relationship.
 
 \paragraph{Dependency on AssetChangedType}
 
-This class relies on \texttt{AssetChangedType} (See section \ref{type:AssetChangedType}) for \texttt{Instantiates} relationship.
+This class relates to \texttt{AssetChangedType} (See section \ref{type:AssetChangedType}) for a(n) \texttt{Instantiates} relationship.
 
 \paragraph{Dependency on AssetRemovedType}
 
-This class relies on \texttt{AssetRemovedType} (See section \ref{type:AssetRemovedType}) for \texttt{Instantiates} relationship.
+This class relates to \texttt{AssetRemovedType} (See section \ref{type:AssetRemovedType}) for a(n) \texttt{Instantiates} relationship.
 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<Type Factory>> DataItemTypeFactory}} \label{type:DataItemTypeFactory}
@@ -1320,7 +1320,7 @@ For example type \texttt{ROTARY_VELOCITY} and subType \texttt{ACTUAL} will becom
 \end{itemize}
 \paragraph{Dependency on {DataItem}Type}
 
-This class relies on \texttt{{DataItem}Type} (See section \ref{type:{DataItem}Type}) for \texttt{Instantiates} relationship.
+This class relates to \texttt{{DataItem}Type} (See section \ref{type:{DataItem}Type}) for a(n) \texttt{Instantiates} relationship.
 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<Object Factory>> DeviceObjectFactory}} \label{type:DeviceObjectFactory}
@@ -1346,7 +1346,7 @@ derive: element.uuid
 \end{itemize}
 \paragraph{Dependency on MTDeviceType}
 
-This class relies on \texttt{MTDeviceType} (See section \ref{type:MTDeviceType}) for \texttt{Instantiates} relationship.
+This class relates to \texttt{MTDeviceType} (See section \ref{type:MTDeviceType}) for a(n) \texttt{Instantiates} relationship.
 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<Object Factory>> FilterObjectFactory}} \label{type:FilterObjectFactory}
@@ -1364,11 +1364,11 @@ Creates filters based on the type attribute of the Filter element.
 \end{itemize}
 \paragraph{Dependency on MinimumDeltaFilterType}
 
-This class relies on \texttt{MinimumDeltaFilterType} (See section \ref{type:MinimumDeltaFilterType}) for \texttt{Instantiates} relationship.
+This class relates to \texttt{MinimumDeltaFilterType} (See section \ref{type:MinimumDeltaFilterType}) for a(n) \texttt{Instantiates} relationship.
 
 \paragraph{Dependency on PeriodFilterType}
 
-This class relies on \texttt{PeriodFilterType} (See section \ref{type:PeriodFilterType}) for \texttt{Instantiates} relationship.
+This class relates to \texttt{PeriodFilterType} (See section \ref{type:PeriodFilterType}) for a(n) \texttt{Instantiates} relationship.
 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<Object Factory>> ObjectFactory}} \label{type:ObjectFactory}
@@ -1413,7 +1413,7 @@ concat(self.parent.NodeId, BrowseName)
 \end{itemize}
 \paragraph{Dependency on ChannelType}
 
-This class relies on \texttt{ChannelType} (See section \ref{type:ChannelType}) for \texttt{Instantiates} relationship.
+This class relates to \texttt{ChannelType} (See section \ref{type:ChannelType}) for a(n) \texttt{Instantiates} relationship.
 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<Object Factory>> SensorObjectFactory}} \label{type:SensorObjectFactory}
@@ -1439,7 +1439,7 @@ concat(self.parent.NodeId, BrowseName)
 \end{itemize}
 \paragraph{Dependency on SensorConfigurationType}
 
-This class relies on \texttt{SensorConfigurationType} (See section \ref{type:SensorConfigurationType}) for \texttt{Instantiates} relationship.
+This class relates to \texttt{SensorConfigurationType} (See section \ref{type:SensorConfigurationType}) for a(n) \texttt{Instantiates} relationship.
 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<Type Factory>> TypeFactory}} \label{type:TypeFactory}

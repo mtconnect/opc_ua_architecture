@@ -9,20 +9,6 @@ class Type
     @@types
   end
 
-  def self.types_by_model
-    models = Hash.new
-    @@types.each do |id, type|
-      model = type.model.name || 'Stereotype'
-      puts "#{model}::#{type.name}"
-      a = (models[model] ||= [])
-      a << type
-    end
-    models.each do |model, types|
-      types.sort_by! { |t| t.name }
-    end
-    models
-  end
-
   def self.connect_children
     @@types.each do |id, type|
       parent = type.get_parent
@@ -40,12 +26,6 @@ class Type
     @operations = e['operations']
     @abstract = e['isAbstract'] || false
     @model = model
-
-    if e['stereotype']
-      @stereotype = resolve_type(e['stereotype'])
-    end
-
-    
 
     @children = []
 
@@ -65,6 +45,12 @@ class Type
   end
 
   def stereotype_name
+    if !defined?(@stereotype) and  @json['stereotype']
+      @stereotype = resolve_type(@json['stereotype'])
+    elsif !defined?(@stereotype)
+      @stereotype = nil
+    end
+      
     if @stereotype
       "<<#{@stereotype.name}>>"
     else
@@ -72,8 +58,10 @@ class Type
     end
   end
 
+  
+
   def to_s
-    "#{@model}::#{@name} -> #{stereotype_name} #{@type}"
+    "#{@model}::#{@name} -> #{stereotype_name} #{@type} #{@id}"
   end
 
   def resolve_type(ref)
@@ -95,16 +83,21 @@ class Type
   end
 
   def get_parent
-    if @relations
+    if @relations and !defined?(@parent)
       @relations.each do |rel|
         if rel['_type'] == 'UMLGeneralization'
           parent_id = rel['target']['$ref']
-          parent = @@types[parent_id]
-          return parent
+          @parent = @@types[parent_id]
         end
-      end        
+      end
+    elsif !defined?(@parent)
+      @parent = nil
     end
-    nil
+    @parent
+  end
+
+  def is_a_type?(type)
+    @name == type or (@parent and @parent.is_a_type?(type))
   end
   
   def generate_supertype(f)
@@ -127,12 +120,25 @@ class Type
     end
   end
 
+  def get_attribute_like(pattern)
+    if @attributes
+      @attributes.each do |a|
+        return a if a['name'] =~ pattern
+      end
+    end
+    return @parent.get_attribute_like(pattern) if @parent
+    nil
+  end
+    
+
   def generate_properties(f)
     if @attributes
       @attributes.each do |a|
         type = resolve_type_name(a['type'])
-        # puts "#{a['name']} -> #{type}"
-        f.puts "HasProperty & Variable & #{a['name']} &  #{type} & PropertyType & #{mandatory(a)} \\\\"
+        stereo = a['stereotype'] && resolve_type_name(a['stereotype'])
+        unless stereo =~ /Attribute/
+          f.puts "HasProperty & Variable & #{a['name']} &  #{type} & PropertyType & #{mandatory(a)} \\\\"
+        end
       end
     end
   end
@@ -240,6 +246,16 @@ class Type
 \\tabucline[1.5pt]{}
 BrowseName & \\multicolumn{5}{|l|}{#{@name}} \\\\
 IsAbstract & \\multicolumn{5}{|l|}{#{@abstract.to_s.capitalize}} \\\\
+EOT
+
+    if is_a_type?('BaseVariableType')
+      f.puts "ValueRank & \\multicolumn{5}{|l|}{-1} \\\\"
+      a = get_attribute_like(/DataType$/)
+      t = (a and a['type']) or 'BaseVariableType'
+      f.puts "DataType & \\multicolumn{5}{|l|}{#{t}} \\\\"
+    end
+
+    f.puts <<EOT
 \\tabucline[1.5pt]{}
 \\rowfont \\bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\\\
 EOT
@@ -260,7 +276,7 @@ EOT
     
   def generate_latex(f = STDOUT)
     f.puts <<EOT
-\\subsubsection{Defintion of #{stereotype_name} \\texttt{#{escape_name}}} \\label{type:#{@name}}
+\\subsubsection{Defintion of \\texttt{#{stereotype_name} #{escape_name}}} \\label{type:#{@name}}
 
 \\FloatBarrier
 

@@ -205,6 +205,12 @@ class Type
   end
 
   def generate_children(f)
+    unless @children.empty?
+      @children.each do |c|
+        t = c.is_a_type?('BaseVariableType') ? 'VariableType' : 'ObjectType'
+        f.puts "HasSubtype & #{t} & #{c.escape_name} & \\multicolumn{3}{|l|}{#{c.reference}} \\\\"
+      end
+    end
   end
 
   def generate_operations(f)
@@ -238,7 +244,7 @@ class Type
 
   def generate_type_table(f)
     f.puts <<EOT
-\\begin{table}
+\\begin{table}[ht]
 \\centering 
   \\caption{\\texttt{#{escape_name}} Definition}
   \\label{table:#{@name}}
@@ -265,9 +271,9 @@ EOT
 EOT
 
     generate_supertype(f)
+    generate_children(f)
     generate_properties(f)
     generate_relations(f)
-    generate_children(f)
 
     f.puts <<EOT
 \\end{tabu}
@@ -282,10 +288,9 @@ EOT
       f.puts "#{@documentation}" if @documentation
 
       f.puts <<EOT
-\\begin{table}
+\\begin{table}[ht]
 \\centering 
   \\caption{\\texttt{#{escape_name}} Enumeration}
-  \\label{table:#{@name}}
 \\tabulinesep=3pt
 \\begin{tabu} to 6in {|l|r|} \\everyrow{\\hline}
 \\hline

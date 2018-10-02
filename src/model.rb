@@ -37,7 +37,7 @@ class Model
     
     f.puts <<EOT
 
-\\begin{figure}
+\\begin{figure}[ht]
   \\centering
     \\includegraphics[width=1.0\\textwidth]{diagrams/#{name}.png}
   \\caption{#{name} Diagram}

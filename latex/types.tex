@@ -1,7 +1,7 @@
-% Generated 2018-10-02 14:11:45 -0700
+% Generated 2018-10-02 14:37:02 -0700
 \subsection{Components}
 
-\begin{figure}
+\begin{figure}[ht]
   \centering
     \includegraphics[width=1.0\textwidth]{diagrams/Components.png}
   \caption{Components Diagram}
@@ -25,7 +25,7 @@ which is the unique identifier.
 The channels will be created by the \texttt{SensorChannelObjectFactory} that composes the \texttt{BrowseName} 
 and the \texttt{NodeId} for each object. (See \ref{type:SensorChannelObjectFactory}).
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{ChannelType} Definition}
   \label{table:ChannelType}
@@ -60,7 +60,7 @@ manufacture and serial number of the component. In the XML, the \texttt{CDATA} i
 text that is represented in the \texttt{Data} Property of the Description Object. The description is 
 related to the component with the OPC/UA \texttt{HasComponent} relationship.
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{DescriptionType} Definition}
   \label{table:DescriptionType}
@@ -122,7 +122,7 @@ represented using the \textit{OPC/UA Part 8}.
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{MTComponentType} Definition}
   \label{table:MTComponentType}
@@ -136,6 +136,8 @@ BrowseName & \multicolumn{5}{|l|}{MTComponentType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+HasSubtype & ObjectType & MTDeviceType & \multicolumn{3}{|l|}{See section \ref{type:MTDeviceType}} \\
+HasSubtype & ObjectType & \{Component\}Type & \multicolumn{3}{|l|}{See section \ref{type:{Component}Type}} \\
 HasProperty & Variable & XmlId &  IdType & PropertyType & Mandatory \\
 HasProperty & Variable & Name &  String & PropertyType & Optional \\
 HasProperty & Variable & NativeName &  String & PropertyType & Optional \\
@@ -194,7 +196,7 @@ The data items are added to the relationship where the \texttt{DataItem} to \tex
 relationship is represented by the \texttt{BrowseName} Composition property of the data item 
 the data items are added by their browse names to the \texttt{Composition}.
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{MTCompositionType} Definition}
   \label{table:MTCompositionType}
@@ -209,6 +211,7 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of BaseObjectType (See OPCUA Documentation)} \\
+HasSubtype & ObjectType & \{Composition\}Type & \multicolumn{3}{|l|}{See section \ref{type:{Composition}Type}} \\
 HasProperty & Variable & Uuid &  String & PropertyType & Optional \\
 HasProperty & Variable & Name &  String & PropertyType & Optional \\
 HasProperty & Variable & MTDescription &  String & PropertyType & Optional \\
@@ -227,7 +230,7 @@ The abstract \texttt{MTConfigurationType} currently has only one sub-type, \\
 \ref{type:SensorConfigurationType}). In the future the configurations will also contain component 
 and device configuration information as sub-types. 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{MTConfigurationType} Definition}
   \label{table:MTConfigurationType}
@@ -242,6 +245,7 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of BaseObjectType (See OPCUA Documentation)} \\
+HasSubtype & ObjectType & SensorConfigurationType & \multicolumn{3}{|l|}{See section \ref{type:SensorConfigurationType}} \\
 \end{tabu}
 \end{table} 
 
@@ -255,7 +259,7 @@ The MTDevice is a special type whose object will be the root of the device graph
 
 The  compositions, relationships, and data items are then recursively created as one decendes the MTConnect informaiton model.
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{MTDeviceType} Definition}
   \label{table:MTDeviceType}
@@ -323,7 +327,7 @@ This class relates to \texttt{ComponentObjectFactory} (See section \ref{type:Com
 
 The SensorConfiguration browse name will be created as an Object relationship with the parent component.
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{SensorConfigurationType} Definition}
   \label{table:SensorConfigurationType}
@@ -354,7 +358,7 @@ Organizes & Object & Channels &  ChannelType & FolderType & Optional \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{\{Component\}Type} Definition}
   \label{table:{Component}Type}
@@ -380,7 +384,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{\{Composition\}Type} Definition}
   \label{table:{Composition}Type}
@@ -402,7 +406,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 \subsection{Data Items}
 
-\begin{figure}
+\begin{figure}[ht]
   \centering
     \includegraphics[width=1.0\textwidth]{diagrams/Data Items.png}
   \caption{Data Items Diagram}
@@ -421,7 +425,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 See \texttt{ActuatorState} in section 6.2 Event \textit{Element Names}
 of MTConnect Part 3 -- Streams Information Model.
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{ActuatorStateType} Definition}
   \label{table:ActuatorStateType}
@@ -443,10 +447,9 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 \paragraph{Allowable Values}
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{ActiveStateValues} Enumeration}
-  \label{table:ActiveStateValues}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -463,7 +466,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{AssetChangedType} Definition}
   \label{table:AssetChangedType}
@@ -491,7 +494,7 @@ DataType & \multicolumn{5}{|l|}{String} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{AssetEventType} Definition}
   \label{table:AssetEventType}
@@ -508,6 +511,8 @@ DataType & \multicolumn{5}{|l|}{String} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTStringEventType (See section \ref{type:MTStringEventType})} \\
+HasSubtype & VariableType & AssetChangedType & \multicolumn{3}{|l|}{See section \ref{type:AssetChangedType}} \\
+HasSubtype & VariableType & AssetRemovedType & \multicolumn{3}{|l|}{See section \ref{type:AssetRemovedType}} \\
 HasProperty & Variable & AssetType &  String & PropertyType & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -520,7 +525,7 @@ HasProperty & Variable & AssetType &  String & PropertyType & Mandatory \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{AssetRemovedType} Definition}
   \label{table:AssetRemovedType}
@@ -548,7 +553,7 @@ DataType & \multicolumn{5}{|l|}{String} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{AvailabilityType} Definition}
   \label{table:AvailabilityType}
@@ -570,10 +575,9 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 \paragraph{Allowable Values}
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{AvailabilityValues} Enumeration}
-  \label{table:AvailabilityValues}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -590,7 +594,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{AxisCouplingType} Definition}
   \label{table:AxisCouplingType}
@@ -612,10 +616,9 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 \paragraph{Allowable Values}
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{AxisCouplingValues} Enumeration}
-  \label{table:AxisCouplingValues}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -634,7 +637,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{AxisInterlockType} Definition}
   \label{table:AxisInterlockType}
@@ -656,10 +659,9 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 \paragraph{Allowable Values}
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{ActiveStateValues} Enumeration}
-  \label{table:ActiveStateValues}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -676,7 +678,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{AxisStateType} Definition}
   \label{table:AxisStateType}
@@ -695,10 +697,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \paragraph{Allowable Values}
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{AxisStateValues} Enumeration}
-  \label{table:AxisStateValues}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -717,7 +718,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{ChuckInterlockType} Definition}
   \label{table:ChuckInterlockType}
@@ -739,10 +740,9 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 \paragraph{Allowable Values}
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{ActiveStateValues} Enumeration}
-  \label{table:ActiveStateValues}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -759,7 +759,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{ChuckStateType} Definition}
   \label{table:ChuckStateType}
@@ -781,10 +781,9 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 \paragraph{Allowable Values}
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{OpenStateValues} Enumeration}
-  \label{table:OpenStateValues}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -802,7 +801,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{CompositionStateType} Definition}
   \label{table:CompositionStateType}
@@ -824,10 +823,9 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 \paragraph{Allowable Values}
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{CompositionStateValues} Enumeration}
-  \label{table:CompositionStateValues}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -854,7 +852,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{ControllerModeOverrideType} Definition}
   \label{table:ControllerModeOverrideType}
@@ -876,10 +874,9 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 \paragraph{Allowable Values}
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{OnOffValues} Enumeration}
-  \label{table:OnOffValues}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -896,7 +893,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{ControllerModeType} Definition}
   \label{table:ControllerModeType}
@@ -918,10 +915,9 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 \paragraph{Allowable Values}
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{ControllerModeValues} Enumeration}
-  \label{table:ControllerModeValues}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -941,7 +937,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{DirectionType} Definition}
   \label{table:DirectionType}
@@ -963,10 +959,9 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 \paragraph{Allowable Values}
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{DirectionValues} Enumeration}
-  \label{table:DirectionValues}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -985,7 +980,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{DoorStateType} Definition}
   \label{table:DoorStateType}
@@ -1007,10 +1002,9 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 \paragraph{Allowable Values}
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{OpenStateValues} Enumeration}
-  \label{table:OpenStateValues}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -1028,7 +1022,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{EmergencyStopType} Definition}
   \label{table:EmergencyStopType}
@@ -1050,10 +1044,9 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 \paragraph{Allowable Values}
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{EmergencyStopValues} Enumeration}
-  \label{table:EmergencyStopValues}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -1070,7 +1063,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{EndOfBar} Definition}
   \label{table:EndOfBar}
@@ -1092,10 +1085,9 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 \paragraph{Allowable Values}
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{YesNoValues} Enumeration}
-  \label{table:YesNoValues}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -1112,7 +1104,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{EquipmentModeType} Definition}
   \label{table:EquipmentModeType}
@@ -1134,10 +1126,9 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 \paragraph{Allowable Values}
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{OnOffValues} Enumeration}
-  \label{table:OnOffValues}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -1154,7 +1145,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{ExecutionType} Definition}
   \label{table:ExecutionType}
@@ -1176,10 +1167,9 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 \paragraph{Allowable Values}
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{ExecutionValues} Enumeration}
-  \label{table:ExecutionValues}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -1202,7 +1192,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{FunctionalModeType} Definition}
   \label{table:FunctionalModeType}
@@ -1224,10 +1214,9 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 \paragraph{Allowable Values}
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{FunctionalModeValues} Enumeration}
-  \label{table:FunctionalModeValues}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -1247,7 +1236,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 The data item mixin will inject the properties and the methods into the related classes. This facility is similar to the Ruby module mixin or the Scala traits.
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{MTDataItemType} Definition}
   \label{table:MTDataItemType}
@@ -1261,6 +1250,7 @@ BrowseName & \multicolumn{5}{|l|}{MTDataItemType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+HasSubtype & ObjectType & MTNumericDataItemType & \multicolumn{3}{|l|}{See section \ref{type:MTNumericDataItemType}} \\
 HasProperty & Variable & SourceName &  String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate &  Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate &  Double & PropertyType & Optional \\
@@ -1302,7 +1292,7 @@ This class relates to \texttt{FilterObjectFactory} (See section \ref{type:Filter
 
 All Data Items with Category EVENT having a Controlled Vocabularies will be of this type. Otherwise, MTString
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{MTEnumeratedEventType} Definition}
   \label{table:MTEnumeratedEventType}
@@ -1319,6 +1309,27 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of MultiStateValueDiscreteType (See OPCUA Documentation)} \\
+HasSubtype & VariableType & ExecutionType & \multicolumn{3}{|l|}{See section \ref{type:ExecutionType}} \\
+HasSubtype & VariableType & ActuatorStateType & \multicolumn{3}{|l|}{See section \ref{type:ActuatorStateType}} \\
+HasSubtype & VariableType & AvailabilityType & \multicolumn{3}{|l|}{See section \ref{type:AvailabilityType}} \\
+HasSubtype & VariableType & AxisCouplingType & \multicolumn{3}{|l|}{See section \ref{type:AxisCouplingType}} \\
+HasSubtype & VariableType & AxisInterlockType & \multicolumn{3}{|l|}{See section \ref{type:AxisInterlockType}} \\
+HasSubtype & VariableType & ChuckInterlockType & \multicolumn{3}{|l|}{See section \ref{type:ChuckInterlockType}} \\
+HasSubtype & VariableType & ChuckStateType & \multicolumn{3}{|l|}{See section \ref{type:ChuckStateType}} \\
+HasSubtype & VariableType & CompositionStateType & \multicolumn{3}{|l|}{See section \ref{type:CompositionStateType}} \\
+HasSubtype & VariableType & ControllerModeType & \multicolumn{3}{|l|}{See section \ref{type:ControllerModeType}} \\
+HasSubtype & VariableType & ControllerModeOverrideType & \multicolumn{3}{|l|}{See section \ref{type:ControllerModeOverrideType}} \\
+HasSubtype & VariableType & DirectionType & \multicolumn{3}{|l|}{See section \ref{type:DirectionType}} \\
+HasSubtype & VariableType & DoorStateType & \multicolumn{3}{|l|}{See section \ref{type:DoorStateType}} \\
+HasSubtype & VariableType & EndOfBar & \multicolumn{3}{|l|}{See section \ref{type:EndOfBar}} \\
+HasSubtype & VariableType & EmergencyStopType & \multicolumn{3}{|l|}{See section \ref{type:EmergencyStopType}} \\
+HasSubtype & VariableType & EquipmentModeType & \multicolumn{3}{|l|}{See section \ref{type:EquipmentModeType}} \\
+HasSubtype & VariableType & FunctionalModeType & \multicolumn{3}{|l|}{See section \ref{type:FunctionalModeType}} \\
+HasSubtype & VariableType & PathModeType & \multicolumn{3}{|l|}{See section \ref{type:PathModeType}} \\
+HasSubtype & VariableType & PowerStateType & \multicolumn{3}{|l|}{See section \ref{type:PowerStateType}} \\
+HasSubtype & VariableType & ProgramEditType & \multicolumn{3}{|l|}{See section \ref{type:ProgramEditType}} \\
+HasSubtype & VariableType & RotaryModeType & \multicolumn{3}{|l|}{See section \ref{type:RotaryModeType}} \\
+HasSubtype & VariableType & SpindleInterlockType & \multicolumn{3}{|l|}{See section \ref{type:SpindleInterlockType}} \\
 HasProperty & Variable & ConstrainedValues &  EnumValuesType & PropertyType & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -1331,7 +1342,7 @@ HasProperty & Variable & ConstrainedValues &  EnumValuesType & PropertyType & Ma
 
 These features will be subsumed by the OPC/UA client filtering directives.
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{MTFilterType} Definition}
   \label{table:MTFilterType}
@@ -1345,6 +1356,8 @@ BrowseName & \multicolumn{5}{|l|}{MTFilterType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+HasSubtype & ObjectType & MinimumDeltaFilterType & \multicolumn{3}{|l|}{See section \ref{type:MinimumDeltaFilterType}} \\
+HasSubtype & ObjectType & PeriodFilterType & \multicolumn{3}{|l|}{See section \ref{type:PeriodFilterType}} \\
 HasProperty & Variable & Value &  float & PropertyType & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -1372,7 +1385,7 @@ concat(parent.NodeId, pascalCase(element.type))
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{MTMessageType} Definition}
   \label{table:MTMessageType}
@@ -1403,7 +1416,7 @@ These are the additional attributes that are relevent to numeric data items.
 The factory will evaluate these values and will set the engineering units and the 
 range associated with the parent entity.
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{MTNumericDataItemType} Definition}
   \label{table:MTNumericDataItemType}
@@ -1457,7 +1470,7 @@ Event and the Sample types.
 
 All data items with category EVENT and a numeric value.
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{MTNumericEventType} Definition}
   \label{table:MTNumericEventType}
@@ -1487,7 +1500,7 @@ HasProperty & Variable & EngineeringUnits &  EUInformation & PropertyType & Opti
 
 Data Items with category SAMPLE
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{MTSampleType} Definition}
   \label{table:MTSampleType}
@@ -1515,7 +1528,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 All data items with category EVENT where the data is freeform text. The set_data_type constraint derives  makes the data type a string for this type.
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{MTStringEventType} Definition}
   \label{table:MTStringEventType}
@@ -1532,6 +1545,9 @@ DataType & \multicolumn{5}{|l|}{String} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of BaseDataVariableType (See OPCUA Documentation)} \\
+HasSubtype & VariableType & \{DataItem\}Type & \multicolumn{3}{|l|}{See section \ref{type:{DataItem}Type}} \\
+HasSubtype & VariableType & MTMessageType & \multicolumn{3}{|l|}{See section \ref{type:MTMessageType}} \\
+HasSubtype & VariableType & AssetEventType & \multicolumn{3}{|l|}{See section \ref{type:AssetEventType}} \\
 \end{tabu}
 \end{table} 
 
@@ -1551,7 +1567,7 @@ derive: DataType <-String
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{MinimumDeltaFilterType} Definition}
   \label{table:MinimumDeltaFilterType}
@@ -1577,7 +1593,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{PathModeType} Definition}
   \label{table:PathModeType}
@@ -1599,10 +1615,9 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 \paragraph{Allowable Values}
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{PathModeValues} Enumeration}
-  \label{table:PathModeValues}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -1621,7 +1636,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{PeriodFilterType} Definition}
   \label{table:PeriodFilterType}
@@ -1647,7 +1662,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{PowerStateType} Definition}
   \label{table:PowerStateType}
@@ -1669,10 +1684,9 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 \paragraph{Allowable Values}
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{OnOffValues} Enumeration}
-  \label{table:OnOffValues}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -1689,7 +1703,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{ProgramEditType} Definition}
   \label{table:ProgramEditType}
@@ -1711,10 +1725,9 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 \paragraph{Allowable Values}
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{ProgramEditValues} Enumeration}
-  \label{table:ProgramEditValues}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -1722,7 +1735,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 \tabucline[1.5pt]{}
 \texttt{ACTIVE} & \texttt{0} \\
 \texttt{NOT_READY} & \texttt{1} \\
-\texttt{READY} & \texttt{1} \\
+\texttt{READY} & \texttt{2} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -1732,7 +1745,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{RotaryModeType} Definition}
   \label{table:RotaryModeType}
@@ -1754,10 +1767,9 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 \paragraph{Allowable Values}
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{RotaryModeValues} Enumeration}
-  \label{table:RotaryModeValues}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -1775,7 +1787,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{SpindleInterlockType} Definition}
   \label{table:SpindleInterlockType}
@@ -1797,10 +1809,9 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 
 \paragraph{Allowable Values}
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{ActiveStateValues} Enumeration}
-  \label{table:ActiveStateValues}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -1819,7 +1830,7 @@ For each DataItem the Sub Type, and the Type will be composed to be the \texttt{
 relationship of the object. The \texttt{BrowseName} will also include the Composition Type 
 if a composition Id is provided.
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{\{DataItem\}Type} Definition}
   \label{table:{DataItem}Type}
@@ -1847,7 +1858,7 @@ This class relates to \texttt{DataItemTypeFactory} (See section \ref{type:DataIt
 \FloatBarrier
 \subsection{Conditions}
 
-\begin{figure}
+\begin{figure}[ht]
   \centering
     \includegraphics[width=1.0\textwidth]{diagrams/Conditions.png}
   \caption{Conditions Diagram}
@@ -1865,7 +1876,7 @@ This class relates to \texttt{DataItemTypeFactory} (See section \ref{type:DataIt
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{MTExclusiveLimitConditionType} Definition}
   \label{table:MTExclusiveLimitConditionType}
@@ -1895,7 +1906,7 @@ This class relates to \texttt{MTDataItemType} (See section \ref{type:MTDataItemT
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{MTNonExclusiveConditionType} Definition}
   \label{table:MTNonExclusiveConditionType}
@@ -1925,7 +1936,7 @@ This class relates to \texttt{MTDataItemType} (See section \ref{type:MTDataItemT
 
 
 
-\begin{table}
+\begin{table}[ht]
 \centering 
   \caption{\texttt{\{ConditionClass\}Type} Definition}
   \label{table:{ConditionClass}Type}
@@ -1947,7 +1958,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 \subsection{Factories}
 
-\begin{figure}
+\begin{figure}[ht]
   \centering
     \includegraphics[width=1.0\textwidth]{diagrams/Factories.png}
   \caption{Factories Diagram}
@@ -2341,7 +2352,7 @@ This class relates to \texttt{SensorConfigurationType} (See section \ref{type:Se
 \FloatBarrier
 \subsection{MTConnect Device Profile}
 
-\begin{figure}
+\begin{figure}[ht]
   \centering
     \includegraphics[width=1.0\textwidth]{diagrams/MTConnect Device Profile.png}
   \caption{MTConnect Device Profile Diagram}

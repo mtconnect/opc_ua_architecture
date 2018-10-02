@@ -199,9 +199,9 @@ class Type
 \\centering 
   \\caption{\\texttt{#{escape_name}} Definition}
   \\label{table:#{@name}}
-\\footnotesize
+\\fontsize{9pt}{11pt}\\selectfont
 \\tabulinesep=3pt
-\\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \\everyrow{\\hline}
+\\begin{tabu} to 6in {|l|l|l|l|l|l|} \\everyrow{\\hline}
 \\hline
 \\rowfont\\bfseries {Attribute} & \\multicolumn{5}{|l|}{Value} \\\\
 \\tabucline[1.5pt]{}

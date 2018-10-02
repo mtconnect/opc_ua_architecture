@@ -1,4 +1,4 @@
-% Generated 2018-10-01 16:36:35 -0700
+% Generated 2018-10-01 17:26:54 -0700
 \subsection{Components}
 
 \begin{figure}
@@ -23,9 +23,9 @@ The Components documents the Component models and the owned objects.
 \centering 
   \caption{\texttt{ChannelType} Definition}
   \label{table:ChannelType}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -58,9 +58,9 @@ related to the component with the OPC/UA \texttt{HasComponent} relationship.
 \centering 
   \caption{\texttt{DescriptionType} Definition}
   \label{table:DescriptionType}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -114,9 +114,9 @@ represented using the \textit{OPC/UA Part 8}.
 \centering 
   \caption{\texttt{MTComponentType} Definition}
   \label{table:MTComponentType}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -134,10 +134,9 @@ HasComponent & Object & Description &   & DescriptionType & Optional \\
 HasComponent & Object & Configuration &   & MTConfigurationType & Optional \\
 Organizes & Object & Components &  MTComponentType & FolderType & Optional \\
 Organizes & Object & Compositions &  MTCompositionType & FolderType & Optional \\
-HasProperty & Variable & <Dynamic> &  {DataItem}Type & <Dynamic> & Optional \\
 HasProperty & Variable & <Dynamic> &  BaseObjectType & <Dynamic> & Optional \\
-Organizes & Object & Conditions &  MTNonExclusiveConditionType & FolderType & Optional \\
-HasProperty & Variable & <Dynamic> &  {DataItem}Type & <Dynamic> & Manditory \\
+Organizes & Object & Conditions &  AlarmConditionType & FolderType & Optional \\
+HasProperty & Variable & <Dynamic> &  {DataItem}Type & <Dynamic> & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -147,15 +146,23 @@ HasProperty & Variable & <Dynamic> &  {DataItem}Type & <Dynamic> & Manditory \\
 
 \FloatBarrier
 
+The \texttt{MTCompositionType} is the abstract supertype of the dynamically generated
+composition types based on the attribute \texttt{type} of the \texttt{Composition} element
+of the MTConnect \texttt{Component}. The \texttt{Composition} is then related to the 
+DataItems that reference the \texttt{Composition}'s id in their \texttt{compositionId} 
+attribute. 
 
+The data items are added to the relationship where the \texttt{DataItem} to \texttt{Composition} 
+relationship is represented by the \texttt{BrowseName} Composition property of the data item 
+the data items are added by their browse names to the \texttt{Composition}.
 
 \begin{table}
 \centering 
   \caption{\texttt{MTCompositionType} Definition}
   \label{table:MTCompositionType}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -167,7 +174,7 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 HasProperty & Variable & Uuid &  String & PropertyType & Optional \\
 HasProperty & Variable & Name &  String & PropertyType & Optional \\
 HasProperty & Variable & MTDescription &  String & PropertyType & Optional \\
-NonHierarchialReferenceType & Object & composition &  {DataItem}Type & NonHierarchialReferenceType & Optional \\
+NonHierarchialReferenceType & Object & <DataItem> &  {DataItem}Type & NonHierarchialReferenceType & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -183,9 +190,9 @@ NonHierarchialReferenceType & Object & composition &  {DataItem}Type & NonHierar
 \centering 
   \caption{\texttt{MTConfigurationType} Definition}
   \label{table:MTConfigurationType}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -211,9 +218,9 @@ The  compositions, relationships, and data items are then recursively created as
 \centering 
   \caption{\texttt{MTDeviceType} Definition}
   \label{table:MTDeviceType}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -248,9 +255,9 @@ The SensorConfiguration browse name will be created as an Object relationship wi
 \centering 
   \caption{\texttt{SensorConfigurationType} Definition}
   \label{table:SensorConfigurationType}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -279,9 +286,9 @@ Organizes & Object & Channels &  ChannelType & FolderType & Optional \\
 \centering 
   \caption{\texttt{\{Component\}Type} Definition}
   \label{table:{Component}Type}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -305,9 +312,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \centering 
   \caption{\texttt{\{Composition\}Type} Definition}
   \label{table:{Composition}Type}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -345,9 +352,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \centering 
   \caption{\texttt{AssetChangedType} Definition}
   \label{table:AssetChangedType}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -371,9 +378,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \centering 
   \caption{\texttt{AssetEventType} Definition}
   \label{table:AssetEventType}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -398,9 +405,9 @@ HasProperty & Variable & AssetType &  String & PropertyType & Manditory \\
 \centering 
   \caption{\texttt{AssetRemovedType} Definition}
   \label{table:AssetRemovedType}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -424,9 +431,9 @@ The data item mixin will inject the properties and the methods into the related 
 \centering 
   \caption{\texttt{MTDataItemType} Definition}
   \label{table:MTDataItemType}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -472,9 +479,9 @@ All Data Items with Category EVENT having a Controlled Vocabularies will be of t
 \centering 
   \caption{\texttt{MTEnumeratedEventType} Definition}
   \label{table:MTEnumeratedEventType}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -499,9 +506,9 @@ These features will be subsumed by the OPC/UA client filtering directives.
 \centering 
   \caption{\texttt{MTFilterType} Definition}
   \label{table:MTFilterType}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -534,9 +541,9 @@ HasProperty & Variable & Value &  float & PropertyType & Manditory \\
 \centering 
   \caption{\texttt{MTMessageType} Definition}
   \label{table:MTMessageType}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -563,9 +570,9 @@ range associated with the parent entity.
 \centering 
   \caption{\texttt{MTNumericDataItemType} Definition}
   \label{table:MTNumericDataItemType}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -611,9 +618,9 @@ All data items with category EVENT and a numeric value.
 \centering 
   \caption{\texttt{MTNumericEventType} Definition}
   \label{table:MTNumericEventType}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -639,9 +646,9 @@ Data Items with category SAMPLE
 \centering 
   \caption{\texttt{MTSampleType} Definition}
   \label{table:MTSampleType}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -665,9 +672,9 @@ All data items with category EVENT where the data is freeform text. The set_data
 \centering 
   \caption{\texttt{MTStringEventType} Definition}
   \label{table:MTStringEventType}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -691,9 +698,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \centering 
   \caption{\texttt{MinimumDeltaFilterType} Definition}
   \label{table:MinimumDeltaFilterType}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -717,9 +724,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \centering 
   \caption{\texttt{PeriodFilterType} Definition}
   \label{table:PeriodFilterType}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -745,9 +752,9 @@ if a composition Id is provided.
 \centering 
   \caption{\texttt{\{DataItem\}Type} Definition}
   \label{table:{DataItem}Type}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -785,9 +792,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \centering 
   \caption{\texttt{MTExclusiveLimitConditionType} Definition}
   \label{table:MTExclusiveLimitConditionType}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -811,9 +818,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \centering 
   \caption{\texttt{MTNonExclusiveConditionType} Definition}
   \label{table:MTNonExclusiveConditionType}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
@@ -837,9 +844,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \centering 
   \caption{\texttt{\{ConditionClass\}Type} Definition}
   \label{table:{ConditionClass}Type}
-\footnotesize
+\fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X[1.3]|X[1]|X[1.6]|X[2]|X[1.5]|X[1]|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}

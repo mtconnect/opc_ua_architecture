@@ -1,4 +1,4 @@
-% Generated 2018-10-01 18:43:02 -0700
+% Generated 2018-10-01 19:04:58 -0700
 \subsection{Components}
 
 \begin{figure}
@@ -390,6 +390,33 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 
+\subsubsection{Defintion of  \texttt{ActuatorState}} \label{type:ActuatorState}
+
+\FloatBarrier
+
+See \texttt{ActuatorState} in section 6.2 Event \textit{Element Names}
+of MTConnect Part 3 -- Streams.
+
+\begin{table}
+\centering 
+  \caption{\texttt{ActuatorState} Definition}
+  \label{table:ActuatorState}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ActuatorState} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEnumeratedEventType (see section \ref{type:MTEnumeratedEventType})} \\
+\end{tabu}
+\end{table} 
+
+\FloatBarrier
+
 \subsubsection{Defintion of  \texttt{AssetChangedType}} \label{type:AssetChangedType}
 
 \FloatBarrier
@@ -464,6 +491,32 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of AssetEventType (see section \ref{type:AssetEventType})} \\
+\end{tabu}
+\end{table} 
+
+\FloatBarrier
+
+\subsubsection{Defintion of  \texttt{ExecutionType}} \label{type:ExecutionType}
+
+\FloatBarrier
+
+
+
+\begin{table}
+\centering 
+  \caption{\texttt{ExecutionType} Definition}
+  \label{table:ExecutionType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ExecutionType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEnumeratedEventType (see section \ref{type:MTEnumeratedEventType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1355,4 +1408,11 @@ The use stereotype indicates that one class uses as a helper to perform
 a specific operation or activity. This stereotype is mainly used to indicate
 that a specific factory is being employed by another type to create dynamic
 properties or relationships.
+
+\subsubsection{Defintion of  \texttt{values}} \label{type:values}
+
+\FloatBarrier
+
+For controlled vocabularies of enumerated types, specifies the relationship to the allowable 
+values for the type.
 

@@ -147,11 +147,11 @@ class Type
         f.puts "\\paragraph{Constraints}\n"
         constraints.each do |c|
           f.puts "\\begin{itemize}"
-          f.puts "\\item #{c['name']} -- \\\\ "
-          f.puts "  Constraint: \\indent \\begin{Verbatim}[xleftmargin=.5in,fontsize=\\small]"
+          f.puts "\\item Constraint \\texttt{#{c['name']}}: "
+          f.puts "   \\indent \\begin{Verbatim}[xleftmargin=.5in,fontsize=\\small]"
           f.puts c['specification']
           f.puts "\\end{Verbatim}"
-          f.puts  "\\hang Documentation: #{c['documentation']}" if c.include?('documentation')
+          f.puts "Documentation: #{c['documentation']}" if c.include?('documentation')
           f.puts "\n\\end{itemize}"
         end
       end

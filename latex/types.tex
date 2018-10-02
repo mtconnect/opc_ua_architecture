@@ -1,4 +1,4 @@
-% Generated 2018-10-01 18:08:34 -0700
+% Generated 2018-10-01 18:17:53 -0700
 \subsection{Components}
 
 \begin{figure}
@@ -144,12 +144,12 @@ HasProperty & Variable & <Dynamic> &  {DataItem}Type & <Dynamic> & Optional \\
 
 \paragraph{Constraints}
 \begin{itemize}
-\item node_id -- \\ 
-  Constraint: \indent \begin{Verbatim}[xleftmargin=.5in,fontsize=\small]
+\item Constraint \texttt{node_id}: 
+   \indent \begin{Verbatim}[xleftmargin=.5in,fontsize=\small]
 context Component::NodeId : String 
 derive: concat(self.getDevice().uuid, self.getAttributes().id)
 \end{Verbatim}
-\hang Documentation: The NodeId SHALL be derrived from the combination of the device UUID and the id of the component. 
+Documentation: The NodeId SHALL be derrived from the combination of the device UUID and the id of the component. 
 
 \end{itemize}
 \subsubsection{Defintion of  \texttt{MTCompositionType}} \label{type:MTCompositionType}
@@ -257,19 +257,19 @@ HasProperty & Variable & Iso841Class &  String & PropertyType & Optional \\
 \end{itemize}
 \paragraph{Constraints}
 \begin{itemize}
-\item uuid_not_empty -- \\ 
-  Constraint: \indent \begin{Verbatim}[xleftmargin=.5in,fontsize=\small]
+\item Constraint \texttt{uuid_not_empty}: 
+   \indent \begin{Verbatim}[xleftmargin=.5in,fontsize=\small]
 uuid->notEmpty()
 \end{Verbatim}
-\hang Documentation: The  UUID SHALL be provided.
+Documentation: The  UUID SHALL be provided.
 
 \end{itemize}
 \begin{itemize}
-\item name_not_empty -- \\ 
-  Constraint: \indent \begin{Verbatim}[xleftmargin=.5in,fontsize=\small]
+\item Constraint \texttt{name_not_empty}: 
+   \indent \begin{Verbatim}[xleftmargin=.5in,fontsize=\small]
 name->notEmpty()
 \end{Verbatim}
-\hang Documentation: The name of the Device SHALL be given.
+Documentation: The name of the Device SHALL be given.
 
 \end{itemize}
 \subsubsection{Defintion of  \texttt{SensorConfigurationType}} \label{type:SensorConfigurationType}
@@ -717,8 +717,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \paragraph{Constraints}
 \begin{itemize}
-\item set_data_type -- \\ 
-  Constraint: \indent \begin{Verbatim}[xleftmargin=.5in,fontsize=\small]
+\item Constraint \texttt{set_data_type}: 
+   \indent \begin{Verbatim}[xleftmargin=.5in,fontsize=\small]
 derive: DataType <-String
 \end{Verbatim}
 

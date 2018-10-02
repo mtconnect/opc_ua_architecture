@@ -1,7 +1,7 @@
 
 
 class Type
-  attr_reader :name, :id, :type, :model
+  attr_reader :name, :id, :type, :model, :json
   
   @@types = {}
 
@@ -99,6 +99,10 @@ class Type
   def is_a_type?(type)
     @name == type or (@parent and @parent.is_a_type?(type))
   end
+
+  def reference
+    "See section \\ref{type:#{@name}}"
+  end
   
   def generate_supertype(f)
     parent = get_parent
@@ -106,7 +110,7 @@ class Type
       if parent.model != @model
         ref = "See #{parent.model} Documentation"
       else
-        ref = "see section \\ref{type:#{parent.name}}"
+        ref = parent.reference
       end
       f.puts "\\multicolumn{6}{|l|}{Subtype of #{parent.name} (#{ref})} \\\\"
     end
@@ -224,7 +228,7 @@ class Type
           f.puts "\\end{Verbatim}"
         end
         if op['documentation']
-          f.puts "\\\\\n    Documentation: #{op['documentation']}"
+          f.puts "\n    Documentation: #{op['documentation']}"
         end
         f.puts
       end
@@ -269,9 +273,61 @@ EOT
 \\end{tabu}
 \\end{table} 
 
-\\FloatBarrier
 
 EOT
+  end
+
+  def generate_enumerations(f)
+    if @type == 'UMLEnumeration'
+      f.puts "#{@documentation}" if @documentation
+
+      f.puts <<EOT
+\\begin{table}
+\\centering 
+  \\caption{\\texttt{#{escape_name}} Enumeration}
+  \\label{table:#{@name}}
+\\tabulinesep=3pt
+\\begin{tabu} to 6in {|l|l|} \\everyrow{\\hline}
+\\hline
+\\rowfont\\bfseries {Name} & {Index} \\\\
+\\tabucline[1.5pt]{}
+EOT
+      
+      @json['literals'].each do |lit|
+        name, value = lit['name'].split('=')
+        f.puts "#{name} & #{value} \\\\"
+      end
+        
+      f.puts <<EOT
+\\end{tabu}
+\\end{table} 
+EOT
+    end
+  end
+
+  def generate_dependencies(f)
+    if @relations
+      depends = @relations.select { |r| r['_type'] == 'UMLDependency' }
+      if !depends.empty?
+        depends.each do |d|
+          stereo = resolve_type(d['stereotype'])
+          target = resolve_type(d['target'])
+          if stereo and target
+            case stereo.name
+            when 'values'
+              if target.type == 'UMLEnumeration'
+                f.puts "\\paragraph{Allowable Values}"
+                target.generate_enumerations(f)
+              end
+
+            else
+              f.puts "\\paragraph{Dependency on #{target.name}}\n\n"
+              f.puts "This class relies on \\texttt{#{target.name}} (#{target.reference}) for \\texttt{#{stereo.name}} relationship.\n\n"
+            end
+          end
+        end
+      end
+    end
   end
     
   def generate_latex(f = STDOUT)
@@ -290,6 +346,8 @@ EOT
       
     generate_operations(f)
     generate_constraints(f)
-  
+    generate_dependencies(f)
+
+    f.puts "\\FloatBarrier"  
   end
 end

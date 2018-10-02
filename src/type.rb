@@ -148,7 +148,7 @@ class Type
         constraints.each do |c|
           f.puts "\\begin{itemize}"
           f.puts "\\item Constraint \\texttt{#{c['name']}}: "
-          f.puts "   \\indent \\begin{Verbatim}[xleftmargin=.5in,fontsize=\\small]"
+          f.puts "   \\indent \\begin{Verbatim}[xleftmargin=.25in,fontsize=\\small]"
           f.puts c['specification']
           f.puts "\\end{Verbatim}"
           f.puts "Documentation: #{c['documentation']}" if c.include?('documentation')
@@ -212,7 +212,10 @@ class Type
         end
         f.print ")}"
         if op['specification']
-          f.puts "\\\\\n    Specification: \\texttt{#{op['specification']}}"
+          f.puts "\\\\\n    Specification:"
+          f.puts "   \\indent \\begin{Verbatim}[xleftmargin=.25in,fontsize=\\small]"
+          f.puts op['specification']
+          f.puts "\\end{Verbatim}"
         end
         if op['documentation']
           f.puts "\\\\\n    Documentation: #{op['documentation']}"

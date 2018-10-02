@@ -1,4 +1,4 @@
-% Generated 2018-10-01 18:17:53 -0700
+% Generated 2018-10-01 18:34:29 -0700
 \subsection{Components}
 
 \begin{figure}
@@ -17,7 +17,13 @@ The Components documents the Component models and the owned objects.
 
 \FloatBarrier
 
+An MTConnect \texttt{Channel} is a single data stream associated with a sensor. Each stream
+of data can be calibrated separately and allows for the specification of the meta information
+and descriptive information. The only required property of the \texttt{Channel} is the number
+which is the unique identifier.
 
+The channels will be created by the \texttt{SensorChannelObjectFactory} that composes the \texttt{BrowseName} 
+and the \texttt{NodeId} for each object. (See \ref{type:SensorChannelObjectFactory}).
 
 \begin{table}
 \centering 
@@ -81,10 +87,16 @@ HasProperty & Variable & Data &  String & PropertyType & Optional \\
 \paragraph{Operations}
 \begin{itemize}
   \item \texttt{deriveBrowseName(element)}\\
-    Specification: \texttt{"Description"}
+    Specification:
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+"Description"
+\end{Verbatim}
 
   \item \texttt{deriveNodeId(element)}\\
-    Specification: \texttt{concat(self.parent.NodeId, BrowseName)}
+    Specification:
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+concat(self.parent.NodeId, BrowseName)
+\end{Verbatim}
 
 \end{itemize}
 \subsubsection{Defintion of  \texttt{MTComponentType}} \label{type:MTComponentType}
@@ -145,7 +157,7 @@ HasProperty & Variable & <Dynamic> &  {DataItem}Type & <Dynamic> & Optional \\
 \paragraph{Constraints}
 \begin{itemize}
 \item Constraint \texttt{node_id}: 
-   \indent \begin{Verbatim}[xleftmargin=.5in,fontsize=\small]
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
 context Component::NodeId : String 
 derive: concat(self.getDevice().uuid, self.getAttributes().id)
 \end{Verbatim}
@@ -249,16 +261,22 @@ HasProperty & Variable & Iso841Class &  String & PropertyType & Optional \\
 \paragraph{Operations}
 \begin{itemize}
   \item \texttt{deriveBrowseName(element)}\\
-    Specification: \texttt{self.name}
+    Specification:
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+self.name
+\end{Verbatim}
 
   \item \texttt{deriveNodeId(element)}\\
-    Specification: \texttt{self.uuid}
+    Specification:
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+self.uuid
+\end{Verbatim}
 
 \end{itemize}
 \paragraph{Constraints}
 \begin{itemize}
 \item Constraint \texttt{uuid_not_empty}: 
-   \indent \begin{Verbatim}[xleftmargin=.5in,fontsize=\small]
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
 uuid->notEmpty()
 \end{Verbatim}
 Documentation: The  UUID SHALL be provided.
@@ -266,7 +284,7 @@ Documentation: The  UUID SHALL be provided.
 \end{itemize}
 \begin{itemize}
 \item Constraint \texttt{name_not_empty}: 
-   \indent \begin{Verbatim}[xleftmargin=.5in,fontsize=\small]
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
 name->notEmpty()
 \end{Verbatim}
 Documentation: The name of the Device SHALL be given.
@@ -483,7 +501,10 @@ HasComponent & Object & source &   & BaseObjectType & Optional \\
 \paragraph{Operations}
 \begin{itemize}
   \item \texttt{deriveSourceName(element)}\\
-    Specification: \texttt{self.Source.CDATA}
+    Specification:
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+self.Source.CDATA
+\end{Verbatim}
 \\
     Documentation: Derive the source name from the Source element CDATA. This will represent the alternative long name for the data item's source.
 
@@ -552,10 +573,16 @@ HasProperty & Variable & Value &  float & PropertyType & Mandatory \\
 \paragraph{Operations}
 \begin{itemize}
   \item \texttt{deriveBrowseName(element)}\\
-    Specification: \texttt{concat(parent.BrowseName, pascalCase(element.type))}
+    Specification:
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+concat(parent.BrowseName, pascalCase(element.type))
+\end{Verbatim}
 
   \item \texttt{deriveNodeId(element)}\\
-    Specification: \texttt{concat(parent.NodeId, pascalCase(element.type))}
+    Specification:
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+concat(parent.NodeId, pascalCase(element.type))
+\end{Verbatim}
 
 \end{itemize}
 \subsubsection{Defintion of  \texttt{MTMessageType}} \label{type:MTMessageType}
@@ -624,11 +651,17 @@ HasProperty & Variable & Nominal &  Double & PropertyType & Optional \\
 \paragraph{Operations}
 \begin{itemize}
   \item \texttt{deriveEngineeringUnits(units)}\\
-    Specification: \texttt{EngineeringUnits <- self.units}
+    Specification:
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+EngineeringUnits <- self.units
+\end{Verbatim}
 
   \item \texttt{deriveEURange(constraints)}\\
-    Specification: \texttt{EURange.Low <- self.Constraints.Minimum
-EURange.High <- self.Constraints.Maximum}
+    Specification:
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+EURange.Low <- self.Constraints.Minimum
+EURange.High <- self.Constraints.Maximum
+\end{Verbatim}
 \\
     Documentation: Uses the MTConnect Constraints element if present to derive the minimum 
 and maximum values for the numeric values. This applies to both the Numeric 
@@ -718,7 +751,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \paragraph{Constraints}
 \begin{itemize}
 \item Constraint \texttt{set_data_type}: 
-   \indent \begin{Verbatim}[xleftmargin=.5in,fontsize=\small]
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
 derive: DataType <-String
 \end{Verbatim}
 
@@ -931,10 +964,16 @@ unambiguous implementation.
 \paragraph{Operations}
 \begin{itemize}
   \item \texttt{deriveBrowseName(element)}\\
-    Specification: \texttt{concat(element.QName, (if self.name.notEmpty() then concat('[', self.name, ']')) else  '' endif))}
+    Specification:
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+concat(element.QName, (if self.name.notEmpty() then concat('[', self.name, ']')) else  '' endif))
+\end{Verbatim}
 
   \item \texttt{deriveNodeId(element)}\\
-    Specification: \texttt{concat(self.findDevice().uuid, element.id)}
+    Specification:
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+concat(self.findDevice().uuid, element.id)
+\end{Verbatim}
 
 \end{itemize}
 \subsubsection{Defintion of <<Type Factory>> \texttt{ComponentTypeFactory}} \label{type:ComponentTypeFactory}
@@ -953,7 +992,10 @@ The types will be a single level where each Component is a sub-type of the base 
 \paragraph{Operations}
 \begin{itemize}
   \item \texttt{deriveTypeName(element)}\\
-    Specification: \texttt{derive: Component <- element.QName}
+    Specification:
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+derive: Component <- element.QName
+\end{Verbatim}
 \\
     Documentation: The QName of the element for the component will be used to derive the type of the node.
 
@@ -967,10 +1009,16 @@ The types will be a single level where each Component is a sub-type of the base 
 \paragraph{Operations}
 \begin{itemize}
   \item \texttt{deriveBrowseName(element)}\\
-    Specification: \texttt{concat(pascalCase(element.type), (if self.name.notEmpty() then concat('[', self.name, ']')) else  '' endif))}
+    Specification:
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+concat(pascalCase(element.type), (if self.name.notEmpty() then concat('[', self.name, ']')) else  '' endif))
+\end{Verbatim}
 
   \item \texttt{deriveNodeId(element)}\\
-    Specification: \texttt{concat(self.findDevice().uuid, element.id)}
+    Specification:
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+concat(self.findDevice().uuid, element.id)
+\end{Verbatim}
 
 \end{itemize}
 \subsubsection{Defintion of <<Type Factory>> \texttt{CompositionTypeFactory}} \label{type:CompositionTypeFactory}
@@ -982,8 +1030,11 @@ The types will be a single level where each Component is a sub-type of the base 
 \paragraph{Operations}
 \begin{itemize}
   \item \texttt{deriveTypeName(element)}\\
-    Specification: \texttt{derive: Composition <-
- pascalCase(element.type)}
+    Specification:
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+derive: Composition <-
+ pascalCase(element.type)
+\end{Verbatim}
 \\
     Documentation: The type for the composition will be created using the pascal case of the `type` from the composition element.
 
@@ -1091,7 +1142,10 @@ and also provides the template parameter for the ParentType from which this type
 \end{itemize}
 
   \item \texttt{deriveTypeName(type, subType)}\\
-    Specification: \texttt{concat(pascalCase(subType), pascalCase(type))}
+    Specification:
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+concat(pascalCase(subType), pascalCase(type))
+\end{Verbatim}
 \\
     Documentation: Used to derive the class name for creating a pascal case name from the sub type and the type. 
 For example type \texttt{ROTARY_VELOCITY} and subType \texttt{ACTUAL} will become \texttt{ActualRotaryVelocity}.
@@ -1106,10 +1160,16 @@ The model instantiation for MTConnect begins with the `Device` MTConnect element
 \paragraph{Operations}
 \begin{itemize}
   \item \texttt{deriveBrowseName(element)}\\
-    Specification: \texttt{derive: element.name}
+    Specification:
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+derive: element.name
+\end{Verbatim}
 
   \item \texttt{deriveNodeId(element)}\\
-    Specification: \texttt{derive: element.uuid}
+    Specification:
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+derive: element.uuid
+\end{Verbatim}
 
 \end{itemize}
 \subsubsection{Defintion of <<Object Factory>> \texttt{FilterObjectFactory}} \label{type:FilterObjectFactory}
@@ -1136,7 +1196,10 @@ Creates filters based on the type attribute of the Filter element.
   \item \texttt{deriveBrowseName(element)}
   \item \texttt{deriveNodeId(element)}
   \item \texttt{deriveDisplayName(element)}\\
-    Specification: \texttt{deriveBrowseName(element)}
+    Specification:
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+deriveBrowseName(element)
+\end{Verbatim}
 
   \item \texttt{createObject(element)}
 \end{itemize}
@@ -1149,10 +1212,16 @@ Creates filters based on the type attribute of the Filter element.
 \paragraph{Operations}
 \begin{itemize}
   \item \texttt{deriveBrowseName(element)}\\
-    Specification: \texttt{concat('Channel', self.number)}
+    Specification:
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+concat('Channel', self.number)
+\end{Verbatim}
 
   \item \texttt{deriveNodeId(element)}\\
-    Specification: \texttt{concat(self.parent.NodeId, BrowseName)}
+    Specification:
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+concat(self.parent.NodeId, BrowseName)
+\end{Verbatim}
 
 \end{itemize}
 \subsubsection{Defintion of <<Object Factory>> \texttt{SensorObjectFactory}} \label{type:SensorObjectFactory}
@@ -1164,10 +1233,16 @@ Creates filters based on the type attribute of the Filter element.
 \paragraph{Operations}
 \begin{itemize}
   \item \texttt{deriveBrowseName(element)}\\
-    Specification: \texttt{element.QName}
+    Specification:
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+element.QName
+\end{Verbatim}
 
   \item \texttt{deriveNodeId(element)}\\
-    Specification: \texttt{concat(self.parent.NodeId, BrowseName)}
+    Specification:
+   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+concat(self.parent.NodeId, BrowseName)
+\end{Verbatim}
 
 \end{itemize}
 \subsubsection{Defintion of <<Type Factory>> \texttt{TypeFactory}} \label{type:TypeFactory}

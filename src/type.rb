@@ -287,7 +287,7 @@ EOT
   \\caption{\\texttt{#{escape_name}} Enumeration}
   \\label{table:#{@name}}
 \\tabulinesep=3pt
-\\begin{tabu} to 6in {|l|l|} \\everyrow{\\hline}
+\\begin{tabu} to 6in {|l|r|} \\everyrow{\\hline}
 \\hline
 \\rowfont\\bfseries {Name} & {Index} \\\\
 \\tabucline[1.5pt]{}

@@ -1,4 +1,4 @@
-% Generated 2018-10-02 12:28:13 -0700
+% Generated 2018-10-02 14:11:45 -0700
 \subsection{Components}
 
 \begin{figure}
@@ -414,7 +414,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 
-\subsubsection{Defintion of \texttt{ ActuatorState}} \label{type:ActuatorState}
+\subsubsection{Defintion of \texttt{ ActuatorStateType}} \label{type:ActuatorStateType}
 
 \FloatBarrier
 
@@ -423,15 +423,15 @@ of MTConnect Part 3 -- Streams Information Model.
 
 \begin{table}
 \centering 
-  \caption{\texttt{ActuatorState} Definition}
-  \label{table:ActuatorState}
+  \caption{\texttt{ActuatorStateType} Definition}
+  \label{table:ActuatorStateType}
 \fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{ActuatorState} \\
+BrowseName & \multicolumn{5}{|l|}{ActuatorStateType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 ValueRank & \multicolumn{5}{|l|}{-1} \\
 DataType & \multicolumn{5}{|l|}{Number} \\
@@ -445,10 +445,10 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 \paragraph{Allowable Values}
 \begin{table}
 \centering 
-  \caption{\texttt{ActuatorStateValues} Enumeration}
-  \label{table:ActuatorStateValues}
+  \caption{\texttt{ActiveStateValues} Enumeration}
+  \label{table:ActiveStateValues}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|l|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Name} & {Index} \\
 \tabucline[1.5pt]{}
@@ -542,6 +542,612 @@ DataType & \multicolumn{5}{|l|}{String} \\
 
 
 \FloatBarrier
+\subsubsection{Defintion of \texttt{ AvailabilityType}} \label{type:AvailabilityType}
+
+\FloatBarrier
+
+
+
+\begin{table}
+\centering 
+  \caption{\texttt{AvailabilityType} Definition}
+  \label{table:AvailabilityType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{AvailabilityType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Number} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEnumeratedEventType (See section \ref{type:MTEnumeratedEventType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}
+\centering 
+  \caption{\texttt{AvailabilityValues} Enumeration}
+  \label{table:AvailabilityValues}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{AVAILABILE} & \texttt{0} \\
+\texttt{UNAVAILABLE} & \texttt{1} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ AxisCouplingType}} \label{type:AxisCouplingType}
+
+\FloatBarrier
+
+
+
+\begin{table}
+\centering 
+  \caption{\texttt{AxisCouplingType} Definition}
+  \label{table:AxisCouplingType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{AxisCouplingType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Number} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEnumeratedEventType (See section \ref{type:MTEnumeratedEventType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}
+\centering 
+  \caption{\texttt{AxisCouplingValues} Enumeration}
+  \label{table:AxisCouplingValues}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{MASTER} & \texttt{0} \\
+\texttt{SLAVE} & \texttt{1} \\
+\texttt{SYNCHRONOUS} & \texttt{2} \\
+\texttt{TANDEM} & \texttt{3} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ AxisInterlockType}} \label{type:AxisInterlockType}
+
+\FloatBarrier
+
+
+
+\begin{table}
+\centering 
+  \caption{\texttt{AxisInterlockType} Definition}
+  \label{table:AxisInterlockType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{AxisInterlockType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Number} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEnumeratedEventType (See section \ref{type:MTEnumeratedEventType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}
+\centering 
+  \caption{\texttt{ActiveStateValues} Enumeration}
+  \label{table:ActiveStateValues}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{ACTIVE} & \texttt{0} \\
+\texttt{INACTIVE} & \texttt{1} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ AxisStateType}} \label{type:AxisStateType}
+
+\FloatBarrier
+
+
+
+\begin{table}
+\centering 
+  \caption{\texttt{AxisStateType} Definition}
+  \label{table:AxisStateType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{AxisStateType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}
+\centering 
+  \caption{\texttt{AxisStateValues} Enumeration}
+  \label{table:AxisStateValues}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{HOME} & \texttt{0} \\
+\texttt{PARKED} & \texttt{1} \\
+\texttt{STOPPED} & \texttt{2} \\
+\texttt{TRAVEL} & \texttt{3} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ChuckInterlockType}} \label{type:ChuckInterlockType}
+
+\FloatBarrier
+
+
+
+\begin{table}
+\centering 
+  \caption{\texttt{ChuckInterlockType} Definition}
+  \label{table:ChuckInterlockType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ChuckInterlockType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Number} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEnumeratedEventType (See section \ref{type:MTEnumeratedEventType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}
+\centering 
+  \caption{\texttt{ActiveStateValues} Enumeration}
+  \label{table:ActiveStateValues}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{ACTIVE} & \texttt{0} \\
+\texttt{INACTIVE} & \texttt{1} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ChuckStateType}} \label{type:ChuckStateType}
+
+\FloatBarrier
+
+
+
+\begin{table}
+\centering 
+  \caption{\texttt{ChuckStateType} Definition}
+  \label{table:ChuckStateType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ChuckStateType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Number} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEnumeratedEventType (See section \ref{type:MTEnumeratedEventType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}
+\centering 
+  \caption{\texttt{OpenStateValues} Enumeration}
+  \label{table:OpenStateValues}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{CLOSED} & \texttt{0} \\
+\texttt{OPEN} & \texttt{1} \\
+\texttt{UNLATCHED} & \texttt{2} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ CompositionStateType}} \label{type:CompositionStateType}
+
+\FloatBarrier
+
+
+
+\begin{table}
+\centering 
+  \caption{\texttt{CompositionStateType} Definition}
+  \label{table:CompositionStateType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{CompositionStateType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Number} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEnumeratedEventType (See section \ref{type:MTEnumeratedEventType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}
+\centering 
+  \caption{\texttt{CompositionStateValues} Enumeration}
+  \label{table:CompositionStateValues}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{ACTIVE} & \texttt{0} \\
+\texttt{CLOSED} & \texttt{1} \\
+\texttt{DOWN} & \texttt{2} \\
+\texttt{INACTIVE} & \texttt{3} \\
+\texttt{LEFT} & \texttt{4} \\
+\texttt{OFF} & \texttt{5} \\
+\texttt{ON} & \texttt{6} \\
+\texttt{OPEN} & \texttt{7} \\
+\texttt{RIGHT} & \texttt{8} \\
+\texttt{TRANSITIONING} & \texttt{9} \\
+\texttt{UNLATCHED} & \texttt{10} \\
+\texttt{UP} & \texttt{11} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ControllerModeOverrideType}} \label{type:ControllerModeOverrideType}
+
+\FloatBarrier
+
+
+
+\begin{table}
+\centering 
+  \caption{\texttt{ControllerModeOverrideType} Definition}
+  \label{table:ControllerModeOverrideType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ControllerModeOverrideType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Number} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEnumeratedEventType (See section \ref{type:MTEnumeratedEventType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}
+\centering 
+  \caption{\texttt{OnOffValues} Enumeration}
+  \label{table:OnOffValues}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{OFF} & \texttt{0} \\
+\texttt{ON} & \texttt{1} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ControllerModeType}} \label{type:ControllerModeType}
+
+\FloatBarrier
+
+
+
+\begin{table}
+\centering 
+  \caption{\texttt{ControllerModeType} Definition}
+  \label{table:ControllerModeType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ControllerModeType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Number} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEnumeratedEventType (See section \ref{type:MTEnumeratedEventType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}
+\centering 
+  \caption{\texttt{ControllerModeValues} Enumeration}
+  \label{table:ControllerModeValues}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{AUTOMATIC} & \texttt{0} \\
+\texttt{EDIT} & \texttt{1} \\
+\texttt{MANUAL} & \texttt{2} \\
+\texttt{MANUAL_DATA_INPUT} & \texttt{3} \\
+\texttt{SEMI_AUTOMATIC} & \texttt{4} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ DirectionType}} \label{type:DirectionType}
+
+\FloatBarrier
+
+
+
+\begin{table}
+\centering 
+  \caption{\texttt{DirectionType} Definition}
+  \label{table:DirectionType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{DirectionType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Number} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEnumeratedEventType (See section \ref{type:MTEnumeratedEventType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}
+\centering 
+  \caption{\texttt{DirectionValues} Enumeration}
+  \label{table:DirectionValues}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{CLOCKWISE} & \texttt{0} \\
+\texttt{COUNTER_CLOCKWISE} & \texttt{1} \\
+\texttt{NEGATIVE} & \texttt{2} \\
+\texttt{POSITIVE} & \texttt{3} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ DoorStateType}} \label{type:DoorStateType}
+
+\FloatBarrier
+
+
+
+\begin{table}
+\centering 
+  \caption{\texttt{DoorStateType} Definition}
+  \label{table:DoorStateType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{DoorStateType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Number} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEnumeratedEventType (See section \ref{type:MTEnumeratedEventType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}
+\centering 
+  \caption{\texttt{OpenStateValues} Enumeration}
+  \label{table:OpenStateValues}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{CLOSED} & \texttt{0} \\
+\texttt{OPEN} & \texttt{1} \\
+\texttt{UNLATCHED} & \texttt{2} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ EmergencyStopType}} \label{type:EmergencyStopType}
+
+\FloatBarrier
+
+
+
+\begin{table}
+\centering 
+  \caption{\texttt{EmergencyStopType} Definition}
+  \label{table:EmergencyStopType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{EmergencyStopType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Number} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEnumeratedEventType (See section \ref{type:MTEnumeratedEventType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}
+\centering 
+  \caption{\texttt{EmergencyStopValues} Enumeration}
+  \label{table:EmergencyStopValues}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{ARMED} & \texttt{0} \\
+\texttt{TRIGGERED} & \texttt{1} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ EndOfBar}} \label{type:EndOfBar}
+
+\FloatBarrier
+
+
+
+\begin{table}
+\centering 
+  \caption{\texttt{EndOfBar} Definition}
+  \label{table:EndOfBar}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{EndOfBar} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Number} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEnumeratedEventType (See section \ref{type:MTEnumeratedEventType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}
+\centering 
+  \caption{\texttt{YesNoValues} Enumeration}
+  \label{table:YesNoValues}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{NO} & \texttt{0} \\
+\texttt{YES} & \texttt{1} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ EquipmentModeType}} \label{type:EquipmentModeType}
+
+\FloatBarrier
+
+
+
+\begin{table}
+\centering 
+  \caption{\texttt{EquipmentModeType} Definition}
+  \label{table:EquipmentModeType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{EquipmentModeType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Number} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEnumeratedEventType (See section \ref{type:MTEnumeratedEventType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}
+\centering 
+  \caption{\texttt{OnOffValues} Enumeration}
+  \label{table:OnOffValues}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{OFF} & \texttt{0} \\
+\texttt{ON} & \texttt{1} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ ExecutionType}} \label{type:ExecutionType}
 
 \FloatBarrier
@@ -569,6 +1175,71 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 \end{table} 
 
 
+\paragraph{Allowable Values}
+\begin{table}
+\centering 
+  \caption{\texttt{ExecutionValues} Enumeration}
+  \label{table:ExecutionValues}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{ACTIVE} & \texttt{0} \\
+\texttt{FEED_HOLD} & \texttt{1} \\
+\texttt{INTERRUPTED} & \texttt{2} \\
+\texttt{OPTIONAL_STOP} & \texttt{3} \\
+\texttt{READY} & \texttt{4} \\
+\texttt{PROGRAM_COMPLETED} & \texttt{5} \\
+\texttt{PROGRAM_STOPPED} & \texttt{6} \\
+\texttt{STOPPED} & \texttt{7} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ FunctionalModeType}} \label{type:FunctionalModeType}
+
+\FloatBarrier
+
+
+
+\begin{table}
+\centering 
+  \caption{\texttt{FunctionalModeType} Definition}
+  \label{table:FunctionalModeType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{FunctionalModeType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Number} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEnumeratedEventType (See section \ref{type:MTEnumeratedEventType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}
+\centering 
+  \caption{\texttt{FunctionalModeValues} Enumeration}
+  \label{table:FunctionalModeValues}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{MAINTENANCE} & \texttt{0} \\
+\texttt{PRODUCTION} & \texttt{1} \\
+\texttt{PROCESS_DEVELOPMENT} & \texttt{2} \\
+\texttt{SETUP} & \texttt{3} \\
+\texttt{TEARDOWN} & \texttt{4} \\
+\end{tabu}
+\end{table} 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<mixin>> MTDataItemType}} \label{type:MTDataItemType}
 
@@ -900,6 +1571,50 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
+\subsubsection{Defintion of \texttt{ PathModeType}} \label{type:PathModeType}
+
+\FloatBarrier
+
+
+
+\begin{table}
+\centering 
+  \caption{\texttt{PathModeType} Definition}
+  \label{table:PathModeType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{PathModeType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Number} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEnumeratedEventType (See section \ref{type:MTEnumeratedEventType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}
+\centering 
+  \caption{\texttt{PathModeValues} Enumeration}
+  \label{table:PathModeValues}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{INDEPENDENT} & \texttt{0} \\
+\texttt{MASTER} & \texttt{1} \\
+\texttt{MIRROR} & \texttt{2} \\
+\texttt{SYNCHRONOUS} & \texttt{3} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ PeriodFilterType}} \label{type:PeriodFilterType}
 
 \FloatBarrier
@@ -925,6 +1640,176 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ PowerStateType}} \label{type:PowerStateType}
+
+\FloatBarrier
+
+
+
+\begin{table}
+\centering 
+  \caption{\texttt{PowerStateType} Definition}
+  \label{table:PowerStateType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{PowerStateType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Number} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEnumeratedEventType (See section \ref{type:MTEnumeratedEventType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}
+\centering 
+  \caption{\texttt{OnOffValues} Enumeration}
+  \label{table:OnOffValues}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{OFF} & \texttt{0} \\
+\texttt{ON} & \texttt{1} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ProgramEditType}} \label{type:ProgramEditType}
+
+\FloatBarrier
+
+
+
+\begin{table}
+\centering 
+  \caption{\texttt{ProgramEditType} Definition}
+  \label{table:ProgramEditType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ProgramEditType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Number} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEnumeratedEventType (See section \ref{type:MTEnumeratedEventType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}
+\centering 
+  \caption{\texttt{ProgramEditValues} Enumeration}
+  \label{table:ProgramEditValues}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{ACTIVE} & \texttt{0} \\
+\texttt{NOT_READY} & \texttt{1} \\
+\texttt{READY} & \texttt{1} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ RotaryModeType}} \label{type:RotaryModeType}
+
+\FloatBarrier
+
+
+
+\begin{table}
+\centering 
+  \caption{\texttt{RotaryModeType} Definition}
+  \label{table:RotaryModeType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{RotaryModeType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Number} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEnumeratedEventType (See section \ref{type:MTEnumeratedEventType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}
+\centering 
+  \caption{\texttt{RotaryModeValues} Enumeration}
+  \label{table:RotaryModeValues}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{CONTOUR} & \texttt{0} \\
+\texttt{INDEX} & \texttt{1} \\
+\texttt{SPINDLE} & \texttt{2} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ SpindleInterlockType}} \label{type:SpindleInterlockType}
+
+\FloatBarrier
+
+
+
+\begin{table}
+\centering 
+  \caption{\texttt{SpindleInterlockType} Definition}
+  \label{table:SpindleInterlockType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{SpindleInterlockType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Number} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEnumeratedEventType (See section \ref{type:MTEnumeratedEventType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}
+\centering 
+  \caption{\texttt{ActiveStateValues} Enumeration}
+  \label{table:ActiveStateValues}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{ACTIVE} & \texttt{0} \\
+\texttt{INACTIVE} & \texttt{1} \\
+\end{tabu}
+\end{table} 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<Dynamic Type>> \{DataItem\}Type}} \label{type:{DataItem}Type}
 

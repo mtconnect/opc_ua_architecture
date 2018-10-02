@@ -26,6 +26,7 @@
 
 \LoadClass[12pt,letterpaper,twoside]{article}
 
+\RequirePackage{fancyvrb}
 \RequirePackage{placeins}
 \RequirePackage{booktabs}
 \RequirePackage{tabu}

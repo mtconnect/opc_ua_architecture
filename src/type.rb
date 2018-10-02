@@ -42,9 +42,10 @@ class Type
     @model = model
 
     if e['stereotype']
-      p e['stereotype']
       @stereotype = resolve_type(e['stereotype'])
     end
+
+    
 
     @children = []
 
@@ -118,12 +119,41 @@ class Type
     end
   end
 
+  def mandatory(obj)
+    if obj['multiplicity'] == '0..1'
+      'Optional'
+    else
+      'Mandatory'
+    end
+  end
+
   def generate_properties(f)
     if @attributes
       @attributes.each do |a|
         type = resolve_type_name(a['type'])
         # puts "#{a['name']} -> #{type}"
-        f.puts "HasProperty & Variable & #{a['name']} &  #{type} & PropertyType & #{a['multiplicity'] == '0..1' ? 'Optional' : 'Manditory'} \\\\"
+        f.puts "HasProperty & Variable & #{a['name']} &  #{type} & PropertyType & #{mandatory(a)} \\\\"
+      end
+    end
+  end
+
+  def generate_constraints(f)
+    if @relations
+      constraints = @relations.select do |r|
+        r['_type'] == 'UMLConstraint'
+      end
+
+      unless constraints.empty?
+        f.puts "\\paragraph{Constraints}\n"
+        constraints.each do |c|
+          f.puts "\\begin{itemize}"
+          f.puts "\\item #{c['name']} -- \\\\ "
+          f.puts "  Constraint: \\indent \\begin{Verbatim}[xleftmargin=.5in,fontsize=\\small]"
+          f.puts c['specification']
+          f.puts "\\end{Verbatim}"
+          f.puts  "\\hang Documentation: #{c['documentation']}" if c.include?('documentation')
+          f.puts "\n\\end{itemize}"
+        end
       end
     end
   end
@@ -132,7 +162,7 @@ class Type
     if @relations
       @relations.each do |r|
         if r['_type'] == 'UMLAssociation'
-          optional = r['end1']['multiplicity'] == '0..1' ? 'Optional' : 'Manditory'
+          optional = mandatory(r['end1'])
           target = resolve_type(r['end2']['reference'])
           stereo = resolve_type(r['stereotype'])
           node = 'Object'
@@ -240,6 +270,7 @@ EOT
     end
       
     generate_operations(f)
+    generate_constraints(f)
   
   end
 end

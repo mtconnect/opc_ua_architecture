@@ -1,4 +1,4 @@
-% Generated 2018-10-01 17:26:54 -0700
+% Generated 2018-10-01 18:08:34 -0700
 \subsection{Components}
 
 \begin{figure}
@@ -34,7 +34,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of BaseObjectType (See OPCUA Documentation)} \\
-HasProperty & Variable & Number &  Int32 & PropertyType & Manditory \\
+HasProperty & Variable & Number &  Int32 & PropertyType & Mandatory \\
 HasProperty & Variable & Name &  String & PropertyType & Optional \\
 HasProperty & Variable & MTDescription &  String & PropertyType & Optional \\
 HasProperty & Variable & CalibrationDate &  UtcTime & PropertyType & Optional \\
@@ -124,7 +124,7 @@ BrowseName & \multicolumn{5}{|l|}{MTComponentType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-HasProperty & Variable & XmlId &  IdType & PropertyType & Manditory \\
+HasProperty & Variable & XmlId &  IdType & PropertyType & Mandatory \\
 HasProperty & Variable & Name &  String & PropertyType & Optional \\
 HasProperty & Variable & NativeName &  String & PropertyType & Optional \\
 HasProperty & Variable & Uuid &  String & PropertyType & Optional \\
@@ -142,6 +142,16 @@ HasProperty & Variable & <Dynamic> &  {DataItem}Type & <Dynamic> & Optional \\
 
 \FloatBarrier
 
+\paragraph{Constraints}
+\begin{itemize}
+\item node_id -- \\ 
+  Constraint: \indent \begin{Verbatim}[xleftmargin=.5in,fontsize=\small]
+context Component::NodeId : String 
+derive: concat(self.getDevice().uuid, self.getAttributes().id)
+\end{Verbatim}
+\hang Documentation: The NodeId SHALL be derrived from the combination of the device UUID and the id of the component. 
+
+\end{itemize}
 \subsubsection{Defintion of  \texttt{MTCompositionType}} \label{type:MTCompositionType}
 
 \FloatBarrier
@@ -245,6 +255,23 @@ HasProperty & Variable & Iso841Class &  String & PropertyType & Optional \\
     Specification: \texttt{self.uuid}
 
 \end{itemize}
+\paragraph{Constraints}
+\begin{itemize}
+\item uuid_not_empty -- \\ 
+  Constraint: \indent \begin{Verbatim}[xleftmargin=.5in,fontsize=\small]
+uuid->notEmpty()
+\end{Verbatim}
+\hang Documentation: The  UUID SHALL be provided.
+
+\end{itemize}
+\begin{itemize}
+\item name_not_empty -- \\ 
+  Constraint: \indent \begin{Verbatim}[xleftmargin=.5in,fontsize=\small]
+name->notEmpty()
+\end{Verbatim}
+\hang Documentation: The name of the Device SHALL be given.
+
+\end{itemize}
 \subsubsection{Defintion of  \texttt{SensorConfigurationType}} \label{type:SensorConfigurationType}
 
 \FloatBarrier
@@ -266,7 +293,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTConfigurationType (see section \ref{type:MTConfigurationType})} \\
-HasProperty & Variable & FirwareVersion &  String & PropertyType & Manditory \\
+HasProperty & Variable & FirwareVersion &  String & PropertyType & Mandatory \\
 HasProperty & Variable & CalibrationDate &  UtcTime & PropertyType & Optional \\
 HasProperty & Variable & NextCalibrationDate &  UtcTime & PropertyType & Optional \\
 HasProperty & Variable & CalibrationInitials &  String & PropertyType & Optional \\
@@ -389,7 +416,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTStringEventType (see section \ref{type:MTStringEventType})} \\
-HasProperty & Variable & AssetType &  String & PropertyType & Manditory \\
+HasProperty & Variable & AssetType &  String & PropertyType & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -445,7 +472,7 @@ HasProperty & Variable & SourceName &  String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate &  Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate &  Double & PropertyType & Optional \\
 HasProperty & Variable & Representation &  RepresentationType & PropertyType & Optional \\
-HasProperty & Variable & Category &  MTCategoryType & PropertyType & Manditory \\
+HasProperty & Variable & Category &  MTCategoryType & PropertyType & Mandatory \\
 HasProperty & Variable & <Dynamic> &  MTFilterType & <Dynamic> & Optional \\
 HasComponent & Object & source &   & BaseObjectType & Optional \\
 \end{tabu}
@@ -490,7 +517,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of MultiStateValueDiscreteType (See OPCUA Documentation)} \\
-HasProperty & Variable & ConstrainedValues &  EnumValuesType & PropertyType & Manditory \\
+HasProperty & Variable & ConstrainedValues &  EnumValuesType & PropertyType & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -516,7 +543,7 @@ BrowseName & \multicolumn{5}{|l|}{MTFilterType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-HasProperty & Variable & Value &  float & PropertyType & Manditory \\
+HasProperty & Variable & Value &  float & PropertyType & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -688,6 +715,14 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
+\paragraph{Constraints}
+\begin{itemize}
+\item set_data_type -- \\ 
+  Constraint: \indent \begin{Verbatim}[xleftmargin=.5in,fontsize=\small]
+derive: DataType <-String
+\end{Verbatim}
+
+\end{itemize}
 \subsubsection{Defintion of  \texttt{MinimumDeltaFilterType}} \label{type:MinimumDeltaFilterType}
 
 \FloatBarrier

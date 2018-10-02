@@ -1,4 +1,4 @@
-% Generated 2018-10-02 15:36:52 -0700
+% Generated 2018-10-02 16:01:58 -0700
 \subsection{Components}
 
 \begin{figure}[ht]
@@ -464,7 +464,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 \FloatBarrier
 
-
+The subtype the maps to the AssetChanged Event in Part 3 of the MTConnect standard.
 
 \begin{table}[ht]
 \centering 
@@ -492,7 +492,10 @@ DataType & \multicolumn{5}{|l|}{String} \\
 
 \FloatBarrier
 
+The asset events have an additional attribute regarding the asset change or removal identifier
+and the type of asset that is being reported.
 
+\textit{Todo: not sure how to represent the additional value since it needs to be reported with the event}
 
 \begin{table}[ht]
 \centering 
@@ -523,7 +526,7 @@ HasProperty & Variable & AssetType &  String & PropertyType & Mandatory \\
 
 \FloatBarrier
 
-
+The subtype the maps to the AssetRemoved Event in Part 3 of the MTConnect standard.
 
 \begin{table}[ht]
 \centering 
@@ -1234,7 +1237,8 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 \FloatBarrier
 
-The data item mixin will inject the properties and the methods into the related classes. This facility is similar to the Ruby module mixin or the Scala traits.
+The data item mixin will inject the properties and the methods into the related 
+classes. This facility is similar to the Ruby module mixin or the Scala traits.
 
 \begin{table}[ht]
 \centering 
@@ -1349,7 +1353,10 @@ HasProperty & Variable & ConstrainedValues &  EnumValuesType & PropertyType & Ma
 
 \FloatBarrier
 
-These features will be subsumed by the OPC/UA client filtering directives.
+These features will be subsumed by the OPC/UA client filtering directives. They are included
+since they document the MTConnect filtering on the incoming stream of data. The
+subtypes will be instantiated by the FilterObjectFactory if they are secified
+for this data item. See \ref{type:FilterObjectFactory} for more information.
 
 \begin{table}[ht]
 \centering 
@@ -1372,27 +1379,16 @@ HasProperty & Variable & Value &  float & PropertyType & Mandatory \\
 \end{table} 
 
 
-\paragraph{Operations}
-\begin{itemize}
-  \item \texttt{deriveBrowseName(element)}\\
-    Specification:
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
-concat(parent.BrowseName, pascalCase(element.type))
-\end{Verbatim}
-
-  \item \texttt{deriveNodeId(element)}\\
-    Specification:
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
-concat(parent.NodeId, pascalCase(element.type))
-\end{Verbatim}
-
-\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTMessageType}} \label{type:MTMessageType}
 
 \FloatBarrier
 
+The message type is a special class since it adds another proerpty for the native code. 
+In MTConnect the \texttt{nativeCode} attribute will be mapped to this variable 
+in the message. (Not sure how to make this work). 
 
+\textit{Todo: Should we embed in the message text?}
 
 \begin{table}[ht]
 \centering 
@@ -1477,7 +1473,9 @@ Event and the Sample types.
 
 \FloatBarrier
 
-All data items with category EVENT and a numeric value.
+All data items with category EVENT and a numeric value. These are usually counters for 
+parts and lines. Currently only builtin types that are known to be integers will be
+sub-typed from this type. Extended types will be subtyped from the \texttt{MTStringEventType}.
 
 \begin{table}[ht]
 \centering 
@@ -1521,7 +1519,8 @@ HasProperty & Variable & EngineeringUnits &  EUInformation & PropertyType & Opti
 
 \FloatBarrier
 
-Data Items with category SAMPLE
+Data Items with category SAMPLE. The simplest mapping since all these types are 
+floating numeric data and comply with the AnalogItemType from OPC/UA Part 8.
 
 \begin{table}[ht]
 \centering 
@@ -1563,7 +1562,11 @@ HasProperty & Variable & Nominal &  Double & PropertyType & Optional \\
 
 \FloatBarrier
 
-All data items with category EVENT where the data is freeform text. The set_data_type constraint derives  makes the data type a string for this type.
+All data items with category EVENT where the data is freeform text. The data type
+will be set to String for all the sub-types. All extended type, regardless of 
+controlled vocabularies, will use this base type unless a the propriatary 
+enumerations are added to the nodeset as required by the builtin state
+event types inherited from \texttt{MTEnumeratedEventType} (see \ref{type:MTEnumeratedEventType}).
 
 \begin{table}[ht]
 \centering 
@@ -1594,21 +1597,14 @@ HasProperty & Variable & Category &  MTCategoryType & PropertyType & Mandatory \
 \end{table} 
 
 
-\paragraph{Constraints}
-\begin{itemize}
-\item Constraint \texttt{set_data_type}: 
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
-derive: DataType <-String
-\end{Verbatim}
-
-\end{itemize}
 \paragraph{Mixes in \texttt{MTDataItemType}} (See section \ref{type:MTDataItemType})
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MinimumDeltaFilterType}} \label{type:MinimumDeltaFilterType}
 
 \FloatBarrier
 
-
+The minimum delta filter will not report data if the change in the value of the
+data item is less than the give value in the \texttt{Value} property. 
 
 \begin{table}[ht]
 \centering 
@@ -1677,6 +1673,8 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 \FloatBarrier
 
+A period filter sets the minimum number of seconds that must elapse before
+a change is reported as given in the \texttt{Value} property.
 
 
 \begin{table}[ht]
@@ -1847,6 +1845,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTEnumeratedEventType (See section \ref{type:MTEnumeratedEventType})} \\
+HasProperty & Variable & Attribute1 &   & PropertyType & Mandatory \\
 \end{tabu}
 \end{table} 
 

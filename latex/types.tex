@@ -1,4 +1,4 @@
-% Generated 2018-10-02 14:37:02 -0700
+% Generated 2018-10-02 15:36:52 -0700
 \subsection{Components}
 
 \begin{figure}[ht]
@@ -1290,7 +1290,10 @@ This class relates to \texttt{FilterObjectFactory} (See section \ref{type:Filter
 
 \FloatBarrier
 
-All Data Items with Category EVENT having a Controlled Vocabularies will be of this type. Otherwise, MTString
+All Data Items with Category \texttt{EVENT} having a Controlled Vocabularies (Enumerations) 
+will be added as sub-types of this type which is mapped to the OPC/UA MultiStateValueDiscreteType. 
+Otherwise, \texttt{MTString} will be used. All subtypes are direct representations of the 
+MTConnect equivilent elements that can be found in the \textit{MTConnect Part 3} documents.
 
 \begin{table}[ht]
 \centering 
@@ -1330,11 +1333,17 @@ HasSubtype & VariableType & PowerStateType & \multicolumn{3}{|l|}{See section \r
 HasSubtype & VariableType & ProgramEditType & \multicolumn{3}{|l|}{See section \ref{type:ProgramEditType}} \\
 HasSubtype & VariableType & RotaryModeType & \multicolumn{3}{|l|}{See section \ref{type:RotaryModeType}} \\
 HasSubtype & VariableType & SpindleInterlockType & \multicolumn{3}{|l|}{See section \ref{type:SpindleInterlockType}} \\
+HasProperty & Variable & SourceName &  String & PropertyType & Optional \\
+HasProperty & Variable & StreamRate &  Double & PropertyType & Optional \\
+HasProperty & Variable & SampleRate &  Double & PropertyType & Optional \\
+HasProperty & Variable & Representation &  RepresentationType & PropertyType & Optional \\
+HasProperty & Variable & Category &  MTCategoryType & PropertyType & Mandatory \\
 HasProperty & Variable & ConstrainedValues &  EnumValuesType & PropertyType & Mandatory \\
 \end{tabu}
 \end{table} 
 
 
+\paragraph{Mixes in \texttt{MTDataItemType}} (See section \ref{type:MTDataItemType})
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTFilterType}} \label{type:MTFilterType}
 
@@ -1487,12 +1496,26 @@ DataType & \multicolumn{5}{|l|}{Integer} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of DataItemType (See OPCUA Documentation)} \\
+HasProperty & Variable & SourceName &  String & PropertyType & Optional \\
+HasProperty & Variable & StreamRate &  Double & PropertyType & Optional \\
+HasProperty & Variable & SampleRate &  Double & PropertyType & Optional \\
+HasProperty & Variable & Representation &  RepresentationType & PropertyType & Optional \\
+HasProperty & Variable & Category &  MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & SignificantDigits &  UInt16 & PropertyType & Optional \\
+HasProperty & Variable & Statistic &  MTStatisticType & PropertyType & Optional \\
+HasProperty & Variable & Units &  MTUnits & PropertyType & Optional \\
+HasProperty & Variable & NativeUnits &  MTNativeUnitsType & PropertyType & Optional \\
+HasProperty & Variable & CoordinateSystem &  MTCoordinateSystemType & PropertyType & Optional \\
+HasProperty & Variable & InitialValue &  Double & PropertyType & Optional \\
+HasProperty & Variable & ResetTrigger &  DataItemResetValueType & PropertyType & Optional \\
+HasProperty & Variable & Nominal &  Double & PropertyType & Optional \\
 HasProperty & Variable & EURange &  Range & PropertyType & Optional \\
 HasProperty & Variable & EngineeringUnits &  EUInformation & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
 
+\paragraph{Mixes in \texttt{MTNumericDataItemType}} (See section \ref{type:MTNumericDataItemType})
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTSampleType}} \label{type:MTSampleType}
 
@@ -1517,10 +1540,24 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of AnalogItemType (See OPCUA Documentation)} \\
+HasProperty & Variable & SourceName &  String & PropertyType & Optional \\
+HasProperty & Variable & StreamRate &  Double & PropertyType & Optional \\
+HasProperty & Variable & SampleRate &  Double & PropertyType & Optional \\
+HasProperty & Variable & Representation &  RepresentationType & PropertyType & Optional \\
+HasProperty & Variable & Category &  MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & SignificantDigits &  UInt16 & PropertyType & Optional \\
+HasProperty & Variable & Statistic &  MTStatisticType & PropertyType & Optional \\
+HasProperty & Variable & Units &  MTUnits & PropertyType & Optional \\
+HasProperty & Variable & NativeUnits &  MTNativeUnitsType & PropertyType & Optional \\
+HasProperty & Variable & CoordinateSystem &  MTCoordinateSystemType & PropertyType & Optional \\
+HasProperty & Variable & InitialValue &  Double & PropertyType & Optional \\
+HasProperty & Variable & ResetTrigger &  DataItemResetValueType & PropertyType & Optional \\
+HasProperty & Variable & Nominal &  Double & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
 
+\paragraph{Mixes in \texttt{MTNumericDataItemType}} (See section \ref{type:MTNumericDataItemType})
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTStringEventType}} \label{type:MTStringEventType}
 
@@ -1548,6 +1585,11 @@ DataType & \multicolumn{5}{|l|}{String} \\
 HasSubtype & VariableType & \{DataItem\}Type & \multicolumn{3}{|l|}{See section \ref{type:{DataItem}Type}} \\
 HasSubtype & VariableType & MTMessageType & \multicolumn{3}{|l|}{See section \ref{type:MTMessageType}} \\
 HasSubtype & VariableType & AssetEventType & \multicolumn{3}{|l|}{See section \ref{type:AssetEventType}} \\
+HasProperty & Variable & SourceName &  String & PropertyType & Optional \\
+HasProperty & Variable & StreamRate &  Double & PropertyType & Optional \\
+HasProperty & Variable & SampleRate &  Double & PropertyType & Optional \\
+HasProperty & Variable & Representation &  RepresentationType & PropertyType & Optional \\
+HasProperty & Variable & Category &  MTCategoryType & PropertyType & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -1560,6 +1602,7 @@ derive: DataType <-String
 \end{Verbatim}
 
 \end{itemize}
+\paragraph{Mixes in \texttt{MTDataItemType}} (See section \ref{type:MTDataItemType})
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MinimumDeltaFilterType}} \label{type:MinimumDeltaFilterType}
 
@@ -1897,7 +1940,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \paragraph{Dependency on MTDataItemType}
 
-This class relates to \texttt{MTDataItemType} (See section \ref{type:MTDataItemType}) for a(n) \texttt{Mixes  In} relationship.
+This class relates to \texttt{MTDataItemType} (See section \ref{type:MTDataItemType}) for a(n) \texttt{Mixes In} relationship.
 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTNonExclusiveConditionType}} \label{type:MTNonExclusiveConditionType}
@@ -1927,7 +1970,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \paragraph{Dependency on MTDataItemType}
 
-This class relates to \texttt{MTDataItemType} (See section \ref{type:MTDataItemType}) for a(n) \texttt{Mixes  In} relationship.
+This class relates to \texttt{MTDataItemType} (See section \ref{type:MTDataItemType}) for a(n) \texttt{Mixes In} relationship.
 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<Dynamic Type>> \{ConditionClass\}Type}} \label{type:{ConditionClass}Type}
@@ -2394,7 +2437,7 @@ data model.
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ Mixes  In}} \label{type:Mixes  In}
+\subsubsection{Defintion of \texttt{ Mixes In}} \label{type:Mixes In}
 
 \FloatBarrier
 

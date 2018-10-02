@@ -21,9 +21,9 @@ class Type
     @id = e['_id']
     @type = e['_type']
     @documentation = e['documentation']
-    @attributes = e['attributes']
-    @relations = e['ownedElements']
-    @operations = e['operations']
+    @attributes = e['attributes'] || []
+    @relations = e['ownedElements'] || []
+    @operations = e['operations'] || []
     @abstract = e['isAbstract'] || false
     @model = model
 
@@ -83,15 +83,14 @@ class Type
   end
 
   def get_parent
-    if @relations and !defined?(@parent)
+    if !defined?(@parent)
+      @parent = nil
       @relations.each do |rel|
         if rel['_type'] == 'UMLGeneralization'
           parent_id = rel['target']['$ref']
           @parent = @@types[parent_id]
         end
       end
-    elsif !defined?(@parent)
-      @parent = nil
     end
     @parent
   end
@@ -136,85 +135,82 @@ class Type
     
 
   def generate_properties(f)
-    if @attributes
-      @attributes.each do |a|
-        type = resolve_type_name(a['type'])
-        stereo = a['stereotype'] && resolve_type_name(a['stereotype'])
-        unless stereo =~ /Attribute/
-          f.puts "HasProperty & Variable & #{a['name']} &  #{type} & PropertyType & #{mandatory(a)} \\\\"
-        end
+    @attributes.each do |a|
+      type = resolve_type_name(a['type'])
+      stereo = a['stereotype'] && resolve_type_name(a['stereotype'])
+      unless stereo =~ /Attribute/
+        f.puts "HasProperty & Variable & #{a['name']} &  #{type} & PropertyType & #{mandatory(a)} \\\\"
       end
     end
   end
 
-  def generate_constraints(f)
-    if @relations
-      constraints = @relations.select do |r|
-        r['_type'] == 'UMLConstraint'
-      end
+  def mixin_properties(f)
+    @parent.mixin_properties(f) if @parent
+    generate_properties(f)
+  end
 
-      unless constraints.empty?
-        f.puts "\\paragraph{Constraints}\n"
-        constraints.each do |c|
-          f.puts "\\begin{itemize}"
-          f.puts "\\item Constraint \\texttt{#{c['name']}}: "
-          f.puts "   \\indent \\begin{Verbatim}[xleftmargin=.25in,fontsize=\\small]"
-          f.puts c['specification']
-          f.puts "\\end{Verbatim}"
-          f.puts "Documentation: #{c['documentation']}" if c.include?('documentation')
-          f.puts "\n\\end{itemize}"
-        end
+  def generate_constraints(f)
+    constraints = @relations.select do |r|
+      r['_type'] == 'UMLConstraint'
+    end
+    
+    unless constraints.empty?
+      f.puts "\\paragraph{Constraints}\n"
+      constraints.each do |c|
+        f.puts "\\begin{itemize}"
+        f.puts "\\item Constraint \\texttt{#{c['name']}}: "
+        f.puts "   \\indent \\begin{Verbatim}[xleftmargin=.25in,fontsize=\\small]"
+        f.puts c['specification']
+        f.puts "\\end{Verbatim}"
+        f.puts "Documentation: #{c['documentation']}" if c.include?('documentation')
+        f.puts "\n\\end{itemize}"
       end
     end
   end
 
   def generate_relations(f)
-    if @relations
-      @relations.each do |r|
-        if r['_type'] == 'UMLAssociation'
-          optional = mandatory(r['end1'])
-          target = resolve_type(r['end2']['reference'])
-          stereo = resolve_type(r['stereotype'])
-          node = 'Object'
-          browse = r['name']
-
-          if r['name'].nil?
-            relation = 'HasProperty'
-            type_name = target.name
-            type_def = '<Dynamic>'
-            browse = '<Dynamic>'
-            node = 'Variable'
-          elsif r['end2']['multiplicity'] == '1'
-            type_name = ''
-            relation =  'HasComponent'
-            type_def = target.name
-          elsif stereo
-            relation = stereo.name == 'FolderType' ? 'Organizes' : stereo.name
-            type_def = stereo.name
-            type_name = target.name
-          else
-            type_def = target.name
-            type_name = ''
-            relation = 'HasComponent'
-          end
-          
-          f.puts "#{relation} & #{node} & #{browse} &  #{type_name} & #{type_def} & #{optional} \\\\"          
+    @relations.each do |r|
+      if r['_type'] == 'UMLAssociation'
+        optional = mandatory(r['end1'])
+        target = resolve_type(r['end2']['reference'])
+        stereo = resolve_type(r['stereotype'])
+        node = 'Object'
+        browse = r['name']
+        
+        if r['name'].nil?
+          relation = 'HasProperty'
+          type_name = target.name
+          type_def = '<Dynamic>'
+          browse = '<Dynamic>'
+          node = 'Variable'
+        elsif r['end2']['multiplicity'] == '1'
+          type_name = ''
+          relation =  'HasComponent'
+          type_def = target.name
+        elsif stereo
+          relation = stereo.name == 'FolderType' ? 'Organizes' : stereo.name
+          type_def = stereo.name
+          type_name = target.name
+        else
+          type_def = target.name
+          type_name = ''
+          relation = 'HasComponent'
         end
+          
+        f.puts "#{relation} & #{node} & #{browse} &  #{type_name} & #{type_def} & #{optional} \\\\"          
       end
     end
   end
 
   def generate_children(f)
-    unless @children.empty?
-      @children.each do |c|
-        t = c.is_a_type?('BaseVariableType') ? 'VariableType' : 'ObjectType'
-        f.puts "HasSubtype & #{t} & #{c.escape_name} & \\multicolumn{3}{|l|}{#{c.reference}} \\\\"
-      end
+    @children.each do |c|
+      t = c.is_a_type?('BaseVariableType') ? 'VariableType' : 'ObjectType'
+      f.puts "HasSubtype & #{t} & #{c.escape_name} & \\multicolumn{3}{|l|}{#{c.reference}} \\\\"
     end
   end
 
   def generate_operations(f)
-    if @operations
+    if !@operations.empty?
       f.puts "\\paragraph{Operations}\n"
       
       f.puts "\\begin{itemize}"
@@ -272,6 +268,13 @@ EOT
 
     generate_supertype(f)
     generate_children(f)
+
+    realization_targets.each do |stereo, target|
+      if stereo.name == 'Mixes In'
+        target.mixin_properties(f)
+      end
+    end
+
     generate_properties(f)
     generate_relations(f)
 
@@ -310,26 +313,49 @@ EOT
     end
   end
 
+  def dependencies
+    depends = @relations.select { |r| r['_type'] == 'UMLDependency' }
+  end
+
+  def find_stereotypes_and_targets(list)
+    list.map do |d|
+      stereo = resolve_type(d['stereotype'])
+      target = resolve_type(d['target'])
+      if stereo and target
+        [stereo, target]
+      else
+        nil
+      end
+    end.compact
+  end
+
+  def dependency_targets
+    find_stereotypes_and_targets(dependencies)
+  end
+      
+  def realizations
+    depends = @relations.select { |r| r['_type'] == 'UMLRealization' }
+  end
+    
+  def realization_targets
+    find_stereotypes_and_targets(realizations)
+  end
+
   def generate_dependencies(f)
     if @relations
-      depends = @relations.select { |r| r['_type'] == 'UMLDependency' }
-      if !depends.empty?
-        depends.each do |d|
-          stereo = resolve_type(d['stereotype'])
-          target = resolve_type(d['target'])
-          if stereo and target
-            case stereo.name
-            when 'values'
-              if target.type == 'UMLEnumeration'
-                f.puts "\\paragraph{Allowable Values}"
-                target.generate_enumerations(f)
-              end
+      dependency_targets.each do |stereo, target|
+        if stereo.name == 'values' and target.type == 'UMLEnumeration'
+          f.puts "\\paragraph{Allowable Values}"
+          target.generate_enumerations(f)
+        else
+          f.puts "\\paragraph{Dependency on #{target.name}}\n\n"
+          f.puts "This class relates to \\texttt{#{target.name}} (#{target.reference}) for a(n) \\texttt{#{stereo.name}} relationship.\n\n"
+        end
+      end
 
-            else
-              f.puts "\\paragraph{Dependency on #{target.name}}\n\n"
-              f.puts "This class relates to \\texttt{#{target.name}} (#{target.reference}) for a(n) \\texttt{#{stereo.name}} relationship.\n\n"
-            end
-          end
+      realization_targets.each do |stereo, target|
+        if stereo.name == 'Mixes In'
+          f.puts "\\paragraph{Mixes in \\texttt{#{target.escape_name}}} (#{target.reference})"
         end
       end
     end

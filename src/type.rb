@@ -1,7 +1,41 @@
 
+module Diagram
+  def diagram_name
+    "./diagrams/#{short_name}.png"
+  end
+
+  def diagram_file_name
+    "./latex/#{diagram_name}"
+  end
+
+  def diagram_exists?
+    File.exists?(diagram_file_name)
+  end
+  
+  def generate_diagram(f)
+    if diagram_exists?
+      puts "** Generating diagrams #{diagram_file_name}"
+      
+      f.puts <<EOT
+
+\\begin{figure}[ht]
+  \\centering
+    \\includegraphics[width=1.0\\textwidth]{#{diagram_name}}
+  \\caption{#{@name} Diagram}
+  \\label{fig:#{short_name}}
+\\end{figure}
+
+\\FloatBarrier
+
+EOT
+    end
+  end
+end
 
 class Type
   attr_reader :name, :id, :type, :model, :json
+
+  include Diagram
   
   @@types = {}
 
@@ -58,7 +92,9 @@ class Type
     end
   end
 
-  
+  def short_name
+    @name.gsub(/[ _]/, '')
+  end
 
   def to_s
     "#{@model}::#{@name} -> #{stereotype_name} #{@type} #{@id}"
@@ -367,10 +403,10 @@ EOT
 \\subsubsection{Defintion of \\texttt{#{stereotype_name} #{escape_name}}} \\label{type:#{@name}}
 
 \\FloatBarrier
-
-#{@documentation}
-
 EOT
+    generate_diagram(f)
+
+    f.puts "\n#{@documentation}\n\n"
 
     if stereotype_name !~ /Factory/o and @model.name !~ /Profile/
       generate_type_table(f) 

@@ -1,9 +1,9 @@
-% Generated 2018-10-02 20:40:27 -0700
+% Generated 2018-10-03 13:20:45 -0700
 \subsection{Components}
 
 \begin{figure}[ht]
   \centering
-    \includegraphics[width=1.0\textwidth]{diagrams/Components.png}
+    \includegraphics[width=1.0\textwidth]{./diagrams/Components.png}
   \caption{Components Diagram}
   \label{fig:Components}
 \end{figure}
@@ -11,7 +11,7 @@
 \FloatBarrier
 
 
-The Components documents the Component models and the owned objects.
+The \texttt{Components} documents the Component models and the owned objects.
 
 \subsubsection{Defintion of \texttt{ ChannelType}} \label{type:ChannelType}
 
@@ -55,7 +55,7 @@ HasProperty & Variable & CalibrationInitials &  String & PropertyType & Optional
 
 \FloatBarrier
 
-The desription provides some general information about the 
+The description provides some general information about the 
 manufacture and serial number of the component. In the XML, the \texttt{CDATA} is freeform 
 text that is represented in the \texttt{Data} Property of the Description Object. The description is 
 related to the component with the OPC/UA \texttt{HasComponent} relationship.
@@ -103,6 +103,16 @@ concat(self.parent.NodeId, BrowseName)
 
 \FloatBarrier
 
+\begin{figure}[ht]
+  \centering
+    \includegraphics[width=1.0\textwidth]{./diagrams/MTComponentType.png}
+  \caption{MTComponentType Diagram}
+  \label{fig:MTComponentType}
+\end{figure}
+
+\FloatBarrier
+
+
 The base Component Type from which all MTConnect Components are derived. The 
 component type factory is used to create the specific OPC/UA Types as subtypes of the 
 MTConnect \texttt{MTComponentType}. The component types will be created once for all Component objects 
@@ -117,7 +127,7 @@ by square brackets, \texttt{[]}. For example if the MTConnect Element is:
 The OPC/UA Object with browse name \texttt{Linear[X]} will be created with the HasTypeDefinition 
 referencing the \texttt{Linear} OPC/UA type. 
 
-The meta data for the component and it's relationships are static. The dynamic data will be 
+The meta data for the component and its relationships are static. The dynamic data will be 
 represented using the \textit{OPC/UA Part 8}.
 
 
@@ -193,8 +203,8 @@ DataItems that reference the \texttt{Composition}'s id in their \texttt{composit
 attribute. 
 
 The data items are added to the relationship where the \texttt{DataItem} to \texttt{Composition} 
-relationship is represented by the \texttt{BrowseName} Composition property of the data item 
-the data items are added by their browse names to the \texttt{Composition}.
+relationship is represented by the \texttt{BrowseName} Composition property of the data item.
+The data items are added to the \texttt{Composition} by their browse names.
 
 \begin{table}[ht]
 \centering 
@@ -227,7 +237,7 @@ NonHierarchialReferenceType & Object & <DataItem> &  {DataItem}Type & NonHierarc
 
 The abstract \texttt{MTConfigurationType} currently has only one sub-type, \\
 \texttt{SensorConfigurationType} (see 
-\ref{type:SensorConfigurationType}). In the future the configurations will also contain component 
+\ref{type:SensorConfigurationType}). In the future, the configurations will also contain component 
 and device configuration information as sub-types. 
 
 \begin{table}[ht]
@@ -257,7 +267,7 @@ HasSubtype & ObjectType & SensorConfigurationType & \multicolumn{3}{|l|}{See sec
 
 The MTDevice is a special type whose object will be the root of the device graph. The Device uses the component type factory and the component object factories to create each of the first level components. 
 
-The  compositions, relationships, and data items are then recursively created as one decendes the MTConnect informaiton model.
+The compositions, relationships, and data items are then recursively created as one descends the MTConnect information model.
 
 \begin{table}[ht]
 \centering 
@@ -324,6 +334,8 @@ This class relates to \texttt{ComponentObjectFactory} (See section \ref{type:Com
 \subsubsection{Defintion of \texttt{ SensorConfigurationType}} \label{type:SensorConfigurationType}
 
 \FloatBarrier
+
+The \texttt{SensorConfiguration} abstraction provides information required for maintenance and support of a sensor element(s).
 
 The SensorConfiguration browse name will be created as an Object relationship with the parent component.
 
@@ -408,9 +420,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \begin{figure}[ht]
   \centering
-    \includegraphics[width=1.0\textwidth]{diagrams/Data Items.png}
+    \includegraphics[width=1.0\textwidth]{./diagrams/DataItems.png}
   \caption{Data Items Diagram}
-  \label{fig:Data Items}
+  \label{fig:DataItems}
 \end{figure}
 
 \FloatBarrier
@@ -464,7 +476,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 
 \FloatBarrier
 
-The subtype the maps to the AssetChanged Event in Part 3 of the MTConnect standard.
+The subtype that maps to the AssetChanged Event in Part 3 of the MTConnect standard.
 
 \begin{table}[ht]
 \centering 
@@ -526,7 +538,7 @@ HasProperty & Variable & AssetType &  String & PropertyType & Mandatory \\
 
 \FloatBarrier
 
-The subtype the maps to the AssetRemoved Event in Part 3 of the MTConnect standard.
+The subtype that maps to the AssetRemoved Event in Part 3 of the MTConnect standard.
 
 \begin{table}[ht]
 \centering 
@@ -1294,10 +1306,10 @@ This class relates to \texttt{FilterObjectFactory} (See section \ref{type:Filter
 
 \FloatBarrier
 
-All Data Items with Category \texttt{EVENT} having a Controlled Vocabularies (Enumerations) 
+All Data Items with Category \texttt{EVENT} having Controlled Vocabularies (Enumerations) 
 will be added as sub-types of this type which is mapped to the OPC/UA MultiStateValueDiscreteType. 
-Otherwise, \texttt{MTString} will be used. All subtypes are direct representations of the 
-MTConnect equivilent elements that can be found in the \textit{MTConnect Part 3} documents.
+Otherwise, either \texttt{MTString} or \texttt{MTNumeric} will be used. All subtypes are direct representations of the 
+MTConnect equivalent elements that can be found in the \textit{MTConnect Part 3} documents.
 
 \begin{table}[ht]
 \centering 
@@ -1384,7 +1396,7 @@ HasProperty & Variable & Value &  float & PropertyType & Mandatory \\
 
 \FloatBarrier
 
-The message type is a special class since it adds another proerpty for the native code. 
+The message type is a special class since it adds another property for the native code. 
 In MTConnect the \texttt{nativeCode} attribute will be mapped to this variable 
 in the message. (Not sure how to make this work). 
 
@@ -1473,7 +1485,7 @@ Event and the Sample types.
 
 \FloatBarrier
 
-All data items with category EVENT and a numeric value. These are usually counters for 
+All data items with category \texttt{EVENT} and a numeric value. These are usually counters for 
 parts and lines. Currently only builtin types that are known to be integers will be
 sub-typed from this type. Extended types will be subtyped from the \texttt{MTStringEventType}.
 
@@ -1519,7 +1531,7 @@ HasProperty & Variable & EngineeringUnits &  EUInformation & PropertyType & Opti
 
 \FloatBarrier
 
-Data Items with category SAMPLE. The simplest mapping since all these types are 
+Data Items with category \texttt{SAMPLE}. The simplest mapping since all these types are 
 floating numeric data and comply with the AnalogItemType from OPC/UA Part 8.
 
 \begin{table}[ht]
@@ -1562,9 +1574,9 @@ HasProperty & Variable & Nominal &  Double & PropertyType & Optional \\
 
 \FloatBarrier
 
-All data items with category EVENT where the data is freeform text. The data type
+All data items with category \texttt{EVENT} where the data is freeform text. The data type
 will be set to String for all the sub-types. All extended type, regardless of 
-controlled vocabularies, will use this base type unless a the propriatary 
+controlled vocabularies, will use this base type unless proprietary 
 enumerations are added to the nodeset as required by the builtin state
 event types inherited from \texttt{MTEnumeratedEventType} (see \ref{type:MTEnumeratedEventType}).
 
@@ -1604,7 +1616,7 @@ HasProperty & Variable & Category &  MTCategoryType & PropertyType & Mandatory \
 \FloatBarrier
 
 The minimum delta filter will not report data if the change in the value of the
-data item is less than the give value in the \texttt{Value} property. 
+data item is less than the given value in the \texttt{Value} property. 
 
 \begin{table}[ht]
 \centering 
@@ -1868,7 +1880,7 @@ HasProperty & Variable & Attribute1 &   & PropertyType & Mandatory \\
 
 \FloatBarrier
 
-For each DataItem the Sub Type, and the Type will be composed to be the \texttt{HasTypeDefinition}
+For each DataItem, the Sub Type and the Type will be composed to be the \texttt{HasTypeDefinition}
 relationship of the object. The \texttt{BrowseName} will also include the Composition Type 
 if a composition Id is provided.
 
@@ -1902,7 +1914,7 @@ This class relates to \texttt{DataItemTypeFactory} (See section \ref{type:DataIt
 
 \begin{figure}[ht]
   \centering
-    \includegraphics[width=1.0\textwidth]{diagrams/Conditions.png}
+    \includegraphics[width=1.0\textwidth]{./diagrams/Conditions.png}
   \caption{Conditions Diagram}
   \label{fig:Conditions}
 \end{figure}
@@ -1962,7 +1974,7 @@ BrowseName & \multicolumn{5}{|l|}{MTNonExclusiveConditionType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of NonEclusiveLimitAlarmType (See OPCUA Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of NonExclusiveLimitAlarmType (See OPCUA Documentation)} \\
 \end{tabu}
 \end{table} 
 
@@ -2002,7 +2014,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \begin{figure}[ht]
   \centering
-    \includegraphics[width=1.0\textwidth]{diagrams/Factories.png}
+    \includegraphics[width=1.0\textwidth]{./diagrams/Factories.png}
   \caption{Factories Diagram}
   \label{fig:Factories}
 \end{figure}
@@ -2012,7 +2024,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The factories are not part of the OPC/UA information model. They are a set of helper 
 classes that are used to create dynamic types and objects. Since the MTConnect 
-information model can be layered on top of the OPC/UA abstrations, the factories
+information model can be layered on top of the OPC/UA abstractions, the factories
 provide the rules for creating the browse and display names for each type.
 
 The factories also create dynamic objects when requried for variables of various
@@ -2396,9 +2408,9 @@ This class relates to \texttt{SensorConfigurationType} (See section \ref{type:Se
 
 \begin{figure}[ht]
   \centering
-    \includegraphics[width=1.0\textwidth]{diagrams/MTConnect Device Profile.png}
+    \includegraphics[width=1.0\textwidth]{./diagrams/MTConnectDeviceProfile.png}
   \caption{MTConnect Device Profile Diagram}
-  \label{fig:MTConnect Device Profile}
+  \label{fig:MTConnectDeviceProfile}
 \end{figure}
 
 \FloatBarrier
@@ -2467,7 +2479,7 @@ can be associated based on the data item category and type, the \texttt{Type Fac
 specify which supertype is to be referenced.
 
 The \texttt{bind} stereotype indicates the relationship between the dynamic sub-type and the 
-parent type are resolved baed on the MTConnect DataItem meta data.
+parent type are resolved based on the MTConnect DataItem meta data.
 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ constrains}} \label{type:constrains}
@@ -2475,6 +2487,13 @@ parent type are resolved baed on the MTConnect DataItem meta data.
 \FloatBarrier
 
 
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ event}} \label{type:event}
+
+\FloatBarrier
+
+In the object model, represents Variables that are of the MTConnect \texttt{Event} category.
 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ mixin}} \label{type:mixin}
@@ -2489,11 +2508,18 @@ from existing OPC/UA types, this mechanism allows for this relationship to be ex
 
 
 \FloatBarrier
+\subsubsection{Defintion of \texttt{ sample}} \label{type:sample}
+
+\FloatBarrier
+
+In the object model, represents Variables that are of the MTConnect \texttt{Sample} category.
+
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ use}} \label{type:use}
 
 \FloatBarrier
 
-The use stereotype indicates that one class uses as a helper to perform 
+The use stereotype indicates that one class uses another as a helper to perform 
 a specific operation or activity. This stereotype is mainly used to indicate
 that a specific factory is being employed by another type to create dynamic
 properties or relationships.

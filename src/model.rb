@@ -3,6 +3,8 @@ require 'type'
 class Model
   attr_reader :name, :documentation
 
+  include Diagram
+
   @@models = {}
 
   def self.models
@@ -24,6 +26,10 @@ class Model
     @types.sort_by! { |t| t.name }
   end
 
+  def short_name
+    @name.gsub(/[ _]/, '')
+  end
+
   def to_s
     @name
   end
@@ -34,20 +40,9 @@ class Model
 
   def generate_latex(f)
     f.puts "\\subsection{#{@name}}"
+
+    generate_diagram(f)
     
-    f.puts <<EOT
-
-\\begin{figure}[ht]
-  \\centering
-    \\includegraphics[width=1.0\\textwidth]{diagrams/#{name}.png}
-  \\caption{#{name} Diagram}
-  \\label{fig:#{name}}
-\\end{figure}
-
-\\FloatBarrier
-
-EOT
-  
     f.puts "\n#{@documentation}\n\n"
     
     @types.each do |type|

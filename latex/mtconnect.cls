@@ -1,4 +1,3 @@
-% ************************************************************************* %
 % ************************ MTCONNECT DOCUMENT CLASS *********************** %
 % ************************************************************************* %
 % 	FILENAME: 		mtconnect.cls											%
@@ -20,12 +19,16 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{mtconnect}[2018/02/13 LaTeX document class for MTConnect]
 
+\LoadClass[12pt,letterpaper,twoside]{article}
+
+
 % **************************** %
 % 	Preliminary Declarations   %
 % **************************** %
-
-\LoadClass[12pt,letterpaper,twoside]{article}
-
+\usepackage{geometry}
+    \geometry{letterpaper}
+    
+\RequirePackage{fancyvrb}
 \RequirePackage{placeins}
 \RequirePackage{booktabs}
 \RequirePackage{tabu}
@@ -38,7 +41,7 @@
 \RequirePackage{underscore}				% Loads underscore package for underscores in text
 \RequirePackage{graphicx}				% Loads graphicx package to include figures and images
 \RequirePackage{fancyhdr}				% Loads fancyhdr package to modify headers and footers
-\RequirePackage{url}					% Loads url package to typeset URLs
+\RequirePackage[hyphens]{url}					% Loads url package to typeset URLs
 \RequirePackage{lineno}					% Loads lineno package to apply line numbers to document
 \RequirePackage{etoolbox}				% Loads etoolbox package to patch lineno package and suppress line numbers in section headings
 \RequirePackage{sectsty}				% Loads sectsty package to modify font of section headings
@@ -49,6 +52,7 @@
 \RequirePackage{hyperref}				% Loads hyperref package to link TOC/LOF/LOT
 \RequirePackage{tocloft}				% Loads tocloft package to format TOC/LOF/LOT
 \RequirePackage[ampersand]{easylist}	% Loads easylist package to simplify lists using &
+\RequirePackage[english]{babel}
 
 % *********** %
 % 	Options   %
@@ -115,12 +119,14 @@
 \newcommand\@preparedfor{}
 \newcommand\@preparedby{}
 \newcommand\@preparedon{}
+\newcommand\@drafttext{}
 \newcommand{\docnum}[1]{\gdef\@docnum{#1}}
 \newcommand{\doctitle}[1]{\gdef\@doctitle{#1}}
 \newcommand{\versionnum}[1]{\gdef\@versionnum{#1}}
 \newcommand{\preparedfor}[1]{\gdef\@preparedfor{#1}}
 \newcommand{\preparedby}[1]{\gdef\@preparedby{#1}}
 \newcommand{\preparedon}[1]{\gdef\@preparedon{#1}}
+\newcommand{\drafttext}[1]{\gdef\@drafttext{#1}}
 
 \renewcommand{\maketitle}{%
 	\begin{titlepage}%
@@ -129,9 +135,8 @@
         \end{flushleft}%
         \vfill%
         \begin{center}%
-        	\Huge{\textbf{\mtconnect Standard}} \\%
-            \huge{\@docnum : \@doctitle} \\%
-            \LARGE{Version \@versionnum} \\%
+            \huge{\@doctitle} \\%
+            \LARGE{\@drafttext Version \@versionnum} \\%
         \end{center}%
         \vfill%
         \hspace*{\fill}%
@@ -170,7 +175,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{\@preparedon}
-\lfoot{\mtconnect \@docnum : \@doctitleshort { -} Version \@versionnum}
+\lfoot{\@drafttext \@doctitleshort { -} Version \@versionnum}
 \rfoot{\thepage}
 \renewcommand{\headrulewidth}{0pt}
 
@@ -179,7 +184,7 @@
 % ************************** %
 
 \setcounter{secnumdepth}{5}
-\setcounter{tocdepth}{5}
+\setcounter{tocdepth}{3}
 
 \makeatletter
 \renewcommand\subparagraph{%
@@ -199,6 +204,8 @@
 \newcommand{\threesection}[1]{\subsubsection{#1}}
 \newcommand{\foursection}[1]{\paragraph{#1}\mbox{}\\}
 \newcommand{\fivesection}[1]{\subparagraph{#1}\mbox{}\\}
+
+\newcommand{\hang}{\hangindent=0.5in}
 
 % ********************** %
 % 	Tables and Figures   %
@@ -249,6 +256,10 @@
 % Formatting for code samples:
 \newcommand{\code}{%
 \lstset{basicstyle=\footnotesize\fontfamily{pcr}\selectfont,numbers=left,stepnumber=1,xleftmargin=0.25in}}
+
+\lstset{basicstyle=\small, xrightmargin=0.25in, 
+  frame=single, framexrightmargin=0.5in, breaklines,
+  breakautoindent=true}
 
 % Formatting for internal links in document:
 \hypersetup{%

@@ -362,7 +362,7 @@ The services are described in the following service sets:
 \item Attribute Service Set -- allows a client to read and write current and historical values to nodes in the address spaces.
 \item Method Service Set -- allow Servers to extend the functionality provided by a system, without having to define new services. The methods are defined in the \texttt{AddressSpace} as part of an information model. Client can discover the available methods using the View Service Set and access them via this service set.
 \item \texttt{MonitoredItem} Service Set -- used by client in conjunction with the Subscription Service Set to obtain a steady stream of values. This Service Set allows the client to define the individual data that is to be reported, filters and buffering for the items and the sampling rate.
-\item Subscription Service Set -- used by the client in conjunction with the \texttt{MonitoredItem} Service Set to obtain a steady stream of values. This service set is used to define the grouping of items to be returned and the interval at which they are sent.
+\item Subscription Service Set -- used by the client in conjunction with the \texttt{Monitored\-Item} Service Set to obtain a steady stream of values. This service set is used to define the grouping of items to be returned and the interval at which they are sent.
 \end{itemize}
 
 These standard services are available with any information model, allowing for generic Client access to any Server.
@@ -495,7 +495,7 @@ MTConnect defines Asset, which becomes a simple addition to the OPC UA informati
 
 MTConnect error codes will be mapped to OPC UA error codes where appropriate. The OPC UA server has a multilevel error reporting capability. A Service can include  	 information, as well as the individual data items that are being reported as part of the service.
 
-As discussed in the overview of OPC UA, all companion specifications usually define a \texttt{Namespace}. For this companion specification all \texttt{TypeDefinitions} and \texttt{BrowseNames} defined by this specification are qualified by the MTConnect \texttt{Namespace} \\
+As discussed in the overview of OPC UA, all companion specifications usually define a \texttt{Namespace}. For this companion specification all \texttt{Type\-Definitions} and \texttt{Browse\-Names} defined by this specification are qualified by the MTConnect \texttt{Namespace} \\
 \texttt{("urn:mtconnect.com:MTConnectDevices:1.2")} unless stated otherwise.
 
 The description associated with MTConnect items is always mapped to the Description attribute available in OPC UA.
@@ -526,9 +526,9 @@ As an alternative to browsing the address space, a browse path from a starting n
   \label{fig:browse_path_ex}
 \end{figure}
 
-Each Notification has the current value for a \texttt{DataItem}, the \texttt{Timestamp} and \texttt{StatusCode}.
+Each Notification has the current value for a \texttt{DataItem}, the \texttt{Timestamp} and \texttt{Status\-Code}.
 
-The \texttt{MonitoredItem} allows the Client to specify a different SamplingInterval and \texttt{QueueSize} for each \texttt{DataItem}. The \texttt{MinimumSamplingInterval} attribute for each \texttt{DataItem} specifies the fastest supported \texttt{SamplingInterval}. The \texttt{PublishingInterval} for a Subscription controls how frequently Notifications are returned to the Client. If this value is longer than \texttt{SamplingInterval} then the Server will buffer changes and return multiple Notifications in one message. 
+The \texttt{MonitoredItem} allows the Client to specify a different SamplingInterval and \texttt{QueueSize} for each \texttt{DataItem}. The \texttt{MinimumSamplingInterval} attribute for each \texttt{DataItem} specifies the fastest supported \texttt{SamplingInterval}. The \texttt{Publishing\-Interval} for a Subscription controls how frequently Notifications are returned to the Client. If this value is longer than \texttt{Sampling\-Interval} then the Server will buffer changes and return multiple Notifications in one message. 
 
 An OPC \texttt{Event} Subscription can be created with the following steps: 
 

@@ -27,9 +27,7 @@
 % **************************** %
 \usepackage{geometry}
     \geometry{letterpaper}
-
-\RequirePackage{underscore}
-\RequirePackage[english]{babel}
+    
 \RequirePackage{fancyvrb}
 \RequirePackage{placeins}
 \RequirePackage{booktabs}
@@ -43,7 +41,7 @@
 \RequirePackage{underscore}				% Loads underscore package for underscores in text
 \RequirePackage{graphicx}				% Loads graphicx package to include figures and images
 \RequirePackage{fancyhdr}				% Loads fancyhdr package to modify headers and footers
-\RequirePackage{url}					% Loads url package to typeset URLs
+\RequirePackage[hyphens]{url}					% Loads url package to typeset URLs
 \RequirePackage{lineno}					% Loads lineno package to apply line numbers to document
 \RequirePackage{etoolbox}				% Loads etoolbox package to patch lineno package and suppress line numbers in section headings
 \RequirePackage{sectsty}				% Loads sectsty package to modify font of section headings
@@ -54,7 +52,7 @@
 \RequirePackage{hyperref}				% Loads hyperref package to link TOC/LOF/LOT
 \RequirePackage{tocloft}				% Loads tocloft package to format TOC/LOF/LOT
 \RequirePackage[ampersand]{easylist}	% Loads easylist package to simplify lists using &
-\usepackage[htt]{hyphenat}
+\RequirePackage[english]{babel}
 
 % *********** %
 % 	Options   %

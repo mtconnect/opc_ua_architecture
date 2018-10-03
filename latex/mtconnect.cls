@@ -19,12 +19,17 @@
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesClass{mtconnect}[2018/02/13 LaTeX document class for MTConnect]
 
+\LoadClass[12pt,letterpaper,twoside]{article}
+
+
 % **************************** %
 % 	Preliminary Declarations   %
 % **************************** %
+\usepackage{geometry}
+    \geometry{letterpaper}
 
-\LoadClass[12pt,letterpaper,twoside]{article}
-
+\RequirePackage{underscore}
+\RequirePackage[english]{babel}
 \RequirePackage{fancyvrb}
 \RequirePackage{placeins}
 \RequirePackage{booktabs}
@@ -49,6 +54,7 @@
 \RequirePackage{hyperref}				% Loads hyperref package to link TOC/LOF/LOT
 \RequirePackage{tocloft}				% Loads tocloft package to format TOC/LOF/LOT
 \RequirePackage[ampersand]{easylist}	% Loads easylist package to simplify lists using &
+\usepackage[htt]{hyphenat}
 
 % *********** %
 % 	Options   %

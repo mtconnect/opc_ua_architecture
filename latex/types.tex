@@ -1,4 +1,4 @@
-% Generated 2018-10-02 20:31:19 -0700
+% Generated 2018-10-02 20:40:27 -0700
 \subsection{Components}
 
 \begin{figure}[ht]
@@ -158,10 +158,10 @@ HasProperty & Variable & <Dynamic> &  {DataItem}Type & <Dynamic> & Optional \\
 \paragraph{Constraints}
 \begin{itemize}
 \item Constraint \texttt{node_id}: 
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 context Component::NodeId : String 
 derive: concat(self.getDevice().uuid, self.getAttributes().id)
-\end{Verbatim}
+\end{lstlisting}
 Documentation: The NodeId SHALL be derrived from the combination of the device UUID and the id of the component. 
 
 \end{itemize}
@@ -298,17 +298,17 @@ self.uuid
 \paragraph{Constraints}
 \begin{itemize}
 \item Constraint \texttt{uuid_not_empty}: 
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 uuid->notEmpty()
-\end{Verbatim}
+\end{lstlisting}
 Documentation: The  UUID SHALL be provided.
 
 \end{itemize}
 \begin{itemize}
 \item Constraint \texttt{name_not_empty}: 
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 name->notEmpty()
-\end{Verbatim}
+\end{lstlisting}
 Documentation: The name of the Device SHALL be given.
 
 \end{itemize}

@@ -159,9 +159,9 @@ class Type
       constraints.each do |c|
         f.puts "\\begin{itemize}"
         f.puts "\\item Constraint \\texttt{#{c['name']}}: "
-        f.puts "   \\indent \\begin{Verbatim}[xleftmargin=.25in,fontsize=\\small]"
+        f.puts "   \\indent \\begin{lstlisting}"
         f.puts c['specification']
-        f.puts "\\end{Verbatim}"
+        f.puts "\\end{lstlisting}"
         f.puts "Documentation: #{c['documentation']}" if c.include?('documentation')
         f.puts "\n\\end{itemize}"
       end

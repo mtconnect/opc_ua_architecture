@@ -225,9 +225,10 @@ class Type
         f.print ")}"
         if op['specification']
           f.puts "\\\\\n    Specification:"
-          f.puts "   \\indent \\begin{Verbatim}[xleftmargin=.25in,fontsize=\\small]"
+          f.puts "   \\indent \\begin{lstlisting}"
           f.puts op['specification']
-          f.puts "\\end{Verbatim}"
+          f.puts "\\end{lstlisting}"
+          
         end
         if op['documentation']
           f.puts "\n    Documentation: #{op['documentation']}"

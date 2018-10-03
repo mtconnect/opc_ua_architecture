@@ -1,4 +1,4 @@
-% Generated 2018-10-02 19:29:42 -0700
+% Generated 2018-10-02 20:31:19 -0700
 \subsection{Components}
 
 \begin{figure}[ht]
@@ -87,15 +87,15 @@ HasProperty & Variable & Data &  String & PropertyType & Optional \\
 \begin{itemize}
   \item \texttt{deriveBrowseName(element)}\\
     Specification:
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 "Description"
-\end{Verbatim}
+\end{lstlisting}
 
   \item \texttt{deriveNodeId(element)}\\
     Specification:
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 concat(self.parent.NodeId, BrowseName)
-\end{Verbatim}
+\end{lstlisting}
 
 \end{itemize}
 \FloatBarrier
@@ -284,15 +284,15 @@ HasProperty & Variable & Iso841Class &  String & PropertyType & Optional \\
 \begin{itemize}
   \item \texttt{deriveBrowseName(element)}\\
     Specification:
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 self.name
-\end{Verbatim}
+\end{lstlisting}
 
   \item \texttt{deriveNodeId(element)}\\
     Specification:
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 self.uuid
-\end{Verbatim}
+\end{lstlisting}
 
 \end{itemize}
 \paragraph{Constraints}
@@ -1270,9 +1270,9 @@ HasComponent & Object & Source &   & BaseObjectType & Optional \\
 \begin{itemize}
   \item \texttt{deriveSourceName(element)}\\
     Specification:
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 self.Source.CDATA
-\end{Verbatim}
+\end{lstlisting}
 
     Documentation: Derive the source name from the Source element CDATA. This will represent the alternative long name for the data item's source.
 
@@ -1452,16 +1452,16 @@ HasProperty & Variable & Nominal &  Double & PropertyType & Optional \\
 \begin{itemize}
   \item \texttt{deriveEngineeringUnits(units)}\\
     Specification:
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 EngineeringUnits <- self.units
-\end{Verbatim}
+\end{lstlisting}
 
   \item \texttt{deriveEURange(constraints)}\\
     Specification:
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 EURange.Low <- self.Constraints.Minimum
 EURange.High <- self.Constraints.Maximum
-\end{Verbatim}
+\end{lstlisting}
 
     Documentation: Uses the MTConnect Constraints element if present to derive the minimum 
 and maximum values for the numeric values. This applies to both the Numeric 
@@ -2035,15 +2035,15 @@ unambiguous implementation.
 \begin{itemize}
   \item \texttt{deriveBrowseName(element)}\\
     Specification:
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 concat(element.QName, (if self.name.notEmpty() then concat('[', self.name, ']')) else  '' endif))
-\end{Verbatim}
+\end{lstlisting}
 
   \item \texttt{deriveNodeId(element)}\\
     Specification:
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 concat(self.findDevice().uuid, element.id)
-\end{Verbatim}
+\end{lstlisting}
 
 \end{itemize}
 \FloatBarrier
@@ -2064,9 +2064,9 @@ The types will be a single level where each Component is a sub-type of the base 
 \begin{itemize}
   \item \texttt{deriveTypeName(element)}\\
     Specification:
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 derive: Component <- element.QName
-\end{Verbatim}
+\end{lstlisting}
 
     Documentation: The QName of the element for the component will be used to derive the type of the node.
 
@@ -2086,15 +2086,15 @@ This class relates to \texttt{{Component}Type} (See section \ref{type:{Component
 \begin{itemize}
   \item \texttt{deriveBrowseName(element)}\\
     Specification:
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 concat(pascalCase(element.type), (if self.name.notEmpty() then concat('[', self.name, ']')) else  '' endif))
-\end{Verbatim}
+\end{lstlisting}
 
   \item \texttt{deriveNodeId(element)}\\
     Specification:
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 concat(self.findDevice().uuid, element.id)
-\end{Verbatim}
+\end{lstlisting}
 
 \end{itemize}
 \paragraph{Dependency on {Composition}Type}
@@ -2112,10 +2112,10 @@ This class relates to \texttt{{Composition}Type} (See section \ref{type:{Composi
 \begin{itemize}
   \item \texttt{deriveTypeName(element)}\\
     Specification:
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 derive: Composition <-
  pascalCase(element.type)
-\end{Verbatim}
+\end{lstlisting}
 
     Documentation: The type for the composition will be created using the pascal case of the `type` from the composition element.
 
@@ -2248,9 +2248,9 @@ and also provides the template parameter for the ParentType from which this type
 
   \item \texttt{deriveTypeName(type, subType)}\\
     Specification:
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 concat(pascalCase(subType), pascalCase(type))
-\end{Verbatim}
+\end{lstlisting}
 
     Documentation: Used to derive the class name for creating a pascal case name from the sub type and the type. 
 For example type \texttt{ROTARY_VELOCITY} and subType \texttt{ACTUAL} will become \texttt{ActualRotaryVelocity}.
@@ -2271,15 +2271,15 @@ The model instantiation for MTConnect begins with the `Device` MTConnect element
 \begin{itemize}
   \item \texttt{deriveBrowseName(element)}\\
     Specification:
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 derive: element.name
-\end{Verbatim}
+\end{lstlisting}
 
   \item \texttt{deriveNodeId(element)}\\
     Specification:
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 derive: element.uuid
-\end{Verbatim}
+\end{lstlisting}
 
 \end{itemize}
 \paragraph{Dependency on MTDeviceType}
@@ -2321,9 +2321,9 @@ This class relates to \texttt{PeriodFilterType} (See section \ref{type:PeriodFil
   \item \texttt{deriveNodeId(element)}
   \item \texttt{deriveDisplayName(element)}\\
     Specification:
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 deriveBrowseName(element)
-\end{Verbatim}
+\end{lstlisting}
 
   \item \texttt{createObject(element)}
 \end{itemize}
@@ -2338,15 +2338,15 @@ deriveBrowseName(element)
 \begin{itemize}
   \item \texttt{deriveBrowseName(element)}\\
     Specification:
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 concat('Channel', self.number)
-\end{Verbatim}
+\end{lstlisting}
 
   \item \texttt{deriveNodeId(element)}\\
     Specification:
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 concat(self.parent.NodeId, BrowseName)
-\end{Verbatim}
+\end{lstlisting}
 
 \end{itemize}
 \paragraph{Dependency on ChannelType}
@@ -2364,15 +2364,15 @@ This class relates to \texttt{ChannelType} (See section \ref{type:ChannelType}) 
 \begin{itemize}
   \item \texttt{deriveBrowseName(element)}\\
     Specification:
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 element.QName
-\end{Verbatim}
+\end{lstlisting}
 
   \item \texttt{deriveNodeId(element)}\\
     Specification:
-   \indent \begin{Verbatim}[xleftmargin=.25in,fontsize=\small]
+   \indent \begin{lstlisting}
 concat(self.parent.NodeId, BrowseName)
-\end{Verbatim}
+\end{lstlisting}
 
 \end{itemize}
 \paragraph{Dependency on SensorConfigurationType}

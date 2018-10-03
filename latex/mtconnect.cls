@@ -257,6 +257,10 @@
 \newcommand{\code}{%
 \lstset{basicstyle=\footnotesize\fontfamily{pcr}\selectfont,numbers=left,stepnumber=1,xleftmargin=0.25in}}
 
+\lstset{basicstyle=\small, xrightmargin=0.25in, 
+  frame=single, framexrightmargin=0.5in, breaklines,
+  breakautoindent=true}
+
 % Formatting for internal links in document:
 \hypersetup{%
 	colorlinks=true,

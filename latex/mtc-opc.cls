@@ -1,6 +1,6 @@
 % ************************ MTCONNECT DOCUMENT CLASS *********************** %
 % ************************************************************************* %
-% 	FILENAME: 		mtconnect.cls											%
+% 	FILENAME: 		mtc-opc.cls											%
 %	VERSION:		0.1														%
 % 	DATE:			02/13/2018												%
 %	PORTED BY:		Moneer Helu												%
@@ -13,11 +13,11 @@
 % 	EMAIL:			moneer.helu@nist.gov									%
 % 	DESCRIPTION:	Style template for MTConnect documentation;				%
 % 					Initial attempt for testing and discussion				%
-% 	USAGE:			\documentclass[options]{mtconnect}						%
+% 	USAGE:			\documentclass[options]{mtc-opc}						%
 % ************************************************************************* %
 
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{mtconnect}[2018/02/13 LaTeX document class for MTConnect]
+\ProvidesClass{mtc-opc}[2018/02/13 LaTeX document class for MTConnect]
 
 \LoadClass[12pt,letterpaper,twoside]{article}
 

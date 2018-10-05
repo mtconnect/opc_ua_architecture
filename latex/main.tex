@@ -1,0 +1,78 @@
+% ************************************************************************* %
+% ********************** MTCONNECT DOCUMENT TEMPLATE ********************** %
+% ************************************************************************* %
+% 	FILENAME: 		mtconnect.tex											%
+%	VERSION:		0.1														%
+% 	DATE:			02/13/2018												%
+%	PORTED BY:		Moneer Helu												%
+%	ADDRESS:		Engineering Laboratory									%
+%					National Institute of Standards and Technology (NIST)	%
+%					100 Bureau Drive										%
+%					Mailstop 8260											%
+%					Gaithersburg, MD 20899									%
+%					United States of America								%
+% 	EMAIL:			moneer.helu@nist.gov									%
+% 	DESCRIPTION:	Template for MTConnect documentation;					%
+% 					Initial attempt for testing and discussion				%
+% 	USAGE:			\documentclass[options]{mtconnect}						%
+% ************************************************************************* %
+
+\documentclass{mtconnect}	% Load mtconnect document class
+
+\begin{document}			% Begin document here
+
+% ************************************************************************* %
+% *********************** REQUIRED INITIAL INPUTS ************************* %
+% ************************************************************************* %
+
+\docnum{OPC/UA}							% Document "number"
+\doctitle{\mtconnect and OPC/UA Companion Specification}	% Full document title
+\doctitleshort{\mtconnect OPC/UA Companion Specification}				% Shortened document title
+\versionnum{2.0}						% MTConnect version
+\preparedfor{MTConnect Institute and OPC Foundation}		% Should not change!!!
+\preparedby{List of authors\ldots}				% Author
+\preparedon{September 29, 2018}			% Date prepared
+\drafttext{Draft }
+
+% ************************************************************************* %
+% ******************* FRONT MATTER (DO NOT CHANGE!!!) ********************* %
+% ************************************************************************* %
+
+\begin{nolinenumbers}
+	\maketitle				% Title page
+\end{nolinenumbers}
+
+\pagenumbering{roman}
+
+\input legal.txt
+
+\tableofcontents
+\thispagestyle{fancy}
+\clearpage
+\listoffigures
+\thispagestyle{fancy}
+\clearpage
+%\listoftables
+%\clearpage
+\pagenumbering{arabic}
+
+% ************************************************************************* %
+% ******************** ENTER DOCUMENT CONTENT BELOW *********************** %
+% ************************************************************************* %
+
+\input introduction.tex
+
+\input use_cases.tex
+
+\input mtconnect.tex
+
+\input opc_ua.tex
+
+\input mtc_in_opc_ua.tex
+
+\section{MTConnect Devices}\label{mtconnect_devices}
+\FloatBarrier
+
+\input ./types.tex
+
+\end{document}

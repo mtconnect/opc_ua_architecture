@@ -132,6 +132,7 @@
 	\begin{titlepage}%
     	\begin{flushleft}%
         	\includegraphics[width=0.5\linewidth]{mtconnect.png} \\%
+        	\includegraphics[width=0.5\linewidth]{opc-logo.jpg} \\%
         \end{flushleft}%
         \vfill%
         \begin{center}%

@@ -22,6 +22,8 @@ File.open('./latex/types.tex', 'w') do |f|
   Model.generate_latex(f, 'Components')
   Model.generate_latex(f, 'Data Items')
   Model.generate_latex(f, 'Conditions')
+  Model.generate_latex(f, 'Data Item Types')
+  Model.generate_latex(f, 'Data Item Sub Types')
   Model.generate_latex(f, 'Factories')
   Model.generate_latex(f, 'MTConnect Device Profile')
   

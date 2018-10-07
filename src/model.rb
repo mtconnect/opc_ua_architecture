@@ -56,13 +56,13 @@ class Model
   def self.recurse(e, depth, model)
     if e.include?('ownedElements')
       e['ownedElements'].each do |f|      
-        find_definitions(f, depth + 1, model)
+        find_definitions(f, depth, model)
       end
     end
   end
   
   def self.find_definitions(e, depth = 0, model = nil)
-    #  puts "#{'  ' * depth}#{model}::#{e['name']} #{e['_type']}"
+    puts "#{'  ' * depth}#{model}::#{e['name']} #{e['_type']}"
     
     case e['_type']
     when 'UMLClass'
@@ -76,12 +76,11 @@ class Model
       Type.new(model, e)
       
     when 'UMLModel', 'UMLProfile'
-      #   puts "#{'  ' * depth}Model #{e['name']} - #{e['documentation']}"
       model = Model.new(e)
-      recurse(e, depth, model)
+      recurse(e, depth + 1, model)
       
     else
-      recurse(e, depth, model)
+      recurse(e, depth + 1, model)
     end
   end
   

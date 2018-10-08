@@ -1,4 +1,4 @@
-% Generated 2018-10-07 23:33:53 -0700
+% Generated 2018-10-08 13:49:38 -0700
 \subsection{Components}
 
 \begin{figure}[ht]
@@ -2413,11 +2413,37 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
+\subsubsection{Defintion of \texttt{ LinearForceType}} \label{type:LinearForceType}
+
+\FloatBarrier
+
+The measure of the push or pull introduced by an actuator or exerted on an object
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{LinearForceType} Definition}
+  \label{table:LinearForceType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{LinearForceType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ LoadType}} \label{type:LoadType}
 
 \FloatBarrier
 
-
+The measurement of the actual versus the standard rating of a piece of equipment
 
 \begin{table}[ht]
 \centering 
@@ -2559,7 +2585,6 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTDataItemClassType (See section \ref{type:MTDataItemClassType})} \\
 HasSubtype & ObjectType & LoadType & \multicolumn{3}{|l|}{See section \ref{type:LoadType}} \\
-HasSubtype & ObjectType & PositionType & \multicolumn{3}{|l|}{See section \ref{type:PositionType}} \\
 HasSubtype & ObjectType & AccelerationType & \multicolumn{3}{|l|}{See section \ref{type:AccelerationType}} \\
 HasSubtype & ObjectType & AccumulatedTimeType & \multicolumn{3}{|l|}{See section \ref{type:AccumulatedTimeType}} \\
 HasSubtype & ObjectType & AngularAccelerationType & \multicolumn{3}{|l|}{See section \ref{type:AngularAccelerationType}} \\
@@ -2577,6 +2602,133 @@ HasSubtype & ObjectType & FillLevelType & \multicolumn{3}{|l|}{See section \ref{
 HasSubtype & ObjectType & FlowType & \multicolumn{3}{|l|}{See section \ref{type:FlowType}} \\
 HasSubtype & ObjectType & FrequencyType & \multicolumn{3}{|l|}{See section \ref{type:FrequencyType}} \\
 HasSubtype & ObjectType & LengthType & \multicolumn{3}{|l|}{See section \ref{type:LengthType}} \\
+HasSubtype & ObjectType & LinearForceType & \multicolumn{3}{|l|}{See section \ref{type:LinearForceType}} \\
+HasSubtype & ObjectType & MassType & \multicolumn{3}{|l|}{See section \ref{type:MassType}} \\
+HasSubtype & ObjectType & PathFeedrateType & \multicolumn{3}{|l|}{See section \ref{type:PathFeedrateType}} \\
+HasSubtype & ObjectType & PathPositionType & \multicolumn{3}{|l|}{See section \ref{type:PathPositionType}} \\
+HasSubtype & ObjectType & PHType & \multicolumn{3}{|l|}{See section \ref{type:PHType}} \\
+HasSubtype & ObjectType & PositionType & \multicolumn{3}{|l|}{See section \ref{type:PositionType}} \\
+HasSubtype & ObjectType & PowerFactorType & \multicolumn{3}{|l|}{See section \ref{type:PowerFactorType}} \\
+HasSubtype & ObjectType & PressureType & \multicolumn{3}{|l|}{See section \ref{type:PressureType}} \\
+HasSubtype & ObjectType & ProcessTimerType & \multicolumn{3}{|l|}{See section \ref{type:ProcessTimerType}} \\
+HasSubtype & ObjectType & ResistenceType & \multicolumn{3}{|l|}{See section \ref{type:ResistenceType}} \\
+HasSubtype & ObjectType & RotaryVelocityType & \multicolumn{3}{|l|}{See section \ref{type:RotaryVelocityType}} \\
+HasSubtype & ObjectType & SoundLevelType & \multicolumn{3}{|l|}{See section \ref{type:SoundLevelType}} \\
+HasSubtype & ObjectType & StrainType & \multicolumn{3}{|l|}{See section \ref{type:StrainType}} \\
+HasSubtype & ObjectType & TemperatureType & \multicolumn{3}{|l|}{See section \ref{type:TemperatureType}} \\
+HasSubtype & ObjectType & TensionType & \multicolumn{3}{|l|}{See section \ref{type:TensionType}} \\
+HasSubtype & ObjectType & TiltType & \multicolumn{3}{|l|}{See section \ref{type:TiltType}} \\
+HasSubtype & ObjectType & TorqueType & \multicolumn{3}{|l|}{See section \ref{type:TorqueType}} \\
+HasSubtype & ObjectType & VoltAmpereType & \multicolumn{3}{|l|}{See section \ref{type:VoltAmpereType}} \\
+HasSubtype & ObjectType & VoltAmpereReactiveType & \multicolumn{3}{|l|}{See section \ref{type:VoltAmpereReactiveType}} \\
+HasSubtype & ObjectType & VelocityType & \multicolumn{3}{|l|}{See section \ref{type:VelocityType}} \\
+HasSubtype & ObjectType & ViscosityType & \multicolumn{3}{|l|}{See section \ref{type:ViscosityType}} \\
+HasSubtype & ObjectType & VoltageType & \multicolumn{3}{|l|}{See section \ref{type:VoltageType}} \\
+HasSubtype & ObjectType & WattageType & \multicolumn{3}{|l|}{See section \ref{type:WattageType}} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MassType}} \label{type:MassType}
+
+\FloatBarrier
+
+The measurement of the mass of an object(s) or an amount of material.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MassType} Definition}
+  \label{table:MassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ PHType}} \label{type:PHType}
+
+\FloatBarrier
+
+The measure of the acidity or alkalinity.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{PHType} Definition}
+  \label{table:PHType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{PHType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ PathFeedrateType}} \label{type:PathFeedrateType}
+
+\FloatBarrier
+
+The feedrate for the axes, or a single axis, associated with a Path component– a vector.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{PathFeedrateType} Definition}
+  \label{table:PathFeedrateType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{PathFeedrateType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ PathPositionType}} \label{type:PathPositionType}
+
+\FloatBarrier
+
+
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{PathPositionType} Definition}
+  \label{table:PathPositionType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{PathPositionType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2586,7 +2738,11 @@ HasSubtype & ObjectType & LengthType & \multicolumn{3}{|l|}{See section \ref{typ
 
 \FloatBarrier
 
+A calculated or measured position related to a Component element.
 
+\texttt{POSITION} SHOULD be further defined withacoordinateSytemattribute. 
+If a coordinateSystem attribute is not specified, the position of the control point 
+MUST be reported in \texttt{MACHINE} coordinates.
 
 \begin{table}[ht]
 \centering 
@@ -2599,6 +2755,456 @@ HasSubtype & ObjectType & LengthType & \multicolumn{3}{|l|}{See section \ref{typ
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{PositionType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ PowerFactorType}} \label{type:PowerFactorType}
+
+\FloatBarrier
+
+The measurement of the ratio of real power flowing to a load to the apparent power in
+that AC circuit.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{PowerFactorType} Definition}
+  \label{table:PowerFactorType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{PowerFactorType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ PressureType}} \label{type:PressureType}
+
+\FloatBarrier
+
+The force per unit area exerted by a gas or liquid.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{PressureType} Definition}
+  \label{table:PressureType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{PressureType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ProcessTimerType}} \label{type:ProcessTimerType}
+
+\FloatBarrier
+
+The measurement of the amount of time a piece of equipment has performed different types 
+of activities associated with the process being performed at that piece of equipment.
+Multiple subtypes of \texttt{PROCESS_TIMER} may be defined.
+
+Typically, \texttt{PROCESS_TIMER} SHOULD be modeled as a data item for the Device element, 
+but MAY be modeled for either a Controller or Path Structural Element in the XML document.
+A \texttt{subType} MUST always be specified.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ProcessTimerType} Definition}
+  \label{table:ProcessTimerType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ProcessTimerType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ResistenceType}} \label{type:ResistenceType}
+
+\FloatBarrier
+
+The degree to which a substance opposes the passage of an electric current
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ResistenceType} Definition}
+  \label{table:ResistenceType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ResistenceType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ RotaryVelocityType}} \label{type:RotaryVelocityType}
+
+\FloatBarrier
+
+The rotational speed of a rotary axis. $\frac{REVOLUTION}{MINUTE}$
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{RotaryVelocityType} Definition}
+  \label{table:RotaryVelocityType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{RotaryVelocityType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ SoundLevelType}} \label{type:SoundLevelType}
+
+\FloatBarrier
+
+Measurement of a sound level or sound pressure level relative to atmospheric pressure. $DECIBEL$
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{SoundLevelType} Definition}
+  \label{table:SoundLevelType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{SoundLevelType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ StrainType}} \label{type:StrainType}
+
+\FloatBarrier
+
+The amount of deformation per unit length of an object when a load is applied. $PERCENT$
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{StrainType} Definition}
+  \label{table:StrainType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{StrainType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ TemperatureType}} \label{type:TemperatureType}
+
+\FloatBarrier
+
+The measurement of temperature. $CELSIUS$
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{TemperatureType} Definition}
+  \label{table:TemperatureType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{TemperatureType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ TensionType}} \label{type:TensionType}
+
+\FloatBarrier
+
+A measurement of a force that stretches or elongates an object.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{TensionType} Definition}
+  \label{table:TensionType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{TensionType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ TiltType}} \label{type:TiltType}
+
+\FloatBarrier
+
+A measurement of angular displacement. $MICRO \cdot RADIAN$
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{TiltType} Definition}
+  \label{table:TiltType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{TiltType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ TorqueType}} \label{type:TorqueType}
+
+\FloatBarrier
+
+The turning force exerted on an object or by an object. $NEWTON \times METER$
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{TorqueType} Definition}
+  \label{table:TorqueType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{TorqueType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ VelocityType}} \label{type:VelocityType}
+
+\FloatBarrier
+
+The rate of change of position. $\frac{MILLIMETER}{SECOND}$
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{VelocityType} Definition}
+  \label{table:VelocityType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{VelocityType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ViscosityType}} \label{type:ViscosityType}
+
+\FloatBarrier
+
+A measurement of a fluid’s resistance to flow. $PASCAL \times SECOND$.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ViscosityType} Definition}
+  \label{table:ViscosityType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ViscosityType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ VoltAmpereReactiveType}} \label{type:VoltAmpereReactiveType}
+
+\FloatBarrier
+
+The measurement of reactive power in an AC electrical circuit (commonly referred to as VAR). $VOLT \times AMPERE (Reactive)$
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{VoltAmpereReactiveType} Definition}
+  \label{table:VoltAmpereReactiveType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{VoltAmpereReactiveType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ VoltAmpereType}} \label{type:VoltAmpereType}
+
+\FloatBarrier
+
+The measure of the apparent power in an electrical circuit, equal to the product of 
+root-mean-square (RMS) voltage and RMS current (commonly referred to as VA). $VOLT \times AMPERE$
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{VoltAmpereType} Definition}
+  \label{table:VoltAmpereType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{VoltAmpereType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ VoltageType}} \label{type:VoltageType}
+
+\FloatBarrier
+
+The measurement of electrical potential between two points. $VOLT$
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{VoltageType} Definition}
+  \label{table:VoltageType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{VoltageType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ WattageType}} \label{type:WattageType}
+
+\FloatBarrier
+
+The measurement of power flowing through or dissipated by an electrical circuit or piece of equipment. $WATT$
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{WattageType} Definition}
+  \label{table:WattageType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{WattageType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\

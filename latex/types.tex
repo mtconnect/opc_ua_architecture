@@ -1,4 +1,4 @@
-% Generated 2018-10-06 23:51:57 -0700
+% Generated 2018-10-07 22:34:52 -0700
 \subsection{Components}
 
 \begin{figure}[ht]
@@ -51,6 +51,33 @@ HasProperty & Variable & CalibrationInitials &  String & PropertyType & Optional
 
 
 \FloatBarrier
+\subsubsection{Defintion of \texttt{ CompositionFolderType}} \label{type:CompositionFolderType}
+
+\FloatBarrier
+
+
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{CompositionFolderType} Definition}
+  \label{table:CompositionFolderType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{CompositionFolderType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of FolderType (See OPC UA Part 5 Documentation)} \\
+Organizes & Object & Compositions &  MTCompositionType & Organizes & Optional \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ DescriptionType}} \label{type:DescriptionType}
 
 \FloatBarrier
@@ -98,6 +125,33 @@ concat(self.parent.NodeId, BrowseName)
 \end{lstlisting}
 
 \end{itemize}
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MTComponentFolderType}} \label{type:MTComponentFolderType}
+
+\FloatBarrier
+
+
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTComponentFolderType} Definition}
+  \label{table:MTComponentFolderType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTComponentFolderType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of FolderType (See OPC UA Part 5 Documentation)} \\
+Organizes & Object & Components &  MTComponentType & Organizes & Optional \\
+\end{tabu}
+\end{table} 
+
+
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTComponentType}} \label{type:MTComponentType}
 
@@ -156,11 +210,8 @@ HasProperty & Variable & SampleRate &  float & PropertyType & Optional \\
 HasProperty & Variable & SampleInterval &  float & PropertyType & Optional \\
 HasComponent & Object & Description &   & DescriptionType & Optional \\
 HasComponent & Object & Configuration &   & MTConfigurationType & Optional \\
-Organizes & Object & Components &  MTComponentType & FolderType & Optional \\
-Organizes & Object & Compositions &  MTCompositionType & FolderType & Optional \\
 HasProperty & Variable & <Dynamic> &  BaseObjectType & <Dynamic> & Optional \\
 Organizes & Object & Conditions &  AlarmConditionType & FolderType & Optional \\
-HasProperty & Variable & <Dynamic> &  {DataItem}Type & <Dynamic> & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -221,7 +272,6 @@ HasSubtype & ObjectType & \{Composition\}Type & \multicolumn{3}{|l|}{See section
 HasProperty & Variable & Uuid &  String & PropertyType & Optional \\
 HasProperty & Variable & Name &  String & PropertyType & Optional \\
 HasProperty & Variable & MTDescription &  String & PropertyType & Optional \\
-NonHierarchialReferenceType & Object & <DataItem> &  {DataItem}Type & NonHierarchialReferenceType & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -545,7 +595,6 @@ HasProperty & Variable & Representation &  RepresentationType & PropertyType & O
 HasProperty & Variable & Category &  MTCategoryType & PropertyType & Mandatory \\
 HasProperty & Variable & MTTypeName &  String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName &  String & PropertyType & Mandatory \\
-HasComponent & Object & Source &   & BaseObjectType & Optional \\
 HasComponent & Object & MTSubType &   & MTDataItemSubType & Mandatory \\
 HasProperty & Variable & <Dynamic> &  MTFilterType & <Dynamic> & Mandatory \\
 \end{tabu}
@@ -852,7 +901,6 @@ DataType & \multicolumn{5}{|l|}{String} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of BaseDataVariableType (See OPC UA Part 8 Documentation)} \\
-HasSubtype & VariableType & \{DataItem\}Type & \multicolumn{3}{|l|}{See section \ref{type:{DataItem}Type}} \\
 HasSubtype & VariableType & MTMessageType & \multicolumn{3}{|l|}{See section \ref{type:MTMessageType}} \\
 HasSubtype & VariableType & AssetEventType & \multicolumn{3}{|l|}{See section \ref{type:AssetEventType}} \\
 HasProperty & Variable & SourceName &  String & PropertyType & Optional \\
@@ -1117,36 +1165,6 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{<<Dynamic Type>> \{DataItem\}Type}} \label{type:{DataItem}Type}
-
-\FloatBarrier
-
-For each DataItem, the Sub Type and the Type will be composed to be the \texttt{HasTypeDefinition}
-relationship of the object. The \texttt{BrowseName} will also include the Composition Type 
-if a composition Id is provided.
-
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{\{DataItem\}Type} Definition}
-  \label{table:{DataItem}Type}
-\fontsize{9pt}{11pt}\selectfont
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{{DataItem}Type} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-ValueRank & \multicolumn{5}{|l|}{-1} \\
-DataType & \multicolumn{5}{|l|}{String} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTStringEventType (See section \ref{type:MTStringEventType})} \\
-\end{tabu}
-\end{table} 
-
-
-\FloatBarrier
 \subsection{Conditions}
 
 \begin{figure}[ht]
@@ -1251,7 +1269,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 
-\subsubsection{Defintion of \texttt{ ActuatorStateClassId}} \label{type:ActuatorStateClassId}
+\subsubsection{Defintion of \texttt{ ActuatorStateType}} \label{type:ActuatorStateType}
 
 \FloatBarrier
 
@@ -1260,18 +1278,19 @@ of MTConnect Part 3 -- Streams Information Model.
 
 \begin{table}[ht]
 \centering 
-  \caption{\texttt{ActuatorStateClassId} Definition}
-  \label{table:ActuatorStateClassId}
+  \caption{\texttt{ActuatorStateType} Definition}
+  \label{table:ActuatorStateType}
 \fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{ActuatorStateClassId} \\
+BrowseName & \multicolumn{5}{|l|}{ActuatorStateType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1290,7 +1309,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ AvailabilityClassId}} \label{type:AvailabilityClassId}
+\subsubsection{Defintion of \texttt{ AvailabilityType}} \label{type:AvailabilityType}
 
 \FloatBarrier
 
@@ -1298,18 +1317,19 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \begin{table}[ht]
 \centering 
-  \caption{\texttt{AvailabilityClassId} Definition}
-  \label{table:AvailabilityClassId}
+  \caption{\texttt{AvailabilityType} Definition}
+  \label{table:AvailabilityType}
 \fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{AvailabilityClassId} \\
+BrowseName & \multicolumn{5}{|l|}{AvailabilityType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1348,6 +1368,7 @@ BrowseName & \multicolumn{5}{|l|}{AxisCouplingClassId} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1388,6 +1409,7 @@ BrowseName & \multicolumn{5}{|l|}{AxisInterlockClassId} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1426,6 +1448,7 @@ BrowseName & \multicolumn{5}{|l|}{AxisStateClassId} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1466,6 +1489,7 @@ BrowseName & \multicolumn{5}{|l|}{ChuckInterlockClassId} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1504,6 +1528,7 @@ BrowseName & \multicolumn{5}{|l|}{ChuckStateClassId} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1596,6 +1621,22 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
+\paragraph{Allowable Values}
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ControllerModeValues} Enumeration}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{AUTOMATIC} & \texttt{0} \\
+\texttt{EDIT} & \texttt{1} \\
+\texttt{MANUAL} & \texttt{2} \\
+\texttt{MANUAL_DATA_INPUT} & \texttt{3} \\
+\texttt{SEMI_AUTOMATIC} & \texttt{4} \\
+\end{tabu}
+\end{table} 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ ControllerModeOverrideClassId}} \label{type:ControllerModeOverrideClassId}
 
@@ -1848,6 +1889,7 @@ BrowseName & \multicolumn{5}{|l|}{ExecutionClassId} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1939,6 +1981,32 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
+\subsubsection{Defintion of \texttt{ MTConditionClassId}} \label{type:MTConditionClassId}
+
+\FloatBarrier
+
+
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTConditionClassId} Definition}
+  \label{table:MTConditionClassId}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTConditionClassId} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemClassType (See section \ref{type:MTDataItemClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ MTDataItemClassType}} \label{type:MTDataItemClassType}
 
 \FloatBarrier
@@ -1962,6 +2030,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \multicolumn{6}{|l|}{Subtype of BaseConditionClassType (See OPC UA Part 9 Documentation)} \\
 HasSubtype & ObjectType & MTSampleClassType & \multicolumn{3}{|l|}{See section \ref{type:MTSampleClassType}} \\
 HasSubtype & ObjectType & MTEventClassType & \multicolumn{3}{|l|}{See section \ref{type:MTEventClassType}} \\
+HasSubtype & ObjectType & MTConditionClassId & \multicolumn{3}{|l|}{See section \ref{type:MTConditionClassId}} \\
 \end{tabu}
 \end{table} 
 
@@ -1988,7 +2057,15 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTDataItemClassType (See section \ref{type:MTDataItemClassType})} \\
+HasSubtype & ObjectType & ActuatorStateType & \multicolumn{3}{|l|}{See section \ref{type:ActuatorStateType}} \\
+HasSubtype & ObjectType & AvailabilityType & \multicolumn{3}{|l|}{See section \ref{type:AvailabilityType}} \\
+HasSubtype & ObjectType & AxisCouplingClassId & \multicolumn{3}{|l|}{See section \ref{type:AxisCouplingClassId}} \\
+HasSubtype & ObjectType & AxisInterlockClassId & \multicolumn{3}{|l|}{See section \ref{type:AxisInterlockClassId}} \\
+HasSubtype & ObjectType & AxisStateClassId & \multicolumn{3}{|l|}{See section \ref{type:AxisStateClassId}} \\
+HasSubtype & ObjectType & ChuckInterlockClassId & \multicolumn{3}{|l|}{See section \ref{type:ChuckInterlockClassId}} \\
+HasSubtype & ObjectType & ChuckStateClassId & \multicolumn{3}{|l|}{See section \ref{type:ChuckStateClassId}} \\
 HasSubtype & ObjectType & ControllerModeClassId & \multicolumn{3}{|l|}{See section \ref{type:ControllerModeClassId}} \\
+HasSubtype & ObjectType & ExecutionClassId & \multicolumn{3}{|l|}{See section \ref{type:ExecutionClassId}} \\
 \end{tabu}
 \end{table} 
 
@@ -2046,10 +2123,6 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 
-
-\paragraph{Dependency on FilterObjectFactory}
-
-This class relates to \texttt{FilterObjectFactory} (See section \ref{type:FilterObjectFactory}) for a(n) \texttt{use} relationship.
 
 \FloatBarrier
 \subsection{Data Item Sub Types}
@@ -2294,7 +2367,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+Indicates the count of incorrect parts produced.
 
 \begin{table}[ht]
 \centering 
@@ -2554,7 +2627,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+Indicates the count of correct parts made.
 
 \begin{table}[ht]
 \centering 
@@ -2606,6 +2679,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
+The value of a signal or calculation issued to adjust the feedrate of the axes associated with a Path component when the axes, 
+or a single axis, are being operated in a manual mode or method (jogging).
 
 
 \begin{table}[ht]
@@ -2937,7 +3012,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+The identifier of the person currently responsible for performing maintenance on the piece of equipment.
 
 \begin{table}[ht]
 \centering 
@@ -3171,7 +3246,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+The identifier of the person currently responsible for operating the piece of equipment.
 
 \begin{table}[ht]
 \centering 
@@ -3457,7 +3532,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+The remaining amount of the type specified.
 
 \begin{table}[ht]
 \centering 
@@ -3587,7 +3662,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+The identifier of the person currently responsible for operating the piece of equipment.
 
 \begin{table}[ht]
 \centering 
@@ -3691,7 +3766,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+Indicates the number of parts that are projected or planned to be produced.
 
 \begin{table}[ht]
 \centering 
@@ -4391,6 +4466,20 @@ will halp provide context and definition to aid in better understanding the
 data model.
 
 \subsubsection{Defintion of \texttt{ Dynamic Type}} \label{type:Dynamic Type}
+
+\FloatBarrier
+
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ HasMTSubType}} \label{type:HasMTSubType}
+
+\FloatBarrier
+
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ HasMTType}} \label{type:HasMTType}
 
 \FloatBarrier
 

@@ -43307,6 +43307,7 @@
 											}
 										}
 									],
+									"documentation": "Abstract base class for all the data item class types. The names are created by pascal typing the names\nand then generating appending \\texttt{Type}.",
 									"isAbstract": true
 								},
 								{
@@ -43331,6 +43332,7 @@
 											}
 										}
 									],
+									"documentation": "The base type class for all data items with a category of \\texttt{SAMPLE}.",
 									"isAbstract": true
 								},
 								{
@@ -43355,6 +43357,7 @@
 											}
 										}
 									],
+									"documentation": "The base type class for all data items with a category of \\texttt{EVENT}.",
 									"isAbstract": true
 								},
 								{
@@ -43404,6 +43407,7 @@
 											}
 										}
 									],
+									"documentation": "The abstract type for all data items types that are specifically for \\texttt{CONDITION} category.",
 									"isAbstract": true
 								},
 								{
@@ -44108,7 +44112,7 @@
 											}
 										}
 									],
-									"documentation": "The measurement of the actual versus the standard rating of a piece of equipment"
+									"documentation": "The measurement of the actual versus the standard rating of a piece of equipment. $PERCENT$"
 								},
 								{
 									"_type": "UMLClassDiagram",
@@ -48511,7 +48515,7 @@
 											}
 										}
 									],
-									"documentation": "Rate of change of velocity $\\frac{mm}{s^{2}}$"
+									"documentation": "Rate of change of velocity $\\frac{MILIMETER}{SECOND^{2}}$"
 								},
 								{
 									"_type": "UMLClass",
@@ -48535,7 +48539,7 @@
 											}
 										}
 									],
-									"documentation": "The measurement of accumulated time for an activity or event. seconds\n"
+									"documentation": "The measurement of accumulated time for an activity or event. $SECOND$\n"
 								},
 								{
 									"_type": "UMLClass",
@@ -48559,7 +48563,7 @@
 											}
 										}
 									],
-									"documentation": "Rate of change of angular velocity.  $\\frac{deg}{s^{2}}$"
+									"documentation": "Rate of change of angular velocity.  $\\frac{DEGREE}{SECOND^{2}}$"
 								},
 								{
 									"_type": "UMLClass",
@@ -48583,7 +48587,7 @@
 											}
 										}
 									],
-									"documentation": "Rate of change of angular position. deg/s"
+									"documentation": "Rate of change of angular position. $\\frac{DEGREE}{SECOND}$"
 								},
 								{
 									"_type": "UMLClass",
@@ -48607,7 +48611,7 @@
 											}
 										}
 									],
-									"documentation": "The measurement of electrical current. Amps"
+									"documentation": "The measurement of electrical current. $AMPERE$"
 								},
 								{
 									"_type": "UMLClass",
@@ -48631,7 +48635,7 @@
 											}
 										}
 									],
-									"documentation": "The measurement of angular position. Degree"
+									"documentation": "The measurement of angular position. $DEGREE$"
 								},
 								{
 									"_type": "UMLClass",
@@ -48655,7 +48659,7 @@
 											}
 										}
 									],
-									"documentation": "The feedrate of a linear axis mm/s"
+									"documentation": "The feedrate of a linear axis $\\frac{MILLIMETER}{SECOND}$"
 								},
 								{
 									"_type": "UMLClass",
@@ -48679,7 +48683,7 @@
 											}
 										}
 									],
-									"documentation": "The value provided by a timing device at a specific point in time. "
+									"documentation": "The value provided by a timing device at a specific point in time. $TIMESTAMP$"
 								},
 								{
 									"_type": "UMLClass",
@@ -48703,7 +48707,7 @@
 											}
 										}
 									],
-									"documentation": "Percentage of one component within a mixture of components."
+									"documentation": "Percentage of one component within a mixture of components. $PERCENT$"
 								},
 								{
 									"_type": "UMLClass",
@@ -48727,7 +48731,7 @@
 											}
 										}
 									],
-									"documentation": "The ability of a material to conduct electricity"
+									"documentation": "The ability of a material to conduct electricity. $\\frac{SIEMENS}{METER}$"
 								},
 								{
 									"_type": "UMLClass",
@@ -48751,7 +48755,7 @@
 											}
 										}
 									],
-									"documentation": "The change in position of an object"
+									"documentation": "The change in position of an object. $MILLIMETER$"
 								},
 								{
 									"_type": "UMLClass",
@@ -48775,7 +48779,7 @@
 											}
 										}
 									],
-									"documentation": "The measurement of electrical energy consumption by a component"
+									"documentation": "The measurement of electrical energy consumption by a component. $WATT \\times SECOND$"
 								},
 								{
 									"_type": "UMLClass",
@@ -48799,7 +48803,7 @@
 											}
 										}
 									],
-									"documentation": "The measurement of the amount of time a \\texttt{SECOND} piece of equipment or a sub-part of a \npiece of equipment has performed specific activities. \nOften used to determine when maintenance may be required for the equipment.\n \n \nMultiple subTypes of \\texttt{EQUIPMENT_TIMER} MAY be defined.\nA subType MUST always be specified."
+									"documentation": "The measurement of the amount of time a \\texttt{SECOND} piece of equipment or a sub-part of a \npiece of equipment has performed specific activities. \nOften used to determine when maintenance may be required for the equipment.\n \n \nMultiple subTypes of \\texttt{EQUIPMENT_TIMER} MAY be defined.\nA subType MUST always be specified.\n\n$SECOND$"
 								},
 								{
 									"_type": "UMLClass",
@@ -48823,7 +48827,7 @@
 											}
 										}
 									],
-									"documentation": "The measurement of the amount of a substance remaining compared to the planned maximum amount of that substance. Reported in Percent."
+									"documentation": "The measurement of the amount of a substance remaining compared to the planned \nmaximum amount of that substance. $PERCENT$"
 								},
 								{
 									"_type": "UMLClass",
@@ -48847,7 +48851,7 @@
 											}
 										}
 									],
-									"documentation": "The rate of flow of a fluid. Liter/Second."
+									"documentation": "The rate of flow of a fluid. $\\frac{LITER}{SECOND}$"
 								},
 								{
 									"_type": "UMLClass",
@@ -48871,7 +48875,7 @@
 											}
 										}
 									],
-									"documentation": "The measurement of the number of occurrences of a repeating event per unit time\n"
+									"documentation": "The measurement of the number of occurrences of a repeating event per unit time. $HERTZ$\n"
 								},
 								{
 									"_type": "UMLClass",
@@ -48896,7 +48900,7 @@
 											}
 										}
 									],
-									"documentation": "The length of an object"
+									"documentation": "The length of an object. $MILLIMETER$"
 								},
 								{
 									"_type": "UMLClass",
@@ -48920,7 +48924,7 @@
 											}
 										}
 									],
-									"documentation": "The measure of the push or pull introduced by an actuator or exerted on an object"
+									"documentation": "The measure of the push or pull introduced by an actuator or exerted on an object. $NEWTON$"
 								},
 								{
 									"_type": "UMLClass",
@@ -48944,7 +48948,7 @@
 											}
 										}
 									],
-									"documentation": "The measurement of the mass of an object(s) or an amount of material."
+									"documentation": "The measurement of the mass of an object(s) or an amount of material. $KILOGRAM$"
 								},
 								{
 									"_type": "UMLClass",
@@ -48968,7 +48972,7 @@
 											}
 										}
 									],
-									"documentation": "The feedrate for the axes, or a single axis, associated with a Path component– a vector."
+									"documentation": "The feedrate for the axes, or a single axis, associated with a \\texttt{Path} component \na vector. $\\frac{MILLIMETER}{SECOND}$"
 								},
 								{
 									"_type": "UMLClass",
@@ -48991,7 +48995,8 @@
 												"$ref": "AAAAAAFmRYSURVcUNzE="
 											}
 										}
-									]
+									],
+									"documentation": "A measured or calculated position of a control point associated with a \\texttt{Controller} element, \nor PATH element if provided, of a piece of equipment.\n\nThe control point MUST be reported as a set of space-delimited floating-point \nnumbers representing a point in 3-D space. The position of the control point MUST \nbe reported in units of MILLIMETER and listed in order of X, Y, and Z referenced to the coordinate \nsystem of the piece of equipment.\n\n$MILLIMETER 3D$"
 								},
 								{
 									"_type": "UMLClass",
@@ -49015,7 +49020,7 @@
 											}
 										}
 									],
-									"documentation": "The measure of the acidity or alkalinity."
+									"documentation": "The measure of the acidity or alkalinity. $PH$"
 								},
 								{
 									"_type": "UMLClass",
@@ -49039,7 +49044,7 @@
 											}
 										}
 									],
-									"documentation": "A calculated or measured position related to a Component element.\n\n\\texttt{POSITION} SHOULD be further defined withacoordinateSytemattribute. \nIf a coordinateSystem attribute is not specified, the position of the control point \nMUST be reported in \\texttt{MACHINE} coordinates."
+									"documentation": "A calculated or measured position related to a Component element.\n\n\\texttt{POSITION} SHOULD be further defined withacoordinateSytemattribute. \nIf a coordinateSystem attribute is not specified, the position of the control point \nMUST be reported in \\texttt{MACHINE} coordinates. \n\n$MILLIMETER$"
 								},
 								{
 									"_type": "UMLClass",
@@ -49063,7 +49068,7 @@
 											}
 										}
 									],
-									"documentation": "The measurement of the ratio of real power flowing to a load to the apparent power in\nthat AC circuit."
+									"documentation": "The measurement of the ratio of real power flowing to a load to the apparent power in\nthat AC circuit. $PERCENT$"
 								},
 								{
 									"_type": "UMLClass",
@@ -49087,7 +49092,7 @@
 											}
 										}
 									],
-									"documentation": "The force per unit area exerted by a gas or liquid."
+									"documentation": "The force per unit area exerted by a gas or liquid. $PASCAL$"
 								},
 								{
 									"_type": "UMLClass",
@@ -49111,7 +49116,7 @@
 											}
 										}
 									],
-									"documentation": "The measurement of the amount of time a piece of equipment has performed different types \nof activities associated with the process being performed at that piece of equipment.\nMultiple subtypes of \\texttt{PROCESS_TIMER} may be defined.\n\nTypically, \\texttt{PROCESS_TIMER} SHOULD be modeled as a data item for the Device element, \nbut MAY be modeled for either a Controller or Path Structural Element in the XML document.\nA \\texttt{subType} MUST always be specified."
+									"documentation": "The measurement of the amount of time a piece of equipment has performed different types \nof activities associated with the process being performed at that piece of equipment.\nMultiple subtypes of \\texttt{PROCESS_TIMER} may be defined.\n\nTypically, \\texttt{PROCESS_TIMER} SHOULD be modeled as a data item for the Device element, \nbut MAY be modeled for either a Controller or Path Structural Element in the XML document.\nA \\texttt{subType} MUST always be specified.\n\n$SECOND$"
 								},
 								{
 									"_type": "UMLClass",
@@ -49135,7 +49140,7 @@
 											}
 										}
 									],
-									"documentation": "The degree to which a substance opposes the passage of an electric current"
+									"documentation": "The degree to which a substance opposes the passage of an electric current. $OHM$"
 								},
 								{
 									"_type": "UMLClass",
@@ -49255,7 +49260,7 @@
 											}
 										}
 									],
-									"documentation": "A measurement of a force that stretches or elongates an object."
+									"documentation": "A measurement of a force that stretches or elongates an object. $NEWTON$"
 								},
 								{
 									"_type": "UMLClass",
@@ -49351,7 +49356,7 @@
 											}
 										}
 									],
-									"documentation": "The measurement of reactive power in an AC electrical circuit (commonly referred to as VAR). $VOLT \\times AMPERE (Reactive)$"
+									"documentation": "The measurement of reactive power in an AC electrical circuit (commonly referred to as VAR). \n$VOLT \\times AMPERE (Reactive)$"
 								},
 								{
 									"_type": "UMLClass",
@@ -49447,7 +49452,7 @@
 											}
 										}
 									],
-									"documentation": "The measurement of power flowing through or dissipated by an electrical circuit or piece of equipment. $WATT$"
+									"documentation": "The measurement of power flowing through or dissipated by an electrical circuit or \npiece of equipment. $WATT$"
 								},
 								{
 									"_type": "UMLClassDiagram",
@@ -60641,7 +60646,7 @@
 															"font": "Arial;13;3",
 															"left": 805,
 															"top": 615,
-															"width": 129.07958984375,
+															"width": 129.56201171875,
 															"height": 13,
 															"text": "MTSampleClassType"
 														},
@@ -60703,7 +60708,7 @@
 													"font": "Arial;13;0",
 													"left": 800,
 													"top": 633,
-													"width": 139.07958984375,
+													"width": 139.56201171875,
 													"height": 10
 												},
 												{
@@ -60756,7 +60761,7 @@
 											"containerChangeable": true,
 											"left": 800,
 											"top": 608,
-											"width": 139.07958984375,
+											"width": 139.56201171875,
 											"height": 35,
 											"nameCompartment": {
 												"$ref": "AAAAAAFmVjlro/vIiOg="
@@ -133598,7 +133603,7 @@
 											"containerExtending": true,
 											"left": 241,
 											"top": 649,
-											"width": 69.380859375,
+											"width": -10,
 											"height": 12,
 											"text": "«stereotype»"
 										},
@@ -133612,7 +133617,7 @@
 											"containerExtending": true,
 											"left": 241,
 											"top": 663,
-											"width": 69.380859375,
+											"width": -10,
 											"height": 12,
 											"text": "Create"
 										},
@@ -133721,8 +133726,6 @@
 							"containerExtending": true,
 							"left": 236,
 							"top": 644,
-							"width": 79.380859375,
-							"height": 36,
 							"autoResize": true,
 							"nameCompartment": {
 								"$ref": "AAAAAAFl+PfoDHiMkzs="
@@ -133786,7 +133789,7 @@
 											"containerExtending": true,
 											"left": 241,
 											"top": 713,
-											"width": 69.380859375,
+											"width": -10,
 											"height": 12,
 											"text": "«stereotype»"
 										},
@@ -133800,7 +133803,7 @@
 											"containerExtending": true,
 											"left": 241,
 											"top": 727,
-											"width": 69.380859375,
+											"width": -10,
 											"height": 12,
 											"text": "Call"
 										},
@@ -133909,8 +133912,6 @@
 							"containerExtending": true,
 							"left": 236,
 							"top": 708,
-							"width": 79.380859375,
-							"height": 36,
 							"autoResize": true,
 							"nameCompartment": {
 								"$ref": "AAAAAAFl+PfoDHiWkrk="
@@ -133974,7 +133975,7 @@
 											"containerExtending": true,
 											"left": 241,
 											"top": 769,
-											"width": 69.380859375,
+											"width": -10,
 											"height": 12,
 											"text": "«stereotype»"
 										},
@@ -133988,7 +133989,7 @@
 											"containerExtending": true,
 											"left": 241,
 											"top": 783,
-											"width": 69.380859375,
+											"width": -10,
 											"height": 12,
 											"text": "Instantiate"
 										},
@@ -134097,8 +134098,6 @@
 							"containerExtending": true,
 							"left": 236,
 							"top": 764,
-							"width": 79.380859375,
-							"height": 36,
 							"autoResize": true,
 							"nameCompartment": {
 								"$ref": "AAAAAAFl+PfoDHigJ5Q="
@@ -134162,7 +134161,7 @@
 											"containerExtending": true,
 											"left": 241,
 											"top": 825,
-											"width": 82.013671875,
+											"width": -10,
 											"height": 12,
 											"text": "«stereotype»"
 										},
@@ -134176,7 +134175,7 @@
 											"containerExtending": true,
 											"left": 241,
 											"top": 839,
-											"width": 82.013671875,
+											"width": -10,
 											"height": 12,
 											"text": "Responsibility"
 										},
@@ -134285,8 +134284,6 @@
 							"containerExtending": true,
 							"left": 236,
 							"top": 820,
-							"width": 92.013671875,
-							"height": 36,
 							"autoResize": true,
 							"nameCompartment": {
 								"$ref": "AAAAAAFl+PfoDHiqT7o="
@@ -134350,7 +134347,7 @@
 											"containerExtending": true,
 											"left": 241,
 											"top": 881,
-											"width": 69.380859375,
+											"width": -10,
 											"height": 12,
 											"text": "«stereotype»"
 										},
@@ -134364,7 +134361,7 @@
 											"containerExtending": true,
 											"left": 241,
 											"top": 895,
-											"width": 69.380859375,
+											"width": -10,
 											"height": 12,
 											"text": "Send"
 										},
@@ -134473,8 +134470,6 @@
 							"containerExtending": true,
 							"left": 236,
 							"top": 876,
-							"width": 79.380859375,
-							"height": 36,
 							"autoResize": true,
 							"nameCompartment": {
 								"$ref": "AAAAAAFl+PfoDHi0Dqo="
@@ -134579,7 +134574,7 @@
 							"tail": {
 								"$ref": "AAAAAAFl+PfoDHiQn8k="
 							},
-							"points": "314:655;380:655",
+							"points": "235:643;235:655;380:655",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFl+PfoDHi5d94="
@@ -134676,7 +134671,7 @@
 							"tail": {
 								"$ref": "AAAAAAFl+PfoDHiQn8k="
 							},
-							"points": "236:668;163:668",
+							"points": "236:643;236:668;163:668",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFl+PfoDHi9Q+0="
@@ -134773,7 +134768,7 @@
 							"tail": {
 								"$ref": "AAAAAAFl+PfoDHialNI="
 							},
-							"points": "236:722;163:722",
+							"points": "236:707;236:722;163:722",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFl+PfoDHjByFg="
@@ -134870,7 +134865,7 @@
 							"tail": {
 								"$ref": "AAAAAAFl+PfoDHikHbs="
 							},
-							"points": "236:788;163:788",
+							"points": "236:763;236:788;163:788",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFl+PfoDHjFYtU="
@@ -134967,7 +134962,7 @@
 							"tail": {
 								"$ref": "AAAAAAFl+PfoDHiuzCg="
 							},
-							"points": "236:845;163:845",
+							"points": "236:819;236:845;163:845",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFl+PfoDHjJu8E="
@@ -135064,7 +135059,7 @@
 							"tail": {
 								"$ref": "AAAAAAFl+PfoDHi4rWI="
 							},
-							"points": "236:901;163:901",
+							"points": "236:875;236:901;163:901",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFl+PfoDHjNQII="
@@ -135232,7 +135227,7 @@
 											"containerExtending": true,
 											"left": 745,
 											"top": 29,
-											"width": 110.396484375,
+											"width": -10,
 											"height": 12,
 											"text": "«stereotype»"
 										},
@@ -135246,7 +135241,7 @@
 											"containerExtending": true,
 											"left": 745,
 											"top": 43,
-											"width": 110.396484375,
+											"width": -10,
 											"height": 12,
 											"text": "Derive"
 										},
@@ -135282,7 +135277,7 @@
 									"containerExtending": true,
 									"left": 740,
 									"top": 24,
-									"width": 120.396484375,
+									"width": 79.380859375,
 									"height": 36,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFl+PfoDHjYoB0="
@@ -135320,7 +135315,7 @@
 											"containerExtending": true,
 											"left": 745,
 											"top": 65,
-											"width": 110.396484375,
+											"width": -10,
 											"height": 12,
 											"text": "+computation: String",
 											"horizontalAlignment": 0
@@ -135371,8 +135366,6 @@
 							"containerExtending": true,
 							"left": 740,
 							"top": 24,
-							"width": 120.396484375,
-							"height": 58,
 							"autoResize": true,
 							"nameCompartment": {
 								"$ref": "AAAAAAFl+PfoDHjcbDM="
@@ -135435,7 +135428,7 @@
 											"containerExtending": true,
 											"left": 745,
 											"top": 101,
-											"width": 69.380859375,
+											"width": -10,
 											"height": 12,
 											"text": "«stereotype»"
 										},
@@ -135449,7 +135442,7 @@
 											"containerExtending": true,
 											"left": 745,
 											"top": 115,
-											"width": 69.380859375,
+											"width": -10,
 											"height": 12,
 											"text": "Refine"
 										},
@@ -135558,8 +135551,6 @@
 							"containerExtending": true,
 							"left": 740,
 							"top": 96,
-							"width": 79.380859375,
-							"height": 36,
 							"autoResize": true,
 							"nameCompartment": {
 								"$ref": "AAAAAAFl+PfoDHjntVw="
@@ -135623,7 +135614,7 @@
 											"containerExtending": true,
 											"left": 745,
 											"top": 153,
-											"width": 69.380859375,
+											"width": -10,
 											"height": 12,
 											"text": "«stereotype»"
 										},
@@ -135637,7 +135628,7 @@
 											"containerExtending": true,
 											"left": 745,
 											"top": 167,
-											"width": 69.380859375,
+											"width": -10,
 											"height": 12,
 											"text": "Trace"
 										},
@@ -135746,8 +135737,6 @@
 							"containerExtending": true,
 							"left": 740,
 							"top": 148,
-							"width": 79.380859375,
-							"height": 36,
 							"autoResize": true,
 							"nameCompartment": {
 								"$ref": "AAAAAAFl+PfoDXjx4Es="
@@ -135852,7 +135841,7 @@
 							"tail": {
 								"$ref": "AAAAAAFl+PfoDHjhANo="
 							},
-							"points": "740:52;658:52",
+							"points": "740:23;740:52;658:52",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFl+PfoDXj26CI="
@@ -135949,7 +135938,7 @@
 							"tail": {
 								"$ref": "AAAAAAFl+PfoDHjreyM="
 							},
-							"points": "740:112;658:112",
+							"points": "740:95;740:112;658:112",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFl+PfoDXj6RXM="
@@ -136046,7 +136035,7 @@
 							"tail": {
 								"$ref": "AAAAAAFl+PfoDXj1tPc="
 							},
-							"points": "740:160;658:160",
+							"points": "740:147;740:160;658:160",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFl+PfoDXj+Ecw="

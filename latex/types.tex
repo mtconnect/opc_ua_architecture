@@ -1,4 +1,4 @@
-% Generated 2018-10-08 13:49:38 -0700
+% Generated 2018-10-08 22:32:35 -0700
 \subsection{Components}
 
 \begin{figure}[ht]
@@ -595,8 +595,10 @@ HasProperty & Variable & Representation &  RepresentationType & PropertyType & O
 HasProperty & Variable & Category &  MTCategoryType & PropertyType & Mandatory \\
 HasProperty & Variable & MTTypeName &  String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName &  String & PropertyType & Mandatory \\
-HasComponent & Object & MTSubType &   & MTDataItemSubType & Mandatory \\
-HasProperty & Variable & <Dynamic> &  MTFilterType & <Dynamic> & Mandatory \\
+HasProperty & Variable & <Dynamic> &  MTDataItemSubType & <Dynamic> & Optional \\
+HasProperty & Variable & <Dynamic> &  MinimumDeltaFilterType & <Dynamic> & Optional \\
+HasProperty & Variable & <Dynamic> &  PeriodFilterType & <Dynamic> & Optional \\
+HasProperty & Variable & <Dynamic> &  MTDataItemClassType & <Dynamic> & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -802,7 +804,7 @@ sub-typed from this type. Extended types will be subtyped from the \texttt{MTStr
 BrowseName & \multicolumn{5}{|l|}{MTNumericEventType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 ValueRank & \multicolumn{5}{|l|}{-1} \\
-DataType & \multicolumn{5}{|l|}{Integer} \\
+DataType & \multicolumn{5}{|l|}{Number} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of DataItemType (See OPC UA Part 8 Documentation)} \\
@@ -1326,8 +1328,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-See \texttt{ActuatorState} in section 6.2 Event \textit{Element Names}
-of MTConnect Part 3 -- Streams Information Model.
+Represents the operational state of an apparatus for moving or controlling.
 
 \begin{table}[ht]
 \centering 
@@ -1343,7 +1344,7 @@ BrowseName & \multicolumn{5}{|l|}{ActuatorStateType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1470,7 +1471,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+Represents the Agent’s ability to communicate with the data source. This MUST be provided for a 
+Device Element and MAY be provided for any other Structural Element.
 
 \begin{table}[ht]
 \centering 
@@ -1486,7 +1488,7 @@ BrowseName & \multicolumn{5}{|l|}{AvailabilityType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1509,7 +1511,11 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
+Describes the way the axes will be associated to each other.
+This is used in conjunction with \texttt{COUPLED_AXES} to indicate the way they are interacting.
 
+The coupling MUST be viewed from the perspective of a specific axis. Therefore, a MASTER coupling 
+indicates that this axis is the master for the \texttt{COUPLED_AXES}.
 
 \begin{table}[ht]
 \centering 
@@ -1525,7 +1531,7 @@ BrowseName & \multicolumn{5}{|l|}{AxisCouplingType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1545,6 +1551,41 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{TANDEM} & \texttt{3} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ AxisFeedrateOverrideType}} \label{type:AxisFeedrateOverrideType}
+
+\FloatBarrier
+
+The value of a signal or calculation issued to adjust the feedrate of an individual linear type axis.
+
+The value provided for \texttt{AXIS_FEEDRATE_OVERRIDE} is expressed as a percentage of the designated feedrate for the axis.
+
+When \texttt{AXIS_FEEDRATE_OVERRIDE} is applied, the resulting commanded feedrate for the axis is limited to the 
+value of the original feedrate multiplied by the value of the \texttt{AXIS_FEEDRATE_OVERRIDE}.
+
+There MAY be different subtypes of \texttt{AXIS_FEEDRATE_OVERRIDE}; each representing an override value for a 
+designated subtype of feedrate depending on the state of operation of the axis. The subtypes of operation 
+of an axis are currently defined as \texttt{PROGRAMMED}, \texttt{JOG}, and \texttt{RAPID}.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{AxisFeedrateOverrideType} Definition}
+  \label{table:AxisFeedrateOverrideType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{AxisFeedrateOverrideType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTNumberEventClassType (See section \ref{type:MTNumberEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ AxisFeedrateType}} \label{type:AxisFeedrateType}
 
@@ -1576,6 +1617,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
+An indicator of the state of the axis lockout function when power has been removed and the axis is allowed to move freely.
 
 
 \begin{table}[ht]
@@ -1592,7 +1634,7 @@ BrowseName & \multicolumn{5}{|l|}{AxisInterlockType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1615,7 +1657,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+An indicator of the controlled state of a \texttt{LINEAR} or \texttt{ROTARY} component representing an axis.
 
 \begin{table}[ht]
 \centering 
@@ -1631,7 +1673,7 @@ BrowseName & \multicolumn{5}{|l|}{AxisStateType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1652,11 +1694,70 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ChuckInterlockType}} \label{type:ChuckInterlockType}
+\subsubsection{Defintion of \texttt{ BlockCountType}} \label{type:BlockCountType}
+
+\FloatBarrier
+
+The total count of the number of blocks of program code that have been executed since execution started.
+
+\texttt{BLOCK_COUNT} counts blocks of program code executed regardless of program structure 
+(e.g., looping or branching within the program).
+
+The starting value for \texttt{BLOCK_COUNT} MAY be established by an initial value provided in 
+the Constraint element defined for the data item.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{BlockCountType} Definition}
+  \label{table:BlockCountType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{BlockCountType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTNumberEventClassType (See section \ref{type:MTNumberEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ BlockType}} \label{type:BlockType}
 
 \FloatBarrier
 
 
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{BlockType} Definition}
+  \label{table:BlockType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{BlockType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ChuckInterlockType}} \label{type:ChuckInterlockType}
+
+\FloatBarrier
+
+An indication of the state of an interlock function or control logic state intended to prevent the 
+associated \texttt{Chuck} composition or function from being operated.
 
 \begin{table}[ht]
 \centering 
@@ -1672,7 +1773,7 @@ BrowseName & \multicolumn{5}{|l|}{ChuckInterlockType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1695,7 +1796,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+An indication of the operating state of a mechanism that holds a part or stock material during a 
+manufacturing process. It may also represent a mechanism that holds any other mechanism 
+in place within a piece of equipment.
 
 \begin{table}[ht]
 \centering 
@@ -1711,7 +1814,7 @@ BrowseName & \multicolumn{5}{|l|}{ChuckStateType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1761,7 +1864,11 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
+An indication of the operating condition of a mechanism represented by a \texttt{Composition} type element.
 
+A \texttt{subType} MUST always be specified.
+
+A \texttt{compositionId} MUST always be specified.
 
 \begin{table}[ht]
 \centering 
@@ -1777,7 +1884,7 @@ BrowseName & \multicolumn{5}{|l|}{CompositionStateType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1862,7 +1969,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+A setting or operator selection that changes the behavior of a piece of equipment.
 
 \begin{table}[ht]
 \centering 
@@ -1878,7 +1985,7 @@ BrowseName & \multicolumn{5}{|l|}{ControllerModeOverrideType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1901,7 +2008,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+The current mode of the \texttt{Controller} component.
 
 \begin{table}[ht]
 \centering 
@@ -1917,7 +2024,7 @@ BrowseName & \multicolumn{5}{|l|}{ControllerModeType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1939,11 +2046,41 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
+\subsubsection{Defintion of \texttt{ CoupledAxesType}} \label{type:CoupledAxesType}
+
+\FloatBarrier
+
+Refers to the set of associated axes.
+
+The valid data value for \texttt{COUPLED_AXES} SHOULD be a space-delimited set of 
+axes reported as the value of the name attribute for each axis. If name is not available,
+the piece of equipment MUST report the value of the nativeName attribute for each axis.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{CoupledAxesType} Definition}
+  \label{table:CoupledAxesType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{CoupledAxesType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ DirectionType}} \label{type:DirectionType}
 
 \FloatBarrier
 
-
+The direction of motion. A \texttt{subType} MUST always be specified.
 
 \begin{table}[ht]
 \centering 
@@ -1959,7 +2096,7 @@ BrowseName & \multicolumn{5}{|l|}{DirectionType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2010,7 +2147,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+The opened or closed state of the door.
 
 \begin{table}[ht]
 \centering 
@@ -2026,7 +2163,7 @@ BrowseName & \multicolumn{5}{|l|}{DoorStateType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2076,7 +2213,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+The current state of the emergency stop signal.
 
 \begin{table}[ht]
 \centering 
@@ -2092,7 +2229,7 @@ BrowseName & \multicolumn{5}{|l|}{EmergencyStopType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2115,7 +2252,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+An indication of whether the end of a piece of bar stock being feed by a bar feeder has been reached.
 
 \begin{table}[ht]
 \centering 
@@ -2131,7 +2268,7 @@ BrowseName & \multicolumn{5}{|l|}{EndOfBarType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2154,7 +2291,10 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
+An indication that a piece of equipment, or a sub-part of a piece of
+equipment, is performing specific types of activities.
 
+A \texttt{subType} MUST always be specified.
 
 \begin{table}[ht]
 \centering 
@@ -2170,7 +2310,7 @@ BrowseName & \multicolumn{5}{|l|}{EquipmentModeType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2225,7 +2365,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+The execution status of the \texttt{Controller} or \texttt{Path}.
 
 \begin{table}[ht]
 \centering 
@@ -2241,7 +2381,7 @@ BrowseName & \multicolumn{5}{|l|}{ExecutionType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2349,7 +2489,10 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
+The current intended production status of the device or component.
 
+Typically, the \texttt{FUNCTIONAL_MODE} SHOULD be modeled as a data item for the Device element, but 
+MAY be modeled for any Structural Element in the XML document.
 
 \begin{table}[ht]
 \centering 
@@ -2365,7 +2508,7 @@ BrowseName & \multicolumn{5}{|l|}{FunctionalModeType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2386,6 +2529,36 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{TEARDOWN} & \texttt{4} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ HardnessType}} \label{type:HardnessType}
+
+\FloatBarrier
+
+The measurement of the hardness of a material. 
+
+The measurement does not provide a unit.
+
+A \texttt{subType} MUST always be specified to designate the hardness scale associated with the measurement.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{HardnessType} Definition}
+  \label{table:HardnessType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{HardnessType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTNumberEventClassType (See section \ref{type:MTNumberEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ LengthType}} \label{type:LengthType}
 
@@ -2408,6 +2581,63 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ LineLabelType}} \label{type:LineLabelType}
+
+\FloatBarrier
+
+An optional identifier for a \texttt{BLOCK} of code in a \texttt{PROGRAM}.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{LineLabelType} Definition}
+  \label{table:LineLabelType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{LineLabelType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ LineNumberType}} \label{type:LineNumberType}
+
+\FloatBarrier
+
+A reference to the position of a block of program code within a control program. 
+The line number MAY represent either an absolute position starting with the first line of 
+the program or an incremental position relative to the occurrence of the last \texttt{LINE_LABEL}.
+\texttt{LINE_NUMBER} does not change subject to any looping or branching in a control program.
+
+A \texttt{subType} MUST be defined.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{LineNumberType} Definition}
+  \label{table:LineNumberType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{LineNumberType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTNumberEventClassType (See section \ref{type:MTNumberEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2482,10 +2712,56 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{MTConditionClassType} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
+IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTDataItemClassType (See section \ref{type:MTDataItemClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MTControlledVocabClassType}} \label{type:MTControlledVocabClassType}
+
+\FloatBarrier
+
+The abstract base type for controlled events that represent states that are provided
+in related enumerations. These data items will be represented in an object of
+type \texttt{MTEnumeratedEventType} derived from the OPC UA type
+\texttt{MultiStateValueDiscreteType}
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTControlledVocabClassType} Definition}
+  \label{table:MTControlledVocabClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTControlledVocabClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{True} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
+HasSubtype & ObjectType & ActuatorStateType & \multicolumn{3}{|l|}{See section \ref{type:ActuatorStateType}} \\
+HasSubtype & ObjectType & AvailabilityType & \multicolumn{3}{|l|}{See section \ref{type:AvailabilityType}} \\
+HasSubtype & ObjectType & AxisCouplingType & \multicolumn{3}{|l|}{See section \ref{type:AxisCouplingType}} \\
+HasSubtype & ObjectType & AxisInterlockType & \multicolumn{3}{|l|}{See section \ref{type:AxisInterlockType}} \\
+HasSubtype & ObjectType & AxisStateType & \multicolumn{3}{|l|}{See section \ref{type:AxisStateType}} \\
+HasSubtype & ObjectType & ChuckInterlockType & \multicolumn{3}{|l|}{See section \ref{type:ChuckInterlockType}} \\
+HasSubtype & ObjectType & ChuckStateType & \multicolumn{3}{|l|}{See section \ref{type:ChuckStateType}} \\
+HasSubtype & ObjectType & ControllerModeType & \multicolumn{3}{|l|}{See section \ref{type:ControllerModeType}} \\
+HasSubtype & ObjectType & ExecutionType & \multicolumn{3}{|l|}{See section \ref{type:ExecutionType}} \\
+HasSubtype & ObjectType & CompositionStateType & \multicolumn{3}{|l|}{See section \ref{type:CompositionStateType}} \\
+HasSubtype & ObjectType & ControllerModeOverrideType & \multicolumn{3}{|l|}{See section \ref{type:ControllerModeOverrideType}} \\
+HasSubtype & ObjectType & DirectionType & \multicolumn{3}{|l|}{See section \ref{type:DirectionType}} \\
+HasSubtype & ObjectType & DoorStateType & \multicolumn{3}{|l|}{See section \ref{type:DoorStateType}} \\
+HasSubtype & ObjectType & EmergencyStopType & \multicolumn{3}{|l|}{See section \ref{type:EmergencyStopType}} \\
+HasSubtype & ObjectType & EndOfBarType & \multicolumn{3}{|l|}{See section \ref{type:EndOfBarType}} \\
+HasSubtype & ObjectType & EquipmentModeType & \multicolumn{3}{|l|}{See section \ref{type:EquipmentModeType}} \\
+HasSubtype & ObjectType & FunctionalModeType & \multicolumn{3}{|l|}{See section \ref{type:FunctionalModeType}} \\
 \end{tabu}
 \end{table} 
 
@@ -2508,7 +2784,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{MTDataItemClassType} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
+IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of BaseConditionClassType (See OPC UA Part 9 Documentation)} \\
@@ -2537,27 +2813,45 @@ HasSubtype & ObjectType & MTConditionClassType & \multicolumn{3}{|l|}{See sectio
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{MTEventClassType} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
+IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTDataItemClassType (See section \ref{type:MTDataItemClassType})} \\
-HasSubtype & ObjectType & ActuatorStateType & \multicolumn{3}{|l|}{See section \ref{type:ActuatorStateType}} \\
-HasSubtype & ObjectType & AvailabilityType & \multicolumn{3}{|l|}{See section \ref{type:AvailabilityType}} \\
-HasSubtype & ObjectType & AxisCouplingType & \multicolumn{3}{|l|}{See section \ref{type:AxisCouplingType}} \\
-HasSubtype & ObjectType & AxisInterlockType & \multicolumn{3}{|l|}{See section \ref{type:AxisInterlockType}} \\
-HasSubtype & ObjectType & AxisStateType & \multicolumn{3}{|l|}{See section \ref{type:AxisStateType}} \\
-HasSubtype & ObjectType & ChuckInterlockType & \multicolumn{3}{|l|}{See section \ref{type:ChuckInterlockType}} \\
-HasSubtype & ObjectType & ChuckStateType & \multicolumn{3}{|l|}{See section \ref{type:ChuckStateType}} \\
-HasSubtype & ObjectType & ControllerModeType & \multicolumn{3}{|l|}{See section \ref{type:ControllerModeType}} \\
-HasSubtype & ObjectType & ExecutionType & \multicolumn{3}{|l|}{See section \ref{type:ExecutionType}} \\
-HasSubtype & ObjectType & CompositionStateType & \multicolumn{3}{|l|}{See section \ref{type:CompositionStateType}} \\
-HasSubtype & ObjectType & ControllerModeOverrideType & \multicolumn{3}{|l|}{See section \ref{type:ControllerModeOverrideType}} \\
-HasSubtype & ObjectType & DirectionType & \multicolumn{3}{|l|}{See section \ref{type:DirectionType}} \\
-HasSubtype & ObjectType & DoorStateType & \multicolumn{3}{|l|}{See section \ref{type:DoorStateType}} \\
-HasSubtype & ObjectType & EmergencyStopType & \multicolumn{3}{|l|}{See section \ref{type:EmergencyStopType}} \\
-HasSubtype & ObjectType & EndOfBarType & \multicolumn{3}{|l|}{See section \ref{type:EndOfBarType}} \\
-HasSubtype & ObjectType & EquipmentModeType & \multicolumn{3}{|l|}{See section \ref{type:EquipmentModeType}} \\
-HasSubtype & ObjectType & FunctionalModeType & \multicolumn{3}{|l|}{See section \ref{type:FunctionalModeType}} \\
+HasSubtype & ObjectType & MTControlledVocabClassType & \multicolumn{3}{|l|}{See section \ref{type:MTControlledVocabClassType}} \\
+HasSubtype & ObjectType & MTNumberEventClassType & \multicolumn{3}{|l|}{See section \ref{type:MTNumberEventClassType}} \\
+HasSubtype & ObjectType & MTStringEventClassType & \multicolumn{3}{|l|}{See section \ref{type:MTStringEventClassType}} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MTNumberEventClassType}} \label{type:MTNumberEventClassType}
+
+\FloatBarrier
+
+
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTNumberEventClassType} Definition}
+  \label{table:MTNumberEventClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTNumberEventClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{True} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
+HasSubtype & ObjectType & AxisFeedrateOverrideType & \multicolumn{3}{|l|}{See section \ref{type:AxisFeedrateOverrideType}} \\
+HasSubtype & ObjectType & BlockCountType & \multicolumn{3}{|l|}{See section \ref{type:BlockCountType}} \\
+HasSubtype & ObjectType & HardnessType & \multicolumn{3}{|l|}{See section \ref{type:HardnessType}} \\
+HasSubtype & ObjectType & LineNumberType & \multicolumn{3}{|l|}{See section \ref{type:LineNumberType}} \\
+HasSubtype & ObjectType & PartCountType & \multicolumn{3}{|l|}{See section \ref{type:PartCountType}} \\
+HasSubtype & ObjectType & RotaryVelocityOverrideType & \multicolumn{3}{|l|}{See section \ref{type:RotaryVelocityOverrideType}} \\
 \end{tabu}
 \end{table} 
 
@@ -2580,7 +2874,7 @@ HasSubtype & ObjectType & FunctionalModeType & \multicolumn{3}{|l|}{See section 
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{MTSampleClassType} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
+IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTDataItemClassType (See section \ref{type:MTDataItemClassType})} \\
@@ -2630,6 +2924,52 @@ HasSubtype & ObjectType & WattageType & \multicolumn{3}{|l|}{See section \ref{ty
 
 
 \FloatBarrier
+\subsubsection{Defintion of \texttt{ MTStringEventClassType}} \label{type:MTStringEventClassType}
+
+\FloatBarrier
+
+T
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTStringEventClassType} Definition}
+  \label{table:MTStringEventClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTStringEventClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{True} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEventClassType (See section \ref{type:MTEventClassType})} \\
+HasSubtype & ObjectType & BlockType & \multicolumn{3}{|l|}{See section \ref{type:BlockType}} \\
+HasSubtype & ObjectType & CoupledAxesType & \multicolumn{3}{|l|}{See section \ref{type:CoupledAxesType}} \\
+HasSubtype & ObjectType & LineLabelType & \multicolumn{3}{|l|}{See section \ref{type:LineLabelType}} \\
+HasSubtype & ObjectType & MaterialType & \multicolumn{3}{|l|}{See section \ref{type:MaterialType}} \\
+HasSubtype & ObjectType & OperatorIdType & \multicolumn{3}{|l|}{See section \ref{type:OperatorIdType}} \\
+HasSubtype & ObjectType & PalletIdType & \multicolumn{3}{|l|}{See section \ref{type:PalletIdType}} \\
+HasSubtype & ObjectType & PartIdType & \multicolumn{3}{|l|}{See section \ref{type:PartIdType}} \\
+HasSubtype & ObjectType & PartNumberType & \multicolumn{3}{|l|}{See section \ref{type:PartNumberType}} \\
+HasSubtype & ObjectType & ProgramType & \multicolumn{3}{|l|}{See section \ref{type:ProgramType}} \\
+HasSubtype & ObjectType & ProgramEditNameType & \multicolumn{3}{|l|}{See section \ref{type:ProgramEditNameType}} \\
+HasSubtype & ObjectType & ProgramHeaderType & \multicolumn{3}{|l|}{See section \ref{type:ProgramHeaderType}} \\
+HasSubtype & ObjectType & ProgramCommentType & \multicolumn{3}{|l|}{See section \ref{type:ProgramCommentType}} \\
+HasSubtype & ObjectType & SerialNumberType & \multicolumn{3}{|l|}{See section \ref{type:SerialNumberType}} \\
+HasSubtype & ObjectType & ToolAssetIdType & \multicolumn{3}{|l|}{See section \ref{type:ToolAssetIdType}} \\
+HasSubtype & ObjectType & ToolNumberType & \multicolumn{3}{|l|}{See section \ref{type:ToolNumberType}} \\
+HasSubtype & ObjectType & ToolOffsetType & \multicolumn{3}{|l|}{See section \ref{type:ToolOffsetType}} \\
+HasSubtype & ObjectType & UserType & \multicolumn{3}{|l|}{See section \ref{type:UserType}} \\
+HasSubtype & ObjectType & WireType & \multicolumn{3}{|l|}{See section \ref{type:WireType}} \\
+HasSubtype & ObjectType & WorkholdingType & \multicolumn{3}{|l|}{See section \ref{type:WorkholdingType}} \\
+HasSubtype & ObjectType & WorkOffsetType & \multicolumn{3}{|l|}{See section \ref{type:WorkOffsetType}} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ MassType}} \label{type:MassType}
 
 \FloatBarrier
@@ -2656,6 +2996,60 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
+\subsubsection{Defintion of \texttt{ MaterialType}} \label{type:MaterialType}
+
+\FloatBarrier
+
+
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MaterialType} Definition}
+  \label{table:MaterialType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MaterialType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ OperatorIdType}} \label{type:OperatorIdType}
+
+\FloatBarrier
+
+The identifier of the person currently responsible for operating the piece of equipment.
+
+DEPRECATION WARNING: May be deprecated in the future. See \texttt{USER} below.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{OperatorIdType} Definition}
+  \label{table:OperatorIdType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{OperatorIdType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ PHType}} \label{type:PHType}
 
 \FloatBarrier
@@ -2677,6 +3071,110 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ PalletIdType}} \label{type:PalletIdType}
+
+\FloatBarrier
+
+
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{PalletIdType} Definition}
+  \label{table:PalletIdType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{PalletIdType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ PartCountType}} \label{type:PartCountType}
+
+\FloatBarrier
+
+The current count of parts produced as represented by the Controller. The valid data value MUST be an integer value.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{PartCountType} Definition}
+  \label{table:PartCountType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{PartCountType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTNumberEventClassType (See section \ref{type:MTNumberEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ PartIdType}} \label{type:PartIdType}
+
+\FloatBarrier
+
+An identifier of a part in a manufacturing operation.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{PartIdType} Definition}
+  \label{table:PartIdType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{PartIdType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ PartNumberType}} \label{type:PartNumberType}
+
+\FloatBarrier
+
+
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{PartNumberType} Definition}
+  \label{table:PartNumberType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{PartNumberType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2849,6 +3347,111 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
+\subsubsection{Defintion of \texttt{ ProgramCommentType}} \label{type:ProgramCommentType}
+
+\FloatBarrier
+
+A comment or non-executable statement in the control program.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ProgramCommentType} Definition}
+  \label{table:ProgramCommentType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ProgramCommentType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ProgramEditNameType}} \label{type:ProgramEditNameType}
+
+\FloatBarrier
+
+The name of the program being edited. This is used in conjunction with \texttt{PROGRAM_EDIT} when in \texttt{ACTIVE} state.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ProgramEditNameType} Definition}
+  \label{table:ProgramEditNameType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ProgramEditNameType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ProgramHeaderType}} \label{type:ProgramHeaderType}
+
+\FloatBarrier
+
+The non-executable header section of the control program.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ProgramHeaderType} Definition}
+  \label{table:ProgramHeaderType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ProgramHeaderType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ProgramType}} \label{type:ProgramType}
+
+\FloatBarrier
+
+The name of the logic or motion program being executed by the \texttt{Controller} or \texttt{Path} component.
+
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ProgramType} Definition}
+  \label{table:ProgramType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ProgramType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ ResistenceType}} \label{type:ResistenceType}
 
 \FloatBarrier
@@ -2875,6 +3478,36 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
+\subsubsection{Defintion of \texttt{ RotaryVelocityOverrideType}} \label{type:RotaryVelocityOverrideType}
+
+\FloatBarrier
+
+A command issued to adjust the programmed velocity for a Rotary type axis.
+
+This command represents a percentage change to the velocity calculated by a logic or
+motion program or set by a switch for a Rotary type axis.
+\texttt{ROTARY_VELOCITY_OVERRIDE} is expressed as a percentage of the programmed \texttt{ROTARY_VELOCITY}.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{RotaryVelocityOverrideType} Definition}
+  \label{table:RotaryVelocityOverrideType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{RotaryVelocityOverrideType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTNumberEventClassType (See section \ref{type:MTNumberEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ RotaryVelocityType}} \label{type:RotaryVelocityType}
 
 \FloatBarrier
@@ -2896,6 +3529,32 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ SerialNumberType}} \label{type:SerialNumberType}
+
+\FloatBarrier
+
+
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{SerialNumberType} Definition}
+  \label{table:SerialNumberType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{SerialNumberType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3031,6 +3690,91 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
+\subsubsection{Defintion of \texttt{ ToolAssetIdType}} \label{type:ToolAssetIdType}
+
+\FloatBarrier
+
+The identifier of an individual tool asset
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ToolAssetIdType} Definition}
+  \label{table:ToolAssetIdType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ToolAssetIdType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ToolNumberType}} \label{type:ToolNumberType}
+
+\FloatBarrier
+
+The identifier of a tool provided by the piece of equipment controller.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ToolNumberType} Definition}
+  \label{table:ToolNumberType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ToolNumberType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ToolOffsetType}} \label{type:ToolOffsetType}
+
+\FloatBarrier
+
+A reference to the tool offset variables applied to the active cutting tool associated with a Path in a Controller type component.
+
+The valid data value MUST be a text string.
+
+The reported value returned for \texttt{TOOL_OFFSET} identifies the location in
+a table or list where the actual tool offset values are stored. 
+
+A \texttt{subType} MUST always be specified.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ToolOffsetType} Definition}
+  \label{table:ToolOffsetType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ToolOffsetType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ TorqueType}} \label{type:TorqueType}
 
 \FloatBarrier
@@ -3052,6 +3796,34 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ UserType}} \label{type:UserType}
+
+\FloatBarrier
+
+The identifier of the person currently responsible for operating the piece of equipment.
+
+A \texttt{subType} MUST always be specified.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{UserType} Definition}
+  \label{table:UserType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{UserType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3209,6 +3981,90 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ WireType}} \label{type:WireType}
+
+\FloatBarrier
+
+
+The identifier for the type of wire used as the cutting mechanism in Electrical Discharge Machining or similar processes.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{WireType} Definition}
+  \label{table:WireType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{WireType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ WorkOffsetType}} \label{type:WorkOffsetType}
+
+\FloatBarrier
+
+A reference to the offset variables for a work piece or part associated with a Path in a Controller type component.
+
+The valid data value MUST be a text string.
+
+The reported value returned for \texttt{WORK_OFFSET} identifies the location in a table or list 
+where the actual tool offset values are stored.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{WorkOffsetType} Definition}
+  \label{table:WorkOffsetType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{WorkOffsetType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ WorkholdingType}} \label{type:WorkholdingType}
+
+\FloatBarrier
+
+The identifier for the workholding currently in use.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{WorkholdingType} Definition}
+  \label{table:WorkholdingType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{WorkholdingType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 

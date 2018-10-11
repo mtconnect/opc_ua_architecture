@@ -2,7 +2,7 @@
 
 \begin{quote}
     \color{red}
-    Todo: This section will need to be rewritten with the new activity and data flow models and the factories to create the information models.
+    TODO: This section will need to be rewritten with the new activity and data flow models and the factories to create the information models.
 \end{quote}
 
 \subsection{Base Information}
@@ -13,9 +13,7 @@ MTConnect defines a Probe request, which is just mapped to an OPC UA Browse. The
 
 MTConnect defines a Sample Request command to obtain information from the device. This command can be mapped to an OPC UA read or subscription service. The read service will return the latest value of the requested item. This is appropriate for obtaining the most recent value of a variable. The Subscription service is described the next paragraph. In some cases Historical data access may be required. This allows a client to obtain older values for a device, based on time ranges or other criteria. This feature can be used by a server to allow addition data to be available and could be used to enhance MTConnect Sample Request for cases where more than just the current value is required.
 
-MTConnect describes a Streaming command, which matches to the OPC UA subscription service. This service would allow a client to obtain a steady stream of values associated with a device. The subscription service supports filtering, based on data changes or even aggregates, where an aggregate is a minimum, maximum, average, time in state or any of a long list of aggregates. For a complete list of OPC defined aggregates see [UA Part 11]. It would also allow the return of any OPC Events associated with the device. An OPC Event in MTConnect terms would be a transition of a Condition. Subscription data includes message information that allows a client to determine if a packet was missed or is out of order. The client can request a replay of any missed information or re-sequence the packets. Also included is a keep-alive heart beat that allows for rapid determination of and recovery from communication failures. This functionality is used to ensure the MTConnect Streaming functionality is matched.
-
-MTConnect defines Asset, which becomes a simple addition to the OPC UA information model that describes the MTConnect devices. MTConnect defines the structure of many standard devices, components or Asset. The remainder of this document will provide a mapping of the information model that is described by mapping these MTConnect items into an OPC UA information model.
+MTConnect describes a Streaming command, which matches to the OPC UA subscription service. This service would allow a client to obtain a steady stream of values associated with a device. The subscription service supports filtering, based on data changes or even aggregates, where an aggregate is a minimum, maximum, average, time in state or any of a long list of aggregates. For a complete list of OPC defined aggregates see \cite{UAPart11}. It would also allow the return of any OPC Events associated with the device. An OPC Event in MTConnect terms would be a transition of a Condition. Subscription data includes message information that allows a client to determine if a packet was missed or is out of order. The client can request a replay of any missed information or re-sequence the packets. Also included is a keep-alive heart beat that allows for rapid determination of and recovery from communication failures. This functionality is used to ensure the MTConnect Streaming functionality is matched.
 
 MTConnect error codes will be mapped to OPC UA error codes where appropriate. The OPC UA server has a multilevel error reporting capability. A Service can include  	 information, as well as the individual data items that are being reported as part of the service.
 
@@ -23,12 +21,6 @@ As discussed in the overview of OPC UA, all companion specifications usually def
 \texttt{("urn:mtconnect.com:MTConnectDevices:1.2")} unless stated otherwise.
 
 The description associated with MTConnect items is always mapped to the Description attribute available in OPC UA.
-
-The Name from MTConnect is always mapped to the BrowseName in OPC UA.
-
-The \texttt{NativeName} from MTConnect will be the \texttt{DisplayName}, but if a \texttt{NativeName} is not provided then the \texttt{BrowseName} will be used as the default DisplayName.
-
-The \texttt{UUID} from \texttt{MTConnect} can be mapped to the \texttt{NodeId} in OPC UA. The Namespace associated with MTConnect will assure that the \texttt{NodeId} is unique.
 
 \FloatBarrier
 \subsection{Additional Subscription Information}

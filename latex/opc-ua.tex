@@ -6,20 +6,20 @@ OPC UA is an open and royalty free set of standards designed as a universal fact
 OPC UA is designed specifically for the factory and industrial environment. While there are numerous communication solutions available, OPC UA has several advantages:
 
 \begin{itemize}
-\item A state of art security model (see [UA Part 2]).
+\item A state of art security model (see \cite{UAPart2}).
 \item A fault tolerant communication protocol.
 \item An information modeling framework that allows application developers to represent their data in a way that makes sense to them.
 \end{itemize}
 
 OPC UA has a broad scope which delivers for economies of scale for application developers. This means that a larger number of high quality applications at a reasonable cost are available to factory owners. When combined with powerful semantic models such as MTConnect, OPC UA makes it easier for factory owners to access data via generic commercial application.
 
-The OPC UA model is scalable from small devices to ERP systems. OPC UA devices process information locally and then provide that data in a consistent format to any application requesting data - ERP, MES, PMS, Maintenance Systems, HMI, Smartphone or a standard Browser, for examples. For a more complete overview see [UA Part 1].
+The OPC UA model is scalable from small devices to ERP systems. OPC UA devices process information locally and then provide that data in a consistent format to any application requesting data - ERP, MES, PMS, Maintenance Systems, HMI, Smartphone or a standard Browser, for examples. For a more complete overview see \cite{UAPart1}.
 
 \subsection{Basics of OPC UA}
 
 As an Open Standard, OPC UA is based on standard Internet technologies – TCP/IP, HTTP, Ethernet, and XML.
 
-As an Extensible Standard, OPC UA provides a set of services (see [UA Part 4]) and a basic information model framework. This framework provides an easy manner for creating and exposing vendor defined information in a standard way. More importantly all OPC UA Clients are expected to be able to discover and use vendor defined information. This means OPC UA users can benefit from the economies of scale that come with generic visualization and historian applications. This specification is an example of an OPC UA Information Model designed to meet the needs of Machine Tool developers and users.
+As an Extensible Standard, OPC UA provides a set of services (see \cite{UAPart4}) and a basic information model framework. This framework provides an easy manner for creating and exposing vendor defined information in a standard way. More importantly all OPC UA Clients are expected to be able to discover and use vendor defined information. This means OPC UA users can benefit from the economies of scale that come with generic visualization and historian applications. This specification is an example of an OPC UA Information Model designed to meet the needs of Machine Tool developers and users.
 
 OPC UA Clients can be any consumer of factory data from another device on the network to browser base thin clients and ERP systems. The full scope of OPC UA applications are shown in Figure \ref{fig:scope_of_opcua}.
 
@@ -54,7 +54,7 @@ OPC UA provides a framework that can be used to represent complex information as
 
 \begin{quote}
 \footnotesize
-NOTE: The figures used to illustrate OPC UA information models use a notation that was developed for the OPC UA specification. The notation is summarized in Figure \ref{fig:opc_ua_notation}. UML representations can also be used; however, the OPC UA notation is less ambiguous because there is a direct mapping from the elements in the figures to Nodes in the address space of an OPC UA server. A complete description of the different types of Nodes and References can be found in [UA Part 3] and the base OPC UA Address space is described in [UA Part 5].
+NOTE: The figures used to illustrate OPC UA information models use a notation that was developed for the OPC UA specification. The notation is summarized in Figure \ref{fig:opc_ua_notation}. UML representations can also be used; however, the OPC UA notation is less ambiguous because there is a direct mapping from the elements in the figures to Nodes in the address space of an OPC UA server. A complete description of the different types of Nodes and References can be found in \cite{UAPart3} and the base OPC UA Address space is described in \cite{UAPart5}.
 \end{quote}
 
 \begin{figure}[h]
@@ -75,7 +75,7 @@ NOTE: The figures used to illustrate OPC UA information models use a notation th
 
 The Type Nodes are templates that define all of the children that can be present in an Instance of the Type. In the example in Figure \ref{fig:rel_type_inst} the \texttt{PersonType} \texttt{ObjectType} defines two children: First Name and Last Name. All instances of \texttt{PersonTyp}e are expected to have the same children with the same \texttt{BrowseNames}. Within a Type the \texttt{BrowseNames} uniquely identify the child. This means Client applications can be designed to search for children based on the \texttt{BrowseNames} from the Type instead of \texttt{NodeIds}. This eliminates the need for manual reconfiguration of systems if a Client uses Types that multiple devices implement.
 
-OPC UA also supports the concept of sub typing. This allows a modeler to take an existing Type and extend it. There are rules regarding sub typing defined in [UA Part 3], but in general they allow the additions to a given type or the restriction of a \texttt{DataType} to a more specific data type. For example the modeler may decide that the existing \texttt{ObjectType} in some cases needs an additional variable. The modeler can create a subtype of the \texttt{ObjectType} and add the variable. A client that is expecting the parent type can treat the new \texttt{ObjectType} as if it was of the parent \texttt{ObjectType} and just ignore the additional variable. A client that understands the new subtype may display or otherwise process the additional variable. With regard to \texttt{DataTypes}, if a variable is defined to have a numeric value, a sub type could restrict the Value to a float.
+OPC UA also supports the concept of sub typing. This allows a modeler to take an existing Type and extend it. There are rules regarding sub typing defined in \cite{UAPart3}, but in general they allow the additions to a given type or the restriction of a \texttt{DataType} to a more specific data type. For example the modeler may decide that the existing \texttt{ObjectType} in some cases needs an additional variable. The modeler can create a subtype of the \texttt{ObjectType} and add the variable. A client that is expecting the parent type can treat the new \texttt{ObjectType} as if it was of the parent \texttt{ObjectType} and just ignore the additional variable. A client that understands the new subtype may display or otherwise process the additional variable. With regard to \texttt{DataTypes}, if a variable is defined to have a numeric value, a sub type could restrict the Value to a float.
 
 \begin{figure}[h]
   \centering
@@ -84,7 +84,7 @@ OPC UA also supports the concept of sub typing. This allows a modeler to take an
   \label{fig:rel_type_inst}
 \end{figure}
 
-References allow Nodes to be connected together in ways that describe their relationships. All References have a ReferenceType that specifies the semantics of the relationship. References can be hierarchical or non-hierarchical. Hierarchical references are used to create the structure of Objects and Variables. Non-hierarchical are used to create arbitrary associations. Applications can define their own ReferenceType by creating Subtypes of the existing ReferenceType. Subtypes inherit the semantics of the parent but may add additional restrictions. Figure \ref{fig:ref_bet_objs} depicts several references connecting different Objects.
+References allow Nodes to be connected together in ways that describe their relationships. All References have a  \texttt{ReferenceType} that specifies the semantics of the relationship. References can be hierarchical or non-hierarchical. Hierarchical references are used to create the structure of Objects and Variables. Non-hierarchical are used to create arbitrary associations. Applications can define their own  \texttt{ReferenceType} by creating  \texttt{Subtypes} of the existing \texttt{ReferenceType}.  \texttt{Subtypes} inherit the semantics of the parent but may add additional restrictions. Figure \ref{fig:ref_bet_objs} depicts several references connecting different Objects.
 
 \begin{figure}[h]
   \centering
@@ -93,9 +93,9 @@ References allow Nodes to be connected together in ways that describe their rela
   \label{fig:ref_bet_objs}
 \end{figure}
 
-OPC UA specification defines a very wide range of functionality in its basic information model. It is not expected that all clients or servers support all functionality in the OPC UA specifications. OPC UA includes the concept of profiles, which segment the functionality into testable certifiable units. This allows the development of companion specification (such as MTConnect-OPC UA) that can describe the subset of functionality that is expected to be implemented. The profiles do not restrict functionality, but generate requirements for a minimum set of functionality (see [UA Part 7])
+OPC UA specification defines a very wide range of functionality in its basic information model. It is not expected that all clients or servers support all functionality in the OPC UA specifications. OPC UA includes the concept of profiles, which segment the functionality into testable certifiable units. This allows the development of companion specification (such as MTConnect-OPC UA) that can describe the subset of functionality that is expected to be implemented. The profiles do not restrict functionality, but generate requirements for a minimum set of functionality (see \cite{UAPart7})
 
-The OPC foundation also defines a set of information models that provide a basic set of functionality. The Data Access specification (see [UA Part 8]) provides a basic information model for typical data. The Alarm and Condition specification (see [UA Part 9]) defines a standard information model for Alarms and Conditions. The Programs specification (see [UA Part 10]) defines a stand information model for extending the functionality available via method calls and state machines. The Historical Access specification (see [UA Part 11]) defines the information model associated with Historical Data and Historical Events. The aggregates specification (see [UA Part 13]) defines a series of standard aggregate function that allow a client to request summary data. Examples of aggregates include averages, minimums, time in state, Standard deviation, etc. 
+The OPC foundation also defines a set of information models that provide a basic set of functionality. The Data Access specification (see \cite{UAPart8}) provides a basic information model for typical data. The Alarm and Condition specification (see \cite{UAPart9}) defines a standard information model for Alarms and Conditions. The Programs specification (see \cite{UAPart10}) defines a stand information model for extending the functionality available via method calls and state machines. The Historical Access specification (see \cite{UAPart11}) defines the information model associated with Historical Data and Historical Events. The aggregates specification (see \cite{UAPart13}) defines a series of standard aggregate function that allow a client to request summary data. Examples of aggregates include averages, minimums, time in state, Standard deviation, etc. 
 
 \subsubsection{Namespaces}
 
@@ -123,7 +123,7 @@ BrowseName & \multicolumn{5}{|l|}{WidgetType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of the BaseObjectType from [UA Part 5]} \\
+\multicolumn{6}{|l|}{Subtype of the BaseObjectType from \cite{UAPart5}} \\
 HasProperty & Variable & Color &  String & PropertyType & Optional \\
 HasProperty & Variable & Flavor &  Double & PropertyType & Mandatory \\
 HasProperty & Variable & Rank &  Int32 & PropertyType & Mandatory \\

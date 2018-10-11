@@ -212,11 +212,12 @@ class Type
         stereo = resolve_type(r['stereotype'])
         node = 'Object'
         browse = r['name']
-        
-        if r['name'].nil?
-          relation = 'HasProperty'
+        browse = r['end1']['name'] unless browse
+
+        if browse.nil?
+          relation = (stereo && stereo.name) || 'HasProperty'
           type_name = target.name
-          type_def = '<Dynamic>'
+          type_def = stereo.name == 'HasProperty' ? 'PropertyType' : '<Dynamic>'
           browse = '<Dynamic>'
           node = 'Variable'
         elsif r['end2']['multiplicity'] == '1'

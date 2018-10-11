@@ -53,6 +53,7 @@
 \RequirePackage{tocloft}				% Loads tocloft package to format TOC/LOF/LOT
 \RequirePackage[ampersand]{easylist}	% Loads easylist package to simplify lists using &
 \RequirePackage[english]{babel}
+\RequirePackage{csquotes}
 
 % *********** %
 % 	Options   %

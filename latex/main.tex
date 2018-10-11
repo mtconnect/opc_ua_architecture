@@ -19,6 +19,17 @@
 
 \documentclass{mtc-opc}	% Load mtconnect document class
 
+\usepackage[
+backend=biber,
+style=alphabetic,
+]{biblatex}
+
+\addbibresource{opc.bib}
+\addbibresource{mtc.bib}
+
+\defbibheading{bibliography}[\bibname]{%
+  \subsubsection{#1}}
+  
 \begin{document}			% Begin document here
 
 % ************************************************************************* %

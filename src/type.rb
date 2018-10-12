@@ -30,10 +30,32 @@ module Diagram
 EOT
     end
   end
+
+
+  def documentation_name
+    "./type-sections/#{short_name}.tex"
+  end
+
+  def documentation_file_name
+    "./latex/#{documentation_name}"
+  end
+
+
+  def documentation_exists?
+    File.exists?(documentation_file_name)
+  end
+
+  def generate_documentation(f)
+    if documentation_exists?
+      f.puts "\n\\input #{documentation_name}\n\n"
+    elsif @documentation
+      f.puts "\n#{@documentation}\n\n"
+    end
+  end
 end
 
 class Type
-  attr_reader :name, :id, :type, :model, :json
+  attr_reader :name, :id, :type, :model, :json, :parent, :children
 
   include Diagram
   
@@ -332,7 +354,8 @@ EOT
 
   def generate_enumerations(f)
     if @type == 'UMLEnumeration'
-      f.puts "#{@documentation}" if @documentation
+      
+      generate_documentation(f)
 
       f.puts <<EOT
 \\begin{table}[ht]

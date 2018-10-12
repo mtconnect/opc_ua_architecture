@@ -1,5 +1,5 @@
-% Generated 2018-10-11 13:10:02 -0700
-\subsection{Components}
+% Generated 2018-10-11 18:52:50 -0700
+\subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
   \centering
@@ -39,7 +39,7 @@ BrowseName & \multicolumn{5}{|l|}{ChannelType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of BaseObjectType (See OPC UA Part 5 Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{BaseObjectType} (See OPC UA Part 5 Documentation)} \\
 HasProperty & Variable & Number &  Int32 & PropertyType & Mandatory \\
 HasProperty & Variable & Name &  String & PropertyType & Optional \\
 HasProperty & Variable & MTDescription &  String & PropertyType & Optional \\
@@ -55,7 +55,8 @@ HasProperty & Variable & CalibrationInitials &  String & PropertyType & Optional
 
 \FloatBarrier
 
-
+The compositions folder type is organizes the component's composition objects. It will 
+only accept objects that are of sub-types of \texttt{MTCompositionType}.
 
 \begin{table}[ht]
 \centering 
@@ -71,7 +72,7 @@ BrowseName & \multicolumn{5}{|l|}{CompositionFolderType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of FolderType (See OPC UA Part 5 Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{FolderType} (See OPC UA Part 5 Documentation)} \\
 Organizes & Object & Compositions &  MTCompositionType & Organizes & Optional \\
 \end{tabu}
 \end{table} 
@@ -101,7 +102,7 @@ BrowseName & \multicolumn{5}{|l|}{DescriptionType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of BaseObjectType (See OPC UA Part 5 Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{BaseObjectType} (See OPC UA Part 5 Documentation)} \\
 HasProperty & Variable & Station &  String & PropertyType & Optional \\
 HasProperty & Variable & SerialNumber &  String & PropertyType & Optional \\
 HasProperty & Variable & Manufacturer &  String & PropertyType & Optional \\
@@ -146,7 +147,7 @@ BrowseName & \multicolumn{5}{|l|}{MTComponentFolderType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of FolderType (See OPC UA Part 5 Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{FolderType} (See OPC UA Part 5 Documentation)} \\
 Organizes & Object & Components &  MTComponentType & Organizes & Optional \\
 \end{tabu}
 \end{table} 
@@ -210,26 +211,15 @@ HasProperty & Variable & SampleRate &  float & PropertyType & Optional \\
 HasProperty & Variable & SampleInterval &  float & PropertyType & Optional \\
 HasComponent & Object & Description &   & DescriptionType & Optional \\
 HasComponent & Object & Configuration &   & MTConfigurationType & Optional \\
-NonHierarchialReferenceType & Variable & <Dynamic> &  BaseObjectType & <Dynamic> & Optional \\
-Organizes & Object & Conditions &  AlarmConditionType & FolderType & Optional \\
-HasProperty & Variable & <Dynamic> &  MTEnumeratedEventType & PropertyType & Mandatory \\
-HasProperty & Variable & <Dynamic> &  MTNumericEventType & PropertyType & Mandatory \\
-HasProperty & Variable & <Dynamic> &  MTStringEventType & PropertyType & Mandatory \\
+MTReferenceType & Object & <Dynamic> &  BaseObjectType & <Dynamic> & Optional \\
+HasProperty & Variable & <Dynamic> &  MTEnumeratedEventType & PropertyType & Optional \\
+HasProperty & Variable & <Dynamic> &  MTNumericEventType & PropertyType & Optional \\
+HasProperty & Variable & <Dynamic> &  MTStringEventType & PropertyType & Optional \\
 HasProperty & Variable & <Dynamic> &  MTSampleType & PropertyType & Mandatory \\
 \end{tabu}
 \end{table} 
 
 
-\paragraph{Constraints}
-\begin{itemize}
-\item Constraint \texttt{node_id}: 
-   \indent \begin{lstlisting}
-context Component::NodeId : String 
-derive: concat(self.getDevice().uuid, self.getAttributes().id)
-\end{lstlisting}
-Documentation: The NodeId SHALL be derrived from the combination of the device UUID and the id of the component. 
-
-\end{itemize}
 \paragraph{Dependency on DataItemObjectFactory}
 
 This class relates to \texttt{DataItemObjectFactory} (See section \ref{type:DataItemObjectFactory}) for a(n) \texttt{use} relationship.
@@ -271,7 +261,7 @@ BrowseName & \multicolumn{5}{|l|}{MTCompositionType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of BaseObjectType (See OPC UA Part 5 Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{BaseObjectType} (See OPC UA Part 5 Documentation)} \\
 HasSubtype & ObjectType & \{Composition\}Type & \multicolumn{3}{|l|}{See section \ref{type:{Composition}Type}} \\
 HasProperty & Variable & Uuid &  String & PropertyType & Optional \\
 HasProperty & Variable & Name &  String & PropertyType & Optional \\
@@ -304,7 +294,7 @@ BrowseName & \multicolumn{5}{|l|}{MTConfigurationType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of BaseObjectType (See OPC UA Part 5 Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{BaseObjectType} (See OPC UA Part 5 Documentation)} \\
 HasSubtype & ObjectType & SensorConfigurationType & \multicolumn{3}{|l|}{See section \ref{type:SensorConfigurationType}} \\
 \end{tabu}
 \end{table} 
@@ -333,28 +323,13 @@ BrowseName & \multicolumn{5}{|l|}{MTDeviceType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTComponentType (See section \ref{type:MTComponentType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTComponentType} (See section \ref{type:MTComponentType})} \\
 HasProperty & Variable & Version &  String & PropertyType & Optional \\
 HasProperty & Variable & Iso841Class &  String & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
 
-\paragraph{Operations}
-\begin{itemize}
-  \item \texttt{deriveBrowseName(element)}\\
-    Specification:
-   \indent \begin{lstlisting}
-self.name
-\end{lstlisting}
-
-  \item \texttt{deriveNodeId(element)}\\
-    Specification:
-   \indent \begin{lstlisting}
-self.uuid
-\end{lstlisting}
-
-\end{itemize}
 \paragraph{Constraints}
 \begin{itemize}
 \item Constraint \texttt{uuid_not_empty}: 
@@ -403,12 +378,12 @@ BrowseName & \multicolumn{5}{|l|}{SensorConfigurationType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTConfigurationType (See section \ref{type:MTConfigurationType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTConfigurationType} (See section \ref{type:MTConfigurationType})} \\
 HasProperty & Variable & FirwareVersion &  String & PropertyType & Mandatory \\
 HasProperty & Variable & CalibrationDate &  UtcTime & PropertyType & Optional \\
 HasProperty & Variable & NextCalibrationDate &  UtcTime & PropertyType & Optional \\
 HasProperty & Variable & CalibrationInitials &  String & PropertyType & Optional \\
-Organizes & Object & Channels &  ChannelType & FolderType & Optional \\
+HasChannels & Object & Channels &  ChannelType & HasChannels & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -418,7 +393,13 @@ Organizes & Object & Channels &  ChannelType & FolderType & Optional \\
 
 \FloatBarrier
 
+This is a dynamic type that will be created at the time the model is created. The 
+\texttt{\{Component\}} placeholder will be supplied by the \texttt{ComponentTypeFactory} 
+(\ref{type:ComponentTypeFactory}) that will create the type as a sub-type of the 
+\texttt{MTComponentType}.
 
+The name will be created using the \texttt{QName} of the MTConnect \texttt{Component} element.
+more information on the MTConnect Components can be found in MTConnect Part 2 \cite{MTCPart2}.
 
 \begin{table}[ht]
 \centering 
@@ -434,7 +415,7 @@ BrowseName & \multicolumn{5}{|l|}{{Component}Type} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTComponentType (See section \ref{type:MTComponentType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTComponentType} (See section \ref{type:MTComponentType})} \\
 \end{tabu}
 \end{table} 
 
@@ -444,7 +425,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
+This is a dynamic type that will be created at the time the model is created. The 
+\texttt{\{Composition\}} placeholder will be supplied by the \texttt{CompositionTypeFactory} 
+(\ref{type:CompositionTypeFactory}) that will create the type as a sub-type of the 
+\texttt{MTCompositionType}.
 
+The name will be created using the PascalCase of the \texttt{type} attribute
+of the MTConnect \texttt{Composition} element.
 
 \begin{table}[ht]
 \centering 
@@ -460,13 +447,13 @@ BrowseName & \multicolumn{5}{|l|}{{Composition}Type} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTCompositionType (See section \ref{type:MTCompositionType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTCompositionType} (See section \ref{type:MTCompositionType})} \\
 \end{tabu}
 \end{table} 
 
 
 \FloatBarrier
-\subsection{Data Items}
+\subsection{Data Items} \label{model:DataItems}
 
 \begin{figure}[ht]
   \centering
@@ -502,7 +489,7 @@ ValueRank & \multicolumn{5}{|l|}{-1} \\
 DataType & \multicolumn{5}{|l|}{String} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of AssetEventType (See section \ref{type:AssetEventType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{AssetEventType} (See section \ref{type:AssetEventType})} \\
 \end{tabu}
 \end{table} 
 
@@ -533,7 +520,7 @@ ValueRank & \multicolumn{5}{|l|}{-1} \\
 DataType & \multicolumn{5}{|l|}{String} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTStringEventType (See section \ref{type:MTStringEventType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTStringEventType} (See section \ref{type:MTStringEventType})} \\
 HasSubtype & VariableType & AssetChangedType & \multicolumn{3}{|l|}{See section \ref{type:AssetChangedType}} \\
 HasSubtype & VariableType & AssetRemovedType & \multicolumn{3}{|l|}{See section \ref{type:AssetRemovedType}} \\
 HasProperty & Variable & AssetType &  String & PropertyType & Mandatory \\
@@ -564,7 +551,7 @@ ValueRank & \multicolumn{5}{|l|}{-1} \\
 DataType & \multicolumn{5}{|l|}{String} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of AssetEventType (See section \ref{type:AssetEventType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{AssetEventType} (See section \ref{type:AssetEventType})} \\
 \end{tabu}
 \end{table} 
 
@@ -652,7 +639,7 @@ ValueRank & \multicolumn{5}{|l|}{-1} \\
 DataType & \multicolumn{5}{|l|}{UInteger} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MultiStateDiscreteType (See OPC UA Part 8 Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MultiStateDiscreteType} (See OPC UA Part 8 Documentation)} \\
 HasProperty & Variable & SourceName &  String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate &  Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate &  Double & PropertyType & Optional \\
@@ -660,7 +647,7 @@ HasProperty & Variable & Representation &  RepresentationType & PropertyType & O
 HasProperty & Variable & Category &  MTCategoryType & PropertyType & Mandatory \\
 HasProperty & Variable & MTTypeName &  String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName &  String & PropertyType & Mandatory \\
-HasProperty & Variable & ConstrainedValues &  EnumValuesType & PropertyType & Mandatory \\
+HasProperty & Variable & ConstrainedValues &  EnumValuesType & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -724,7 +711,7 @@ ValueRank & \multicolumn{5}{|l|}{-1} \\
 DataType & \multicolumn{5}{|l|}{String} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTStringEventType (See section \ref{type:MTStringEventType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTStringEventType} (See section \ref{type:MTStringEventType})} \\
 HasProperty & Variable & NativeCode &  String & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
@@ -753,7 +740,7 @@ BrowseName & \multicolumn{5}{|l|}{MTNumericDataItemType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemType (See section \ref{type:MTDataItemType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemType} (See section \ref{type:MTDataItemType})} \\
 HasProperty & Variable & SignificantDigits &  UInt16 & PropertyType & Optional \\
 HasProperty & Variable & Statistic &  MTStatisticType & PropertyType & Optional \\
 HasProperty & Variable & Units &  MTUnits & PropertyType & Optional \\
@@ -811,7 +798,7 @@ ValueRank & \multicolumn{5}{|l|}{-1} \\
 DataType & \multicolumn{5}{|l|}{Number} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of DataItemType (See OPC UA Part 8 Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{DataItemType} (See OPC UA Part 8 Documentation)} \\
 HasProperty & Variable & SourceName &  String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate &  Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate &  Double & PropertyType & Optional \\
@@ -858,7 +845,7 @@ ValueRank & \multicolumn{5}{|l|}{-1} \\
 DataType & \multicolumn{5}{|l|}{Number} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of AnalogItemType (See OPC UA Part 8 Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{AnalogItemType} (See OPC UA Part 8 Documentation)} \\
 HasProperty & Variable & SourceName &  String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate &  Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate &  Double & PropertyType & Optional \\
@@ -906,7 +893,7 @@ ValueRank & \multicolumn{5}{|l|}{-1} \\
 DataType & \multicolumn{5}{|l|}{String} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of BaseDataVariableType (See OPC UA Part 8 Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{BaseDataVariableType} (See OPC UA Part 8 Documentation)} \\
 HasSubtype & VariableType & MTMessageType & \multicolumn{3}{|l|}{See section \ref{type:MTMessageType}} \\
 HasSubtype & VariableType & AssetEventType & \multicolumn{3}{|l|}{See section \ref{type:AssetEventType}} \\
 HasProperty & Variable & SourceName &  String & PropertyType & Optional \\
@@ -943,7 +930,7 @@ BrowseName & \multicolumn{5}{|l|}{MinimumDeltaFilterType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTFilterType (See section \ref{type:MTFilterType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTFilterType} (See section \ref{type:MTFilterType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1011,7 +998,7 @@ BrowseName & \multicolumn{5}{|l|}{PeriodFilterType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTFilterType (See section \ref{type:MTFilterType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTFilterType} (See section \ref{type:MTFilterType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1171,7 +1158,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsection{Conditions}
+\subsection{Conditions} \label{model:Conditions}
 
 \begin{figure}[ht]
   \centering
@@ -1185,6 +1172,36 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 
+\subsubsection{Defintion of \texttt{ ConditionFolderType}} \label{type:ConditionFolderType}
+
+\FloatBarrier
+
+
+The conditions folder type contains all the components \texttt{DataItems} that are
+of category \texttt{CONDITION}. See MTConnect Part 1 \cite{MTCPart1} and MTConnect Part 2
+\cite{MTCPart2} for a complete discussion of MTConnect Conditions.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ConditionFolderType} Definition}
+  \label{table:ConditionFolderType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ConditionFolderType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{FolderType} (See OPC UA Part 5 Documentation)} \\
+HasMTCondition & Object & Conditi0ons &  AlarmConditionType & HasMTCondition & Optional \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ MTExclusiveLimitConditionType}} \label{type:MTExclusiveLimitConditionType}
 
 \FloatBarrier
@@ -1205,7 +1222,7 @@ BrowseName & \multicolumn{5}{|l|}{MTExclusiveLimitConditionType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of ExclusiveLimitAlarmType (See OPC UA Part 9 Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{ExclusiveLimitAlarmType} (See OPC UA Part 9 Documentation)} \\
 \end{tabu}
 \end{table} 
 
@@ -1219,7 +1236,9 @@ This class relates to \texttt{MTDataItemType} (See section \ref{type:MTDataItemT
 
 \FloatBarrier
 
-
+The OPC UA \texttt{ConditionClassId} and \texttt{ConditionSubClassId} reference the MTConnect \texttt{DataItem} 
+\texttt{type} and \texttt{subType} enumerations as referenced in sections \ref{model:DataItemTypes} and 
+sections \ref{model:DataItemSubTypes} respectively.
 
 \begin{table}[ht]
 \centering 
@@ -1235,7 +1254,7 @@ BrowseName & \multicolumn{5}{|l|}{MTNonExclusiveConditionType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of NonExclusiveLimitAlarmType (See OPC UA Part 9 Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{NonExclusiveLimitAlarmType} (See OPC UA Part 9 Documentation)} \\
 \end{tabu}
 \end{table} 
 
@@ -1265,13 +1284,13 @@ BrowseName & \multicolumn{5}{|l|}{{ConditionClass}Type} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of SystemConditionClassType (See OPC UA Part 9 Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{SystemConditionClassType} (See OPC UA Part 9 Documentation)} \\
 \end{tabu}
 \end{table} 
 
 
 \FloatBarrier
-\subsection{Data Item Types}
+\subsection{Data Item Types} \label{model:DataItemTypes}
 
 The data item types represent the MTConnect types as defined in Section 8 of the 
 MTConnect Standard Part 2 \cite{MTCPart2} and are represented using the XML \texttt{type} 
@@ -1308,7 +1327,7 @@ BrowseName & \multicolumn{5}{|l|}{MTConditionClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassType (See section \ref{type:MTDataItemClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassType} (See section \ref{type:MTDataItemClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1335,7 +1354,7 @@ BrowseName & \multicolumn{5}{|l|}{MTDataItemClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of BaseConditionClassType (See OPC UA Part 9 Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{BaseConditionClassType} (See OPC UA Part 9 Documentation)} \\
 HasSubtype & ObjectType & MTSampleClassType & \multicolumn{3}{|l|}{See section \ref{type:MTSampleClassType}} \\
 HasSubtype & ObjectType & MTEventClassType & \multicolumn{3}{|l|}{See section \ref{type:MTEventClassType}} \\
 HasSubtype & ObjectType & MTConditionClassType & \multicolumn{3}{|l|}{See section \ref{type:MTConditionClassType}} \\
@@ -1364,7 +1383,7 @@ BrowseName & \multicolumn{5}{|l|}{MTEventClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassType (See section \ref{type:MTDataItemClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassType} (See section \ref{type:MTDataItemClassType})} \\
 HasSubtype & ObjectType & MTControlledVocabClassType & \multicolumn{3}{|l|}{See section \ref{type:MTControlledVocabClassType}} \\
 HasSubtype & ObjectType & MTNumberEventClassType & \multicolumn{3}{|l|}{See section \ref{type:MTNumberEventClassType}} \\
 HasSubtype & ObjectType & MTStringEventClassType & \multicolumn{3}{|l|}{See section \ref{type:MTStringEventClassType}} \\
@@ -1373,7 +1392,7 @@ HasSubtype & ObjectType & MTStringEventClassType & \multicolumn{3}{|l|}{See sect
 
 
 \FloatBarrier
-\subsection{Sample Data Item Types}
+\subsection{Sample Data Item Types} \label{model:SampleDataItemTypes}
 
 The MTConnect Standard has the definitions of Samples in 
 Section 8.1 of the MTConnect Standard Part 2 \cite{MTCPart2} and the 
@@ -1403,7 +1422,7 @@ BrowseName & \multicolumn{5}{|l|}{AccelerationType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1430,7 +1449,7 @@ BrowseName & \multicolumn{5}{|l|}{AccumulatedTimeType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1456,7 +1475,7 @@ BrowseName & \multicolumn{5}{|l|}{AmperageType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1482,7 +1501,7 @@ BrowseName & \multicolumn{5}{|l|}{AngleType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1508,7 +1527,7 @@ BrowseName & \multicolumn{5}{|l|}{AngularAccelerationType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1534,7 +1553,7 @@ BrowseName & \multicolumn{5}{|l|}{AngularVelocityType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1560,7 +1579,7 @@ BrowseName & \multicolumn{5}{|l|}{AxisFeedrateType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1586,7 +1605,7 @@ BrowseName & \multicolumn{5}{|l|}{ClockTimeType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1612,7 +1631,7 @@ BrowseName & \multicolumn{5}{|l|}{ConcentrationType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1638,7 +1657,7 @@ BrowseName & \multicolumn{5}{|l|}{ConductivityType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1664,7 +1683,7 @@ BrowseName & \multicolumn{5}{|l|}{DisplacementType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1690,7 +1709,7 @@ BrowseName & \multicolumn{5}{|l|}{ElectricalEnergyType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1724,7 +1743,7 @@ BrowseName & \multicolumn{5}{|l|}{EquipmentTimerType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1751,7 +1770,7 @@ BrowseName & \multicolumn{5}{|l|}{FillLevelType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1777,7 +1796,7 @@ BrowseName & \multicolumn{5}{|l|}{FlowType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1804,7 +1823,7 @@ BrowseName & \multicolumn{5}{|l|}{FrequencyType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1830,7 +1849,7 @@ BrowseName & \multicolumn{5}{|l|}{LengthType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1856,7 +1875,7 @@ BrowseName & \multicolumn{5}{|l|}{LinearForceType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1882,7 +1901,7 @@ BrowseName & \multicolumn{5}{|l|}{LoadType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -1908,7 +1927,7 @@ BrowseName & \multicolumn{5}{|l|}{MTSampleClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassType (See Data Item Types Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassType} (See Data Item Types Documentation)} \\
 HasSubtype & ObjectType & LoadType & \multicolumn{3}{|l|}{See section \ref{type:LoadType}} \\
 HasSubtype & ObjectType & AccelerationType & \multicolumn{3}{|l|}{See section \ref{type:AccelerationType}} \\
 HasSubtype & ObjectType & AccumulatedTimeType & \multicolumn{3}{|l|}{See section \ref{type:AccumulatedTimeType}} \\
@@ -1975,7 +1994,7 @@ BrowseName & \multicolumn{5}{|l|}{MassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2001,7 +2020,7 @@ BrowseName & \multicolumn{5}{|l|}{PHType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2028,7 +2047,7 @@ BrowseName & \multicolumn{5}{|l|}{PathFeedrateType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2062,7 +2081,7 @@ BrowseName & \multicolumn{5}{|l|}{PathPositionType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2094,7 +2113,7 @@ BrowseName & \multicolumn{5}{|l|}{PositionType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2121,7 +2140,7 @@ BrowseName & \multicolumn{5}{|l|}{PowerFactorType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2147,7 +2166,7 @@ BrowseName & \multicolumn{5}{|l|}{PressureType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2181,7 +2200,7 @@ BrowseName & \multicolumn{5}{|l|}{ProcessTimerType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2207,7 +2226,7 @@ BrowseName & \multicolumn{5}{|l|}{ResistenceType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2233,7 +2252,7 @@ BrowseName & \multicolumn{5}{|l|}{RotaryVelocityType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2259,7 +2278,7 @@ BrowseName & \multicolumn{5}{|l|}{SoundLevelType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2285,7 +2304,7 @@ BrowseName & \multicolumn{5}{|l|}{StrainType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2311,7 +2330,7 @@ BrowseName & \multicolumn{5}{|l|}{TemperatureType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2337,7 +2356,7 @@ BrowseName & \multicolumn{5}{|l|}{TensionType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2363,7 +2382,7 @@ BrowseName & \multicolumn{5}{|l|}{TiltType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2389,7 +2408,7 @@ BrowseName & \multicolumn{5}{|l|}{TorqueType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2415,7 +2434,7 @@ BrowseName & \multicolumn{5}{|l|}{VelocityType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2441,7 +2460,7 @@ BrowseName & \multicolumn{5}{|l|}{ViscosityType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2468,7 +2487,7 @@ BrowseName & \multicolumn{5}{|l|}{VoltAmpereReactiveType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2495,7 +2514,7 @@ BrowseName & \multicolumn{5}{|l|}{VoltAmpereType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2521,7 +2540,7 @@ BrowseName & \multicolumn{5}{|l|}{VoltageType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2548,13 +2567,13 @@ BrowseName & \multicolumn{5}{|l|}{WattageType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTSampleClassType (See section \ref{type:MTSampleClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTSampleClassType} (See section \ref{type:MTSampleClassType})} \\
 \end{tabu}
 \end{table} 
 
 
 \FloatBarrier
-\subsection{Controlled Vocab Data Item Types}
+\subsection{Controlled Vocab Data Item Types} \label{model:ControlledVocabDataItemTypes}
 
 The MTConnect Standard has the definitions of Events in 
 Section 8.2 of the MTConnect Standard Part 2 \cite{MTCPart2} and the 
@@ -2584,7 +2603,7 @@ BrowseName & \multicolumn{5}{|l|}{ActuatorStateType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2624,7 +2643,7 @@ BrowseName & \multicolumn{5}{|l|}{AvailabilityType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2667,7 +2686,7 @@ BrowseName & \multicolumn{5}{|l|}{AxisCouplingType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2709,7 +2728,7 @@ BrowseName & \multicolumn{5}{|l|}{AxisInterlockType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2748,7 +2767,7 @@ BrowseName & \multicolumn{5}{|l|}{AxisStateType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2790,7 +2809,7 @@ BrowseName & \multicolumn{5}{|l|}{ChuckInterlockType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2831,7 +2850,7 @@ BrowseName & \multicolumn{5}{|l|}{ChuckStateType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2875,7 +2894,7 @@ BrowseName & \multicolumn{5}{|l|}{CompositionStateType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2924,7 +2943,7 @@ BrowseName & \multicolumn{5}{|l|}{ControllerModeOverrideType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -2963,7 +2982,7 @@ BrowseName & \multicolumn{5}{|l|}{ControllerModeType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3005,7 +3024,7 @@ BrowseName & \multicolumn{5}{|l|}{DirectionType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3046,7 +3065,7 @@ BrowseName & \multicolumn{5}{|l|}{DoorStateType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3086,7 +3105,7 @@ BrowseName & \multicolumn{5}{|l|}{EmergencyStopType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3125,7 +3144,7 @@ BrowseName & \multicolumn{5}{|l|}{EndOfBarType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3167,7 +3186,7 @@ BrowseName & \multicolumn{5}{|l|}{EquipmentModeType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3206,7 +3225,7 @@ BrowseName & \multicolumn{5}{|l|}{ExecutionType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3254,7 +3273,7 @@ BrowseName & \multicolumn{5}{|l|}{FunctionalModeType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3299,7 +3318,7 @@ BrowseName & \multicolumn{5}{|l|}{MTControlledVocabClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTEventClassType (See Data Item Types Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTEventClassType} (See Data Item Types Documentation)} \\
 HasSubtype & ObjectType & ActuatorStateType & \multicolumn{3}{|l|}{See section \ref{type:ActuatorStateType}} \\
 HasSubtype & ObjectType & AvailabilityType & \multicolumn{3}{|l|}{See section \ref{type:AvailabilityType}} \\
 HasSubtype & ObjectType & AxisCouplingType & \multicolumn{3}{|l|}{See section \ref{type:AxisCouplingType}} \\
@@ -3322,7 +3341,7 @@ HasSubtype & ObjectType & FunctionalModeType & \multicolumn{3}{|l|}{See section 
 
 
 \FloatBarrier
-\subsection{Numeric Event Data Item Types}
+\subsection{Numeric Event Data Item Types} \label{model:NumericEventDataItemTypes}
 
 The MTConnect Standard has the definitions of Events in 
 Section 8.2 of the MTConnect Standard Part 2 \cite{MTCPart2} and the 
@@ -3361,7 +3380,7 @@ BrowseName & \multicolumn{5}{|l|}{AxisFeedrateOverrideType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTNumberEventClassType (See section \ref{type:MTNumberEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTNumberEventClassType} (See section \ref{type:MTNumberEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3393,7 +3412,7 @@ BrowseName & \multicolumn{5}{|l|}{BlockCountType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTNumberEventClassType (See section \ref{type:MTNumberEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTNumberEventClassType} (See section \ref{type:MTNumberEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3423,7 +3442,7 @@ BrowseName & \multicolumn{5}{|l|}{HardnessType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTNumberEventClassType (See section \ref{type:MTNumberEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTNumberEventClassType} (See section \ref{type:MTNumberEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3454,7 +3473,7 @@ BrowseName & \multicolumn{5}{|l|}{LineNumberType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTNumberEventClassType (See section \ref{type:MTNumberEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTNumberEventClassType} (See section \ref{type:MTNumberEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3480,7 +3499,7 @@ BrowseName & \multicolumn{5}{|l|}{MTNumberEventClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTEventClassType (See Data Item Types Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTEventClassType} (See Data Item Types Documentation)} \\
 HasSubtype & ObjectType & AxisFeedrateOverrideType & \multicolumn{3}{|l|}{See section \ref{type:AxisFeedrateOverrideType}} \\
 HasSubtype & ObjectType & BlockCountType & \multicolumn{3}{|l|}{See section \ref{type:BlockCountType}} \\
 HasSubtype & ObjectType & HardnessType & \multicolumn{3}{|l|}{See section \ref{type:HardnessType}} \\
@@ -3512,7 +3531,7 @@ BrowseName & \multicolumn{5}{|l|}{PartCountType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTNumberEventClassType (See section \ref{type:MTNumberEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTNumberEventClassType} (See section \ref{type:MTNumberEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3542,13 +3561,13 @@ BrowseName & \multicolumn{5}{|l|}{RotaryVelocityOverrideType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTNumberEventClassType (See section \ref{type:MTNumberEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTNumberEventClassType} (See section \ref{type:MTNumberEventClassType})} \\
 \end{tabu}
 \end{table} 
 
 
 \FloatBarrier
-\subsection{String Event Data Item Types}
+\subsection{String Event Data Item Types} \label{model:StringEventDataItemTypes}
 
 The MTConnect Standard has the definitions of Events in 
 Section 8.2 of the MTConnect Standard Part 2 \cite{MTCPart2} and the 
@@ -3578,7 +3597,7 @@ BrowseName & \multicolumn{5}{|l|}{BlockType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTStringEventClassType} (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3608,7 +3627,7 @@ BrowseName & \multicolumn{5}{|l|}{CoupledAxesType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTStringEventClassType} (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3634,7 +3653,7 @@ BrowseName & \multicolumn{5}{|l|}{LineLabelType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTStringEventClassType} (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3660,7 +3679,7 @@ BrowseName & \multicolumn{5}{|l|}{MTStringEventClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTEventClassType (See Data Item Types Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTEventClassType} (See Data Item Types Documentation)} \\
 HasSubtype & ObjectType & BlockType & \multicolumn{3}{|l|}{See section \ref{type:BlockType}} \\
 HasSubtype & ObjectType & CoupledAxesType & \multicolumn{3}{|l|}{See section \ref{type:CoupledAxesType}} \\
 HasSubtype & ObjectType & LineLabelType & \multicolumn{3}{|l|}{See section \ref{type:LineLabelType}} \\
@@ -3706,7 +3725,7 @@ BrowseName & \multicolumn{5}{|l|}{MaterialType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTStringEventClassType} (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3734,7 +3753,7 @@ BrowseName & \multicolumn{5}{|l|}{OperatorIdType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTStringEventClassType} (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3760,7 +3779,7 @@ BrowseName & \multicolumn{5}{|l|}{PalletIdType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTStringEventClassType} (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3786,7 +3805,7 @@ BrowseName & \multicolumn{5}{|l|}{PartIdType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTStringEventClassType} (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3812,7 +3831,7 @@ BrowseName & \multicolumn{5}{|l|}{PartNumberType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTStringEventClassType} (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3838,7 +3857,7 @@ BrowseName & \multicolumn{5}{|l|}{ProgramCommentType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTStringEventClassType} (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3864,7 +3883,7 @@ BrowseName & \multicolumn{5}{|l|}{ProgramEditNameType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTStringEventClassType} (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3890,7 +3909,7 @@ BrowseName & \multicolumn{5}{|l|}{ProgramHeaderType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTStringEventClassType} (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3917,7 +3936,7 @@ BrowseName & \multicolumn{5}{|l|}{ProgramType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTStringEventClassType} (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3943,7 +3962,7 @@ BrowseName & \multicolumn{5}{|l|}{SerialNumberType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTStringEventClassType} (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3969,7 +3988,7 @@ BrowseName & \multicolumn{5}{|l|}{ToolAssetIdType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTStringEventClassType} (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -3995,7 +4014,7 @@ BrowseName & \multicolumn{5}{|l|}{ToolNumberType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTStringEventClassType} (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4028,7 +4047,7 @@ BrowseName & \multicolumn{5}{|l|}{ToolOffsetType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTStringEventClassType} (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4056,7 +4075,7 @@ BrowseName & \multicolumn{5}{|l|}{UserType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTStringEventClassType} (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4083,7 +4102,7 @@ BrowseName & \multicolumn{5}{|l|}{WireType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTStringEventClassType} (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4114,7 +4133,7 @@ BrowseName & \multicolumn{5}{|l|}{WorkOffsetType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTStringEventClassType} (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4140,13 +4159,13 @@ BrowseName & \multicolumn{5}{|l|}{WorkholdingType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTStringEventClassType} (See section \ref{type:MTStringEventClassType})} \\
 \end{tabu}
 \end{table} 
 
 
 \FloatBarrier
-\subsection{Data Item Sub Types}
+\subsection{Data Item Sub Types} \label{model:DataItemSubTypes}
 
 
 
@@ -4170,7 +4189,7 @@ BrowseName & \multicolumn{5}{|l|}{AScaleSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4196,7 +4215,7 @@ BrowseName & \multicolumn{5}{|l|}{AbsoluteSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4222,7 +4241,7 @@ BrowseName & \multicolumn{5}{|l|}{ActionSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4248,7 +4267,7 @@ BrowseName & \multicolumn{5}{|l|}{ActualSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4274,7 +4293,7 @@ BrowseName & \multicolumn{5}{|l|}{AllSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4300,7 +4319,7 @@ BrowseName & \multicolumn{5}{|l|}{AlternatingSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4326,7 +4345,7 @@ BrowseName & \multicolumn{5}{|l|}{AuxiliarySubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4352,7 +4371,7 @@ BrowseName & \multicolumn{5}{|l|}{BScaleSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4378,7 +4397,7 @@ BrowseName & \multicolumn{5}{|l|}{BadSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4404,7 +4423,7 @@ BrowseName & \multicolumn{5}{|l|}{BrinellSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4430,7 +4449,7 @@ BrowseName & \multicolumn{5}{|l|}{CScaleSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4456,7 +4475,7 @@ BrowseName & \multicolumn{5}{|l|}{CommandedSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4482,7 +4501,7 @@ BrowseName & \multicolumn{5}{|l|}{ControlSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4508,7 +4527,7 @@ BrowseName & \multicolumn{5}{|l|}{DScaleSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4534,7 +4553,7 @@ BrowseName & \multicolumn{5}{|l|}{DelaySubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4560,7 +4579,7 @@ BrowseName & \multicolumn{5}{|l|}{DirectSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4586,7 +4605,7 @@ BrowseName & \multicolumn{5}{|l|}{DryRunSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4612,7 +4631,7 @@ BrowseName & \multicolumn{5}{|l|}{FixtureSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4638,7 +4657,7 @@ BrowseName & \multicolumn{5}{|l|}{GoodSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4664,7 +4683,7 @@ BrowseName & \multicolumn{5}{|l|}{IncrementalSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4692,7 +4711,7 @@ BrowseName & \multicolumn{5}{|l|}{JobSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4718,7 +4737,7 @@ BrowseName & \multicolumn{5}{|l|}{KineticSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4744,7 +4763,7 @@ BrowseName & \multicolumn{5}{|l|}{LateralSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4770,7 +4789,7 @@ BrowseName & \multicolumn{5}{|l|}{LeebSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4796,7 +4815,7 @@ BrowseName & \multicolumn{5}{|l|}{LengthSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4822,7 +4841,7 @@ BrowseName & \multicolumn{5}{|l|}{LineSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4848,7 +4867,7 @@ BrowseName & \multicolumn{5}{|l|}{LinearSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4874,7 +4893,7 @@ BrowseName & \multicolumn{5}{|l|}{LoadedSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4900,7 +4919,7 @@ BrowseName & \multicolumn{5}{|l|}{MTDataItemClassSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of BaseConditionClassType (See OPC UA Part 9 Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{BaseConditionClassType} (See OPC UA Part 9 Documentation)} \\
 HasSubtype & ObjectType & AbsoluteSubType & \multicolumn{3}{|l|}{See section \ref{type:AbsoluteSubType}} \\
 HasSubtype & ObjectType & ActualSubType & \multicolumn{3}{|l|}{See section \ref{type:ActualSubType}} \\
 HasSubtype & ObjectType & ActionSubType & \multicolumn{3}{|l|}{See section \ref{type:ActionSubType}} \\
@@ -4996,7 +5015,7 @@ BrowseName & \multicolumn{5}{|l|}{MachineAxisLockSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5022,7 +5041,7 @@ BrowseName & \multicolumn{5}{|l|}{MaintenanceSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5048,7 +5067,7 @@ BrowseName & \multicolumn{5}{|l|}{ManualUnclampSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5074,7 +5093,7 @@ BrowseName & \multicolumn{5}{|l|}{MaximumSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5100,7 +5119,7 @@ BrowseName & \multicolumn{5}{|l|}{MinimumSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5126,7 +5145,7 @@ BrowseName & \multicolumn{5}{|l|}{MohsSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5152,7 +5171,7 @@ BrowseName & \multicolumn{5}{|l|}{MoleSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5178,7 +5197,7 @@ BrowseName & \multicolumn{5}{|l|}{MotionSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5204,7 +5223,7 @@ BrowseName & \multicolumn{5}{|l|}{NoScaleSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5230,7 +5249,7 @@ BrowseName & \multicolumn{5}{|l|}{OperatingSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5256,7 +5275,7 @@ BrowseName & \multicolumn{5}{|l|}{OperatorSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5282,7 +5301,7 @@ BrowseName & \multicolumn{5}{|l|}{OptionalStopSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5308,7 +5327,7 @@ BrowseName & \multicolumn{5}{|l|}{OverrideSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5334,7 +5353,7 @@ BrowseName & \multicolumn{5}{|l|}{PoweredSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5360,7 +5379,7 @@ BrowseName & \multicolumn{5}{|l|}{PrimarySubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5386,7 +5405,7 @@ BrowseName & \multicolumn{5}{|l|}{ProbeSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5412,7 +5431,7 @@ BrowseName & \multicolumn{5}{|l|}{ProcessSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5438,7 +5457,7 @@ BrowseName & \multicolumn{5}{|l|}{ProgrammedSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5464,7 +5483,7 @@ BrowseName & \multicolumn{5}{|l|}{RadialSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5490,7 +5509,7 @@ BrowseName & \multicolumn{5}{|l|}{RapidSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5516,7 +5535,7 @@ BrowseName & \multicolumn{5}{|l|}{RelativeSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5542,7 +5561,7 @@ BrowseName & \multicolumn{5}{|l|}{RemainingSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5568,7 +5587,7 @@ BrowseName & \multicolumn{5}{|l|}{RequestSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5594,7 +5613,7 @@ BrowseName & \multicolumn{5}{|l|}{ResponseSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5620,7 +5639,7 @@ BrowseName & \multicolumn{5}{|l|}{RockwellSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5646,7 +5665,7 @@ BrowseName & \multicolumn{5}{|l|}{RotarySubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5672,7 +5691,7 @@ BrowseName & \multicolumn{5}{|l|}{SetUpSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5698,7 +5717,7 @@ BrowseName & \multicolumn{5}{|l|}{ShoreSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5724,7 +5743,7 @@ BrowseName & \multicolumn{5}{|l|}{StandardSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5750,7 +5769,7 @@ BrowseName & \multicolumn{5}{|l|}{SwitchedSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5776,7 +5795,7 @@ BrowseName & \multicolumn{5}{|l|}{TargetSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5802,7 +5821,7 @@ BrowseName & \multicolumn{5}{|l|}{ToolChangeStopSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5828,7 +5847,7 @@ BrowseName & \multicolumn{5}{|l|}{ToolEdgeSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5854,7 +5873,7 @@ BrowseName & \multicolumn{5}{|l|}{ToolGroupSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5880,7 +5899,7 @@ BrowseName & \multicolumn{5}{|l|}{ToolSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5906,7 +5925,7 @@ BrowseName & \multicolumn{5}{|l|}{UasbleSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5932,7 +5951,7 @@ BrowseName & \multicolumn{5}{|l|}{VerticalSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5958,7 +5977,7 @@ BrowseName & \multicolumn{5}{|l|}{VickersSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -5984,7 +6003,7 @@ BrowseName & \multicolumn{5}{|l|}{VolumeSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -6010,7 +6029,7 @@ BrowseName & \multicolumn{5}{|l|}{WeightSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -6036,7 +6055,7 @@ BrowseName & \multicolumn{5}{|l|}{WorkingSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
@@ -6062,13 +6081,13 @@ BrowseName & \multicolumn{5}{|l|}{WorkpieceSubType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassSubType (See section \ref{type:MTDataItemClassSubType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassSubType} (See section \ref{type:MTDataItemClassSubType})} \\
 \end{tabu}
 \end{table} 
 
 
 \FloatBarrier
-\subsection{Factories}
+\subsection{Factories} \label{model:Factories}
 
 \begin{figure}[ht]
   \centering
@@ -6436,7 +6455,7 @@ This class relates to \texttt{SensorConfigurationType} (See section \ref{type:Se
   \item \texttt{createType(element)}
 \end{itemize}
 \FloatBarrier
-\subsection{MTConnect Device Profile}
+\subsection{MTConnect Device Profile} \label{model:MTConnectDeviceProfile}
 
 \begin{figure}[ht]
   \centering
@@ -6463,7 +6482,32 @@ data model.
 
 \FloatBarrier
 
+A dynamic type indicates that the class browse name and type will be 
+determined at configuration time based on the MTConnect \texttt{Device}
+elements.
 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ HasChannels}} \label{type:HasChannels}
+
+\FloatBarrier
+
+The relationship type for the MTConnect \texttt{SensorConfiguration} set of 
+associate \texttt{Channels}.
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ HasMTComposition}} \label{type:HasMTComposition}
+
+\FloatBarrier
+
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ HasMTCondition}} \label{type:HasMTCondition}
+
+\FloatBarrier
+
+The relationship associated with the collection of MTConnect \texttt{Conditions} associated with
+the MTConnect \texttt{Component}
 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ HasMTSubType}} \label{type:HasMTSubType}
@@ -6480,6 +6524,13 @@ data model.
 
 
 \FloatBarrier
+\subsubsection{Defintion of \texttt{ MTComponentReference}} \label{type:MTComponentReference}
+
+\FloatBarrier
+
+
+
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ MTConnect XML}} \label{type:MTConnect XML}
 
 \FloatBarrier
@@ -6487,7 +6538,7 @@ data model.
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MTRelationshipType}} \label{type:MTRelationshipType}
+\subsubsection{Defintion of \texttt{ MTReferenceType}} \label{type:MTReferenceType}
 
 \FloatBarrier
 

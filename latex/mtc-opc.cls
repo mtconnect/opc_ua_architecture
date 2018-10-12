@@ -194,7 +194,8 @@
 	\@minus .2ex}{-1em}{\normalfont \normalsize \bfseries }}%
 \makeatother
 
-\definecolor{mtc1}{RGB}{43,105,145}
+% \definecolor{mtc1}{RGB}{43,105,145}
+\definecolor{mtc1}{RGB}{0,0,0}
 \sectionfont{\bfseries\color{mtc1}\Large}
 \subsectionfont{\bfseries\color{mtc1}\large}
 \subsubsectionfont{\bfseries\color{black}\large}

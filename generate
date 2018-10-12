@@ -2,4 +2,6 @@
 
 ruby src/create_documentation.rb
 
-(cd latex; pdflatex -synctex=1 -interaction=nonstopmode mtconnect.tex > ./mtconnect.out)
+(cd latex; pdflatex -synctex=1 -interaction=nonstopmode main.tex > ./main.out)
+
+open latex/main.pdf

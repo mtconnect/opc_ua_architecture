@@ -147,12 +147,12 @@ class Type
       else
         ref = parent.reference
       end
-      f.puts "\\multicolumn{6}{|l|}{Subtype of #{parent.name} (#{ref})} \\\\"
+      f.puts "\\multicolumn{6}{|l|}{Subtype of \\texttt{#{parent.name}} (#{ref})} \\\\"
     end
   end
 
   def mandatory(obj)
-    if obj['multiplicity'] == '0..1'
+    if obj['multiplicity'] == '0..1' or obj['multiplicity'] == '0..*'
       'Optional'
     else
       'Mandatory'
@@ -217,9 +217,14 @@ class Type
         if browse.nil?
           relation = (stereo && stereo.name) || 'HasProperty'
           type_name = target.name
-          type_def = stereo.name == 'HasProperty' ? 'PropertyType' : '<Dynamic>'
+          if relation == 'HasProperty'
+            type_def = 'PropertyType'
+            node = 'Variable'
+          else
+            type_def = '<Dynamic>'
+            node = 'Object'
+          end
           browse = '<Dynamic>'
-          node = 'Variable'
         elsif r['end2']['multiplicity'] == '1'
           type_name = ''
           relation =  'HasComponent'

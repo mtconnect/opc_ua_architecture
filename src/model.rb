@@ -39,7 +39,7 @@ class Model
   end
 
   def generate_latex(f)
-    f.puts "\\subsection{#{@name}}"
+    f.puts "\\subsection{#{@name}} \\label{model:#{short_name}}"
 
     generate_diagram(f)
     

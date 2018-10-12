@@ -2,6 +2,8 @@
 
 ruby src/create_documentation.rb
 
-(cd latex; pdflatex -synctex=1 -interaction=nonstopmode main.tex > ./main.out)
+(cd latex; \
+pdflatex -synctex=1 -interaction=nonstopmode -output-directory=../build main.tex > ../build/main.out; \
+pdflatex -synctex=1 -interaction=nonstopmode -output-directory=../build main.tex > ../build/main.out)
 
-open latex/main.pdf
+open build/main.pdf

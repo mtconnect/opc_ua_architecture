@@ -1,4 +1,4 @@
-% Generated 2018-10-11 18:52:50 -0700
+% Generated 2018-10-11 19:51:09 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -399,7 +399,7 @@ This is a dynamic type that will be created at the time the model is created. Th
 \texttt{MTComponentType}.
 
 The name will be created using the \texttt{QName} of the MTConnect \texttt{Component} element.
-more information on the MTConnect Components can be found in MTConnect Part 2 \cite{MTCPart2}.
+More information on the MTConnect Components can be found in MTConnect Part 2 \cite{MTCPart2}.
 
 \begin{table}[ht]
 \centering 
@@ -431,7 +431,8 @@ This is a dynamic type that will be created at the time the model is created. Th
 \texttt{MTCompositionType}.
 
 The name will be created using the PascalCase of the \texttt{type} attribute
-of the MTConnect \texttt{Composition} element.
+of the MTConnect \texttt{Composition} element. More information on the MTConnect
+Composition can be found in MTConnect Part 2 \cite{MTCPart2}.
 
 \begin{table}[ht]
 \centering 
@@ -473,6 +474,11 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The subtype that maps to the AssetChanged Event in Part 3 of the MTConnect standard.
 
+\begin{quote}
+    \color{red}
+    TODO: We need to understand how the \texttt{assetType} attribute will be communicated.
+\end{quote}
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{AssetChangedType} Definition}
@@ -502,7 +508,10 @@ DataType & \multicolumn{5}{|l|}{String} \\
 The asset events have an additional attribute regarding the asset change or removal identifier
 and the type of asset that is being reported.
 
-\textit{Todo: not sure how to represent the additional value since it needs to be reported with the event}
+\begin{quote}
+    \color{red}
+    TODO: We need to understand how the \texttt{assetType} attribute will be communicated.
+\end{quote}
 
 \begin{table}[ht]
 \centering 
@@ -534,6 +543,11 @@ HasProperty & Variable & AssetType &  String & PropertyType & Mandatory \\
 \FloatBarrier
 
 The subtype that maps to the AssetRemoved Event in Part 3 of the MTConnect standard.
+
+\begin{quote}
+    \color{red}
+    TODO: We need to understand how the \texttt{assetType} attribute will be communicated.
+\end{quote}
 
 \begin{table}[ht]
 \centering 
@@ -579,17 +593,17 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 HasSubtype & ObjectType & MTNumericDataItemType & \multicolumn{3}{|l|}{See section \ref{type:MTNumericDataItemType}} \\
+HasProperty & Variable & Category &  MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & MTTypeName &  String & PropertyType & Mandatory \\
+HasProperty & Variable & MTSubTypeName &  String & PropertyType & Optional \\
 HasProperty & Variable & SourceName &  String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate &  Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate &  Double & PropertyType & Optional \\
 HasProperty & Variable & Representation &  RepresentationType & PropertyType & Optional \\
-HasProperty & Variable & Category &  MTCategoryType & PropertyType & Mandatory \\
-HasProperty & Variable & MTTypeName &  String & PropertyType & Mandatory \\
-HasProperty & Variable & MTSubTypeName &  String & PropertyType & Mandatory \\
 HasMTType & Object & MTType &  MTDataItemClassType & HasMTType & Mandatory \\
 HasMTSubType & Object & MTSubType &  MTDataItemClassSubType & HasMTSubType & Optional \\
-HasComponent & Object & MinimumDeltaFilter &   & MinimumDeltaFilterType & Optional \\
-HasComponent & Object & PeriodDelta &   & PeriodFilterType & Optional \\
+HasComponent & Object & MinimumDeltaFilter &  MinimumDeltaFilterType & HasComponent & Optional \\
+HasComponent & Object & PeriodDelta &  PeriodFilterType & HasComponent & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -640,13 +654,17 @@ DataType & \multicolumn{5}{|l|}{UInteger} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MultiStateDiscreteType} (See OPC UA Part 8 Documentation)} \\
+HasProperty & Variable & Category &  MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & MTTypeName &  String & PropertyType & Mandatory \\
+HasProperty & Variable & MTSubTypeName &  String & PropertyType & Optional \\
 HasProperty & Variable & SourceName &  String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate &  Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate &  Double & PropertyType & Optional \\
 HasProperty & Variable & Representation &  RepresentationType & PropertyType & Optional \\
-HasProperty & Variable & Category &  MTCategoryType & PropertyType & Mandatory \\
-HasProperty & Variable & MTTypeName &  String & PropertyType & Mandatory \\
-HasProperty & Variable & MTSubTypeName &  String & PropertyType & Mandatory \\
+HasMTType & Object & MTType &  MTDataItemClassType & HasMTType & Mandatory \\
+HasMTSubType & Object & MTSubType &  MTDataItemClassSubType & HasMTSubType & Optional \\
+HasComponent & Object & MinimumDeltaFilter &  MinimumDeltaFilterType & HasComponent & Optional \\
+HasComponent & Object & PeriodDelta &  PeriodFilterType & HasComponent & Optional \\
 HasProperty & Variable & ConstrainedValues &  EnumValuesType & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
@@ -693,7 +711,11 @@ The message type is a special class since it adds another property for the nativ
 In MTConnect the \texttt{nativeCode} attribute will be mapped to this variable 
 in the message. (Not sure how to make this work). 
 
-\textit{Todo: Should we embed in the message text?}
+\begin{quote}
+    \color{red}
+    TODO: Message may be better modeled as an alarm with \texttt{OneShotShelved} state. This will need more 
+    guidance.
+\end{quote}
 
 \begin{table}[ht]
 \centering 
@@ -799,13 +821,17 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{DataItemType} (See OPC UA Part 8 Documentation)} \\
+HasProperty & Variable & Category &  MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & MTTypeName &  String & PropertyType & Mandatory \\
+HasProperty & Variable & MTSubTypeName &  String & PropertyType & Optional \\
 HasProperty & Variable & SourceName &  String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate &  Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate &  Double & PropertyType & Optional \\
 HasProperty & Variable & Representation &  RepresentationType & PropertyType & Optional \\
-HasProperty & Variable & Category &  MTCategoryType & PropertyType & Mandatory \\
-HasProperty & Variable & MTTypeName &  String & PropertyType & Mandatory \\
-HasProperty & Variable & MTSubTypeName &  String & PropertyType & Mandatory \\
+HasMTType & Object & MTType &  MTDataItemClassType & HasMTType & Mandatory \\
+HasMTSubType & Object & MTSubType &  MTDataItemClassSubType & HasMTSubType & Optional \\
+HasComponent & Object & MinimumDeltaFilter &  MinimumDeltaFilterType & HasComponent & Optional \\
+HasComponent & Object & PeriodDelta &  PeriodFilterType & HasComponent & Optional \\
 HasProperty & Variable & SignificantDigits &  UInt16 & PropertyType & Optional \\
 HasProperty & Variable & Statistic &  MTStatisticType & PropertyType & Optional \\
 HasProperty & Variable & Units &  MTUnits & PropertyType & Optional \\
@@ -846,13 +872,17 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{AnalogItemType} (See OPC UA Part 8 Documentation)} \\
+HasProperty & Variable & Category &  MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & MTTypeName &  String & PropertyType & Mandatory \\
+HasProperty & Variable & MTSubTypeName &  String & PropertyType & Optional \\
 HasProperty & Variable & SourceName &  String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate &  Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate &  Double & PropertyType & Optional \\
 HasProperty & Variable & Representation &  RepresentationType & PropertyType & Optional \\
-HasProperty & Variable & Category &  MTCategoryType & PropertyType & Mandatory \\
-HasProperty & Variable & MTTypeName &  String & PropertyType & Mandatory \\
-HasProperty & Variable & MTSubTypeName &  String & PropertyType & Mandatory \\
+HasMTType & Object & MTType &  MTDataItemClassType & HasMTType & Mandatory \\
+HasMTSubType & Object & MTSubType &  MTDataItemClassSubType & HasMTSubType & Optional \\
+HasComponent & Object & MinimumDeltaFilter &  MinimumDeltaFilterType & HasComponent & Optional \\
+HasComponent & Object & PeriodDelta &  PeriodFilterType & HasComponent & Optional \\
 HasProperty & Variable & SignificantDigits &  UInt16 & PropertyType & Optional \\
 HasProperty & Variable & Statistic &  MTStatisticType & PropertyType & Optional \\
 HasProperty & Variable & Units &  MTUnits & PropertyType & Optional \\
@@ -896,13 +926,17 @@ DataType & \multicolumn{5}{|l|}{String} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{BaseDataVariableType} (See OPC UA Part 8 Documentation)} \\
 HasSubtype & VariableType & MTMessageType & \multicolumn{3}{|l|}{See section \ref{type:MTMessageType}} \\
 HasSubtype & VariableType & AssetEventType & \multicolumn{3}{|l|}{See section \ref{type:AssetEventType}} \\
+HasProperty & Variable & Category &  MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & MTTypeName &  String & PropertyType & Mandatory \\
+HasProperty & Variable & MTSubTypeName &  String & PropertyType & Optional \\
 HasProperty & Variable & SourceName &  String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate &  Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate &  Double & PropertyType & Optional \\
 HasProperty & Variable & Representation &  RepresentationType & PropertyType & Optional \\
-HasProperty & Variable & Category &  MTCategoryType & PropertyType & Mandatory \\
-HasProperty & Variable & MTTypeName &  String & PropertyType & Mandatory \\
-HasProperty & Variable & MTSubTypeName &  String & PropertyType & Mandatory \\
+HasMTType & Object & MTType &  MTDataItemClassType & HasMTType & Mandatory \\
+HasMTSubType & Object & MTSubType &  MTDataItemClassSubType & HasMTSubType & Optional \\
+HasComponent & Object & MinimumDeltaFilter &  MinimumDeltaFilterType & HasComponent & Optional \\
+HasComponent & Object & PeriodDelta &  PeriodFilterType & HasComponent & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -1170,7 +1204,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 
+The parallel modeling of conditions and alarms in MTConnect and OPC UA represent some
+situation where something has been detected that is not expected or outside of the norm. The
+documentation for the condition behavior in MTConnect can be found in Section 5.7 and 
+5.8 of \cite{MTPart3}.
 
+The MTConnect Data Item with Category of \texttt{CONDITION} are used to map to the 
+OPC UA \texttt{ConditionType} models in \cite{UAPart9}
 
 \subsubsection{Defintion of \texttt{ ConditionFolderType}} \label{type:ConditionFolderType}
 
@@ -1202,11 +1242,53 @@ HasMTCondition & Object & Conditi0ons &  AlarmConditionType & HasMTCondition & O
 
 
 \FloatBarrier
+\subsubsection{Defintion of \texttt{ MTConnectAlarmConditionType}} \label{type:MTConnectAlarmConditionType}
+
+\FloatBarrier
+
+The alarm condition type represents a text based alarm with a native code and a text based
+message. These are non-exlusive and will be able to branch if multiple messages and 
+native codes are active at the same time. We will need to find to proper place in the
+OPC UA model to place this type.
+
+\begin{quote}
+  \color{red}
+  TODO: Need to find the proper superclass to represent a text based message that 
+  may not be a numeric based alarm and is not a discrete valued set of messages.
+\end{quote}
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTConnectAlarmConditionType} Definition}
+  \label{table:MTConnectAlarmConditionType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTConnectAlarmConditionType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{AlarmConditionType} (See OPC UA Part 9 Documentation)} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Dependency on MTDataItemType}
+
+This class relates to \texttt{MTDataItemType} (See section \ref{type:MTDataItemType}) for a(n) \texttt{Mixes In} relationship.
+
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ MTExclusiveLimitConditionType}} \label{type:MTExclusiveLimitConditionType}
 
 \FloatBarrier
 
-
+The OPC UA \texttt{ConditionClassId} and \texttt{ConditionSubClassId} documented in OPC UA Part 9 \cite{UAPart9} 
+will reference the MTConnect Data Item Types \ref{model:DataItemTypes} and \ref{model:DataItemSubTypes}.
+The name placed in the \texttt{ConditionClassName} and \texttt{ConditionClassSubName} will match the 
+data item type names.
 
 \begin{table}[ht]
 \centering 
@@ -1236,9 +1318,10 @@ This class relates to \texttt{MTDataItemType} (See section \ref{type:MTDataItemT
 
 \FloatBarrier
 
-The OPC UA \texttt{ConditionClassId} and \texttt{ConditionSubClassId} reference the MTConnect \texttt{DataItem} 
-\texttt{type} and \texttt{subType} enumerations as referenced in sections \ref{model:DataItemTypes} and 
-sections \ref{model:DataItemSubTypes} respectively.
+The OPC UA \texttt{ConditionClassId} and \texttt{ConditionSubClassId} documented in OPC UA Part 9 \cite{UAPart9} 
+will reference the MTConnect Data Item Types \ref{model:DataItemTypes} and \ref{model:DataItemSubTypes}.
+The name placed in the \texttt{ConditionClassName} and \texttt{ConditionClassSubName} will match the 
+data item type names.
 
 \begin{table}[ht]
 \centering 
@@ -1262,32 +1345,6 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \paragraph{Dependency on MTDataItemType}
 
 This class relates to \texttt{MTDataItemType} (See section \ref{type:MTDataItemType}) for a(n) \texttt{Mixes In} relationship.
-
-\FloatBarrier
-\subsubsection{Defintion of \texttt{<<Dynamic Type>> \{ConditionClass\}Type}} \label{type:{ConditionClass}Type}
-
-\FloatBarrier
-
-
-
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{\{ConditionClass\}Type} Definition}
-  \label{table:{ConditionClass}Type}
-\fontsize{9pt}{11pt}\selectfont
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{{ConditionClass}Type} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of \texttt{SystemConditionClassType} (See OPC UA Part 9 Documentation)} \\
-\end{tabu}
-\end{table} 
-
 
 \FloatBarrier
 \subsection{Data Item Types} \label{model:DataItemTypes}
@@ -6207,19 +6264,6 @@ derive: Composition <-
 \end{lstlisting}
 
     Documentation: The type for the composition will be created using the pascal case of the `type` from the composition element.
-
-\end{itemize}
-\FloatBarrier
-\subsubsection{Defintion of \texttt{<<Type Factory>> ConditionClassFactory}} \label{type:ConditionClassFactory}
-
-\FloatBarrier
-
-
-
-\paragraph{Operations}
-\begin{itemize}
-  \item \texttt{deriveTypeName(element)}
-    Documentation: Create condition classes based on the OPC/UA three condition  types.
 
 \end{itemize}
 \FloatBarrier

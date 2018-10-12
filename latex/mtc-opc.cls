@@ -196,8 +196,8 @@
 
 % \definecolor{mtc1}{RGB}{43,105,145}
 \definecolor{mtc1}{RGB}{0,0,0}
-\sectionfont{\bfseries\color{mtc1}\Large}
-\subsectionfont{\bfseries\color{mtc1}\large}
+\sectionfont{\bfseries\color{mtc1}\fontsize{20}{20}}
+\subsectionfont{\bfseries\color{mtc1}\fontsize{16}{18}}
 \subsubsectionfont{\bfseries\color{black}\large}
 \paragraphfont{\bfseries\color{black}\normalsize}
 \subparagraphfont{\bfseries\color{black}\normalsize}

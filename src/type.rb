@@ -183,6 +183,7 @@ class Type
   def mixin_properties(f)
     @parent.mixin_properties(f) if @parent
     generate_properties(f)
+    generate_relations(f)
   end
 
   def generate_constraints(f)

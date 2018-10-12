@@ -21923,7 +21923,7 @@
 									}
 								}
 							],
-							"documentation": "The base Component Type from which all MTConnect Components are derived. The \ncomponent type factory is used to create the specific OPC/UA Types as subtypes of the \nMTConnect \\texttt{MTComponentType}. The component types will be created once for all Component objects \nof that type based on the \\texttt{QName} of the MTConnect XML element. \n\nThe object factory will instantiate the Component Objects and insert them into the Components \nfolder with a browse name of the Component QName and the \\texttt{name} element if specified surrounded \nby square brackets, \\texttt{[]}. For example if the MTConnect Element is:\n\n\\texttt{<Linear name='X'>...</...>}\n\nThe OPC/UA Object with browse name \\texttt{Linear[X]} will be created with the HasTypeDefinition \nreferencing the \\texttt{Linear} OPC/UA type. \n\nThe meta data for the component and its relationships are static. The dynamic data will be \nrepresented using the \\cite{OPCPart8}.\n\n",
+							"documentation": "The base Component Type from which all MTConnect Components are derived. The \ncomponent type factory is used to create the specific OPC/UA Types as subtypes of the \nMTConnect \\texttt{MTComponentType}. The component types will be created once for all Component objects \nof that type based on the \\texttt{QName} of the MTConnect XML element. \n\nThe object factory will instantiate the Component Objects and insert them into the Components \nfolder with a browse name of the Component QName and the \\texttt{name} element if specified surrounded \nby square brackets, \\texttt{[]}. For example if the MTConnect Element is:\n\n\\texttt{<Linear name='X'>...</...>}\n\nThe OPC/UA Object with browse name \\texttt{Linear[X]} will be created with the HasTypeDefinition \nreferencing the \\texttt{Linear} OPC/UA type. \n\nThe meta data for the component and its relationships are static. The dynamic data will be \nrepresented using the \\cite{UAPart8}.\n\n",
 							"attributes": [
 								{
 									"_type": "UMLAttribute",
@@ -79409,7 +79409,7 @@
 									"isAbstract": true
 								}
 							],
-							"documentation": "The data item types represent the MTConnect types as defined in Section 8 of the \nMTConnect Standard Part 2 \\cite{MTCPart2} and are represented using the XML \\texttt{type} \n\\texttt{attribute}. The type and sub-type relationships are given in the standard and are \nnot documented in the companion specifiction. \n\nThe model of the types is similar to the OPC UA condition classes as given in OPC UA Part 9\n\\cite{OPCPart9}. Since MTConnect conditions use the same type system as the data items, \nthe representation of the data item type will be derived from the \\texttt{BaseConditionClassType}. \nThe MTConnect Types will not use the \\texttt{...ClassType}, but will be the name as specified\nin the MTConnect standard with \\texttt{Type} appended.\n\nFor example: The \\texttt{CONTOLLER_MODE} will be given as the \\texttt{ControllerModeType}. \nThe relationship to the \\texttt{Data Item} OPC UA types are presented so that it will be\neasier to map the MTConnect types to the correct super class as given in the OPC UA model."
+							"documentation": "The data item types represent the MTConnect types as defined in Section 8 of the \nMTConnect Standard Part 2 \\cite{MTCPart2} and are represented using the XML \\texttt{type} \n\\texttt{attribute}. The type and sub-type relationships are given in the standard and are \nnot documented in the companion specifiction. \n\nThe model of the types is similar to the OPC UA condition classes as given in OPC UA Part 9\n\\cite{UAPart9}. Since MTConnect conditions use the same type system as the data items, \nthe representation of the data item type will be derived from the \\texttt{BaseConditionClassType}. \nThe MTConnect Types will not use the \\texttt{...ClassType}, but will be the name as specified\nin the MTConnect standard with \\texttt{Type} appended.\n\nFor example: The \\texttt{CONTOLLER_MODE} will be given as the \\texttt{ControllerModeType}. \nThe relationship to the \\texttt{Data Item} OPC UA types are presented so that it will be\neasier to map the MTConnect types to the correct super class as given in the OPC UA model."
 						},
 						{
 							"_type": "UMLModel",
@@ -105529,7 +105529,7 @@
 							"documentation": "The alarm condition type represents a text based alarm with a native code and a text based\nmessage. These are non-exlusive and will be able to branch if multiple messages and \nnative codes are active at the same time. We will need to find to proper place in the\nOPC UA model to place this type.\n\n\\begin{quote}\n  \\color{red}\n  TODO: Need to find the proper superclass to represent a text based message that \n  may not be a numeric based alarm and is not a discrete valued set of messages.\n\\end{quote}"
 						}
 					],
-					"documentation": "The parallel modeling of conditions and alarms in MTConnect and OPC UA represent some\nsituation where something has been detected that is not expected or outside of the norm. The\ndocumentation for the condition behavior in MTConnect can be found in Section 5.7 and \n5.8 of \\cite{MTPart3}.\n\nThe MTConnect Data Item with Category of \\texttt{CONDITION} are used to map to the \nOPC UA \\texttt{ConditionType} models in \\cite{UAPart9}"
+					"documentation": "The parallel modeling of conditions and alarms in MTConnect and OPC UA represent some\nsituation where something has been detected that is not expected or outside of the norm. The\ndocumentation for the condition behavior in MTConnect can be found in Section 5.7 and \n5.8 of \\cite{MTCPart3}.\n\nThe MTConnect Data Item with Category of \\texttt{CONDITION} are used to map to the \nOPC UA \\texttt{ConditionType} models in \\cite{UAPart9}"
 				},
 				{
 					"_type": "UMLProfile",
@@ -122528,8 +122528,8 @@
 														"$ref": "AAAAAAFl/Qjf+noDX0M="
 													},
 													"font": "Arial;13;0",
-													"left": 525,
-													"top": 677,
+													"left": 493,
+													"top": 709,
 													"width": 190,
 													"height": 13,
 													"text": "«Type Factory»"
@@ -122541,8 +122541,8 @@
 														"$ref": "AAAAAAFl/Qjf+noDX0M="
 													},
 													"font": "Arial;13;3",
-													"left": 525,
-													"top": 692,
+													"left": 493,
+													"top": 724,
 													"width": 190,
 													"height": 13,
 													"text": "TypeFactory"
@@ -122555,8 +122555,8 @@
 													},
 													"visible": false,
 													"font": "Arial;13;0",
-													"left": 48,
-													"top": -352,
+													"left": -16,
+													"top": -288,
 													"width": 91.72998046875,
 													"height": 13,
 													"text": "(from Factories)"
@@ -122569,15 +122569,15 @@
 													},
 													"visible": false,
 													"font": "Arial;13;0",
-													"left": 48,
-													"top": -352,
+													"left": -16,
+													"top": -288,
 													"height": 13,
 													"horizontalAlignment": 1
 												}
 											],
 											"font": "Arial;13;0",
-											"left": 520,
-											"top": 672,
+											"left": 488,
+											"top": 704,
 											"width": 200,
 											"height": 38,
 											"stereotypeLabel": {
@@ -122604,8 +122604,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 520,
-											"top": 710,
+											"left": 488,
+											"top": 742,
 											"width": 200,
 											"height": 10
 										},
@@ -122629,8 +122629,8 @@
 														"$ref": "AAAAAAFl/RBhkHxdAjg="
 													},
 													"font": "Arial;13;2",
-													"left": 525,
-													"top": 715,
+													"left": 493,
+													"top": 747,
 													"width": 190,
 													"height": 13,
 													"text": "+deriveTypeName(element)",
@@ -122646,8 +122646,8 @@
 														"$ref": "AAAAAAFl/rOs3FQYr7c="
 													},
 													"font": "Arial;13;0",
-													"left": 525,
-													"top": 730,
+													"left": 493,
+													"top": 762,
 													"width": 190,
 													"height": 13,
 													"text": "+createType(element)",
@@ -122655,8 +122655,8 @@
 												}
 											],
 											"font": "Arial;13;0",
-											"left": 520,
-											"top": 710,
+											"left": 488,
+											"top": 742,
 											"width": 200,
 											"height": 38
 										},
@@ -122671,8 +122671,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 24,
-											"top": -176,
+											"left": -8,
+											"top": -144,
 											"width": 10,
 											"height": 10
 										},
@@ -122687,16 +122687,16 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 24,
-											"top": -176,
+											"left": -8,
+											"top": -144,
 											"width": 10,
 											"height": 10
 										}
 									],
 									"font": "Arial;13;0",
 									"containerChangeable": true,
-									"left": 520,
-									"top": 672,
+									"left": 488,
+									"top": 704,
 									"width": 200,
 									"height": 104,
 									"nameCompartment": {
@@ -123718,6 +123718,7 @@
 											"model": {
 												"$ref": "AAAAAAFl+aZ6KvMHf1Q="
 											},
+											"visible": false,
 											"font": "Arial;13;0",
 											"left": 592,
 											"top": 902,
@@ -123745,7 +123746,7 @@
 													},
 													"font": "Arial;13;0",
 													"left": 597,
-													"top": 917,
+													"top": 907,
 													"width": 160.76708984375,
 													"height": 13,
 													"text": "+deriveTypeName(element)",
@@ -123754,7 +123755,7 @@
 											],
 											"font": "Arial;13;0",
 											"left": 592,
-											"top": 912,
+											"top": 902,
 											"width": 170.76708984375,
 											"height": 23
 										},
@@ -123800,6 +123801,7 @@
 									"nameCompartment": {
 										"$ref": "AAAAAAFl/Q+TDXvRVOI="
 									},
+									"suppressAttributes": true,
 									"attributeCompartment": {
 										"$ref": "AAAAAAFl/Q+TDXvWziw="
 									},
@@ -124264,8 +124266,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 653,
-											"top": 836,
+											"left": 631,
+											"top": 852,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 15,
@@ -124285,8 +124287,8 @@
 											},
 											"visible": null,
 											"font": "Arial;13;0",
-											"left": 653,
-											"top": 851,
+											"left": 631,
+											"top": 867,
 											"height": 13,
 											"alpha": 1.5707963267948966,
 											"distance": 30,
@@ -124306,8 +124308,8 @@
 											},
 											"visible": false,
 											"font": "Arial;13;0",
-											"left": 654,
-											"top": 806,
+											"left": 632,
+											"top": 822,
 											"height": 13,
 											"alpha": -1.5707963267948966,
 											"distance": 15,
@@ -124325,7 +124327,7 @@
 										"$ref": "AAAAAAFl/Q+TDXvQgNM="
 									},
 									"lineStyle": 2,
-									"points": "688:864;688:827;620:827;620:775",
+									"points": "676:864;676:843;588:843;588:807",
 									"showVisibility": true,
 									"nameLabel": {
 										"$ref": "AAAAAAFl/RDmP3xuhUs="
@@ -125744,6 +125746,298 @@
 									"propertyLabel": {
 										"$ref": "AAAAAAFl/ahJATD+Mxg="
 									}
+								},
+								{
+									"_type": "UMLClassView",
+									"_id": "AAAAAAFmZkK0OGF6JJQ=",
+									"_parent": {
+										"$ref": "AAAAAAFl/QjE5HmsG08="
+									},
+									"model": {
+										"$ref": "AAAAAAFl+alVC/jYza0="
+									},
+									"subViews": [
+										{
+											"_type": "UMLNameCompartmentView",
+											"_id": "AAAAAAFmZkK0OGF7FO4=",
+											"_parent": {
+												"$ref": "AAAAAAFmZkK0OGF6JJQ="
+											},
+											"model": {
+												"$ref": "AAAAAAFl+alVC/jYza0="
+											},
+											"subViews": [
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAFmZkK0OGF8l5E=",
+													"_parent": {
+														"$ref": "AAAAAAFmZkK0OGF7FO4="
+													},
+													"font": "Arial;13;0",
+													"left": 405,
+													"top": 869,
+													"width": 169.42529296875,
+													"height": 13,
+													"text": "«Type Factory»"
+												},
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAFmZkK0OGF9f3o=",
+													"_parent": {
+														"$ref": "AAAAAAFmZkK0OGF7FO4="
+													},
+													"font": "Arial;13;1",
+													"left": 405,
+													"top": 884,
+													"width": 169.42529296875,
+													"height": 13,
+													"text": "CompositionTypeFactory"
+												},
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAFmZkK0OGF+tz0=",
+													"_parent": {
+														"$ref": "AAAAAAFmZkK0OGF7FO4="
+													},
+													"visible": false,
+													"font": "Arial;13;0",
+													"left": 250,
+													"top": -454,
+													"width": 91.72998046875,
+													"height": 13,
+													"text": "(from Factories)"
+												},
+												{
+													"_type": "LabelView",
+													"_id": "AAAAAAFmZkK0OGF/t3M=",
+													"_parent": {
+														"$ref": "AAAAAAFmZkK0OGF7FO4="
+													},
+													"visible": false,
+													"font": "Arial;13;0",
+													"left": 250,
+													"top": -454,
+													"height": 13,
+													"horizontalAlignment": 1
+												}
+											],
+											"font": "Arial;13;0",
+											"left": 400,
+											"top": 864,
+											"width": 179.42529296875,
+											"height": 38,
+											"stereotypeLabel": {
+												"$ref": "AAAAAAFmZkK0OGF8l5E="
+											},
+											"nameLabel": {
+												"$ref": "AAAAAAFmZkK0OGF9f3o="
+											},
+											"namespaceLabel": {
+												"$ref": "AAAAAAFmZkK0OGF+tz0="
+											},
+											"propertyLabel": {
+												"$ref": "AAAAAAFmZkK0OGF/t3M="
+											}
+										},
+										{
+											"_type": "UMLAttributeCompartmentView",
+											"_id": "AAAAAAFmZkK0OGGAMyA=",
+											"_parent": {
+												"$ref": "AAAAAAFmZkK0OGF6JJQ="
+											},
+											"model": {
+												"$ref": "AAAAAAFl+alVC/jYza0="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 400,
+											"top": 902,
+											"width": 165.771484375,
+											"height": 10
+										},
+										{
+											"_type": "UMLOperationCompartmentView",
+											"_id": "AAAAAAFmZkK0OGGBDXE=",
+											"_parent": {
+												"$ref": "AAAAAAFmZkK0OGF6JJQ="
+											},
+											"model": {
+												"$ref": "AAAAAAFl+alVC/jYza0="
+											},
+											"subViews": [
+												{
+													"_type": "UMLOperationView",
+													"_id": "AAAAAAFmZkK0Y2Ggj2U=",
+													"_parent": {
+														"$ref": "AAAAAAFmZkK0OGGBDXE="
+													},
+													"model": {
+														"$ref": "AAAAAAFl+bv+mBiLc1Y="
+													},
+													"font": "Arial;13;0",
+													"left": 405,
+													"top": 907,
+													"width": 169.42529296875,
+													"height": 13,
+													"text": "+deriveTypeName(element)",
+													"horizontalAlignment": 0
+												}
+											],
+											"font": "Arial;13;0",
+											"left": 400,
+											"top": 902,
+											"width": 179.42529296875,
+											"height": 23
+										},
+										{
+											"_type": "UMLReceptionCompartmentView",
+											"_id": "AAAAAAFmZkK0OWGCQ1g=",
+											"_parent": {
+												"$ref": "AAAAAAFmZkK0OGF6JJQ="
+											},
+											"model": {
+												"$ref": "AAAAAAFl+alVC/jYza0="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 125,
+											"top": -227,
+											"width": 10,
+											"height": 10
+										},
+										{
+											"_type": "UMLTemplateParameterCompartmentView",
+											"_id": "AAAAAAFmZkK0OWGDrj8=",
+											"_parent": {
+												"$ref": "AAAAAAFmZkK0OGF6JJQ="
+											},
+											"model": {
+												"$ref": "AAAAAAFl+alVC/jYza0="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 125,
+											"top": -227,
+											"width": 10,
+											"height": 10
+										}
+									],
+									"font": "Arial;13;0",
+									"containerChangeable": true,
+									"left": 400,
+									"top": 864,
+									"width": 179.42529296875,
+									"height": 73,
+									"nameCompartment": {
+										"$ref": "AAAAAAFmZkK0OGF7FO4="
+									},
+									"suppressAttributes": true,
+									"attributeCompartment": {
+										"$ref": "AAAAAAFmZkK0OGGAMyA="
+									},
+									"operationCompartment": {
+										"$ref": "AAAAAAFmZkK0OGGBDXE="
+									},
+									"receptionCompartment": {
+										"$ref": "AAAAAAFmZkK0OWGCQ1g="
+									},
+									"templateParameterCompartment": {
+										"$ref": "AAAAAAFmZkK0OWGDrj8="
+									}
+								},
+								{
+									"_type": "UMLGeneralizationView",
+									"_id": "AAAAAAFmZkOQ32HXn/k=",
+									"_parent": {
+										"$ref": "AAAAAAFl/QjE5HmsG08="
+									},
+									"model": {
+										"$ref": "AAAAAAFmZkOQ3mHVFg8="
+									},
+									"subViews": [
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAFmZkOQ32HY5Ww=",
+											"_parent": {
+												"$ref": "AAAAAAFmZkOQ32HXn/k="
+											},
+											"model": {
+												"$ref": "AAAAAAFmZkOQ3mHVFg8="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 538,
+											"top": 822,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 15,
+											"hostEdge": {
+												"$ref": "AAAAAAFmZkOQ32HXn/k="
+											},
+											"edgePosition": 1
+										},
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAFmZkOQ32HZ5oM=",
+											"_parent": {
+												"$ref": "AAAAAAFmZkOQ32HXn/k="
+											},
+											"model": {
+												"$ref": "AAAAAAFmZkOQ3mHVFg8="
+											},
+											"visible": null,
+											"font": "Arial;13;0",
+											"left": 538,
+											"top": 807,
+											"height": 13,
+											"alpha": 1.5707963267948966,
+											"distance": 30,
+											"hostEdge": {
+												"$ref": "AAAAAAFmZkOQ32HXn/k="
+											},
+											"edgePosition": 1
+										},
+										{
+											"_type": "EdgeLabelView",
+											"_id": "AAAAAAFmZkOQ32HafeY=",
+											"_parent": {
+												"$ref": "AAAAAAFmZkOQ32HXn/k="
+											},
+											"model": {
+												"$ref": "AAAAAAFmZkOQ3mHVFg8="
+											},
+											"visible": false,
+											"font": "Arial;13;0",
+											"left": 538,
+											"top": 852,
+											"height": 13,
+											"alpha": -1.5707963267948966,
+											"distance": 15,
+											"hostEdge": {
+												"$ref": "AAAAAAFmZkOQ32HXn/k="
+											},
+											"edgePosition": 1
+										}
+									],
+									"font": "Arial;13;0",
+									"head": {
+										"$ref": "AAAAAAFl/Qjf+noChOY="
+									},
+									"tail": {
+										"$ref": "AAAAAAFmZkK0OGF6JJQ="
+									},
+									"lineStyle": 2,
+									"points": "489:864;489:843;588:843;588:807",
+									"showVisibility": true,
+									"nameLabel": {
+										"$ref": "AAAAAAFmZkOQ32HY5Ww="
+									},
+									"stereotypeLabel": {
+										"$ref": "AAAAAAFmZkOQ32HZ5oM="
+									},
+									"propertyLabel": {
+										"$ref": "AAAAAAFmZkOQ32HafeY="
+									}
 								}
 							]
 						},
@@ -126252,7 +126546,7 @@
 									}
 								}
 							],
-							"documentation": "The `ComponentTypeFactory` creates component types using the MTConnect XML element as an input. \nThe factory takes the `QName` (or qualified name) of the XML element and then appends `Type`. For \nexample an `<Controller id='...'></...>` element will create an OPC/UA `ControllerType` type definition \nas an extension of the base `MTControllerType`. \n\nCurrently there is no additional abstractions or super types required by the companion specification. \nThe types will be a single level where each Component is a sub-type of the base `MTComponentType`.\n",
+							"documentation": "The \\texttt{ComponentTypeFactory} creates component types using the MTConnect XML element as an input. \nThe factory takes the \\texttt{QName} (or qualified name) of the XML element and then appends \\texttt{Type}. For \nexample an \\texttt{<Controller id='...'></...>} element will create an OPC/UA `ControllerType` type definition \nas an extension of the base \\texttt{MTControllerType}. \n\nCurrently there is no additional abstractions or super types required by the companion specification. \nThe types will be a single level where each Component is a sub-type of the base \\texttt{MTComponentType}.\n",
 							"stereotype": {
 								"$ref": "AAAAAAFl+T1HIYG6VGo="
 							},
@@ -126371,6 +126665,19 @@
 									"stereotype": {
 										"$ref": "AAAAAAFl+PfoDnmjA1Q="
 									}
+								},
+								{
+									"_type": "UMLGeneralization",
+									"_id": "AAAAAAFmZkOQ3mHVFg8=",
+									"_parent": {
+										"$ref": "AAAAAAFl+alVC/jYza0="
+									},
+									"source": {
+										"$ref": "AAAAAAFl+alVC/jYza0="
+									},
+									"target": {
+										"$ref": "AAAAAAFl/Qjf+XoAw44="
+									}
 								}
 							],
 							"stereotype": {
@@ -126384,7 +126691,7 @@
 										"$ref": "AAAAAAFl+alVC/jYza0="
 									},
 									"name": "deriveTypeName",
-									"documentation": "The type for the composition will be created using the pascal case of the `type` from the composition element.",
+									"documentation": "The type for the composition will be created using the pascal case of the \\texttt{type} from the composition element.",
 									"parameters": [
 										{
 											"_type": "UMLParameter",

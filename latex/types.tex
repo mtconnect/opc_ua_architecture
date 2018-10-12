@@ -1,4 +1,4 @@
-% Generated 2018-10-11 19:51:09 -0700
+% Generated 2018-10-11 20:15:56 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -183,7 +183,7 @@ The OPC/UA Object with browse name \texttt{Linear[X]} will be created with the H
 referencing the \texttt{Linear} OPC/UA type. 
 
 The meta data for the component and its relationships are static. The dynamic data will be 
-represented using the \cite{OPCPart8}.
+represented using the \cite{UAPart8}.
 
 
 
@@ -1207,7 +1207,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 The parallel modeling of conditions and alarms in MTConnect and OPC UA represent some
 situation where something has been detected that is not expected or outside of the norm. The
 documentation for the condition behavior in MTConnect can be found in Section 5.7 and 
-5.8 of \cite{MTPart3}.
+5.8 of \cite{MTCPart3}.
 
 The MTConnect Data Item with Category of \texttt{CONDITION} are used to map to the 
 OPC UA \texttt{ConditionType} models in \cite{UAPart9}
@@ -1355,7 +1355,7 @@ MTConnect Standard Part 2 \cite{MTCPart2} and are represented using the XML \tex
 not documented in the companion specifiction. 
 
 The model of the types is similar to the OPC UA condition classes as given in OPC UA Part 9
-\cite{OPCPart9}. Since MTConnect conditions use the same type system as the data items, 
+\cite{UAPart9}. Since MTConnect conditions use the same type system as the data items, 
 the representation of the data item type will be derived from the \texttt{BaseConditionClassType}. 
 The MTConnect Types will not use the \texttt{...ClassType}, but will be the name as specified
 in the MTConnect standard with \texttt{Type} appended.
@@ -6197,13 +6197,13 @@ concat(self.findDevice().uuid, element.id)
 
 \FloatBarrier
 
-The `ComponentTypeFactory` creates component types using the MTConnect XML element as an input. 
-The factory takes the `QName` (or qualified name) of the XML element and then appends `Type`. For 
-example an `<Controller id='...'></...>` element will create an OPC/UA `ControllerType` type definition 
-as an extension of the base `MTControllerType`. 
+The \texttt{ComponentTypeFactory} creates component types using the MTConnect XML element as an input. 
+The factory takes the \texttt{QName} (or qualified name) of the XML element and then appends \texttt{Type}. For 
+example an \texttt{<Controller id='...'></...>} element will create an OPC/UA `ControllerType` type definition 
+as an extension of the base \texttt{MTControllerType}. 
 
 Currently there is no additional abstractions or super types required by the companion specification. 
-The types will be a single level where each Component is a sub-type of the base `MTComponentType`.
+The types will be a single level where each Component is a sub-type of the base \texttt{MTComponentType}.
 
 
 \paragraph{Operations}
@@ -6263,7 +6263,7 @@ derive: Composition <-
  pascalCase(element.type)
 \end{lstlisting}
 
-    Documentation: The type for the composition will be created using the pascal case of the `type` from the composition element.
+    Documentation: The type for the composition will be created using the pascal case of the \texttt{type} from the composition element.
 
 \end{itemize}
 \FloatBarrier

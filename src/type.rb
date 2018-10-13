@@ -93,7 +93,9 @@ class Type
   end
 
   def escape_name
-    @name.gsub('{', '\{').gsub('}', '\}')
+    n = @name.gsub('{', '\{').gsub('}', '\}')
+    n = "<<#{n}>>" if @type == 'UMLStereotype'
+    n
   end
 
   def add_child(c)

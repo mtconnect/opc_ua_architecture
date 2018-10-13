@@ -186,6 +186,15 @@ class Type
       @attributes.each do |a|
         return a if a['name'] =~ pattern
       end
+      @relations.each do |a|
+        if a['end1'] and a['end2']
+          name = a['name'] || a['end1']['name']
+          if name  and name =~ pattern
+            type = resolve_type_name(a['end2']['reference'])
+            return type if type
+          end
+        end
+      end
     end
     return @parent.get_attribute_like(pattern) if @parent
     nil
@@ -233,6 +242,9 @@ class Type
         optional = mandatory(r['end1'])
         target = resolve_type(r['end2']['reference'])
         stereo = resolve_type(r['stereotype'])
+
+        next if stereo and stereo.name =~ /Attribute/
+        
         node = 'Object'
         browse = r['name']
         browse = r['end1']['name'] unless browse
@@ -267,10 +279,34 @@ class Type
     end
   end
 
+  def generate_subtype(f, c)
+    t = c.is_a_type?('BaseVariableType') ? 'VariableType' : 'ObjectType'
+    f.puts "HasSubtype & #{t} & #{c.escape_name} & \\multicolumn{3}{|l|}{#{c.reference}} \\\\"
+  end
+
   def generate_children(f)
-    @children.each do |c|
-      t = c.is_a_type?('BaseVariableType') ? 'VariableType' : 'ObjectType'
-      f.puts "HasSubtype & #{t} & #{c.escape_name} & \\multicolumn{3}{|l|}{#{c.reference}} \\\\"
+    cs = @children.dup
+    l = cs.pop(22)
+    l.each do |c|
+      generate_subtype(f, c)
+    end
+    
+    while !cs.empty?
+      f.puts <<EOT
+\\multicolumn{6}{|l|}{Continued...} \\\\
+\\end{tabu}
+\\end{table}
+\\begin{table}[ht]
+\\fontsize{9pt}{11pt}\\selectfont
+\\tabulinesep=3pt
+\\begin{tabu} to 6in {|l|l|l|l|l|l|} \\everyrow{\\hline}
+\\hline
+\\rowfont \\bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\\\
+EOT
+      l = cs.pop(22)
+      l.each do |c|
+        generate_subtype(f, c)
+      end
     end
   end
 
@@ -323,8 +359,21 @@ EOT
     if is_a_type?('BaseVariableType')
       f.puts "ValueRank & \\multicolumn{5}{|l|}{-1} \\\\"
       a = get_attribute_like(/DataType$/)
-      t = (a and a['type']) or 'BaseVariableType'
+      t = case a
+          when String
+            a
+
+          when Hash
+            a['type']
+
+          else
+            'BaseVariableType'
+          end
       f.puts "DataType & \\multicolumn{5}{|l|}{#{t}} \\\\"
+    elsif @name =~ /^Has/
+      a = get_attribute_like(/Symmetric/)
+      t = a['defaultValue'] || 'false'
+      f.puts "Symmetric & \\multicolumn{5}{|l|}{#{t}} \\\\"
     end
 
     f.puts <<EOT
@@ -438,7 +487,7 @@ EOT
 
     f.puts "\n#{@documentation}\n\n"
 
-    if stereotype_name !~ /Factory/o and @model.name !~ /Profile/
+    if stereotype_name !~ /Factory/o and (is_a_type?('References') or @model.name !~ /Profile/)
       generate_type_table(f) 
     end
       

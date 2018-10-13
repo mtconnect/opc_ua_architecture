@@ -3,8 +3,6 @@ require 'type'
 class Model
   attr_reader :name, :documentation
 
-  include Diagram
-
   @@models = {}
 
   def self.models
@@ -32,35 +30,6 @@ class Model
 
   def to_s
     @name
-  end
-
-  def self.generate_latex(f, model)
-    @@models[model].generate_latex(f)
-  end
-
-  def recurse_types(f, type)
-    if type.type == 'UMLClass' or type.type == 'UMLStereotype'
-      puts type
-      type.generate_latex(f) 
-    end
-
-    type.children.each do |t|
-      recurse_types(f, t) if t.model == self
-    end
-  end
-
-  def generate_latex(f)
-    f.puts "\\subsection{#{@name}} \\label{model:#{short_name}}"
-
-    generate_diagram(f)
-
-    generate_documentation(f)
-
-    @types.each do |type|
-      if type.parent.nil? or type.parent.model != self
-        recurse_types(f, type)
-      end
-    end
   end
 
   def self.recurse(e, depth, model)

@@ -2,7 +2,7 @@
 $: << File.dirname(__FILE__)
 
 require 'json'
-require 'model'
+require 'latex_model'
 
 uml = File.open('MTConnect OPC-UA Devices.mdj').read
 doc = JSON.parse(uml)

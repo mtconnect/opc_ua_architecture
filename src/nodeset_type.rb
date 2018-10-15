@@ -48,37 +48,61 @@ class Type
     @node_id
   end
 
-  def generate_nodeset(root)
-    return if stereotype_name == '<<Dynamic Type>>'
+  def node(type, id, name, display_name: nil, abstract: false, value_rank: nil, data_type: nil)
+    node = REXML::Element.new(type)
+    node.add_attributes({ 'NodeId' => id,
+                          'BrowseName' => "1:#{name}"})
+    node.add_attribute('IsAbstract', 'true') if abstract
+    node.add_attribute('ValueRank', value_rank) if value_rank
+    node.add_attribute('DataType', data_type) if data_type
 
-    if is_a_type?('BaseObjectType')
-      obj = root.add_element('UAObjectType',
-                             { 'NodeId' => node_id,
-                               'BrowseName' => "1:#{@name}",
-                               'IsAbstract' => @abstract.to_s})
-    elsif is_a_type?('BaseDataVariableType')
-      obj = root.add_element('UAVariableType',
-                             { 'NodeId' => node_id,
-                               'BrowseName' => "1:#{@name}",
-                               'ValueRank' => '-1' })
+    node.add_element('DisplayName').add_text(display_name || name)
+    refs = node.add_element('References')
+    
+    [node, refs]
+  end
+
+  def reference(name, type, target, target_name = nil, forward: true)
+    cmt = REXML::Comment.new(" #{type} -- #{name} #{target} #{target_name} (forward: #{forward}) ")
+    ref = REXML::Element.new('References')
+    ref.add_attribute('ReferenceType', type)
+    ref.add_attribute('IsForward', 'false') unless forward
+    ref.add_text(target)
+    [cmt, ref]
+  end
+
+  def variable_property(id, name, var_type, data_type, rule, parent_id, parent_name)
+    ele, refs = node('UAVariable', id, name, data_type: data_type,
+               value_rank: -1)
+    reference(var_type, 'HasTypeDefinition', var_type).
+      each { |r| refs << r }
+    reference(rule, 'HasModelingRule', NodeIds[rule]).
+      each { |r| refs << r }
+    reference(parent_name, 'HasProperty', parent_id, forward: false).
+      each { |r| refs << r }
+    
+    ele    
+  end
+
+  def attributes
+    nodes = []
+    refs = []
+    
+    @attributes.each do |a|
+      stereo = a['stereotype'] && resolve_type_name(a['stereotype'])
+      unless stereo =~ /Attribute/
+        name = a['name']
+        id = resolve_node_id(a['_id'])
+        var_type = NodeIds['PropertyType']
+        data_type = resolve_data_type(a['type'])
+        
+        refs.concat(reference(name, 'HasProperty', id))
+        nodes << variable_property(id, name,
+                                   data_type, var_type,
+                                   mandatory(a), node_id, @name)
+      end
     end
-
-    if obj
-      puts "  -> Generating nodeset for #{@name}"
-      obj.add_element('DisplayName').add_text(@name)
-      
-      refs = obj.add_element('References')
-      parent_id = @parent.node_id
-      refs << REXML::Comment.new(@parent.name)
-      refs.add_element('Reference', { 'ReferenceType' => 'HasSubtype',
-                                      'IsForward' => 'false' }).
-        add_text(parent_id)
-
-      generate_references(refs)
-
-      generate_variables(root)
-      generate_components(root)
-    end
+    [nodes, refs]
   end
 
   def relation_type(r)
@@ -98,85 +122,81 @@ class Type
     stereo
   end
   
-  def generate_references(refs)
-    @attributes.each do |a|
-      stereo = a['stereotype'] && resolve_type_name(a['stereotype'])
-      unless stereo =~ /Attribute/
-        refs << REXML::Comment.new(a['name'])
-        refs.add_element('Reference', { 'ReferenceType' => 'HasProperty' }).
-          add_text(resolve_node_id(a['_id']))
-      end
-    end
-    @relations.each do |r|
-      if r['_type'] == 'UMLAssociation'
-        target = resolve_type(r['end2']['reference'])
-
-        if target and (r['name'] or r['end1']['name'])
-          stereo = relation_type(r)
-          name = r['end1']['name'] || r['name']
-          
-          refs << REXML::Comment.new("Relation #{name} - #{stereo} -> #{target.name}")
-          refs.add_element('Reference', { 'ReferenceType' => stereo }).
-            add_text(resolve_node_id(r['_id']))
-        else
-          puts "******* Cannot resolve type for #{r['name']}"
-        end
-      end
-    end
-  end
-
   def resolve_data_type(type)
     return type if Aliases.include?(type)
     NodeIds[type]
   end
 
-  def generate_variables(root)
-    @attributes.each do |a|
-      # TODO Resolve Type from aliases or type reference to our own types.
-      # Log error if type cannot be resolved.
-      stereo = a['stereotype'] && resolve_type_name(a['stereotype'])
-      unless stereo =~ /Attribute/
-        var = root.add_element('UAVariable', {
-                                 'NodeId' => resolve_node_id(a['_id']),
-                                 'BrowseName' => "1:#{a['name']}",
-                                 'DataType' => resolve_data_type(a['type']) })
-        var.add_element('DisplayName').add_text(a['name'])
-        refs = var.add_element('References')
-        refs.add_element('Reference', { 'ReferenceType' => 'HasTypeDefinition' }).
-          add_text(NodeIds['PropertyType'])
-        refs << REXML::Comment.new(mandatory(a))
-        refs.add_element('Reference', { 'ReferenceType' => 'HasModelingRule' }).
-          add_text(NodeIds[mandatory(a)])
-        refs << REXML::Comment.new(@name)
-        refs.add_element('Reference', { 'ReferenceType' => 'HasProperty', 'IsForward' => 'false' }).
-          add_text(node_id)
+  def component(id, name, type_id, type_name, rule, rel_type, parent_id, parent_name)
+    ele, refs = node('UAObject', id, name)
+    reference(type_name, 'HasTypeDefinition', type_id).
+      each { |r| refs << r }
+    reference(rule, 'HasModelingRule', NodeIds[rule]).
+      each { |r| refs << r }
+    reference(parent_name, rel_type, parent_id, forward: false).
+      each { |r| refs << r }
+    
+    ele    
+  end
+
+    
+  def relationships
+    refs = []
+    nodes = []
+    
+    @relations.each do |r|
+      if r['_type'] == 'UMLAssociation'
+        target = resolve_type(r['end2']['reference'])
+        if target and (r['name'] or r['end1']['name'])
+          name = r['end1']['name'] || r['name']
+          rel_type = relation_type(r)
+          target = resolve_type(r['end2']['reference'])
+          id = resolve_node_id(r['_id'])
+          data_type = resolve_data_type(r['type'])
+
+          refs.concat(reference(name, rel_type, id, target.name))
+
+          if rel_type == 'HasProperty'
+            nodes << variable_property(id, name,
+                                       data_type, target.node_id,
+                                       mandatory(r), node_id, @name)
+          else
+            nodes << component(id, name, target.node_id, target.name,
+                               mandatory(r), rel_type, node_id, @name)
+          end
+        else
+          puts "****** -> Cannot resolve type for #{target.name} #{r.inspect}"
+        end
       end
     end
+    [nodes, refs]
   end
-  
-  def generate_components(root)
-    @relations.each do |a|
-      if a['_type'] == 'UMLAssociation' and
-        (name = (a['name'] or a['end1']['name']))
 
-        target = resolve_type(a['end2']['reference'])
-        
-        stereo = relation_type(a)
-        var = root.add_element('UAVariable', {
-                                 'NodeId' => resolve_node_id(a['_id']),
-                                 'BrowseName' => "1:#{name}",
-                                 'DataType' => resolve_data_type(a['type']) })
-        var.add_element('DisplayName').add_text(name)
-        refs = var.add_element('References')
-        refs.add_element('Reference', { 'ReferenceType' => 'HasTypeDefinition' }).
-          add_text(NodeIds['PropertyType'])
-        refs << REXML::Comment.new(mandatory(a))
-        refs.add_element('Reference', { 'ReferenceType' => 'HasModelingRule' }).
-          add_text(NodeIds[mandatory(a)])
-        refs << REXML::Comment.new(@name)
-        refs.add_element('Reference', { 'ReferenceType' => stereo, 'IsForward' => 'false' }).
-          add_text(node_id)
-      end
+  def generate_nodeset(root)
+    return if stereotype_name == '<<Dynamic Type>>'
+
+    if is_a_type?('BaseObjectType')
+      node, refs = node('UAObjectType', node_id, @name, abstract: @abstract)
+    elsif is_a_type?('BaseDataVariableType')
+      # Need to add data type
+      node, refs = node('UAVariableType', node_id, @name, abstract: @abstract, value_rank: -1)
+    end
+
+
+    if node
+      puts "  -> Generating nodeset for #{@name}"
+      root << node
+      
+      reference(@parent.name, 'HasSubtype', @parent.node_id, forward: false).
+        each { |r| refs << r }
+      
+      nodes, references = attributes
+      references.each { |r| refs << r }
+      nodes.each { |n| root << n }
+
+      nodes, references = relationships
+      references.each { |r| refs << r }
+      nodes.each { |n| root << n }
     end
   end
 end

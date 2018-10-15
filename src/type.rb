@@ -1,6 +1,6 @@
 
 class Type
-  attr_reader :name, :id, :type, :model, :json, :parent, :children
+  attr_reader :name, :id, :type, :model, :json, :parent, :children, :relations
 
   @@types = {}
 
@@ -12,6 +12,13 @@ class Type
     @@types.each do |id, type|
       parent = type.get_parent
       parent.add_child(type) if parent
+    end
+    connect_links
+  end
+
+  def self.connect_links
+    @@types.each do |id, type|
+      type.connect_links
     end
   end
   
@@ -73,6 +80,22 @@ class Type
 
   def to_s
     "#{@model}::#{@name} -> #{stereotype_name} #{@type} #{@id}"
+  end
+
+  def connect_links
+    @relations.each do |r|
+      if r['_type'] == 'UMLAssociationClassLink'
+        puts "********* Connecting relation for #{@name}"
+        @relations.each do |r|
+          if r['_type'] == 'UMLAssociation'            
+            source = resolve_type(r['end1']['reference'])
+            puts "********* -> Connecting to #{source.name}"
+            source.relations << r if source
+            return
+          end
+        end
+      end
+    end
   end
 
   def resolve_type(ref)

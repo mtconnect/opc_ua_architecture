@@ -76,14 +76,6 @@ class Type
     end
   end
 
-  def mandatory(obj)
-    if obj['multiplicity'] == '0..1' or obj['multiplicity'] == '0..*'
-      'Optional'
-    else
-      'Mandatory'
-    end
-  end
-
   def generate_properties(f)
     @attributes.each do |a|
       type = resolve_type_name(a['type'])

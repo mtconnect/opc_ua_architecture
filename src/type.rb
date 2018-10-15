@@ -35,6 +35,14 @@ class Type
     @model.add_type(self)
   end
 
+  def mandatory(obj)
+    if obj['multiplicity'] == '0..1' or obj['multiplicity'] == '0..*'
+      'Optional'
+    else
+      'Mandatory'
+    end
+  end
+
   def escape_name
     n = @name.gsub('{', '\{').gsub('}', '\}')
     n = "<<#{n}>>" if @type == 'UMLStereotype'

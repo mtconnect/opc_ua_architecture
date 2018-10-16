@@ -34,6 +34,10 @@ end
 module Relation
   class Relation
     include NodeId
+
+    def node_id
+      NodeId.id_to_i(@id)
+    end
     
     def reference_type_id
       if Aliases.include?(reference_type)
@@ -48,6 +52,31 @@ module Relation
         Aliases[reference_type]
       else
         resolve_node_id(reference_type)
+      end
+    end
+  end
+
+  class Association
+    def resolve_data_type
+      @target.type.node_id
+    end
+
+    def target_node_id
+      if is_folder?
+        NodeIds['FolderType']
+      else
+        @target.type.node_id
+      end
+    end    
+  end
+
+  class Attribute
+    def resolve_data_type
+      if Hash === @data_type
+        @target.type = Type.resolve_type(@data_type)
+      else
+        return @data_type if Aliases.include?(@data_type)
+        NodeIds[@data_type]
       end
     end
   end
@@ -107,7 +136,7 @@ class Type
   end
 
   def variable_property(ref)
-    ele, refs = node('UAVariable', ref.node_id, ref.name, data_type: ref.resolve_data_type,
+    ele, refs = node('UAVariable', ref.node_id, ref.name, data_type: ref.resolve_data_type_name,
                value_rank: -1)
     node_reference(ref.reference_type, 'HasTypeDefinition', ref.reference_type_node_id).
       each { |r| refs << r }

@@ -77,11 +77,9 @@ class Type
   end
 
   def generate_properties(f)
-    @attributes.each do |a|
-      type = resolve_type_name(a['type'])
-      stereo = a['stereotype'] && resolve_type_name(a['stereotype'])
-      unless stereo =~ /Attribute/
-        f.puts "HasProperty & Variable & #{a['name']} &  #{type} & PropertyType & #{mandatory(a)} \\\\"
+    @relations.each do |a|
+      unless a.is_attribute?
+        f.puts "HasProperty & Variable & #{a.name} &  #{a.target.type} & PropertyType & #{a.rule} \\\\"
       end
     end
   end
@@ -227,21 +225,11 @@ EOT
 
     if is_a_type?('BaseVariableType')
       f.puts "ValueRank & \\multicolumn{5}{|l|}{-1} \\\\"
-      a = get_attribute_like(/DataType$/)
-      t = case a
-          when String
-            a
-
-          when Hash
-            a['type']
-
-          else
-            'BaseVariableType'
-          end
-      f.puts "DataType & \\multicolumn{5}{|l|}{#{t}} \\\\"
+      a = get_attribute_like(/DataType$/) || 'BaseVariableType'
+      f.puts "DataType & \\multicolumn{5}{|l|}{#{a.type}} \\\\"
     elsif @name =~ /^Has/
       a = get_attribute_like(/Symmetric/)
-      t = a['defaultValue'] || 'false'
+      t = a.json['defaultValue'] || 'false'
       f.puts "Symmetric & \\multicolumn{5}{|l|}{#{t}} \\\\"
     end
 
@@ -332,9 +320,9 @@ EOT
       generate_type_table(f) 
     end
       
-    generate_operations(f)
-    generate_constraints(f)
-    generate_dependencies(f)
+#    generate_operations(f)
+#    generate_constraints(f)
+#    generate_dependencies(f)
 
     f.puts "\\FloatBarrier"  
   end

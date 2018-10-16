@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' LastModified='2018-10-16T03:43:22Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' LastModified='2018-10-16T04:28:24Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/' Version='1.00' PublicationDate='2018-10-16T03:43:22Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.03' PublicationDate='2018-10-16T03:43:22Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/' Version='1.00' PublicationDate='2018-10-16T04:28:24Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.03' PublicationDate='2018-10-16T04:28:24Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -178,17 +178,17 @@
     <References>
       <!-- HasSubtype -- BaseObjectType i=58 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=58</Reference>
-      <!-- HasProperty -- Number ns=1;i=3259563958 Number (forward: true) -->
+      <!-- HasProperty -- Number ns=1;i=3259563958 Int32 (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3259563958</Reference>
-      <!-- HasProperty -- Name ns=1;i=275972101 Name (forward: true) -->
+      <!-- HasProperty -- Name ns=1;i=275972101 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=275972101</Reference>
-      <!-- HasProperty -- MTDescription ns=1;i=1055850556 MTDescription (forward: true) -->
+      <!-- HasProperty -- MTDescription ns=1;i=1055850556 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=1055850556</Reference>
-      <!-- HasProperty -- CalibrationDate ns=1;i=2342191219 CalibrationDate (forward: true) -->
+      <!-- HasProperty -- CalibrationDate ns=1;i=2342191219 UtcTime (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2342191219</Reference>
-      <!-- HasProperty -- NextCalibrationDate ns=1;i=3145203882 NextCalibrationDate (forward: true) -->
+      <!-- HasProperty -- NextCalibrationDate ns=1;i=3145203882 UtcTime (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3145203882</Reference>
-      <!-- HasProperty -- CalibrationInitials ns=1;i=3784179924 CalibrationInitials (forward: true) -->
+      <!-- HasProperty -- CalibrationInitials ns=1;i=3784179924 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3784179924</Reference>
     </References>
   </UAObjectType>
@@ -263,13 +263,13 @@
     <References>
       <!-- HasSubtype -- BaseObjectType i=58 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=58</Reference>
-      <!-- HasProperty -- Station ns=1;i=3383610016 Station (forward: true) -->
+      <!-- HasProperty -- Station ns=1;i=3383610016 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3383610016</Reference>
-      <!-- HasProperty -- SerialNumber ns=1;i=235850443 SerialNumber (forward: true) -->
+      <!-- HasProperty -- SerialNumber ns=1;i=235850443 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=235850443</Reference>
-      <!-- HasProperty -- Manufacturer ns=1;i=849070826 Manufacturer (forward: true) -->
+      <!-- HasProperty -- Manufacturer ns=1;i=849070826 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=849070826</Reference>
-      <!-- HasProperty -- Data ns=1;i=2066270997 Data (forward: true) -->
+      <!-- HasProperty -- Data ns=1;i=2066270997 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2066270997</Reference>
     </References>
   </UAObjectType>
@@ -322,17 +322,17 @@
     <References>
       <!-- HasSubtype -- BaseObjectType i=58 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=58</Reference>
-      <!-- HasProperty -- XmlId ns=1;i=1583605388 XmlId (forward: true) -->
+      <!-- HasProperty -- XmlId ns=1;i=1583605388 IdType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=1583605388</Reference>
-      <!-- HasProperty -- Name ns=1;i=3278029829 Name (forward: true) -->
+      <!-- HasProperty -- Name ns=1;i=3278029829 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3278029829</Reference>
-      <!-- HasProperty -- NativeName ns=1;i=1358939148 NativeName (forward: true) -->
+      <!-- HasProperty -- NativeName ns=1;i=1358939148 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=1358939148</Reference>
-      <!-- HasProperty -- Uuid ns=1;i=2479604756 Uuid (forward: true) -->
+      <!-- HasProperty -- Uuid ns=1;i=2479604756 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2479604756</Reference>
-      <!-- HasProperty -- SampleRate ns=1;i=2943458205 SampleRate (forward: true) -->
+      <!-- HasProperty -- SampleRate ns=1;i=2943458205 float (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2943458205</Reference>
-      <!-- HasProperty -- SampleInterval ns=1;i=914398332 SampleInterval (forward: true) -->
+      <!-- HasProperty -- SampleInterval ns=1;i=914398332 float (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=914398332</Reference>
       <!-- HasComponent -- Description ns=1;i=3664181506  (forward: true) -->
       <Reference ReferenceType='HasComponent'>ns=1;i=3664181506</Reference>
@@ -390,7 +390,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2493039579</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=2943458205' BrowseName='1:SampleRate' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=2943458205' BrowseName='1:SampleRate' ValueRank='-1' DataType='float'>
     <DisplayName>SampleRate</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -401,7 +401,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2493039579</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=914398332' BrowseName='1:SampleInterval' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=914398332' BrowseName='1:SampleInterval' ValueRank='-1' DataType='float'>
     <DisplayName>SampleInterval</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -472,9 +472,9 @@
     <References>
       <!-- HasSubtype -- MTComponentType ns=1;i=2493039579 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2493039579</Reference>
-      <!-- HasProperty -- Version ns=1;i=2634533984 Version (forward: true) -->
+      <!-- HasProperty -- Version ns=1;i=2634533984 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2634533984</Reference>
-      <!-- HasProperty -- Iso841Class ns=1;i=419679440 Iso841Class (forward: true) -->
+      <!-- HasProperty -- Iso841Class ns=1;i=419679440 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=419679440</Reference>
     </References>
   </UAObjectType>
@@ -505,11 +505,11 @@
     <References>
       <!-- HasSubtype -- BaseObjectType i=58 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=58</Reference>
-      <!-- HasProperty -- Uuid ns=1;i=2872134165 Uuid (forward: true) -->
+      <!-- HasProperty -- Uuid ns=1;i=2872134165 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2872134165</Reference>
-      <!-- HasProperty -- Name ns=1;i=3018409942 Name (forward: true) -->
+      <!-- HasProperty -- Name ns=1;i=3018409942 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3018409942</Reference>
-      <!-- HasProperty -- MTDescription ns=1;i=1829718482 MTDescription (forward: true) -->
+      <!-- HasProperty -- MTDescription ns=1;i=1829718482 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=1829718482</Reference>
     </References>
   </UAObjectType>
@@ -558,13 +558,13 @@
     <References>
       <!-- HasSubtype -- MTConfigurationType ns=1;i=2643381617 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2643381617</Reference>
-      <!-- HasProperty -- FirwareVersion ns=1;i=2328689859 FirwareVersion (forward: true) -->
+      <!-- HasProperty -- FirwareVersion ns=1;i=2328689859 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2328689859</Reference>
-      <!-- HasProperty -- CalibrationDate ns=1;i=3182230766 CalibrationDate (forward: true) -->
+      <!-- HasProperty -- CalibrationDate ns=1;i=3182230766 UtcTime (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3182230766</Reference>
-      <!-- HasProperty -- NextCalibrationDate ns=1;i=260439321 NextCalibrationDate (forward: true) -->
+      <!-- HasProperty -- NextCalibrationDate ns=1;i=260439321 UtcTime (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=260439321</Reference>
-      <!-- HasProperty -- CalibrationInitials ns=1;i=989330756 CalibrationInitials (forward: true) -->
+      <!-- HasProperty -- CalibrationInitials ns=1;i=989330756 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=989330756</Reference>
       <!-- Organizes -- Channels ns=1;i=955645558  (forward: true) -->
       <Reference ReferenceType='Organizes'>ns=1;i=955645558</Reference>
@@ -641,19 +641,19 @@
     <References>
       <!-- HasSubtype -- BaseDataVariableType i=63 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=63</Reference>
-      <!-- HasProperty -- Category ns=1;i=503548305 Category (forward: true) -->
+      <!-- HasProperty -- Category ns=1;i=503548305 MTCategoryType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=503548305</Reference>
-      <!-- HasProperty -- MTClassName ns=1;i=1778603416 MTClassName (forward: true) -->
+      <!-- HasProperty -- MTClassName ns=1;i=1778603416 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=1778603416</Reference>
-      <!-- HasProperty -- MTSubTypeName ns=1;i=641619688 MTSubTypeName (forward: true) -->
+      <!-- HasProperty -- MTSubTypeName ns=1;i=641619688 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=641619688</Reference>
-      <!-- HasProperty -- SourceName ns=1;i=2084138328 SourceName (forward: true) -->
+      <!-- HasProperty -- SourceName ns=1;i=2084138328 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2084138328</Reference>
-      <!-- HasProperty -- StreamRate ns=1;i=3037752743 StreamRate (forward: true) -->
+      <!-- HasProperty -- StreamRate ns=1;i=3037752743 Double (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3037752743</Reference>
-      <!-- HasProperty -- SampleRate ns=1;i=402358598 SampleRate (forward: true) -->
+      <!-- HasProperty -- SampleRate ns=1;i=402358598 Double (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=402358598</Reference>
-      <!-- HasProperty -- Representation ns=1;i=1847820705 Representation (forward: true) -->
+      <!-- HasProperty -- Representation ns=1;i=1847820705 RepresentationType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=1847820705</Reference>
       <!-- HasComponent -- MinimumDeltaFilter ns=1;i=1335917312  (forward: true) -->
       <Reference ReferenceType='HasComponent'>ns=1;i=1335917312</Reference>
@@ -661,7 +661,7 @@
       <Reference ReferenceType='HasComponent'>ns=1;i=3379568617</Reference>
     </References>
   </UAVariableType>
-  <UAVariable NodeId='ns=1;i=503548305' BrowseName='1:Category' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=503548305' BrowseName='1:Category' ValueRank='-1' DataType='MTCategoryType'>
     <DisplayName>Category</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -727,7 +727,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=1847820705' BrowseName='1:Representation' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=1847820705' BrowseName='1:Representation' ValueRank='-1' DataType='RepresentationType'>
     <DisplayName>Representation</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -765,29 +765,29 @@
     <References>
       <!-- HasSubtype -- MultiStateDiscreteType i=2376 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=2376</Reference>
-      <!-- HasProperty -- Category ns=1;i=503548305 Category (forward: true) -->
+      <!-- HasProperty -- Category ns=1;i=503548305 MTCategoryType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=503548305</Reference>
-      <!-- HasProperty -- MTClassName ns=1;i=1778603416 MTClassName (forward: true) -->
+      <!-- HasProperty -- MTClassName ns=1;i=1778603416 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=1778603416</Reference>
-      <!-- HasProperty -- MTSubTypeName ns=1;i=641619688 MTSubTypeName (forward: true) -->
+      <!-- HasProperty -- MTSubTypeName ns=1;i=641619688 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=641619688</Reference>
-      <!-- HasProperty -- SourceName ns=1;i=2084138328 SourceName (forward: true) -->
+      <!-- HasProperty -- SourceName ns=1;i=2084138328 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2084138328</Reference>
-      <!-- HasProperty -- StreamRate ns=1;i=3037752743 StreamRate (forward: true) -->
+      <!-- HasProperty -- StreamRate ns=1;i=3037752743 Double (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3037752743</Reference>
-      <!-- HasProperty -- SampleRate ns=1;i=402358598 SampleRate (forward: true) -->
+      <!-- HasProperty -- SampleRate ns=1;i=402358598 Double (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=402358598</Reference>
-      <!-- HasProperty -- Representation ns=1;i=1847820705 Representation (forward: true) -->
+      <!-- HasProperty -- Representation ns=1;i=1847820705 RepresentationType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=1847820705</Reference>
       <!-- HasComponent -- MinimumDeltaFilter ns=1;i=1335917312  (forward: true) -->
       <Reference ReferenceType='HasComponent'>ns=1;i=1335917312</Reference>
       <!-- HasComponent -- PeriodDelta ns=1;i=3379568617  (forward: true) -->
       <Reference ReferenceType='HasComponent'>ns=1;i=3379568617</Reference>
-      <!-- HasProperty -- ConstrainedDataType ns=1;i=3638509220 ConstrainedDataType (forward: true) -->
+      <!-- HasProperty -- ConstrainedDataType ns=1;i=3638509220 EnumValuesType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3638509220</Reference>
     </References>
   </UAVariableType>
-  <UAVariable NodeId='ns=1;i=503548305' BrowseName='1:Category' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=503548305' BrowseName='1:Category' ValueRank='-1' DataType='MTCategoryType'>
     <DisplayName>Category</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -853,7 +853,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=1847820705' BrowseName='1:Representation' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=1847820705' BrowseName='1:Representation' ValueRank='-1' DataType='RepresentationType'>
     <DisplayName>Representation</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -886,7 +886,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
     </References>
   </UAObject>
-  <UAVariable NodeId='ns=1;i=3638509220' BrowseName='1:ConstrainedDataType' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=3638509220' BrowseName='1:ConstrainedDataType' ValueRank='-1' DataType='EnumValuesType'>
     <DisplayName>ConstrainedDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -902,47 +902,47 @@
     <References>
       <!-- HasSubtype -- DataItemType i=2365 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=2365</Reference>
-      <!-- HasProperty -- Category ns=1;i=503548305 Category (forward: true) -->
+      <!-- HasProperty -- Category ns=1;i=503548305 MTCategoryType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=503548305</Reference>
-      <!-- HasProperty -- MTClassName ns=1;i=1778603416 MTClassName (forward: true) -->
+      <!-- HasProperty -- MTClassName ns=1;i=1778603416 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=1778603416</Reference>
-      <!-- HasProperty -- MTSubTypeName ns=1;i=641619688 MTSubTypeName (forward: true) -->
+      <!-- HasProperty -- MTSubTypeName ns=1;i=641619688 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=641619688</Reference>
-      <!-- HasProperty -- SourceName ns=1;i=2084138328 SourceName (forward: true) -->
+      <!-- HasProperty -- SourceName ns=1;i=2084138328 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2084138328</Reference>
-      <!-- HasProperty -- StreamRate ns=1;i=3037752743 StreamRate (forward: true) -->
+      <!-- HasProperty -- StreamRate ns=1;i=3037752743 Double (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3037752743</Reference>
-      <!-- HasProperty -- SampleRate ns=1;i=402358598 SampleRate (forward: true) -->
+      <!-- HasProperty -- SampleRate ns=1;i=402358598 Double (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=402358598</Reference>
-      <!-- HasProperty -- Representation ns=1;i=1847820705 Representation (forward: true) -->
+      <!-- HasProperty -- Representation ns=1;i=1847820705 RepresentationType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=1847820705</Reference>
       <!-- HasComponent -- MinimumDeltaFilter ns=1;i=1335917312  (forward: true) -->
       <Reference ReferenceType='HasComponent'>ns=1;i=1335917312</Reference>
       <!-- HasComponent -- PeriodDelta ns=1;i=3379568617  (forward: true) -->
       <Reference ReferenceType='HasComponent'>ns=1;i=3379568617</Reference>
-      <!-- HasProperty -- SignificantDigits ns=1;i=3176628732 SignificantDigits (forward: true) -->
+      <!-- HasProperty -- SignificantDigits ns=1;i=3176628732 UInt16 (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3176628732</Reference>
-      <!-- HasProperty -- Statistic ns=1;i=2493153242 Statistic (forward: true) -->
+      <!-- HasProperty -- Statistic ns=1;i=2493153242 MTStatisticType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2493153242</Reference>
-      <!-- HasProperty -- Units ns=1;i=4180901941 Units (forward: true) -->
+      <!-- HasProperty -- Units ns=1;i=4180901941 MTUnits (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4180901941</Reference>
-      <!-- HasProperty -- NativeUnits ns=1;i=1406042256 NativeUnits (forward: true) -->
+      <!-- HasProperty -- NativeUnits ns=1;i=1406042256 {"$ref"=>"AAAAAAFl6mphI4XG38c="} (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=1406042256</Reference>
-      <!-- HasProperty -- CoordinateSystem ns=1;i=2784067819 CoordinateSystem (forward: true) -->
+      <!-- HasProperty -- CoordinateSystem ns=1;i=2784067819 MTCoordinateSystemType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2784067819</Reference>
-      <!-- HasProperty -- InitialValue ns=1;i=278852802 InitialValue (forward: true) -->
+      <!-- HasProperty -- InitialValue ns=1;i=278852802 Double (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=278852802</Reference>
-      <!-- HasProperty -- ResetTrigger ns=1;i=1344927041 ResetTrigger (forward: true) -->
+      <!-- HasProperty -- ResetTrigger ns=1;i=1344927041 DataItemResetValueType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=1344927041</Reference>
-      <!-- HasProperty -- Nominal ns=1;i=2383756817 Nominal (forward: true) -->
+      <!-- HasProperty -- Nominal ns=1;i=2383756817 Double (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2383756817</Reference>
-      <!-- HasProperty -- EURange ns=1;i=2575690343 EURange (forward: true) -->
+      <!-- HasProperty -- EURange ns=1;i=2575690343 {"$ref"=>"AAAAAAFl7uXMNysB0eQ="} (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2575690343</Reference>
-      <!-- HasProperty -- EngineeringUnits ns=1;i=3687967402 EngineeringUnits (forward: true) -->
+      <!-- HasProperty -- EngineeringUnits ns=1;i=3687967402 {"$ref"=>"AAAAAAFl7ubWHis9O+4="} (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3687967402</Reference>
     </References>
   </UAVariableType>
-  <UAVariable NodeId='ns=1;i=503548305' BrowseName='1:Category' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=503548305' BrowseName='1:Category' ValueRank='-1' DataType='MTCategoryType'>
     <DisplayName>Category</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -1008,7 +1008,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=1847820705' BrowseName='1:Representation' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=1847820705' BrowseName='1:Representation' ValueRank='-1' DataType='RepresentationType'>
     <DisplayName>Representation</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -1052,7 +1052,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=2493153242' BrowseName='1:Statistic' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=2493153242' BrowseName='1:Statistic' ValueRank='-1' DataType='MTStatisticType'>
     <DisplayName>Statistic</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -1063,7 +1063,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=4180901941' BrowseName='1:Units' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=4180901941' BrowseName='1:Units' ValueRank='-1' DataType='MTUnits'>
     <DisplayName>Units</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -1074,7 +1074,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=1406042256' BrowseName='1:NativeUnits' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=1406042256' BrowseName='1:NativeUnits' ValueRank='-1' DataType='BaseVariableType'>
     <DisplayName>NativeUnits</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -1085,7 +1085,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=2784067819' BrowseName='1:CoordinateSystem' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=2784067819' BrowseName='1:CoordinateSystem' ValueRank='-1' DataType='MTCoordinateSystemType'>
     <DisplayName>CoordinateSystem</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -1107,7 +1107,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=1344927041' BrowseName='1:ResetTrigger' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=1344927041' BrowseName='1:ResetTrigger' ValueRank='-1' DataType='DataItemResetValueType'>
     <DisplayName>ResetTrigger</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -1129,7 +1129,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=2575690343' BrowseName='1:EURange' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=2575690343' BrowseName='1:EURange' ValueRank='-1' DataType='Range'>
     <DisplayName>EURange</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -1140,7 +1140,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2310855939</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=3687967402' BrowseName='1:EngineeringUnits' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=3687967402' BrowseName='1:EngineeringUnits' ValueRank='-1' DataType='EUInformation'>
     <DisplayName>EngineeringUnits</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -1156,43 +1156,43 @@
     <References>
       <!-- HasSubtype -- AnalogItemType i=2368 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=2368</Reference>
-      <!-- HasProperty -- Category ns=1;i=503548305 Category (forward: true) -->
+      <!-- HasProperty -- Category ns=1;i=503548305 MTCategoryType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=503548305</Reference>
-      <!-- HasProperty -- MTClassName ns=1;i=1778603416 MTClassName (forward: true) -->
+      <!-- HasProperty -- MTClassName ns=1;i=1778603416 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=1778603416</Reference>
-      <!-- HasProperty -- MTSubTypeName ns=1;i=641619688 MTSubTypeName (forward: true) -->
+      <!-- HasProperty -- MTSubTypeName ns=1;i=641619688 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=641619688</Reference>
-      <!-- HasProperty -- SourceName ns=1;i=2084138328 SourceName (forward: true) -->
+      <!-- HasProperty -- SourceName ns=1;i=2084138328 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2084138328</Reference>
-      <!-- HasProperty -- StreamRate ns=1;i=3037752743 StreamRate (forward: true) -->
+      <!-- HasProperty -- StreamRate ns=1;i=3037752743 Double (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3037752743</Reference>
-      <!-- HasProperty -- SampleRate ns=1;i=402358598 SampleRate (forward: true) -->
+      <!-- HasProperty -- SampleRate ns=1;i=402358598 Double (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=402358598</Reference>
-      <!-- HasProperty -- Representation ns=1;i=1847820705 Representation (forward: true) -->
+      <!-- HasProperty -- Representation ns=1;i=1847820705 RepresentationType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=1847820705</Reference>
       <!-- HasComponent -- MinimumDeltaFilter ns=1;i=1335917312  (forward: true) -->
       <Reference ReferenceType='HasComponent'>ns=1;i=1335917312</Reference>
       <!-- HasComponent -- PeriodDelta ns=1;i=3379568617  (forward: true) -->
       <Reference ReferenceType='HasComponent'>ns=1;i=3379568617</Reference>
-      <!-- HasProperty -- SignificantDigits ns=1;i=3176628732 SignificantDigits (forward: true) -->
+      <!-- HasProperty -- SignificantDigits ns=1;i=3176628732 UInt16 (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3176628732</Reference>
-      <!-- HasProperty -- Statistic ns=1;i=2493153242 Statistic (forward: true) -->
+      <!-- HasProperty -- Statistic ns=1;i=2493153242 MTStatisticType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2493153242</Reference>
-      <!-- HasProperty -- Units ns=1;i=4180901941 Units (forward: true) -->
+      <!-- HasProperty -- Units ns=1;i=4180901941 MTUnits (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4180901941</Reference>
-      <!-- HasProperty -- NativeUnits ns=1;i=1406042256 NativeUnits (forward: true) -->
+      <!-- HasProperty -- NativeUnits ns=1;i=1406042256 {"$ref"=>"AAAAAAFl6mphI4XG38c="} (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=1406042256</Reference>
-      <!-- HasProperty -- CoordinateSystem ns=1;i=2784067819 CoordinateSystem (forward: true) -->
+      <!-- HasProperty -- CoordinateSystem ns=1;i=2784067819 MTCoordinateSystemType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2784067819</Reference>
-      <!-- HasProperty -- InitialValue ns=1;i=278852802 InitialValue (forward: true) -->
+      <!-- HasProperty -- InitialValue ns=1;i=278852802 Double (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=278852802</Reference>
-      <!-- HasProperty -- ResetTrigger ns=1;i=1344927041 ResetTrigger (forward: true) -->
+      <!-- HasProperty -- ResetTrigger ns=1;i=1344927041 DataItemResetValueType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=1344927041</Reference>
-      <!-- HasProperty -- Nominal ns=1;i=2383756817 Nominal (forward: true) -->
+      <!-- HasProperty -- Nominal ns=1;i=2383756817 Double (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2383756817</Reference>
     </References>
   </UAVariableType>
-  <UAVariable NodeId='ns=1;i=503548305' BrowseName='1:Category' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=503548305' BrowseName='1:Category' ValueRank='-1' DataType='MTCategoryType'>
     <DisplayName>Category</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -1258,7 +1258,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=1847820705' BrowseName='1:Representation' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=1847820705' BrowseName='1:Representation' ValueRank='-1' DataType='RepresentationType'>
     <DisplayName>Representation</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -1302,7 +1302,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=2493153242' BrowseName='1:Statistic' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=2493153242' BrowseName='1:Statistic' ValueRank='-1' DataType='MTStatisticType'>
     <DisplayName>Statistic</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -1313,7 +1313,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=4180901941' BrowseName='1:Units' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=4180901941' BrowseName='1:Units' ValueRank='-1' DataType='MTUnits'>
     <DisplayName>Units</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -1324,7 +1324,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=1406042256' BrowseName='1:NativeUnits' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=1406042256' BrowseName='1:NativeUnits' ValueRank='-1' DataType='BaseVariableType'>
     <DisplayName>NativeUnits</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -1335,7 +1335,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=2784067819' BrowseName='1:CoordinateSystem' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=2784067819' BrowseName='1:CoordinateSystem' ValueRank='-1' DataType='MTCoordinateSystemType'>
     <DisplayName>CoordinateSystem</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -1357,7 +1357,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=1344927041' BrowseName='1:ResetTrigger' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=1344927041' BrowseName='1:ResetTrigger' ValueRank='-1' DataType='DataItemResetValueType'>
     <DisplayName>ResetTrigger</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -1384,19 +1384,19 @@
     <References>
       <!-- HasSubtype -- BaseDataVariableType i=63 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=63</Reference>
-      <!-- HasProperty -- Category ns=1;i=503548305 Category (forward: true) -->
+      <!-- HasProperty -- Category ns=1;i=503548305 MTCategoryType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=503548305</Reference>
-      <!-- HasProperty -- MTClassName ns=1;i=1778603416 MTClassName (forward: true) -->
+      <!-- HasProperty -- MTClassName ns=1;i=1778603416 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=1778603416</Reference>
-      <!-- HasProperty -- MTSubTypeName ns=1;i=641619688 MTSubTypeName (forward: true) -->
+      <!-- HasProperty -- MTSubTypeName ns=1;i=641619688 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=641619688</Reference>
-      <!-- HasProperty -- SourceName ns=1;i=2084138328 SourceName (forward: true) -->
+      <!-- HasProperty -- SourceName ns=1;i=2084138328 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2084138328</Reference>
-      <!-- HasProperty -- StreamRate ns=1;i=3037752743 StreamRate (forward: true) -->
+      <!-- HasProperty -- StreamRate ns=1;i=3037752743 Double (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3037752743</Reference>
-      <!-- HasProperty -- SampleRate ns=1;i=402358598 SampleRate (forward: true) -->
+      <!-- HasProperty -- SampleRate ns=1;i=402358598 Double (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=402358598</Reference>
-      <!-- HasProperty -- Representation ns=1;i=1847820705 Representation (forward: true) -->
+      <!-- HasProperty -- Representation ns=1;i=1847820705 RepresentationType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=1847820705</Reference>
       <!-- HasComponent -- MinimumDeltaFilter ns=1;i=1335917312  (forward: true) -->
       <Reference ReferenceType='HasComponent'>ns=1;i=1335917312</Reference>
@@ -1404,7 +1404,7 @@
       <Reference ReferenceType='HasComponent'>ns=1;i=3379568617</Reference>
     </References>
   </UAVariableType>
-  <UAVariable NodeId='ns=1;i=503548305' BrowseName='1:Category' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=503548305' BrowseName='1:Category' ValueRank='-1' DataType='MTCategoryType'>
     <DisplayName>Category</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
@@ -1470,7 +1470,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=1847820705' BrowseName='1:Representation' ValueRank='-1'>
+  <UAVariable NodeId='ns=1;i=1847820705' BrowseName='1:Representation' ValueRank='-1' DataType='RepresentationType'>
     <DisplayName>Representation</DisplayName>
     <References>
       <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->

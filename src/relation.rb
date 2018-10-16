@@ -22,7 +22,7 @@ module Relation
   end
 
   class Target
-    attr_reader :type, :name
+    attr_accessor :type, :name
     def initialize(type, name)
       @type, @name = type, name
     end
@@ -31,13 +31,12 @@ module Relation
 
   class Relation
     attr_reader :id, :name, :type, :json, :multliplicity,
-                :source, :target, :owner, :node_id, :documentation
+                :source, :target, :owner, :documentation
     
     def initialize(owner, r)
       @owner = owner
       @source = owner
       @id = r['_id']
-      @node_id = NodeId.id_to_i(@id)
       @name = r['name']
       @documentation = r['documentation']
       @type = r['_type']
@@ -129,18 +128,6 @@ module Relation
       end
     end
 
-    def resolve_data_type
-      @target.type.node_id
-    end
-
-    def target_node_id
-      if is_folder?
-        NodeIds['FolderType']
-      else
-        @target.type.node_id
-      end
-    end
-
     def is_folder?
       stereotype.name == 'Organizes'
     end
@@ -163,7 +150,7 @@ module Relation
       @name = a['name']
       @owner = owner
       @json = a
-      @target = Target.new(@data_type, @name)
+      @target = Target.new(@data_type, @data_type)
     end
     
     def is_property?
@@ -171,8 +158,19 @@ module Relation
     end
 
     def resolve_data_type
-      return @data_type if Aliases.include?(@data_type)
-      NodeIds[@data_type]
+      if Hash === @data_type
+        @target.type = Type.resolve_type(@data_type)
+      else
+        @data_type
+      end
+    end
+
+    def resolve_data_type_name
+      t = resolve_data_type || @data_type
+      String === t ? t : t.name
+    rescue
+      puts "Cannot resolve data type for #{@json.inspect}"
+      "BaseVariableType"
     end
     
   end

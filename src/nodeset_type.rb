@@ -39,7 +39,14 @@ module Relation
       if Aliases.include?(reference_type)
         reference_type
       else
-        p reference_type
+        resolve_node_id(reference_type)
+      end
+    end
+
+    def reference_type_node_id
+      if Aliases.include?(reference_type)
+        Aliases[reference_type]
+      else
         resolve_node_id(reference_type)
       end
     end
@@ -102,7 +109,7 @@ class Type
   def variable_property(ref)
     ele, refs = node('UAVariable', ref.node_id, ref.name, data_type: ref.resolve_data_type,
                value_rank: -1)
-    node_reference(ref.reference_type, 'HasTypeDefinition', ref.reference_type_id).
+    node_reference(ref.reference_type, 'HasTypeDefinition', ref.reference_type_node_id).
       each { |r| refs << r }
     node_reference(ref.rule, 'HasModelingRule', NodeIds[ref.rule]).
       each { |r| refs << r }
@@ -161,6 +168,12 @@ class Type
     stereo
   end
 
+  def add_mixin_relations
+    pnodes, prefs = @parent.add_mixin_relations if @parent
+    nodes, refs = relationships
+    [Array(pnodes).concat(nodes), Array(prefs).concat(refs)]
+  end
+
   def generate_nodeset(root)
     return if stereotype_name == '<<Dynamic Type>>'
 
@@ -168,7 +181,8 @@ class Type
       node, refs = node('UAObjectType', node_id, @name, abstract: @abstract)
     elsif is_a_type?('BaseDataVariableType')
       # Need to add data type
-      node, refs = node('UAVariableType', node_id, @name, abstract: @abstract, value_rank: -1)
+      node, refs = node('UAVariableType', node_id, @name, abstract: @abstract, value_rank: -1,
+                        data_type: variable_data_type)
     end
 
 
@@ -178,6 +192,12 @@ class Type
 
       node_reference(@parent.name, 'HasSubtype', @parent.node_id, forward: false).
         each { |r| refs << r }
+
+      if @mixin
+        nodes, references = @mixin.add_mixin_relations
+        references.each { |r| refs << r }
+        nodes.each { |n| root << n }
+      end
       
       nodes, references = relationships
       references.each { |r| refs << r }

@@ -154,7 +154,7 @@ module Relation
     end
     
     def is_attribute?
-      @stereotype and @stereotype.name =~ /Attribute/
+      stereotype and stereotype.name =~ /Attribute/
     end
 
     def is_property?

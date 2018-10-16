@@ -13,6 +13,8 @@ class Type
     @@types.each do |id, type|
       parent = type.get_parent
       parent.add_child(type) if parent
+
+      type.check_mixin
     end
   end
 
@@ -30,12 +32,32 @@ class Type
     end.compact
     
     @children = []
-
     @json = e
 
     @@types[@id] = self
 
     @model.add_type(self)
+  end
+
+  def check_mixin
+    @mixin = nil
+    @relations.each do |r|
+      if r.is_a?(Relation::Realization) and r.stereotype.name == 'Mixes In'
+        @mixin = r.target
+        puts "==>  Found Mixin #{r.target.name} for #{@name}"
+        return
+      end
+    end
+  end
+
+  def variable_data_type
+    @relations.each do |a|
+      if a.is_a?(Relation::Attribute) and a.is_attribute? and
+          a.stereotype.name =~ /Override/
+        return a.resolve_data_type
+      end
+    end
+    nil
   end
 
   def mandatory(obj)

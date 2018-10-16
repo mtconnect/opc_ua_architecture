@@ -78,8 +78,8 @@ class Type
 
   def generate_properties(f)
     @relations.each do |a|
-      unless a.is_attribute?
-        f.puts "HasProperty & Variable & #{a.name} &  #{a.target.type} & PropertyType & #{a.rule} \\\\"
+      if a.is_property? and !a.is_attribute?
+        f.puts "HasProperty & Variable & #{a.name} &  #{a.resolve_data_type_name} & PropertyType & #{a.rule} \\\\"
       end
     end
   end
@@ -105,43 +105,8 @@ class Type
 
   def generate_relations(f)
     @relations.each do |r|
-      if r['_type'] == 'UMLAssociation'
-        optional = mandatory(r['end1'])
-        target = resolve_type(r['end2']['reference'])
-        stereo = resolve_type(r['stereotype'])
-
-        next if stereo and stereo.name =~ /Attribute/
-        
-        node = 'Object'
-        browse = r['name']
-        browse = r['end1']['name'] unless browse
-
-        if browse.nil?
-          relation = (stereo && stereo.name) || 'HasProperty'
-          type_name = target.name
-          if relation == 'HasProperty'
-            type_def = 'PropertyType'
-            node = 'Variable'
-          else
-            type_def = '<Dynamic>'
-            node = 'Object'
-          end
-          browse = '<Dynamic>'
-        elsif r['end2']['multiplicity'] == '1'
-          type_name = ''
-          relation =  'HasComponent'
-          type_def = target.name
-        elsif stereo
-          relation = stereo.name == 'FolderType' ? 'Organizes' : stereo.name
-          type_def = stereo.name
-          type_name = target.name
-        else
-          type_def = target.name
-          type_name = ''
-          relation = 'HasComponent'
-        end
-          
-        f.puts "#{relation} & #{node} & #{browse} &  #{type_name} & #{type_def} & #{optional} \\\\"          
+      if r.is_a?(Relation::Association) and !r.is_attribute?
+        f.puts "#{r.reference_type} & #{r.target.type.base_type} & #{r.name} &  #{r.target.type.name} & #{r.target_node_name} & #{r.rule} \\\\"          
       end
     end
   end

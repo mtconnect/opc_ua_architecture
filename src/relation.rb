@@ -73,6 +73,10 @@ module Relation
       'HasProperty'
     end
 
+    def target_node_name
+      'PropertyType'
+    end
+
     def rule
       @optional ? 'Optional' : 'Mandatory'
     end

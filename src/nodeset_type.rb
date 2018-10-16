@@ -21,6 +21,10 @@ module NodeId
     end
   end
 
+  def resolve_node_name(name)
+    NodeId.node_id_for(name, nil)
+  end
+
   def resolve_node_id(id)
     type = Type.types[id]
     if type
@@ -47,11 +51,11 @@ module Relation
       end
     end
 
-    def reference_type_node_id
-      if Aliases.include?(reference_type)
-        Aliases[reference_type]
+    def target_type_node_id
+      if Aliases.include?(target_node_name)
+        Aliases[target_node_name]
       else
-        resolve_node_id(reference_type)
+        NodeIds[target_node_name]
       end
     end
   end
@@ -138,7 +142,7 @@ class Type
   def variable_property(ref)
     ele, refs = node('UAVariable', ref.node_id, ref.name, data_type: ref.resolve_data_type_name,
                value_rank: -1)
-    node_reference(ref.reference_type, 'HasTypeDefinition', ref.reference_type_node_id).
+    node_reference(ref.target_node_name, 'HasTypeDefinition', ref.target_type_node_id).
       each { |r| refs << r }
     node_reference(ref.rule, 'HasModelingRule', NodeIds[ref.rule]).
       each { |r| refs << r }

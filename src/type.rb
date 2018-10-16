@@ -180,6 +180,15 @@ class Type
     end.compact
   end
 
+  def base_type
+    if is_a_type?('BaseDataVariableType')
+      "Variable"
+    else
+      "Object"
+    end
+  end
+    
+
   def dependencies
     @relations.select { |r| r.class == Relation::Dependency }
   end

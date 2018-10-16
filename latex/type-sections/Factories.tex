@@ -4,15 +4,12 @@
 %%% TeX-master: "../main"
 %%% End:
 
-Factory Pattern is a software architecture methodology that was documented in the Gang of Four Design Patterns book
-\cite{Gamma1994DesignSoftware}. Factories are used to create objects in statically typed
-languages and they can be used to create classes in dynamically typed languages like Ruby and Python. OPC UA resembles
+Factory Pattern is a software architecture methodology that was documented in the Gang of Four Design Patterns book \cite{Gamma1994DesignSoftware}. Factories are used to create objects in statically typed languages and they can be used to create classes in dynamically typed languages like Ruby and Python. OPC UA resembles
 a dynamically typed language and provides the structure to define types.
 
 These classes are not part of the OPC UA address space and are only there as guidance for the implementation of the
 OPC UA server. 
 
-The factories will be utilizing the MTConnect Device Model defined in the MTConnect Standard Part 2 \cite{MTCPart2} to
-create the necessary types. In the document we specify the relations as <<Create, <<use>>, and <<instantiate>>. The <<Create>> relationship specifies that this factory is responsible for creating dynamic types. The class will always be associated with a <<Dynamic Type>> specified with a template parameter that will indicate where the type name substitution is. Such as \texttt{{Component}Type} with a template parameter \texttt{Component} specifies that the \texttt{Component} will be replaced with the \texttt{QName} of the MTConnect \texttt{Component} element as specified in Part 2 \cite{MTCPart2}.
+The factories will be utilizing the MTConnect Device Model defined in the MTConnect Standard Part 2 \cite{MTCPart2} to create the necessary types. In the document we specify the relations as <<Create, <<use>>, and <<instantiate>>. The <<Create>> relationship specifies that this factory is responsible for creating dynamic types. The class will always be associated with a <<Dynamic Type>> specified with a template parameter that will indicate where the type name substitution is. Such as \texttt{{Component}Type} with a template parameter \texttt{Component} specifies that the \texttt{Component} will be replaced with the \texttt{QName} of the MTConnect \texttt{Component} element as specified in Part 2 \cite{MTCPart2}.
 
 For example, the \texttt{ComponentTypeFactory} \ref{type:ComponentTypeFactory} will create a \texttt{LinearType} for the \texttt{<Linear name="X">...} Axis. This type will be created once for all Objects that have the \texttt{LinearType} \texttt{HasTypeDefinition} relationship. 

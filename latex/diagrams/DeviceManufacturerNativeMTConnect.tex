@@ -1,0 +1,54 @@
+%Block Styles
+
+\tikzstyle{blockblue} = [rectangle, draw, fill=blue!20,
+    text width=5em, text centered, rounded corners, minimum height=6em]
+    
+\tikzstyle{blockred} = [rectangle, draw, fill=red!20,
+    text width=5em, text centered, rounded corners, minimum height=6em]
+    
+\tikzstyle{blockyellow} = [rectangle, draw, fill=yellow!20,
+    text width=10em, text centered, rounded corners, minimum height=5em]
+    
+\tikzstyle{blockviolet} = [rectangle, draw, fill=violet!20,
+    text width=6em, text centered, rounded corners, minimum height=4em]
+    
+\tikzstyle{blockpurple} = [rectangle, draw, fill=purple!20,
+    text width=6em, text centered, rounded corners, minimum height=4em]
+    
+\tikzstyle{blockwhite} = [rectangle, draw, fill=white!20,
+    text width=5em, text centered, rounded corners, minimum height=6em]
+    
+\tikzstyle{blockwhitelarge} = [rectangle, draw, dashed, fill=white!20,
+    text width=18em, text centered, rounded corners, minimum height=8em]
+    
+\tikzstyle{line} = [draw, very thick, color=black!50, -{Latex[scale=1.5]}]
+
+\begin{figure}[ht]
+\centering\scalebox{0.8}{\begin{tikzpicture}[scale = 3, node distance = 2cm, auto]
+    % Place nodes
+    \node [blockyellow] (mtcopcgateway) {MTConnect To OPC-UA Gateway};
+    \node [blockviolet, left of=mtcopcgateway, node distance = 6cm] (opcuaclient) {PLCOpen OPC-UA Client};
+    \node [blockviolet, below of=opcuaclient] (genericopcuaclient) {Generic OPC-UA Client};
+    \node [blockviolet, below of=genericopcuaclient] (mtcopcclient) {MTConnect OPC-UA Client};
+    \node [blockpurple, below of=mtcopcclient] (mtcapplication) {MTConnect Application};
+    \node [blockwhitelarge, below of=mtcopcgateway, node distance = 6cm] (parentnode) {};
+    \node [blockwhite, below of=mtcopcgateway, node distance = 6cm] (internalapi) {Internal Device APIs};
+    \node [blockred, left of=internalapi, node distance =2.3cm] (mtcagent) {MTConnect Agent};
+    \node [blockblue, right of=internalapi, node distance =2.3cm] (devicehardware) {Device Hardware};
+    
+    % Draw edges
+    \path [line] (mtcopcgateway) -- (opcuaclient);
+    \path [line]  (opcuaclient) -- (mtcopcgateway);
+    \path [line] (mtcopcgateway) |- (genericopcuaclient);
+    \path [line] (mtcopcgateway) |- (mtcopcclient);
+    \path [line] (genericopcuaclient) -| (mtcopcgateway);
+    \path [line] (mtcopcclient) -| (mtcopcgateway);
+    \path [line] (parentnode) -- (mtcopcgateway);
+    \path [line] (mtcopcgateway) -- (parentnode);
+    \path [line] (mtcapplication) -- (mtcagent);
+    \path [line] (mtcagent) -- (mtcapplication);
+    \end{tikzpicture}
+    }
+\caption{Device Manufacturer with Native MTConnect Agent}
+ \label{fig:devicemanufacturernativemtconnect}
+\end{figure}

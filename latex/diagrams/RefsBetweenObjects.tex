@@ -1,0 +1,66 @@
+%First Figure%
+\begin{figure}[ht]
+\centering\scalebox{.7}{
+\begin{tikzpicture}[auto]
+
+\ReferenceType{Organizes}{}{}{}{};
+\ReferenceType{Owns}{below right of}{Organizes}{4}{};
+\ReferenceType{HasClassification}{below of}{Owns}{}{};
+
+\HasSubType{}{Organizes}{-|}{Owns}{};
+\HasSubType{}{Organizes}{-|}{HasClassification}{};
+
+\ReferenceType{NonHierarchical}{right of}{Organizes}{6.5}{};
+\ReferenceType{Breeds}{below right of}{NonHierarchical}{4}{};
+\ReferenceType{HasBreed}{below of}{Breeds}{}{};
+\ReferenceType{LivesIn}{below of}{HasBreed}{}{};
+
+\HasSubType{}{NonHierarchical}{-|}{Breeds}{};
+\HasSubType{}{NonHierarchical}{-|}{HasBreed}{};
+\HasSubType{}{NonHierarchical}{-|}{LivesIn}{};
+
+\end{tikzpicture}
+}
+\caption{Reference Types from other Reference Types}
+ \label{fig:opcuareferencetypesfromotherreferencetypes}
+
+\end{figure}
+%%%%%%%%%%%%
+\FloatBarrier
+
+%Second figure%
+\begin{figure}[h]
+\centering\scalebox{.7}{
+\begin{tikzpicture}[ auto]
+
+\Object{Farmers}{}{}{}{};
+\Object{Joe}{below left of}{Farmers}{3}{};
+\Object{Sam}{below right of}{Farmers}{3}{};
+\Object{Kennel 2}{below of}{Sam}{3}{};
+
+\Object{Fido}{below right of}{Kennel 2}{3}{};
+
+\Object{Poodle}{above right of}{Fido}{3}{};
+\Object{Dogs}{above of}{Poodle}{3}{};
+\Object{Animals}{above right of}{Dogs}{3}{};
+\Object{Cats}{below right of}{Animals}{3}{};
+\Object{Siamese}{below of}{Cats}{3}{};
+
+\HierarchicalReference{Organizes}{Farmers}{-|}{Joe}{below = 1.5em};
+\HierarchicalReference{Organizes}{Farmers}{-|}{Sam}{below = 1.5em};
+\HierarchicalReference{Owns}{Sam}{--}{Kennel 2}{below = -1em};
+\HierarchicalReference{HasClassification}{Animals}{-|}{Dogs}{below = 1.5em};
+\HierarchicalReference{HasClassification}{Animals}{-|}{Cats}{below = 1.5em};
+\HierarchicalReference{HasClassification}{Dogs}{--}{Poodle}{below = -1em};
+\HierarchicalReference{HasClassification}{Cats}{--}{Siamese}{below = -1em};
+\AsymmetricReference{Breeds}{Kennel 2}{--}{Poodle}{below = -0.75em};
+\AsymmetricReference{LivesIn}{Fido}{-|}{Kennel 2}{below = -1em};
+\AsymmetricReference{HasBreed}{Fido}{-|}{Poodle}{below = -1em};
+
+\end{tikzpicture}
+}
+\caption{References showing hierarchies and/or relationships}
+ \label{fig:refsbetweenobjects}
+ 
+\end{figure}
+%%%%%%%%%%%%

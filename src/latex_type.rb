@@ -84,7 +84,13 @@ class Type
   def generate_relations(f)
     @relations.each do |r|
       if r.is_reference?
-        f.puts "#{r.reference_type} & #{r.target.type.base_type} & #{r.name} &  #{r.target.type.name} & #{r.target_node_name} & #{r.rule} \\\\"          
+        if r.is_property?
+          type_info = "#{r.target.type.name} & #{r.target_node_name}"
+        else
+          type_info = "\\multicolumn{2}{|l|}{#{r.target_node_name}}"
+        end
+
+        f.puts "#{r.reference_type} & #{r.target.type.base_type} & #{r.browse_name} & #{type_info} & #{r.rule} \\\\"          
       end
     end
   end

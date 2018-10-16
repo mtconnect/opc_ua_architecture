@@ -1,0 +1,39 @@
+%Nodes
+%   \Node{NAME}{RELATIVE_POSITION}{RELATIVE_TO}{NODE_DISTANCE}{_OPTIONAL_ARGUMENT};
+
+%Figure
+\begin{figure}[ht]
+\centering\scalebox{0.8}{
+\begin{tikzpicture}[node distance = 2cm, auto]
+    % Place nodes
+    
+    %Object
+    \Object{Object}{}{}{}{};
+    
+    %ObjectType
+    \ObjectType{ObjectType}{below of}{Object}{2}{};
+    
+    %Variable
+    \Variable{Variable}{right of}{Object}{3.5}{};
+    
+    %VariableType
+    \VariableType{VariableType}{below of}{Variable}{2}{};
+    
+    %Method
+    \Method{Method}{right of}{Variable}{3.5}{};
+    
+    %View
+    \View{View}{right of}{Method}{3.5}{};
+    
+    %DataType
+    \DataType{DataType}{below of}{Method}{2}{};
+
+    %ReferenceType
+    \ReferenceType{ReferenceType}{below of}{View}{}{};
+    
+    \end{tikzpicture}
+    }
+\caption{The OPC UA Information Model Notation for Types and Instances}
+ \label{fig:opcinfomodelnodeclassnotation}
+
+\end{figure}

@@ -1,0 +1,23 @@
+\begin{figure}[ht]
+\centering\begin{tikzpicture}[auto]
+
+\node [draw] (device) {\includegraphics[width=.25\textwidth]{diagrams/MTConnectOverviewDevice.png} };
+\node [black, below of =device, node distance =1.5cm] (text1) {Device};
+
+\node [rectangle, rounded corners, draw, above right of = device, node distance = 3cm, fill=white!20,text width=5em, xshift = 2em, text centered, minimum height=4em] (adapter) {Adapter (optional)};
+
+\node [rectangle, rounded corners, draw, right of = adapter, node distance = 3cm, fill=white!20,text width=5em, text centered, minimum height=4em] (agent) {MTConnect Agent};
+
+\node [draw, above right of = agent, node distance = 2.5 cm, xshift = 3em] (client) {\includegraphics[width=.25\textwidth]{diagrams/MTConnectOverviewClient.png}};
+\node [black, below of =client, node distance = 1.3cm] (text2) {Client};
+ 
+ \path [draw] (device) |- (adapter);
+ \path [draw]  (adapter) -- (agent);
+ \path [draw] (agent) |- (client);
+
+
+\end{tikzpicture}
+\caption{MTConnect Architecture Overview}
+ \label{fig:mtconnectoverview}
+
+\end{figure}

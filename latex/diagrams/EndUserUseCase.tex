@@ -1,0 +1,63 @@
+%Block Styles
+
+\tikzstyle{blockblue} = [rectangle, draw, fill=blue!20,
+    text width=6em, text centered, rounded corners, minimum height=4em]
+    
+\tikzstyle{blockred} = [rectangle, draw, fill=red!20,
+    text width=6em, text centered, rounded corners, minimum height=4em]
+    
+\tikzstyle{blockyellow} = [rectangle, draw, fill=yellow!20,
+    text width=10em, text centered, rounded corners, minimum height=5em]
+    
+\tikzstyle{blockviolet} = [rectangle, draw, fill=violet!20,
+    text width=6em, text centered, rounded corners, minimum height=4em]
+    
+\tikzstyle{blockpurple} = [rectangle, draw, fill=purple!20,
+    text width=6em, text centered, rounded corners, minimum height=4em]
+    
+\tikzstyle{blockwhite} = [rectangle, draw, fill=white!20,
+    text width=5em, text centered, rounded corners, minimum height=6em]
+    
+\tikzstyle{blockwhitelarge} = [rectangle, draw, dashed, fill=white!20,
+    text width=18em, text centered, rounded corners, minimum height=8em]
+    
+\tikzstyle{line} = [draw, very thick, color=black!50, -{Latex[scale=1.5]}]
+
+\begin{figure}[ht]
+\centering\scalebox{0.8}{\begin{tikzpicture}[scale = 3, node distance = 2cm, auto]
+    % Place nodes
+    \node [blockviolet] (enduserengineer) {End User Engineer};
+    \node [blockred, right of = enduserengineer, node distance = 4.5cm] (opcuaserver1) {OPC UA Server 1};
+    \node [blockblue, above of = opcuaserver1, node distance = 3cm] (mtcagent) {MTConnect Agent};
+    \node [blockred, below of = opcuaserver1, node distance = 3cm] (opcuaserver2) {OPC UA Server 2};
+    \node [blockpurple, right of = opcuaserver1, node distance = 4.5cm] (device) {Device};
+    
+    %Path
+    \coordinate [left of = opcuaserver1, node distance = 2.25cm ] (a);
+    \coordinate [right of = opcuaserver1, node distance = 2.25cm ] (b);
+
+    \path [line] (enduserengineer) -- (a) |- (mtcagent);
+    \path [line] (enduserengineer) -- (a) |- (opcuaserver1);
+    \path [line] (enduserengineer) -- (a) |- (opcuaserver2);
+    
+    \path [line] (mtcagent) -| (b) -- (device);
+    \path [line] (opcuaserver1) -| (b) -- (device);
+    \path [line] (opcuaserver2) -| (b) -- (device);
+    
+    \draw [decorate,decoration={brace,mirror,amplitude=10pt}]
+(-0.35,-1.5) -- (0.4,-1.5) node [black,midway, below, yshift = -1.5 em, text width = 2 cm, align = center] {Reduced Costs};
+
+    \draw [decorate,decoration={brace,mirror,amplitude=10pt}]
+(0.4,-1.5) -- (1.1,-1.5) node [black,midway, below, yshift = -1.5 em , text width = 2.5cm, align = center] {Same Structure and Semantics};
+
+    \draw [decorate,decoration={brace,mirror,amplitude=10pt}]
+(1.1,-1.5) -- (1.9,-1.5) node [black,midway, below, yshift = -1.5 em , text width = 2cm, align = center] {Different Vendors};
+
+    \draw [decorate,decoration={brace,mirror,amplitude=10pt}]
+(1.9,-1.5) -- (3.4,-1.5) node [black,midway, below, yshift = -1.5 em , text width = 3cm, align = center] {Same Device};
+    
+\end{tikzpicture}
+}
+\caption{The End User Engineering Use Case}
+ \label{fig:enduserusecase}
+\end{figure}

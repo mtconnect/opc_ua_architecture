@@ -1,4 +1,4 @@
-% Generated 2018-10-16 15:11:50 -0700
+% Generated 2018-10-16 15:31:19 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -40,12 +40,12 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{BaseObjectType} (See OPC UA Part 5 Documentation)} \\
-HasProperty & Object & Number &  Int32 & PropertyType & Optional \\
-HasProperty & Object & Name &  String & PropertyType & Optional \\
-HasProperty & Object & MTDescription &  String & PropertyType & Optional \\
-HasProperty & Object & CalibrationDate &  UtcTime & PropertyType & Optional \\
-HasProperty & Object & NextCalibrationDate &  UtcTime & PropertyType & Optional \\
-HasProperty & Object & CalibrationInitials &  String & PropertyType & Optional \\
+HasProperty & Variable & Number & Int32 & PropertyType & Optional \\
+HasProperty & Variable & Name & String & PropertyType & Optional \\
+HasProperty & Variable & MTDescription & String & PropertyType & Optional \\
+HasProperty & Variable & CalibrationDate & UtcTime & PropertyType & Optional \\
+HasProperty & Variable & NextCalibrationDate & UtcTime & PropertyType & Optional \\
+HasProperty & Variable & CalibrationInitials & String & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -75,10 +75,10 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{BaseObjectType} (See OPC UA Part 5 Documentation)} \\
-HasProperty & Object & Station &  String & PropertyType & Optional \\
-HasProperty & Object & SerialNumber &  String & PropertyType & Optional \\
-HasProperty & Object & Manufacturer &  String & PropertyType & Optional \\
-HasProperty & Object & Data &  String & PropertyType & Optional \\
+HasProperty & Variable & Station & String & PropertyType & Optional \\
+HasProperty & Variable & SerialNumber & String & PropertyType & Optional \\
+HasProperty & Variable & Manufacturer & String & PropertyType & Optional \\
+HasProperty & Variable & Data & String & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -149,24 +149,24 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{BaseObjectType} (See OPC UA Part 5 Documentation)} \\
 HasSubtype & ObjectType & MTDeviceType & \multicolumn{3}{|l|}{See section \ref{type:MTDeviceType}} \\
 HasSubtype & ObjectType & \{Component\}Type & \multicolumn{3}{|l|}{See section \ref{type:{Component}Type}} \\
-HasProperty & Object & XmlId &  String & PropertyType & Optional \\
-HasProperty & Object & Name &  String & PropertyType & Optional \\
-HasProperty & Object & NativeName &  String & PropertyType & Optional \\
-HasProperty & Object & Uuid &  String & PropertyType & Optional \\
-HasProperty & Object & SampleRate &  Float & PropertyType & Optional \\
-HasProperty & Object & SampleInterval &  Float & PropertyType & Optional \\
-HasComponent & Object & Description &  DescriptionType & DescriptionType & Optional \\
-HasComponent & Object & Configuration &  MTConfigurationType & MTConfigurationType & Optional \\
-HasMTReferenceType & Object &  &  BaseObjectType & BaseObjectType & Optional \\
-HasComponent & Variable &  &  MTEnumeratedEventType & MTEnumeratedEventType & Optional \\
-HasComponent & Variable &  &  MTNumericEventType & MTNumericEventType & Optional \\
-HasComponent & Variable &  &  MTStringEventType & MTStringEventType & Optional \\
-HasComponent & Variable &  &  MTSampleType & MTSampleType & Optional \\
-HasComponent & Event &  &  MTMessageType & MTMessageType & Optional \\
-HasComponent & Variable &  &  AssetEventType & AssetEventType & Optional \\
-Organizes & Object & Components &  FolderType & FolderType & Optional \\
-Organizes & Object & Compositions &  FolderType & FolderType & Optional \\
-Organizes & Object & Conditions &  FolderType & FolderType & Optional \\
+HasProperty & Variable & XmlId & String & PropertyType & Optional \\
+HasProperty & Variable & Name & String & PropertyType & Optional \\
+HasProperty & Variable & NativeName & String & PropertyType & Optional \\
+HasProperty & Variable & Uuid & String & PropertyType & Optional \\
+HasProperty & Variable & SampleRate & Float & PropertyType & Optional \\
+HasProperty & Variable & SampleInterval & Float & PropertyType & Optional \\
+HasComponent & Object & Description & \multicolumn{2}{|l|}{DescriptionType} & Optional \\
+HasComponent & Object & Configuration & \multicolumn{2}{|l|}{MTConfigurationType} & Optional \\
+HasMTReferenceType & Object & <Dynamic> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
+HasComponent & Variable & <Dynamic> & \multicolumn{2}{|l|}{MTEnumeratedEventType} & Optional \\
+HasComponent & Variable & <Dynamic> & \multicolumn{2}{|l|}{MTNumericEventType} & Optional \\
+HasComponent & Variable & <Dynamic> & \multicolumn{2}{|l|}{MTStringEventType} & Optional \\
+HasComponent & Variable & <Dynamic> & \multicolumn{2}{|l|}{MTSampleType} & Optional \\
+HasComponent & Event & <Dynamic> & \multicolumn{2}{|l|}{MTMessageType} & Optional \\
+HasComponent & Variable & <Dynamic> & \multicolumn{2}{|l|}{AssetEventType} & Optional \\
+Organizes & Object & Components & \multicolumn{2}{|l|}{FolderType} & Optional \\
+Organizes & Object & Compositions & \multicolumn{2}{|l|}{FolderType} & Optional \\
+Organizes & Object & Conditions & \multicolumn{2}{|l|}{FolderType} & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -207,8 +207,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTComponentType} (See section \ref{type:MTComponentType})} \\
-HasProperty & Object & Version &  String & PropertyType & Optional \\
-HasProperty & Object & Iso841Class &  String & PropertyType & Optional \\
+HasProperty & Variable & Version & String & PropertyType & Optional \\
+HasProperty & Variable & Iso841Class & String & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -301,9 +301,9 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{BaseObjectType} (See OPC UA Part 5 Documentation)} \\
 HasSubtype & ObjectType & \{Composition\}Type & \multicolumn{3}{|l|}{See section \ref{type:{Composition}Type}} \\
-HasProperty & Object & Uuid &  String & PropertyType & Optional \\
-HasProperty & Object & Name &  String & PropertyType & Optional \\
-HasProperty & Object & MTDescription &  String & PropertyType & Optional \\
+HasProperty & Variable & Uuid & String & PropertyType & Optional \\
+HasProperty & Variable & Name & String & PropertyType & Optional \\
+HasProperty & Variable & MTDescription & String & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -395,11 +395,11 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTConfigurationType} (See section \ref{type:MTConfigurationType})} \\
-HasProperty & Object & FirwareVersion &  String & PropertyType & Optional \\
-HasProperty & Object & CalibrationDate &  UtcTime & PropertyType & Optional \\
-HasProperty & Object & NextCalibrationDate &  UtcTime & PropertyType & Optional \\
-HasProperty & Object & CalibrationInitials &  String & PropertyType & Optional \\
-HasChannels & Object & Channels &  ChannelType & ChannelType & Optional \\
+HasProperty & Variable & FirwareVersion & String & PropertyType & Optional \\
+HasProperty & Variable & CalibrationDate & UtcTime & PropertyType & Optional \\
+HasProperty & Variable & NextCalibrationDate & UtcTime & PropertyType & Optional \\
+HasProperty & Variable & CalibrationInitials & String & PropertyType & Optional \\
+Organizes & Object & Channels & \multicolumn{2}{|l|}{FolderType} & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -441,19 +441,19 @@ DataType & \multicolumn{5}{|l|}{UMLAssociation} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{BaseDataVariableType} (See OPC UA Part 8 Documentation)} \\
-HasProperty & Object & Category &  MTCategoryType & PropertyType & Optional \\
-HasProperty & Object & MTClassName &  String & PropertyType & Optional \\
-HasProperty & Object & MTSubTypeName &  String & PropertyType & Optional \\
-HasProperty & Object & SourceName &  String & PropertyType & Optional \\
-HasProperty & Object & StreamRate &  Double & PropertyType & Optional \\
-HasProperty & Object & SampleRate &  Double & PropertyType & Optional \\
-HasProperty & Object & Representation &  MTRepresentationType & PropertyType & Optional \\
-HasMTClassType & Object &  &  MTDataItemClassType & MTDataItemClassType & Optional \\
-HasMTSubClassType & Object &  &  MTDataItemSubClassType & MTDataItemSubClassType & Optional \\
-HasComponent & Object & MinimumDeltaFilter &  MinimumDeltaFilterType & MinimumDeltaFilterType & Optional \\
-HasComponent & Object & PeriodDelta &  PeriodFilterType & PeriodFilterType & Optional \\
-HasMTComposition & Object &  &  MTCompositionType & MTCompositionType & Optional \\
-Attribute Override & Object & DataType &  AssetEventDataType & AssetEventDataType & Optional \\
+HasProperty & Object & Category & MTCategoryType & PropertyType & Optional \\
+HasProperty & Variable & MTClassName & String & PropertyType & Optional \\
+HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
+HasProperty & Variable & SourceName & String & PropertyType & Optional \\
+HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
+HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
+HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasMTClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
+HasMTSubClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
+HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
+HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
+HasMTComposition & Object & <Dynamic> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
+Attribute Override & Variable & DataType & \multicolumn{2}{|l|}{AssetEventDataType} & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -482,18 +482,18 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 HasSubtype & ObjectType & MTNumericDataItemType & \multicolumn{3}{|l|}{See section \ref{type:MTNumericDataItemType}} \\
-HasProperty & Object & Category &  MTCategoryType & PropertyType & Optional \\
-HasProperty & Object & MTClassName &  String & PropertyType & Optional \\
-HasProperty & Object & MTSubTypeName &  String & PropertyType & Optional \\
-HasProperty & Object & SourceName &  String & PropertyType & Optional \\
-HasProperty & Object & StreamRate &  Double & PropertyType & Optional \\
-HasProperty & Object & SampleRate &  Double & PropertyType & Optional \\
-HasProperty & Object & Representation &  MTRepresentationType & PropertyType & Optional \\
-HasMTClassType & Object &  &  MTDataItemClassType & MTDataItemClassType & Optional \\
-HasMTSubClassType & Object &  &  MTDataItemSubClassType & MTDataItemSubClassType & Optional \\
-HasComponent & Object & MinimumDeltaFilter &  MinimumDeltaFilterType & MinimumDeltaFilterType & Optional \\
-HasComponent & Object & PeriodDelta &  PeriodFilterType & PeriodFilterType & Optional \\
-HasMTComposition & Object &  &  MTCompositionType & MTCompositionType & Optional \\
+HasProperty & Object & Category & MTCategoryType & PropertyType & Optional \\
+HasProperty & Variable & MTClassName & String & PropertyType & Optional \\
+HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
+HasProperty & Variable & SourceName & String & PropertyType & Optional \\
+HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
+HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
+HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasMTClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
+HasMTSubClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
+HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
+HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
+HasMTComposition & Object & <Dynamic> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -541,14 +541,14 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemType} (See section \ref{type:MTDataItemType})} \\
-HasProperty & Object & SignificantDigits &  UInt16 & PropertyType & Optional \\
-HasProperty & Object & Statistic &  String & PropertyType & Optional \\
-HasProperty & Object & Units &  String & PropertyType & Optional \\
-HasProperty & Object & NativeUnits &  String & PropertyType & Optional \\
-HasProperty & Object & CoordinateSystem &  CoordinateSystemType & PropertyType & Optional \\
-HasProperty & Object & InitialValue &  Double & PropertyType & Optional \\
-HasProperty & Object & ResetTrigger &  DataItemResetValueType & PropertyType & Optional \\
-HasProperty & Object & Nominal &  Double & PropertyType & Optional \\
+HasProperty & Variable & SignificantDigits & UInt16 & PropertyType & Optional \\
+HasProperty & Variable & Statistic & String & PropertyType & Optional \\
+HasProperty & Variable & Units & String & PropertyType & Optional \\
+HasProperty & Variable & NativeUnits & String & PropertyType & Optional \\
+HasProperty & Object & CoordinateSystem & CoordinateSystemType & PropertyType & Optional \\
+HasProperty & Variable & InitialValue & Double & PropertyType & Optional \\
+HasProperty & Object & ResetTrigger & DataItemResetValueType & PropertyType & Optional \\
+HasProperty & Variable & Nominal & Double & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -600,18 +600,18 @@ DataType & \multicolumn{5}{|l|}{UMLAttribute} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MultiStateDiscreteType} (See OPC UA Part 8 Documentation)} \\
-HasProperty & Object & Category &  MTCategoryType & PropertyType & Optional \\
-HasProperty & Object & MTClassName &  String & PropertyType & Optional \\
-HasProperty & Object & MTSubTypeName &  String & PropertyType & Optional \\
-HasProperty & Object & SourceName &  String & PropertyType & Optional \\
-HasProperty & Object & StreamRate &  Double & PropertyType & Optional \\
-HasProperty & Object & SampleRate &  Double & PropertyType & Optional \\
-HasProperty & Object & Representation &  MTRepresentationType & PropertyType & Optional \\
-HasMTClassType & Object &  &  MTDataItemClassType & MTDataItemClassType & Optional \\
-HasMTSubClassType & Object &  &  MTDataItemSubClassType & MTDataItemSubClassType & Optional \\
-HasComponent & Object & MinimumDeltaFilter &  MinimumDeltaFilterType & MinimumDeltaFilterType & Optional \\
-HasComponent & Object & PeriodDelta &  PeriodFilterType & PeriodFilterType & Optional \\
-HasMTComposition & Object &  &  MTCompositionType & MTCompositionType & Optional \\
+HasProperty & Object & Category & MTCategoryType & PropertyType & Optional \\
+HasProperty & Variable & MTClassName & String & PropertyType & Optional \\
+HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
+HasProperty & Variable & SourceName & String & PropertyType & Optional \\
+HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
+HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
+HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasMTClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
+HasMTSubClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
+HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
+HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
+HasMTComposition & Object & <Dynamic> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -643,7 +643,7 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 HasSubtype & ObjectType & MinimumDeltaFilterType & \multicolumn{3}{|l|}{See section \ref{type:MinimumDeltaFilterType}} \\
 HasSubtype & ObjectType & PeriodFilterType & \multicolumn{3}{|l|}{See section \ref{type:PeriodFilterType}} \\
-HasProperty & Object & Value &  Float & PropertyType & Optional \\
+HasProperty & Variable & Value & Float & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -730,7 +730,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{SystemEventType} (See OPC UA Part 5 Documentation)} \\
-HasProperty & Object & NativeCode &  String & PropertyType & Optional \\
+HasProperty & Variable & NativeCode & String & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -761,28 +761,28 @@ DataType & \multicolumn{5}{|l|}{UMLAttribute} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{DataItemType} (See OPC UA Part 8 Documentation)} \\
-HasProperty & Object & Category &  MTCategoryType & PropertyType & Optional \\
-HasProperty & Object & MTClassName &  String & PropertyType & Optional \\
-HasProperty & Object & MTSubTypeName &  String & PropertyType & Optional \\
-HasProperty & Object & SourceName &  String & PropertyType & Optional \\
-HasProperty & Object & StreamRate &  Double & PropertyType & Optional \\
-HasProperty & Object & SampleRate &  Double & PropertyType & Optional \\
-HasProperty & Object & Representation &  MTRepresentationType & PropertyType & Optional \\
-HasMTClassType & Object &  &  MTDataItemClassType & MTDataItemClassType & Optional \\
-HasMTSubClassType & Object &  &  MTDataItemSubClassType & MTDataItemSubClassType & Optional \\
-HasComponent & Object & MinimumDeltaFilter &  MinimumDeltaFilterType & MinimumDeltaFilterType & Optional \\
-HasComponent & Object & PeriodDelta &  PeriodFilterType & PeriodFilterType & Optional \\
-HasMTComposition & Object &  &  MTCompositionType & MTCompositionType & Optional \\
-HasProperty & Object & SignificantDigits &  UInt16 & PropertyType & Optional \\
-HasProperty & Object & Statistic &  String & PropertyType & Optional \\
-HasProperty & Object & Units &  String & PropertyType & Optional \\
-HasProperty & Object & NativeUnits &  String & PropertyType & Optional \\
-HasProperty & Object & CoordinateSystem &  CoordinateSystemType & PropertyType & Optional \\
-HasProperty & Object & InitialValue &  Double & PropertyType & Optional \\
-HasProperty & Object & ResetTrigger &  DataItemResetValueType & PropertyType & Optional \\
-HasProperty & Object & Nominal &  Double & PropertyType & Optional \\
-HasProperty & Object & EURange &  Range & PropertyType & Optional \\
-HasProperty & Object & EngineeringUnits &  EUInformation & PropertyType & Optional \\
+HasProperty & Object & Category & MTCategoryType & PropertyType & Optional \\
+HasProperty & Variable & MTClassName & String & PropertyType & Optional \\
+HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
+HasProperty & Variable & SourceName & String & PropertyType & Optional \\
+HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
+HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
+HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasMTClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
+HasMTSubClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
+HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
+HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
+HasMTComposition & Object & <Dynamic> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
+HasProperty & Variable & SignificantDigits & UInt16 & PropertyType & Optional \\
+HasProperty & Variable & Statistic & String & PropertyType & Optional \\
+HasProperty & Variable & Units & String & PropertyType & Optional \\
+HasProperty & Variable & NativeUnits & String & PropertyType & Optional \\
+HasProperty & Object & CoordinateSystem & CoordinateSystemType & PropertyType & Optional \\
+HasProperty & Variable & InitialValue & Double & PropertyType & Optional \\
+HasProperty & Object & ResetTrigger & DataItemResetValueType & PropertyType & Optional \\
+HasProperty & Variable & Nominal & Double & PropertyType & Optional \\
+HasProperty & Variable & EURange & Range & PropertyType & Optional \\
+HasProperty & Variable & EngineeringUnits & EUInformation & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -813,26 +813,26 @@ DataType & \multicolumn{5}{|l|}{UMLAttribute} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{AnalogItemType} (See OPC UA Part 8 Documentation)} \\
-HasProperty & Object & Category &  MTCategoryType & PropertyType & Optional \\
-HasProperty & Object & MTClassName &  String & PropertyType & Optional \\
-HasProperty & Object & MTSubTypeName &  String & PropertyType & Optional \\
-HasProperty & Object & SourceName &  String & PropertyType & Optional \\
-HasProperty & Object & StreamRate &  Double & PropertyType & Optional \\
-HasProperty & Object & SampleRate &  Double & PropertyType & Optional \\
-HasProperty & Object & Representation &  MTRepresentationType & PropertyType & Optional \\
-HasMTClassType & Object &  &  MTDataItemClassType & MTDataItemClassType & Optional \\
-HasMTSubClassType & Object &  &  MTDataItemSubClassType & MTDataItemSubClassType & Optional \\
-HasComponent & Object & MinimumDeltaFilter &  MinimumDeltaFilterType & MinimumDeltaFilterType & Optional \\
-HasComponent & Object & PeriodDelta &  PeriodFilterType & PeriodFilterType & Optional \\
-HasMTComposition & Object &  &  MTCompositionType & MTCompositionType & Optional \\
-HasProperty & Object & SignificantDigits &  UInt16 & PropertyType & Optional \\
-HasProperty & Object & Statistic &  String & PropertyType & Optional \\
-HasProperty & Object & Units &  String & PropertyType & Optional \\
-HasProperty & Object & NativeUnits &  String & PropertyType & Optional \\
-HasProperty & Object & CoordinateSystem &  CoordinateSystemType & PropertyType & Optional \\
-HasProperty & Object & InitialValue &  Double & PropertyType & Optional \\
-HasProperty & Object & ResetTrigger &  DataItemResetValueType & PropertyType & Optional \\
-HasProperty & Object & Nominal &  Double & PropertyType & Optional \\
+HasProperty & Object & Category & MTCategoryType & PropertyType & Optional \\
+HasProperty & Variable & MTClassName & String & PropertyType & Optional \\
+HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
+HasProperty & Variable & SourceName & String & PropertyType & Optional \\
+HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
+HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
+HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasMTClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
+HasMTSubClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
+HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
+HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
+HasMTComposition & Object & <Dynamic> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
+HasProperty & Variable & SignificantDigits & UInt16 & PropertyType & Optional \\
+HasProperty & Variable & Statistic & String & PropertyType & Optional \\
+HasProperty & Variable & Units & String & PropertyType & Optional \\
+HasProperty & Variable & NativeUnits & String & PropertyType & Optional \\
+HasProperty & Object & CoordinateSystem & CoordinateSystemType & PropertyType & Optional \\
+HasProperty & Variable & InitialValue & Double & PropertyType & Optional \\
+HasProperty & Object & ResetTrigger & DataItemResetValueType & PropertyType & Optional \\
+HasProperty & Variable & Nominal & Double & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -866,18 +866,18 @@ DataType & \multicolumn{5}{|l|}{UMLAttribute} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{BaseDataVariableType} (See OPC UA Part 8 Documentation)} \\
-HasProperty & Object & Category &  MTCategoryType & PropertyType & Optional \\
-HasProperty & Object & MTClassName &  String & PropertyType & Optional \\
-HasProperty & Object & MTSubTypeName &  String & PropertyType & Optional \\
-HasProperty & Object & SourceName &  String & PropertyType & Optional \\
-HasProperty & Object & StreamRate &  Double & PropertyType & Optional \\
-HasProperty & Object & SampleRate &  Double & PropertyType & Optional \\
-HasProperty & Object & Representation &  MTRepresentationType & PropertyType & Optional \\
-HasMTClassType & Object &  &  MTDataItemClassType & MTDataItemClassType & Optional \\
-HasMTSubClassType & Object &  &  MTDataItemSubClassType & MTDataItemSubClassType & Optional \\
-HasComponent & Object & MinimumDeltaFilter &  MinimumDeltaFilterType & MinimumDeltaFilterType & Optional \\
-HasComponent & Object & PeriodDelta &  PeriodFilterType & PeriodFilterType & Optional \\
-HasMTComposition & Object &  &  MTCompositionType & MTCompositionType & Optional \\
+HasProperty & Object & Category & MTCategoryType & PropertyType & Optional \\
+HasProperty & Variable & MTClassName & String & PropertyType & Optional \\
+HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
+HasProperty & Variable & SourceName & String & PropertyType & Optional \\
+HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
+HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
+HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasMTClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
+HasMTSubClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
+HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
+HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
+HasMTComposition & Object & <Dynamic> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 \end{tabu}
 \end{table} 
 

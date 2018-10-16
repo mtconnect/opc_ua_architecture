@@ -1,0 +1,56 @@
+%Block Styles
+
+\tikzstyle{blockblue} = [rectangle, draw, fill=blue!20,
+    text width=5em, text centered, rounded corners, minimum height=6em]
+    
+\tikzstyle{blockred} = [rectangle, draw, fill=red!20,
+    text width=5em, text centered, rounded corners, minimum height=6em]
+    
+\tikzstyle{blockyellow} = [rectangle, draw, fill=yellow!20,
+    text width=10em, text centered, rounded corners, minimum height=5em]
+    
+\tikzstyle{blockviolet} = [rectangle, draw, fill=violet!20,
+    text width=6em, text centered, rounded corners, minimum height=4em]
+    
+\tikzstyle{blockpurple} = [rectangle, draw, fill=purple!20,
+    text width=6em, text centered, rounded corners, minimum height=4em]
+    
+\tikzstyle{blockwhite} = [rectangle, draw, fill=white!20,
+    text width=5em, text centered, rounded corners, minimum height=6em]
+    
+\tikzstyle{blockwhitelarge} = [rectangle, draw, dashed, fill=white!20,
+    text width=18em, text centered, rounded corners, minimum height=8em]
+    
+\tikzstyle{line} = [draw, very thick, color=black!50, -{Latex[scale=1.5]}]
+
+\begin{figure}[ht]
+\centering\scalebox{0.8}{\begin{tikzpicture}[scale = 3, node distance = 2cm, auto]
+    % Place nodes
+    \node [blockyellow] (mtcopcgateway) {MTConnect To OPC-UA Gateway};
+    \node [blockpurple, left of=mtcopcgateway, node distance = 5cm] (mtcapplication) {MTConnect Application};
+    \node [blockviolet, below of=mtcapplication] (opcuaclient) {PLCOpen OPC-UA Client};
+    \node [blockviolet, below of=opcuaclient] (genericopcuaclient) {Generic OPC-UA Client};
+    \node [blockviolet, below of=genericopcuaclient] (mtcopcclient) {MTConnect OPC-UA Client};
+    \node [blockwhitelarge, right of=genericopcuaclient, node distance = 7cm] (parentnode) {};
+    \node [blockred, right of=genericopcuaclient, node distance = 4.7cm] (opcuaserver) {OPC UA Server};
+    \node [blockwhite, right of=opcuaserver, node distance =2.3cm] (internalapi) {Internal Device APIs};
+    \node [blockblue, right of=internalapi, node distance =2.3cm] (devicehardware) {Device Hardware};
+    
+    % Draw edges
+    \coordinate [left of = opcuaserver, node distance = 2.5cm ] (a);
+
+    \path [line] (opcuaserver) -- (a) |- (opcuaclient);
+    \path [line]  (opcuaclient) -| (a) -- (opcuaserver);
+    \path [line] (opcuaserver) -- (a) |- (genericopcuaclient);
+    \path [line] (opcuaserver) -- (a) |- (mtcopcclient);
+    \path [line] (genericopcuaclient) -| (a) -- (opcuaserver);
+    \path [line] (mtcopcclient) -| (a) -- (opcuaserver);
+    \path [line] (opcuaserver) -- (mtcopcgateway);
+    \path [line] (mtcopcgateway) -- (opcuaserver);
+    \path [line] (mtcapplication) -- (mtcopcgateway);
+    \path [line] (mtcopcgateway) -- (mtcapplication);
+    \end{tikzpicture}
+    }
+\caption{The Device Manufacturer Use Case}
+ \label{fig:devicemanufacturingusecase}
+\end{figure}

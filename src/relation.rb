@@ -106,6 +106,10 @@ module Relation
       rasie "Unknown target node type for #{@owner.name} #{@name}"
     end
 
+    def browse_name
+      @name || '<Dynamic>'
+    end
+
     def resolve_types
       if @json['stereotype'] and !@json['stereotype'].empty?
         @stereotype = Type.resolve_type(@json['stereotype'])

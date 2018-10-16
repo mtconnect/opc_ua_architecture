@@ -1,0 +1,28 @@
+
+\begin{figure}[ht]
+\centering\scalebox{0.8}{
+\begin{tikzpicture}[auto]
+
+\Object{Reservation}{}{}{}{};
+\Method{Cancel}{right of}{Reservation}{3.5}{};
+\Object{When}{below of}{Cancel}{2}{};
+\Object{Who}{below of}{When}{4}{};
+\Variable{End "4 PM"}{right of}{When}{4}{};
+\Variable{Start "2 PM"}{below of}{End "4 PM"}{2}{};
+\Variable{Last Name "Smith"}{right of}{Who}{4}{};
+\Variable{First Name "John"}{below of}{Last Name "Smith"}{2}{};
+
+\HasComponent{}{Reservation}{--}{Cancel}{};
+\HasComponent{}{Reservation}{|-}{When}{};
+\HasComponent{}{Reservation}{|-}{Who}{};
+\HasProperty{}{When}{--}{End "4 PM"}{};
+\HasProperty{}{When}{|-}{Start "2 PM"}{};
+\HasProperty{}{Who}{--}{Last Name "Smith"}{};
+\HasProperty{}{Who}{|-}{First Name "John"}{};
+
+\end{tikzpicture}
+}
+\caption{A Basic Object in an OPC UA Address Space}
+ \label{fig:opcuabasicobject}
+
+\end{figure}

@@ -1,0 +1,76 @@
+%Block Styles
+
+\tikzstyle{blockblue} = [rectangle, draw, fill=blue!20,
+    text width=5em, text centered, rounded corners, minimum height=6em]
+    
+\tikzstyle{blockred} = [rectangle, draw, fill=red!20,
+    text width=5em, text centered, rounded corners, minimum height=6em]
+    
+\tikzstyle{blockyellow} = [rectangle, draw, fill=yellow!20,
+    text width=5em, text centered, rounded corners, minimum height=6em]
+    
+\tikzstyle{blockviolet} = [rectangle, draw, fill=violet!20,
+    text width=6em, text centered, rounded corners, minimum height=4em]
+    
+\tikzstyle{blockpurple} = [rectangle, draw, fill=purple!20,
+    text width=6em, text centered, rounded corners, minimum height=4em]
+    
+\tikzstyle{blockwhite} = [rectangle, draw, fill=white!20,
+    text width=10.3em, text centered, rounded corners, rotate = 90, minimum height=2em]
+    
+\tikzstyle{blockwhitelarge} = [rectangle, draw, dashed, fill=white!20,
+    text width=14.5em, text centered, rounded corners, minimum height=12.7em]
+    
+\tikzstyle{line} = [draw, very thick, color=black!50, -{Latex[scale=1.5]}]
+
+\begin{figure}[ht]
+\centering\scalebox{0.8}{\begin{tikzpicture}[node distance = 2cm, auto]
+    % Place nodes
+    \node [blockpurple] (mtcapplication) {MTConnect Application};
+    \node [blockviolet, below of=mtcapplication, node distance =3cm] (opcuaclient) {PLCOpen OPC-UA Client};
+    \node [blockviolet, below of=opcuaclient] (genericopcuaclient) {Generic OPC-UA Client};
+    \node [blockviolet, below of=genericopcuaclient] (mtcopcclient) {MTConnect OPC-UA Client};
+    \node [blockwhitelarge, right of=genericopcuaclient, node distance = 6cm, xshift = -1.35em, yshift = 2.4em] (parentnode) {};
+    \node [blockred, right of=genericopcuaclient, node distance = 3.7cm] (opcuaserver) {\small{OPC UA Server}};
+    
+    \node [blockyellow, right of=opcuaserver, node distance = 3.4 cm] (opcuaclient2) {\small{OPC UA Client}};
+    \node [blockblue, above of=opcuaserver, node distance = 2.1cm] (mtcagent) {\small{MTConnect Agent}};
+    \node [blockblue, above of=opcuaclient2, node distance = 2.1 cm, fill = blue!30] (mtcagent2) {\small{MTConnect Agent}};
+    
+    \node [blockwhite, below of=opcuaserver, node distance =  1.6cm, xshift = 2.5em, yshift = -0.2em] (analysis) {\small{Value Added Analysis Engine}};
+    
+    \node [blockblue, above right of=mtcagent2, node distance = 4 cm, minimum height = 2.5em, fill = blue!10] (device1) {Device};
+    \node [blockblue, below of=device1, node distance = 2 cm, minimum height = 2.5em, fill = blue!10] (device2) {Device};
+    
+    \node [blockyellow, below right of=opcuaclient2, node distance = 4 cm, minimum height = 2.5em, fill = yellow!10, yshift =-2em] (device3) {Device};
+    \node [blockyellow, above of=device3, node distance = 3 cm, minimum height = 2.5em, fill = yellow!10] (device4) {Device};
+    
+    
+    
+    % Draw edges
+    \coordinate [left of = opcuaserver, node distance = 1.7cm ] (a);
+    \coordinate [below of = device1, node distance = 1cm ] (b);
+    \coordinate [above of = device3, node distance = 1.5cm ] (c);
+
+    \path [line] (opcuaserver) -- (a) |- (opcuaclient);
+    \path [line]  (opcuaclient) -| (a) -- (opcuaserver);
+    \path [line] (opcuaserver) -- (a) |- (genericopcuaclient);
+    \path [line] (opcuaserver) -- (a) |- (mtcopcclient);
+    \path [line] (genericopcuaclient) -| (a) -- (opcuaserver);
+    \path [line] (mtcopcclient) -| (a) -- (opcuaserver);
+    \path [line] (mtcapplication) -| (mtcagent);
+    \path [line] (mtcagent) |- (mtcapplication);
+    
+    \path [line] (device1) -- (b) -| (mtcagent2);
+    \path [line] (device2) -- (b) -| (mtcagent2);
+    
+    \path [line] (device3) -- (c) -| (opcuaclient2);
+    \path [line] (device4) -- (c) -| (opcuaclient2);
+    \path [line] (opcuaclient2) |- (c) -- (device3);
+    \path [line] (opcuaclient2) |- (c) -- (device4);
+    
+    \end{tikzpicture}
+    }
+\caption{The Independent Software Vendor (ISV) Use Case}
+ \label{fig:isvusecase}
+ \end{figure}

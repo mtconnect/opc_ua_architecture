@@ -1,0 +1,39 @@
+\begin{figure}[ht]
+\centering\begin{tikzpicture}[auto]
+\scalebox{0.8}{
+\Object{Boiler1}{}{}{}{};
+\ObjectType{BoilerType}{right of}{Boiler1}{8}{};
+
+\Object{Pipe1001}{below right of}{Boiler1}{3}{text width = 12em};
+\node [instanceobject, text width = 12em, minimum height = 6em , below of = Pipe1001, node distance = 1.5cm, align = left] (attribute1) {\underline{Attribute} \\DisplayName = "Pipe1001" \\BrowseName = "PipeX001"};
+
+\Object{FT1001}{below right of}{attribute1}{4}{text width = 12em};
+\node [instanceobject, text width = 12em, minimum height = 6em , below of = FT1001, node distance = 1.5cm, align = left] (attribute2) {\underline{Attribute} \\DisplayName = "FT1001" \\BrowseName = "FTX001"};
+
+\Variable{DataItem}{below right of}{FT1001}{4}{yshift = -3em};
+
+\HasComponent{}{Boiler1}{-|}{Pipe1001}{};
+\HasComponent{}{attribute1}{-|}{FT1001}{};
+\HasComponent{}{attribute2}{|-}{DataItem}{};
+
+
+\Object{PipeX001}{below right of}{BoilerType}{3}{text width = 12em};
+\node [instance_object, text width = 12em, minimum height = 6em , below of = PipeX001, node distance = 1.5cm, align = left] (attribute3) {\underline{Attribute} \\DisplayName = "PipeX001" \\BrowseName = "PipeX001"};
+
+\Object{FTX001}{below right of}{attribute3}{4}{text width = 12em};
+\node [instance_object, text width = 12em, minimum height = 6em , below of = FTX001, node distance = 1.5cm, align = left] (attribute4) {\underline{Attribute} \\DisplayName = "FTX001" \\BrowseName = "FTX001"};
+
+\Variable{DataItem}{below right of}{FTX001}{4}{yshift = -3em};
+
+
+\HasComponent{}{BoilerType}{-|}{PipeX001}{};
+\HasComponent{}{attribute3}{-|}{FTX001}{};
+\HasComponent{}{attribute4}{|-}{DataItem}{};
+
+}
+\end{tikzpicture}
+/PipeX001/FTX001/DataItem
+\caption{Browse Path Example}
+ \label{fig:browsepathex}
+
+\end{figure}

@@ -206,7 +206,7 @@ class Type
   end
 
   def base_type
-    if is_a_type?('BaseDataVariableType')
+    if @type == 'UMLDataType' or is_a_type?('BaseDataVariableType')
       "Variable"
     elsif is_a_type?('BaseEventType')
       'Event'

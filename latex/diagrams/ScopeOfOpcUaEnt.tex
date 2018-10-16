@@ -1,0 +1,73 @@
+
+\begin{figure}[ht]
+\centering\scalebox{0.8}{
+\begin{tikzpicture}[auto]
+
+\node [draw, rectangle, fill=yellow!=20, text width=5em, text centered, minimum height=4em] (cloudhistorian) {Cloud Historian};
+
+\node [draw, right of = cloudhistorian, node distance = 5cm, rectangle, fill=blue!20, text width=5em, text centered, minimum height=4em] (browserthinclient) {Browser Thin Client};
+
+\node [draw, right of = browserthinclient, node distance = 5cm, rectangle, fill=cyan!20, text width=5em, text centered, minimum height=4em] (erp) {ERP};
+
+\node [draw, below of = erp, node distance = 3.5cm, rectangle, fill=cyan!20, text width=5em, text centered, minimum height=4em] (mes) {MES};
+
+\node [draw, below of = browserthinclient, node distance = 3.5cm, ellipse, fill=white!20, double=red,text width=5em, text centered, minimum height=4em] (firewall) {\Large{Firewall}};
+
+\node [draw, below left of = firewall, node distance = 4.5cm, rectangle, fill=violet!40, text width=6em, text centered, minimum height=4em] (visualizationhmi) {Visualization HMI};
+
+\node [draw, below right of = firewall, node distance = 4.5cm, rectangle, fill=violet!40, text width=5em, text centered, minimum height=4em] (scada) {SCADA};
+
+\node [draw, below of = firewall, node distance = 6.5cm, rectangle, fill=red!20, text width=5em, text centered, minimum height=2em] (device) {Device};
+
+\node [draw, left of = device, node distance = 6cm, rectangle, fill=red!20, text width=5em, text centered, minimum height=2em] (device1) {Device};
+
+\node [draw, right of = device, node distance = 6cm, rectangle, fill=red!20, text width=5em, text centered, minimum height=2em] (device2) {Device};
+
+\path [draw, very thick, color=black!50, -{Latex[scale=1.5]}] (cloudhistorian) -- (firewall) node [black, midway, text width = 2cm, below, xshift = -3em, align = center] {Secure Communication};
+
+\path [ draw, very thick, color=black!50, -{Latex[scale=1.5]}] (browserthinclient) -- (firewall);
+
+\path [draw, very thick, color=black!50, -{Latex[scale=1.5]}] (erp) -- (firewall) node [black, midway, text width = 3cm, below, xshift = 5em, yshift = 1em, align = center] {Integration with ERP and MES};
+
+\path [ draw, very thick, color=black!50, -{Latex[scale=1.5]}] (firewall) -- (mes);
+
+\coordinate [below of = firewall, node distance = 1.5cm] (a);
+
+\path [draw, very thick, color=black!50, -{Latex[scale=1.5]}] (firewall) -- (a) -| (scada);
+
+\path [ draw, very thick, color=black!50, -{Latex[scale=1.5]}] (firewall) -- (a) -| (visualizationhmi);
+
+\path [ draw, very thick, color=black!50, -{Latex[scale=1.5]}] (mes) |- (a) -| (visualizationhmi);
+
+\path [ draw, very thick, color=black!50, -{Latex[scale=1.5]}] (mes) |- (a) -| (scada);
+
+\coordinate [below of = visualizationhmi, node distance = 1.75cm] (b);
+
+\coordinate [below of = scada, node distance = 1.75cm] (c);
+
+\path [draw, very thick, color=black!50, -{Latex[scale=1.5]}] (visualizationhmi) -- (b) -| (device) node [black, midway, text width = 4cm, above, align = center] {Control to Device Network Integration};
+
+\path [draw, very thick, color=black!50, -{Latex[scale=1.5]}] (visualizationhmi) -- (b) -| (device1);
+
+\path [ draw, very thick, color=black!50, -{Latex[scale=1.5]}] (visualizationhmi) -- (b) -| (device2);
+
+\path [ draw, very thick, color=black!50, -{Latex[scale=1.5]}] (scada) -- (c) -| (device);
+
+\path [draw, very thick, color=black!50, -{Latex[scale=1.5]}] (scada) -- (c) -| (device1);
+
+\path [ draw, very thick, color=black!50, -{Latex[scale=1.5]}] (scada) -- (c) -| (device2);
+
+\path [draw, very thick, color=black!50, -{Latex[scale=1.5]}] (device) -- (device2) node [black, midway, text width = 4cm, below = 1em, align = center] {Fast Non-Proprietary Device to Device};
+
+\path [ draw, very thick, color=black!50, -{Latex[scale=1.5]}] (device2) -- (device);
+
+\path [draw, very thick, color=black!50, -{Latex[scale=1.5]}] (device) -- (device1);
+
+\path [ draw, very thick, color=black!50, -{Latex[scale=1.5]}] (device1) -- (device);
+
+\end{tikzpicture}
+}
+\caption{The Scope of OPC UA within an Enterprise}
+ \label{fig:scopeofopcuaent}
+
+\end{figure}

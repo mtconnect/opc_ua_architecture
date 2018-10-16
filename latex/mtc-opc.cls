@@ -131,23 +131,23 @@
 
 \renewcommand{\maketitle}{%
 	\begin{titlepage}%
-    	\begin{flushleft}%
-        	\includegraphics[width=0.5\linewidth]{mtconnect.png} \\%
-        	\includegraphics[width=0.5\linewidth]{opc-logo.jpg} \\%
-        \end{flushleft}%
-        \vfill%
-        \begin{center}%
-            \huge{\@doctitle} \\%
-            \LARGE{\@drafttext Version \@versionnum} \\%
+    	\begin{center}%
+        	\includegraphics[width=0.4\linewidth]{mtconnect.png} 
+        	\includegraphics[width=0.4\linewidth]{opc-logo.jpg} \\%
         \end{center}%
         \vfill%
-        \hspace*{\fill}%
-		\begin{tabular}[t]{l@{}}%
-			Prepared for: \@preparedfor \\%
-			Prepared by: \@preparedby \\%
-        	Prepared on: \@preparedon \\%
-		\end{tabular}%
-		\vfill%
+        \begin{center}%
+            \huge{\@doctitle} \protect\\%
+            \LARGE{\quad \protect\\\@drafttext \@versionnum \protect\\ \quad \protect\\\@preparedon} \protect\\%
+        \end{center}%
+        \vfill%
+        %\hspace*{\fill}%
+		%\begin{tabular}[t]{l@{}}%
+		%	Prepared for: \@preparedfor \\%
+		%	Prepared by: \@preparedby \\%
+        %	Prepared on: \@preparedon \\%
+		%\end{tabular}%
+		%\vfill%
 		\noindent \footnotesize{\mtconnect is a registered trademark of AMT - The Association for Manufacturing Technology. Use of \mtconnect is limited to use as specified on \url{http://www.mtconnect.org/}.}%
     \end{titlepage}%
     \setcounter{page}{1}%
@@ -196,10 +196,10 @@
 
 % \definecolor{mtc1}{RGB}{43,105,145}
 \definecolor{mtc1}{RGB}{0,0,0}
-\sectionfont{\bfseries\color{mtc1}\fontsize{20}{20}}
-\subsectionfont{\bfseries\color{mtc1}\fontsize{16}{18}}
-\subsubsectionfont{\bfseries\color{black}\large}
-\paragraphfont{\bfseries\color{black}\normalsize}
+\sectionfont{\bfseries\color{mtc1}\fontsize{20}{22}\selectfont}
+\subsectionfont{\bfseries\color{mtc1}\fontsize{18}{20}\selectfont}
+\subsubsectionfont{\bfseries\color{black}\fontsize{16}{18}\selectfont}
+\paragraphfont{\bfseries\color{black}\fontsize{14}{16}\selectfont}
 \subparagraphfont{\bfseries\color{black}\normalsize}
 
 \newcommand{\onesection}[1]{\section{#1}}

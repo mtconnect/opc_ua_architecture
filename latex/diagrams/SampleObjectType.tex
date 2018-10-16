@@ -1,0 +1,38 @@
+
+\begin{figure}[ht]
+\centering\scalebox{0.8}{
+\begin{tikzpicture}[auto]
+
+\ObjectType{WidgetType}{}{}{}{};
+\Variable{Rank [Int32]}{below right of}{WidgetType}{4}{};
+\Variable{Flavor [LocalizedText]}{below of}{Rank [Int32]}{2}{};
+\Variable{Color [String]}{below of}{Flavor [LocalizedText]}{2}{};
+\Object{Widget 2}{below of}{WidgetType}{9}{};
+\Variable{Rank "3"}{below right of}{Widget 2}{4}{};
+\Variable{Flavor "Orange"}{below of}{Rank "3"}{2}{};
+\Variable{Color "Blue"}{below of}{Flavor "Orange"}{2}{};
+\Object{Widget 1}{left of}{Widget 2}{6}{};
+\Variable{Rank "2"}{below right of}{Widget 1}{4}{};
+\Variable{Flavor "Lemon"}{below of}{Rank "2"}{2}{};
+\Variable{Color "Red"}{below of}{Flavor "Lemon"}{2}{};
+
+\Coordinate{midpoint1}{below left of}{WidgetType}{4}{};
+
+\HasTypeDefinition{}{Widget 1}{-| (midpoint1) |-}{WidgetType}{};
+\HasTypeDefinition{}{Widget 2}{-| (midpoint1) |-}{WidgetType}{};
+\HasProperty{}{WidgetType}{|-}{Rank [Int32]}{};
+\HasProperty{}{WidgetType}{|-}{Flavor [LocalizedText]}{};
+\HasProperty{}{WidgetType}{|-}{Color [String]}{};
+\HasProperty{}{Widget 2}{|-}{Rank "3"}{};
+\HasProperty{}{Widget 2}{|-}{Flavor "Orange"}{};
+\HasProperty{}{Widget 2}{|-}{Color "Blue"}{};
+\HasProperty{}{Widget 1}{|-}{Rank "2"}{};
+\HasProperty{}{Widget 1}{|-}{Flavor "Lemon"}{};
+\HasProperty{}{Widget 1}{|-}{Color "Red"}{};
+
+\end{tikzpicture}
+}
+\caption{A Sample Object Type}
+ \label{fig:sampleobjecttype}
+
+\end{figure}

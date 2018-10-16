@@ -1,0 +1,32 @@
+
+\begin{figure}[ht]
+\centering\scalebox{0.8}{
+\begin{tikzpicture}[auto]
+
+\ObjectType{BaseObjectType}{}{}{}{};
+\ObjectType{PersonType}{below of}{BaseObjectType}{2}{};
+\Variable{First Name [String]}{below right of}{PersonType}{4}{};
+\Variable{Last Name [String]}{below of}{First Name [String]}{1.5}{};
+\Object{Who}{below left of}{PersonType}{5}{};
+\Variable{First Name "John"}{below of}{Last Name [String]}{}{};
+\Variable{Last Name "Smith"}{below of}{First Name "John"}{1.5}{};
+\Variable{Middle Name "Jacob"}{below of}{Last Name "Smith"}{1.5}{};
+
+\HasSubType{}{BaseObjectType}{--}{PersonType}{};
+\HasTypeDefinition{}{Who}{|-}{PersonType}{};
+\HasProperty{}{PersonType}{|-}{First Name [String]}{};
+\HasProperty{}{PersonType}{|-}{Last Name [String]}{};
+\HasProperty{}{Who}{|-}{First Name "John"}{};
+\HasProperty{}{Who}{|-}{Middle Name "Jacob"}{};
+\HasProperty{}{Who}{|-}{Last Name "Smith"}{};
+
+\end{tikzpicture}
+}
+\protect\\\quad
+\protect\\
+\centering An instance of PersonType represents a human
+\captionsetup{justification=centering}
+\caption{The Relationship between Type Definitions and Instances}
+ \label{fig:relsbetweeentypesandinstances}
+
+\end{figure}

@@ -1,34 +1,59 @@
-\section{MTConnect}
+\section{Introduction to MTConnect and OPC UA}
 
-\subsection{What is MTConnect?}
+\subsection{MTConnect}
 
-MTConnect is an open and royalty-free set of standards designed as a universal factory floor communications protocol. MTConnect is intended specifically for the shop floor environment. While there are numerous communication solutions available, MTConnect defines a “dictionary” for manufacturing data. This means that all data is provided with full context – name, definition, scaling, etc. With most communication networks, all data is defined at the point of use – the application. With MTConnect, the data is defined at the source – the device or Machine Tool. MTConnect devices process information locally and then provide that data in a consistent format to any client application requesting data - ERP, MES, Production Management Systems, Maintenance Systems or a standard Browser, for examples.
+MTConnect is a communications standard that defines a standardized methodology for exchanging data, and other types of information, between the equipment used in manufacturing operations and software applications.  While the standard is primarily focused on addressing solutions for the manufacturing environment, it can be readily applied to any number of application areas that can benefit from a standardized method for exchanging data. 
+   
+The standard was initially sponsored by AMT - The Association for Manufacturing Technology in 2008.  AMT formed the MTConnect Institute in 2011.   The role of the Institute is to support the continued development of the standard and to expand the deployment of MTConnect compliant technologies throughout industry.   The Institute is guided by over 250 companies world-wide.  
 
-\subsection{Basics of MTConnect}
+MTConnect is also a royalty free standard; meaning that no one is required to pay a licensing fee to the MTConnect Institute for use of the standard.  It is free to use with no IP hindrances, and companies who agree to the MTConnect licensing agreement can integrate MTConnect with their products. 
 
-MTConnect is based on standard Internet technologies – HTTP, Ethernet, and XML (Extensible Mark-Up Language – the underlying language of most web sites).
-As an Extensible Standard, MTConnect cannot address every conceivable data need on the shop floor. MTConnect provides a clearly defined method for adding additional data types which can be exchanged between equipment, devices, controllers and applications; providing the flexibility to meet the demands of varying environments. 
-
-MTConnect is made up of five fundamental components (see Figure \ref{fig:mtconnect_overview} below):
+MTConnect differs from most other communication solutions since it provides both:
 \begin{itemize}
-\item \textbf{Device} -- A type of equipment (Machine Tool) or data source.
-\item \textbf{Adapter} -- An optional piece of software (and sometimes hardware) that provides a link or conversion from the data source and data definition in the device to the MTConnect Data definition.  This can be thought of as a translator. The Adapter is not needed for devices that use MTConnect as their native language.
-\item \textbf{Agent} -- A piece of software that collects, arranges, and stores data from the device.  It receives requests for data from applications, processes those requests, and then transmits the required data.
-\item \textbf{Network} -- The physical connection between a data source (device) and the data consumer (application).  Normally, this is an Ethernet network. The communication on the network normally uses standard internet communications methods – http:// protocol. It should be noted that the MTConnect Structure is adaptable and can be implemented in conjunction with other networking solutions other than Ethernet and Internet protocols.
-\item \textbf{Client} -- A Client initiates all requests for MTConnect data. A Client resides in an application or device. The Client is a software function in the application or device that actually requests data from the Agent. 
+    \item a dictionary of terms describing a wide variety of types of manufacturing data
+
+    \item semantic data models which describe how each piece of data relates to the originally measured or calculated values. This means that all data is provided with full context including name, definition, scaling, relationship to the physical and logical configuration for a piece of equipment that generated the data, etc.
 \end{itemize}
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.75\textwidth]{diagrams/MTConnectOverview.png}
-  \caption{MTConnect Overview}
-  \label{fig:mtconnect_overview}
-\end{figure}
+With most communication networking solutions, all data is defined at the point of use (the application).  With MTConnect, the data is defined at the source (the device or piece of equipment). 
 
-The MTConnect Standard does not restrict the physical implementation of how the MTConnect system is designed.
+MTConnect compliant devices process information locally and then provide that data in a consistent format to any client application requesting data - ERP, MES, Production Management Systems, Maintenance Systems or a standard Browser, as examples.
 
-\begin{itemize}
-\item The Network may be a physical implementation, like an Ethernet network. It can also be implemented using wireless or other technologies.
-\item The Internet Protocol (http) does not mean that your machine is automatically connected outside your plant to the Internet. This is a communications method only. Protection of your data is controlled by your networking standards. 
-\item There is no specific requirement for where the Adapter and Agent function is located. These can be located at the device. However, they can be placed anywhere in the networking architecture. Also, they do not need to be located together. MTConnect can to have the Adapter installed at the device and the Agent installed along with the Client. The location of these functions should be considered when implementing MTConnect since they will impact the level of data flow on different segments of your network.
-\end{itemize}
+The MTConnect Standard is organized into a series of documents – each focused on a specific type of information associated with shop operations.   Each document defines a portion of the data dictionary and details the semantic model applicable to those terms.   These two concepts form the key components of the MTConnect Standard. 
+
+\subsubsection{Data Dictionary}
+
+The Data Dictionary defines a consistent set of terms that are used to describe information and data gathered from shop floor operations.   When various pieces of equipment publish information using this common Data Dictionary, that data is easier to understand and can be used directly for further analysis without requiring additional manipulation to get the data into a common format.  By utilizing the Data Dictionary, equipment can now publish data that this “self-describing” – meaning the data not only provides values, but also provides essential meaning for the data; including units, tag names, scaling information, and any other information that may be needed for a software application to fully understand both the meaning of the data and the relevance of that data to the manufacturing process.    The users of this data no longer have to define this information each place the data is used. 
+
+\subsubsection{Semantic Data Models}
+The Semantic Data Models defined in the MTConnect Standard are used to further enhance the meaning of the information published from equipment.  These models are used to represent the physical and logical configuration for a piece of equipment and the correlation between each piece of data and the part or function in the piece of equipment that the data is most closely related.   
+
+The data reported by the machines is defined and organized based on the Semantic Data Models defined in the MTConnect Standard.   
+
+The following is a sample representation of the organizational model defined for a piece of equipment: (Diagram here)
+
+Historically, significant configuration work was required to qualify every piece of data collected by giving it an identity; scaling it to common units, when required; and to characterize that data with whatever additional information was necessary to define the full meaning of the data.   This same process for qualifying the data had to be replicated for every software application that needed to use this data.    
+
+When data is available directly from shop floor equipment that is fully qualified with an identity and fully characterized with the additional information that is needed to interpret that data, software applications can be deployed more quickly and at a lower cost.    
+
+Structured data eliminates much, if not all, of the additional definition and transformation required to prepare data for analysis.   Structured semantic data provides a solid foundation that allows software implementers to focus more of their energies and time on enhanced analysis and decision making instead of constantly manipulating raw data into a useable form - reducing the time and effort to deploy and maintain software systems.  
+ 
+In an MTConnect compliant system, configuration management of a data collection system is virtually eliminated since data definition and transformation occurs at the piece of equipment.   When changes occur, those changes can be automatically detected by the client software application(s) since each piece of equipment can publish its current configuration containing all semantics and data types.
+
+\subsubsection{Fundamentals of MTConnect}
+
+The MTConnect Standard is built upon other communications and software standards that are already heavily used in manufacturing facilities – HTTP, Ethernet, and XML (Extensible Mark-Up Language – the underlying language of most web sites).
+ 
+Pieces of equipment publish information to an MTConnect Agent.  Software applications request information relating to a piece of equipment by making an HTTP Request. The agent responds to that request by publishing a MTConnect Response Document which a text document encoded using XML.   
+ 
+By leveraging already existing standards, implementers of software solutions utilizing MTConnect have immediate access to a maximum number of software tools for creating and deploying software solutions.   This also positions MTConnect for the highest level of interoperability with other standards, software applications, and equipment used throughout manufacturing operations.    
+ 
+MTConnect is implemented as a read-only communications solution.   This means that a software application can read information from a piece of equipment, but it cannot write information directly to that equipment or cause the equipment to perform any specific actions.  This is especially relevant as industrial internet and cyber physical systems’ safety issues become more important.  The read-only feature also makes the MTConnect Standard easier for integrators to implement. 
+ 
+MTConnect does not avoid the requirement that many activities on the manufacturing shop floor require that a piece of equipment initiate a specific action or function based on decisions or information provided from other pieces of equipment, software systems, or human intervention.   MTConnect addresses this scenario through the Interfaces Interaction Model (MTConnect Part 5.50).   This interaction model defines a standard methodology for pieces of equipment to directly exchange information without any one piece of equipment actually writing data or instructions to the other piece of equipment.   This interaction model is commonly referred to as Read-Read where one piece of equipment Requests an action or activity to be performed, and the other piece of equipment “Reads” this requirement and independently decides how and when to Respond to that Request.  (diagram here)  
+
+The central component of every MTConnect System is an MTConnect Agent.  The agent provides the critical link between a piece of equipment and client software applications.   The Agent performs several tasks within an MTConnect System.   The two major functions provided by the Agent is the collection, organization, and storage of data published from one or multiple pieces of equipment and to then respond to requests for this data from client software applications. 
+ 
+In an MTConnect system, the term “a piece of equipment” can represent any intelligent data source that can produce data.  Traditionally, a piece of equipment is thought of as a machine.   However, a piece of equipment can also be a computer, an intelligent sensor system, a data base, and any number of other sources of data. 
+ 
+Some pieces of equipment require an Adapter which transforms data from its native form into MTConnect specific terms, and then publish that data to an MTConnect Agent.    

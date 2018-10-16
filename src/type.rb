@@ -26,6 +26,7 @@ class Type
     @operations = e['operations'] || []
     @abstract = e['isAbstract'] || false
     @model = model
+    @literals = Array(e['literals'])
 
     @relations = Array(e['attributes']).dup.concat(Array(e['ownedElements'])).map do |r|
       Relation.create_association(self, r)

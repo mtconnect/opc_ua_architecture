@@ -41,7 +41,7 @@ class Model
   end
   
   def self.find_definitions(e, depth = 0, model = nil)
-    # puts "#{'  ' * depth}#{model}::#{e['name']} #{e['_type']}"
+    puts "#{'  ' * depth}#{model}::#{e['name']} #{e['_type']}"
     
     case e['_type']
     when 'UMLClass'

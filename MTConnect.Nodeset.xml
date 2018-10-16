@@ -1,0 +1,2921 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' LastModified='2018-10-16T03:39:45Z'>
+  <NamespaceUris>
+    <Uri>http://opcfoundation.org/UA/MTConnect/</Uri>
+  </NamespaceUris>
+  <Models>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/' Version='1.00' PublicationDate='2018-10-16T03:39:45Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.03' PublicationDate='2018-10-16T03:39:45Z'/>
+    </Model>
+  </Models>
+  <Aliases>
+    <Alias Alias='Boolean'>i=1</Alias>
+    <Alias Alias='SByte'>i=2</Alias>
+    <Alias Alias='Byte'>i=3</Alias>
+    <Alias Alias='Int16'>i=4</Alias>
+    <Alias Alias='UInt16'>i=5</Alias>
+    <Alias Alias='Int32'>i=6</Alias>
+    <Alias Alias='UInt32'>i=7</Alias>
+    <Alias Alias='Int64'>i=8</Alias>
+    <Alias Alias='UInt64'>i=9</Alias>
+    <Alias Alias='Float'>i=10</Alias>
+    <Alias Alias='Double'>i=11</Alias>
+    <Alias Alias='DateTime'>i=13</Alias>
+    <Alias Alias='String'>i=12</Alias>
+    <Alias Alias='ByteString'>i=15</Alias>
+    <Alias Alias='Guid'>i=14</Alias>
+    <Alias Alias='XmlElement'>i=16</Alias>
+    <Alias Alias='NodeId'>i=17</Alias>
+    <Alias Alias='ExpandedNodeId'>i=18</Alias>
+    <Alias Alias='QualifiedName'>i=20</Alias>
+    <Alias Alias='LocalizedText'>i=21</Alias>
+    <Alias Alias='StatusCode'>i=19</Alias>
+    <Alias Alias='Structure'>i=22</Alias>
+    <Alias Alias='Number'>i=26</Alias>
+    <Alias Alias='Integer'>i=27</Alias>
+    <Alias Alias='UInteger'>i=28</Alias>
+    <Alias Alias='HasComponent'>i=47</Alias>
+    <Alias Alias='HasProperty'>i=46</Alias>
+    <Alias Alias='Organizes'>i=35</Alias>
+    <Alias Alias='HasEventSource'>i=36</Alias>
+    <Alias Alias='HasNotifier'>i=48</Alias>
+    <Alias Alias='HasSubtype'>i=45</Alias>
+    <Alias Alias='HasTypeDefinition'>i=40</Alias>
+    <Alias Alias='HasModellingRule'>i=37</Alias>
+    <Alias Alias='HasEncoding'>i=38</Alias>
+    <Alias Alias='HasDescription'>i=39</Alias>
+  </Aliases>
+  <UAObject NodeId='ns=1;i=15001' BrowseName='1:http://opcfoundation.org/UA/MTConnect/' SymbolicName='OpcUaMTConnectNamespaceMetadata'>
+    <DisplayName>http://opcfoundation.org/UA/MTConnect/</DisplayName>
+    <References>
+      <Reference ReferenceType='HasProperty'>ns=1;i=15002</Reference>
+      <Reference ReferenceType='HasProperty'>ns=1;i=15003</Reference>
+      <Reference ReferenceType='HasProperty'>ns=1;i=15004</Reference>
+      <Reference ReferenceType='HasProperty'>ns=1;i=15005</Reference>
+      <Reference ReferenceType='HasProperty'>ns=1;i=15006</Reference>
+      <Reference ReferenceType='HasProperty'>ns=1;i=15007</Reference>
+      <Reference ReferenceType='HasProperty'>ns=1;i=15008</Reference>
+      <Reference ReferenceType='HasProperty'>ns=1;i=15031</Reference>
+      <Reference ReferenceType='HasProperty'>ns=1;i=15032</Reference>
+      <Reference ReferenceType='HasProperty'>ns=1;i=15033</Reference>
+      <Reference ReferenceType='HasComponent' IsForward='false'>i=11715</Reference>
+      <Reference ReferenceType='HasTypeDefinition'>i=11616</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId='ns=1;i=15002' BrowseName='NamespaceUri' ParentNodeId='ns=1;i=15001' DataType='String'>
+    <DisplayName>NamespaceUri</DisplayName>
+    <Description>The URI of the namespace.</Description>
+    <References>
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=15001</Reference>
+    </References>
+    <Value>
+      <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>http://opcfoundation.org/UA/MTConnect/</String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=15003' BrowseName='NamespaceVersion' ParentNodeId='ns=1;i=15001' DataType='String'>
+    <DisplayName>NamespaceVersion</DisplayName>
+    <Description>The human readable string representing version of the namespace.</Description>
+    <References>
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=15001</Reference>
+    </References>
+    <Value>
+      <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>1.00</String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=15004' BrowseName='NamespacePublicationDate' ParentNodeId='ns=1;i=15001' DataType='DateTime'>
+    <DisplayName>NamespacePublicationDate</DisplayName>
+    <Description>The publication date for the namespace.</Description>
+    <References>
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=15001</Reference>
+    </References>
+    <Value>
+      <DateTime xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>2013-12-31T00:00:00Z</DateTime>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=15005' BrowseName='IsNamespaceSubset' ParentNodeId='ns=1;i=15001' DataType='Boolean'>
+    <DisplayName>IsNamespaceSubset</DisplayName>
+    <Description>If TRUE then the server only supports a subset of the namespace.</Description>
+    <References>
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=15001</Reference>
+    </References>
+    <Value>
+      <Boolean xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>false</Boolean>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=15006' BrowseName='StaticNodeIdTypes' ParentNodeId='ns=1;i=15001' DataType='i=256' ValueRank='1'>
+    <DisplayName>StaticNodeIdTypes</DisplayName>
+    <Description>
+      A list of IdTypes for nodes which are the same in every server that
+      exposes them.
+    </Description>
+    <References>
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=15001</Reference>
+    </References>
+    <Value>
+      <ListOfInt32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <Int32>0</Int32>
+      </ListOfInt32>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=15007' BrowseName='StaticNumericNodeIdRange' ParentNodeId='ns=1;i=15001' DataType='i=291' ValueRank='1'>
+    <DisplayName>StaticNumericNodeIdRange</DisplayName>
+    <Description>
+      A list of ranges for numeric node ids which are the same in every server
+      that exposes them.
+    </Description>
+    <References>
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=15001</Reference>
+    </References>
+    <Value>
+      <ListOfString xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <String>1:65535</String>
+      </ListOfString>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=15008' BrowseName='StaticStringNodeIdPattern' ParentNodeId='ns=1;i=15001' DataType='String'>
+    <DisplayName>StaticStringNodeIdPattern</DisplayName>
+    <Description>
+      A regular expression which matches string node ids are the same in every
+      server that exposes them.
+    </Description>
+    <References>
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=15001</Reference>
+    </References>
+    <Value>
+      <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'> </String>
+    </Value>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=15031' BrowseName='DefaultRolePermissions' ParentNodeId='ns=1;i=15001' DataType='i=96' ValueRank='1'>
+    <DisplayName>DefaultRolePermissions</DisplayName>
+    <References>
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=15001</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=15032' BrowseName='DefaultUserRolePermissions' ParentNodeId='ns=1;i=15001' DataType='i=96' ValueRank='1'>
+    <DisplayName>DefaultUserRolePermissions</DisplayName>
+    <References>
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=15001</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=15033' BrowseName='DefaultAccessRestrictions' ParentNodeId='ns=1;i=15001' DataType='UInt16'>
+    <DisplayName>DefaultAccessRestrictions</DisplayName>
+    <References>
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=15001</Reference>
+    </References>
+  </UAVariable>
+  <UAObjectType NodeId='ns=1;i=2815622566' BrowseName='1:ChannelType'>
+    <DisplayName>ChannelType</DisplayName>
+    <References>
+      <!-- HasSubtype -- BaseObjectType i=58 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=58</Reference>
+      <!-- HasProperty -- Number ns=1;i=3259563958 Number (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3259563958</Reference>
+      <!-- HasProperty -- Name ns=1;i=275972101 Name (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=275972101</Reference>
+      <!-- HasProperty -- MTDescription ns=1;i=1055850556 MTDescription (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=1055850556</Reference>
+      <!-- HasProperty -- CalibrationDate ns=1;i=2342191219 CalibrationDate (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2342191219</Reference>
+      <!-- HasProperty -- NextCalibrationDate ns=1;i=3145203882 NextCalibrationDate (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3145203882</Reference>
+      <!-- HasProperty -- CalibrationInitials ns=1;i=3784179924 CalibrationInitials (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3784179924</Reference>
+    </References>
+  </UAObjectType>
+  <UAVariable NodeId='ns=1;i=3259563958' BrowseName='1:Number' ValueRank='-1' DataType='Int32'>
+    <DisplayName>Number</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- ChannelType ns=1;i=2815622566 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2815622566</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=275972101' BrowseName='1:Name' ValueRank='-1' DataType='String'>
+    <DisplayName>Name</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- ChannelType ns=1;i=2815622566 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2815622566</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=1055850556' BrowseName='1:MTDescription' ValueRank='-1' DataType='String'>
+    <DisplayName>MTDescription</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- ChannelType ns=1;i=2815622566 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2815622566</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=2342191219' BrowseName='1:CalibrationDate' ValueRank='-1' DataType='i=294'>
+    <DisplayName>CalibrationDate</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- ChannelType ns=1;i=2815622566 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2815622566</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=3145203882' BrowseName='1:NextCalibrationDate' ValueRank='-1' DataType='i=294'>
+    <DisplayName>NextCalibrationDate</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- ChannelType ns=1;i=2815622566 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2815622566</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=3784179924' BrowseName='1:CalibrationInitials' ValueRank='-1' DataType='String'>
+    <DisplayName>CalibrationInitials</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- ChannelType ns=1;i=2815622566 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2815622566</Reference>
+    </References>
+  </UAVariable>
+  <UAObjectType NodeId='ns=1;i=2689059259' BrowseName='1:DescriptionType'>
+    <DisplayName>DescriptionType</DisplayName>
+    <References>
+      <!-- HasSubtype -- BaseObjectType i=58 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=58</Reference>
+      <!-- HasProperty -- Station ns=1;i=3383610016 Station (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3383610016</Reference>
+      <!-- HasProperty -- SerialNumber ns=1;i=235850443 SerialNumber (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=235850443</Reference>
+      <!-- HasProperty -- Manufacturer ns=1;i=849070826 Manufacturer (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=849070826</Reference>
+      <!-- HasProperty -- Data ns=1;i=2066270997 Data (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2066270997</Reference>
+    </References>
+  </UAObjectType>
+  <UAVariable NodeId='ns=1;i=3383610016' BrowseName='1:Station' ValueRank='-1' DataType='String'>
+    <DisplayName>Station</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- DescriptionType ns=1;i=2689059259 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2689059259</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=235850443' BrowseName='1:SerialNumber' ValueRank='-1' DataType='String'>
+    <DisplayName>SerialNumber</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- DescriptionType ns=1;i=2689059259 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2689059259</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=849070826' BrowseName='1:Manufacturer' ValueRank='-1' DataType='String'>
+    <DisplayName>Manufacturer</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- DescriptionType ns=1;i=2689059259 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2689059259</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=2066270997' BrowseName='1:Data' ValueRank='-1' DataType='String'>
+    <DisplayName>Data</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- DescriptionType ns=1;i=2689059259 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2689059259</Reference>
+    </References>
+  </UAVariable>
+  <UAObjectType NodeId='ns=1;i=2493039579' BrowseName='1:MTComponentType'>
+    <DisplayName>MTComponentType</DisplayName>
+    <References>
+      <!-- HasSubtype -- BaseObjectType i=58 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=58</Reference>
+      <!-- HasProperty -- XmlId ns=1;i=1583605388 XmlId (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=1583605388</Reference>
+      <!-- HasProperty -- Name ns=1;i=3278029829 Name (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3278029829</Reference>
+      <!-- HasProperty -- NativeName ns=1;i=1358939148 NativeName (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=1358939148</Reference>
+      <!-- HasProperty -- Uuid ns=1;i=2479604756 Uuid (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2479604756</Reference>
+      <!-- HasProperty -- SampleRate ns=1;i=2943458205 SampleRate (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2943458205</Reference>
+      <!-- HasProperty -- SampleInterval ns=1;i=914398332 SampleInterval (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=914398332</Reference>
+      <!-- HasComponent -- Description ns=1;i=3664181506  (forward: true) -->
+      <Reference ReferenceType='HasComponent'>ns=1;i=3664181506</Reference>
+      <!-- HasComponent -- Configuration ns=1;i=2390030849  (forward: true) -->
+      <Reference ReferenceType='HasComponent'>ns=1;i=2390030849</Reference>
+      <!-- Organizes -- Components ns=1;i=1872834398  (forward: true) -->
+      <Reference ReferenceType='Organizes'>ns=1;i=1872834398</Reference>
+      <!-- Organizes -- Compositions ns=1;i=741684291  (forward: true) -->
+      <Reference ReferenceType='Organizes'>ns=1;i=741684291</Reference>
+      <!-- Organizes -- Conditions ns=1;i=2299607830  (forward: true) -->
+      <Reference ReferenceType='Organizes'>ns=1;i=2299607830</Reference>
+    </References>
+  </UAObjectType>
+  <UAVariable NodeId='ns=1;i=1583605388' BrowseName='1:XmlId' ValueRank='-1' DataType='i=256'>
+    <DisplayName>XmlId</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTComponentType ns=1;i=2493039579 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2493039579</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=3278029829' BrowseName='1:Name' ValueRank='-1' DataType='String'>
+    <DisplayName>Name</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTComponentType ns=1;i=2493039579 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2493039579</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=1358939148' BrowseName='1:NativeName' ValueRank='-1' DataType='String'>
+    <DisplayName>NativeName</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTComponentType ns=1;i=2493039579 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2493039579</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=2479604756' BrowseName='1:Uuid' ValueRank='-1' DataType='String'>
+    <DisplayName>Uuid</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTComponentType ns=1;i=2493039579 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2493039579</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=2943458205' BrowseName='1:SampleRate' ValueRank='-1'>
+    <DisplayName>SampleRate</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTComponentType ns=1;i=2493039579 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2493039579</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=914398332' BrowseName='1:SampleInterval' ValueRank='-1'>
+    <DisplayName>SampleInterval</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTComponentType ns=1;i=2493039579 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2493039579</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId='ns=1;i=3664181506' BrowseName='1:Description'>
+    <DisplayName>Description</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- DescriptionType ns=1;i=2689059259 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2689059259</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTComponentType ns=1;i=2493039579 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2493039579</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId='ns=1;i=2390030849' BrowseName='1:Configuration'>
+    <DisplayName>Configuration</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- MTConfigurationType ns=1;i=2643381617 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2643381617</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTComponentType ns=1;i=2493039579 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2493039579</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId='ns=1;i=1872834398' BrowseName='1:Components'>
+    <DisplayName>Components</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- FolderType i=61 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=61</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTComponentType ns=1;i=2493039579 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2493039579</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId='ns=1;i=741684291' BrowseName='1:Compositions'>
+    <DisplayName>Compositions</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- FolderType i=61 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=61</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTComponentType ns=1;i=2493039579 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2493039579</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId='ns=1;i=2299607830' BrowseName='1:Conditions'>
+    <DisplayName>Conditions</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- FolderType i=61 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=61</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTComponentType ns=1;i=2493039579 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2493039579</Reference>
+    </References>
+  </UAObject>
+  <UAObjectType NodeId='ns=1;i=2799618964' BrowseName='1:MTDeviceType'>
+    <DisplayName>MTDeviceType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTComponentType ns=1;i=2493039579 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2493039579</Reference>
+      <!-- HasProperty -- Version ns=1;i=2634533984 Version (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2634533984</Reference>
+      <!-- HasProperty -- Iso841Class ns=1;i=419679440 Iso841Class (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=419679440</Reference>
+    </References>
+  </UAObjectType>
+  <UAVariable NodeId='ns=1;i=2634533984' BrowseName='1:Version' ValueRank='-1' DataType='String'>
+    <DisplayName>Version</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDeviceType ns=1;i=2799618964 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2799618964</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=419679440' BrowseName='1:Iso841Class' ValueRank='-1' DataType='String'>
+    <DisplayName>Iso841Class</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDeviceType ns=1;i=2799618964 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2799618964</Reference>
+    </References>
+  </UAVariable>
+  <UAObjectType NodeId='ns=1;i=2236433165' BrowseName='1:MTCompositionType'>
+    <DisplayName>MTCompositionType</DisplayName>
+    <References>
+      <!-- HasSubtype -- BaseObjectType i=58 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=58</Reference>
+      <!-- HasProperty -- Uuid ns=1;i=2872134165 Uuid (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2872134165</Reference>
+      <!-- HasProperty -- Name ns=1;i=3018409942 Name (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3018409942</Reference>
+      <!-- HasProperty -- MTDescription ns=1;i=1829718482 MTDescription (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=1829718482</Reference>
+    </References>
+  </UAObjectType>
+  <UAVariable NodeId='ns=1;i=2872134165' BrowseName='1:Uuid' ValueRank='-1' DataType='String'>
+    <DisplayName>Uuid</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTCompositionType ns=1;i=2236433165 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2236433165</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=3018409942' BrowseName='1:Name' ValueRank='-1' DataType='String'>
+    <DisplayName>Name</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTCompositionType ns=1;i=2236433165 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2236433165</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=1829718482' BrowseName='1:MTDescription' ValueRank='-1' DataType='String'>
+    <DisplayName>MTDescription</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTCompositionType ns=1;i=2236433165 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2236433165</Reference>
+    </References>
+  </UAVariable>
+  <UAObjectType NodeId='ns=1;i=2643381617' BrowseName='1:MTConfigurationType' IsAbstract='true'>
+    <DisplayName>MTConfigurationType</DisplayName>
+    <References>
+      <!-- HasSubtype -- BaseObjectType i=58 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=58</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1109261129' BrowseName='1:SensorConfigurationType'>
+    <DisplayName>SensorConfigurationType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTConfigurationType ns=1;i=2643381617 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2643381617</Reference>
+      <!-- HasProperty -- FirwareVersion ns=1;i=2328689859 FirwareVersion (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2328689859</Reference>
+      <!-- HasProperty -- CalibrationDate ns=1;i=3182230766 CalibrationDate (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3182230766</Reference>
+      <!-- HasProperty -- NextCalibrationDate ns=1;i=260439321 NextCalibrationDate (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=260439321</Reference>
+      <!-- HasProperty -- CalibrationInitials ns=1;i=989330756 CalibrationInitials (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=989330756</Reference>
+      <!-- Organizes -- Channels ns=1;i=955645558  (forward: true) -->
+      <Reference ReferenceType='Organizes'>ns=1;i=955645558</Reference>
+    </References>
+  </UAObjectType>
+  <UAVariable NodeId='ns=1;i=2328689859' BrowseName='1:FirwareVersion' ValueRank='-1' DataType='String'>
+    <DisplayName>FirwareVersion</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- SensorConfigurationType ns=1;i=1109261129 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1109261129</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=3182230766' BrowseName='1:CalibrationDate' ValueRank='-1' DataType='i=294'>
+    <DisplayName>CalibrationDate</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- SensorConfigurationType ns=1;i=1109261129 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1109261129</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=260439321' BrowseName='1:NextCalibrationDate' ValueRank='-1' DataType='i=294'>
+    <DisplayName>NextCalibrationDate</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- SensorConfigurationType ns=1;i=1109261129 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1109261129</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=989330756' BrowseName='1:CalibrationInitials' ValueRank='-1' DataType='String'>
+    <DisplayName>CalibrationInitials</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- SensorConfigurationType ns=1;i=1109261129 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1109261129</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId='ns=1;i=955645558' BrowseName='1:Channels'>
+    <DisplayName>Channels</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- FolderType i=61 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=61</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- SensorConfigurationType ns=1;i=1109261129 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1109261129</Reference>
+    </References>
+  </UAObject>
+  <UADataType NodeId='ns=1;i=2158565409' BrowseName='1:AssetEventDataType'>
+    <DisplayName>AssetEventDataType</DisplayName>
+    <References>
+      <!-- HasSubtype -- BaseDataType i=24 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=24</Reference>
+    </References>
+    <Definition Name='AssetEventDataType'>
+      <Field Name='AssetId' DataType='String'/>
+      <Field Name='AssetType' DataType='String'/>
+    </Definition>
+  </UADataType>
+  <UAVariableType NodeId='ns=1;i=2509329099' BrowseName='1:AssetEventType' ValueRank='-1' DataType='ns=1;i=2158565409'>
+    <DisplayName>AssetEventType</DisplayName>
+    <References>
+      <!-- HasSubtype -- BaseDataVariableType i=63 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=63</Reference>
+      <!-- HasProperty -- Category ns=1;i=503548305 Category (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=503548305</Reference>
+      <!-- HasProperty -- MTClassName ns=1;i=1778603416 MTClassName (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=1778603416</Reference>
+      <!-- HasProperty -- MTSubTypeName ns=1;i=641619688 MTSubTypeName (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=641619688</Reference>
+      <!-- HasProperty -- SourceName ns=1;i=2084138328 SourceName (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2084138328</Reference>
+      <!-- HasProperty -- StreamRate ns=1;i=3037752743 StreamRate (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3037752743</Reference>
+      <!-- HasProperty -- SampleRate ns=1;i=402358598 SampleRate (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=402358598</Reference>
+      <!-- HasProperty -- Representation ns=1;i=1847820705 Representation (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=1847820705</Reference>
+      <!-- HasComponent -- MinimumDeltaFilter ns=1;i=1335917312  (forward: true) -->
+      <Reference ReferenceType='HasComponent'>ns=1;i=1335917312</Reference>
+      <!-- HasComponent -- PeriodDelta ns=1;i=3379568617  (forward: true) -->
+      <Reference ReferenceType='HasComponent'>ns=1;i=3379568617</Reference>
+    </References>
+  </UAVariableType>
+  <UAVariable NodeId='ns=1;i=503548305' BrowseName='1:Category' ValueRank='-1'>
+    <DisplayName>Category</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=1778603416' BrowseName='1:MTClassName' ValueRank='-1' DataType='String'>
+    <DisplayName>MTClassName</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=641619688' BrowseName='1:MTSubTypeName' ValueRank='-1' DataType='String'>
+    <DisplayName>MTSubTypeName</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=2084138328' BrowseName='1:SourceName' ValueRank='-1' DataType='String'>
+    <DisplayName>SourceName</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=3037752743' BrowseName='1:StreamRate' ValueRank='-1' DataType='Double'>
+    <DisplayName>StreamRate</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=402358598' BrowseName='1:SampleRate' ValueRank='-1' DataType='Double'>
+    <DisplayName>SampleRate</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=1847820705' BrowseName='1:Representation' ValueRank='-1'>
+    <DisplayName>Representation</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId='ns=1;i=1335917312' BrowseName='1:MinimumDeltaFilter'>
+    <DisplayName>MinimumDeltaFilter</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- MinimumDeltaFilterType ns=1;i=1317902295 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=1317902295</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId='ns=1;i=3379568617' BrowseName='1:PeriodDelta'>
+    <DisplayName>PeriodDelta</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- PeriodFilterType ns=1;i=3325991076 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3325991076</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAObject>
+  <UAVariableType NodeId='ns=1;i=3413804239' BrowseName='1:MTEnumeratedEventType' ValueRank='-1'>
+    <DisplayName>MTEnumeratedEventType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MultiStateDiscreteType i=2376 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=2376</Reference>
+      <!-- HasProperty -- Category ns=1;i=503548305 Category (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=503548305</Reference>
+      <!-- HasProperty -- MTClassName ns=1;i=1778603416 MTClassName (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=1778603416</Reference>
+      <!-- HasProperty -- MTSubTypeName ns=1;i=641619688 MTSubTypeName (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=641619688</Reference>
+      <!-- HasProperty -- SourceName ns=1;i=2084138328 SourceName (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2084138328</Reference>
+      <!-- HasProperty -- StreamRate ns=1;i=3037752743 StreamRate (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3037752743</Reference>
+      <!-- HasProperty -- SampleRate ns=1;i=402358598 SampleRate (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=402358598</Reference>
+      <!-- HasProperty -- Representation ns=1;i=1847820705 Representation (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=1847820705</Reference>
+      <!-- HasComponent -- MinimumDeltaFilter ns=1;i=1335917312  (forward: true) -->
+      <Reference ReferenceType='HasComponent'>ns=1;i=1335917312</Reference>
+      <!-- HasComponent -- PeriodDelta ns=1;i=3379568617  (forward: true) -->
+      <Reference ReferenceType='HasComponent'>ns=1;i=3379568617</Reference>
+      <!-- HasProperty -- ConstrainedDataType ns=1;i=3638509220 ConstrainedDataType (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3638509220</Reference>
+    </References>
+  </UAVariableType>
+  <UAVariable NodeId='ns=1;i=503548305' BrowseName='1:Category' ValueRank='-1'>
+    <DisplayName>Category</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=1778603416' BrowseName='1:MTClassName' ValueRank='-1' DataType='String'>
+    <DisplayName>MTClassName</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=641619688' BrowseName='1:MTSubTypeName' ValueRank='-1' DataType='String'>
+    <DisplayName>MTSubTypeName</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=2084138328' BrowseName='1:SourceName' ValueRank='-1' DataType='String'>
+    <DisplayName>SourceName</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=3037752743' BrowseName='1:StreamRate' ValueRank='-1' DataType='Double'>
+    <DisplayName>StreamRate</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=402358598' BrowseName='1:SampleRate' ValueRank='-1' DataType='Double'>
+    <DisplayName>SampleRate</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=1847820705' BrowseName='1:Representation' ValueRank='-1'>
+    <DisplayName>Representation</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId='ns=1;i=1335917312' BrowseName='1:MinimumDeltaFilter'>
+    <DisplayName>MinimumDeltaFilter</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- MinimumDeltaFilterType ns=1;i=1317902295 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=1317902295</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId='ns=1;i=3379568617' BrowseName='1:PeriodDelta'>
+    <DisplayName>PeriodDelta</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- PeriodFilterType ns=1;i=3325991076 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3325991076</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId='ns=1;i=3638509220' BrowseName='1:ConstrainedDataType' ValueRank='-1'>
+    <DisplayName>ConstrainedDataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTEnumeratedEventType ns=1;i=3413804239 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3413804239</Reference>
+    </References>
+  </UAVariable>
+  <UAVariableType NodeId='ns=1;i=2310855939' BrowseName='1:MTNumericEventType' ValueRank='-1' DataType='Number'>
+    <DisplayName>MTNumericEventType</DisplayName>
+    <References>
+      <!-- HasSubtype -- DataItemType i=2365 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=2365</Reference>
+      <!-- HasProperty -- Category ns=1;i=503548305 Category (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=503548305</Reference>
+      <!-- HasProperty -- MTClassName ns=1;i=1778603416 MTClassName (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=1778603416</Reference>
+      <!-- HasProperty -- MTSubTypeName ns=1;i=641619688 MTSubTypeName (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=641619688</Reference>
+      <!-- HasProperty -- SourceName ns=1;i=2084138328 SourceName (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2084138328</Reference>
+      <!-- HasProperty -- StreamRate ns=1;i=3037752743 StreamRate (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3037752743</Reference>
+      <!-- HasProperty -- SampleRate ns=1;i=402358598 SampleRate (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=402358598</Reference>
+      <!-- HasProperty -- Representation ns=1;i=1847820705 Representation (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=1847820705</Reference>
+      <!-- HasComponent -- MinimumDeltaFilter ns=1;i=1335917312  (forward: true) -->
+      <Reference ReferenceType='HasComponent'>ns=1;i=1335917312</Reference>
+      <!-- HasComponent -- PeriodDelta ns=1;i=3379568617  (forward: true) -->
+      <Reference ReferenceType='HasComponent'>ns=1;i=3379568617</Reference>
+      <!-- HasProperty -- SignificantDigits ns=1;i=3176628732 SignificantDigits (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3176628732</Reference>
+      <!-- HasProperty -- Statistic ns=1;i=2493153242 Statistic (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2493153242</Reference>
+      <!-- HasProperty -- Units ns=1;i=4180901941 Units (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4180901941</Reference>
+      <!-- HasProperty -- NativeUnits ns=1;i=1406042256 NativeUnits (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=1406042256</Reference>
+      <!-- HasProperty -- CoordinateSystem ns=1;i=2784067819 CoordinateSystem (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2784067819</Reference>
+      <!-- HasProperty -- InitialValue ns=1;i=278852802 InitialValue (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=278852802</Reference>
+      <!-- HasProperty -- ResetTrigger ns=1;i=1344927041 ResetTrigger (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=1344927041</Reference>
+      <!-- HasProperty -- Nominal ns=1;i=2383756817 Nominal (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2383756817</Reference>
+      <!-- HasProperty -- EURange ns=1;i=2575690343 EURange (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2575690343</Reference>
+      <!-- HasProperty -- EngineeringUnits ns=1;i=3687967402 EngineeringUnits (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3687967402</Reference>
+    </References>
+  </UAVariableType>
+  <UAVariable NodeId='ns=1;i=503548305' BrowseName='1:Category' ValueRank='-1'>
+    <DisplayName>Category</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=1778603416' BrowseName='1:MTClassName' ValueRank='-1' DataType='String'>
+    <DisplayName>MTClassName</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=641619688' BrowseName='1:MTSubTypeName' ValueRank='-1' DataType='String'>
+    <DisplayName>MTSubTypeName</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=2084138328' BrowseName='1:SourceName' ValueRank='-1' DataType='String'>
+    <DisplayName>SourceName</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=3037752743' BrowseName='1:StreamRate' ValueRank='-1' DataType='Double'>
+    <DisplayName>StreamRate</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=402358598' BrowseName='1:SampleRate' ValueRank='-1' DataType='Double'>
+    <DisplayName>SampleRate</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=1847820705' BrowseName='1:Representation' ValueRank='-1'>
+    <DisplayName>Representation</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId='ns=1;i=1335917312' BrowseName='1:MinimumDeltaFilter'>
+    <DisplayName>MinimumDeltaFilter</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- MinimumDeltaFilterType ns=1;i=1317902295 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=1317902295</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId='ns=1;i=3379568617' BrowseName='1:PeriodDelta'>
+    <DisplayName>PeriodDelta</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- PeriodFilterType ns=1;i=3325991076 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3325991076</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId='ns=1;i=3176628732' BrowseName='1:SignificantDigits' ValueRank='-1' DataType='UInt16'>
+    <DisplayName>SignificantDigits</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTNumericDataItemType ns=1;i=1317349750 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=2493153242' BrowseName='1:Statistic' ValueRank='-1'>
+    <DisplayName>Statistic</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTNumericDataItemType ns=1;i=1317349750 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=4180901941' BrowseName='1:Units' ValueRank='-1'>
+    <DisplayName>Units</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTNumericDataItemType ns=1;i=1317349750 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=1406042256' BrowseName='1:NativeUnits' ValueRank='-1'>
+    <DisplayName>NativeUnits</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTNumericDataItemType ns=1;i=1317349750 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=2784067819' BrowseName='1:CoordinateSystem' ValueRank='-1'>
+    <DisplayName>CoordinateSystem</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTNumericDataItemType ns=1;i=1317349750 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=278852802' BrowseName='1:InitialValue' ValueRank='-1' DataType='Double'>
+    <DisplayName>InitialValue</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTNumericDataItemType ns=1;i=1317349750 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=1344927041' BrowseName='1:ResetTrigger' ValueRank='-1'>
+    <DisplayName>ResetTrigger</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTNumericDataItemType ns=1;i=1317349750 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=2383756817' BrowseName='1:Nominal' ValueRank='-1' DataType='Double'>
+    <DisplayName>Nominal</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTNumericDataItemType ns=1;i=1317349750 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=2575690343' BrowseName='1:EURange' ValueRank='-1'>
+    <DisplayName>EURange</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTNumericEventType ns=1;i=2310855939 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2310855939</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=3687967402' BrowseName='1:EngineeringUnits' ValueRank='-1'>
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTNumericEventType ns=1;i=2310855939 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2310855939</Reference>
+    </References>
+  </UAVariable>
+  <UAVariableType NodeId='ns=1;i=549116693' BrowseName='1:MTSampleType' ValueRank='-1'>
+    <DisplayName>MTSampleType</DisplayName>
+    <References>
+      <!-- HasSubtype -- AnalogItemType i=2368 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=2368</Reference>
+      <!-- HasProperty -- Category ns=1;i=503548305 Category (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=503548305</Reference>
+      <!-- HasProperty -- MTClassName ns=1;i=1778603416 MTClassName (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=1778603416</Reference>
+      <!-- HasProperty -- MTSubTypeName ns=1;i=641619688 MTSubTypeName (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=641619688</Reference>
+      <!-- HasProperty -- SourceName ns=1;i=2084138328 SourceName (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2084138328</Reference>
+      <!-- HasProperty -- StreamRate ns=1;i=3037752743 StreamRate (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3037752743</Reference>
+      <!-- HasProperty -- SampleRate ns=1;i=402358598 SampleRate (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=402358598</Reference>
+      <!-- HasProperty -- Representation ns=1;i=1847820705 Representation (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=1847820705</Reference>
+      <!-- HasComponent -- MinimumDeltaFilter ns=1;i=1335917312  (forward: true) -->
+      <Reference ReferenceType='HasComponent'>ns=1;i=1335917312</Reference>
+      <!-- HasComponent -- PeriodDelta ns=1;i=3379568617  (forward: true) -->
+      <Reference ReferenceType='HasComponent'>ns=1;i=3379568617</Reference>
+      <!-- HasProperty -- SignificantDigits ns=1;i=3176628732 SignificantDigits (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3176628732</Reference>
+      <!-- HasProperty -- Statistic ns=1;i=2493153242 Statistic (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2493153242</Reference>
+      <!-- HasProperty -- Units ns=1;i=4180901941 Units (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4180901941</Reference>
+      <!-- HasProperty -- NativeUnits ns=1;i=1406042256 NativeUnits (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=1406042256</Reference>
+      <!-- HasProperty -- CoordinateSystem ns=1;i=2784067819 CoordinateSystem (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2784067819</Reference>
+      <!-- HasProperty -- InitialValue ns=1;i=278852802 InitialValue (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=278852802</Reference>
+      <!-- HasProperty -- ResetTrigger ns=1;i=1344927041 ResetTrigger (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=1344927041</Reference>
+      <!-- HasProperty -- Nominal ns=1;i=2383756817 Nominal (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2383756817</Reference>
+    </References>
+  </UAVariableType>
+  <UAVariable NodeId='ns=1;i=503548305' BrowseName='1:Category' ValueRank='-1'>
+    <DisplayName>Category</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=1778603416' BrowseName='1:MTClassName' ValueRank='-1' DataType='String'>
+    <DisplayName>MTClassName</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=641619688' BrowseName='1:MTSubTypeName' ValueRank='-1' DataType='String'>
+    <DisplayName>MTSubTypeName</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=2084138328' BrowseName='1:SourceName' ValueRank='-1' DataType='String'>
+    <DisplayName>SourceName</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=3037752743' BrowseName='1:StreamRate' ValueRank='-1' DataType='Double'>
+    <DisplayName>StreamRate</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=402358598' BrowseName='1:SampleRate' ValueRank='-1' DataType='Double'>
+    <DisplayName>SampleRate</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=1847820705' BrowseName='1:Representation' ValueRank='-1'>
+    <DisplayName>Representation</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId='ns=1;i=1335917312' BrowseName='1:MinimumDeltaFilter'>
+    <DisplayName>MinimumDeltaFilter</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- MinimumDeltaFilterType ns=1;i=1317902295 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=1317902295</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId='ns=1;i=3379568617' BrowseName='1:PeriodDelta'>
+    <DisplayName>PeriodDelta</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- PeriodFilterType ns=1;i=3325991076 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3325991076</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId='ns=1;i=3176628732' BrowseName='1:SignificantDigits' ValueRank='-1' DataType='UInt16'>
+    <DisplayName>SignificantDigits</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTNumericDataItemType ns=1;i=1317349750 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=2493153242' BrowseName='1:Statistic' ValueRank='-1'>
+    <DisplayName>Statistic</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTNumericDataItemType ns=1;i=1317349750 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=4180901941' BrowseName='1:Units' ValueRank='-1'>
+    <DisplayName>Units</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTNumericDataItemType ns=1;i=1317349750 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=1406042256' BrowseName='1:NativeUnits' ValueRank='-1'>
+    <DisplayName>NativeUnits</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTNumericDataItemType ns=1;i=1317349750 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=2784067819' BrowseName='1:CoordinateSystem' ValueRank='-1'>
+    <DisplayName>CoordinateSystem</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTNumericDataItemType ns=1;i=1317349750 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=278852802' BrowseName='1:InitialValue' ValueRank='-1' DataType='Double'>
+    <DisplayName>InitialValue</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTNumericDataItemType ns=1;i=1317349750 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=1344927041' BrowseName='1:ResetTrigger' ValueRank='-1'>
+    <DisplayName>ResetTrigger</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTNumericDataItemType ns=1;i=1317349750 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=2383756817' BrowseName='1:Nominal' ValueRank='-1' DataType='Double'>
+    <DisplayName>Nominal</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTNumericDataItemType ns=1;i=1317349750 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=1317349750</Reference>
+    </References>
+  </UAVariable>
+  <UAVariableType NodeId='ns=1;i=2153802686' BrowseName='1:MTStringEventType' ValueRank='-1' DataType='String'>
+    <DisplayName>MTStringEventType</DisplayName>
+    <References>
+      <!-- HasSubtype -- BaseDataVariableType i=63 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=63</Reference>
+      <!-- HasProperty -- Category ns=1;i=503548305 Category (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=503548305</Reference>
+      <!-- HasProperty -- MTClassName ns=1;i=1778603416 MTClassName (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=1778603416</Reference>
+      <!-- HasProperty -- MTSubTypeName ns=1;i=641619688 MTSubTypeName (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=641619688</Reference>
+      <!-- HasProperty -- SourceName ns=1;i=2084138328 SourceName (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2084138328</Reference>
+      <!-- HasProperty -- StreamRate ns=1;i=3037752743 StreamRate (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3037752743</Reference>
+      <!-- HasProperty -- SampleRate ns=1;i=402358598 SampleRate (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=402358598</Reference>
+      <!-- HasProperty -- Representation ns=1;i=1847820705 Representation (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=1847820705</Reference>
+      <!-- HasComponent -- MinimumDeltaFilter ns=1;i=1335917312  (forward: true) -->
+      <Reference ReferenceType='HasComponent'>ns=1;i=1335917312</Reference>
+      <!-- HasComponent -- PeriodDelta ns=1;i=3379568617  (forward: true) -->
+      <Reference ReferenceType='HasComponent'>ns=1;i=3379568617</Reference>
+    </References>
+  </UAVariableType>
+  <UAVariable NodeId='ns=1;i=503548305' BrowseName='1:Category' ValueRank='-1'>
+    <DisplayName>Category</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=1778603416' BrowseName='1:MTClassName' ValueRank='-1' DataType='String'>
+    <DisplayName>MTClassName</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=641619688' BrowseName='1:MTSubTypeName' ValueRank='-1' DataType='String'>
+    <DisplayName>MTSubTypeName</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=2084138328' BrowseName='1:SourceName' ValueRank='-1' DataType='String'>
+    <DisplayName>SourceName</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=3037752743' BrowseName='1:StreamRate' ValueRank='-1' DataType='Double'>
+    <DisplayName>StreamRate</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=402358598' BrowseName='1:SampleRate' ValueRank='-1' DataType='Double'>
+    <DisplayName>SampleRate</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=1847820705' BrowseName='1:Representation' ValueRank='-1'>
+    <DisplayName>Representation</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- HasProperty i=46 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=46</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId='ns=1;i=1335917312' BrowseName='1:MinimumDeltaFilter'>
+    <DisplayName>MinimumDeltaFilter</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- MinimumDeltaFilterType ns=1;i=1317902295 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=1317902295</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAObject>
+  <UAObject NodeId='ns=1;i=3379568617' BrowseName='1:PeriodDelta'>
+    <DisplayName>PeriodDelta</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -- PeriodFilterType ns=1;i=3325991076 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3325991076</Reference>
+      <!-- HasModelingRule -- Optional i=80 (forward: true) -->
+      <Reference ReferenceType='HasModelingRule'>i=80</Reference>
+      <!-- HasProperty -- MTDataItemType ns=1;i=519203997 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=519203997</Reference>
+    </References>
+  </UAObject>
+  <UAObjectType NodeId='ns=1;i=280002381' BrowseName='1:MTDataItemClassType' IsAbstract='true'>
+    <DisplayName>MTDataItemClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- BaseConditionClassType i=11163 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=11163</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=4048967579' BrowseName='1:MTEventClassType' IsAbstract='true'>
+    <DisplayName>MTEventClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemClassType ns=1;i=280002381 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=280002381</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1763934135' BrowseName='1:MTConditionClassType' IsAbstract='true'>
+    <DisplayName>MTConditionClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemClassType ns=1;i=280002381 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=280002381</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2487572244' BrowseName='1:MTSampleClassType' IsAbstract='true'>
+    <DisplayName>MTSampleClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemClassType ns=1;i=280002381 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=280002381</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=297948663' BrowseName='1:LoadClassType'>
+    <DisplayName>LoadClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3249198775' BrowseName='1:AccelerationClassType'>
+    <DisplayName>AccelerationClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3289175800' BrowseName='1:AccumulatedTimeClassType'>
+    <DisplayName>AccumulatedTimeClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=612292405' BrowseName='1:AngularAccelerationClassType'>
+    <DisplayName>AngularAccelerationClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3317487473' BrowseName='1:AngularVelocityClassType'>
+    <DisplayName>AngularVelocityClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1369364397' BrowseName='1:AmperageClassType'>
+    <DisplayName>AmperageClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2413746136' BrowseName='1:AngleClassType'>
+    <DisplayName>AngleClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1484380166' BrowseName='1:AxisFeedrateClassType'>
+    <DisplayName>AxisFeedrateClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2320095280' BrowseName='1:ClockTimeClassType'>
+    <DisplayName>ClockTimeClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=801429647' BrowseName='1:ConcentrationClassType'>
+    <DisplayName>ConcentrationClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1971181770' BrowseName='1:ConductivityClassType'>
+    <DisplayName>ConductivityClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=4210350344' BrowseName='1:DisplacementClassType'>
+    <DisplayName>DisplacementClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1641863491' BrowseName='1:ElectricalEnergyClassType'>
+    <DisplayName>ElectricalEnergyClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3714242944' BrowseName='1:EquipmentTimerClassType'>
+    <DisplayName>EquipmentTimerClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1736235452' BrowseName='1:FillLevelClassType'>
+    <DisplayName>FillLevelClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1134680596' BrowseName='1:FlowClassType'>
+    <DisplayName>FlowClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1618205293' BrowseName='1:FrequencyClassType'>
+    <DisplayName>FrequencyClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1229904553' BrowseName='1:LengthClassType'>
+    <DisplayName>LengthClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1643834939' BrowseName='1:LinearForceClassType'>
+    <DisplayName>LinearForceClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=809627299' BrowseName='1:MassClassType'>
+    <DisplayName>MassClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=394063637' BrowseName='1:PathFeedrateClassType'>
+    <DisplayName>PathFeedrateClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2322394961' BrowseName='1:PathPositionClassType'>
+    <DisplayName>PathPositionClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3503091596' BrowseName='1:PHClassType'>
+    <DisplayName>PHClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1798631369' BrowseName='1:PositionClassType'>
+    <DisplayName>PositionClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1961291782' BrowseName='1:PowerFactorClassType'>
+    <DisplayName>PowerFactorClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3762286658' BrowseName='1:PressureClassType'>
+    <DisplayName>PressureClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2627596417' BrowseName='1:ProcessTimerClassType'>
+    <DisplayName>ProcessTimerClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=352514241' BrowseName='1:ResistenceClassType'>
+    <DisplayName>ResistenceClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3356422431' BrowseName='1:RotaryVelocityClassType'>
+    <DisplayName>RotaryVelocityClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3330863454' BrowseName='1:SoundLevelClassType'>
+    <DisplayName>SoundLevelClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2415718814' BrowseName='1:StrainClassType'>
+    <DisplayName>StrainClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1854337498' BrowseName='1:TemperatureClassType'>
+    <DisplayName>TemperatureClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=559608343' BrowseName='1:TensionClassType'>
+    <DisplayName>TensionClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3364483669' BrowseName='1:TiltClassType'>
+    <DisplayName>TiltClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2114122386' BrowseName='1:TorqueClassType'>
+    <DisplayName>TorqueClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=685634258' BrowseName='1:VoltAmpereClassType'>
+    <DisplayName>VoltAmpereClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3943166796' BrowseName='1:VelocityClassType'>
+    <DisplayName>VelocityClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=479064848' BrowseName='1:VoltAmpereReactiveClassType'>
+    <DisplayName>VoltAmpereReactiveClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2946364297' BrowseName='1:ViscosityClassType'>
+    <DisplayName>ViscosityClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1500574661' BrowseName='1:VoltageClassType'>
+    <DisplayName>VoltageClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3781424131' BrowseName='1:WattageClassType'>
+    <DisplayName>WattageClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTSampleClassType ns=1;i=2487572244 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2487572244</Reference>
+    </References>
+  </UAObjectType>
+  <UADataType NodeId='ns=1;i=2710913152' BrowseName='1:ActiveStateDataType'>
+    <DisplayName>ActiveStateDataType</DisplayName>
+    <References>
+      <!-- HasSubtype -- Enumeration i=29 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+    </References>
+    <Definition Name='ActiveStateDataType'>
+      <Field Name='ACTIVE' Value='0'/>
+      <Field Name='INACTIVE' Value='1'/>
+    </Definition>
+  </UADataType>
+  <UADataType NodeId='ns=1;i=529681122' BrowseName='1:AvailabilityDataType'>
+    <DisplayName>AvailabilityDataType</DisplayName>
+    <References>
+      <!-- HasSubtype -- Enumeration i=29 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+    </References>
+    <Definition Name='AvailabilityDataType'>
+      <Field Name='AVAILABILE' Value='0'/>
+      <Field Name='UNAVAILABLE' Value='1'/>
+    </Definition>
+  </UADataType>
+  <UADataType NodeId='ns=1;i=1439058802' BrowseName='1:AxisCouplingDataType'>
+    <DisplayName>AxisCouplingDataType</DisplayName>
+    <References>
+      <!-- HasSubtype -- Enumeration i=29 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+    </References>
+    <Definition Name='AxisCouplingDataType'>
+      <Field Name='MASTER' Value='0'/>
+      <Field Name='SLAVE' Value='1'/>
+      <Field Name='SYNCHRONOUS' Value='2'/>
+      <Field Name='TANDEM' Value='3'/>
+    </Definition>
+  </UADataType>
+  <UADataType NodeId='ns=1;i=1069894830' BrowseName='1:AxisStateDataType'>
+    <DisplayName>AxisStateDataType</DisplayName>
+    <References>
+      <!-- HasSubtype -- Enumeration i=29 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+    </References>
+    <Definition Name='AxisStateDataType'>
+      <Field Name='HOME' Value='0'/>
+      <Field Name='PARKED' Value='1'/>
+      <Field Name='STOPPED' Value='2'/>
+      <Field Name='TRAVEL' Value='3'/>
+    </Definition>
+  </UADataType>
+  <UADataType NodeId='ns=1;i=3379580566' BrowseName='1:CompositionStateDataType'>
+    <DisplayName>CompositionStateDataType</DisplayName>
+    <References>
+      <!-- HasSubtype -- Enumeration i=29 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+    </References>
+    <Definition Name='CompositionStateDataType'>
+      <Field Name='ACTIVE' Value='0'/>
+      <Field Name='CLOSED' Value='1'/>
+      <Field Name='DOWN' Value='2'/>
+      <Field Name='INACTIVE' Value='3'/>
+      <Field Name='LEFT' Value='4'/>
+      <Field Name='OFF' Value='5'/>
+      <Field Name='ON' Value='6'/>
+      <Field Name='OPEN' Value='7'/>
+      <Field Name='RIGHT' Value='8'/>
+      <Field Name='TRANSITIONING' Value='9'/>
+      <Field Name='UNLATCHED' Value='10'/>
+      <Field Name='UP' Value='11'/>
+    </Definition>
+  </UADataType>
+  <UADataType NodeId='ns=1;i=2238861211' BrowseName='1:ControllerModeDataType'>
+    <DisplayName>ControllerModeDataType</DisplayName>
+    <References>
+      <!-- HasSubtype -- Enumeration i=29 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+    </References>
+    <Definition Name='ControllerModeDataType'>
+      <Field Name='AUTOMATIC' Value='0'/>
+      <Field Name='EDIT' Value='1'/>
+      <Field Name='MANUAL' Value='2'/>
+      <Field Name='MANUAL_DATA_INPUT' Value='3'/>
+      <Field Name='SEMI_AUTOMATIC' Value='4'/>
+    </Definition>
+  </UADataType>
+  <UADataType NodeId='ns=1;i=1885229297' BrowseName='1:DirectionDataType'>
+    <DisplayName>DirectionDataType</DisplayName>
+    <References>
+      <!-- HasSubtype -- Enumeration i=29 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+    </References>
+    <Definition Name='DirectionDataType'>
+      <Field Name='CLOCKWISE' Value='0'/>
+      <Field Name='COUNTER_CLOCKWISE' Value='1'/>
+      <Field Name='NEGATIVE' Value='2'/>
+      <Field Name='POSITIVE' Value='3'/>
+    </Definition>
+  </UADataType>
+  <UADataType NodeId='ns=1;i=3535033094' BrowseName='1:EmergencyStopDataType'>
+    <DisplayName>EmergencyStopDataType</DisplayName>
+    <References>
+      <!-- HasSubtype -- Enumeration i=29 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+    </References>
+    <Definition Name='EmergencyStopDataType'>
+      <Field Name='ARMED' Value='0'/>
+      <Field Name='TRIGGERED' Value='1'/>
+    </Definition>
+  </UADataType>
+  <UADataType NodeId='ns=1;i=1553618035' BrowseName='1:FunctionalModeDataType'>
+    <DisplayName>FunctionalModeDataType</DisplayName>
+    <References>
+      <!-- HasSubtype -- Enumeration i=29 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+    </References>
+    <Definition Name='FunctionalModeDataType'>
+      <Field Name='MAINTENANCE' Value='0'/>
+      <Field Name='PRODUCTION' Value='1'/>
+      <Field Name='PROCESS_DEVELOPMENT' Value='2'/>
+      <Field Name='SETUP' Value='3'/>
+      <Field Name='TEARDOWN' Value='4'/>
+    </Definition>
+  </UADataType>
+  <UAObjectType NodeId='ns=1;i=3539211740' BrowseName='1:MTControlledVocabClassType' IsAbstract='true'>
+    <DisplayName>MTControlledVocabClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTEventClassType ns=1;i=4048967579 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=4048967579</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1431322709' BrowseName='1:ActuatorStateClassType'>
+    <DisplayName>ActuatorStateClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTControlledVocabClassType ns=1;i=3539211740 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3539211740</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3007335079' BrowseName='1:AvailabilityClassType'>
+    <DisplayName>AvailabilityClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTControlledVocabClassType ns=1;i=3539211740 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3539211740</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3281341237' BrowseName='1:AxisCouplingClassType'>
+    <DisplayName>AxisCouplingClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTControlledVocabClassType ns=1;i=3539211740 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3539211740</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1841908721' BrowseName='1:AxisInterlockClassType'>
+    <DisplayName>AxisInterlockClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTControlledVocabClassType ns=1;i=3539211740 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3539211740</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=4026813571' BrowseName='1:AxisStateClassType'>
+    <DisplayName>AxisStateClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTControlledVocabClassType ns=1;i=3539211740 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3539211740</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3392163170' BrowseName='1:ChuckInterlockClassType'>
+    <DisplayName>ChuckInterlockClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTControlledVocabClassType ns=1;i=3539211740 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3539211740</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1411009987' BrowseName='1:ChuckStateClassType'>
+    <DisplayName>ChuckStateClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTControlledVocabClassType ns=1;i=3539211740 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3539211740</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=649091045' BrowseName='1:ControllerModeClassType'>
+    <DisplayName>ControllerModeClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTControlledVocabClassType ns=1;i=3539211740 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3539211740</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=4005707746' BrowseName='1:ExecutionClassType'>
+    <DisplayName>ExecutionClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTControlledVocabClassType ns=1;i=3539211740 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3539211740</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=565595736' BrowseName='1:CompositionStateClassType'>
+    <DisplayName>CompositionStateClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTControlledVocabClassType ns=1;i=3539211740 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3539211740</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1737642018' BrowseName='1:ControllerModeOverrideClassType'>
+    <DisplayName>ControllerModeOverrideClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTControlledVocabClassType ns=1;i=3539211740 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3539211740</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1908625589' BrowseName='1:DirectionClassType'>
+    <DisplayName>DirectionClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTControlledVocabClassType ns=1;i=3539211740 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3539211740</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=4013838673' BrowseName='1:DoorStateClassType'>
+    <DisplayName>DoorStateClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTControlledVocabClassType ns=1;i=3539211740 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3539211740</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=585257673' BrowseName='1:EmergencyStopClassType'>
+    <DisplayName>EmergencyStopClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTControlledVocabClassType ns=1;i=3539211740 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3539211740</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2463781437' BrowseName='1:EndOfBarClassType'>
+    <DisplayName>EndOfBarClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTControlledVocabClassType ns=1;i=3539211740 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3539211740</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1968198503' BrowseName='1:EquipmentModeClassType'>
+    <DisplayName>EquipmentModeClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTControlledVocabClassType ns=1;i=3539211740 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3539211740</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=381047880' BrowseName='1:FunctionalModeClassType'>
+    <DisplayName>FunctionalModeClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTControlledVocabClassType ns=1;i=3539211740 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3539211740</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=138565410' BrowseName='1:SpindleInterlockClassType'>
+    <DisplayName>SpindleInterlockClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTControlledVocabClassType ns=1;i=3539211740 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3539211740</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2264683779' BrowseName='1:PathModeClassType'>
+    <DisplayName>PathModeClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTControlledVocabClassType ns=1;i=3539211740 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3539211740</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3008386465' BrowseName='1:PowerStateClassType'>
+    <DisplayName>PowerStateClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTControlledVocabClassType ns=1;i=3539211740 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3539211740</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=4164507122' BrowseName='1:ProgramEditClassType'>
+    <DisplayName>ProgramEditClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTControlledVocabClassType ns=1;i=3539211740 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3539211740</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=154883724' BrowseName='1:RotaryModeClassType'>
+    <DisplayName>RotaryModeClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTControlledVocabClassType ns=1;i=3539211740 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3539211740</Reference>
+    </References>
+  </UAObjectType>
+  <UADataType NodeId='ns=1;i=3337179213' BrowseName='1:OnOffDataType'>
+    <DisplayName>OnOffDataType</DisplayName>
+    <References>
+      <!-- HasSubtype -- Enumeration i=29 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+    </References>
+    <Definition Name='OnOffDataType'>
+      <Field Name='OFF' Value='0'/>
+      <Field Name='ON' Value='1'/>
+    </Definition>
+  </UADataType>
+  <UADataType NodeId='ns=1;i=3640741376' BrowseName='1:OpenStateDataType'>
+    <DisplayName>OpenStateDataType</DisplayName>
+    <References>
+      <!-- HasSubtype -- Enumeration i=29 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+    </References>
+    <Definition Name='OpenStateDataType'>
+      <Field Name='CLOSED' Value='0'/>
+      <Field Name='OPEN' Value='1'/>
+      <Field Name='UNLATCHED' Value='2'/>
+    </Definition>
+  </UADataType>
+  <UADataType NodeId='ns=1;i=776361283' BrowseName='1:PathModeDataType'>
+    <DisplayName>PathModeDataType</DisplayName>
+    <References>
+      <!-- HasSubtype -- Enumeration i=29 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+    </References>
+    <Definition Name='PathModeDataType'>
+      <Field Name='INDEPENDENT' Value='0'/>
+      <Field Name='MASTER' Value='1'/>
+      <Field Name='MIRROR' Value='2'/>
+      <Field Name='SYNCHRONOUS' Value='3'/>
+    </Definition>
+  </UADataType>
+  <UADataType NodeId='ns=1;i=3165869620' BrowseName='1:ProgramEditDataType'>
+    <DisplayName>ProgramEditDataType</DisplayName>
+    <References>
+      <!-- HasSubtype -- Enumeration i=29 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+    </References>
+    <Definition Name='ProgramEditDataType'>
+      <Field Name='ACTIVE' Value='0'/>
+      <Field Name='NOT_READY' Value='1'/>
+      <Field Name='READY' Value='2'/>
+    </Definition>
+  </UADataType>
+  <UADataType NodeId='ns=1;i=2228442809' BrowseName='1:RotaryModeDataType'>
+    <DisplayName>RotaryModeDataType</DisplayName>
+    <References>
+      <!-- HasSubtype -- Enumeration i=29 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+    </References>
+    <Definition Name='RotaryModeDataType'>
+      <Field Name='CONTOUR' Value='0'/>
+      <Field Name='INDEX' Value='1'/>
+      <Field Name='SPINDLE' Value='2'/>
+    </Definition>
+  </UADataType>
+  <UADataType NodeId='ns=1;i=3787739753' BrowseName='1:YesNoDataType'>
+    <DisplayName>YesNoDataType</DisplayName>
+    <References>
+      <!-- HasSubtype -- Enumeration i=29 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+    </References>
+    <Definition Name='YesNoDataType'>
+      <Field Name='NO' Value='0'/>
+      <Field Name='YES' Value='1'/>
+    </Definition>
+  </UADataType>
+  <UAObjectType NodeId='ns=1;i=560732927' BrowseName='1:MTNumberEventClassType' IsAbstract='true'>
+    <DisplayName>MTNumberEventClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTEventClassType ns=1;i=4048967579 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=4048967579</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=105257854' BrowseName='1:AxisFeedrateOverrideClassType'>
+    <DisplayName>AxisFeedrateOverrideClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTNumberEventClassType ns=1;i=560732927 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=560732927</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3220249532' BrowseName='1:BlockCountClassType'>
+    <DisplayName>BlockCountClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTNumberEventClassType ns=1;i=560732927 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=560732927</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1771183096' BrowseName='1:HardnessClassType'>
+    <DisplayName>HardnessClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTNumberEventClassType ns=1;i=560732927 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=560732927</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2719489058' BrowseName='1:LineNumberClassType'>
+    <DisplayName>LineNumberClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTNumberEventClassType ns=1;i=560732927 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=560732927</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=4168817808' BrowseName='1:PartCountClassType'>
+    <DisplayName>PartCountClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTNumberEventClassType ns=1;i=560732927 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=560732927</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=322247890' BrowseName='1:RotaryVelocityOverrideClassType'>
+    <DisplayName>RotaryVelocityOverrideClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTNumberEventClassType ns=1;i=560732927 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=560732927</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3043302204' BrowseName='1:MTStringEventClassType' IsAbstract='true'>
+    <DisplayName>MTStringEventClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTEventClassType ns=1;i=4048967579 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=4048967579</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2284730136' BrowseName='1:BlockClassType'>
+    <DisplayName>BlockClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTStringEventClassType ns=1;i=3043302204 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3043302204</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1715091286' BrowseName='1:CoupledAxesClassType'>
+    <DisplayName>CoupledAxesClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTStringEventClassType ns=1;i=3043302204 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3043302204</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3900716951' BrowseName='1:LineLabelClassType'>
+    <DisplayName>LineLabelClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTStringEventClassType ns=1;i=3043302204 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3043302204</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1555183579' BrowseName='1:MaterialClassType'>
+    <DisplayName>MaterialClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTStringEventClassType ns=1;i=3043302204 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3043302204</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3846780952' BrowseName='1:OperatorIdClassType'>
+    <DisplayName>OperatorIdClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTStringEventClassType ns=1;i=3043302204 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3043302204</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1031813203' BrowseName='1:PalletIdClassType'>
+    <DisplayName>PalletIdClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTStringEventClassType ns=1;i=3043302204 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3043302204</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=4251269264' BrowseName='1:PartIdClassType'>
+    <DisplayName>PartIdClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTStringEventClassType ns=1;i=3043302204 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3043302204</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3509205199' BrowseName='1:PartNumberClassType'>
+    <DisplayName>PartNumberClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTStringEventClassType ns=1;i=3043302204 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3043302204</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3270719756' BrowseName='1:ProgramClassType'>
+    <DisplayName>ProgramClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTStringEventClassType ns=1;i=3043302204 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3043302204</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3518314826' BrowseName='1:ProgramEditNameClassType'>
+    <DisplayName>ProgramEditNameClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTStringEventClassType ns=1;i=3043302204 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3043302204</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=604912010' BrowseName='1:ProgramHeaderClassType'>
+    <DisplayName>ProgramHeaderClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTStringEventClassType ns=1;i=3043302204 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3043302204</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1831483845' BrowseName='1:ProgramCommentClassType'>
+    <DisplayName>ProgramCommentClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTStringEventClassType ns=1;i=3043302204 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3043302204</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1335048709' BrowseName='1:SerialNumberClassType'>
+    <DisplayName>SerialNumberClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTStringEventClassType ns=1;i=3043302204 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3043302204</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3215276609' BrowseName='1:ToolAssetIdClassType'>
+    <DisplayName>ToolAssetIdClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTStringEventClassType ns=1;i=3043302204 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3043302204</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1522678398' BrowseName='1:ToolNumberClassType'>
+    <DisplayName>ToolNumberClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTStringEventClassType ns=1;i=3043302204 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3043302204</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3860085434' BrowseName='1:ToolOffsetClassType'>
+    <DisplayName>ToolOffsetClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTStringEventClassType ns=1;i=3043302204 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3043302204</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1726233342' BrowseName='1:UserClassType'>
+    <DisplayName>UserClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTStringEventClassType ns=1;i=3043302204 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3043302204</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=774912830' BrowseName='1:WireClassType'>
+    <DisplayName>WireClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTStringEventClassType ns=1;i=3043302204 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3043302204</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2316385150' BrowseName='1:WorkholdingClassType'>
+    <DisplayName>WorkholdingClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTStringEventClassType ns=1;i=3043302204 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3043302204</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=925318077' BrowseName='1:WorkOffsetClassType'>
+    <DisplayName>WorkOffsetClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTStringEventClassType ns=1;i=3043302204 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3043302204</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2507366125' BrowseName='1:MTDataItemSubClassType'>
+    <DisplayName>MTDataItemSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- BaseConditionClassType i=11163 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=11163</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=621311661' BrowseName='1:AbsoluteSubClassType'>
+    <DisplayName>AbsoluteSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1827429576' BrowseName='1:ActualSubClassType'>
+    <DisplayName>ActualSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3245636212' BrowseName='1:ActionSubClassType'>
+    <DisplayName>ActionSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1416000062' BrowseName='1:AllSubClassType'>
+    <DisplayName>AllSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=222196424' BrowseName='1:AlternatingSubClassType'>
+    <DisplayName>AlternatingSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3186586612' BrowseName='1:AScaleSubClassType'>
+    <DisplayName>AScaleSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3320935889' BrowseName='1:AuxiliarySubClassType'>
+    <DisplayName>AuxiliarySubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=738357780' BrowseName='1:BadSubClassType'>
+    <DisplayName>BadSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2009824805' BrowseName='1:BrinellSubClassType'>
+    <DisplayName>BrinellSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=382759968' BrowseName='1:BScaleSubClassType'>
+    <DisplayName>BScaleSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3736104954' BrowseName='1:CommandedSubClassType'>
+    <DisplayName>CommandedSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3614994922' BrowseName='1:GoodSubClassType'>
+    <DisplayName>GoodSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3575739038' BrowseName='1:ControlSubClassType'>
+    <DisplayName>ControlSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1277129802' BrowseName='1:CScaleSubClassType'>
+    <DisplayName>CScaleSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=75790340' BrowseName='1:DelaySubClassType'>
+    <DisplayName>DelaySubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1726378738' BrowseName='1:DirectSubClassType'>
+    <DisplayName>DirectSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2736487423' BrowseName='1:DryRunSubClassType'>
+    <DisplayName>DryRunSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2850059383' BrowseName='1:DScaleSubClassType'>
+    <DisplayName>DScaleSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=592148054' BrowseName='1:FixtureSubClassType'>
+    <DisplayName>FixtureSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1793228620' BrowseName='1:IncrementalSubClassType'>
+    <DisplayName>IncrementalSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1712485666' BrowseName='1:JobSubClassType'>
+    <DisplayName>JobSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3956306847' BrowseName='1:KineticSubClassType'>
+    <DisplayName>KineticSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2740157135' BrowseName='1:LateralSubClassType'>
+    <DisplayName>LateralSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3052502607' BrowseName='1:LeebSubClassType'>
+    <DisplayName>LeebSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=861962214' BrowseName='1:LengthSubClassType'>
+    <DisplayName>LengthSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2405203161' BrowseName='1:LinearSubClassType'>
+    <DisplayName>LinearSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1968599667' BrowseName='1:LineSubClassType'>
+    <DisplayName>LineSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2337240919' BrowseName='1:LoadedSubClassType'>
+    <DisplayName>LoadedSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=4283989034' BrowseName='1:MachineAxisLockSubClassType'>
+    <DisplayName>MachineAxisLockSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2980806786' BrowseName='1:MaintenanceSubClassType'>
+    <DisplayName>MaintenanceSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1499952638' BrowseName='1:ManualUnclampSubClassType'>
+    <DisplayName>ManualUnclampSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1461350439' BrowseName='1:MaximumSubClassType'>
+    <DisplayName>MaximumSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2538631250' BrowseName='1:MinimumSubClassType'>
+    <DisplayName>MinimumSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3928522361' BrowseName='1:MohsSubClassType'>
+    <DisplayName>MohsSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2436330356' BrowseName='1:MoleSubClassType'>
+    <DisplayName>MoleSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1015774000' BrowseName='1:MotionSubClassType'>
+    <DisplayName>MotionSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2007528394' BrowseName='1:NoScaleSubClassType'>
+    <DisplayName>NoScaleSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1539012526' BrowseName='1:OperatingSubClassType'>
+    <DisplayName>OperatingSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3852173370' BrowseName='1:OperatorSubClassType'>
+    <DisplayName>OperatorSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1593015380' BrowseName='1:OptionalStopSubClassType'>
+    <DisplayName>OptionalStopSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=4237521022' BrowseName='1:OverrideSubClassType'>
+    <DisplayName>OverrideSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1562801572' BrowseName='1:PrimarySubClassType'>
+    <DisplayName>PrimarySubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2281338840' BrowseName='1:PoweredSubClassType'>
+    <DisplayName>PoweredSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1333096616' BrowseName='1:ProbeSubClassType'>
+    <DisplayName>ProbeSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1435597366' BrowseName='1:ProcessSubClassType'>
+    <DisplayName>ProcessSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=438465913' BrowseName='1:ProgrammedSubClassType'>
+    <DisplayName>ProgrammedSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2281406371' BrowseName='1:RadialSubClassType'>
+    <DisplayName>RadialSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2904257870' BrowseName='1:RapidSubClassType'>
+    <DisplayName>RapidSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1487566551' BrowseName='1:RelativeSubClassType'>
+    <DisplayName>RelativeSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=321156343' BrowseName='1:RemainingSubClassType'>
+    <DisplayName>RemainingSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1172927650' BrowseName='1:RequestSubClassType'>
+    <DisplayName>RequestSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3098244301' BrowseName='1:ResponseSubClassType'>
+    <DisplayName>ResponseSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3041099172' BrowseName='1:RockwellSubClassType'>
+    <DisplayName>RockwellSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1251310767' BrowseName='1:RotarySubClassType'>
+    <DisplayName>RotarySubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2066841812' BrowseName='1:SetUpSubClassType'>
+    <DisplayName>SetUpSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=902266363' BrowseName='1:ShoreSubClassType'>
+    <DisplayName>ShoreSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1959819310' BrowseName='1:StandardSubClassType'>
+    <DisplayName>StandardSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2126019419' BrowseName='1:SwitchedSubClassType'>
+    <DisplayName>SwitchedSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3299700947' BrowseName='1:TargetSubClassType'>
+    <DisplayName>TargetSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2840427648' BrowseName='1:ToolChangeStopSubClassType'>
+    <DisplayName>ToolChangeStopSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2845538050' BrowseName='1:ToolEdgeSubClassType'>
+    <DisplayName>ToolEdgeSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3455809324' BrowseName='1:ToolGroupSubClassType'>
+    <DisplayName>ToolGroupSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1877112449' BrowseName='1:ToolSubClassType'>
+    <DisplayName>ToolSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=2390981128' BrowseName='1:UasbleSubClassType'>
+    <DisplayName>UasbleSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3414326151' BrowseName='1:VerticalSubClassType'>
+    <DisplayName>VerticalSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=1108702024' BrowseName='1:VolumeSubClassType'>
+    <DisplayName>VolumeSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3871309262' BrowseName='1:VickersSubClassType'>
+    <DisplayName>VickersSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3364647710' BrowseName='1:WeightSubClassType'>
+    <DisplayName>WeightSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=399144835' BrowseName='1:WorkingSubClassType'>
+    <DisplayName>WorkingSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UAObjectType NodeId='ns=1;i=3278468650' BrowseName='1:WorkpieceSubClassType'>
+    <DisplayName>WorkpieceSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype -- MTDataItemSubClassType ns=1;i=2507366125 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2507366125</Reference>
+    </References>
+  </UAObjectType>
+  <UADataType NodeId='ns=1;i=2879096392' BrowseName='1:CoordinateSystemType'>
+    <DisplayName>CoordinateSystemType</DisplayName>
+    <References>
+      <!-- HasSubtype -- Enumeration i=29 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+    </References>
+    <Definition Name='CoordinateSystemType'>
+      <Field Name='MACHINE' Value='0'/>
+      <Field Name='WORK' Value='1'/>
+    </Definition>
+  </UADataType>
+  <UADataType NodeId='ns=1;i=2398025152' BrowseName='1:DataItemResetValueType'>
+    <DisplayName>DataItemResetValueType</DisplayName>
+    <References>
+      <!-- HasSubtype -- Enumeration i=29 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+    </References>
+    <Description>These need to become \texttt{Good_} status code in OPC UA.</Description>
+    <Definition Name='DataItemResetValueType'>
+      <Field Name='ACTION_COMPLETE' Value='0'/>
+      <Field Name='ANNUAL' Value='1'/>
+      <Field Name='DAY' Value='2'/>
+      <Field Name='MAINTENANCE' Value='3'/>
+      <Field Name='MANUAL' Value='4'/>
+      <Field Name='MONTH' Value='5'/>
+      <Field Name='POWER_ON' Value='6'/>
+      <Field Name='SHIFT' Value='7'/>
+      <Field Name='WEEK' Value='8'/>
+    </Definition>
+  </UADataType>
+  <UADataType NodeId='ns=1;i=3449522753' BrowseName='1:MTCategoryType'>
+    <DisplayName>MTCategoryType</DisplayName>
+    <References>
+      <!-- HasSubtype -- Enumeration i=29 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+    </References>
+    <Definition Name='MTCategoryType'>
+      <Field Name='EVENT' Value='0'/>
+      <Field Name='SAMPLE' Value='1'/>
+      <Field Name='CONDITION' Value='2'/>
+    </Definition>
+  </UADataType>
+  <UADataType NodeId='ns=1;i=2295760810' BrowseName='1:MTRepresentationType'>
+    <DisplayName>MTRepresentationType</DisplayName>
+    <References>
+      <!-- HasSubtype -- Enumeration i=29 (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+    </References>
+    <Definition Name='MTRepresentationType'>
+      <Field Name='VALUE' Value='0'/>
+      <Field Name='TIME_SERIES' Value='1'/>
+      <Field Name='DISCRETE' Value='2'/>
+    </Definition>
+  </UADataType>
+</UANodeSet>

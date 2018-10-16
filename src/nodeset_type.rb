@@ -172,9 +172,7 @@ class Type
     [Array(pnodes).concat(nodes), Array(prefs).concat(refs)]
   end
 
-  def generate_nodeset(root)
-    return if stereotype_name == '<<Dynamic Type>>'
-
+  def generate_object_or_variable(root)
     if is_a_type?('BaseObjectType')
       node, refs = node('UAObjectType', node_id, @name, abstract: @abstract)
     elsif is_a_type?('BaseDataVariableType')
@@ -182,15 +180,14 @@ class Type
       node, refs = node('UAVariableType', node_id, @name, abstract: @abstract, value_rank: -1,
                         data_type: variable_data_type)
     end
-
-
+    
     if node
       puts "  -> Generating nodeset for #{@name}"
       root << node
-
+      
       node_reference(@parent.name, 'HasSubtype', @parent.node_id, forward: false).
         each { |r| refs << r }
-
+      
       if @mixin
         nodes, references = @mixin.add_mixin_relations
         references.each { |r| refs << r }
@@ -200,6 +197,51 @@ class Type
       nodes, references = relationships
       references.each { |r| refs << r }
       nodes.each { |n| root << n }
+    end
+  end
+
+  def generate_enumeration(root)
+    puts " Enumeration #{@name}"
+    node, refs = node('UADataType', node_id, @name)
+    node_reference('Enumeration', 'HasSubtype', NodeIds['Enumeration'], forward: false).
+      each { |r| refs << r }
+    node.add_element('Description').add_text(@documentation) if @documentation
+
+    defs = node.add_element('Definition', { 'Name' => @name })
+    @literals.each do |l|
+      name, value = l['name'].split('=')
+      field = defs.add_element('Field', { 'Name' => name, 'Value' => value })
+      field.add_element('Description').add_text(l['documentation']) if l['documentation']
+    end
+        
+    root << node
+  end
+
+  def generate_data_type(root)
+    puts " DataType #{@name}"
+    node, refs = node('UADataType', node_id, @name)
+    node_reference('BaseDataType', 'HasSubtype', NodeIds['BaseDataType'], forward: false).
+      each { |r| refs << r }
+    node.add_element('Description').add_text(@documentation) if @documentation
+    
+    defs = node.add_element('Definition', { 'Name' => @name })
+    @relations.each do |r|
+      field = defs.add_element('Field', { 'Name' => r.name, 'DataType' =>  r.resolve_data_type })
+      field.add_element('Description').add_text(r.documentation) if r.documentation
+    end
+
+    root << node
+  end
+
+  def generate_nodeset(root)
+    return if stereotype_name == '<<Dynamic Type>>'
+
+    if @type == 'UMLEnumeration'
+      generate_enumeration(root)
+    elsif @type == 'UMLDataType'
+      generate_data_type(root)      
+    else
+      generate_object_or_variable(root)
     end
   end
 end

@@ -15,8 +15,8 @@ class Model
   end
 
   def recurse_types(root, type)
-    if type.type == 'UMLClass' or type.type == 'UMLStereotype'
-      puts type
+    if type.type == 'UMLClass' or type.type == 'UMLStereotype' or
+      type.type == 'UMLEnumeration' or type.type == 'UMLDataType'
       type.generate_nodeset(root) 
     end
 

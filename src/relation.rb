@@ -31,7 +31,7 @@ module Relation
 
   class Relation
     attr_reader :id, :name, :type, :json, :multliplicity,
-                :source, :target, :owner, :node_id
+                :source, :target, :owner, :node_id, :documentation
     
     def initialize(owner, r)
       @owner = owner
@@ -39,6 +39,7 @@ module Relation
       @id = r['_id']
       @node_id = NodeId.id_to_i(@id)
       @name = r['name']
+      @documentation = r['documentation']
       @type = r['_type']
       @json = r
       @multiplicity = r['multiplicity'] || '1'

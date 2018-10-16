@@ -23,6 +23,14 @@ class Model
     end
   end
 
+  def reference
+    if @name =~ /OPC/
+      return "\\cite{#{@name.sub(/OPC /, '').gsub(' ', '')}}"
+    else
+      @name
+    end
+  end
+
   def recurse_types(f, type)
     if type.type == 'UMLClass' or
         type.type == 'UMLStereotype' or

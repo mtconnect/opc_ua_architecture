@@ -59,7 +59,7 @@ end
 class Type
   include Diagram
   include Document
-  
+
   def reference
     "See section \\ref{type:#{@name}}"
   end
@@ -68,7 +68,7 @@ class Type
     parent = get_parent
     if parent
       if parent.model != @model
-        ref = "See #{parent.model} Documentation"
+        ref = "See #{parent.model.reference} Documentation"
       else
         ref = parent.reference
       end
@@ -190,7 +190,7 @@ EOT
     if is_a_type?('BaseVariableType')
       f.puts "ValueRank & \\multicolumn{5}{|l|}{-1} \\\\"
       a = get_attribute_like(/DataType$/) || 'BaseVariableType'
-      f.puts "DataType & \\multicolumn{5}{|l|}{#{a.type}} \\\\"
+      f.puts "DataType & \\multicolumn{5}{|l|}{#{a.target.type.name}} \\\\"
     elsif is_a_type?('References')
       a = get_attribute_like(/Symmetric/)
       t = a.json['defaultValue'] || 'false'
@@ -219,6 +219,7 @@ EOT
 
   def generate_enumerations(f)
     if @type == 'UMLEnumeration'
+      puts "***** =====> Generating Enumerations for #{@name}"
       
       generate_documentation(f)
 
@@ -249,7 +250,8 @@ EOT
     dependencies.each do |dep|
       target = dep.target
       if dep.stereotype and dep.stereotype.name == 'values' and
-          target.type == 'UMLEnumeration'
+            target.type.type == 'UMLEnumeration'
+        
         f.puts "\\paragraph{Allowable Values}"
         target.type.generate_enumerations(f)
       else
@@ -293,9 +295,7 @@ EOT
     
     generate_operations(f)
     generate_constraints(f)
-    generate_dependencies(f)
-    
-    f.puts "\\FloatBarrier"  
+    generate_dependencies(f)    
   end
      
   def generate_latex(f = STDOUT)
@@ -314,5 +314,7 @@ EOT
     else
       generate_class(f)
     end
+
+    f.puts "\\FloatBarrier"    
   end
 end

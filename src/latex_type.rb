@@ -262,25 +262,57 @@ EOT
     
     f.puts "\\paragraph{Mixes in \\texttt{#{@mixin.escape_name}}} (#{@mixin.reference})" if @mixin
   end
+
+  def generate_data_type(f)
+      f.puts <<EOT
+\\begin{table}[ht]
+\\centering 
+  \\caption{\\texttt{#{escape_name}} DataType}
+  \\label{table:#{@name}}
+\\tabulinesep=3pt
+\\begin{tabu} to 6in {|l|r|} \\everyrow{\\hline}
+\\hline
+\\rowfont\\bfseries {Field} & {Type} \\\\
+\\tabucline[1.5pt]{}
+EOT
+
+      @relations.each do |r|
+        f.puts "\\texttt{#{r.name}} & \\texttt{#{r.target.type.name}} \\\\"
+      end
+        
+      f.puts <<EOT
+\\end{tabu}
+\\end{table} 
+EOT
+  end
+
+  def generate_class(f)
+    if stereotype_name !~ /Factory/o and (is_a_type?('References') or @model.name !~ /Profile/)
+      generate_type_table(f) 
+    end
     
+    generate_operations(f)
+    generate_constraints(f)
+    generate_dependencies(f)
+    
+    f.puts "\\FloatBarrier"  
+  end
+     
   def generate_latex(f = STDOUT)
     f.puts <<EOT
 \\subsubsection{Defintion of \\texttt{#{stereotype_name} #{escape_name}}} \\label{type:#{@name}}
 
 \\FloatBarrier
 EOT
+    
     generate_diagram(f)
 
     f.puts "\n#{@documentation}\n\n"
 
-    if stereotype_name !~ /Factory/o and (is_a_type?('References') or @model.name !~ /Profile/)
-      generate_type_table(f) 
+    if @type == 'UMLDataType'
+      generate_data_type(f)
+    else
+      generate_class(f)
     end
-      
-    generate_operations(f)
-    generate_constraints(f)
-    generate_dependencies(f)
-
-    f.puts "\\FloatBarrier"  
   end
 end

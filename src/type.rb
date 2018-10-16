@@ -45,7 +45,7 @@ class Type
     @relations.each do |r|
       if r.is_a?(Relation::Realization) and r.stereotype.name == 'Mixes In'
         @mixin = r.target
-        puts "==>  Found Mixin #{r.target.name} for #{@name}"
+        # puts "==>  Found Mixin #{r.target.name} for #{@name}"
         return
       end
     end

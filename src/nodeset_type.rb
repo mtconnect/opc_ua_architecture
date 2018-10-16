@@ -201,7 +201,7 @@ class Type
   end
 
   def generate_enumeration(root)
-    puts " Enumeration #{@name}"
+    puts "    => Enumeration #{@name}"
     node, refs = node('UADataType', node_id, @name)
     node_reference('Enumeration', 'HasSubtype', NodeIds['Enumeration'], forward: false).
       each { |r| refs << r }
@@ -218,7 +218,7 @@ class Type
   end
 
   def generate_data_type(root)
-    puts " DataType #{@name}"
+    puts "   => DataType #{@name}"
     node, refs = node('UADataType', node_id, @name)
     node_reference('BaseDataType', 'HasSubtype', NodeIds['BaseDataType'], forward: false).
       each { |r| refs << r }

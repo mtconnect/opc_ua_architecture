@@ -15,6 +15,7 @@ models.each do |e|
   Model.find_definitions(e)
 end
 
+Type.resolve_types
 Type.connect_children
 
 puts "\nGenerating Nodeset"
@@ -82,6 +83,7 @@ File.open(File.join(File.dirname(__FILE__), 'preamble.xml')) do |f|
   end
 end
 
+Type.resolve_node_ids
 Type.check_ids
 
 Model.generate_nodeset(root, 'Components')

@@ -76,37 +76,30 @@ class Type
     end
   end
 
-  def generate_properties(f)
-    @relations.each do |a|
-      if a.is_property? and !a.is_attribute?
-        f.puts "HasProperty & Variable & #{a.name} &  #{a.resolve_data_type_name} & PropertyType & #{a.rule} \\\\"
+  def mixin_relations(f)
+    @parent.mixin_relations(f) if @parent
+    generate_relations(f)
+  end
+
+  def generate_relations(f)
+    @relations.each do |r|
+      if r.is_reference?
+        f.puts "#{r.reference_type} & #{r.target.type.base_type} & #{r.name} &  #{r.target.type.name} & #{r.target_node_name} & #{r.rule} \\\\"          
       end
     end
   end
 
   def generate_constraints(f)
-    constraints = @relations.select do |r|
-      r['_type'] == 'UMLConstraint'
-    end
-    
-    unless constraints.empty?
+    unless @constraints.empty?
       f.puts "\\paragraph{Constraints}\n"
-      constraints.each do |c|
+      @constraints.each do |c|
         f.puts "\\begin{itemize}"
-        f.puts "\\item Constraint \\texttt{#{c['name']}}: "
+        f.puts "\\item Constraint \\texttt{#{c.name}}: "
         f.puts "   \\indent \\begin{lstlisting}"
-        f.puts c['specification']
+        f.puts c.specification
         f.puts "\\end{lstlisting}"
-        f.puts "Documentation: #{c['documentation']}" if c.include?('documentation')
+        f.puts "Documentation: #{c.documentation}" if c.documentation
         f.puts "\n\\end{itemize}"
-      end
-    end
-  end
-
-  def generate_relations(f)
-    @relations.each do |r|
-      if r.is_a?(Relation::Association) and !r.is_attribute?
-        f.puts "#{r.reference_type} & #{r.target.type.base_type} & #{r.name} &  #{r.target.type.name} & #{r.target_node_name} & #{r.rule} \\\\"          
       end
     end
   end
@@ -192,7 +185,7 @@ EOT
       f.puts "ValueRank & \\multicolumn{5}{|l|}{-1} \\\\"
       a = get_attribute_like(/DataType$/) || 'BaseVariableType'
       f.puts "DataType & \\multicolumn{5}{|l|}{#{a.type}} \\\\"
-    elsif @name =~ /^Has/
+    elsif is_a_type?('References')
       a = get_attribute_like(/Symmetric/)
       t = a.json['defaultValue'] || 'false'
       f.puts "Symmetric & \\multicolumn{5}{|l|}{#{t}} \\\\"
@@ -206,13 +199,8 @@ EOT
     generate_supertype(f)
     generate_children(f)
 
-    realization_targets.each do |stereo, target|
-      if stereo.name == 'Mixes In'
-        target.mixin_properties(f)
-      end
-    end
-
-    generate_properties(f)
+    @mixin.mixin_relations(f) if @mixin
+    
     generate_relations(f)
 
     f.puts <<EOT
@@ -252,23 +240,21 @@ EOT
   end
 
   def generate_dependencies(f)
-    if @relations
-      dependency_targets.each do |stereo, target|
-        if stereo.name == 'values' and target.type == 'UMLEnumeration'
-          f.puts "\\paragraph{Allowable Values}"
-          target.generate_enumerations(f)
-        else
-          f.puts "\\paragraph{Dependency on #{target.name}}\n\n"
-          f.puts "This class relates to \\texttt{#{target.name}} (#{target.reference}) for a(n) \\texttt{#{stereo.name}} relationship.\n\n"
-        end
-      end
-
-      realization_targets.each do |stereo, target|
-        if stereo.name == 'Mixes In'
-          f.puts "\\paragraph{Mixes in \\texttt{#{target.escape_name}}} (#{target.reference})"
-        end
+    dependencies.each do |dep|
+      target = dep.target
+      if dep.stereotype and dep.stereotype.name == 'values' and
+          target.type == 'UMLEnumeration'
+        f.puts "\\paragraph{Allowable Values}"
+        target.type.generate_enumerations(f)
+      else
+        f.puts "\\paragraph{Dependency on #{target.type.name}}\n\n"
+        rel = dep.stereotype && dep.stereotype.name
+        puts "Cannot find stereo for #{@name}::#{dep.name} to #{target.type.name}" unless rel
+        f.puts "This class relates to \\texttt{#{target.type.name}} (#{target.type.reference}) for a(n) \\texttt{#{rel}} relationship.\n\n"
       end
     end
+    
+    f.puts "\\paragraph{Mixes in \\texttt{#{@mixin.escape_name}}} (#{@mixin.reference})" if @mixin
   end
     
   def generate_latex(f = STDOUT)
@@ -285,9 +271,9 @@ EOT
       generate_type_table(f) 
     end
       
-#    generate_operations(f)
-#    generate_constraints(f)
-#    generate_dependencies(f)
+    generate_operations(f)
+    generate_constraints(f)
+    generate_dependencies(f)
 
     f.puts "\\FloatBarrier"  
   end

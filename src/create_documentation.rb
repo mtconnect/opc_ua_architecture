@@ -12,7 +12,9 @@ models.each do |e|
   Model.find_definitions(e)
 end
 
+Type.resolve_types
 Type.connect_children
+
 
 puts "\nGenerating LaTex"
 

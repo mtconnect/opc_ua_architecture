@@ -3,17 +3,27 @@ require 'relation'
 class Type
   attr_reader :name, :id, :type, :model, :json, :parent, :children, :relations
 
-  @@types = {}
+  @@types_by_id = {}
+  @@types_by_name = {}
 
-  def self.types
-    @@types
+  def self.type_for_id(id)
+    @@types_by_id[id]
   end
 
+  def self.type_for_name(name)
+    @@types_by_name[name]
+  end
+  
   def self.connect_children
-    @@types.each do |id, type|
+    @@types_by_id.each do |id, type|
       parent = type.get_parent
       parent.add_child(type) if parent
+    end
+  end
 
+  def self.resolve_types
+    @@types_by_id.each do |id, type|
+      type.resolve_types
       type.check_mixin
     end
   end
@@ -28,14 +38,28 @@ class Type
     @model = model
     @literals = Array(e['literals'])
 
-    @relations = Array(e['attributes']).dup.concat(Array(e['ownedElements'])).map do |r|
+    @aliased = false
+    
+    if e['tags']
+      e['tags'].each do |t|
+        if t['name'] == 'Alias'
+          puts "#{@name} #{t['checked']}" unless t['checked']
+          @aliased = t['checked']
+        end
+      end
+    end
+
+    associations = Array(e['attributes']).dup.concat(Array(e['ownedElements'])).map do |r|
       Relation.create_association(self, r)
     end.compact
+
+    @relations, @constraints = associations.partition { |e| e.class != Relation::Constraint }
     
     @children = []
     @json = e
 
-    @@types[@id] = self
+    @@types_by_id[@id] = self
+    @@types_by_name[@name] = self
 
     @model.add_type(self)
   end
@@ -43,21 +67,34 @@ class Type
   def check_mixin
     @mixin = nil
     @relations.each do |r|
-      if r.is_a?(Relation::Realization) and r.stereotype.name == 'Mixes In'
-        @mixin = r.target
-        # puts "==>  Found Mixin #{r.target.name} for #{@name}"
+      if r.is_mixin?
+        @mixin = r.target.type
+        puts "==>  Found Mixin #{r.target.name} for #{@name}"
         return
       end
     end
   end
 
+  def is_aliased?
+    @aliased
+  end
+
+  def resolve_types
+    @relations.each do |r|
+      r.resolve_types
+    end
+  end
+
   def variable_data_type
+    data_type = nil
     @relations.each do |a|
-      if a.is_attribute? and a.stereotype.name =~ /Override/
-        return a.resolve_data_type
+      if a.name =~ /DataType$/ and a.stereotype and a.stereotype.name =~ /Attribute/
+        return data_type = a.target.type
       end
     end
-    nil
+    data_type = @parent.variable_data_type if @parent
+    puts "Could not find data type for #{@name}" unless data_type
+    data_type
   end
 
   def mandatory(obj)
@@ -118,7 +155,7 @@ class Type
 
   def self.resolve_type(ref)
     id = ref['$ref'] if ref
-    type = @@types[id] if id
+    type = @@types_by_id[id] if id
   end
 
   def resolve_type(ref)
@@ -151,7 +188,7 @@ class Type
       @parent = nil
       @relations.each do |r|
         if r.is_a?(Relation::Generalization)
-          @parent = r.target
+          @parent = r.target.type
         end
       end
     end
@@ -168,21 +205,11 @@ class Type
     generate_relations(f)
   end
 
-  def find_stereotypes_and_targets(list)
-    list.map do |d|
-      stereo = d.stereotype
-      target = d.target
-      if stereo and target
-        [stereo, target]
-      else
-        nil
-      end
-    end.compact
-  end
-
   def base_type
     if is_a_type?('BaseDataVariableType')
       "Variable"
+    elsif is_a_type?('BaseEventType')
+      'Event'
     else
       "Object"
     end
@@ -193,15 +220,8 @@ class Type
     @relations.select { |r| r.class == Relation::Dependency }
   end
 
-  def dependency_targets
-    find_stereotypes_and_targets(dependencies)
-  end
-      
   def realizations
     @relations.select { |r| r.class == Relation::Realization }
   end
     
-  def realization_targets
-    find_stereotypes_and_targets(realizations)
-  end
 end

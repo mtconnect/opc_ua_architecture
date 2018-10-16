@@ -8,103 +8,66 @@ module NodeId
     v = (BigDecimal(s[1]) * (2 ** 32) + s[2]).modulo(2**32).to_i
     "ns=1;i=#{v}"
   end
-
-  def self.node_id_for(name, id)
-    if Aliases.include?(name)
-      name
-    elsif NodeIds.include?(name)
-      NodeIds[name]
-    elsif id
-      id_to_i(id)
-    else
-      nil
-    end
-  end
-
-  def resolve_node_name(name)
-    NodeId.node_id_for(name, nil)
-  end
-
-  def resolve_node_id(id)
-    type = Type.types[id]
-    if type
-      type.node_id
-    else
-      NodeId.id_to_i(id)
-    end
-  end  
 end
 
 module Relation
   class Relation
     include NodeId
+    attr_reader :node_id
 
-    def node_id
-      NodeId.id_to_i(@id)
-    end
-    
-    def reference_type_id
-      if Aliases.include?(reference_type)
-        reference_type
-      else
-        resolve_node_id(reference_type)
-      end
+    def resolve_node_ids
+      @node_id = NodeId.id_to_i(@id)
     end
 
-    def target_type_node_id
-      if Aliases.include?(target_node_name)
-        Aliases[target_node_name]
+    def reference_type_alias
+      ref = reference_type
+      if Aliases.include?(ref)
+        ref
+      elsif NodeIds.include?(ref)
+        NodeIds[ref]
+      elsif stereotype
+        stereotype.node_id
       else
-        NodeIds[target_node_name]
-      end
-    end
-  end
-
-  class Association
-    def resolve_data_type
-      @target.type.node_id
-    end
-
-    def target_node_id
-      if is_folder?
-        NodeIds['FolderType']
-      else
-        @target.type.node_id
-      end
-    end    
-  end
-
-  class Attribute
-    def resolve_data_type
-      if Hash === @data_type
-        @target.type = Type.resolve_type(@data_type)
-      else
-        return @data_type if Aliases.include?(@data_type)
-        NodeIds[@data_type]
+        raise "!!!! Cannot find reference type for #{@owner.name}::#{@name}"
       end
     end
   end
 end
 
 class Type
+  attr_reader :node_id
   include NodeId
   
-  def node_id
-    unless defined?(@node_id)
-      @node_id = NodeId.node_id_for(@name, @id)
-    end
-    @node_id
-  end
-
   def self.check_ids
     check = Hash.new
-    @@types.each do |id, t|
+    @@types_by_id.each do |id, t|
       ino = t.node_id
       if check.include?(ino)
         puts "Duplicate generated id: #{id} - #{ino}: #{check[ino].name}"
       end
       check[ino] = t
     end
+  end
+
+  def self.resolve_node_ids
+    @@types_by_id.each do |id, t|
+      t.resolve_node_ids
+    end
+  end
+
+  def resolve_node_ids
+    if NodeIds.include?(@name)
+      @node_id = NodeIds[@name]
+      @node_alias = @name if @aliased
+    else
+      @node_id = NodeId.id_to_i(@id)
+    end
+
+    @relations.each { |r| r.resolve_node_ids }
+  end
+
+  def node_alias
+    @node_alias || @node_id
   end
 
   def node(type, id, name, display_name: nil, abstract: false, value_rank: nil, data_type: nil)
@@ -122,9 +85,9 @@ class Type
   end
 
   def reference(rel, forward: true)
-    cmt = REXML::Comment.new(" #{rel.reference_type} -- #{rel.name} #{rel.node_id} #{rel.target.name} (forward: #{forward}) ")
+    cmt = REXML::Comment.new(" #{rel.reference_type} -- #{rel.name} #{rel.node_id} #{rel.target.type.name} (forward: #{forward}) ")
     ref = REXML::Element.new('Reference')
-    ref.add_attribute('ReferenceType', rel.reference_type_id)
+    ref.add_attribute('ReferenceType', rel.reference_type_alias)
     ref.add_attribute('IsForward', 'false') unless forward
     ref.add_text(rel.node_id)
     [cmt, ref]
@@ -140,9 +103,9 @@ class Type
   end
 
   def variable_property(ref)
-    ele, refs = node('UAVariable', ref.node_id, ref.name, data_type: ref.resolve_data_type_name,
+    ele, refs = node('UAVariable', ref.node_id, ref.name, data_type: ref.target.type.node_alias,
                value_rank: -1)
-    node_reference(ref.target_node_name, 'HasTypeDefinition', ref.target_type_node_id).
+    node_reference(ref.target.type.name, 'HasTypeDefinition', ref.target_node_name).
       each { |r| refs << r }
     node_reference(ref.rule, 'HasModelingRule', NodeIds[ref.rule]).
       each { |r| refs << r }
@@ -154,7 +117,7 @@ class Type
 
   def component(ref)
     ele, refs = node('UAObject', ref.node_id, ref.name)
-    node_reference(ref.target_node_name, 'HasTypeDefinition', ref.target_node_id).
+    node_reference(ref.target.type.name, 'HasTypeDefinition', ref.target.type.node_id).
       each { |r| refs << r }
     node_reference(ref.rule, 'HasModelingRule', NodeIds[ref.rule]).
       each { |r| refs << r }
@@ -211,7 +174,7 @@ class Type
     elsif is_a_type?('BaseDataVariableType')
       # Need to add data type
       node, refs = node('UAVariableType', node_id, @name, abstract: @abstract, value_rank: -1,
-                        data_type: variable_data_type)
+                        data_type: variable_data_type.node_alias)
     end
     
     if node
@@ -234,7 +197,7 @@ class Type
   end
 
   def generate_enumeration(root)
-    puts "    => Enumeration #{@name}"
+    puts "  => Enumeration #{@name}"
     node, refs = node('UADataType', node_id, @name)
     node_reference('Enumeration', 'HasSubtype', NodeIds['Enumeration'], forward: false).
       each { |r| refs << r }
@@ -251,7 +214,7 @@ class Type
   end
 
   def generate_data_type(root)
-    puts "   => DataType #{@name}"
+    puts "  => DataType #{@name}"
     node, refs = node('UADataType', node_id, @name)
     node_reference('BaseDataType', 'HasSubtype', NodeIds['BaseDataType'], forward: false).
       each { |r| refs << r }
@@ -259,7 +222,7 @@ class Type
     
     defs = node.add_element('Definition', { 'Name' => @name })
     @relations.each do |r|
-      field = defs.add_element('Field', { 'Name' => r.name, 'DataType' =>  r.resolve_data_type })
+      field = defs.add_element('Field', { 'Name' => r.name, 'DataType' =>  r.target.type.node_alias })
       field.add_element('Description').add_text(r.documentation) if r.documentation
     end
 

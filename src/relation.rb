@@ -16,22 +16,52 @@ module Relation
     when 'UMLAssociation'
       Association.new(owner, r)
 
+    when 'UMLConstraint'
+      Constraint.new(owner, r)
+      
     else
       puts "Unknown relation type: #{r['_type']}"
     end
   end
 
-  class Target
-    attr_accessor :type, :name
-    def initialize(type, name)
-      @type, @name = type, name
+  class Constraint
+    attr_reader :owner, :name, :specification, :documentation
+                
+    def initialize(owner, r)
+      @name = r['name']
+      @specification = r['specification']
+      @documentation = r['documentation']
     end
   end
-    
 
   class Relation
     attr_reader :id, :name, :type, :json, :multliplicity,
-                :source, :target, :owner, :documentation
+                :source, :target, :owner, :documentation,
+                :stereotype
+
+    class Connection
+      attr_accessor :name, :type, :type_id
+      
+      def initialize(name, type_id, type = nil)
+        @name = name
+        @type = type
+        if type_id.is_a? Hash
+          @type_id = type_id['$ref']
+        else
+          @type_id = type_id
+        end
+      end
+
+      def resolve_type
+        if @type.nil? and @type_id
+          @type = Type.type_for_id(@type_id)
+        end
+        if @type.nil?
+          puts "    Cannot resolve type: '#{@type_id}' for #{@name}"
+        end
+        !@type.nil?
+      end
+    end
     
     def initialize(owner, r)
       @owner = owner
@@ -43,18 +73,9 @@ module Relation
       @json = r
       @multiplicity = r['multiplicity'] || '1'
       @optional = @multiplicity and @multiplicity =~ /0\.\./
-      @target = Target.new('Unknown', @name)
-    end
 
-    def stereotype
-      unless defined?(@stereotype)
-        @stereotype = @json['stereotype'] && Type.resolve_type(@json['stereotype'])
-      end
-      @stereotype
-    end
-
-    def data_type
-      nil
+      @source = Connection.new('Parent', nil, owner)
+      @stereotype = @target = nil
     end
 
     def is_optional?
@@ -69,12 +90,38 @@ module Relation
       false
     end
 
-    def reference_type
-      'HasProperty'
+    def is_mixin?
+      false
     end
 
+    def is_reference?
+      false
+    end
+
+    def reference_type
+      raise "Unknown reference #{self.class.name} for #{@owner.name} '#{@name}'"
+    end
+    
     def target_node_name
-      'PropertyType'
+      rasie "Unknown target node type for #{@owner.name} #{@name}"
+    end
+
+    def resolve_types
+      if @json['stereotype'] and !@json['stereotype'].empty?
+        @stereotype = Type.resolve_type(@json['stereotype'])
+        puts "Cannot resolve #{@json['stereotype'].inspect} for #{@owner.name}::#{@name}" unless @stereotype
+      end
+      if @target.nil?
+        puts "    !!!! cannot resolve type for #{@owner.name}::#{@name} no target"
+      else
+        unless @target.resolve_type
+          raise "    !!!! cannot resolve target for #{@owner.name}::#{@name} #{self.class.name}"
+        end
+      end
+
+      unless @source.resolve_type
+        raise "    !!!! cannot resolve source for #{@owner.name}::#{@name} #{self.class.name}"
+      end
     end
 
     def rule
@@ -87,25 +134,26 @@ module Relation
   end
   
   class Association < Relation
-    class End
-      attr_accessor :name, :multiplicity, :optional, :navigable, :json
+    attr_reader :final_target
+    
+    class End < Connection
+      attr_accessor :name, :multiplicity, :optional, :navigable, :json, :final_target
       
       def initialize(e)
-        @name = e['name']
-        @multiplicity = e['multiplicity']
+        if e['reference']
+          super(e['name'], e['reference'])
+        else
+          super(e['name'], nil)
+          puts "!!!!!!! Missing type reference for #{@name} #{e.inspect}"
+        end
+
+        @multiplicity = e['multiplicity'] || '1'
         @optional = @multiplicity and @multiplicity =~ /0\.\./
-        @id = e['_id']
+
         @navigable = e['navigable'] || false
         @json = e
       end
 
-      def type
-        unless defined?(@type)
-          @type = Type.resolve_type(@json['reference'])
-        end
-        @type
-      end
-      
       def is_navigable?
         @navigable
       end
@@ -119,9 +167,15 @@ module Relation
       super(owner, r)
       @source = End.new(r['end1'])
       @target = End.new(r['end2'])
+      @final_target = @target
+        
       @name = @source.name || @name
       @multiplicity = @source.multiplicity
       @optional = @source.optional
+    end
+
+    def is_reference?
+      true
     end
 
     def target_node_name
@@ -133,16 +187,21 @@ module Relation
     end
 
     def is_folder?
-      stereotype.name == 'Organizes'
+      stereotype and stereotype.name == 'Organizes'
     end
 
     def reference_type
-      if is_folder?
-        'Organizes'
-      elsif stereotype
+      if stereotype
         stereotype.name
       else
         'HasComponent'
+      end
+    end
+
+    def resolve_types
+      super
+      if is_folder?
+        @target = Connection.new('OrganizedBy', nil, Type.type_for_name('FolderType'))
       end
     end
   end
@@ -150,65 +209,62 @@ module Relation
   class Attribute < Relation
     def initialize(owner, a)
       super(owner, a)
-      @data_type = a['type']
       @name = a['name']
       @owner = owner
       @json = a
-      @target = Target.new(@data_type, @data_type)
+      @target = Connection.new('type', a['type'])
     end
     
     def is_property?
       true
     end
 
-    def resolve_data_type
-      if Hash === @data_type
-        @target.type = Type.resolve_type(@data_type)
-      else
-        @data_type
-      end
+    def is_reference?
+      !is_attribute?
+    end    
+
+    def reference_type
+      'HasProperty'
     end
 
-    def resolve_data_type_name
-      t = resolve_data_type || @data_type
-      String === t ? t : t.name
-    rescue
-      puts "Cannot resolve data type for #{@json.inspect}"
-      "BaseVariableType"
-    end
-    
+    def target_node_name
+      'PropertyType'
+    end    
   end
 
   class Dependency < Relation
     def initialize(owner, r)
       super(owner, r)
-      @source = nil
-      @target = nil
-    end
+      @name = (stereotype && stereotype.name) unless @name      
 
-    def source
-      unless @source
-        @source = Type.resolve_type(@json['source'])
-      end
-      @source
-    end
-    
-    def target
-      unless @target
-        @target = Type.resolve_type(@json['target'])
-      end
-      @target
-    end
-      
-
-    def data_type
-      return nil
+      @source = Connection.new('Source', r['source'])
+      @target = Connection.new('Target', r['target'])
     end
   end
 
   class Generalization < Dependency
+    def initialize(owner, r)
+      super(owner, r)
+      @name = 'Supertype' unless @name
+    end
+
+    def reference_type
+      'HasSubtype'
+    end
+    
+    def target_node_name
+      "ObjectType"
+    end
   end
   
   class Realization < Dependency
+    def initialize(owner, r)
+      super(owner, r)
+      @name = 'Realization' unless @name      
+    end
+
+    def is_mixin?
+      stereotype and stereotype.name == 'Mixes In'
+    end
   end
 end

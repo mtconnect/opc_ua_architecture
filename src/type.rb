@@ -1,3 +1,4 @@
+require 'relation'
 
 class Type
   attr_reader :name, :id, :type, :model, :json, :parent, :children, :relations
@@ -13,26 +14,21 @@ class Type
       parent = type.get_parent
       parent.add_child(type) if parent
     end
-    connect_links
   end
 
-  def self.connect_links
-    @@types.each do |id, type|
-      type.connect_links
-    end
-  end
-  
   def initialize(model, e)
     @name = e['name']
     @id = e['_id']
     @type = e['_type']
     @documentation = e['documentation']
-    @attributes = e['attributes'] || []
-    @relations = e['ownedElements'] || []
     @operations = e['operations'] || []
     @abstract = e['isAbstract'] || false
     @model = model
 
+    @relations = Array(e['attributes']).dup.concat(Array(e['ownedElements'])).map do |r|
+      Relation.create_association(self, r)
+    end.compact
+    
     @children = []
 
     @json = e
@@ -84,11 +80,11 @@ class Type
 
   def connect_links
     @relations.each do |r|
-      if r['_type'] == 'UMLAssociationClassLink'
+      if r.type == 'UMLAssociationClassLink'
         puts "********* Connecting relation for #{@name}"
         @relations.each do |r|
-          if r['_type'] == 'UMLAssociation'            
-            source = resolve_type(r['end1']['reference'])
+          if r.type == 'UMLAssociation'            
+            source = r.source
             puts "********* -> Connecting to #{source.name}"
             source.relations << r if source
             return
@@ -98,9 +94,13 @@ class Type
     end
   end
 
-  def resolve_type(ref)
+  def self.resolve_type(ref)
     id = ref['$ref'] if ref
     type = @@types[id] if id
+  end
+
+  def resolve_type(ref)
+    Type.resolve_type(ref)
   end
 
   def resolve_type_name(prop)
@@ -117,19 +117,8 @@ class Type
   end
 
   def get_attribute_like(pattern)
-    if @attributes
-      @attributes.each do |a|
-        return a if a['name'] =~ pattern
-      end
-      @relations.each do |a|
-        if a['end1'] and a['end2']
-          name = a['name'] || a['end1']['name']
-          if name  and name =~ pattern
-            type = resolve_type_name(a['end2']['reference'])
-            return type if type
-          end
-        end
-      end
+    @relations.each do |a|
+      return a if a.name =~ pattern
     end
     return @parent.get_attribute_like(pattern) if @parent
     nil
@@ -138,10 +127,9 @@ class Type
   def get_parent
     if !defined?(@parent)
       @parent = nil
-      @relations.each do |rel|
-        if rel['_type'] == 'UMLGeneralization'
-          parent_id = rel['target']['$ref']
-          @parent = @@types[parent_id]
+      @relations.each do |r|
+        if r.is_a?(Relation::Generalization)
+          @parent = r.target
         end
       end
     end
@@ -158,14 +146,10 @@ class Type
     generate_relations(f)
   end
 
-  def dependencies
-    depends = @relations.select { |r| r['_type'] == 'UMLDependency' }
-  end
-
   def find_stereotypes_and_targets(list)
     list.map do |d|
-      stereo = resolve_type(d['stereotype'])
-      target = resolve_type(d['target'])
+      stereo = d.stereotype
+      target = d.target
       if stereo and target
         [stereo, target]
       else
@@ -174,12 +158,16 @@ class Type
     end.compact
   end
 
+  def dependencies
+    @relations.select { |r| r.class == Relation::Dependency }
+  end
+
   def dependency_targets
     find_stereotypes_and_targets(dependencies)
   end
       
   def realizations
-    depends = @relations.select { |r| r['_type'] == 'UMLRealization' }
+    @relations.select { |r| r.class == Relation::Realization }
   end
     
   def realization_targets

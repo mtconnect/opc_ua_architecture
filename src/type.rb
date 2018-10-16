@@ -52,8 +52,7 @@ class Type
 
   def variable_data_type
     @relations.each do |a|
-      if a.is_a?(Relation::Attribute) and a.is_attribute? and
-          a.stereotype.name =~ /Override/
+      if a.is_attribute? and a.stereotype.name =~ /Override/
         return a.resolve_data_type
       end
     end

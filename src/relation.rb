@@ -60,9 +60,9 @@ module Relation
     def is_optional?
       @optional
     end
-
+    
     def is_attribute?
-      false
+      stereotype and stereotype.name =~ /Attribute/
     end
 
     def is_property?
@@ -120,9 +120,21 @@ module Relation
       @optional = @source.optional
     end
 
+    def target_node_name
+      if is_folder?
+        'FolderType'
+      else
+        @target.type.name
+      end
+    end
+
+    def resolve_data_type
+      @target.type.node_id
+    end
+
     def target_node_id
-      if @folder
-        NodesIds['FolderType']
+      if is_folder?
+        NodeIds['FolderType']
       else
         @target.type.node_id
       end
@@ -153,10 +165,6 @@ module Relation
       @target = Target.new(@data_type, @name)
     end
     
-    def is_attribute?
-      stereotype and stereotype.name =~ /Attribute/
-    end
-
     def is_property?
       true
     end

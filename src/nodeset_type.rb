@@ -121,7 +121,7 @@ class Type
 
   def component(ref)
     ele, refs = node('UAObject', ref.node_id, ref.name)
-    node_reference(ref.target.type.name, 'HasTypeDefinition', ref.target_node_id).
+    node_reference(ref.target_node_name, 'HasTypeDefinition', ref.target_node_id).
       each { |r| refs << r }
     node_reference(ref.rule, 'HasModelingRule', NodeIds[ref.rule]).
       each { |r| refs << r }
@@ -136,9 +136,7 @@ class Type
     refs = []
     
     @relations.each do |a|
-      unless a.is_attribute?
-        next unless a.name
-        
+      if !a.is_attribute? and a.name
         if a.is_property?
           refs.concat(reference(a))
           nodes << variable_property(a)

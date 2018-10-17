@@ -5,7 +5,7 @@ require 'set'
 module NodeId
   def self.id_to_i(id)
     s = id.unpack('m').first.unpack('L>*')
-    v = (BigDecimal(s[1]) * (2 ** 32) + s[2]).modulo(2**32).to_i
+    v = (BigDecimal(s[1]) * (2 ** 32) + s[2]).modulo(10 ** 6).to_i
     "#{NamespacePrefix}i=#{v}"
   end
 end
@@ -105,7 +105,8 @@ class Type
   end
 
   def variable_property(ref, suffix = '')
-    ele, refs = node('UAVariable', "#{ref.node_id}#{suffix}", ref.name, data_type: ref.target.type.node_alias)
+    ele, refs = node('UAVariable', "#{ref.node_id}#{suffix}", ref.name, data_type: ref.target.type.node_alias,
+                     value_rank: -1)
     node_reference(ref.target.type.name, 'HasTypeDefinition', ref.target_node_id).
       each { |r| refs << r }
     node_reference(ref.rule, 'HasModellingRule', NodeIds[ref.rule]).

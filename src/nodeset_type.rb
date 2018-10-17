@@ -205,6 +205,9 @@ class Type
     # node.add_element('Description').add_text(@documentation) if @documentation
     node_reference('Enumeration', 'HasSubtype', NodeIds['Enumeration'], forward: false).
       each { |r| refs << r }
+    node_reference('EnumStrings', 'HasProperty', "#{node_id}1").
+      each { |r| refs << r }
+    
 
     defs = node.add_element('Definition', { 'Name' => @name })
     @literals.each do |l|
@@ -212,7 +215,30 @@ class Type
       field = defs.add_element('Field', { 'Name' => name, 'Value' => value })
       field.add_element('Description').add_text(l['documentation']) if l['documentation']
     end
+
+    root << node
+    
+    # now create the enum strings property
+    node, refs = node('UAVariable', "#{node_id}1", 'EnumStrings', data_type: 'LocalizedText',
+                      value_rank: 1)
+    node_reference('PropertyType', 'HasTypeDefinition', NodeIds['PropertyType']).
+      each { |r| refs << r }
+    node_reference('Mandatory', 'HasModellingRule', NodeIds['Mandatory']).
+      each { |r| refs << r }
+    node_reference('Owner', 'HasProperty', node_id, forward: false).
+      each { |r| refs << r }
+
+    values = node.add_element('Value').
+               add_element('ListOfLocalizedText',
+                           { 'xmlns' => 'http://opcfoundation.org/UA/2008/02/Types.xsd'})
         
+    @literals.each do |l|
+      name, _ = l['name'].split('=')
+      text = values.add_element('LocalizedText')
+      text.add_element('Locale')
+      text.add_element('Text').add_text(name)
+    end
+
     root << node
   end
 

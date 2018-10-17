@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-10-17T06:34:04Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-10-17T06:55:29Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/' Version='2.00' PublicationDate='2018-10-17T06:34:04Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2018-10-17T06:34:04Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/' Version='2.00' PublicationDate='2018-10-17T06:55:29Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2018-10-17T06:55:29Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -1682,28 +1682,80 @@
     <References>
       <!-- HasSubtype - - Enumeration i=29 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+      <!-- HasProperty - - EnumStrings ns=1;i=6288001 (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=6288001</Reference>
     </References>
     <Definition Name='ActiveStateDataType'>
       <Field Name='ACTIVE' Value='0'/>
       <Field Name='INACTIVE' Value='1'/>
     </Definition>
   </UADataType>
+  <UAVariable NodeId='ns=1;i=6288001' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - PropertyType i=68 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Mandatory i=78 (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - - Owner ns=1;i=628800 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=628800</Reference>
+    </References>
+    <Value>
+      <ListOfLocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <LocalizedText>
+          <Locale/>
+          <Text>ACTIVE</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>INACTIVE</Text>
+        </LocalizedText>
+      </ListOfLocalizedText>
+    </Value>
+  </UAVariable>
   <UADataType NodeId='ns=1;i=772002' BrowseName='1:AvailabilityDataType'>
     <DisplayName>AvailabilityDataType</DisplayName>
     <References>
       <!-- HasSubtype - - Enumeration i=29 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+      <!-- HasProperty - - EnumStrings ns=1;i=7720021 (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=7720021</Reference>
     </References>
     <Definition Name='AvailabilityDataType'>
       <Field Name='AVAILABILE' Value='0'/>
       <Field Name='UNAVAILABLE' Value='1'/>
     </Definition>
   </UADataType>
+  <UAVariable NodeId='ns=1;i=7720021' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - PropertyType i=68 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Mandatory i=78 (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - - Owner ns=1;i=772002 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=772002</Reference>
+    </References>
+    <Value>
+      <ListOfLocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <LocalizedText>
+          <Locale/>
+          <Text>AVAILABILE</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>UNAVAILABLE</Text>
+        </LocalizedText>
+      </ListOfLocalizedText>
+    </Value>
+  </UAVariable>
   <UADataType NodeId='ns=1;i=84274' BrowseName='1:AxisCouplingDataType'>
     <DisplayName>AxisCouplingDataType</DisplayName>
     <References>
       <!-- HasSubtype - - Enumeration i=29 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+      <!-- HasProperty - - EnumStrings ns=1;i=842741 (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=842741</Reference>
     </References>
     <Definition Name='AxisCouplingDataType'>
       <Field Name='MASTER' Value='0'/>
@@ -1712,11 +1764,44 @@
       <Field Name='TANDEM' Value='3'/>
     </Definition>
   </UADataType>
+  <UAVariable NodeId='ns=1;i=842741' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - PropertyType i=68 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Mandatory i=78 (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - - Owner ns=1;i=84274 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=84274</Reference>
+    </References>
+    <Value>
+      <ListOfLocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <LocalizedText>
+          <Locale/>
+          <Text>MASTER</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>SLAVE</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>SYNCHRONOUS</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>TANDEM</Text>
+        </LocalizedText>
+      </ListOfLocalizedText>
+    </Value>
+  </UAVariable>
   <UADataType NodeId='ns=1;i=756782' BrowseName='1:AxisStateDataType'>
     <DisplayName>AxisStateDataType</DisplayName>
     <References>
       <!-- HasSubtype - - Enumeration i=29 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+      <!-- HasProperty - - EnumStrings ns=1;i=7567821 (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=7567821</Reference>
     </References>
     <Definition Name='AxisStateDataType'>
       <Field Name='HOME' Value='0'/>
@@ -1725,11 +1810,44 @@
       <Field Name='TRAVEL' Value='3'/>
     </Definition>
   </UADataType>
+  <UAVariable NodeId='ns=1;i=7567821' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - PropertyType i=68 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Mandatory i=78 (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - - Owner ns=1;i=756782 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=756782</Reference>
+    </References>
+    <Value>
+      <ListOfLocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <LocalizedText>
+          <Locale/>
+          <Text>HOME</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>PARKED</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>STOPPED</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>TRAVEL</Text>
+        </LocalizedText>
+      </ListOfLocalizedText>
+    </Value>
+  </UAVariable>
   <UADataType NodeId='ns=1;i=213590' BrowseName='1:CompositionStateDataType'>
     <DisplayName>CompositionStateDataType</DisplayName>
     <References>
       <!-- HasSubtype - - Enumeration i=29 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+      <!-- HasProperty - - EnumStrings ns=1;i=2135901 (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2135901</Reference>
     </References>
     <Definition Name='CompositionStateDataType'>
       <Field Name='ACTIVE' Value='0'/>
@@ -1746,11 +1864,76 @@
       <Field Name='UP' Value='11'/>
     </Definition>
   </UADataType>
+  <UAVariable NodeId='ns=1;i=2135901' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - PropertyType i=68 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Mandatory i=78 (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - - Owner ns=1;i=213590 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=213590</Reference>
+    </References>
+    <Value>
+      <ListOfLocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <LocalizedText>
+          <Locale/>
+          <Text>ACTIVE</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>CLOSED</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>DOWN</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>INACTIVE</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>LEFT</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>OFF</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>ON</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>OPEN</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>RIGHT</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>TRANSITIONING</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>UNLATCHED</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>UP</Text>
+        </LocalizedText>
+      </ListOfLocalizedText>
+    </Value>
+  </UAVariable>
   <UADataType NodeId='ns=1;i=298011' BrowseName='1:ControllerModeDataType'>
     <DisplayName>ControllerModeDataType</DisplayName>
     <References>
       <!-- HasSubtype - - Enumeration i=29 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+      <!-- HasProperty - - EnumStrings ns=1;i=2980111 (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2980111</Reference>
     </References>
     <Definition Name='ControllerModeDataType'>
       <Field Name='AUTOMATIC' Value='0'/>
@@ -1760,11 +1943,48 @@
       <Field Name='SEMI_AUTOMATIC' Value='4'/>
     </Definition>
   </UADataType>
+  <UAVariable NodeId='ns=1;i=2980111' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - PropertyType i=68 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Mandatory i=78 (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - - Owner ns=1;i=298011 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=298011</Reference>
+    </References>
+    <Value>
+      <ListOfLocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <LocalizedText>
+          <Locale/>
+          <Text>AUTOMATIC</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>EDIT</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>MANUAL</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>MANUAL_DATA_INPUT</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>SEMI_AUTOMATIC</Text>
+        </LocalizedText>
+      </ListOfLocalizedText>
+    </Value>
+  </UAVariable>
   <UADataType NodeId='ns=1;i=339057' BrowseName='1:DirectionDataType'>
     <DisplayName>DirectionDataType</DisplayName>
     <References>
       <!-- HasSubtype - - Enumeration i=29 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+      <!-- HasProperty - - EnumStrings ns=1;i=3390571 (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3390571</Reference>
     </References>
     <Definition Name='DirectionDataType'>
       <Field Name='CLOCKWISE' Value='0'/>
@@ -1773,22 +1993,80 @@
       <Field Name='POSITIVE' Value='3'/>
     </Definition>
   </UADataType>
+  <UAVariable NodeId='ns=1;i=3390571' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - PropertyType i=68 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Mandatory i=78 (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - - Owner ns=1;i=339057 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=339057</Reference>
+    </References>
+    <Value>
+      <ListOfLocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <LocalizedText>
+          <Locale/>
+          <Text>CLOCKWISE</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>COUNTER_CLOCKWISE</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>NEGATIVE</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>POSITIVE</Text>
+        </LocalizedText>
+      </ListOfLocalizedText>
+    </Value>
+  </UAVariable>
   <UADataType NodeId='ns=1;i=900102' BrowseName='1:EmergencyStopDataType'>
     <DisplayName>EmergencyStopDataType</DisplayName>
     <References>
       <!-- HasSubtype - - Enumeration i=29 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+      <!-- HasProperty - - EnumStrings ns=1;i=9001021 (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=9001021</Reference>
     </References>
     <Definition Name='EmergencyStopDataType'>
       <Field Name='ARMED' Value='0'/>
       <Field Name='TRIGGERED' Value='1'/>
     </Definition>
   </UADataType>
+  <UAVariable NodeId='ns=1;i=9001021' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - PropertyType i=68 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Mandatory i=78 (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - - Owner ns=1;i=900102 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=900102</Reference>
+    </References>
+    <Value>
+      <ListOfLocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <LocalizedText>
+          <Locale/>
+          <Text>ARMED</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>TRIGGERED</Text>
+        </LocalizedText>
+      </ListOfLocalizedText>
+    </Value>
+  </UAVariable>
   <UADataType NodeId='ns=1;i=256115' BrowseName='1:FunctionalModeDataType'>
     <DisplayName>FunctionalModeDataType</DisplayName>
     <References>
       <!-- HasSubtype - - Enumeration i=29 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+      <!-- HasProperty - - EnumStrings ns=1;i=2561151 (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2561151</Reference>
     </References>
     <Definition Name='FunctionalModeDataType'>
       <Field Name='MAINTENANCE' Value='0'/>
@@ -1798,6 +2076,41 @@
       <Field Name='TEARDOWN' Value='4'/>
     </Definition>
   </UADataType>
+  <UAVariable NodeId='ns=1;i=2561151' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - PropertyType i=68 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Mandatory i=78 (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - - Owner ns=1;i=256115 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=256115</Reference>
+    </References>
+    <Value>
+      <ListOfLocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <LocalizedText>
+          <Locale/>
+          <Text>MAINTENANCE</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>PRODUCTION</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>PROCESS_DEVELOPMENT</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>SETUP</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>TEARDOWN</Text>
+        </LocalizedText>
+      </ListOfLocalizedText>
+    </Value>
+  </UAVariable>
   <UAObjectType NodeId='ns=1;i=293340' BrowseName='1:MTControlledVocabClassType' IsAbstract='true'>
     <DisplayName>MTControlledVocabClassType</DisplayName>
     <References>
@@ -1964,17 +2277,44 @@
     <References>
       <!-- HasSubtype - - Enumeration i=29 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+      <!-- HasProperty - - EnumStrings ns=1;i=5506051 (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=5506051</Reference>
     </References>
     <Definition Name='OnOffDataType'>
       <Field Name='OFF' Value='0'/>
       <Field Name='ON' Value='1'/>
     </Definition>
   </UADataType>
+  <UAVariable NodeId='ns=1;i=5506051' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - PropertyType i=68 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Mandatory i=78 (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - - Owner ns=1;i=550605 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=550605</Reference>
+    </References>
+    <Value>
+      <ListOfLocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <LocalizedText>
+          <Locale/>
+          <Text>OFF</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>ON</Text>
+        </LocalizedText>
+      </ListOfLocalizedText>
+    </Value>
+  </UAVariable>
   <UADataType NodeId='ns=1;i=439808' BrowseName='1:OpenStateDataType'>
     <DisplayName>OpenStateDataType</DisplayName>
     <References>
       <!-- HasSubtype - - Enumeration i=29 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+      <!-- HasProperty - - EnumStrings ns=1;i=4398081 (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4398081</Reference>
     </References>
     <Definition Name='OpenStateDataType'>
       <Field Name='CLOSED' Value='0'/>
@@ -1982,11 +2322,40 @@
       <Field Name='UNLATCHED' Value='2'/>
     </Definition>
   </UADataType>
+  <UAVariable NodeId='ns=1;i=4398081' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - PropertyType i=68 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Mandatory i=78 (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - - Owner ns=1;i=439808 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=439808</Reference>
+    </References>
+    <Value>
+      <ListOfLocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <LocalizedText>
+          <Locale/>
+          <Text>CLOSED</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>OPEN</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>UNLATCHED</Text>
+        </LocalizedText>
+      </ListOfLocalizedText>
+    </Value>
+  </UAVariable>
   <UADataType NodeId='ns=1;i=868547' BrowseName='1:PathModeDataType'>
     <DisplayName>PathModeDataType</DisplayName>
     <References>
       <!-- HasSubtype - - Enumeration i=29 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+      <!-- HasProperty - - EnumStrings ns=1;i=8685471 (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=8685471</Reference>
     </References>
     <Definition Name='PathModeDataType'>
       <Field Name='INDEPENDENT' Value='0'/>
@@ -1995,11 +2364,44 @@
       <Field Name='SYNCHRONOUS' Value='3'/>
     </Definition>
   </UADataType>
+  <UAVariable NodeId='ns=1;i=8685471' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - PropertyType i=68 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Mandatory i=78 (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - - Owner ns=1;i=868547 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=868547</Reference>
+    </References>
+    <Value>
+      <ListOfLocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <LocalizedText>
+          <Locale/>
+          <Text>INDEPENDENT</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>MASTER</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>MIRROR</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>SYNCHRONOUS</Text>
+        </LocalizedText>
+      </ListOfLocalizedText>
+    </Value>
+  </UAVariable>
   <UADataType NodeId='ns=1;i=278772' BrowseName='1:ProgramEditDataType'>
     <DisplayName>ProgramEditDataType</DisplayName>
     <References>
       <!-- HasSubtype - - Enumeration i=29 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+      <!-- HasProperty - - EnumStrings ns=1;i=2787721 (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2787721</Reference>
     </References>
     <Definition Name='ProgramEditDataType'>
       <Field Name='ACTIVE' Value='0'/>
@@ -2007,11 +2409,40 @@
       <Field Name='READY' Value='2'/>
     </Definition>
   </UADataType>
+  <UAVariable NodeId='ns=1;i=2787721' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - PropertyType i=68 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Mandatory i=78 (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - - Owner ns=1;i=278772 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=278772</Reference>
+    </References>
+    <Value>
+      <ListOfLocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <LocalizedText>
+          <Locale/>
+          <Text>ACTIVE</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>NOT_READY</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>READY</Text>
+        </LocalizedText>
+      </ListOfLocalizedText>
+    </Value>
+  </UAVariable>
   <UADataType NodeId='ns=1;i=786553' BrowseName='1:RotaryModeDataType'>
     <DisplayName>RotaryModeDataType</DisplayName>
     <References>
       <!-- HasSubtype - - Enumeration i=29 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+      <!-- HasProperty - - EnumStrings ns=1;i=7865531 (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=7865531</Reference>
     </References>
     <Definition Name='RotaryModeDataType'>
       <Field Name='CONTOUR' Value='0'/>
@@ -2019,17 +2450,69 @@
       <Field Name='SPINDLE' Value='2'/>
     </Definition>
   </UADataType>
+  <UAVariable NodeId='ns=1;i=7865531' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - PropertyType i=68 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Mandatory i=78 (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - - Owner ns=1;i=786553 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=786553</Reference>
+    </References>
+    <Value>
+      <ListOfLocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <LocalizedText>
+          <Locale/>
+          <Text>CONTOUR</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>INDEX</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>SPINDLE</Text>
+        </LocalizedText>
+      </ListOfLocalizedText>
+    </Value>
+  </UAVariable>
   <UADataType NodeId='ns=1;i=672169' BrowseName='1:YesNoDataType'>
     <DisplayName>YesNoDataType</DisplayName>
     <References>
       <!-- HasSubtype - - Enumeration i=29 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+      <!-- HasProperty - - EnumStrings ns=1;i=6721691 (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=6721691</Reference>
     </References>
     <Definition Name='YesNoDataType'>
       <Field Name='NO' Value='0'/>
       <Field Name='YES' Value='1'/>
     </Definition>
   </UADataType>
+  <UAVariable NodeId='ns=1;i=6721691' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - PropertyType i=68 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Mandatory i=78 (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - - Owner ns=1;i=672169 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=672169</Reference>
+    </References>
+    <Value>
+      <ListOfLocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <LocalizedText>
+          <Locale/>
+          <Text>NO</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>YES</Text>
+        </LocalizedText>
+      </ListOfLocalizedText>
+    </Value>
+  </UAVariable>
   <UAObjectType NodeId='ns=1;i=389375' BrowseName='1:MTNumberEventClassType' IsAbstract='true'>
     <DisplayName>MTNumberEventClassType</DisplayName>
     <References>
@@ -2728,17 +3211,44 @@
     <References>
       <!-- HasSubtype - - Enumeration i=29 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+      <!-- HasProperty - - EnumStrings ns=1;i=2335441 (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2335441</Reference>
     </References>
     <Definition Name='CoordinateSystemType'>
       <Field Name='MACHINE' Value='0'/>
       <Field Name='WORK' Value='1'/>
     </Definition>
   </UADataType>
+  <UAVariable NodeId='ns=1;i=2335441' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - PropertyType i=68 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Mandatory i=78 (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - - Owner ns=1;i=233544 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=233544</Reference>
+    </References>
+    <Value>
+      <ListOfLocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <LocalizedText>
+          <Locale/>
+          <Text>MACHINE</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>WORK</Text>
+        </LocalizedText>
+      </ListOfLocalizedText>
+    </Value>
+  </UAVariable>
   <UADataType NodeId='ns=1;i=952256' BrowseName='1:DataItemResetValueType'>
     <DisplayName>DataItemResetValueType</DisplayName>
     <References>
       <!-- HasSubtype - - Enumeration i=29 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+      <!-- HasProperty - - EnumStrings ns=1;i=9522561 (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=9522561</Reference>
     </References>
     <Definition Name='DataItemResetValueType'>
       <Field Name='ACTION_COMPLETE' Value='0'/>
@@ -2752,11 +3262,64 @@
       <Field Name='WEEK' Value='8'/>
     </Definition>
   </UADataType>
+  <UAVariable NodeId='ns=1;i=9522561' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - PropertyType i=68 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Mandatory i=78 (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - - Owner ns=1;i=952256 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=952256</Reference>
+    </References>
+    <Value>
+      <ListOfLocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <LocalizedText>
+          <Locale/>
+          <Text>ACTION_COMPLETE</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>ANNUAL</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>DAY</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>MAINTENANCE</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>MANUAL</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>MONTH</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>POWER_ON</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>SHIFT</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>WEEK</Text>
+        </LocalizedText>
+      </ListOfLocalizedText>
+    </Value>
+  </UAVariable>
   <UADataType NodeId='ns=1;i=594497' BrowseName='1:MTCategoryType'>
     <DisplayName>MTCategoryType</DisplayName>
     <References>
       <!-- HasSubtype - - Enumeration i=29 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+      <!-- HasProperty - - EnumStrings ns=1;i=5944971 (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=5944971</Reference>
     </References>
     <Definition Name='MTCategoryType'>
       <Field Name='EVENT' Value='0'/>
@@ -2764,11 +3327,40 @@
       <Field Name='SAMPLE' Value='2'/>
     </Definition>
   </UADataType>
+  <UAVariable NodeId='ns=1;i=5944971' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - PropertyType i=68 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Mandatory i=78 (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - - Owner ns=1;i=594497 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=594497</Reference>
+    </References>
+    <Value>
+      <ListOfLocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <LocalizedText>
+          <Locale/>
+          <Text>EVENT</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>CONDITION</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>SAMPLE</Text>
+        </LocalizedText>
+      </ListOfLocalizedText>
+    </Value>
+  </UAVariable>
   <UADataType NodeId='ns=1;i=865258' BrowseName='1:MTRepresentationType'>
     <DisplayName>MTRepresentationType</DisplayName>
     <References>
       <!-- HasSubtype - - Enumeration i=29 (forward: false) -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+      <!-- HasProperty - - EnumStrings ns=1;i=8652581 (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=8652581</Reference>
     </References>
     <Definition Name='MTRepresentationType'>
       <Field Name='DISCRETE' Value='0'/>
@@ -2776,4 +3368,31 @@
       <Field Name='VALUE' Value='2'/>
     </Definition>
   </UADataType>
+  <UAVariable NodeId='ns=1;i=8652581' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - PropertyType i=68 (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Mandatory i=78 (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - - Owner ns=1;i=865258 (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=865258</Reference>
+    </References>
+    <Value>
+      <ListOfLocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <LocalizedText>
+          <Locale/>
+          <Text>DISCRETE</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>TIME_SERIES</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>VALUE</Text>
+        </LocalizedText>
+      </ListOfLocalizedText>
+    </Value>
+  </UAVariable>
 </UANodeSet>

@@ -6,7 +6,7 @@ module NodeId
   def self.id_to_i(id)
     s = id.unpack('m').first.unpack('L>*')
     v = (BigDecimal(s[1]) * (2 ** 32) + s[2]).modulo(2**32).to_i
-    "ns=1;i=#{v}"
+    "#{NamespacePrefix}i=#{v}"
   end
 end
 
@@ -37,6 +37,8 @@ end
 class Type
   attr_reader :node_id
   include NodeId
+
+  @@mixin_suffix = 0
   
   def self.check_ids
     check = Hash.new
@@ -84,17 +86,17 @@ class Type
     [node, refs]
   end
 
-  def reference(rel, forward: true)
-    cmt = REXML::Comment.new(" #{rel.reference_type} -- #{rel.name} #{rel.node_id} #{rel.target.type.name} (forward: #{forward}) ")
+  def reference(rel, suffix = '', forward: true)
+    cmt = REXML::Comment.new(" #{rel.reference_type} - - #{rel.name} #{rel.node_id}#{suffix} #{rel.target.type.name} (forward: #{forward}) ")
     ref = REXML::Element.new('Reference')
     ref.add_attribute('ReferenceType', rel.reference_type_alias)
     ref.add_attribute('IsForward', 'false') unless forward
-    ref.add_text(rel.node_id)
+    ref.add_text("#{rel.node_id}#{suffix}")
     [cmt, ref]
   end
 
   def node_reference(name, type, target, forward: true)
-    cmt = REXML::Comment.new(" #{type} -- #{name} #{target} (forward: #{forward}) ")
+    cmt = REXML::Comment.new(" #{type} - - #{name} #{target} (forward: #{forward}) ")
     ref = REXML::Element.new('Reference')
     ref.add_attribute('ReferenceType', type)
     ref.add_attribute('IsForward', 'false') unless forward
@@ -102,12 +104,11 @@ class Type
     [cmt, ref]
   end
 
-  def variable_property(ref)
-    ele, refs = node('UAVariable', ref.node_id, ref.name, data_type: ref.target.type.node_alias,
-               value_rank: -1)
-    node_reference(ref.target.type.name, 'HasTypeDefinition', ref.target_node_name).
+  def variable_property(ref, suffix = '')
+    ele, refs = node('UAVariable', "#{ref.node_id}#{suffix}", ref.name, data_type: ref.target.type.node_alias)
+    node_reference(ref.target.type.name, 'HasTypeDefinition', ref.target_node_id).
       each { |r| refs << r }
-    node_reference(ref.rule, 'HasModelingRule', NodeIds[ref.rule]).
+    node_reference(ref.rule, 'HasModellingRule', NodeIds[ref.rule]).
       each { |r| refs << r }
     node_reference(ref.owner.name, 'HasProperty', ref.owner.node_id, forward: false).
       each { |r| refs << r }
@@ -115,11 +116,11 @@ class Type
     ele    
   end
 
-  def component(ref)
-    ele, refs = node('UAObject', ref.node_id, ref.name)
+  def component(ref, suffix = '')
+    ele, refs = node('UAObject', "#{ref.node_id}#{suffix}", ref.name)
     node_reference(ref.target.type.name, 'HasTypeDefinition', ref.target.type.node_id).
       each { |r| refs << r }
-    node_reference(ref.rule, 'HasModelingRule', NodeIds[ref.rule]).
+    node_reference(ref.rule, 'HasModellingRule', NodeIds[ref.rule]).
       each { |r| refs << r }
     node_reference(ref.owner.name, 'HasProperty', ref.owner.node_id, forward: false).
       each { |r| refs << r }
@@ -127,18 +128,18 @@ class Type
     ele    
   end
 
-  def relationships
+  def relationships(suffix = '')
     nodes = []
     refs = []
     
     @relations.each do |a|
       if !a.is_attribute? and a.name
         if a.is_property?
-          refs.concat(reference(a))
-          nodes << variable_property(a)
+          refs.concat(reference(a, suffix))
+          nodes << variable_property(a, suffix)
         elsif a.is_a? Relation::Association
-          refs.concat(reference(a))          
-          nodes << component(a)
+          refs.concat(reference(a, suffix))
+          nodes << component(a, suffix)
         end
       end
     end
@@ -164,7 +165,7 @@ class Type
 
   def add_mixin_relations
     pnodes, prefs = @parent.add_mixin_relations if @parent
-    nodes, refs = relationships
+    nodes, refs = relationships(@@mixin_suffix)
     [Array(pnodes).concat(nodes), Array(prefs).concat(refs)]
   end
 
@@ -188,6 +189,7 @@ class Type
         nodes, references = @mixin.add_mixin_relations
         references.each { |r| refs << r }
         nodes.each { |n| root << n }
+        @@mixin_suffix += 1
       end
       
       nodes, references = relationships
@@ -199,9 +201,9 @@ class Type
   def generate_enumeration(root)
     puts "  => Enumeration #{@name}"
     node, refs = node('UADataType', node_id, @name)
+    # node.add_element('Description').add_text(@documentation) if @documentation
     node_reference('Enumeration', 'HasSubtype', NodeIds['Enumeration'], forward: false).
       each { |r| refs << r }
-    node.add_element('Description').add_text(@documentation) if @documentation
 
     defs = node.add_element('Definition', { 'Name' => @name })
     @literals.each do |l|
@@ -216,9 +218,9 @@ class Type
   def generate_data_type(root)
     puts "  => DataType #{@name}"
     node, refs = node('UADataType', node_id, @name)
+    #node.add_element('Description').add_text(@documentation) if @documentation
     node_reference('BaseDataType', 'HasSubtype', NodeIds['BaseDataType'], forward: false).
       each { |r| refs << r }
-    node.add_element('Description').add_text(@documentation) if @documentation
     
     defs = node.add_element('Definition', { 'Name' => @name })
     @relations.each do |r|

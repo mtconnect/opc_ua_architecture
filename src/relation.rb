@@ -103,7 +103,11 @@ module Relation
     end
     
     def target_node_name
-      rasie "Unknown target node type for #{@owner.name} #{@name}"
+      raise "Unknown target node name for #{@owner.name} #{@name}"
+    end
+
+    def target_node_id
+      raise "Unknown target node type for #{@owner.name} #{@name}"
     end
 
     def browse_name
@@ -190,6 +194,14 @@ module Relation
       end
     end
 
+    def target_node_id
+      if is_folder?
+        NodeIds['FolderType']
+      else
+        @target.type.node_id
+      end
+    end
+    
     def is_folder?
       stereotype and stereotype.name == 'Organizes'
     end
@@ -233,7 +245,18 @@ module Relation
 
     def target_node_name
       'PropertyType'
-    end    
+    end
+
+    def target_node_id
+      NodeIds['PropertyType']
+    end
+    
+#    def resolve_types
+#      super
+#      if @target.type.type == 'UMLEnumeration'
+#        @target = Connection.new('type', nil, Type.type_for_name('UInt16'))
+#      end
+#    end
   end
 
   class Dependency < Relation
@@ -259,6 +282,10 @@ module Relation
     def target_node_name
       "ObjectType"
     end
+
+    def target_node_id
+      NodeIds['ObjectType']
+    end    
   end
   
   class Realization < Dependency

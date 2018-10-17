@@ -28,6 +28,9 @@ root.add_namespace('xsd', "http://www.w3.org/2001/XMLSchema")
 root.add_namespace('xsi', "http://www.w3.org/2001/XMLSchema-instance")
 root.add_namespace("http://opcfoundation.org/UA/2011/03/UANodeSet.xsd")
 
+root.add_attribute("xsi:schemaLocation",
+                   "http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd")
+                                                                                                                          
 root.add_attribute('LastModified', Time.now.utc.xmlschema)
 root.add_element('NamespaceUris').
   add_element('Uri').
@@ -35,23 +38,21 @@ root.add_element('NamespaceUris').
 
 root.add_element('Models').
   add_element('Model',  { 'ModelUri' => "http://opcfoundation.org/UA/MTConnect/",
-                          "Version" => "1.00",
+                          "Version" => "2.00",
                           "PublicationDate" => Time.now.utc.xmlschema }).
   add_element('RequiredModel', { "ModelUri" => "http://opcfoundation.org/UA/",
-                                 "Version" => "1.03",
+                                 "Version" => "1.04",
                                  "PublicationDate" => Time.now.utc.xmlschema } )
 
 
 NodeIds = {}
 Aliases = {}
+NamespacePrefix = 'ns=1;'
 
 # Parse Reference Documents.
 once = true
 
-['OPC_UA_Nodesets/Opc.Ua.NodeSet2.Part3.xml',
- 'OPC_UA_Nodesets/Opc.Ua.NodeSet2.Part5.xml',
- 'OPC_UA_Nodesets/Opc.Ua.NodeSet2.Part8.xml',
- 'OPC_UA_Nodesets/Opc.Ua.NodeSet2.Part9.xml'].each do |f|
+['OPC_UA_Nodesets/Opc.Ua.NodeSet2.xml'].each do |f|
 
   puts "Parsing OPC UA Nodeset: #{f}"
   File.open(f) do |x|
@@ -66,15 +67,17 @@ once = true
       end
       once = false
     end
-    
-    ['UAObject', 'UAObjectType', 'UAVariable', 'UAVariableType', 'UADataType'].each do |node|
-      doc.root.each_element("//#{node}") do |e|
-        NodeIds[e.attribute('BrowseName').value] =  e.attribute('NodeId').value
+
+    doc.root.elements.each do |e|
+      name, id = e.attribute('BrowseName'), e.attribute('NodeId')
+      if name and id
+        NodeIds[name.value] = id.value
       end
-    end  
+    end
   end
 end
 
+=begin
 # Copy Namespace Pre-amble
 File.open(File.join(File.dirname(__FILE__), 'preamble.xml')) do |f|
   doc = REXML::Document.new(f)
@@ -82,6 +85,7 @@ File.open(File.join(File.dirname(__FILE__), 'preamble.xml')) do |f|
     root.add_element(e)
   end
 end
+=end
 
 Type.resolve_node_ids
 Type.check_ids

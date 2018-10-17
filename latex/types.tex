@@ -1,4 +1,4 @@
-% Generated 2018-10-16 16:11:31 -0700
+% Generated 2018-10-17 09:30:54 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -157,16 +157,16 @@ HasProperty & Variable & SampleRate & Float & PropertyType & Optional \\
 HasProperty & Variable & SampleInterval & Float & PropertyType & Optional \\
 HasComponent & Object & Description & \multicolumn{2}{|l|}{DescriptionType} & Optional \\
 HasComponent & Object & Configuration & \multicolumn{2}{|l|}{MTConfigurationType} & Optional \\
-HasMTReferenceType & Object & <Dynamic> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
-HasComponent & Variable & <Dynamic> & \multicolumn{2}{|l|}{MTEnumeratedEventType} & Optional \\
-HasComponent & Variable & <Dynamic> & \multicolumn{2}{|l|}{MTNumericEventType} & Optional \\
-HasComponent & Variable & <Dynamic> & \multicolumn{2}{|l|}{MTStringEventType} & Optional \\
-HasComponent & Variable & <Dynamic> & \multicolumn{2}{|l|}{MTSampleType} & Optional \\
-HasComponent & Event & <Dynamic> & \multicolumn{2}{|l|}{MTMessageType} & Optional \\
-HasComponent & Variable & <Dynamic> & \multicolumn{2}{|l|}{AssetEventType} & Optional \\
-Organizes & Object & Components & \multicolumn{2}{|l|}{FolderType} & Optional \\
-Organizes & Object & Compositions & \multicolumn{2}{|l|}{FolderType} & Optional \\
-Organizes & Object & Conditions & \multicolumn{2}{|l|}{FolderType} & Optional \\
+HasMTReferenceType & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
+HasComponent & Variable & <MTEnumeratedEvent> & \multicolumn{2}{|l|}{MTEnumeratedEventType} & Optional \\
+HasComponent & Variable & <MTNumericEvent> & \multicolumn{2}{|l|}{MTNumericEventType} & Optional \\
+HasComponent & Variable & <MTStringEvent> & \multicolumn{2}{|l|}{MTStringEventType} & Optional \\
+HasComponent & Variable & <MTSample> & \multicolumn{2}{|l|}{MTSampleType} & Optional \\
+HasComponent & Event & <MTMessage> & \multicolumn{2}{|l|}{MTMessageType} & Optional \\
+HasComponent & Variable & <AssetEvent> & \multicolumn{2}{|l|}{AssetEventType} & Optional \\
+Organizes & Object & Components & MTComponentType & FolderType & Optional \\
+Organizes & Object & Compositions & MTCompositionType & FolderType & Optional \\
+Organizes & Object & Conditions & AlarmConditionType & FolderType & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -399,7 +399,7 @@ HasProperty & Variable & FirwareVersion & String & PropertyType & Optional \\
 HasProperty & Variable & CalibrationDate & UtcTime & PropertyType & Optional \\
 HasProperty & Variable & NextCalibrationDate & UtcTime & PropertyType & Optional \\
 HasProperty & Variable & CalibrationInitials & String & PropertyType & Optional \\
-Organizes & Object & Channels & \multicolumn{2}{|l|}{FolderType} & Optional \\
+Organizes & Object & Channels & ChannelType & FolderType & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -468,11 +468,11 @@ HasProperty & Variable & SourceName & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
-HasMTClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
-HasMTSubClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
+HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
+HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
-HasMTComposition & Object & <Dynamic> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
+HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 Attribute Override & Variable & DataType & \multicolumn{2}{|l|}{AssetEventDataType} & Optional \\
 \end{tabu}
 \end{table} 
@@ -509,11 +509,11 @@ HasProperty & Variable & SourceName & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
-HasMTClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
-HasMTSubClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
+HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
+HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
-HasMTComposition & Object & <Dynamic> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
+HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -627,11 +627,11 @@ HasProperty & Variable & SourceName & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
-HasMTClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
-HasMTSubClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
+HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
+HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
-HasMTComposition & Object & <Dynamic> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
+HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -788,11 +788,11 @@ HasProperty & Variable & SourceName & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
-HasMTClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
-HasMTSubClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
+HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
+HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
-HasMTComposition & Object & <Dynamic> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
+HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasProperty & Variable & SignificantDigits & UInt16 & PropertyType & Optional \\
 HasProperty & Variable & Statistic & String & PropertyType & Optional \\
 HasProperty & Variable & Units & String & PropertyType & Optional \\
@@ -840,11 +840,11 @@ HasProperty & Variable & SourceName & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
-HasMTClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
-HasMTSubClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
+HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
+HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
-HasMTComposition & Object & <Dynamic> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
+HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasProperty & Variable & SignificantDigits & UInt16 & PropertyType & Optional \\
 HasProperty & Variable & Statistic & String & PropertyType & Optional \\
 HasProperty & Variable & Units & String & PropertyType & Optional \\
@@ -893,11 +893,11 @@ HasProperty & Variable & SourceName & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
-HasMTClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
-HasMTSubClassType & Object & <Dynamic> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
+HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
+HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
-HasMTComposition & Object & <Dynamic> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
+HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -1784,10 +1784,10 @@ or PATH element if provided, of a piece of equipment.
 
 The control point MUST be reported as a set of space-delimited floating-point 
 numbers representing a point in 3-D space. The position of the control point MUST 
-be reported in units of MILLIMETER and listed in order of X, Y, and Z referenced to the coordinate 
-system of the piece of equipment.
+be reported in units of \texttt{MILLIMETER} and listed in order of X, Y, and Z 
+referenced to the coordinate system of the piece of equipment.
 
-$MILLIMETER 3D$
+$MILLIMETER^3$
 
 \begin{table}[ht]
 \centering 

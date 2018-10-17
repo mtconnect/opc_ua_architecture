@@ -86,6 +86,10 @@ module Relation
       stereotype and stereotype.name =~ /Attribute/
     end
 
+    def is_folder?
+      false
+    end
+
     def is_property?
       false
     end
@@ -111,7 +115,7 @@ module Relation
     end
 
     def browse_name
-      @name || '<Dynamic>'
+      @name || "<#{@target.type.name.sub(/Type/, '')}>"
     end
 
     def resolve_types
@@ -194,14 +198,6 @@ module Relation
       end
     end
 
-    def target_node_id
-      if is_folder?
-        NodeIds['FolderType']
-      else
-        @target.type.node_id
-      end
-    end
-    
     def is_folder?
       stereotype and stereotype.name == 'Organizes'
     end

@@ -86,6 +86,8 @@ class Type
       if r.is_reference?
         if r.is_property?
           type_info = "#{r.target.type.name} & #{r.target_node_name}"
+        elsif r.is_folder?
+          type_info = "#{r.final_target.type.name} & #{r.target_node_name}"          
         else
           type_info = "\\multicolumn{2}{|l|}{#{r.target_node_name}}"
         end

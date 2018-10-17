@@ -32,6 +32,25 @@ module Relation
       end
     end
   end
+
+  class Association
+    def target_node_id
+      if is_folder?
+        NodeIds['FolderType']
+      else
+        @target.type.node_id
+      end
+    end
+    
+    def target_node_id
+      if is_folder?
+        NodeIds['FolderType']
+      else
+        @target.type.node_id
+      end
+    end    
+  end
+  
 end
 
 class Type

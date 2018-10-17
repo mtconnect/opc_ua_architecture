@@ -47,7 +47,7 @@ root.add_element('Models').
 
 NodeIds = {}
 Aliases = {}
-NamespacePrefix = 'ns=1;'
+Namespace = '1'
 
 # Parse Reference Documents.
 once = true

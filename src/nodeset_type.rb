@@ -6,7 +6,7 @@ module NodeId
   def self.id_to_i(id)
     s = id.unpack('m').first.unpack('L>*')
     v = (BigDecimal(s[1]) * (2 ** 32) + s[2]).modulo(10 ** 6).to_i
-    "#{NamespacePrefix}i=#{v}"
+    "ns=#{Namespace};i=#{v}"
   end
 end
 
@@ -94,7 +94,7 @@ class Type
   def node(type, id, name, display_name: nil, abstract: false, value_rank: nil, data_type: nil)
     node = REXML::Element.new(type)
     node.add_attributes({ 'NodeId' => id,
-                          'BrowseName' => "1:#{name}"})
+                          'BrowseName' => "#{Namespace}:#{name}"})
     node.add_attribute('IsAbstract', 'true') if abstract
     node.add_attribute('ValueRank', value_rank) if value_rank
     node.add_attribute('DataType', data_type) if data_type

@@ -226,13 +226,20 @@ class Type
       each { |r| refs << r }
     node_reference('EnumStrings', 'HasProperty', "#{node_id}1").
       each { |r| refs << r }
-    
 
+    value_ele = REXML::Element.new('Value')
+    values = value_ele.add_element('ListOfLocalizedText',
+                               { 'xmlns' => 'http://opcfoundation.org/UA/2008/02/Types.xsd'})
+    
     defs = node.add_element('Definition', { 'Name' => @name })
     @literals.each do |l|
       name, value = l['name'].split('=')
-      field = defs.add_element('Field', { 'Name' => name, 'Value' => value })
+      field = defs.add_element('Field', { 'Name' => "#{name}_#{value}", 'Value' => value })
       field.add_element('Description').add_text(l['documentation']) if l['documentation']
+
+      text = values.add_element('LocalizedText')
+      text.add_element('Locale')
+      text.add_element('Text').add_text(name)      
     end
 
     root << node
@@ -247,16 +254,7 @@ class Type
     node_reference('Owner', 'HasProperty', node_id, forward: false).
       each { |r| refs << r }
 
-    values = node.add_element('Value').
-               add_element('ListOfLocalizedText',
-                           { 'xmlns' => 'http://opcfoundation.org/UA/2008/02/Types.xsd'})
-        
-    @literals.each do |l|
-      name, _ = l['name'].split('=')
-      text = values.add_element('LocalizedText')
-      text.add_element('Locale')
-      text.add_element('Text').add_text(name)
-    end
+    node << value_ele
 
     root << node
   end

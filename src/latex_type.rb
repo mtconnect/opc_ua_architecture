@@ -238,7 +238,7 @@ EOT
       
       @json['literals'].each do |lit|
         name, value = lit['name'].split('=')
-        f.puts "\\texttt{#{name}} & \\texttt{#{value}} \\\\"
+        f.puts "\\texttt{#{name}_#{value}} & \\texttt{#{value}} \\\\"
       end
         
       f.puts <<EOT

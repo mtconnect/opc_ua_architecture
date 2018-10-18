@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-10-17T16:55:55Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-10-18T18:34:35Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/' Version='2.00' PublicationDate='2018-10-17T16:55:55Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2018-10-17T16:55:55Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/' Version='2.00' PublicationDate='2018-10-18T18:34:35Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2018-10-18T18:34:35Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -1686,8 +1686,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=6288001</Reference>
     </References>
     <Definition Name='ActiveStateDataType'>
-      <Field Name='ACTIVE' Value='0'/>
-      <Field Name='INACTIVE' Value='1'/>
+      <Field Name='ACTIVE_0' Value='0'/>
+      <Field Name='INACTIVE_1' Value='1'/>
     </Definition>
   </UADataType>
   <UAVariable NodeId='ns=1;i=6288001' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
@@ -1722,8 +1722,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=7720021</Reference>
     </References>
     <Definition Name='AvailabilityDataType'>
-      <Field Name='AVAILABILE' Value='0'/>
-      <Field Name='UNAVAILABLE' Value='1'/>
+      <Field Name='AVAILABILE_0' Value='0'/>
+      <Field Name='UNAVAILABLE_1' Value='1'/>
     </Definition>
   </UADataType>
   <UAVariable NodeId='ns=1;i=7720021' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
@@ -1758,10 +1758,10 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=842741</Reference>
     </References>
     <Definition Name='AxisCouplingDataType'>
-      <Field Name='MASTER' Value='0'/>
-      <Field Name='SLAVE' Value='1'/>
-      <Field Name='SYNCHRONOUS' Value='2'/>
-      <Field Name='TANDEM' Value='3'/>
+      <Field Name='MASTER_0' Value='0'/>
+      <Field Name='SLAVE_1' Value='1'/>
+      <Field Name='SYNCHRONOUS_2' Value='2'/>
+      <Field Name='TANDEM_3' Value='3'/>
     </Definition>
   </UADataType>
   <UAVariable NodeId='ns=1;i=842741' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
@@ -1804,10 +1804,10 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=7567821</Reference>
     </References>
     <Definition Name='AxisStateDataType'>
-      <Field Name='HOME' Value='0'/>
-      <Field Name='PARKED' Value='1'/>
-      <Field Name='STOPPED' Value='2'/>
-      <Field Name='TRAVEL' Value='3'/>
+      <Field Name='HOME_0' Value='0'/>
+      <Field Name='PARKED_1' Value='1'/>
+      <Field Name='STOPPED_2' Value='2'/>
+      <Field Name='TRAVEL_3' Value='3'/>
     </Definition>
   </UADataType>
   <UAVariable NodeId='ns=1;i=7567821' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
@@ -1850,18 +1850,18 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2135901</Reference>
     </References>
     <Definition Name='CompositionStateDataType'>
-      <Field Name='ACTIVE' Value='0'/>
-      <Field Name='CLOSED' Value='1'/>
-      <Field Name='DOWN' Value='2'/>
-      <Field Name='INACTIVE' Value='3'/>
-      <Field Name='LEFT' Value='4'/>
-      <Field Name='OFF' Value='5'/>
-      <Field Name='ON' Value='6'/>
-      <Field Name='OPEN' Value='7'/>
-      <Field Name='RIGHT' Value='8'/>
-      <Field Name='TRANSITIONING' Value='9'/>
-      <Field Name='UNLATCHED' Value='10'/>
-      <Field Name='UP' Value='11'/>
+      <Field Name='ACTIVE_0' Value='0'/>
+      <Field Name='CLOSED_1' Value='1'/>
+      <Field Name='DOWN_2' Value='2'/>
+      <Field Name='INACTIVE_3' Value='3'/>
+      <Field Name='LEFT_4' Value='4'/>
+      <Field Name='OFF_5' Value='5'/>
+      <Field Name='ON_6' Value='6'/>
+      <Field Name='OPEN_7' Value='7'/>
+      <Field Name='RIGHT_8' Value='8'/>
+      <Field Name='TRANSITIONING_9' Value='9'/>
+      <Field Name='UNLATCHED_10' Value='10'/>
+      <Field Name='UP_11' Value='11'/>
     </Definition>
   </UADataType>
   <UAVariable NodeId='ns=1;i=2135901' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
@@ -1936,11 +1936,11 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2980111</Reference>
     </References>
     <Definition Name='ControllerModeDataType'>
-      <Field Name='AUTOMATIC' Value='0'/>
-      <Field Name='EDIT' Value='1'/>
-      <Field Name='MANUAL' Value='2'/>
-      <Field Name='MANUAL_DATA_INPUT' Value='3'/>
-      <Field Name='SEMI_AUTOMATIC' Value='4'/>
+      <Field Name='AUTOMATIC_0' Value='0'/>
+      <Field Name='EDIT_1' Value='1'/>
+      <Field Name='MANUAL_2' Value='2'/>
+      <Field Name='MANUAL_DATA_INPUT_3' Value='3'/>
+      <Field Name='SEMI_AUTOMATIC_4' Value='4'/>
     </Definition>
   </UADataType>
   <UAVariable NodeId='ns=1;i=2980111' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
@@ -1987,10 +1987,10 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=3390571</Reference>
     </References>
     <Definition Name='DirectionDataType'>
-      <Field Name='CLOCKWISE' Value='0'/>
-      <Field Name='COUNTER_CLOCKWISE' Value='1'/>
-      <Field Name='NEGATIVE' Value='2'/>
-      <Field Name='POSITIVE' Value='3'/>
+      <Field Name='CLOCKWISE_0' Value='0'/>
+      <Field Name='COUNTER_CLOCKWISE_1' Value='1'/>
+      <Field Name='NEGATIVE_2' Value='2'/>
+      <Field Name='POSITIVE_3' Value='3'/>
     </Definition>
   </UADataType>
   <UAVariable NodeId='ns=1;i=3390571' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
@@ -2033,8 +2033,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=9001021</Reference>
     </References>
     <Definition Name='EmergencyStopDataType'>
-      <Field Name='ARMED' Value='0'/>
-      <Field Name='TRIGGERED' Value='1'/>
+      <Field Name='ARMED_0' Value='0'/>
+      <Field Name='TRIGGERED_1' Value='1'/>
     </Definition>
   </UADataType>
   <UAVariable NodeId='ns=1;i=9001021' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
@@ -2069,11 +2069,11 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2561151</Reference>
     </References>
     <Definition Name='FunctionalModeDataType'>
-      <Field Name='MAINTENANCE' Value='0'/>
-      <Field Name='PRODUCTION' Value='1'/>
-      <Field Name='PROCESS_DEVELOPMENT' Value='2'/>
-      <Field Name='SETUP' Value='3'/>
-      <Field Name='TEARDOWN' Value='4'/>
+      <Field Name='MAINTENANCE_0' Value='0'/>
+      <Field Name='PRODUCTION_1' Value='1'/>
+      <Field Name='PROCESS_DEVELOPMENT_2' Value='2'/>
+      <Field Name='SETUP_3' Value='3'/>
+      <Field Name='TEARDOWN_4' Value='4'/>
     </Definition>
   </UADataType>
   <UAVariable NodeId='ns=1;i=2561151' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
@@ -2281,8 +2281,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=5506051</Reference>
     </References>
     <Definition Name='OnOffDataType'>
-      <Field Name='OFF' Value='0'/>
-      <Field Name='ON' Value='1'/>
+      <Field Name='OFF_0' Value='0'/>
+      <Field Name='ON_1' Value='1'/>
     </Definition>
   </UADataType>
   <UAVariable NodeId='ns=1;i=5506051' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
@@ -2317,9 +2317,9 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=4398081</Reference>
     </References>
     <Definition Name='OpenStateDataType'>
-      <Field Name='CLOSED' Value='0'/>
-      <Field Name='OPEN' Value='1'/>
-      <Field Name='UNLATCHED' Value='2'/>
+      <Field Name='CLOSED_0' Value='0'/>
+      <Field Name='OPEN_1' Value='1'/>
+      <Field Name='UNLATCHED_2' Value='2'/>
     </Definition>
   </UADataType>
   <UAVariable NodeId='ns=1;i=4398081' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
@@ -2358,10 +2358,10 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=8685471</Reference>
     </References>
     <Definition Name='PathModeDataType'>
-      <Field Name='INDEPENDENT' Value='0'/>
-      <Field Name='MASTER' Value='1'/>
-      <Field Name='MIRROR' Value='2'/>
-      <Field Name='SYNCHRONOUS' Value='3'/>
+      <Field Name='INDEPENDENT_0' Value='0'/>
+      <Field Name='MASTER_1' Value='1'/>
+      <Field Name='MIRROR_2' Value='2'/>
+      <Field Name='SYNCHRONOUS_3' Value='3'/>
     </Definition>
   </UADataType>
   <UAVariable NodeId='ns=1;i=8685471' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
@@ -2404,9 +2404,9 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2787721</Reference>
     </References>
     <Definition Name='ProgramEditDataType'>
-      <Field Name='ACTIVE' Value='0'/>
-      <Field Name='NOT_READY' Value='1'/>
-      <Field Name='READY' Value='2'/>
+      <Field Name='ACTIVE_0' Value='0'/>
+      <Field Name='NOT_READY_1' Value='1'/>
+      <Field Name='READY_2' Value='2'/>
     </Definition>
   </UADataType>
   <UAVariable NodeId='ns=1;i=2787721' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
@@ -2445,9 +2445,9 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=7865531</Reference>
     </References>
     <Definition Name='RotaryModeDataType'>
-      <Field Name='CONTOUR' Value='0'/>
-      <Field Name='INDEX' Value='1'/>
-      <Field Name='SPINDLE' Value='2'/>
+      <Field Name='CONTOUR_0' Value='0'/>
+      <Field Name='INDEX_1' Value='1'/>
+      <Field Name='SPINDLE_2' Value='2'/>
     </Definition>
   </UADataType>
   <UAVariable NodeId='ns=1;i=7865531' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
@@ -2486,8 +2486,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=6721691</Reference>
     </References>
     <Definition Name='YesNoDataType'>
-      <Field Name='NO' Value='0'/>
-      <Field Name='YES' Value='1'/>
+      <Field Name='NO_0' Value='0'/>
+      <Field Name='YES_1' Value='1'/>
     </Definition>
   </UADataType>
   <UAVariable NodeId='ns=1;i=6721691' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
@@ -3215,8 +3215,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2335441</Reference>
     </References>
     <Definition Name='CoordinateSystemType'>
-      <Field Name='MACHINE' Value='0'/>
-      <Field Name='WORK' Value='1'/>
+      <Field Name='MACHINE_0' Value='0'/>
+      <Field Name='WORK_1' Value='1'/>
     </Definition>
   </UADataType>
   <UAVariable NodeId='ns=1;i=2335441' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
@@ -3251,15 +3251,15 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=9522561</Reference>
     </References>
     <Definition Name='DataItemResetValueType'>
-      <Field Name='ACTION_COMPLETE' Value='0'/>
-      <Field Name='ANNUAL' Value='1'/>
-      <Field Name='DAY' Value='2'/>
-      <Field Name='MAINTENANCE' Value='3'/>
-      <Field Name='MANUAL' Value='4'/>
-      <Field Name='MONTH' Value='5'/>
-      <Field Name='POWER_ON' Value='6'/>
-      <Field Name='SHIFT' Value='7'/>
-      <Field Name='WEEK' Value='8'/>
+      <Field Name='ACTION_COMPLETE_0' Value='0'/>
+      <Field Name='ANNUAL_1' Value='1'/>
+      <Field Name='DAY_2' Value='2'/>
+      <Field Name='MAINTENANCE_3' Value='3'/>
+      <Field Name='MANUAL_4' Value='4'/>
+      <Field Name='MONTH_5' Value='5'/>
+      <Field Name='POWER_ON_6' Value='6'/>
+      <Field Name='SHIFT_7' Value='7'/>
+      <Field Name='WEEK_8' Value='8'/>
     </Definition>
   </UADataType>
   <UAVariable NodeId='ns=1;i=9522561' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
@@ -3322,9 +3322,9 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=5944971</Reference>
     </References>
     <Definition Name='MTCategoryType'>
-      <Field Name='EVENT' Value='0'/>
-      <Field Name='CONDITION' Value='1'/>
-      <Field Name='SAMPLE' Value='2'/>
+      <Field Name='EVENT_0' Value='0'/>
+      <Field Name='CONDITION_1' Value='1'/>
+      <Field Name='SAMPLE_2' Value='2'/>
     </Definition>
   </UADataType>
   <UAVariable NodeId='ns=1;i=5944971' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
@@ -3363,9 +3363,9 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=8652581</Reference>
     </References>
     <Definition Name='MTRepresentationType'>
-      <Field Name='DISCRETE' Value='0'/>
-      <Field Name='TIME_SERIES' Value='1'/>
-      <Field Name='VALUE' Value='2'/>
+      <Field Name='DISCRETE_0' Value='0'/>
+      <Field Name='TIME_SERIES_1' Value='1'/>
+      <Field Name='VALUE_2' Value='2'/>
     </Definition>
   </UADataType>
   <UAVariable NodeId='ns=1;i=8652581' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>

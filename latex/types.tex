@@ -1,4 +1,4 @@
-% Generated 2018-10-18 12:09:50 -0700
+% Generated 2018-10-19 10:39:03 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -17,13 +17,7 @@ The \texttt{Components} documents the Component models and the owned objects.
 
 \FloatBarrier
 
-An MTConnect \texttt{Channel} is a single data stream associated with a sensor. Each stream
-of data can be calibrated separately and allows for the specification of the meta information
-and descriptive information. The only required property of the \texttt{Channel} is the number
-which is the unique identifier.
-
-The channels will be created by the \texttt{SensorChannelObjectFactory} that composes the \texttt{BrowseName} 
-and the \texttt{NodeId} for each object. (See \ref{type:SensorChannelObjectFactory}).
+\input ./type-sections/ChannelType.tex
 
 \begin{table}[ht]
 \centering 
@@ -55,10 +49,7 @@ HasProperty & Variable & CalibrationInitials & String & PropertyType & Optional 
 
 \FloatBarrier
 
-The description provides some general information about the 
-manufacture and serial number of the component. In the XML, the \texttt{CDATA} is freeform 
-text that is represented in the \texttt{Data} Property of the Description Object. The description is 
-related to the component with the OPC/UA \texttt{HasComponent} relationship.
+\input ./type-sections/DescriptionType.tex
 
 \begin{table}[ht]
 \centering 
@@ -192,9 +183,7 @@ This class relates to \texttt{ConditionObjectFactory} (See section \ref{type:Con
 
 \FloatBarrier
 
-The MTDevice is a special type whose object will be the root of the device graph. The Device uses the component type factory and the component object factories to create each of the first level components. 
-
-The compositions, relationships, and data items are then recursively created as one descends the MTConnect information model.
+\input ./type-sections/MTDeviceType.tex
 
 \begin{table}[ht]
 \centering 
@@ -380,9 +369,7 @@ HasSubtype & ObjectType & SensorConfigurationType & \multicolumn{3}{|l|}{See sec
 
 \FloatBarrier
 
-The \texttt{SensorConfiguration} abstraction provides information required for maintenance and support of a sensor element(s).
-
-The SensorConfiguration browse name will be created as an Object relationship with the parent component.
+\input ./type-sections/SensorConfigurationType.tex
 
 \begin{table}[ht]
 \centering 
@@ -420,12 +407,12 @@ Organizes & Object & Channels & ChannelType & FolderType & Optional \\
 
 \FloatBarrier
 
+
+An MTConnect \texttt{DataItem} describes a piece of information that can be collected from a component. The \texttt{DataItemObjectFactory} is used by the parent component to create specific DataItem Types. (See section \ref{type:DataItemObjectFactory}).
+
 \subsubsection{Defintion of \texttt{ AssetEventDataType}} \label{type:AssetEventDataType}
 
 \FloatBarrier
-
-
-
 \begin{table}[ht]
 \centering 
   \caption{\texttt{AssetEventDataType} DataType}
@@ -605,7 +592,7 @@ Event and the Sample types.
 All Data Items with Category \texttt{EVENT} having Controlled Vocabularies (Enumerations) 
 will be added as sub-types of this type which is mapped to the OPC/UA MultiStateValueDiscreteType. 
 Otherwise, either \texttt{MTString} or \texttt{MTNumeric} will be used. All subtypes are direct representations of the 
-MTConnect equivalent elements that can be found in the \textit{MTConnect Part 3} documents.
+MTConnect equivalent elements that can be found in the MTConnect Part 3 \cite{MTCPart3} documents.
 
 \begin{table}[ht]
 \centering 
@@ -818,7 +805,7 @@ HasProperty & Variable & EngineeringUnits & EUInformation & PropertyType & Optio
 \FloatBarrier
 
 Data Items with category \texttt{SAMPLE}. The simplest mapping since all these types are 
-floating numeric data and comply with the AnalogItemType from OPC/UA Part 8.
+floating numeric data and comply with the AnalogItemType from \cite{UAPart8}.
 
 \begin{table}[ht]
 \centering 
@@ -926,7 +913,7 @@ documentation for the condition behavior in MTConnect can be found in Section 5.
 5.8 of \cite{MTCPart3}.
 
 The MTConnect Data Item with Category of \texttt{CONDITION} are used to map to the 
-OPC UA \texttt{ConditionType} models in \cite{UAPart9}
+OPC UA \texttt{ConditionType} models in \cite{UAPart9}.
 
 \subsubsection{Defintion of \texttt{ MTConnectAlarmConditionType}} \label{type:MTConnectAlarmConditionType}
 
@@ -1251,7 +1238,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-Rate of change of velocity $\frac{MILIMETER}{SECOND^{2}}$
+Rate of change of velocity. $\frac{MILLIMETER}{SECOND^{2}}$
 
 \begin{table}[ht]
 \centering 
@@ -1408,7 +1395,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-The feedrate of a linear axis $\frac{MILLIMETER}{SECOND}$
+The feedrate of a linear axis. $\frac{MILLIMETER}{SECOND}$
 
 \begin{table}[ht]
 \centering 
@@ -2429,7 +2416,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-Represents the Agent’s ability to communicate with the data source. This MUST be provided for a 
+Represents the Agent's ability to communicate with the data source. This MUST be provided for a 
 Device Element and MAY be provided for any other Structural Element.
 
 \begin{table}[ht]
@@ -3102,7 +3089,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+An indication of the status of the spindle for a piece of equipment when power has been removed and it is free to rotate.
 
 \begin{table}[ht]
 \centering 
@@ -3141,7 +3128,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+Describes the operational relationship between a \texttt{PATH} \textit{Structural Element} and another \texttt{PATH} \textit{Structural Element} for pieces of equipment comprised of multiple logical groupings of controlled axes or other logical operations. 
 
 \begin{table}[ht]
 \centering 
@@ -3182,7 +3169,10 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
+The indication of the status of the source of energy for a \textit{Structural Element} to allow it to perform its intended function or the state of an enabling signal providing permission for the \textit{Structural Element} to
+perform its functions.
 
+	DEPRECATION WARNING: \texttt{PowerState} may be deprecated in the future.
 
 \begin{table}[ht]
 \centering 
@@ -3221,7 +3211,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
+An indication of the status of the \texttt{Controller} component’s program editing mode.
 
+On many controls, a program can be edited while another program is currently being executed.
 
 \begin{table}[ht]
 \centering 
@@ -3261,7 +3253,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+The current operating mode for a \texttt{Rotary} type axis. 
 
 \begin{table}[ht]
 \centering 
@@ -3310,9 +3302,6 @@ to the original sources \cite{MTCPart2} and \cite{MTCPart3}.
 \subsubsection{Defintion of \texttt{ MTNumberEventClassType}} \label{type:MTNumberEventClassType}
 
 \FloatBarrier
-
-
-
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTNumberEventClassType} Definition}
@@ -3583,7 +3572,9 @@ HasSubtype & ObjectType & WorkOffsetClassType & \multicolumn{3}{|l|}{See section
 
 \FloatBarrier
 
+The line of code or command being executed by a \texttt{Controller} \textit{Structural Element}.
 
+The value reported for \texttt{Block} MUST include the entire expression for a line of program code, including all parameters.
 
 \begin{table}[ht]
 \centering 
@@ -3665,7 +3656,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+The identifier of a material used or consumed in the manufacturing process.
 
 \begin{table}[ht]
 \centering 
@@ -3719,7 +3710,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+The identifier for a pallet.
 
 \begin{table}[ht]
 \centering 
@@ -3771,7 +3762,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+An identifier of a part or product moving through the manufacturing process. 
 
 \begin{table}[ht]
 \centering 
@@ -3902,7 +3893,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+The serial number associated with a \texttt{Component}, \texttt{Asset}, or \texttt{Device}.
 
 \begin{table}[ht]
 \centering 
@@ -4125,9 +4116,6 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \subsubsection{Defintion of \texttt{ MTDataItemSubClassType}} \label{type:MTDataItemSubClassType}
 
 \FloatBarrier
-
-
-
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTDataItemSubClassType} Definition}
@@ -4249,7 +4237,7 @@ HasSubtype & ObjectType & AllSubClassType & \multicolumn{3}{|l|}{See section \re
 
 \FloatBarrier
 
-
+The magnitude or measurement of a type irrespective of its relation to other values.
 
 \begin{table}[ht]
 \centering 
@@ -4301,7 +4289,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+An indication of the operating state or value of a type.
 
 \begin{table}[ht]
 \centering 
@@ -4326,9 +4314,6 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \subsubsection{Defintion of \texttt{ AllSubClassType}} \label{type:AllSubClassType}
 
 \FloatBarrier
-
-
-
 \begin{table}[ht]
 \centering 
   \caption{\texttt{AllSubClassType} Definition}
@@ -4353,7 +4338,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+The measurement of a type occurring in turn repeatedly.
 
 \begin{table}[ht]
 \centering 
@@ -4379,7 +4364,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+A Scale weighting factor for the measurement of sound level. 
 
 \begin{table}[ht]
 \centering 
@@ -4405,7 +4390,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+	Example: When multiple locations on a piece of bar stock are referenced as the indication for the \texttt{END_OF_BAR}, the additional location(s) MUST be designated as \texttt{AUXILIARY} indication(s) for the \texttt{END_OF_BAR}. 
 
 \begin{table}[ht]
 \centering 
@@ -4457,7 +4442,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+A scale to measure the resistance to deformation of a surface.
 
 \begin{table}[ht]
 \centering 
@@ -4483,7 +4468,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+B Scale weighting factor for the measurement of sound level. 
 
 \begin{table}[ht]
 \centering 
@@ -4561,7 +4546,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+The state of the enabling signal or control logic that enables or disables the function or operation of the \textit{Structural Element}.
 
 \begin{table}[ht]
 \centering 
@@ -4587,7 +4572,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+C Scale weighting factor for the measurement of sound level. 
 
 \begin{table}[ht]
 \centering 
@@ -4613,6 +4598,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
+Measurement of the time that a piece of equipment is waiting for an event or an action to occur.
 
 
 \begin{table}[ht]
@@ -4639,7 +4625,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+Measurement of DC current or voltage.
 
 \begin{table}[ht]
 \centering 
@@ -4665,7 +4651,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+A setting or operator selection used to execute a test mode to confirm the execution of machine functions. 
 
 \begin{table}[ht]
 \centering 
@@ -4691,7 +4677,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+D Scale weighting factor for the measurement of sound level. 
 
 \begin{table}[ht]
 \centering 
@@ -4717,7 +4703,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+Fixture denotes a specifc type of a piece of equipment.
 
 \begin{table}[ht]
 \centering 
@@ -4743,7 +4729,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
+A small change which could be either positive or negative in a Type's value or function.
 
+	Example: The position of a block of program code relative to the occurrence of the last \texttt{LINE_LABEL} encountered in the control program.
 
 \begin{table}[ht]
 \centering 
@@ -4796,9 +4784,6 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \subsubsection{Defintion of \texttt{ KineticSubClassType}} \label{type:KineticSubClassType}
 
 \FloatBarrier
-
-
-
 \begin{table}[ht]
 \centering 
   \caption{\texttt{KineticSubClassType} Definition}
@@ -4823,6 +4808,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
+An indication of the position of a mechanism that may move in a lateral direction. The mechanism is represented by a \texttt{Composition} type component.
 
 
 \begin{table}[ht]
@@ -4849,7 +4835,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+A scale to measure the elasticity of a surface.
 
 \begin{table}[ht]
 \centering 
@@ -4875,7 +4861,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+The measurement or extent of something from end to end.
 
 \begin{table}[ht]
 \centering 
@@ -4901,7 +4887,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+The direction of motion.
 
 \begin{table}[ht]
 \centering 
@@ -4927,7 +4913,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+The state of the power source for the \textit{Structural Element}.
 
 \begin{table}[ht]
 \centering 
@@ -4953,7 +4939,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+An indication that the sub-parts of a piece of equipment are under load.
 
 \begin{table}[ht]
 \centering 
@@ -4979,7 +4965,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+A setting or operator selection that changes the behavior of the controller on a piece of equipment. 
 
 \begin{table}[ht]
 \centering 
@@ -5031,7 +5017,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+An indication of the state of an operator controlled interlock that can inhibit the ability to initiate an unclamp action of an electronically controlled chuck. 
 
 \begin{table}[ht]
 \centering 
@@ -5057,7 +5043,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+Maximum or peak value recorded for the data item during the calculation period.
 
 \begin{table}[ht]
 \centering 
@@ -5083,7 +5069,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+Minimum value recorded for the data item during the calculation period.
 
 \begin{table}[ht]
 \centering 
@@ -5109,7 +5095,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+A scale to measure the resistance to scratching of a surface.
 
 \begin{table}[ht]
 \centering 
@@ -5134,9 +5120,6 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \subsubsection{Defintion of \texttt{ MoleSubClassType}} \label{type:MoleSubClassType}
 
 \FloatBarrier
-
-
-
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MoleSubClassType} Definition}
@@ -5161,7 +5144,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+An indication of the open or closed state of a mechanism. The mechanism is represented by a \texttt{Composition} type component.
 
 \begin{table}[ht]
 \centering 
@@ -5187,7 +5170,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+No weighting factor on the frequency scale for the measurement of sound level.
 
 \begin{table}[ht]
 \centering 
@@ -5213,7 +5196,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
+An indication that the major sub-parts of a piece of equipment are powered or performing any activity whether producing a part or product or not. 
 
+	Example: For traditional machine tools, this includes when the piece of equipment is \texttt{WORKING} or it is idle.
 
 \begin{table}[ht]
 \centering 
@@ -5265,7 +5250,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+A setting or operator selection that changes the behavior of the controller on a piece of equipment. 
 
 \begin{table}[ht]
 \centering 
@@ -5291,7 +5276,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+The operator’s overridden value.
 
 \begin{table}[ht]
 \centering 
@@ -5317,7 +5302,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+Specific applications MAY reference one or more locations on a piece of bar stock as the indication for the \texttt{END_OF_BAR}. The main or most important location MUST be designated as the \texttt{PRIMARY} indication for the \texttt{END_OF_BAR}. 
 
 \begin{table}[ht]
 \centering 
@@ -5343,7 +5328,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+An indication that primary power is applied to the piece of equipment and, as a minimum, the controller or logic portion of the piece of equipment is powered and functioning or components that are required to remain on are powered.
 
 \begin{table}[ht]
 \centering 
@@ -5369,7 +5354,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+The position provided by a measurement probe.
 
 \begin{table}[ht]
 \centering 
@@ -5395,6 +5380,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
+The measurement of the time from the beginning of production of a part or product on a piece of equipment until the time that production is complete for that part or product on that piece of equipment. This includes the time that the piece of equipment is running, producing parts or products, or in the process of producing parts.
 
 
 \begin{table}[ht]
@@ -5421,6 +5407,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
+The value of a signal or calculation issued to adjust the feedrate of the axes associated with a \texttt{Path} component when the axes, or a single axis, are operating as specified by a logic or motion program or set by a switch.
 
 
 \begin{table}[ht]
@@ -5447,7 +5434,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+A reference to a radial type tool offset variable.
 
 \begin{table}[ht]
 \centering 
@@ -5473,7 +5460,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+The value of a signal or calculation issued to adjust the feedrate of the axes associated with a \texttt{Path} component when the axes, or a single axis, are being operated in a rapid positioning mode or method (rapid). 
 
 \begin{table}[ht]
 \centering 
@@ -5498,9 +5485,6 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \subsubsection{Defintion of \texttt{ RelativeSubClassType}} \label{type:RelativeSubClassType}
 
 \FloatBarrier
-
-
-
 \begin{table}[ht]
 \centering 
   \caption{\texttt{RelativeSubClassType} Definition}
@@ -5551,7 +5535,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+\texttt{Request} subtype identifies if the data item defined for MTConnect Interaction Model \cite{MTCPart5} represents a request.
 
 \begin{table}[ht]
 \centering 
@@ -5577,7 +5561,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+\texttt{Response} subtype identifies if the data item defined for MTConnect Interaction Model \cite{MTCPart5} represents a response.
 
 \begin{table}[ht]
 \centering 
@@ -5603,7 +5587,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+A scale to measure the resistance to deformation of a surface.
 
 \begin{table}[ht]
 \centering 
@@ -5629,6 +5613,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
+The rotational direction of a rotary motion using the right hand rule convention.
 
 
 \begin{table}[ht]
@@ -5681,7 +5666,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+A scale to measure the resistance to deformation of a surface.
 
 \begin{table}[ht]
 \centering 
@@ -5707,7 +5692,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-The standard or original value of an object
+The standard or original value of an object.
 
 \begin{table}[ht]
 \centering 
@@ -5733,6 +5718,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
+An indication of the activation state of a mechanism represented by a \texttt{Composition} type component.
+
+The activation state indicates whether the \texttt{Composition} element is activated or not.
 
 
 \begin{table}[ht]
@@ -5785,7 +5773,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+A setting or operator selection that changes the behavior of the controller on a piece of equipment. 
 
 \begin{table}[ht]
 \centering 
@@ -5810,9 +5798,6 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \subsubsection{Defintion of \texttt{ ToolEdgeSubClassType}} \label{type:ToolEdgeSubClassType}
 
 \FloatBarrier
-
-
-
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ToolEdgeSubClassType} Definition}
@@ -5837,7 +5822,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+The tool group a specific tool is assigned to in the part program.
 
 \begin{table}[ht]
 \centering 
@@ -5862,9 +5847,6 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \subsubsection{Defintion of \texttt{ ToolSubClassType}} \label{type:ToolSubClassType}
 
 \FloatBarrier
-
-
-
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ToolSubClassType} Definition}
@@ -5889,7 +5871,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-The remaining useable value of an object
+The remaining useable value of an object.
 
 \begin{table}[ht]
 \centering 
@@ -5915,7 +5897,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+An indication of the position of a mechanism that may move in a vertical direction.
 
 \begin{table}[ht]
 \centering 
@@ -5941,7 +5923,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+A measurement of space accupied by a physical object.
 
 \begin{table}[ht]
 \centering 
@@ -5967,7 +5949,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+A scale to measure the resistance to deformation of a surface.
 
 \begin{table}[ht]
 \centering 
@@ -5993,7 +5975,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+A physical object's relative mass.
 
 \begin{table}[ht]
 \centering 
@@ -6019,7 +6001,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+An indication that a piece of equipment is performing any activity.
 
 \begin{table}[ht]
 \centering 
@@ -6045,7 +6027,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-
+A physical object being or to be worked on with a tool or machine.
 
 \begin{table}[ht]
 \centering 
@@ -6084,9 +6066,6 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \subsubsection{Defintion of \texttt{<<Object Factory>> ObjectFactory}} \label{type:ObjectFactory}
 
 \FloatBarrier
-
-
-
 \paragraph{Operations}
 \begin{itemize}
   \item \texttt{deriveBrowseName(element)}
@@ -6103,9 +6082,6 @@ deriveBrowseName(element)
 \subsubsection{Defintion of \texttt{<<Object Factory>> DataItemObjectFactory}} \label{type:DataItemObjectFactory}
 
 \FloatBarrier
-
-
-
 \paragraph{Operations}
 \begin{itemize}
   \item \texttt{deriveSourceRelation(element)}
@@ -6202,9 +6178,6 @@ This class relates to \texttt{PeriodFilterType} (See section \ref{type:PeriodFil
 \subsubsection{Defintion of \texttt{<<Object Factory>> ComponentObjectFactory}} \label{type:ComponentObjectFactory}
 
 \FloatBarrier
-
-
-
 \paragraph{Operations}
 \begin{itemize}
   \item \texttt{deriveBrowseName(element)}\\
@@ -6250,9 +6223,6 @@ This class relates to \texttt{MTDeviceType} (See section \ref{type:MTDeviceType}
 \subsubsection{Defintion of \texttt{<<Object Factory>> CompositionObjectFactory}} \label{type:CompositionObjectFactory}
 
 \FloatBarrier
-
-
-
 \paragraph{Operations}
 \begin{itemize}
   \item \texttt{deriveBrowseName(element)}\\
@@ -6276,9 +6246,6 @@ This class relates to \texttt{<Composition>Type} (See section \ref{type:<Composi
 \subsubsection{Defintion of \texttt{<<Object Factory>> ConditionObjectFactory}} \label{type:ConditionObjectFactory}
 
 \FloatBarrier
-
-
-
 \paragraph{Operations}
 \begin{itemize}
   \item \texttt{deriveBrowseName(element)}
@@ -6300,9 +6267,6 @@ This class relates to \texttt{MTConnectAlarmConditionType} (See section \ref{typ
 \subsubsection{Defintion of \texttt{<<Object Factory>> SensorObjectFactory}} \label{type:SensorObjectFactory}
 
 \FloatBarrier
-
-
-
 \paragraph{Operations}
 \begin{itemize}
   \item \texttt{deriveBrowseName(element)}\\
@@ -6326,9 +6290,6 @@ This class relates to \texttt{SensorConfigurationType} (See section \ref{type:Se
 \subsubsection{Defintion of \texttt{<<Object Factory>> SensorChannelObjectFactory}} \label{type:SensorChannelObjectFactory}
 
 \FloatBarrier
-
-
-
 \paragraph{Operations}
 \begin{itemize}
   \item \texttt{deriveBrowseName(element)}\\
@@ -6352,9 +6313,6 @@ This class relates to \texttt{ChannelType} (See section \ref{type:ChannelType}) 
 \subsubsection{Defintion of \texttt{<<Type Factory>> TypeFactory}} \label{type:TypeFactory}
 
 \FloatBarrier
-
-
-
 \paragraph{Operations}
 \begin{itemize}
   \item \texttt{deriveTypeName(element)}
@@ -6397,9 +6355,6 @@ This class relates to \texttt{<Component>Type} (See section \ref{type:<Component
 \subsubsection{Defintion of \texttt{<<Type Factory>> CompositionTypeFactory}} \label{type:CompositionTypeFactory}
 
 \FloatBarrier
-
-
-
 \paragraph{Operations}
 \begin{itemize}
   \item \texttt{deriveTypeName(element)}\\
@@ -6443,9 +6398,6 @@ data model.
 \subsubsection{Defintion of \texttt{ <<Deprecated>>}} \label{type:Deprecated}
 
 \FloatBarrier
-
-
-
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ <<Dynamic Type>>}} \label{type:Dynamic Type}
 
@@ -6487,9 +6439,6 @@ Symmetric & \multicolumn{5}{|l|}{false} \\
 \subsubsection{Defintion of \texttt{ <<HasMTClassType>>}} \label{type:HasMTClassType}
 
 \FloatBarrier
-
-
-
 \begin{table}[ht]
 \centering 
   \caption{\texttt{<<HasMTClassType>>} Definition}
@@ -6514,9 +6463,6 @@ Symmetric & \multicolumn{5}{|l|}{false} \\
 \subsubsection{Defintion of \texttt{ <<HasMTComposition>>}} \label{type:HasMTComposition}
 
 \FloatBarrier
-
-
-
 \begin{table}[ht]
 \centering 
   \caption{\texttt{<<HasMTComposition>>} Definition}
@@ -6569,9 +6515,6 @@ Symmetric & \multicolumn{5}{|l|}{false} \\
 \subsubsection{Defintion of \texttt{ <<HasMTReferenceType>>}} \label{type:HasMTReferenceType}
 
 \FloatBarrier
-
-
-
 \begin{table}[ht]
 \centering 
   \caption{\texttt{<<HasMTReferenceType>>} Definition}
@@ -6596,9 +6539,6 @@ Symmetric & \multicolumn{5}{|l|}{false} \\
 \subsubsection{Defintion of \texttt{ <<HasMTSubClassType>>}} \label{type:HasMTSubClassType}
 
 \FloatBarrier
-
-
-
 \begin{table}[ht]
 \centering 
   \caption{\texttt{<<HasMTSubClassType>>} Definition}
@@ -6623,16 +6563,10 @@ Symmetric & \multicolumn{5}{|l|}{false} \\
 \subsubsection{Defintion of \texttt{ <<MTComponentReference>>}} \label{type:MTComponentReference}
 
 \FloatBarrier
-
-
-
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ <<MTConnect XML>>}} \label{type:MTConnect XML}
 
 \FloatBarrier
-
-
-
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ <<Mixes In>>}} \label{type:Mixes In}
 
@@ -6645,16 +6579,10 @@ description of the mixin.
 \subsubsection{Defintion of \texttt{ <<Object Factory>>}} \label{type:Object Factory}
 
 \FloatBarrier
-
-
-
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<Type Factory>> <<Type Factory>>}} \label{type:Type Factory}
 
 \FloatBarrier
-
-
-
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ <<bind>>}} \label{type:bind}
 
@@ -6671,9 +6599,6 @@ parent type are resolved based on the MTConnect DataItem meta data.
 \subsubsection{Defintion of \texttt{ <<constrains>>}} \label{type:constrains}
 
 \FloatBarrier
-
-
-
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ <<data type>>}} \label{type:data type}
 

@@ -308,8 +308,7 @@ EOT
 EOT
     
     generate_diagram(f)
-
-    f.puts "\n#{@documentation}\n\n"
+    generate_documentation(f)
 
     if @type == 'UMLDataType'
       generate_data_type(f)

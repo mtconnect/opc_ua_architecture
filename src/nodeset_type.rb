@@ -123,6 +123,23 @@ class Type
                    forward: forward)
   end
 
+  def add_value(ele, ref)
+    value = ele.add_element('Value')
+    resolved = ref.target.type.get_attribute_like(/Value/) || ref
+    ref_type = resolved.target.type
+    
+    if ref.value and ref.value[0] == "["
+      values = ref.value[1..-2].split(',')
+      list = value.add_element("ListOf#{ref_type.name}", { 'xmlns' => "http://opcfoundation.org/UA/2008/02/Types.xsd"})
+      values.each do |v|
+        list.add_element(ref_type.name).add_text(v)
+        end
+    else
+      value.add_element(ref_type.name, { 'xmlns' => "http://opcfoundation.org/UA/2008/02/Types.xsd"}).
+        add_text(ref.value)
+    end
+  end
+
   def variable_property(ref, suffix = '')
     ele, refs = node('UAVariable', "#{ref.node_id}#{suffix}", ref.name, data_type: ref.target.type.node_alias,
                      value_rank: -1, prefix: !is_opc_instance?)
@@ -131,22 +148,7 @@ class Type
     node_reference(refs, ref.owner.name, 'HasProperty', ref.owner.node_id, forward: false)
 
     # Add values for slots
-    if ref.type == 'UMLSlot'
-      value = ele.add_element('Value')
-      resolved = ref.target.type.get_attribute_like(/Value/) || ref
-      ref_type = resolved.target.type
-
-      if ref.value and ref.value[0] == "["
-        values = ref.value[1..-2].split(',')
-        list = value.add_element("ListOf#{ref_type.name}", { 'xmlns' => "http://opcfoundation.org/UA/2008/02/Types.xsd"})
-        values.each do |v|
-          list.add_element(ref_type.name).add_text(v)
-        end
-      else
-        value.add_element(ref_type.name, { 'xmlns' => "http://opcfoundation.org/UA/2008/02/Types.xsd"}).
-          add_text(ref.value)
-      end
-    end
+    add_value(ele, ref) if ref.type == 'UMLSlot'
     
     ele    
   end

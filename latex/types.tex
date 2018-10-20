@@ -1,4 +1,4 @@
-% Generated 2018-10-19 18:41:12 -0700
+% Generated 2018-10-19 19:00:54 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -149,7 +149,7 @@ HasProperty & Variable & SampleInterval & Float & PropertyType & Optional \\
 HasComponent & Object & Description & \multicolumn{2}{|l|}{DescriptionType} & Optional \\
 HasComponent & Object & Configuration & \multicolumn{2}{|l|}{MTConfigurationType} & Optional \\
 HasMTReferenceType & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
-HasComponent & Variable & <MTEnumeratedEvent> & \multicolumn{2}{|l|}{MTEnumeratedEventType} & Optional \\
+HasComponent & Variable & <MTControlledVocabEvent> & \multicolumn{2}{|l|}{MTControlledVocabEventType} & Optional \\
 HasComponent & Variable & <MTNumericEvent> & \multicolumn{2}{|l|}{MTNumericEventType} & Optional \\
 HasComponent & Variable & <MTStringEvent> & \multicolumn{2}{|l|}{MTStringEventType} & Optional \\
 HasComponent & Variable & <MTSample> & \multicolumn{2}{|l|}{MTSampleType} & Optional \\
@@ -471,6 +471,50 @@ Attribute Override & Variable & DataType & \multicolumn{2}{|l|}{AssetEventDataTy
 
 \paragraph{Mixes in \texttt{MTDataItemType}} (See section \ref{type:MTDataItemType})
 \FloatBarrier
+\subsubsection{Defintion of \texttt{ MTControlledVocabEventType}} \label{type:MTControlledVocabEventType}
+
+\FloatBarrier
+
+All Data Items with Category \texttt{EVENT} having Controlled Vocabularies (Enumerations) 
+will be added as sub-types of this type which is mapped to the OPC/UA MultiStateValueDiscreteType. 
+Otherwise, either \texttt{MTString} or \texttt{MTNumeric} will be used. All subtypes are direct representations of the 
+MTConnect equivalent elements that can be found in the MTConnect Part 3 \cite{MTCPart3} documents.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTControlledVocabEventType} Definition}
+  \label{table:MTControlledVocabEventType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTControlledVocabEventType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{UInteger} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MultiStateDiscreteType} (See \cite{UAPart8} Documentation)} \\
+HasProperty & Object & Category & MTCategoryType & PropertyType & Optional \\
+HasProperty & Variable & MTClassName & String & PropertyType & Optional \\
+HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
+HasProperty & Variable & SourceName & String & PropertyType & Optional \\
+HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
+HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
+HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
+HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
+HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
+HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
+HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Mixes in \texttt{MTDataItemType}} (See section \ref{type:MTDataItemType})
+\FloatBarrier
 \subsubsection{Defintion of \texttt{<<mixin>> MTDataItemType}} \label{type:MTDataItemType}
 
 \FloatBarrier
@@ -584,50 +628,6 @@ and maximum values for the numeric values. This applies to both the Numeric
 Event and the Sample types.
 
 \end{itemize}
-\FloatBarrier
-\subsubsection{Defintion of \texttt{ MTEnumeratedEventType}} \label{type:MTEnumeratedEventType}
-
-\FloatBarrier
-
-All Data Items with Category \texttt{EVENT} having Controlled Vocabularies (Enumerations) 
-will be added as sub-types of this type which is mapped to the OPC/UA MultiStateValueDiscreteType. 
-Otherwise, either \texttt{MTString} or \texttt{MTNumeric} will be used. All subtypes are direct representations of the 
-MTConnect equivalent elements that can be found in the MTConnect Part 3 \cite{MTCPart3} documents.
-
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{MTEnumeratedEventType} Definition}
-  \label{table:MTEnumeratedEventType}
-\fontsize{9pt}{11pt}\selectfont
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{MTEnumeratedEventType} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-ValueRank & \multicolumn{5}{|l|}{-1} \\
-DataType & \multicolumn{5}{|l|}{UInteger} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of \texttt{MultiStateDiscreteType} (See \cite{UAPart8} Documentation)} \\
-HasProperty & Object & Category & MTCategoryType & PropertyType & Optional \\
-HasProperty & Variable & MTClassName & String & PropertyType & Optional \\
-HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
-HasProperty & Variable & SourceName & String & PropertyType & Optional \\
-HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
-HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
-HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
-HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
-HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
-HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
-HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
-HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
-\end{tabu}
-\end{table} 
-
-
-\paragraph{Mixes in \texttt{MTDataItemType}} (See section \ref{type:MTDataItemType})
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTFilterType}} \label{type:MTFilterType}
 
@@ -6148,9 +6148,9 @@ This class relates to \texttt{MTSampleType} (See section \ref{type:MTSampleType}
 
 This class relates to \texttt{MTNumericEventType} (See section \ref{type:MTNumericEventType}) for a(n) \texttt{Instantiates} relationship.
 
-\paragraph{Dependency on MTEnumeratedEventType}
+\paragraph{Dependency on MTControlledVocabEventType}
 
-This class relates to \texttt{MTEnumeratedEventType} (See section \ref{type:MTEnumeratedEventType}) for a(n) \texttt{Instantiates} relationship.
+This class relates to \texttt{MTControlledVocabEventType} (See section \ref{type:MTControlledVocabEventType}) for a(n) \texttt{Instantiates} relationship.
 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<Object Factory>> FilterObjectFactory}} \label{type:FilterObjectFactory}

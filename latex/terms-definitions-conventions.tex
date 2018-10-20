@@ -2,16 +2,16 @@
 
 \subsection{Overview}
 
-The basic concepts of OPC UA and MTConnect are pre-requisites for understanding and interpreting the content provided in this companion specification. Additionally, the terms and definitions given in OPC UA Part 1, OPC UA Part 3, OPC UA Part 4, OPC UA Part 5, OPC UA Part 7, OPC UA Part 100, and MTConnect Part 1.0, as well as the following, apply to this document. 
+The basic concepts of OPC UA and MTConnect are pre-requisites for understanding and interpreting the content provided in this companion specification. Additionally, the terms and definitions given in OPC UA Part 1, OPC UA Part 3, OPC UA Part 4, OPC UA Part 5, OPC UA Part 7, OPC UA Part 10, and MTConnect Part 1.0 (see section \ref{normativereferences}), as well as the following, apply to this document. 
 
 
 \subsection{OPC UA for MTConnect terms}
 
-\textit{NEEDS TO BE DISCUSSED}
+\texttt{NEEDS TO BE DISCUSSED}
 The following terms (1 and 2) are examples. They have the IEC format for term definitions.
 
 \subsubsection{term\_1}
-<a short description – max two lines>
+<a short description - max two lines>
 
 \begin{quote}
 \footnotesize
@@ -19,7 +19,7 @@ Note 1 to entry: Optional additional text if the short description is not consid
 \end{quote}
 
 \subsubsection{term\_2}
-<a short description – max two lines>
+<a short description - max two lines>
 ....
 
 \subsection{Abbreviations and Symbols}
@@ -27,11 +27,11 @@ The following abbreviation are used in this document:
 \begin{itemize}
     \item OPC
     \item UA - Unified Architecture
-    \item ERP – Enterprise Resource Planning
-    \item HMI – Human Machine Interface
-    \item HTTP – Hyper Text Transport Protocol
-    \item MES – Management Execution Systems
-    \item PLC – Programmable Logic Controller
+    \item ERP - Enterprise Resource Planning
+    \item HMI - Human Machine Interface
+    \item HTTP - Hyper Text Transport Protocol
+    \item MES - Management Execution Systems
+    \item PLC - Programmable Logic Controller
     \item PMS - Production Management Systems
     \item SCADA - Supervisory Control And Data Acquisition
     \item TCP/IP - Transmission Control Protocol/Internet Protocol
@@ -43,55 +43,227 @@ Following are basic conventions that shall be followed for all formal definition
 
 \subsubsection{Conventions for Node descriptions}
 
-\textit{Nodes} represent objects and their components in an \textit{AddressSpace}.
-\textit{Attributes} are defined by providing the Attribute name and a value, or a description of the value.
-\textit{References} are defined by providing the \textit{ReferenceType} name, the \textit{BrowseName} of the \textit{TargetNode} and its \textit{NodeClass}.
+\texttt{Node} definitions are specified using tables (see Table \ref{table:TypeDefinitionTable}).
+
+\texttt{Attributes} are defined by providing the Attribute name and a value, or a description of the value.
+
+\texttt{References} are defined by providing the \texttt{ReferenceType} name, the \texttt{BrowseName} of the \texttt{TargetNode} and its \texttt{NodeClass}.
 
 \begin{itemize}
-    \item If the \textit{TargetNode} is a component of the Node being defined in the table the \textit{Attributes} of the composed Node are defined in the same row of the table. 
-    \item The \textit{DataType} is only specified for Variables; "[<number>]" indicates a single-dimensional array, for multi-dimensional arrays the expression is repeated for each dimension (e.g. [2][3] for a two-dimensional array). For all arrays the \textit{ArrayDimensions} is set as identified by <number> values. If no <number> is set, the corresponding dimension is set to 0, indicating an unknown size. If no number is provided at all the \textit{ArrayDimensions} can be omitted. If no brackets are provided, it identifies a scalar \textit{DataType} and the \textit{ValueRank} is set to the corresponding value (see \cite{UAPart3}). In addition, \textit{ArrayDimensions} is set to null or is omitted. If it can be Any or ScalarOrOneDimension, the value is put into "{<value>}", so either "{Any}" or "{ScalarOrOneDimension}" and the \textit{ValueRank} is set to the corresponding value (see \cite{UAPart3}) and the \textit{ArrayDimensions} is set to null or is omitted.
-    \item The \textit{TypeDefinition} is specified for Objects and Variables.
-    \item The \textit{TypeDefinition} column specifies a symbolic name for a \textit{NodeId}, i.e. the specified Node points with a \textit{HasTypeDefinition} Reference to the corresponding Node.
-    \item The \textit{ModellingRule} of the referenced component is provided by specifying the symbolic name of the rule in \textit{ModellingRule}. In the \textit{AddressSpace}, the Node shall use a \textit{HasModellingRule} Reference to point to the corresponding \textit{ModellingRule} Object.
+    \item If the \texttt{TargetNode} is a component of the Node being defined in the table the \texttt{Attributes} of the composed Node are defined in the same row of the table. 
+    \item The \texttt{DataType} is only specified for Variables; "[<number>]" indicates a single-dimensional array, for multi-dimensional arrays the expression is repeated for each dimension (e.g. [2][3] for a two-dimensional array). For all arrays the \texttt{ArrayDimensions} is set as identified by <number> values. If no <number> is set, the corresponding dimension is set to 0, indicating an unknown size. If no number is provided at all the \texttt{ArrayDimensions} can be omitted. If no brackets are provided, it identifies a scalar \texttt{DataType} and the \texttt{ValueRank} is set to the corresponding value (see \cite{UAPart3}). In addition, \texttt{ArrayDimensions} is set to null or is omitted. If it can be Any or ScalarOrOneDimension, the value is put into "{<value>}", so either "{Any}" or "{ScalarOrOneDimension}" and the \texttt{ValueRank} is set to the corresponding value (see \cite{UAPart3}) and the \texttt{ArrayDimensions} is set to null or is omitted. Examples are given in Table \ref{table:ExamplesOfDataTypes}.
+    \item The \texttt{TypeDefinition} is specified for Objects and Variables.
+    \item The \texttt{TypeDefinition} column specifies a symbolic name for a \texttt{NodeId}, i.e. the specified Node points with a \texttt{HasTypeDefinition} Reference to the corresponding Node.
+    \item The \texttt{ModellingRule} of the referenced component is provided by specifying the symbolic name of the rule in \texttt{ModellingRule}. In the \texttt{AddressSpace}, the Node shall use a \texttt{HasModellingRule} Reference to point to the corresponding \texttt{ModellingRule} Object.
 \end{itemize}
 
-If the \textit{NodeId} of a \textit{DataType} is provided, the symbolic name of the Node representing the \textit{DataType} shall be used.
+\begin{table}[ht]
+\centering 
+  \caption{Examples of DataTypes}
+  \label{table:ExamplesOfDataTypes}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|p{2cm}|l|l|l|p{4cm}|} \everyrow{\hline}
+\hline
+\rowfont \bfseries Notation & DataType & ValueRank & ArrayDimensions & Description \\
+\tabucline[1.5pt]{}
+Int32 & Int32 & -1 & omitted or null & A scalar Int32. \\
+Int32[]	& Int32 & 1 & omitted or \{0\} & Single-dimensional array of Int32 with an unknown size. \\
+Int32[][] & Int32 & 2 & omitted or \{0,0\} & Two-dimensional array of Int32 with unknown sizes for both dimensions. \\
+Int32[3][] & Int32 & 2 & \{3,0\} & Two-dimensional array of Int32 with a size of 3 for the first dimension and an unknown size for the second dimension. \\
+Int32[5][3] & Int32 & 2 & \{5,3\} & Two-dimensional array of Int32 with a size of 5 for the first dimension and a size of 3 for the second dimension. \\
+Int32\{Any\} & Int32 & -2 & omitted or null & An Int32 where it is unknown if it is scalar or array with any number of dimensions. \\
+Int32 \{ScalarOrOneDimension\} & Int32 & -3 & omitted or null & An Int32 where it is either a single-dimensional array or a scalar. \\
 
-Nodes of all other \textit{NodeClasses} cannot be defined in the same table; therefore only the used \textit{ReferenceType}, their \textit{NodeClass} and their \textit{BrowseName} are specified. A reference to another part of this document points to their definition.
+\end{tabu}
+\end{table} 
 
-If no components are provided, the \textit{DataType}, \textit{TypeDefinition} and \textit{ModellingRule} columns may be omitted and only a Comment column is introduced to point to the Node definition.
+\FloatBarrier
 
-Components of \textit{Nodes} can be complex that is containing components by themselves. The \textit{TypeDefinition}, \textit{NodeClass}, \textit{DataType} and \textit{ModellingRule} can be derived from the type definitions, and the symbolic name can be created. Therefore, those containing components are not explicitly specified; they are implicitly specified by the type definitions.
+If the \texttt{NodeId} of a \texttt{DataType} is provided, the symbolic name of the Node representing the \texttt{DataType} shall be used.
+
+Nodes of all other \texttt{NodeClasses} cannot be defined in the same table; therefore only the used \texttt{ReferenceType}, their \texttt{NodeClass} and their \texttt{BrowseName} are specified. A reference to another part of this document points to their definition.
+
+Table \ref{table:TypeDefinitionTable} illustrates the table. If no components are provided, the \texttt{DataType}, \texttt{TypeDefinition} and \texttt{ModellingRule} columns may be omitted and only a Comment column is introduced to point to the Node definition.
+
+\begin{table}[ht]
+\centering 
+  \caption{Type Definition Table}
+  \label{table:TypeDefinitionTable}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+Attribute name & \multicolumn{5}{|l|}{Attribute value. If it is an optional Attribute that is not set "--" will be used.} \\
+{} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\tabucline[1.5pt]{}
+
+\texttt{Reference- Type} name & \texttt{NodeClass} of the target \texttt{Node}. & \texttt{BrowseName} of the target \texttt{Node}. If the \texttt{Reference} is to be instantiated by the server, then the value of the target \texttt{Node}'s \texttt{BrowseName} is "--". & \texttt{DataType} of the referenced \texttt{Node}, only applicable for \texttt{Variables}. & \texttt{Type- Definition} of the referenced \texttt{Node}, only applicable for \texttt{Variables} and \texttt{Objects}. & Referenced \texttt{Modeling- Rule} of the referenced \texttt{Object}. \\
+
+\multicolumn{6}{|l|}{Note: Notes referencing footnotes of the table content.} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+
+
+Components of \texttt{Nodes} can be complex that is containing components by themselves. The \texttt{TypeDefinition}, \texttt{NodeClass}, \texttt{DataType} and \texttt{ModellingRule} can be derived from the type definitions, and the symbolic name can be created. Therefore, those containing components are not explicitly specified; they are implicitly specified by the type definitions.
 
 \subsubsection{NodeIds and BrowseNames}
 
 \paragraph{NodeIds}
 
-The NodeIds of all Nodes described in this standard are only symbolic names. Annex A defines the actual NodeIds.
-The symbolic name of each Node defined in this specification is its BrowseName, or, when it is part of another Node, the BrowseName of the other Node, a ".", and the BrowseName of itself. In this case "part of" means that the whole has a HasProperty or HasComponent Reference to its part. Since all Nodes not being part of another Node have a unique name in this specification, the symbolic name is unique.
-The namespace for all NodeIds defined in this specification is defined in Annex A. The namespace for this NamespaceIndex is Server-specific and depends on the position of the namespace URI in the server namespace table.
-Note that this specification not only defines concrete Nodes, but also requires that some Nodes shall be generated, for example one for each Session running on the Server. The NodeIds of those Nodes are Server-specific, including the namespace. But the NamespaceIndex of those Nodes cannot be the NamespaceIndex used for the Nodes defined in this specification, because they are not defined by this specification but generated by the Server.
+The \texttt{NodeIds} of all \texttt{Nodes} described in this standard are only symbolic names. Annex A defines the actual \texttt{NodeIds}.
+
+The symbolic name of each \texttt{Node} defined in this specification is its \texttt{BrowseName}, or, when it is part of another Node, the \texttt{BrowseName} of the other \texttt{Node}, a ".", and the \texttt{BrowseName} of itself. In this case "part of" means that the whole has a \texttt{HasProperty} or \texttt{HasComponent} Reference to its part. Since all \texttt{Nodes} not being part of another \texttt{Node} have a unique name in this specification, the symbolic name is unique.
+
+The namespace for all \texttt{NodeIds} defined in this specification is defined in Annex A. The namespace for this \texttt{NamespaceIndex} is Server-specific and depends on the position of the namespace URI in the server namespace table.
+
+Note that this specification not only defines concrete \texttt{Nodes}, but also requires that some Nodes shall be generated, for example one for each Session running on the Server. The \texttt{NodeIds} of those \texttt{Nodes} are Server-specific, including the namespace. But the \texttt{NamespaceIndex} of those \texttt{Nodes} cannot be the \texttt{NamespaceIndex} used for the Nodes defined in this specification, because they are not defined by this specification but generated by the Server.
 
 \paragraph{BrowseNames}
-The text part of the BrowseNames for all Nodes defined in this specification is specified in the tables defining the Nodes. The NamespaceIndex for all BrowseNames defined in this specification is defined in Annex A.
+The text part of the \texttt{BrowseNames} for all \texttt{Node}s defined in this specification is specified in the tables defining the Nodes. The \texttt{NamespaceIndex} for all \texttt{BrowseNames} defined in this specification is defined in Annex A.
 
 \subsubsection{Common Attributes}
 
 \paragraph{General}
-The Attributes of Nodes, their DataTypes and descriptions are defined in \cite{UAPart3}. Attributes not marked as optional are mandatory and shall be provided by a Server. The following tables define if the Attribute value is defined by this specification or if it is server-specific.
+The \texttt{Attributes} of \texttt{Nodes}, their \texttt{DataTypes} and descriptions are defined in \cite{UAPart3}. \texttt{Attributes} not marked as optional are mandatory and shall be provided by a Server. The following tables define if the \texttt{Attribute} value is defined by this specification or if it is server-specific.
 
-For all Nodes specified in this specification, the Attributes shall be set as per the OPC UA Standard.
+For all Nodes specified in this specification, the \texttt{Attributes} named in Table \ref{table:CommonNodeAttributes} shall be set as specified in the table.
+
+
+
+\begin{table}[ht]
+\centering 
+  \caption{Common Node Attributes}
+  \label{table:CommonNodeAttributes}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|p{4cm}|p{8cm}|} \everyrow{\hline}
+\hline
+\rowfont \bfseries Attribute & Value \\
+\tabucline[1.5pt]{}
+
+DisplayName & The DisplayName is a LocalizedText. Each server shall provide the DisplayName identical to the BrowseName of the Node for the LocaleId "en". Whether the server provides translated names for other LocaleIds is server-specific.\\
+Description & Optionally a server-specific description is provided.\\
+NodeClass & Shall reflect the NodeClass of the Node.\\
+NodeId & The NodeId is described by BrowseNames.\\
+WriteMask & Optionally the WriteMask Attribute can be provided. If the WriteMask Attribute is provided, it shall set all non-server-specific Attributes to not writable. For example, the Description Attribute may be set to writable since a Server may provide a server-specific description for the Node. The NodeId shall not be writable, because it is defined for each Node in this specification.\\
+UserWriteMask & Optionally the UserWriteMask Attribute can be provided. The same rules as for the WriteMask Attribute apply.\\
+RolePermissions & Optionally server-specific role permissions can be provided.\\
+UserRolePermissions & Optionally the role permissions of the current Session can be provided. The value is server-specifc and depend on the RolePermissions Attribute (if provided) and the current Session.\\
+AccessRestrictions & Optionally server-specific access restrictions can be provided. \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+
 
 \paragraph{Objects}
 
-For all \textit{Objects} specified in this specification, the Attributes named in Table 4 shall be set as specified in the Table 4. The definitions for the Attributes can be found in OPC \cite{UAPart3}.
+For all \texttt{Objects} specified in this specification, the \texttt{Attributes} named in Table \ref{table:CommonObjectAttributes} shall be set as specified in the Table \ref{table:CommonObjectAttributes}. The definitions for the \texttt{Attributes} can be found in OPC \cite{UAPart3}.
+
+\begin{table}[ht]
+\centering 
+  \caption{Common Object Attributes}
+  \label{table:CommonObjectAttributes}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|p{4cm}|p{8cm}|} \everyrow{\hline}
+\hline
+\rowfont \bfseries Attribute & Value \\
+\tabucline[1.5pt]{}
+
+EventNotifier & Whether the Node can be used to subscribe to Events or not is server-specific.\\
+
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
 
 \paragraph{Variables}
 
-For all \textit{Variables} specified in this specification, the Attributes named in Table 5 shall be set as specified in the table. The definitions for the Attributes can be found in \cite{UAPart3}.
+For all \texttt{Variables} specified in this specification, the \texttt{Attributes} named in Table \ref{table:CommonVariableAttributes} shall be set as specified in the table. The definitions for the \texttt{Attributes} can be found in \cite{UAPart3}.
+
+\begin{table}[ht]
+\centering 
+  \caption{Common Variable Attributes}
+  \label{table:CommonVariableAttributes}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|p{4cm}|p{8cm}|} \everyrow{\hline}
+\hline
+\rowfont \bfseries Attribute & Value \\
+\tabucline[1.5pt]{}
+
+MinimumSamplingInterval & Optionally, a server-specific minimum sampling interval is provided.\\
+AccessLevel & The access level for Variables used for type definitions is server-specific, for all other Variables defined in this specification, the access level shall allow reading; other settings are server-specific.\\
+UserAccessLevel & The value for the UserAccessLevel Attribute is server-specific. It is assumed that all Variables can be accessed by at least one user.\\
+Value & For Variables used as InstanceDeclarations, the value is server-specific; otherwise it shall represent the value described in the text.\\
+ArrayDimensions & If the ValueRank does not identify an array of a specific dimension (i.e. ValueRank <= 0) the ArrayDimensions can either be set to null or the Attribute is missing. This behaviour is server-specific.
+If the ValueRank specifies an array of a specific dimension (i.e. ValueRank > 0) then the ArrayDimensions Attribute shall be specified in the table defining the Variable.\\
+Historizing & The value for the Historizing Attribute is server-specific.\\
+AccessLevelEx & If the AccessLevelEx Attribute is provided, it shall have the bits 8, 9, and 10 set to 0, meaning that read and write operations on an individual Variable are atomic, and arrays can be partly written. \\
+
+
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
 
 \paragraph{VariableTypes}
-For all \textit{VariableTypes} specified in this specification, the Attributes named in Table 6 shall be set as specified in the table. The definitions for the Attributes can be found in \cite{UAPart3}.
+For all \texttt{VariableTypes} specified in this specification, the \texttt{Attributes} named in Table \ref{table:CommonVariableTypesAttributes} shall be set as specified in the table. The definitions for the \texttt{Attributes} can be found in \cite{UAPart3}.
+
+\begin{table}[ht]
+\centering 
+  \caption{Common VariableTypes Attributes}
+  \label{table:CommonVariableTypesAttributes}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|p{4cm}|p{8cm}|} \everyrow{\hline}
+\hline
+\rowfont \bfseries Attribute & Value \\
+\tabucline[1.5pt]{}
+
+Value & Optionally a server-specific default value can be provided.\\
+ArrayDimensions & If the ValueRank does not identify an array of a specific dimension (i.e. ValueRank <= 0) the ArrayDimensions can either be set to null or the Attribute is missing. This behaviour is server-specific.
+If the ValueRank specifies an array of a specific dimension (i.e. ValueRank > 0) then the ArrayDimensions Attribute shall be specified in the table defining the VariableType.\\
+
+
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
 
 \paragraph{Methods}
-For all \textit{Methods} specified in this specification, the Attributes named in Table 6 shall be set as specified in the table. The definitions for the Attributes can be found in \cite{UAPart3}.
+For all \texttt{Methods} specified in this specification, the \texttt{Attributes} named in Table \ref{table:CommonMethodAttributes} shall be set as specified in the table. The definitions for the \texttt{Attributes} can be found in \cite{UAPart3}.
+
+\begin{table}[ht]
+\centering 
+  \caption{Common Method Attributes}
+  \label{table:CommonMethodAttributes}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|p{4cm}|p{8cm}|} \everyrow{\hline}
+\hline
+\rowfont \bfseries Attribute & Value \\
+\tabucline[1.5pt]{}
+
+Executable & All Methods defined in this specification shall be executable (Executable Attribute set to “True”), unless it is defined differently in the Method definition.\\
+UserExecutable & The value of the UserExecutable Attribute is server-specific. It is assumed that all Methods can be executed by at least one user. \\
+
+
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier

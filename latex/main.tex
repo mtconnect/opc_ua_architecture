@@ -19,16 +19,6 @@
 
 \documentclass{mtc-opc}	% Load mtconnect document class
 
-\usepackage{tikz}
-\usetikzlibrary{shadows.blur}
-\usetikzlibrary{shapes,arrows, arrows.meta}
-\usetikzlibrary{decorations.markings}
-\usepackage{xifthen}
-\usepackage[outline]{contour}
-\usepackage{caption}
-\usetikzlibrary{decorations.pathreplacing}
-\usetikzlibrary{shapes.multipart}
-
 \usepackage[
 backend=biber,
 style=alphabetic,
@@ -40,9 +30,9 @@ style=alphabetic,
 
 \defbibheading{bibliography}[\bibname]{%
   \subsubsection{#1}}
-
+  
+%Package for subsubsubsection/paragraph command
 \usepackage{titlesec}
-
 \setcounter{secnumdepth}{4}
 
 \titleformat{\paragraph}
@@ -85,15 +75,12 @@ style=alphabetic,
 \thispagestyle{fancy}
 \clearpage
 %\listoftables
-%\clearpage
+\clearpage
 \pagenumbering{arabic}
 
 % ************************************************************************* %
 % ******************** ENTER DOCUMENT CONTENT BELOW *********************** %
 % ************************************************************************* %
-
-%opc ua info model library
-\input diagrams/OpcInfoModelLibrary.tex
 
 \input scope.tex
 
@@ -110,8 +97,6 @@ style=alphabetic,
 \input opc-ua.tex
 
 \input use-cases.tex
-
-%\input mtc-in-opc-ua.tex
 
 \section{MTConnect Devices}\label{mtconnect_devices}
 \FloatBarrier

@@ -15,7 +15,7 @@ The OPC UA model is scalable from small devices to ERP systems. OPC UA devices p
 
 \subsubsection{Basics of OPC UA}
 
-As an Open Standard, OPC UA is based on standard Internet technologies $-$ TCP/IP, HTTP and Web Sockets.
+As an Open Standard, OPC UA is based on standard Internet technologies - TCP/IP, HTTP and Web Sockets.
 
 As an Extensible Standard, OPC UA provides a set of services (see \cite{UAPart4}) and a basic information model framework. This framework provides an easy manner for creating and exposing vendor defined information in a standard way. More importantly all OPC UA Clients are expected to be able to discover and use vendor defined information. This means OPC UA users can benefit from the economies of scale that come with generic visualization and historian applications. This specification is an example of an OPC UA Information Model designed to meet the needs of developers and users.
 
@@ -30,7 +30,7 @@ OPC UA provides a robust and reliable communication infrastructure having mechan
 
 \paragraph{Concepts}
 
-OPC UA provides a framework that can be used to represent complex information as Objects in an AddressSpace which can be accessed with standard services. These Objects consist of Nodes connected by References. Different classes of Nodes convey different semantics. For example, a Variable Node represents a value that can be read or written. The Variable Node has an associated DataType that can define the actual value, such as a string, float, structure etc. It can also describe the Variable value as a variant. A Method Node represents a function that can be called. Every Node has a number of Attributes including a unique identifier called a NodeId and non-localized name called as BrowseName. An Object representing a Reservation is shown in Figure \ref{fig:opcuabasicobject}.
+OPC UA provides a framework that can be used to represent complex information as \texttt{Objects} in an \texttt{AddressSpace} which can be accessed with standard services. These Objects consist of \texttt{Nodes} connected by \texttt{References}. Different classes of Nodes convey different semantics. For example, a \texttt{Variable} Node represents a value that can be read or written. The \texttt{Variable} Node has an associated \texttt{DataType} that can define the actual value, such as a string, float, structure etc. It can also describe the \texttt{Variable} value as a variant. A Method Node represents a function that can be called. Every Node has a number of \texttt{Attributes} including a unique identifier called a \texttt{NodeId} and non-localized name called as \texttt{BrowseName}. An \texttt{Object} representing a \texttt{Reservation} is shown in Figure \ref{fig:opcuabasicobject}.
 
 
 \input diagrams/OpcUaBasicObject.tex
@@ -50,14 +50,14 @@ References allow Nodes to be connected together in ways that describe their rela
 \input diagrams/RefsBetweenObjects.tex
 \FloatBarrier
 
-The figures above use a notation that was developed for the OPC UA specification. The notation is summarized in Figure \ref{fig:opcinfomodelnodeclassnotation} and Figure \ref{fig:opcinfomodelreferencesnotation} . UML representations can also be used; however, the OPC UA notation is less ambiguous because there is a direct mapping from the elements in the figures to Nodes in the AddressSpace of an OPC UA Server.
+The figures above use a notation that was developed for the OPC UA specification. The notation is summarized in Figure \ref{fig:opcinfomodelnodeclassnotation} and Figure \ref{fig:opcinfomodelreferencesnotation} . UML representations can also be used; however, the OPC UA notation is less ambiguous because there is a direct mapping from the elements in the figures to \texttt{Node} in the \texttt{AddressSpace} of an OPC UA Server.
 
 \input diagrams/OpcInfoModelNodeClassNotation.tex
 \FloatBarrier
 \input diagrams/OpcInfoModelReferencesNotation.tex
 \FloatBarrier
 
-A complete description of the different types of Nodes and References can be found in \cite{UAPart3} and the base structure is described in \cite{UAPart5}.
+A complete description of the different types of \texttt{Nodes} and \texttt{References} can be found in \cite{UAPart3} and the base structure is described in \cite{UAPart5}.
 OPC UA specification defines a very wide range of functionality in its basic information model. It is not expected that all clients or servers support all functionality in the OPC UA specifications. OPC UA includes the concept of profiles, which segment the functionality into testable certifiable units. This allows the development of companion specification (such as MTConnect-OPC UA) that can describe the subset of functionality that is expected to be implemented. The profiles do not restrict functionality, but generate requirements for a minimum set of functionality (see \cite{UAPart7})
 
 
@@ -104,4 +104,3 @@ The \texttt{ModellingRule} indicates whether a child is Mandatory or Optional. I
 
 \input diagrams/SampleObjectType.tex
 \FloatBarrier
-

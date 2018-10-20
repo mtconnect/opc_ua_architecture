@@ -1,4 +1,4 @@
-% Generated 2018-10-19 19:00:54 -0700
+% Generated 2018-10-19 19:33:08 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -148,7 +148,7 @@ HasProperty & Variable & SampleRate & Float & PropertyType & Optional \\
 HasProperty & Variable & SampleInterval & Float & PropertyType & Optional \\
 HasComponent & Object & Description & \multicolumn{2}{|l|}{DescriptionType} & Optional \\
 HasComponent & Object & Configuration & \multicolumn{2}{|l|}{MTConfigurationType} & Optional \\
-HasMTReferenceType & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
+HasMTReference & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasComponent & Variable & <MTControlledVocabEvent> & \multicolumn{2}{|l|}{MTControlledVocabEventType} & Optional \\
 HasComponent & Variable & <MTNumericEvent> & \multicolumn{2}{|l|}{MTNumericEventType} & Optional \\
 HasComponent & Variable & <MTStringEvent> & \multicolumn{2}{|l|}{MTStringEventType} & Optional \\
@@ -464,6 +464,7 @@ HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataI
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
+HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 Attribute Override & Variable & DataType & \multicolumn{2}{|l|}{AssetEventDataType} & Optional \\
 \end{tabu}
 \end{table} 
@@ -509,6 +510,7 @@ HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataI
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
+HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -549,6 +551,7 @@ HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataI
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
+HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -784,6 +787,7 @@ HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataI
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
+HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasProperty & Variable & SignificantDigits & UInt16 & PropertyType & Optional \\
 HasProperty & Variable & Statistic & String & PropertyType & Optional \\
 HasProperty & Variable & Units & String & PropertyType & Optional \\
@@ -836,6 +840,7 @@ HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataI
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
+HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasProperty & Variable & SignificantDigits & UInt16 & PropertyType & Optional \\
 HasProperty & Variable & Statistic & String & PropertyType & Optional \\
 HasProperty & Variable & Units & String & PropertyType & Optional \\
@@ -858,7 +863,7 @@ All data items with category \texttt{EVENT} where the data is freeform text. The
 will be set to String for all the sub-types. All extended type, regardless of 
 controlled vocabularies, will use this base type unless proprietary 
 enumerations are added to the nodeset as required by the builtin state
-event types inherited from \texttt{MTEnumeratedEventType} (see \ref{type:MTEnumeratedEventType}).
+event types inherited from \texttt{MTEnumeratedEventType} (see \ref{type:MTControlledVocabEventType}).
 
 \begin{table}[ht]
 \centering 
@@ -889,6 +894,7 @@ HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataI
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
+HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -6408,37 +6414,13 @@ determined at configuration time based on the MTConnect \texttt{Device}
 elements.
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ <<HasChannels>>}} \label{type:HasChannels}
-
-\FloatBarrier
-
-The relationship type for the MTConnect \texttt{SensorConfiguration} set of 
-associate \texttt{Channels}.
-
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{<<HasChannels>>} Definition}
-  \label{table:HasChannels}
-\fontsize{9pt}{11pt}\selectfont
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{HasChannels} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-Symmetric & \multicolumn{5}{|l|}{false} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of \texttt{Aggregates} (See \cite{OPCUAProfile} Documentation)} \\
-\end{tabu}
-\end{table} 
-
-
-\FloatBarrier
 \subsubsection{Defintion of \texttt{ <<HasMTClassType>>}} \label{type:HasMTClassType}
 
 \FloatBarrier
+
+A \texttt{DataItem} is representated in OPC UA as a sub-type of the most appropriate \texttt{BaseDataVariableType}. 
+The type is derived from the MTConnect \texttt{type} attribute and references the corect \texttt{..ClassType}.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{<<HasMTClassType>>} Definition}
@@ -6463,6 +6445,9 @@ Symmetric & \multicolumn{5}{|l|}{false} \\
 \subsubsection{Defintion of \texttt{ <<HasMTComposition>>}} \label{type:HasMTComposition}
 
 \FloatBarrier
+
+A reference from the MTConnect Data Item or condition to the Composition Object of the Component. 
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{<<HasMTComposition>>} Definition}
@@ -6475,62 +6460,37 @@ Symmetric & \multicolumn{5}{|l|}{false} \\
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{HasMTComposition} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
-Symmetric & \multicolumn{5}{|l|}{false} \\
+Symmetric & \multicolumn{5}{|l|}{true} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of \texttt{Organizes} (See \cite{OPCUAProfile} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{NonHierarchicalReferences} (See \cite{OPCUAProfile} Documentation)} \\
 \end{tabu}
 \end{table} 
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ <<HasMTCondition>>}} \label{type:HasMTCondition}
+\subsubsection{Defintion of \texttt{ <<HasMTReference>>}} \label{type:HasMTReference}
 
 \FloatBarrier
 
-The relationship associated with the collection of MTConnect \texttt{Conditions} associated with
-the MTConnect \texttt{Component}
+A reference from one component to either a \texttt{DataItem} or a \texttt{Component}.
 
 \begin{table}[ht]
 \centering 
-  \caption{\texttt{<<HasMTCondition>>} Definition}
-  \label{table:HasMTCondition}
+  \caption{\texttt{<<HasMTReference>>} Definition}
+  \label{table:HasMTReference}
 \fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{HasMTCondition} \\
+BrowseName & \multicolumn{5}{|l|}{HasMTReference} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
-Symmetric & \multicolumn{5}{|l|}{false} \\
+Symmetric & \multicolumn{5}{|l|}{true} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of \texttt{Organizes} (See \cite{OPCUAProfile} Documentation)} \\
-\end{tabu}
-\end{table} 
-
-
-\FloatBarrier
-\subsubsection{Defintion of \texttt{ <<HasMTReferenceType>>}} \label{type:HasMTReferenceType}
-
-\FloatBarrier
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{<<HasMTReferenceType>>} Definition}
-  \label{table:HasMTReferenceType}
-\fontsize{9pt}{11pt}\selectfont
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{HasMTReferenceType} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-Symmetric & \multicolumn{5}{|l|}{false} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of \texttt{HasComponent} (See \cite{OPCUAProfile} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{NonHierarchicalReferences} (See \cite{OPCUAProfile} Documentation)} \\
 \end{tabu}
 \end{table} 
 
@@ -6539,6 +6499,10 @@ Symmetric & \multicolumn{5}{|l|}{false} \\
 \subsubsection{Defintion of \texttt{ <<HasMTSubClassType>>}} \label{type:HasMTSubClassType}
 
 \FloatBarrier
+
+A \texttt{DataItem} is representated in OPC UA as a sub-type of the most appropriate \texttt{BaseDataVariableType}. 
+The sub-type is derived from the MTConnect \texttt{subType} attribute and references the corect \texttt{..ClassType}.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{<<HasMTSubClassType>>} Definition}
@@ -6559,10 +6523,6 @@ Symmetric & \multicolumn{5}{|l|}{false} \\
 \end{table} 
 
 
-\FloatBarrier
-\subsubsection{Defintion of \texttt{ <<MTComponentReference>>}} \label{type:MTComponentReference}
-
-\FloatBarrier
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ <<MTConnect XML>>}} \label{type:MTConnect XML}
 

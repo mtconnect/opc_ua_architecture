@@ -15,6 +15,7 @@ class Model
     @type = e['_type']
     @json = e
     @types = []
+    @is_opc = @name =~ /OPC/
     
     @@models[@name] = self
   end
@@ -26,6 +27,10 @@ class Model
 
   def short_name
     @name.gsub(/[ _]/, '')
+  end
+
+  def is_opc?
+    @is_opc
   end
 
   def to_s
@@ -46,6 +51,9 @@ class Model
     case e['_type']
     when 'UMLClass'
       Type.new(model, e)
+
+    when 'UMLObject'
+      Type.new(model, e)
       
     when 'UMLStereotype'
       Type.new(model, e)
@@ -57,7 +65,7 @@ class Model
     when 'UMLModel', 'UMLProfile'
       model = Model.new(e)
       recurse(e, depth + 1, model)
-      
+
     else
       recurse(e, depth + 1, model)
     end

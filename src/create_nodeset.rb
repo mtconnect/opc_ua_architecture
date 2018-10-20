@@ -20,6 +20,12 @@ Type.connect_children
 
 puts "\nGenerating Nodeset"
 
+NodeIds = {}
+Aliases = {}
+Namespace = '1'
+NamespaceUri = 'http://opcfoundation.org/UA/MTConnect/v2'
+
+
 document = REXML::Document.new
 document << REXML::XMLDecl.new("1.0", "UTF-8")
 
@@ -34,20 +40,16 @@ root.add_attribute("xsi:schemaLocation",
 root.add_attribute('LastModified', Time.now.utc.xmlschema)
 root.add_element('NamespaceUris').
   add_element('Uri').
-  add_text('http://opcfoundation.org/UA/MTConnect/')
+  add_text(NamespaceUri)
 
 root.add_element('Models').
-  add_element('Model',  { 'ModelUri' => "http://opcfoundation.org/UA/MTConnect/",
+  add_element('Model',  { 'ModelUri' => NamespaceUri,
                           "Version" => "2.00",
                           "PublicationDate" => Time.now.utc.xmlschema }).
-  add_element('RequiredModel', { "ModelUri" => "http://opcfoundation.org/UA/",
+  add_element('RequiredModel', { "ModelUri" => "http://opcfoundation.org/UA",
                                  "Version" => "1.04",
                                  "PublicationDate" => Time.now.utc.xmlschema } )
 
-
-NodeIds = {}
-Aliases = {}
-Namespace = '1'
 
 # Parse Reference Documents.
 once = true
@@ -77,19 +79,10 @@ once = true
   end
 end
 
-=begin
-# Copy Namespace Pre-amble
-File.open(File.join(File.dirname(__FILE__), 'preamble.xml')) do |f|
-  doc = REXML::Document.new(f)
-  doc.root.each_element do |e|
-    root.add_element(e)
-  end
-end
-=end
-
 Type.resolve_node_ids
 Type.check_ids
 
+Model.generate_nodeset(root, 'Namespace Metadata')
 Model.generate_nodeset(root, 'Components')
 Model.generate_nodeset(root, 'Data Items')
 Model.generate_nodeset(root, 'Conditions')

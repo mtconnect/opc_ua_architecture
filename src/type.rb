@@ -1,7 +1,7 @@
 require 'relation'
 
 class Type
-  attr_reader :name, :id, :type, :model, :json, :parent, :children, :relations
+  attr_reader :name, :id, :type, :model, :json, :parent, :children, :relations       
 
   @@types_by_id = {}
   @@types_by_name = {}
@@ -49,7 +49,8 @@ class Type
       end
     end
 
-    associations = Array(e['attributes']).dup.concat(Array(e['ownedElements'])).map do |r|
+    associations = Array(e['attributes']).dup.concat(Array(e['ownedElements'])).
+                     concat(Array(e['slots'])).map do |r|
       Relation.create_association(self, r)
     end.compact
 
@@ -62,6 +63,10 @@ class Type
     @@types_by_name[@name] = self
 
     @model.add_type(self)
+  end
+
+  def is_opc?
+    @model.is_opc?
   end
 
   def check_mixin
@@ -83,18 +88,26 @@ class Type
     @relations.each do |r|
       r.resolve_types
     end
+    if @json.include?('classifier')
+      @classifier = resolve_type(@json['classifier'])
+    else
+      @classifier = nil
+    end
+    if @json.include?('stereotype')
+      @stereotype = resolve_type(@json['stereotype'])
+    else
+      @stereotype = nil
+    end         
   end
 
   def variable_data_type
-    data_type = nil
-    @relations.each do |a|
-      if a.name =~ /DataType$/ and a.stereotype and a.stereotype.name =~ /Attribute/
-        return data_type = a.target.type
-      end
+    data_type = get_attribute_like(/DataType$/, /Attribute/)
+    if data_type
+      data_type.target.type
+    else
+      raise "Could not find data type for #{@name}"
+      nil
     end
-    data_type = @parent.variable_data_type if @parent
-    puts "Could not find data type for #{@name}" unless data_type
-    data_type
   end
 
   def mandatory(obj)
@@ -116,12 +129,6 @@ class Type
   end
 
   def stereotype_name
-    if !defined?(@stereotype) and  @json['stereotype']
-      @stereotype = resolve_type(@json['stereotype'])
-    elsif !defined?(@stereotype)
-      @stereotype = nil
-    end
-      
     if @stereotype
       "<<#{@stereotype.name}>>"
     else
@@ -175,11 +182,16 @@ class Type
     end
   end
 
-  def get_attribute_like(pattern)
+  def get_attribute_like(pattern, stereo = nil)
     @relations.each do |a|
-      return a if a.name =~ pattern
+      # puts "---- Checking #{a.name} #{pattern.inspect} #{stereo.inspect}"
+      if a.name =~ pattern and
+        (stereo.nil? or (a.stereotype and a.stereotype.name =~ stereo))
+        # puts "----  >> Found #{a.name}"
+        return a
+      end
     end
-    return @parent.get_attribute_like(pattern) if @parent
+    return @parent.get_attribute_like(pattern, stereo) if @parent
     nil
   end
     
@@ -215,7 +227,6 @@ class Type
     end
   end
     
-
   def dependencies
     @relations.select { |r| r.class == Relation::Dependency }
   end

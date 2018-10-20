@@ -91,79 +91,100 @@ class Type
     @node_alias || @node_id
   end
 
-  def node(type, id, name, display_name: nil, abstract: false, value_rank: nil, data_type: nil)
+  def node(type, id, name, display_name: nil, abstract: false, value_rank: nil, data_type: nil, symmetric: nil,
+           prefix: true)
     node = REXML::Element.new(type)
+
+    browse = prefix ? "#{Namespace}:#{name}" : name
     node.add_attributes({ 'NodeId' => id,
-                          'BrowseName' => "#{Namespace}:#{name}"})
+                          'BrowseName' => browse })
     node.add_attribute('IsAbstract', 'true') if abstract
     node.add_attribute('ValueRank', value_rank) if value_rank
     node.add_attribute('DataType', data_type) if data_type
+    node.add_attribute('Symmetric', symmetric) if !symmetric.nil?
 
     node.add_element('DisplayName').add_text(display_name || name)
     refs = node.add_element('References')
     
     [node, refs]
   end
-
-  def reference(rel, suffix = '', forward: true)
-    cmt = REXML::Comment.new(" #{rel.reference_type} - - #{rel.name} #{rel.node_id}#{suffix} #{rel.target.type.name} (forward: #{forward}) ")
+  
+  def node_reference(refs, name, type, target, target_type = nil, forward: true)
+    refs << REXML::Comment.new(" #{type} - - #{name} #{target} #{target_type} (forward: #{forward}) ")
     ref = REXML::Element.new('Reference')
-    ref.add_attribute('ReferenceType', rel.reference_type_alias)
-    ref.add_attribute('IsForward', 'false') unless forward
-    ref.add_text("#{rel.node_id}#{suffix}")
-    [cmt, ref]
-  end
-
-  def node_reference(name, type, target, forward: true)
-    cmt = REXML::Comment.new(" #{type} - - #{name} #{target} (forward: #{forward}) ")
-    ref = REXML::Element.new('Reference')
-    ref.add_attribute('ReferenceType', type)
+    ref = refs.add_element('Reference', { 'ReferenceType' => type })
     ref.add_attribute('IsForward', 'false') unless forward
     ref.add_text(target)
-    [cmt, ref]
+  end
+  
+  def reference(refs, rel, suffix = '', forward: true)
+    node_reference(refs, rel.name, rel.reference_type_alias,
+                   "#{rel.node_id}#{suffix}", rel.target.type.name,
+                   forward: forward)
   end
 
   def variable_property(ref, suffix = '')
     ele, refs = node('UAVariable', "#{ref.node_id}#{suffix}", ref.name, data_type: ref.target.type.node_alias,
-                     value_rank: -1)
-    node_reference(ref.target.type.name, 'HasTypeDefinition', ref.target_node_id).
-      each { |r| refs << r }
-    node_reference(ref.rule, 'HasModellingRule', NodeIds[ref.rule]).
-      each { |r| refs << r }
-    node_reference(ref.owner.name, 'HasProperty', ref.owner.node_id, forward: false).
-      each { |r| refs << r }
+                     value_rank: -1, prefix: !is_opc_instance?)
+    node_reference(refs, ref.target.type.name, 'HasTypeDefinition', ref.target_node_id, ref.target_node_name)
+    node_reference(refs, ref.rule, 'HasModellingRule', NodeIds[ref.rule]) unless ref.type == 'UMLSlot'
+    node_reference(refs, ref.owner.name, 'HasProperty', ref.owner.node_id, forward: false)
+
+    # Add values for slots
+    if ref.type == 'UMLSlot'
+      value = ele.add_element('Value')
+      resolved = ref.target.type.get_attribute_like(/Value/) || ref
+      ref_type = resolved.target.type
+
+      if ref.value and ref.value[0] == "["
+        values = ref.value[1..-2].split(',')
+        list = value.add_element("ListOf#{ref_type.name}", { 'xmlns' => "http://opcfoundation.org/UA/2008/02/Types.xsd"})
+        values.each do |v|
+          list.add_element(ref_type.name).add_text(v)
+        end
+      else
+        value.add_element(ref_type.name, { 'xmlns' => "http://opcfoundation.org/UA/2008/02/Types.xsd"}).
+          add_text(ref.value)
+      end
+    end
     
     ele    
   end
 
   def component(ref, suffix = '')
     ele, refs = node('UAObject', "#{ref.node_id}#{suffix}", ref.name)
-    node_reference(ref.target.type.name, 'HasTypeDefinition', ref.target.type.node_id).
-      each { |r| refs << r }
-    node_reference(ref.rule, 'HasModellingRule', NodeIds[ref.rule]).
-      each { |r| refs << r }
-    node_reference(ref.owner.name, 'HasProperty', ref.owner.node_id, forward: false).
-      each { |r| refs << r }
+    node_reference(refs, ref.target.type.name, 'HasTypeDefinition', ref.target.type.node_id)
+    node_reference(refs, ref.rule, 'HasModellingRule', NodeIds[ref.rule])
+    node_reference(refs, ref.owner.name, 'HasProperty', ref.owner.node_id, forward: false)
     
     ele    
   end
 
-  def relationships(suffix = '')
+  def is_opc_instance?
+    @type == 'UMLObject' and @classifier.is_opc?
+  end
+  
+  def relationships(refs, suffix = '')
     nodes = []
-    refs = []
-    
+
     @relations.each do |a|
       if !a.is_attribute? and a.name
         if a.is_property?
-          refs.concat(reference(a, suffix))
+          reference(refs, a, suffix)
           nodes << variable_property(a, suffix)
         elsif a.is_a? Relation::Association
-          refs.concat(reference(a, suffix))
-          nodes << component(a, suffix)
+          if @type == 'UMLObject' && a.target.type.is_opc?
+            node_reference(refs, a.name, a.reference_type_alias,
+                           a.target.type.node_id, a.target.type.name,
+                           forward: a.target.navigable)
+          else
+            reference(refs, a, suffix)
+            nodes << component(a, suffix)
+          end
         end
       end
     end
-    [nodes, refs]
+    nodes
   end
 
   def relation_type(r)
@@ -183,37 +204,39 @@ class Type
     stereo
   end
 
-  def add_mixin_relations
-    pnodes, prefs = @parent.add_mixin_relations if @parent
-    nodes, refs = relationships(@@mixin_suffix)
-    [Array(pnodes).concat(nodes), Array(prefs).concat(refs)]
+  def add_mixin_relations(refs)
+    pnodes = @parent.add_mixin_relations(refs) if @parent
+    nodes = relationships(refs, @@mixin_suffix)
+    Array(pnodes).concat(nodes)
   end
 
   def generate_object_or_variable(root)
-    if is_a_type?('BaseObjectType')
+    if is_a_type?('BaseObjectType') or is_a_type?('BaseEventType')
       node, refs = node('UAObjectType', node_id, @name, abstract: @abstract)
     elsif is_a_type?('BaseDataVariableType')
-      # Need to add data type
       node, refs = node('UAVariableType', node_id, @name, abstract: @abstract, value_rank: -1,
                         data_type: variable_data_type.node_alias)
+    elsif is_a_type?('References')
+      symmetric = get_attribute_like(/Symmetric$/, /Attribute/)
+      is_symmetric = symmetric.default
+      node, refs = node('UAReferenceType', node_id, @name, abstract: @abstract, symmetric: is_symmetric)
+    else
+      puts "!! Do not know how to generate #{@name} #{@type}"
     end
     
     if node
       puts "  -> Generating nodeset for #{@name}"
       root << node
       
-      node_reference(@parent.name, 'HasSubtype', @parent.node_id, forward: false).
-        each { |r| refs << r }
+      node_reference(refs, @parent.name, 'HasSubtype', @parent.node_id, forward: false)
       
       if @mixin
-        nodes, references = @mixin.add_mixin_relations
-        references.each { |r| refs << r }
+        nodes = @mixin.add_mixin_relations(refs)
         nodes.each { |n| root << n }
         @@mixin_suffix += 1
       end
       
-      nodes, references = relationships
-      references.each { |r| refs << r }
+      nodes = relationships(refs)
       nodes.each { |n| root << n }
     end
   end
@@ -222,10 +245,8 @@ class Type
     puts "  => Enumeration #{@name}"
     node, refs = node('UADataType', node_id, @name)
     # node.add_element('Description').add_text(@documentation) if @documentation
-    node_reference('Enumeration', 'HasSubtype', NodeIds['Enumeration'], forward: false).
-      each { |r| refs << r }
-    node_reference('EnumStrings', 'HasProperty', "#{node_id}1").
-      each { |r| refs << r }
+    node_reference(refs, 'Enumeration', 'HasSubtype', NodeIds['Enumeration'], forward: false)
+    node_reference(refs, 'EnumStrings', 'HasProperty', "#{node_id}1")
 
     value_ele = REXML::Element.new('Value')
     values = value_ele.add_element('ListOfLocalizedText',
@@ -234,7 +255,7 @@ class Type
     defs = node.add_element('Definition', { 'Name' => @name })
     @literals.each do |l|
       name, value = l['name'].split('=')
-      field = defs.add_element('Field', { 'Name' => "#{name}_#{value}", 'Value' => value })
+      field = defs.add_element('Field', { 'Name' => name, 'Value' => value })
       field.add_element('Description').add_text(l['documentation']) if l['documentation']
 
       text = values.add_element('LocalizedText')
@@ -247,12 +268,9 @@ class Type
     # now create the enum strings property
     node, refs = node('UAVariable', "#{node_id}1", 'EnumStrings', data_type: 'LocalizedText',
                       value_rank: 1)
-    node_reference('PropertyType', 'HasTypeDefinition', NodeIds['PropertyType']).
-      each { |r| refs << r }
-    node_reference('Mandatory', 'HasModellingRule', NodeIds['Mandatory']).
-      each { |r| refs << r }
-    node_reference('Owner', 'HasProperty', node_id, forward: false).
-      each { |r| refs << r }
+    node_reference(refs, 'PropertyType', 'HasTypeDefinition', NodeIds['PropertyType'])
+    node_reference(refs, 'Mandatory', 'HasModellingRule', NodeIds['Mandatory'])
+    node_reference(refs, 'Owner', 'HasProperty', node_id, forward: false)
 
     node << value_ele
 
@@ -263,8 +281,7 @@ class Type
     puts "  => DataType #{@name}"
     node, refs = node('UADataType', node_id, @name)
     #node.add_element('Description').add_text(@documentation) if @documentation
-    node_reference('BaseDataType', 'HasSubtype', NodeIds['BaseDataType'], forward: false).
-      each { |r| refs << r }
+    node_reference(refs, 'BaseDataType', 'HasSubtype', NodeIds['BaseDataType'], forward: false)
     
     defs = node.add_element('Definition', { 'Name' => @name })
     @relations.each do |r|
@@ -275,6 +292,18 @@ class Type
     root << node
   end
 
+  def generate_instance(root)
+    puts "  => Object Instance #{@name}"
+    node, refs = node('UAObject', node_id, @name)
+    root << node
+    
+    node_reference(refs, @classifier.name, 'HasTypeDefinition', @classifier.node_id)
+
+    nodes = relationships(refs)
+    nodes.each { |n| root << n }
+  end
+
+
   def generate_nodeset(root)
     return if stereotype_name == '<<Dynamic Type>>'
 
@@ -282,6 +311,8 @@ class Type
       generate_enumeration(root)
     elsif @type == 'UMLDataType'
       generate_data_type(root)      
+    elsif @type == 'UMLObject'
+      generate_instance(root)
     else
       generate_object_or_variable(root)
     end

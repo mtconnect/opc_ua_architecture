@@ -13,11 +13,14 @@ module Relation
     when 'UMLAttribute'
       Attribute.new(owner, r)
 
-    when 'UMLAssociation'
+    when 'UMLAssociation', 'UMLLink'
       Association.new(owner, r)
 
     when 'UMLConstraint'
       Constraint.new(owner, r)
+
+    when 'UMLSlot'
+      Slot.new(owner, r)
       
     else
       puts "Unknown relation type: #{r['_type']}"
@@ -162,7 +165,7 @@ module Relation
         @multiplicity = e['multiplicity'] || '1'
         @optional = @multiplicity and @multiplicity =~ /0\.\./
 
-        @navigable = e['navigable'] || false
+        @navigable = e['navigable'].nil? || e['navigable']
         @json = e
       end
 
@@ -219,10 +222,13 @@ module Relation
   end
 
   class Attribute < Relation
+    attr_reader :default
+    
     def initialize(owner, a)
       super(owner, a)
       @name = a['name']
       @owner = owner
+      @default = a['defaultValue']
       @json = a
       @target = Connection.new('type', a['type'])
     end
@@ -246,13 +252,6 @@ module Relation
     def target_node_id
       NodeIds['PropertyType']
     end
-    
-#    def resolve_types
-#      super
-#      if @target.type.type == 'UMLEnumeration'
-#        @target = Connection.new('type', nil, Type.type_for_name('UInt16'))
-#      end
-#    end
   end
 
   class Dependency < Relation
@@ -292,6 +291,45 @@ module Relation
 
     def is_mixin?
       stereotype and stereotype.name == 'Mixes In'
+    end
+  end
+
+  class Slot < Relation
+    attr_reader :value
+    
+    def initialize(owner, a)
+      super(owner, a)
+      @name = a['name']
+      @owner = owner
+      @json = a
+      @target = Connection.new('type', a['type'])
+      @value = a['value']
+    end
+
+    def value
+      @value
+    end
+
+    def is_property?
+      true
+    end
+
+    def reference_type
+      'HasProperty'
+    end
+
+    def target_node_name
+      'PropertyType'
+    end
+
+    def target_node_id
+      NodeIds['PropertyType']
+    end
+
+    def resolve_types
+      super
+    rescue
+      puts "Warn: Cannot resolve type #{@owner.name}::#{@name}"
     end
   end
 end

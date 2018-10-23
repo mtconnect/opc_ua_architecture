@@ -290,6 +290,48 @@ EOT
 EOT
   end
 
+  def generate_class_diagram
+    File.open("latex/classes/#{@name.gsub(/[<>]/, '-')}.tex", 'w') do |f|
+      if @abstract
+        f.puts "\\umlabstract{#{@name}}{"
+      else
+        f.puts "\\umlclass{#{@name}}{"
+      end
+
+      @relations.each do |r|
+        if r.is_property?
+          if r.stereotype
+            stereo = "<<#{r.stereotype.name}>> "
+          end
+          f.puts "#{stereo}+ #{r.name}: #{r.target.type.name}#{r.is_optional? ? '[0..1]' : ''} \\\\"
+        end
+      end
+      
+      f.puts "}{}"
+      f.puts "\n% Relationships\n\n"
+      
+      @relations.each do |r|
+        if !r.is_property?
+          if r.stereotype
+            stereo = "stereo=#{r.stereotype.name},"
+          end
+          case r
+          when Relation::Generalization
+            f.puts "\\umlinherit[geometry=|-|]{#{r.source.type.name}}{#{r.target.type.name}}"
+
+          when Relation::Association
+            f.puts <<EOT
+\\umluniassoc[geometry=|-,#{stereo}%
+              arg1=#{r.name},%
+              mult1=#{r.source.multiplicity},%
+              mult2=#{r.target.multiplicity}]{#{r.source.type.name}}{#{r.target.type.name}}
+EOT
+          end
+        end
+      end
+    end
+  end
+
   def generate_class(f)
     if stereotype_name !~ /Factory/o and (is_a_type?('References') or @model.name !~ /Profile/)
       generate_type_table(f) 
@@ -316,6 +358,8 @@ EOT
       generate_class(f)
     end
 
-    f.puts "\\FloatBarrier"    
+    f.puts "\\FloatBarrier"
+
+    generate_class_diagram    
   end
 end

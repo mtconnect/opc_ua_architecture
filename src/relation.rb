@@ -38,14 +38,15 @@ module Relation
   end
 
   class Relation
-    attr_reader :id, :name, :type, :json, :multliplicity,
+    attr_reader :id, :name, :type, :json, :multiplicity,
                 :source, :target, :owner, :documentation,
                 :stereotype
 
     class Connection
-      attr_accessor :name, :type, :type_id
+      attr_accessor :name, :type, :type_id, :multiplicity
       
       def initialize(name, type_id, type = nil)
+        @multiplicity = nil
         @name = name
         @type = type
         if type_id.is_a? Hash
@@ -152,7 +153,7 @@ module Relation
     attr_reader :final_target
     
     class End < Connection
-      attr_accessor :name, :multiplicity, :optional, :navigable, :json, :final_target
+      attr_accessor :name, :optional, :navigable, :json, :final_target
       
       def initialize(e)
         if e['reference']

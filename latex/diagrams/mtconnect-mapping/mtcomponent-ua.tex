@@ -1,0 +1,37 @@
+\begin{figure}[ht]
+\centering\scalebox{0.8}{
+\begin{tikzpicture}[auto]
+
+\ObjectType{MTComponentType}{}{}{}{};
+\Object{<Component>}{left of}{MTComponentType}{4.5}{};
+\HasTypeDefinition{}{<Component>}{--}{MTComponentType}{};
+
+\ObjectType{NTDeviceType}{right of}{MTComponentType}{4.5}{};
+\HasSubType{}{NTDeviceType}{--}{MTComponentType}{};
+
+\Variable{XmlId}{below right of}{MTComponentType}{3.5}{};
+\Variable{Name}{below of}{XmlId}{2}{};
+\Variable{NativeName}{below of}{Name}{2}{};
+\Variable{Uuid}{below of}{NativeName}{2}{};
+\Variable{SampleRate}{below of}{Uuid}{2}{};
+\Variable{SampleInterval}{below of}{SampleRate}{2}{};
+
+\HasProperty{}{MTComponentType}{|-}{XmlId}{};
+\HasProperty{}{MTComponentType}{|-}{Name}{};
+\HasProperty{}{MTComponentType}{|-}{NativeName}{};
+\HasProperty{}{MTComponentType}{|-}{Uuid}{};
+\HasProperty{}{MTComponentType}{|-}{SampleRate}{};
+\HasProperty{}{MTComponentType}{|-}{SampleInterval}{}l
+
+\Object{Description}{below left of}{MTComponentType}{3.5}{};
+\HasComponent{}{MTComponentType}{|-}{Description}{};
+
+\Object{Configuration}{below of}{Description}{2}{}
+\HasComponent{}{MTComponentType}{|-}{Configuration}{};
+
+\end{tikzpicture}
+}
+\caption{MTConnect MTComponentType in OPC UA}
+ \label{fig:mtcomponent-ua}
+\end{figure}
+

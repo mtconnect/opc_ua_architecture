@@ -1,0 +1,57 @@
+\begin{figure}[ht]
+\centering\scalebox{0.8}{
+\begin{tikzpicture}[auto]
+
+\umlabstract[x=0, y=0]{MTComponentType}{
++ XmlId: String \\
++ Name: String[0..1] \\
++ NativeName: String[0..1] \\
++ Uuid: String[0..1] \\
+<<Deprecated>> + SampleRate: Float[0..1] \\
++ SampleInterval: Float[0..1] \\
+}{}
+
+\umlclass[right=1.5cm of MTComponentType]{MTDeviceType}{
++ Version: String[0..1] \\
+<<Deprecated>> + Iso841Class: String[0..1] \\
+}{}
+
+\umlinherit[geometry=--]{MTDeviceType}{MTComponentType}
+
+\umlclass[below left=1cm and 2cm of MTComponentType.south]{DescriptionType}{
++ Station: String[0..1] \\
++ SerialNumber: String[0..1] \\
++ Manufacturer: String[0..1] \\
++ Data: String[0..1] \\
+}{}
+
+\umluniassoc[geometry=-|,stereo=HasComponent,%
+              arg1=Description,pos1=0.5,pos2=1.8,%
+              pos stereo=1.4,anchor2=140,%
+              mult1=0..1,%
+              mult2=1]{MTComponentType}{DescriptionType}
+
+\umlsimpleclass[below=1cm of MTDeviceType.south]{<Component>Type}
+\umlinherit[geometry=-|-,arm2=4.5cm]{<Component>Type}{MTComponentType}
+
+\umlabstract[below right=2.5cm and -0.1cm of MTComponentType.south]{MTConfigurationType}{}{}
+
+\umluniassoc[stereo=HasComponent,pos1=.2,%
+              arg1=Configuration,anchor1=-60,anchor2=130,%
+              mult1=0..1,%
+              mult2=1]{MTComponentType}{MTConfigurationType}
+              
+\umlclass[below=1cm of MTConfigurationType.south]{SensorConfigurationType}{
++ FirwareVersion: String[0..1] \\
++ CalibrationDate: UtcTime[0..1] \\
++ NextCalibrationDate: UtcTime[0..1] \\
++ CalibrationInitials: String[0..1] \\
+}{}
+
+\umlinherit[geometry=-|]{SensorConfigurationType}{MTConfigurationType}
+
+\end{tikzpicture}
+}
+\caption{MTConnect MTComponentType in UML}
+ \label{fig:mtcomponent-uml}
+\end{figure}

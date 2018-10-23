@@ -1,0 +1,106 @@
+\section{Mapping the MTConnect Information Model to OPC UA} 
+  \label{mtconnec-mapping}
+\DefineShortVerb{\@}
+
+The rendering of the MTConnect information model from its original representation in XML to OPC UA requires some changes to leverage the OPC UA abstractions. OPC UA defines abstractions for the representation of data collected from devices and for alarms and conditions. The abstractions do not provide the semantic meaning; they provide a structure to convey the meta-data and the values as they change. 
+
+MTConnect has similar facilities but uses a different structural model where the meta-data and the streaming values are in separate documents to normalise the data flow in a similar way that many publish-subscribe protocols separate the structure from the data.
+
+When translating from MTConnect to OPC UA, the MTConnect abstractions of @DataItem@s have converted using the OPC UA  @DataVariable@ abstractions are given in \cite{UAPart9}, and multiple sub-types are utilised to provide the correct mapping. The relationships are de-conflated to multiple types where the category and the type determine the best mapping. Conditions are in a category of their own and also require additional consideration regarding the notification hierarchy. 
+
+The following parts of this section detail the process of translating the MTConnect model into the appropriate UML representation. More detailed information is provided in Section \ref{mtconnect_devices} for each data type.
+
+\subsection{MTConnect UML Representation of OPC}
+
+The OPC UA representation as a standard UML representation of the same information model. The following section provides a guide to converting from the OPC representation given in section \ref{intro-to-opc-ua} to the UML presented in the following section. 
+
+In OPC UA, the MTConnect @Component@ abstraction would be given by Figure \ref{fig:mtcomponent-ua} (this is an incomplete model for illustration purposes).
+
+\input{diagrams/mtconnect-mapping/mtcomponent-ua.tex}
+
+The diagram Figure \ref{fig:mtcomponent-uml} represents the same model in UML as the preceding model. The companion specification uses the following conventions:
+
+\begin{itemize}
+\item OPC UA Types are represented as UML Classes
+\item OPC UA Properties are denoted as UML Attributes. UA Attributes are also represented as UML Attributes with the stereotype of \textit{<<attribute>>}.
+\item OPC UA Component references are represented as UML unidirectional associations. The reference type is given as the association's \textit{Stereotype}, for example \textit{<<HasComponent>>}. 
+\item HasSubtype releationships are given as an UML Generatlization association.  
+\end{itemize}
+
+The UML Associations are used to represent OPC UA references. UA Properties represented using the UA @Has\-Property@ relationships are given as UML Attributes (not be confused with the OPC UA Attribute). UML allows for additional information as follows:  the multiplicity of a property, the data type of the property, are specified.
+
+\input{diagrams/mtconnect-mapping/mtcomponent-uml.tex}
+
+When traversing an association between two object types, the name of the source of the association is the browse name associated with the object, and the destination is the type of object that is instantiated. If the name is not given, it represents a dynamic relationship where the browse name is determined during the creation of the object model. An example is the association of the MTConnect @DataItem@s.
+
+OPC UA represents both class and instance diagrams using the same set of primitives. UML provided class and object models using two separate models, one for classification and the other for instances of those classes. This section separates the object instantiation from the classification and uses UML Object diagrams to represent example instances of classes.
+
+\FloatBarrier
+
+\subsection{MTConnect Device Model}
+
+The \mtconnect information model has the following abstractions:
+
+\begin{enumerate}
+\item @Component@s
+\item @DataItem@s
+\item @Configuration@
+\item @Composition@s
+\item @Asset@s
+\end{enumerate}
+
+The first concern of the MTConnect OPC UA companion specification is the @Device@ model covered in MTConnect \cite{MTCPart2} and \cite{MTCPart3}. The top-level @Component@ of any MTConnect information model is the @Device@. A @Component@ represents a logical part or a collection of parts of a piece of equipment. The @DataItem@s represent information that is communicated from \texttt{Component}s, and the representation and communication of the information are covered in \cite{MTCPart3}. The @Compositions@ are leaf node components that do not have any structure but can be associated with \texttt{DataItem}s to provide additional context. 
+
+The @Configuration@ is a collection of information about the component that provides more detail about its capabilities. The standard has only specified the @SensorConfiguration@ at this point.
+
+@Asset@s are complex information models that provide a point in time consistent set of information about the use of a physical or logical entity in the manufacturing process. These models, for example, may represent a cutting tool, a program, or a process. The @Asset@s will be covered in a subsequent companion specification. The only assets currently in the MTConnect standard are @CuttingTool@ and @CuttingToolArchitype@. Refer to MTConnect Part 4.0 \cite{MTCPart40} and MTConnect Part 4.1 \cite{MTCPart41}.
+
+
+\subsection{Mapping The Model}
+
+\lstset{language=XML,numbers=left,xleftmargin=2em}
+
+The first section showing in Listing \ref{lst:device-header} of the MTConnect XML representation gives the information models root element @MTConnectDevices@ and the @Header@ element that is used for the MTConnect protocol. The only thing to note is if there are additional namespaces declared in the root @MTConnectDevices@ element. The other area of note is the @version@ attribute of the @Header@ element. This will indicate the version of the MTConnect standard currently being provided by this \textit{Agent}.
+
+\begin{lstlisting}[caption={Device Header},label={lst:device-header}]
+<MTConnectDevices xmlns:m="urn:mtconnect.org:MTConnectDevices:1.3" xmlns="urn:mtconnect.org:MTConnectDevices:1.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:1.3 /schemas/MTConnectDevices_1.3.xsd">
+  <Header creationTime="2018-10-21T01:36:51Z" sender="1c1971b39543" instanceId="1535384774" version="1.4.0.10" assetBufferSize="1024" assetCount="0" bufferSize="1048576"/>
+  <Devices>
+\end{lstlisting}
+
+\begin{lstlisting}[firstnumber=last,%
+    caption={Device Model},label={lst:device-model}]
+    <Device id="Mazak01" name="Mazak01" uuid="mtc_adapter002">
+      <Description manufacturer="Mazak" model="Integrex" serialNumber="M7303290458">Mazak Integrex 100-IV</Description>
+      <DataItems>
+        <DataItem category="EVENT" id="Mazak01-dtop_1" name="avail" type="AVAILABILITY"/>
+        <DataItem category="EVENT" id="Mazak01_asset_chg" type="ASSET_CHANGED"/>
+        <DataItem category="EVENT" id="Mazak01_asset_rem" type="ASSET_REMOVED"/>
+      </DataItems>
+\end{lstlisting}
+
+
+\begin{lstlisting}[firstnumber=last,%
+    caption={Components},label={lst:device-component}]
+
+      <Components>
+        <Axes id="Mazak01-base" name="base">
+          <DataItems>
+            <DataItem category="CONDITION" id="Mazak01-base_1" name="servo_cond" type="ACTUATOR"/>
+          </DataItems>
+          <Components>
+            <Linear id="Mazak01-X" name="X">
+              <DataItems>
+                <DataItem category="SAMPLE" coordinateSystem="MACHINE" id="Mazak01-X_1" name="Xabs" nativeUnits="MILLIMETER" subType="ACTUAL" type="POSITION" units="MILLIMETER"/>
+                <DataItem category="CONDITION" id="Mazak01-X_2" name="Xtravel" type="POSITION"/>
+                <DataItem category="SAMPLE" id="Mazak01-X_3" name="Xload" nativeUnits="PERCENT" type="LOAD" units="PERCENT"/>
+                <DataItem category="SAMPLE" id="Mazak01-X_4" name="Xfrt" nativeUnits="MILLIMETER/SECOND" type="AXIS_FEEDRATE" units="MILLIMETER/SECOND"/>
+              </DataItems>
+            </Linear>
+\end{lstlisting}
+
+\FloatBarrier
+
+\subsection{MTConnect Streaming Data}
+
+\UndefineShortVerb{\@}

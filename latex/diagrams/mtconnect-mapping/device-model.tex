@@ -1,0 +1,56 @@
+\begin{figure}[ht]
+\centering\scalebox{0.8}{
+\begin{tikzpicture}[node distance=1.5cm, font=\small]
+\tikzset{
+   object/.style={
+           rectangle,
+           rounded corners,
+           draw=black, very thick,
+           minimum height=2em,
+           inner sep=2pt,
+           text centered           
+           },
+}
+
+
+\node[object] (device) { %
+\begin{tabular}{l l}
+  \multicolumn{2}{c}{\underline{\textbf{Mazak01: MTDeviceType}}} \\[4pt]
+  \hline
+  XmlId & "Mazak01" \\
+  Name & "Mazak01" \\
+  Uuid & "mtc_adapter002" \\ 
+ \end{tabular}
+};
+
+\node[object,right=3cm of device] (server) { %
+\begin{tabular}{l l}
+  \multicolumn{2}{c}{\underline{\textbf{Server: ServerType (OPC)}}} \\[4pt]
+ \end{tabular}
+};
+
+
+
+
+\node[object,below=2cm of device] (description) { %
+\begin{tabular}{l l}
+  \multicolumn{2}{c}{\underline{\textbf{Description: DescriptionType}}} \\[4pt]
+  \hline
+  Manufacturer & "Mazak" \\
+  Model & "Integrex" \\
+  SerialNumber & "M7303290458" \\ 
+  Data & "Mazak Integrex 100-IV" \\
+ \end{tabular}
+};
+
+\draw[->,thick] (device) -- (description)
+  node[pos=0.5,right]{<<HasComponent>>};
+
+\draw[->,thick] (server) -- (device) 
+  node[pos=0.5,below]{<<HasNotifier>>};
+
+\end{tikzpicture}
+}
+\caption{MTConnect Device Object}
+ \label{fig:mazak-01}
+\end{figure}

@@ -55,12 +55,13 @@ The @Configuration@ is a collection of information about the component that prov
 
 @Asset@s are complex information models that provide a point in time consistent set of information about the use of a physical or logical entity in the manufacturing process. These models, for example, may represent a cutting tool, a program, or a process. The @Asset@s will be covered in a subsequent companion specification. The only assets currently in the MTConnect standard are @CuttingTool@ and @CuttingToolArchitype@. Refer to MTConnect Part 4.0 \cite{MTCPart40} and MTConnect Part 4.1 \cite{MTCPart41}.
 
+The specification uses examples to illustrate the process of conversion from XML to OPC UA; the following sections cover the main points and concerns when converting an MTConnect Device model to a Nodeset. Following the metamodel discussion will be a section on the handling of streaming data and mapping to the correct data items. 
 
 \subsection{Mapping The Model}
 
 \lstset{language=XML,numbers=left,xleftmargin=2em}
 
-The first section showing in Listing \ref{lst:device-header} of the MTConnect XML representation gives the information models root element @MTConnectDevices@ and the @Header@ element that is used for the MTConnect protocol. The only thing to note is if there are additional namespaces declared in the root @MTConnectDevices@ element. The other area of note is the @version@ attribute of the @Header@ element. This will indicate the version of the MTConnect standard currently being provided by this \textit{Agent}.
+The first section showing in Listing \ref{lst:device-header} of the MTConnect XML representation gives the information models root element @MTConnectDevices@ and the @Header@ element that is used for the MTConnect protocol. The only thing to note is if there are additional namespaces declared in the root @MTConnectDevices@ element. The other area of note is the @version@ attribute of the @Header@ element.  The version indicates the most current version of the MTConnect standard currently being provided by this \textit{Agent}. The remaining attributes are relevant during the discussion of streaming data in the following section.
 
 \begin{lstlisting}[caption={Device Header},label={lst:device-header}]
 <MTConnectDevices xmlns:m="urn:mtconnect.org:MTConnectDevices:1.3" xmlns="urn:mtconnect.org:MTConnectDevices:1.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:1.3 /schemas/MTConnectDevices_1.3.xsd">
@@ -68,10 +69,24 @@ The first section showing in Listing \ref{lst:device-header} of the MTConnect XM
   <Devices>
 \end{lstlisting}
 
+The MTConnect \textit{Agent} is capable of supporting multiple @Device@s; a Device specification is provided under the @Devices@ collection at the first level of the XML tree. For information on XML, please visit the W3C website \url{https://www.w3.org/XML}. The @Device@ is the top level component of the MTConnect component hierarchy. The @Device@ is a sub-type of the @Component@ and inherits all the structure of an MTConnect @Component@. The @Device@ has two other requirements. It is required to have a @uuid@ and a @name@ attribute where they are optional in all other components. 
+
 \begin{lstlisting}[firstnumber=last,%
-    caption={Device Model},label={lst:device-model}]
+    caption={\texttt{Device} Element Mapping},label={lst:device-model-device}]
     <Device id="Mazak01" name="Mazak01" uuid="mtc_adapter002">
       <Description manufacturer="Mazak" model="Integrex" serialNumber="M7303290458">Mazak Integrex 100-IV</Description>
+\end{lstlisting}
+
+The @Description@ element describes some characteristics of the device, namely the manufacturer, serial-number and model. These are all optional as is the descriptive text that is contained in the @Description@ element.
+
+The @Device@ is mapped to an @MTDevice@ object in the MTConnect namespace as shown in Figure \ref{fig:
+
+\input{diagrams/mtconnect-mapping/device-model.tex}
+
+Every device must have a @HasNotifier@ relationship with the server to enable conditions and event notification. The @HasNotifier@ relationships are flowed down through the component hierarchary where the leaf @Component@ has a @HasEventSource@ relationship with its parent component. Each condition will need to have a @HasCondition@ relationship with its parent component as well. 
+
+\begin{lstlisting}[firstnumber=last,%
+    caption={Device Model},label={lst:device-model}]
       <DataItems>
         <DataItem category="EVENT" id="Mazak01-dtop_1" name="avail" type="AVAILABILITY"/>
         <DataItem category="EVENT" id="Mazak01_asset_chg" type="ASSET_CHANGED"/>

@@ -35,7 +35,7 @@ module Diagram
       
       f.puts <<EOT
 
-\\Begin{figure}[ht]
+\\begin{figure}[ht]
   \\centering
     \\includegraphics[width=1.0\\textwidth]{#{png_diagram_name}}
   \\caption{#{@name} Diagram}
@@ -360,7 +360,8 @@ EOT
      
   def generate_latex(f = STDOUT)
     f.puts <<EOT
-\\subsubsection{Defintion of \\texttt{#{stereotype_name} #{escape_name}}} \\label{type:#{@name}}
+\\subsubsection{Defintion of \\texttt{#{stereotype_name} #{escape_name}}}
+  \\label{type:#{@name}}
 
 \\FloatBarrier
 EOT

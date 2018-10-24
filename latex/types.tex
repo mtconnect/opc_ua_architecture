@@ -1,7 +1,7 @@
-% Generated 2018-10-23 22:12:30 -0700
+% Generated 2018-10-23 22:24:48 -0700
 \subsection{Components} \label{model:Components}
 
-\Begin{figure}[ht]
+\begin{figure}[ht]
   \centering
     \includegraphics[width=1.0\textwidth]{./diagrams/Components.png}
   \caption{Components Diagram}
@@ -13,7 +13,8 @@
 
 The \texttt{Components} documents the Component models and the owned objects.
 
-\subsubsection{Defintion of \texttt{ MTChannelType}} \label{type:MTChannelType}
+\subsubsection{Defintion of \texttt{ MTChannelType}}
+  \label{type:MTChannelType}
 
 \FloatBarrier
 
@@ -49,11 +50,12 @@ HasProperty & Variable & CalibrationInitials & String & PropertyType & Optional 
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MTComponentType}} \label{type:MTComponentType}
+\subsubsection{Defintion of \texttt{ MTComponentType}}
+  \label{type:MTComponentType}
 
 \FloatBarrier
 
-\Begin{figure}[ht]
+\begin{figure}[ht]
   \centering
     \includegraphics[width=1.0\textwidth]{./diagrams/MTComponentType.png}
   \caption{MTComponentType Diagram}
@@ -138,7 +140,8 @@ This class relates to \texttt{CompositionTypeFactory} (See section \ref{type:Com
 This class relates to \texttt{ConditionObjectFactory} (See section \ref{type:ConditionObjectFactory}) for a(n) \texttt{use} relationship.
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MTDeviceType}} \label{type:MTDeviceType}
+\subsubsection{Defintion of \texttt{ MTDeviceType}}
+  \label{type:MTDeviceType}
 
 \FloatBarrier
 
@@ -191,7 +194,8 @@ This class relates to \texttt{ComponentTypeFactory} (See section \ref{type:Compo
 This class relates to \texttt{ComponentObjectFactory} (See section \ref{type:ComponentObjectFactory}) for a(n) \texttt{use} relationship.
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{<<Dynamic Type>> <Component>Type}} \label{type:<Component>Type}
+\subsubsection{Defintion of \texttt{<<Dynamic Type>> <Component>Type}}
+  \label{type:<Component>Type}
 
 \FloatBarrier
 
@@ -223,7 +227,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MTCompositionType}} \label{type:MTCompositionType}
+\subsubsection{Defintion of \texttt{ MTCompositionType}}
+  \label{type:MTCompositionType}
 
 \FloatBarrier
 
@@ -261,7 +266,8 @@ HasProperty & Variable & MTDescription & String & PropertyType & Optional \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{<<Dynamic Type>> <Composition>Type}} \label{type:<Composition>Type}
+\subsubsection{Defintion of \texttt{<<Dynamic Type>> <Composition>Type}}
+  \label{type:<Composition>Type}
 
 \FloatBarrier
 
@@ -294,7 +300,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MTConfigurationType}} \label{type:MTConfigurationType}
+\subsubsection{Defintion of \texttt{ MTConfigurationType}}
+  \label{type:MTConfigurationType}
 
 \FloatBarrier
 
@@ -324,7 +331,8 @@ HasSubtype & ObjectType & MTSensorConfigurationType & \multicolumn{3}{|l|}{See s
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MTSensorConfigurationType}} \label{type:MTSensorConfigurationType}
+\subsubsection{Defintion of \texttt{ MTSensorConfigurationType}}
+  \label{type:MTSensorConfigurationType}
 
 \FloatBarrier
 
@@ -357,7 +365,8 @@ Organizes & Object & Channels & MTChannelType & FolderType & Optional \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MTDescriptionType}} \label{type:MTDescriptionType}
+\subsubsection{Defintion of \texttt{ MTDescriptionType}}
+  \label{type:MTDescriptionType}
 
 \FloatBarrier
 
@@ -406,7 +415,7 @@ concat(self.parent.NodeId, BrowseName)
 \FloatBarrier
 \subsection{Data Items} \label{model:DataItems}
 
-\Begin{figure}[ht]
+\begin{figure}[ht]
   \centering
     \includegraphics[width=1.0\textwidth]{./diagrams/DataItems.png}
   \caption{Data Items Diagram}
@@ -418,7 +427,8 @@ concat(self.parent.NodeId, BrowseName)
 
 An MTConnect \texttt{DataItem} describes a piece of information that can be collected from a component. The \texttt{DataItemObjectFactory} is used by the parent component to create specific DataItem Types. (See section \ref{type:DataItemObjectFactory}).
 
-\subsubsection{Defintion of \texttt{ AssetEventDataType}} \label{type:AssetEventDataType}
+\subsubsection{Defintion of \texttt{ AssetEventDataType}}
+  \label{type:AssetEventDataType}
 
 \FloatBarrier
 \begin{table}[ht]
@@ -435,7 +445,8 @@ An MTConnect \texttt{DataItem} describes a piece of information that can be coll
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ FilterType}} \label{type:FilterType}
+\subsubsection{Defintion of \texttt{ FilterType}}
+  \label{type:FilterType}
 
 \FloatBarrier
 
@@ -466,7 +477,8 @@ HasProperty & Variable & Value & Float & PropertyType & Optional \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MinimumDeltaFilterType}} \label{type:MinimumDeltaFilterType}
+\subsubsection{Defintion of \texttt{ MinimumDeltaFilterType}}
+  \label{type:MinimumDeltaFilterType}
 
 \FloatBarrier
 
@@ -493,7 +505,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ PeriodFilterType}} \label{type:PeriodFilterType}
+\subsubsection{Defintion of \texttt{ PeriodFilterType}}
+  \label{type:PeriodFilterType}
 
 \FloatBarrier
 
@@ -521,7 +534,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MTAssetEventType}} \label{type:MTAssetEventType}
+\subsubsection{Defintion of \texttt{ MTAssetEventType}}
+  \label{type:MTAssetEventType}
 
 \FloatBarrier
 
@@ -566,7 +580,8 @@ Attribute Override & Variable & DataType & \multicolumn{2}{|l|}{AssetEventDataTy
 
 \paragraph{Mixes in \texttt{MTDataItemType}} (See section \ref{type:MTDataItemType})
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MTControlledVocabEventType}} \label{type:MTControlledVocabEventType}
+\subsubsection{Defintion of \texttt{ MTControlledVocabEventType}}
+  \label{type:MTControlledVocabEventType}
 
 \FloatBarrier
 
@@ -611,7 +626,8 @@ HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Option
 
 \paragraph{Mixes in \texttt{MTDataItemType}} (See section \ref{type:MTDataItemType})
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MTDataItemClassType}} \label{type:MTDataItemClassType}
+\subsubsection{Defintion of \texttt{ MTDataItemClassType}}
+  \label{type:MTDataItemClassType}
 
 \FloatBarrier
 
@@ -641,7 +657,8 @@ HasSubtype & ObjectType & MTEventClassType & \multicolumn{3}{|l|}{See section \r
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MTConditionClassType}} \label{type:MTConditionClassType}
+\subsubsection{Defintion of \texttt{ MTConditionClassType}}
+  \label{type:MTConditionClassType}
 
 \FloatBarrier
 
@@ -667,7 +684,8 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MTEventClassType}} \label{type:MTEventClassType}
+\subsubsection{Defintion of \texttt{ MTEventClassType}}
+  \label{type:MTEventClassType}
 
 \FloatBarrier
 
@@ -696,7 +714,8 @@ HasSubtype & ObjectType & MTStringEventClassType & \multicolumn{3}{|l|}{See sect
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{<<mixin>> MTDataItemType}} \label{type:MTDataItemType}
+\subsubsection{Defintion of \texttt{<<mixin>> MTDataItemType}}
+  \label{type:MTDataItemType}
 
 \FloatBarrier
 
@@ -755,7 +774,8 @@ self.Source.CDATA
 
 \end{itemize}
 \FloatBarrier
-\subsubsection{Defintion of \texttt{<<mixin>> MTNumericDataItemType}} \label{type:MTNumericDataItemType}
+\subsubsection{Defintion of \texttt{<<mixin>> MTNumericDataItemType}}
+  \label{type:MTNumericDataItemType}
 
 \FloatBarrier
 
@@ -811,7 +831,8 @@ Event and the Sample types.
 
 \end{itemize}
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MTMessageType}} \label{type:MTMessageType}
+\subsubsection{Defintion of \texttt{ MTMessageType}}
+  \label{type:MTMessageType}
 
 \FloatBarrier
 
@@ -843,7 +864,8 @@ HasProperty & Variable & NativeCode & String & PropertyType & Optional \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MTNumericEventType}} \label{type:MTNumericEventType}
+\subsubsection{Defintion of \texttt{ MTNumericEventType}}
+  \label{type:MTNumericEventType}
 
 \FloatBarrier
 
@@ -897,7 +919,8 @@ HasProperty & Variable & EngineeringUnits & EUInformation & PropertyType & Optio
 
 \paragraph{Mixes in \texttt{MTNumericDataItemType}} (See section \ref{type:MTNumericDataItemType})
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MTSampleType}} \label{type:MTSampleType}
+\subsubsection{Defintion of \texttt{ MTSampleType}}
+  \label{type:MTSampleType}
 
 \FloatBarrier
 
@@ -948,7 +971,8 @@ HasProperty & Variable & Nominal & Double & PropertyType & Optional \\
 
 \paragraph{Mixes in \texttt{MTNumericDataItemType}} (See section \ref{type:MTNumericDataItemType})
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MTStringEventType}} \label{type:MTStringEventType}
+\subsubsection{Defintion of \texttt{ MTStringEventType}}
+  \label{type:MTStringEventType}
 
 \FloatBarrier
 
@@ -996,7 +1020,7 @@ HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Option
 \FloatBarrier
 \subsection{Conditions} \label{model:Conditions}
 
-\Begin{figure}[ht]
+\begin{figure}[ht]
   \centering
     \includegraphics[width=1.0\textwidth]{./diagrams/Conditions.png}
   \caption{Conditions Diagram}
@@ -1014,7 +1038,8 @@ documentation for the condition behavior in MTConnect can be found in Section 5.
 The MTConnect Data Item with Category of \texttt{CONDITION} are used to map to the 
 OPC UA \texttt{ConditionType} models in \cite{UAPart9}.
 
-\subsubsection{Defintion of \texttt{ MTConnectAlarmConditionType}} \label{type:MTConnectAlarmConditionType}
+\subsubsection{Defintion of \texttt{ MTConnectAlarmConditionType}}
+  \label{type:MTConnectAlarmConditionType}
 
 \FloatBarrier
 
@@ -1053,7 +1078,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 This class relates to \texttt{MTDataItemType} (See section \ref{type:MTDataItemType}) for a(n) \texttt{Mixes In} relationship.
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MTExclusiveLimitConditionType}} \label{type:MTExclusiveLimitConditionType}
+\subsubsection{Defintion of \texttt{ MTExclusiveLimitConditionType}}
+  \label{type:MTExclusiveLimitConditionType}
 
 \FloatBarrier
 
@@ -1086,7 +1112,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 This class relates to \texttt{MTDataItemType} (See section \ref{type:MTDataItemType}) for a(n) \texttt{Mixes In} relationship.
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MTNonExclusiveConditionType}} \label{type:MTNonExclusiveConditionType}
+\subsubsection{Defintion of \texttt{ MTNonExclusiveConditionType}}
+  \label{type:MTNonExclusiveConditionType}
 
 \FloatBarrier
 
@@ -1146,7 +1173,8 @@ The content of the standard has been copied in this section of the companion spe
 but this not the definitive text for each type. For authorative normative text, please refer 
 to the original sources \cite{MTCPart2} and \cite{MTCPart3}.
 
-\subsubsection{Defintion of \texttt{ MTSampleClassType}} \label{type:MTSampleClassType}
+\subsubsection{Defintion of \texttt{ MTSampleClassType}}
+  \label{type:MTSampleClassType}
 
 \FloatBarrier
 
@@ -1222,7 +1250,8 @@ HasSubtype & ObjectType & LinearForceClassType & \multicolumn{3}{|l|}{See sectio
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ LoadClassType}} \label{type:LoadClassType}
+\subsubsection{Defintion of \texttt{ LoadClassType}}
+  \label{type:LoadClassType}
 
 \FloatBarrier
 
@@ -1248,7 +1277,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ AccelerationClassType}} \label{type:AccelerationClassType}
+\subsubsection{Defintion of \texttt{ AccelerationClassType}}
+  \label{type:AccelerationClassType}
 
 \FloatBarrier
 
@@ -1274,7 +1304,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ AccumulatedTimeClassType}} \label{type:AccumulatedTimeClassType}
+\subsubsection{Defintion of \texttt{ AccumulatedTimeClassType}}
+  \label{type:AccumulatedTimeClassType}
 
 \FloatBarrier
 
@@ -1301,7 +1332,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ AngularAccelerationClassType}} \label{type:AngularAccelerationClassType}
+\subsubsection{Defintion of \texttt{ AngularAccelerationClassType}}
+  \label{type:AngularAccelerationClassType}
 
 \FloatBarrier
 
@@ -1327,7 +1359,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ AngularVelocityClassType}} \label{type:AngularVelocityClassType}
+\subsubsection{Defintion of \texttt{ AngularVelocityClassType}}
+  \label{type:AngularVelocityClassType}
 
 \FloatBarrier
 
@@ -1353,7 +1386,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ AmperageClassType}} \label{type:AmperageClassType}
+\subsubsection{Defintion of \texttt{ AmperageClassType}}
+  \label{type:AmperageClassType}
 
 \FloatBarrier
 
@@ -1379,7 +1413,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ AngleClassType}} \label{type:AngleClassType}
+\subsubsection{Defintion of \texttt{ AngleClassType}}
+  \label{type:AngleClassType}
 
 \FloatBarrier
 
@@ -1405,7 +1440,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ AxisFeedrateClassType}} \label{type:AxisFeedrateClassType}
+\subsubsection{Defintion of \texttt{ AxisFeedrateClassType}}
+  \label{type:AxisFeedrateClassType}
 
 \FloatBarrier
 
@@ -1431,7 +1467,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ClockTimeClassType}} \label{type:ClockTimeClassType}
+\subsubsection{Defintion of \texttt{ ClockTimeClassType}}
+  \label{type:ClockTimeClassType}
 
 \FloatBarrier
 
@@ -1457,7 +1494,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ConcentrationClassType}} \label{type:ConcentrationClassType}
+\subsubsection{Defintion of \texttt{ ConcentrationClassType}}
+  \label{type:ConcentrationClassType}
 
 \FloatBarrier
 
@@ -1483,7 +1521,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ConductivityClassType}} \label{type:ConductivityClassType}
+\subsubsection{Defintion of \texttt{ ConductivityClassType}}
+  \label{type:ConductivityClassType}
 
 \FloatBarrier
 
@@ -1509,7 +1548,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ DisplacementClassType}} \label{type:DisplacementClassType}
+\subsubsection{Defintion of \texttt{ DisplacementClassType}}
+  \label{type:DisplacementClassType}
 
 \FloatBarrier
 
@@ -1535,7 +1575,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ElectricalEnergyClassType}} \label{type:ElectricalEnergyClassType}
+\subsubsection{Defintion of \texttt{ ElectricalEnergyClassType}}
+  \label{type:ElectricalEnergyClassType}
 
 \FloatBarrier
 
@@ -1561,7 +1602,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ EquipmentTimerClassType}} \label{type:EquipmentTimerClassType}
+\subsubsection{Defintion of \texttt{ EquipmentTimerClassType}}
+  \label{type:EquipmentTimerClassType}
 
 \FloatBarrier
 
@@ -1595,7 +1637,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ FillLevelClassType}} \label{type:FillLevelClassType}
+\subsubsection{Defintion of \texttt{ FillLevelClassType}}
+  \label{type:FillLevelClassType}
 
 \FloatBarrier
 
@@ -1622,7 +1665,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ FlowClassType}} \label{type:FlowClassType}
+\subsubsection{Defintion of \texttt{ FlowClassType}}
+  \label{type:FlowClassType}
 
 \FloatBarrier
 
@@ -1648,7 +1692,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ FrequencyClassType}} \label{type:FrequencyClassType}
+\subsubsection{Defintion of \texttt{ FrequencyClassType}}
+  \label{type:FrequencyClassType}
 
 \FloatBarrier
 
@@ -1675,7 +1720,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ LengthClassType}} \label{type:LengthClassType}
+\subsubsection{Defintion of \texttt{ LengthClassType}}
+  \label{type:LengthClassType}
 
 \FloatBarrier
 
@@ -1701,7 +1747,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ LinearForceClassType}} \label{type:LinearForceClassType}
+\subsubsection{Defintion of \texttt{ LinearForceClassType}}
+  \label{type:LinearForceClassType}
 
 \FloatBarrier
 
@@ -1727,7 +1774,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MassClassType}} \label{type:MassClassType}
+\subsubsection{Defintion of \texttt{ MassClassType}}
+  \label{type:MassClassType}
 
 \FloatBarrier
 
@@ -1753,7 +1801,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ PathFeedrateClassType}} \label{type:PathFeedrateClassType}
+\subsubsection{Defintion of \texttt{ PathFeedrateClassType}}
+  \label{type:PathFeedrateClassType}
 
 \FloatBarrier
 
@@ -1780,7 +1829,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ PathPositionClassType}} \label{type:PathPositionClassType}
+\subsubsection{Defintion of \texttt{ PathPositionClassType}}
+  \label{type:PathPositionClassType}
 
 \FloatBarrier
 
@@ -1814,7 +1864,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ PHClassType}} \label{type:PHClassType}
+\subsubsection{Defintion of \texttt{ PHClassType}}
+  \label{type:PHClassType}
 
 \FloatBarrier
 
@@ -1840,7 +1891,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ PositionClassType}} \label{type:PositionClassType}
+\subsubsection{Defintion of \texttt{ PositionClassType}}
+  \label{type:PositionClassType}
 
 \FloatBarrier
 
@@ -1872,7 +1924,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ PowerFactorClassType}} \label{type:PowerFactorClassType}
+\subsubsection{Defintion of \texttt{ PowerFactorClassType}}
+  \label{type:PowerFactorClassType}
 
 \FloatBarrier
 
@@ -1899,7 +1952,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ PressureClassType}} \label{type:PressureClassType}
+\subsubsection{Defintion of \texttt{ PressureClassType}}
+  \label{type:PressureClassType}
 
 \FloatBarrier
 
@@ -1925,7 +1979,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ProcessTimerClassType}} \label{type:ProcessTimerClassType}
+\subsubsection{Defintion of \texttt{ ProcessTimerClassType}}
+  \label{type:ProcessTimerClassType}
 
 \FloatBarrier
 
@@ -1959,7 +2014,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ResistenceClassType}} \label{type:ResistenceClassType}
+\subsubsection{Defintion of \texttt{ ResistenceClassType}}
+  \label{type:ResistenceClassType}
 
 \FloatBarrier
 
@@ -1985,7 +2041,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ RotaryVelocityClassType}} \label{type:RotaryVelocityClassType}
+\subsubsection{Defintion of \texttt{ RotaryVelocityClassType}}
+  \label{type:RotaryVelocityClassType}
 
 \FloatBarrier
 
@@ -2011,7 +2068,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ SoundLevelClassType}} \label{type:SoundLevelClassType}
+\subsubsection{Defintion of \texttt{ SoundLevelClassType}}
+  \label{type:SoundLevelClassType}
 
 \FloatBarrier
 
@@ -2037,7 +2095,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ StrainClassType}} \label{type:StrainClassType}
+\subsubsection{Defintion of \texttt{ StrainClassType}}
+  \label{type:StrainClassType}
 
 \FloatBarrier
 
@@ -2063,7 +2122,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ TemperatureClassType}} \label{type:TemperatureClassType}
+\subsubsection{Defintion of \texttt{ TemperatureClassType}}
+  \label{type:TemperatureClassType}
 
 \FloatBarrier
 
@@ -2089,7 +2149,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ TensionClassType}} \label{type:TensionClassType}
+\subsubsection{Defintion of \texttt{ TensionClassType}}
+  \label{type:TensionClassType}
 
 \FloatBarrier
 
@@ -2115,7 +2176,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ TiltClassType}} \label{type:TiltClassType}
+\subsubsection{Defintion of \texttt{ TiltClassType}}
+  \label{type:TiltClassType}
 
 \FloatBarrier
 
@@ -2141,7 +2203,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ TorqueClassType}} \label{type:TorqueClassType}
+\subsubsection{Defintion of \texttt{ TorqueClassType}}
+  \label{type:TorqueClassType}
 
 \FloatBarrier
 
@@ -2167,7 +2230,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ VoltAmpereClassType}} \label{type:VoltAmpereClassType}
+\subsubsection{Defintion of \texttt{ VoltAmpereClassType}}
+  \label{type:VoltAmpereClassType}
 
 \FloatBarrier
 
@@ -2194,7 +2258,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ VelocityClassType}} \label{type:VelocityClassType}
+\subsubsection{Defintion of \texttt{ VelocityClassType}}
+  \label{type:VelocityClassType}
 
 \FloatBarrier
 
@@ -2220,7 +2285,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ VoltAmpereReactiveClassType}} \label{type:VoltAmpereReactiveClassType}
+\subsubsection{Defintion of \texttt{ VoltAmpereReactiveClassType}}
+  \label{type:VoltAmpereReactiveClassType}
 
 \FloatBarrier
 
@@ -2247,7 +2313,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ViscosityClassType}} \label{type:ViscosityClassType}
+\subsubsection{Defintion of \texttt{ ViscosityClassType}}
+  \label{type:ViscosityClassType}
 
 \FloatBarrier
 
@@ -2273,7 +2340,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ VoltageClassType}} \label{type:VoltageClassType}
+\subsubsection{Defintion of \texttt{ VoltageClassType}}
+  \label{type:VoltageClassType}
 
 \FloatBarrier
 
@@ -2299,7 +2367,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ WattageClassType}} \label{type:WattageClassType}
+\subsubsection{Defintion of \texttt{ WattageClassType}}
+  \label{type:WattageClassType}
 
 \FloatBarrier
 
@@ -2336,7 +2405,8 @@ The content of the standard has been copied in this section of the companion spe
 but this not the definitive text for each type. For authorative normative text, please refer 
 to the original sources \cite{MTCPart2} and \cite{MTCPart3}.
 
-\subsubsection{Defintion of \texttt{ MTControlledVocabClassType}} \label{type:MTControlledVocabClassType}
+\subsubsection{Defintion of \texttt{ MTControlledVocabClassType}}
+  \label{type:MTControlledVocabClassType}
 
 \FloatBarrier
 
@@ -2360,7 +2430,6 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTEventClassType} (See Data Items Documentation)} \\
-HasSubtype & ObjectType & ControllerModeOverrideClassType & \multicolumn{3}{|l|}{See section \ref{type:ControllerModeOverrideClassType}} \\
 HasSubtype & ObjectType & DirectionClassType & \multicolumn{3}{|l|}{See section \ref{type:DirectionClassType}} \\
 HasSubtype & ObjectType & DoorStateClassType & \multicolumn{3}{|l|}{See section \ref{type:DoorStateClassType}} \\
 HasSubtype & ObjectType & EmergencyStopClassType & \multicolumn{3}{|l|}{See section \ref{type:EmergencyStopClassType}} \\
@@ -2382,6 +2451,7 @@ HasSubtype & ObjectType & OpenDoorClassType & \multicolumn{3}{|l|}{See section \
 HasSubtype & ObjectType & CloseDoorClassType & \multicolumn{3}{|l|}{See section \ref{type:CloseDoorClassType}} \\
 HasSubtype & ObjectType & OpenChuckClassType & \multicolumn{3}{|l|}{See section \ref{type:OpenChuckClassType}} \\
 HasSubtype & ObjectType & CloseChuckClassType & \multicolumn{3}{|l|}{See section \ref{type:CloseChuckClassType}} \\
+HasSubtype & ObjectType & PartChangeClassType & \multicolumn{3}{|l|}{See section \ref{type:PartChangeClassType}} \\
 \multicolumn{6}{|l|}{Continued...} \\
 \end{tabu}
 \end{table}
@@ -2401,12 +2471,14 @@ HasSubtype & ObjectType & ChuckStateClassType & \multicolumn{3}{|l|}{See section
 HasSubtype & ObjectType & ControllerModeClassType & \multicolumn{3}{|l|}{See section \ref{type:ControllerModeClassType}} \\
 HasSubtype & ObjectType & ExecutionClassType & \multicolumn{3}{|l|}{See section \ref{type:ExecutionClassType}} \\
 HasSubtype & ObjectType & CompositionStateClassType & \multicolumn{3}{|l|}{See section \ref{type:CompositionStateClassType}} \\
+HasSubtype & ObjectType & ControllerModeOverrideClassType & \multicolumn{3}{|l|}{See section \ref{type:ControllerModeOverrideClassType}} \\
 \end{tabu}
 \end{table} 
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ActuatorStateClassType}} \label{type:ActuatorStateClassType}
+\subsubsection{Defintion of \texttt{ ActuatorStateClassType}}
+  \label{type:ActuatorStateClassType}
 
 \FloatBarrier
 
@@ -2445,7 +2517,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ AvailabilityClassType}} \label{type:AvailabilityClassType}
+\subsubsection{Defintion of \texttt{ AvailabilityClassType}}
+  \label{type:AvailabilityClassType}
 
 \FloatBarrier
 
@@ -2485,7 +2558,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ AxisCouplingClassType}} \label{type:AxisCouplingClassType}
+\subsubsection{Defintion of \texttt{ AxisCouplingClassType}}
+  \label{type:AxisCouplingClassType}
 
 \FloatBarrier
 
@@ -2530,7 +2604,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ AxisInterlockClassType}} \label{type:AxisInterlockClassType}
+\subsubsection{Defintion of \texttt{ AxisInterlockClassType}}
+  \label{type:AxisInterlockClassType}
 
 \FloatBarrier
 
@@ -2570,7 +2645,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ AxisStateClassType}} \label{type:AxisStateClassType}
+\subsubsection{Defintion of \texttt{ AxisStateClassType}}
+  \label{type:AxisStateClassType}
 
 \FloatBarrier
 
@@ -2611,7 +2687,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ChuckInterlockClassType}} \label{type:ChuckInterlockClassType}
+\subsubsection{Defintion of \texttt{ ChuckInterlockClassType}}
+  \label{type:ChuckInterlockClassType}
 
 \FloatBarrier
 
@@ -2651,7 +2728,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ChuckStateClassType}} \label{type:ChuckStateClassType}
+\subsubsection{Defintion of \texttt{ ChuckStateClassType}}
+  \label{type:ChuckStateClassType}
 
 \FloatBarrier
 
@@ -2693,7 +2771,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ControllerModeClassType}} \label{type:ControllerModeClassType}
+\subsubsection{Defintion of \texttt{ ControllerModeClassType}}
+  \label{type:ControllerModeClassType}
 
 \FloatBarrier
 
@@ -2735,7 +2814,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ExecutionClassType}} \label{type:ExecutionClassType}
+\subsubsection{Defintion of \texttt{ ExecutionClassType}}
+  \label{type:ExecutionClassType}
 
 \FloatBarrier
 
@@ -2780,7 +2860,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ CompositionStateClassType}} \label{type:CompositionStateClassType}
+\subsubsection{Defintion of \texttt{ CompositionStateClassType}}
+  \label{type:CompositionStateClassType}
 
 \FloatBarrier
 
@@ -2833,7 +2914,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ControllerModeOverrideClassType}} \label{type:ControllerModeOverrideClassType}
+\subsubsection{Defintion of \texttt{ ControllerModeOverrideClassType}}
+  \label{type:ControllerModeOverrideClassType}
 
 \FloatBarrier
 
@@ -2872,7 +2954,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ DirectionClassType}} \label{type:DirectionClassType}
+\subsubsection{Defintion of \texttt{ DirectionClassType}}
+  \label{type:DirectionClassType}
 
 \FloatBarrier
 
@@ -2913,7 +2996,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ DoorStateClassType}} \label{type:DoorStateClassType}
+\subsubsection{Defintion of \texttt{ DoorStateClassType}}
+  \label{type:DoorStateClassType}
 
 \FloatBarrier
 
@@ -2953,7 +3037,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ EmergencyStopClassType}} \label{type:EmergencyStopClassType}
+\subsubsection{Defintion of \texttt{ EmergencyStopClassType}}
+  \label{type:EmergencyStopClassType}
 
 \FloatBarrier
 
@@ -2992,7 +3077,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ EndOfBarClassType}} \label{type:EndOfBarClassType}
+\subsubsection{Defintion of \texttt{ EndOfBarClassType}}
+  \label{type:EndOfBarClassType}
 
 \FloatBarrier
 
@@ -3031,7 +3117,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ EquipmentModeClassType}} \label{type:EquipmentModeClassType}
+\subsubsection{Defintion of \texttt{ EquipmentModeClassType}}
+  \label{type:EquipmentModeClassType}
 
 \FloatBarrier
 
@@ -3073,7 +3160,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ FunctionalModeClassType}} \label{type:FunctionalModeClassType}
+\subsubsection{Defintion of \texttt{ FunctionalModeClassType}}
+  \label{type:FunctionalModeClassType}
 
 \FloatBarrier
 
@@ -3118,7 +3206,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ SpindleInterlockClassType}} \label{type:SpindleInterlockClassType}
+\subsubsection{Defintion of \texttt{ SpindleInterlockClassType}}
+  \label{type:SpindleInterlockClassType}
 
 \FloatBarrier
 
@@ -3157,7 +3246,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ PathModeClassType}} \label{type:PathModeClassType}
+\subsubsection{Defintion of \texttt{ PathModeClassType}}
+  \label{type:PathModeClassType}
 
 \FloatBarrier
 
@@ -3198,7 +3288,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ PowerStateClassType}} \label{type:PowerStateClassType}
+\subsubsection{Defintion of \texttt{ PowerStateClassType}}
+  \label{type:PowerStateClassType}
 
 \FloatBarrier
 
@@ -3240,7 +3331,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ProgramEditClassType}} \label{type:ProgramEditClassType}
+\subsubsection{Defintion of \texttt{ ProgramEditClassType}}
+  \label{type:ProgramEditClassType}
 
 \FloatBarrier
 
@@ -3282,7 +3374,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ RotaryModeClassType}} \label{type:RotaryModeClassType}
+\subsubsection{Defintion of \texttt{ RotaryModeClassType}}
+  \label{type:RotaryModeClassType}
 
 \FloatBarrier
 
@@ -3322,9 +3415,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ InterfaceStateClassType}} \label{type:InterfaceStateClassType}
+\subsubsection{Defintion of \texttt{ InterfaceStateClassType}}
+  \label{type:InterfaceStateClassType}
 
 \FloatBarrier
+
+The current functional or operational state of an Interface type element indicating whether the Interface is active or not currently functioning.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateClassType} Definition}
@@ -3358,9 +3455,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MaterialFeedClassType}} \label{type:MaterialFeedClassType}
+\subsubsection{Defintion of \texttt{ MaterialFeedClassType}}
+  \label{type:MaterialFeedClassType}
 
 \FloatBarrier
+
+Service to advance material or feed product to a piece of equipment from a continuous or bulk source.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MaterialFeedClassType} Definition}
@@ -3397,9 +3498,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MaterialChangeClassType}} \label{type:MaterialChangeClassType}
+\subsubsection{Defintion of \texttt{ MaterialChangeClassType}}
+  \label{type:MaterialChangeClassType}
 
 \FloatBarrier
+
+Service to change the type of material or product being loaded or fed to a piece of equipment.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MaterialChangeClassType} Definition}
@@ -3436,9 +3541,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MaterialRetractClassType}} \label{type:MaterialRetractClassType}
+\subsubsection{Defintion of \texttt{ MaterialRetractClassType}}
+  \label{type:MaterialRetractClassType}
 
 \FloatBarrier
+
+Service to remove or retract material or product.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MaterialRetractClassType} Definition}
@@ -3475,9 +3584,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MaterialLoadClassType}} \label{type:MaterialLoadClassType}
+\subsubsection{Defintion of \texttt{ MaterialLoadClassType}}
+  \label{type:MaterialLoadClassType}
 
 \FloatBarrier
+
+Service to load a piece of material or product.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MaterialLoadClassType} Definition}
@@ -3514,9 +3627,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MaterialUnloadClassType}} \label{type:MaterialUnloadClassType}
+\subsubsection{Defintion of \texttt{ MaterialUnloadClassType}}
+  \label{type:MaterialUnloadClassType}
 
 \FloatBarrier
+
+Service to unload a piece of material or product.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MaterialUnloadClassType} Definition}
@@ -3553,9 +3670,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ OpenDoorClassType}} \label{type:OpenDoorClassType}
+\subsubsection{Defintion of \texttt{ OpenDoorClassType}}
+  \label{type:OpenDoorClassType}
 
 \FloatBarrier
+
+Service to open a door.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{OpenDoorClassType} Definition}
@@ -3592,9 +3713,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ CloseDoorClassType}} \label{type:CloseDoorClassType}
+\subsubsection{Defintion of \texttt{ CloseDoorClassType}}
+  \label{type:CloseDoorClassType}
 
 \FloatBarrier
+
+Service to close a door.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{CloseDoorClassType} Definition}
@@ -3631,9 +3756,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ OpenChuckClassType}} \label{type:OpenChuckClassType}
+\subsubsection{Defintion of \texttt{ OpenChuckClassType}}
+  \label{type:OpenChuckClassType}
 
 \FloatBarrier
+
+Service to open a chuck.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{OpenChuckClassType} Definition}
@@ -3670,9 +3799,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ CloseChuckClassType}} \label{type:CloseChuckClassType}
+\subsubsection{Defintion of \texttt{ CloseChuckClassType}}
+  \label{type:CloseChuckClassType}
 
 \FloatBarrier
+
+Service to close a chuck.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{CloseChuckClassType} Definition}
@@ -3709,6 +3842,49 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
+\subsubsection{Defintion of \texttt{ PartChangeClassType}}
+  \label{type:PartChangeClassType}
+
+\FloatBarrier
+
+Service to change the part or product associated with a piece of equipment to a different part or product.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{PartChangeClassType} Definition}
+  \label{table:PartChangeClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{PartChangeClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{InterfaceStateDataType} Enumeration}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{ACTIVE} & \texttt{0} \\
+\texttt{COMPLETE} & \texttt{1} \\
+\texttt{FAIL} & \texttt{2} \\
+\texttt{NOT_READY} & \texttt{4} \\
+\texttt{READY} & \texttt{5} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
 \subsection{Numeric Event Data Item Types} \label{model:NumericEventDataItemTypes}
 
 The MTConnect Standard has the definitions of Events in 
@@ -3719,7 +3895,8 @@ The content of the standard has been copied in this section of the companion spe
 but this not the definitive text for each type. For authorative normative text, please refer 
 to the original sources \cite{MTCPart2} and \cite{MTCPart3}.
 
-\subsubsection{Defintion of \texttt{ MTNumberEventClassType}} \label{type:MTNumberEventClassType}
+\subsubsection{Defintion of \texttt{ MTNumberEventClassType}}
+  \label{type:MTNumberEventClassType}
 
 \FloatBarrier
 \begin{table}[ht]
@@ -3748,7 +3925,8 @@ HasSubtype & ObjectType & RotaryVelocityOverrideClassType & \multicolumn{3}{|l|}
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ AxisFeedrateOverrideClassType}} \label{type:AxisFeedrateOverrideClassType}
+\subsubsection{Defintion of \texttt{ AxisFeedrateOverrideClassType}}
+  \label{type:AxisFeedrateOverrideClassType}
 
 \FloatBarrier
 
@@ -3783,7 +3961,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ BlockCountClassType}} \label{type:BlockCountClassType}
+\subsubsection{Defintion of \texttt{ BlockCountClassType}}
+  \label{type:BlockCountClassType}
 
 \FloatBarrier
 
@@ -3815,7 +3994,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ HardnessClassType}} \label{type:HardnessClassType}
+\subsubsection{Defintion of \texttt{ HardnessClassType}}
+  \label{type:HardnessClassType}
 
 \FloatBarrier
 
@@ -3845,7 +4025,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ LineNumberClassType}} \label{type:LineNumberClassType}
+\subsubsection{Defintion of \texttt{ LineNumberClassType}}
+  \label{type:LineNumberClassType}
 
 \FloatBarrier
 
@@ -3876,7 +4057,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ PartCountClassType}} \label{type:PartCountClassType}
+\subsubsection{Defintion of \texttt{ PartCountClassType}}
+  \label{type:PartCountClassType}
 
 \FloatBarrier
 
@@ -3902,7 +4084,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ RotaryVelocityOverrideClassType}} \label{type:RotaryVelocityOverrideClassType}
+\subsubsection{Defintion of \texttt{ RotaryVelocityOverrideClassType}}
+  \label{type:RotaryVelocityOverrideClassType}
 
 \FloatBarrier
 
@@ -3942,7 +4125,8 @@ The content of the standard has been copied in this section of the companion spe
 but this not the definitive text for each type. For authorative normative text, please refer 
 to the original sources \cite{MTCPart2} and \cite{MTCPart3}.
 
-\subsubsection{Defintion of \texttt{ MTStringEventClassType}} \label{type:MTStringEventClassType}
+\subsubsection{Defintion of \texttt{ MTStringEventClassType}}
+  \label{type:MTStringEventClassType}
 
 \FloatBarrier
 
@@ -3988,7 +4172,8 @@ HasSubtype & ObjectType & WorkOffsetClassType & \multicolumn{3}{|l|}{See section
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ BlockClassType}} \label{type:BlockClassType}
+\subsubsection{Defintion of \texttt{ BlockClassType}}
+  \label{type:BlockClassType}
 
 \FloatBarrier
 
@@ -4016,7 +4201,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ CoupledAxesClassType}} \label{type:CoupledAxesClassType}
+\subsubsection{Defintion of \texttt{ CoupledAxesClassType}}
+  \label{type:CoupledAxesClassType}
 
 \FloatBarrier
 
@@ -4046,7 +4232,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ LineLabelClassType}} \label{type:LineLabelClassType}
+\subsubsection{Defintion of \texttt{ LineLabelClassType}}
+  \label{type:LineLabelClassType}
 
 \FloatBarrier
 
@@ -4072,7 +4259,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MaterialClassType}} \label{type:MaterialClassType}
+\subsubsection{Defintion of \texttt{ MaterialClassType}}
+  \label{type:MaterialClassType}
 
 \FloatBarrier
 
@@ -4098,7 +4286,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ OperatorIdClassType}} \label{type:OperatorIdClassType}
+\subsubsection{Defintion of \texttt{ OperatorIdClassType}}
+  \label{type:OperatorIdClassType}
 
 \FloatBarrier
 
@@ -4126,7 +4315,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ PalletIdClassType}} \label{type:PalletIdClassType}
+\subsubsection{Defintion of \texttt{ PalletIdClassType}}
+  \label{type:PalletIdClassType}
 
 \FloatBarrier
 
@@ -4152,7 +4342,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ PartIdClassType}} \label{type:PartIdClassType}
+\subsubsection{Defintion of \texttt{ PartIdClassType}}
+  \label{type:PartIdClassType}
 
 \FloatBarrier
 
@@ -4178,7 +4369,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ PartNumberClassType}} \label{type:PartNumberClassType}
+\subsubsection{Defintion of \texttt{ PartNumberClassType}}
+  \label{type:PartNumberClassType}
 
 \FloatBarrier
 
@@ -4204,7 +4396,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ProgramClassType}} \label{type:ProgramClassType}
+\subsubsection{Defintion of \texttt{ ProgramClassType}}
+  \label{type:ProgramClassType}
 
 \FloatBarrier
 
@@ -4231,7 +4424,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ProgramEditNameClassType}} \label{type:ProgramEditNameClassType}
+\subsubsection{Defintion of \texttt{ ProgramEditNameClassType}}
+  \label{type:ProgramEditNameClassType}
 
 \FloatBarrier
 
@@ -4257,7 +4451,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ProgramHeaderClassType}} \label{type:ProgramHeaderClassType}
+\subsubsection{Defintion of \texttt{ ProgramHeaderClassType}}
+  \label{type:ProgramHeaderClassType}
 
 \FloatBarrier
 
@@ -4283,7 +4478,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ProgramCommentClassType}} \label{type:ProgramCommentClassType}
+\subsubsection{Defintion of \texttt{ ProgramCommentClassType}}
+  \label{type:ProgramCommentClassType}
 
 \FloatBarrier
 
@@ -4309,7 +4505,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ SerialNumberClassType}} \label{type:SerialNumberClassType}
+\subsubsection{Defintion of \texttt{ SerialNumberClassType}}
+  \label{type:SerialNumberClassType}
 
 \FloatBarrier
 
@@ -4335,7 +4532,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ToolAssetIdClassType}} \label{type:ToolAssetIdClassType}
+\subsubsection{Defintion of \texttt{ ToolAssetIdClassType}}
+  \label{type:ToolAssetIdClassType}
 
 \FloatBarrier
 
@@ -4361,7 +4559,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ToolNumberClassType}} \label{type:ToolNumberClassType}
+\subsubsection{Defintion of \texttt{ ToolNumberClassType}}
+  \label{type:ToolNumberClassType}
 
 \FloatBarrier
 
@@ -4387,7 +4586,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ToolOffsetClassType}} \label{type:ToolOffsetClassType}
+\subsubsection{Defintion of \texttt{ ToolOffsetClassType}}
+  \label{type:ToolOffsetClassType}
 
 \FloatBarrier
 
@@ -4420,7 +4620,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ UserClassType}} \label{type:UserClassType}
+\subsubsection{Defintion of \texttt{ UserClassType}}
+  \label{type:UserClassType}
 
 \FloatBarrier
 
@@ -4448,7 +4649,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ WireClassType}} \label{type:WireClassType}
+\subsubsection{Defintion of \texttt{ WireClassType}}
+  \label{type:WireClassType}
 
 \FloatBarrier
 
@@ -4475,7 +4677,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ WorkholdingClassType}} \label{type:WorkholdingClassType}
+\subsubsection{Defintion of \texttt{ WorkholdingClassType}}
+  \label{type:WorkholdingClassType}
 
 \FloatBarrier
 
@@ -4501,7 +4704,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ WorkOffsetClassType}} \label{type:WorkOffsetClassType}
+\subsubsection{Defintion of \texttt{ WorkOffsetClassType}}
+  \label{type:WorkOffsetClassType}
 
 \FloatBarrier
 
@@ -4533,7 +4737,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 \subsection{Data Item Sub Types} \label{model:DataItemSubTypes}
-\subsubsection{Defintion of \texttt{ MTDataItemSubClassType}} \label{type:MTDataItemSubClassType}
+\subsubsection{Defintion of \texttt{ MTDataItemSubClassType}}
+  \label{type:MTDataItemSubClassType}
 
 \FloatBarrier
 \begin{table}[ht]
@@ -4653,7 +4858,8 @@ HasSubtype & ObjectType & AllSubClassType & \multicolumn{3}{|l|}{See section \re
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ AbsoluteSubClassType}} \label{type:AbsoluteSubClassType}
+\subsubsection{Defintion of \texttt{ AbsoluteSubClassType}}
+  \label{type:AbsoluteSubClassType}
 
 \FloatBarrier
 
@@ -4679,7 +4885,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ActualSubClassType}} \label{type:ActualSubClassType}
+\subsubsection{Defintion of \texttt{ ActualSubClassType}}
+  \label{type:ActualSubClassType}
 
 \FloatBarrier
 
@@ -4705,7 +4912,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ActionSubClassType}} \label{type:ActionSubClassType}
+\subsubsection{Defintion of \texttt{ ActionSubClassType}}
+  \label{type:ActionSubClassType}
 
 \FloatBarrier
 
@@ -4731,7 +4939,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ AllSubClassType}} \label{type:AllSubClassType}
+\subsubsection{Defintion of \texttt{ AllSubClassType}}
+  \label{type:AllSubClassType}
 
 \FloatBarrier
 \begin{table}[ht]
@@ -4754,7 +4963,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ AlternatingSubClassType}} \label{type:AlternatingSubClassType}
+\subsubsection{Defintion of \texttt{ AlternatingSubClassType}}
+  \label{type:AlternatingSubClassType}
 
 \FloatBarrier
 
@@ -4780,7 +4990,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ AScaleSubClassType}} \label{type:AScaleSubClassType}
+\subsubsection{Defintion of \texttt{ AScaleSubClassType}}
+  \label{type:AScaleSubClassType}
 
 \FloatBarrier
 
@@ -4806,7 +5017,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ AuxiliarySubClassType}} \label{type:AuxiliarySubClassType}
+\subsubsection{Defintion of \texttt{ AuxiliarySubClassType}}
+  \label{type:AuxiliarySubClassType}
 
 \FloatBarrier
 
@@ -4832,7 +5044,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ BadSubClassType}} \label{type:BadSubClassType}
+\subsubsection{Defintion of \texttt{ BadSubClassType}}
+  \label{type:BadSubClassType}
 
 \FloatBarrier
 
@@ -4858,7 +5071,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ BrinellSubClassType}} \label{type:BrinellSubClassType}
+\subsubsection{Defintion of \texttt{ BrinellSubClassType}}
+  \label{type:BrinellSubClassType}
 
 \FloatBarrier
 
@@ -4884,7 +5098,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ BScaleSubClassType}} \label{type:BScaleSubClassType}
+\subsubsection{Defintion of \texttt{ BScaleSubClassType}}
+  \label{type:BScaleSubClassType}
 
 \FloatBarrier
 
@@ -4910,7 +5125,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ CommandedSubClassType}} \label{type:CommandedSubClassType}
+\subsubsection{Defintion of \texttt{ CommandedSubClassType}}
+  \label{type:CommandedSubClassType}
 
 \FloatBarrier
 
@@ -4936,7 +5152,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ GoodSubClassType}} \label{type:GoodSubClassType}
+\subsubsection{Defintion of \texttt{ GoodSubClassType}}
+  \label{type:GoodSubClassType}
 
 \FloatBarrier
 
@@ -4962,7 +5179,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ControlSubClassType}} \label{type:ControlSubClassType}
+\subsubsection{Defintion of \texttt{ ControlSubClassType}}
+  \label{type:ControlSubClassType}
 
 \FloatBarrier
 
@@ -4988,7 +5206,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ CScaleSubClassType}} \label{type:CScaleSubClassType}
+\subsubsection{Defintion of \texttt{ CScaleSubClassType}}
+  \label{type:CScaleSubClassType}
 
 \FloatBarrier
 
@@ -5014,7 +5233,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ DelaySubClassType}} \label{type:DelaySubClassType}
+\subsubsection{Defintion of \texttt{ DelaySubClassType}}
+  \label{type:DelaySubClassType}
 
 \FloatBarrier
 
@@ -5041,7 +5261,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ DirectSubClassType}} \label{type:DirectSubClassType}
+\subsubsection{Defintion of \texttt{ DirectSubClassType}}
+  \label{type:DirectSubClassType}
 
 \FloatBarrier
 
@@ -5067,7 +5288,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ DryRunSubClassType}} \label{type:DryRunSubClassType}
+\subsubsection{Defintion of \texttt{ DryRunSubClassType}}
+  \label{type:DryRunSubClassType}
 
 \FloatBarrier
 
@@ -5093,7 +5315,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ DScaleSubClassType}} \label{type:DScaleSubClassType}
+\subsubsection{Defintion of \texttt{ DScaleSubClassType}}
+  \label{type:DScaleSubClassType}
 
 \FloatBarrier
 
@@ -5119,7 +5342,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ FixtureSubClassType}} \label{type:FixtureSubClassType}
+\subsubsection{Defintion of \texttt{ FixtureSubClassType}}
+  \label{type:FixtureSubClassType}
 
 \FloatBarrier
 
@@ -5145,7 +5369,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ IncrementalSubClassType}} \label{type:IncrementalSubClassType}
+\subsubsection{Defintion of \texttt{ IncrementalSubClassType}}
+  \label{type:IncrementalSubClassType}
 
 \FloatBarrier
 
@@ -5173,7 +5398,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ JobSubClassType}} \label{type:JobSubClassType}
+\subsubsection{Defintion of \texttt{ JobSubClassType}}
+  \label{type:JobSubClassType}
 
 \FloatBarrier
 
@@ -5201,7 +5427,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ KineticSubClassType}} \label{type:KineticSubClassType}
+\subsubsection{Defintion of \texttt{ KineticSubClassType}}
+  \label{type:KineticSubClassType}
 
 \FloatBarrier
 \begin{table}[ht]
@@ -5224,7 +5451,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ LateralSubClassType}} \label{type:LateralSubClassType}
+\subsubsection{Defintion of \texttt{ LateralSubClassType}}
+  \label{type:LateralSubClassType}
 
 \FloatBarrier
 
@@ -5251,7 +5479,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ LeebSubClassType}} \label{type:LeebSubClassType}
+\subsubsection{Defintion of \texttt{ LeebSubClassType}}
+  \label{type:LeebSubClassType}
 
 \FloatBarrier
 
@@ -5277,7 +5506,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ LengthSubClassType}} \label{type:LengthSubClassType}
+\subsubsection{Defintion of \texttt{ LengthSubClassType}}
+  \label{type:LengthSubClassType}
 
 \FloatBarrier
 
@@ -5303,7 +5533,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ LinearSubClassType}} \label{type:LinearSubClassType}
+\subsubsection{Defintion of \texttt{ LinearSubClassType}}
+  \label{type:LinearSubClassType}
 
 \FloatBarrier
 
@@ -5329,7 +5560,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ LineSubClassType}} \label{type:LineSubClassType}
+\subsubsection{Defintion of \texttt{ LineSubClassType}}
+  \label{type:LineSubClassType}
 
 \FloatBarrier
 
@@ -5355,7 +5587,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ LoadedSubClassType}} \label{type:LoadedSubClassType}
+\subsubsection{Defintion of \texttt{ LoadedSubClassType}}
+  \label{type:LoadedSubClassType}
 
 \FloatBarrier
 
@@ -5381,7 +5614,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MachineAxisLockSubClassType}} \label{type:MachineAxisLockSubClassType}
+\subsubsection{Defintion of \texttt{ MachineAxisLockSubClassType}}
+  \label{type:MachineAxisLockSubClassType}
 
 \FloatBarrier
 
@@ -5407,7 +5641,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MaintenanceSubClassType}} \label{type:MaintenanceSubClassType}
+\subsubsection{Defintion of \texttt{ MaintenanceSubClassType}}
+  \label{type:MaintenanceSubClassType}
 
 \FloatBarrier
 
@@ -5433,7 +5668,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ManualUnclampSubClassType}} \label{type:ManualUnclampSubClassType}
+\subsubsection{Defintion of \texttt{ ManualUnclampSubClassType}}
+  \label{type:ManualUnclampSubClassType}
 
 \FloatBarrier
 
@@ -5459,7 +5695,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MaximumSubClassType}} \label{type:MaximumSubClassType}
+\subsubsection{Defintion of \texttt{ MaximumSubClassType}}
+  \label{type:MaximumSubClassType}
 
 \FloatBarrier
 
@@ -5485,7 +5722,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MinimumSubClassType}} \label{type:MinimumSubClassType}
+\subsubsection{Defintion of \texttt{ MinimumSubClassType}}
+  \label{type:MinimumSubClassType}
 
 \FloatBarrier
 
@@ -5511,7 +5749,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MohsSubClassType}} \label{type:MohsSubClassType}
+\subsubsection{Defintion of \texttt{ MohsSubClassType}}
+  \label{type:MohsSubClassType}
 
 \FloatBarrier
 
@@ -5537,7 +5776,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MoleSubClassType}} \label{type:MoleSubClassType}
+\subsubsection{Defintion of \texttt{ MoleSubClassType}}
+  \label{type:MoleSubClassType}
 
 \FloatBarrier
 \begin{table}[ht]
@@ -5560,7 +5800,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MotionSubClassType}} \label{type:MotionSubClassType}
+\subsubsection{Defintion of \texttt{ MotionSubClassType}}
+  \label{type:MotionSubClassType}
 
 \FloatBarrier
 
@@ -5586,7 +5827,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ NoScaleSubClassType}} \label{type:NoScaleSubClassType}
+\subsubsection{Defintion of \texttt{ NoScaleSubClassType}}
+  \label{type:NoScaleSubClassType}
 
 \FloatBarrier
 
@@ -5612,7 +5854,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ OperatingSubClassType}} \label{type:OperatingSubClassType}
+\subsubsection{Defintion of \texttt{ OperatingSubClassType}}
+  \label{type:OperatingSubClassType}
 
 \FloatBarrier
 
@@ -5640,7 +5883,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ OperatorSubClassType}} \label{type:OperatorSubClassType}
+\subsubsection{Defintion of \texttt{ OperatorSubClassType}}
+  \label{type:OperatorSubClassType}
 
 \FloatBarrier
 
@@ -5666,7 +5910,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ OptionalStopSubClassType}} \label{type:OptionalStopSubClassType}
+\subsubsection{Defintion of \texttt{ OptionalStopSubClassType}}
+  \label{type:OptionalStopSubClassType}
 
 \FloatBarrier
 
@@ -5692,7 +5937,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ OverrideSubClassType}} \label{type:OverrideSubClassType}
+\subsubsection{Defintion of \texttt{ OverrideSubClassType}}
+  \label{type:OverrideSubClassType}
 
 \FloatBarrier
 
@@ -5718,7 +5964,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ PrimarySubClassType}} \label{type:PrimarySubClassType}
+\subsubsection{Defintion of \texttt{ PrimarySubClassType}}
+  \label{type:PrimarySubClassType}
 
 \FloatBarrier
 
@@ -5744,7 +5991,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ PoweredSubClassType}} \label{type:PoweredSubClassType}
+\subsubsection{Defintion of \texttt{ PoweredSubClassType}}
+  \label{type:PoweredSubClassType}
 
 \FloatBarrier
 
@@ -5770,7 +6018,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ProbeSubClassType}} \label{type:ProbeSubClassType}
+\subsubsection{Defintion of \texttt{ ProbeSubClassType}}
+  \label{type:ProbeSubClassType}
 
 \FloatBarrier
 
@@ -5796,7 +6045,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ProcessSubClassType}} \label{type:ProcessSubClassType}
+\subsubsection{Defintion of \texttt{ ProcessSubClassType}}
+  \label{type:ProcessSubClassType}
 
 \FloatBarrier
 
@@ -5823,7 +6073,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ProgrammedSubClassType}} \label{type:ProgrammedSubClassType}
+\subsubsection{Defintion of \texttt{ ProgrammedSubClassType}}
+  \label{type:ProgrammedSubClassType}
 
 \FloatBarrier
 
@@ -5850,7 +6101,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ RadialSubClassType}} \label{type:RadialSubClassType}
+\subsubsection{Defintion of \texttt{ RadialSubClassType}}
+  \label{type:RadialSubClassType}
 
 \FloatBarrier
 
@@ -5876,7 +6128,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ RapidSubClassType}} \label{type:RapidSubClassType}
+\subsubsection{Defintion of \texttt{ RapidSubClassType}}
+  \label{type:RapidSubClassType}
 
 \FloatBarrier
 
@@ -5902,7 +6155,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ RelativeSubClassType}} \label{type:RelativeSubClassType}
+\subsubsection{Defintion of \texttt{ RelativeSubClassType}}
+  \label{type:RelativeSubClassType}
 
 \FloatBarrier
 \begin{table}[ht]
@@ -5925,7 +6179,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ RemainingSubClassType}} \label{type:RemainingSubClassType}
+\subsubsection{Defintion of \texttt{ RemainingSubClassType}}
+  \label{type:RemainingSubClassType}
 
 \FloatBarrier
 
@@ -5951,7 +6206,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ RequestSubClassType}} \label{type:RequestSubClassType}
+\subsubsection{Defintion of \texttt{ RequestSubClassType}}
+  \label{type:RequestSubClassType}
 
 \FloatBarrier
 
@@ -5977,7 +6233,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ResponseSubClassType}} \label{type:ResponseSubClassType}
+\subsubsection{Defintion of \texttt{ ResponseSubClassType}}
+  \label{type:ResponseSubClassType}
 
 \FloatBarrier
 
@@ -6003,7 +6260,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ RockwellSubClassType}} \label{type:RockwellSubClassType}
+\subsubsection{Defintion of \texttt{ RockwellSubClassType}}
+  \label{type:RockwellSubClassType}
 
 \FloatBarrier
 
@@ -6029,7 +6287,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ RotarySubClassType}} \label{type:RotarySubClassType}
+\subsubsection{Defintion of \texttt{ RotarySubClassType}}
+  \label{type:RotarySubClassType}
 
 \FloatBarrier
 
@@ -6056,7 +6315,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ SetUpSubClassType}} \label{type:SetUpSubClassType}
+\subsubsection{Defintion of \texttt{ SetUpSubClassType}}
+  \label{type:SetUpSubClassType}
 
 \FloatBarrier
 
@@ -6082,7 +6342,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ShoreSubClassType}} \label{type:ShoreSubClassType}
+\subsubsection{Defintion of \texttt{ ShoreSubClassType}}
+  \label{type:ShoreSubClassType}
 
 \FloatBarrier
 
@@ -6108,7 +6369,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ StandardSubClassType}} \label{type:StandardSubClassType}
+\subsubsection{Defintion of \texttt{ StandardSubClassType}}
+  \label{type:StandardSubClassType}
 
 \FloatBarrier
 
@@ -6134,7 +6396,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ SwitchedSubClassType}} \label{type:SwitchedSubClassType}
+\subsubsection{Defintion of \texttt{ SwitchedSubClassType}}
+  \label{type:SwitchedSubClassType}
 
 \FloatBarrier
 
@@ -6163,7 +6426,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ TargetSubClassType}} \label{type:TargetSubClassType}
+\subsubsection{Defintion of \texttt{ TargetSubClassType}}
+  \label{type:TargetSubClassType}
 
 \FloatBarrier
 
@@ -6189,7 +6453,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ToolChangeStopSubClassType}} \label{type:ToolChangeStopSubClassType}
+\subsubsection{Defintion of \texttt{ ToolChangeStopSubClassType}}
+  \label{type:ToolChangeStopSubClassType}
 
 \FloatBarrier
 
@@ -6215,7 +6480,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ToolEdgeSubClassType}} \label{type:ToolEdgeSubClassType}
+\subsubsection{Defintion of \texttt{ ToolEdgeSubClassType}}
+  \label{type:ToolEdgeSubClassType}
 
 \FloatBarrier
 \begin{table}[ht]
@@ -6238,7 +6504,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ToolGroupSubClassType}} \label{type:ToolGroupSubClassType}
+\subsubsection{Defintion of \texttt{ ToolGroupSubClassType}}
+  \label{type:ToolGroupSubClassType}
 
 \FloatBarrier
 
@@ -6264,7 +6531,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ToolSubClassType}} \label{type:ToolSubClassType}
+\subsubsection{Defintion of \texttt{ ToolSubClassType}}
+  \label{type:ToolSubClassType}
 
 \FloatBarrier
 \begin{table}[ht]
@@ -6287,7 +6555,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ UasbleSubClassType}} \label{type:UasbleSubClassType}
+\subsubsection{Defintion of \texttt{ UasbleSubClassType}}
+  \label{type:UasbleSubClassType}
 
 \FloatBarrier
 
@@ -6313,7 +6582,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ VerticalSubClassType}} \label{type:VerticalSubClassType}
+\subsubsection{Defintion of \texttt{ VerticalSubClassType}}
+  \label{type:VerticalSubClassType}
 
 \FloatBarrier
 
@@ -6339,7 +6609,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ VolumeSubClassType}} \label{type:VolumeSubClassType}
+\subsubsection{Defintion of \texttt{ VolumeSubClassType}}
+  \label{type:VolumeSubClassType}
 
 \FloatBarrier
 
@@ -6365,7 +6636,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ VickersSubClassType}} \label{type:VickersSubClassType}
+\subsubsection{Defintion of \texttt{ VickersSubClassType}}
+  \label{type:VickersSubClassType}
 
 \FloatBarrier
 
@@ -6391,7 +6663,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ WeightSubClassType}} \label{type:WeightSubClassType}
+\subsubsection{Defintion of \texttt{ WeightSubClassType}}
+  \label{type:WeightSubClassType}
 
 \FloatBarrier
 
@@ -6417,7 +6690,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ WorkingSubClassType}} \label{type:WorkingSubClassType}
+\subsubsection{Defintion of \texttt{ WorkingSubClassType}}
+  \label{type:WorkingSubClassType}
 
 \FloatBarrier
 
@@ -6443,7 +6717,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ WorkpieceSubClassType}} \label{type:WorkpieceSubClassType}
+\subsubsection{Defintion of \texttt{ WorkpieceSubClassType}}
+  \label{type:WorkpieceSubClassType}
 
 \FloatBarrier
 
@@ -6471,7 +6746,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 \subsection{MTConnect Device Profile} \label{model:MTConnectDeviceProfile}
 
-\Begin{figure}[ht]
+\begin{figure}[ht]
   \centering
     \includegraphics[width=1.0\textwidth]{./diagrams/MTConnectDeviceProfile.png}
   \caption{MTConnect Device Profile Diagram}
@@ -6492,11 +6767,13 @@ Stereotypes are used throughout the model to provide additional information that
 will halp provide context and definition to aid in better understanding the
 data model.
 
-\subsubsection{Defintion of \texttt{ <<Deprecated>>}} \label{type:Deprecated}
+\subsubsection{Defintion of \texttt{ <<Deprecated>>}}
+  \label{type:Deprecated}
 
 \FloatBarrier
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ <<Dynamic Type>>}} \label{type:Dynamic Type}
+\subsubsection{Defintion of \texttt{ <<Dynamic Type>>}}
+  \label{type:Dynamic Type}
 
 \FloatBarrier
 
@@ -6505,7 +6782,8 @@ determined at configuration time based on the MTConnect \texttt{Device}
 elements.
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ <<HasMTClassType>>}} \label{type:HasMTClassType}
+\subsubsection{Defintion of \texttt{ <<HasMTClassType>>}}
+  \label{type:HasMTClassType}
 
 \FloatBarrier
 
@@ -6533,7 +6811,8 @@ Symmetric & \multicolumn{5}{|l|}{false} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ <<HasMTComposition>>}} \label{type:HasMTComposition}
+\subsubsection{Defintion of \texttt{ <<HasMTComposition>>}}
+  \label{type:HasMTComposition}
 
 \FloatBarrier
 
@@ -6560,7 +6839,8 @@ Symmetric & \multicolumn{5}{|l|}{true} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ <<HasMTReference>>}} \label{type:HasMTReference}
+\subsubsection{Defintion of \texttt{ <<HasMTReference>>}}
+  \label{type:HasMTReference}
 
 \FloatBarrier
 
@@ -6587,7 +6867,8 @@ Symmetric & \multicolumn{5}{|l|}{true} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ <<HasMTSubClassType>>}} \label{type:HasMTSubClassType}
+\subsubsection{Defintion of \texttt{ <<HasMTSubClassType>>}}
+  \label{type:HasMTSubClassType}
 
 \FloatBarrier
 
@@ -6615,11 +6896,13 @@ Symmetric & \multicolumn{5}{|l|}{false} \\
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ <<MTConnect XML>>}} \label{type:MTConnect XML}
+\subsubsection{Defintion of \texttt{ <<MTConnect XML>>}}
+  \label{type:MTConnect XML}
 
 \FloatBarrier
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ <<Mixes In>>}} \label{type:Mixes In}
+\subsubsection{Defintion of \texttt{ <<Mixes In>>}}
+  \label{type:Mixes In}
 
 \FloatBarrier
 
@@ -6627,15 +6910,18 @@ This stereotype is associated with the dependency between a type and a mixin. Se
 description of the mixin.
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ <<Object Factory>>}} \label{type:Object Factory}
+\subsubsection{Defintion of \texttt{ <<Object Factory>>}}
+  \label{type:Object Factory}
 
 \FloatBarrier
 \FloatBarrier
-\subsubsection{Defintion of \texttt{<<Type Factory>> <<Type Factory>>}} \label{type:Type Factory}
+\subsubsection{Defintion of \texttt{<<Type Factory>> <<Type Factory>>}}
+  \label{type:Type Factory}
 
 \FloatBarrier
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ <<bind>>}} \label{type:bind}
+\subsubsection{Defintion of \texttt{ <<bind>>}}
+  \label{type:bind}
 
 \FloatBarrier
 
@@ -6647,25 +6933,29 @@ The \texttt{bind} stereotype indicates the relationship between the dynamic sub-
 parent type are resolved based on the MTConnect DataItem meta data.
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ <<constrains>>}} \label{type:constrains}
+\subsubsection{Defintion of \texttt{ <<constrains>>}}
+  \label{type:constrains}
 
 \FloatBarrier
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ <<data type>>}} \label{type:data type}
+\subsubsection{Defintion of \texttt{ <<data type>>}}
+  \label{type:data type}
 
 \FloatBarrier
 
 Represents a relationship between a Variable and the data type.
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ <<event>>}} \label{type:event}
+\subsubsection{Defintion of \texttt{ <<event>>}}
+  \label{type:event}
 
 \FloatBarrier
 
 In the object model, represents Variables that are of the MTConnect \texttt{Event} category.
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ <<mixin>>}} \label{type:mixin}
+\subsubsection{Defintion of \texttt{ <<mixin>>}}
+  \label{type:mixin}
 
 \FloatBarrier
 
@@ -6677,14 +6967,16 @@ from existing OPC/UA types, this mechanism allows for this relationship to be ex
 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ <<sample>>}} \label{type:sample}
+\subsubsection{Defintion of \texttt{ <<sample>>}}
+  \label{type:sample}
 
 \FloatBarrier
 
 In the object model, represents Variables that are of the MTConnect \texttt{Sample} category.
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ <<use>>}} \label{type:use}
+\subsubsection{Defintion of \texttt{ <<use>>}}
+  \label{type:use}
 
 \FloatBarrier
 
@@ -6694,7 +6986,8 @@ that a specific factory is being employed by another type to create dynamic
 properties or relationships.
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ <<values>>}} \label{type:values}
+\subsubsection{Defintion of \texttt{ <<values>>}}
+  \label{type:values}
 
 \FloatBarrier
 

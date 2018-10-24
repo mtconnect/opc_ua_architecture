@@ -1,7 +1,7 @@
 require 'relation'
 
 class Type
-  attr_reader :name, :id, :type, :model, :json, :parent, :children, :relations       
+  attr_reader :name, :id, :type, :model, :json, :parent, :children, :relations, :stereotype     
 
   @@types_by_id = {}
   @@types_by_name = {}

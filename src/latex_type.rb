@@ -272,7 +272,7 @@ EOT
         
         f.puts "\\paragraph{Allowable Values}"
         target.type.generate_enumerations(f)
-      else
+      elsif target.type.stereotype.nil? or target.type.stereotype.name !~ /Factory/
         f.puts "\\paragraph{Dependency on #{target.type.name}}\n\n"
         rel = dep.stereotype && dep.stereotype.name
         puts "Cannot find stereo for #{@name}::#{dep.name} to #{target.type.name}" unless rel

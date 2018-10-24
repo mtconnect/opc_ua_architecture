@@ -6,7 +6,7 @@ module Diagram
   end
 
   def tex_diagram_name
-    "./diagrams/#{short_name}.png"
+    "./diagrams/#{short_name}.tex"
   end
 
   def png_diagram_file_name
@@ -17,19 +17,19 @@ module Diagram
     "./latex/#{tex_diagram_name}"
   end
 
-  def tex_diagram_exists?
-    File.exists?(png_diagram_file_name)
-  end
-
   def png_diagram_exists?
       File.exists?(png_diagram_file_name)      
+  end
+
+  def tex_diagram_exists?
+    File.exists?(tex_diagram_file_name)
   end
   
   def generate_diagram(f)
     if tex_diagram_exists?
       puts "** Generating png diagrams #{tex_diagram_file_name}"
 
-      f.puts "\n#{tex_diagram_name}\n\n"
+      f.puts "\n\\input #{tex_diagram_name}\n\n"
     elsif png_diagram_exists?
       puts "** Generating png diagrams #{png_diagram_file_name}"
       

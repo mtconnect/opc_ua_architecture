@@ -21,7 +21,7 @@
     mult2=1..*,stereo=<<Organizes>>]{MTComponentType}{MTComponentType};
 \umlinherit[geometry=--]{MTDeviceType}{MTComponentType};
 
-\umlclass[below left=1cm and 2cm of MTComponentType.south]{DescriptionType}{
+\umlclass[below left=1cm and 2cm of MTComponentType.south]{MTDescriptionType}{
 + Station: String[0..1] \\
 + SerialNumber: String[0..1] \\
 + Manufacturer: String[0..1] \\
@@ -32,7 +32,7 @@
               arg1=Description,pos1=0.5,pos2=1.8,%
               pos stereo=1.4,anchor2=140,%
               mult1=0..1,%
-              mult2=1]{MTComponentType}{DescriptionType}
+              mult2=1]{MTComponentType}{MTDescriptionType}
 
 \umlsimpleclass[below=1cm of MTDeviceType.south]{<Component>Type}
 \umlinherit[geometry=-|-,arm2=4.5cm]{<Component>Type}{MTComponentType}
@@ -44,14 +44,14 @@
               mult1=0..1,%
               mult2=1]{MTComponentType}{MTConfigurationType}
               
-\umlclass[below=1cm of MTConfigurationType.south]{SensorConfigurationType}{
+\umlclass[below=1cm of MTConfigurationType.south]{MTSensorConfigurationType}{
 + FirwareVersion: String[0..1] \\
 + CalibrationDate: UtcTime[0..1] \\
 + NextCalibrationDate: UtcTime[0..1] \\
 + CalibrationInitials: String[0..1] \\
 }{}
 
-\umlinherit[geometry=-|]{SensorConfigurationType}{MTConfigurationType}
+\umlinherit[geometry=-|]{MTSensorConfigurationType}{MTConfigurationType}
 
 \end{tikzpicture}
 }

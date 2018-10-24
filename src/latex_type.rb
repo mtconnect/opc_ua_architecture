@@ -1,27 +1,43 @@
 require 'type'
 
 module Diagram
-  def diagram_name
+  def png_diagram_name
     "./diagrams/#{short_name}.png"
   end
 
-  def diagram_file_name
-    "./latex/#{diagram_name}"
+  def tex_diagram_name
+    "./diagrams/#{short_name}.png"
   end
 
-  def diagram_exists?
-    File.exists?(diagram_file_name)
+  def png_diagram_file_name
+    "./latex/#{png_diagram_name}"
+  end
+
+  def tex_diagram_file_name
+    "./latex/#{tex_diagram_name}"
+  end
+
+  def tex_diagram_exists?
+    File.exists?(png_diagram_file_name)
+  end
+
+  def png_diagram_exists?
+      File.exists?(png_diagram_file_name)      
   end
   
   def generate_diagram(f)
-    if diagram_exists?
-      puts "** Generating diagrams #{diagram_file_name}"
+    if tex_diagram_exists?
+      puts "** Generating png diagrams #{tex_diagram_file_name}"
+
+      f.puts "\n#{tex_diagram_name}\n\n"
+    elsif png_diagram_exists?
+      puts "** Generating png diagrams #{png_diagram_file_name}"
       
       f.puts <<EOT
 
-\\begin{figure}[ht]
+\\Begin{figure}[ht]
   \\centering
-    \\includegraphics[width=1.0\\textwidth]{#{diagram_name}}
+    \\includegraphics[width=1.0\\textwidth]{#{png_diagram_name}}
   \\caption{#{@name} Diagram}
   \\label{fig:#{short_name}}
 \\end{figure}

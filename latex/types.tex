@@ -1,14 +1,7 @@
-% Generated 2018-10-23 16:39:11 -0700
+% Generated 2018-10-23 22:10:08 -0700
 \subsection{Components} \label{model:Components}
 
-\begin{figure}[ht]
-  \centering
-    \includegraphics[width=1.0\textwidth]{./diagrams/Components.png}
-  \caption{Components Diagram}
-  \label{fig:Components}
-\end{figure}
-
-\FloatBarrier
+./diagrams/Components.png
 
 
 The \texttt{Components} documents the Component models and the owned objects.
@@ -53,14 +46,7 @@ HasProperty & Variable & CalibrationInitials & String & PropertyType & Optional 
 
 \FloatBarrier
 
-\begin{figure}[ht]
-  \centering
-    \includegraphics[width=1.0\textwidth]{./diagrams/MTComponentType.png}
-  \caption{MTComponentType Diagram}
-  \label{fig:MTComponentType}
-\end{figure}
-
-\FloatBarrier
+./diagrams/MTComponentType.png
 
 
 The base Component Type from which all MTConnect Components are derived. The 
@@ -406,14 +392,7 @@ concat(self.parent.NodeId, BrowseName)
 \FloatBarrier
 \subsection{Data Items} \label{model:DataItems}
 
-\begin{figure}[ht]
-  \centering
-    \includegraphics[width=1.0\textwidth]{./diagrams/DataItems.png}
-  \caption{Data Items Diagram}
-  \label{fig:DataItems}
-\end{figure}
-
-\FloatBarrier
+./diagrams/DataItems.png
 
 
 An MTConnect \texttt{DataItem} describes a piece of information that can be collected from a component. The \texttt{DataItemObjectFactory} is used by the parent component to create specific DataItem Types. (See section \ref{type:DataItemObjectFactory}).
@@ -996,14 +975,7 @@ HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Option
 \FloatBarrier
 \subsection{Conditions} \label{model:Conditions}
 
-\begin{figure}[ht]
-  \centering
-    \includegraphics[width=1.0\textwidth]{./diagrams/Conditions.png}
-  \caption{Conditions Diagram}
-  \label{fig:Conditions}
-\end{figure}
-
-\FloatBarrier
+./diagrams/Conditions.png
 
 
 The parallel modeling of conditions and alarms in MTConnect and OPC UA represent some
@@ -2360,16 +2332,6 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTEventClassType} (See Data Items Documentation)} \\
-HasSubtype & ObjectType & ActuatorStateClassType & \multicolumn{3}{|l|}{See section \ref{type:ActuatorStateClassType}} \\
-HasSubtype & ObjectType & AvailabilityClassType & \multicolumn{3}{|l|}{See section \ref{type:AvailabilityClassType}} \\
-HasSubtype & ObjectType & AxisCouplingClassType & \multicolumn{3}{|l|}{See section \ref{type:AxisCouplingClassType}} \\
-HasSubtype & ObjectType & AxisInterlockClassType & \multicolumn{3}{|l|}{See section \ref{type:AxisInterlockClassType}} \\
-HasSubtype & ObjectType & AxisStateClassType & \multicolumn{3}{|l|}{See section \ref{type:AxisStateClassType}} \\
-HasSubtype & ObjectType & ChuckInterlockClassType & \multicolumn{3}{|l|}{See section \ref{type:ChuckInterlockClassType}} \\
-HasSubtype & ObjectType & ChuckStateClassType & \multicolumn{3}{|l|}{See section \ref{type:ChuckStateClassType}} \\
-HasSubtype & ObjectType & ControllerModeClassType & \multicolumn{3}{|l|}{See section \ref{type:ControllerModeClassType}} \\
-HasSubtype & ObjectType & ExecutionClassType & \multicolumn{3}{|l|}{See section \ref{type:ExecutionClassType}} \\
-HasSubtype & ObjectType & CompositionStateClassType & \multicolumn{3}{|l|}{See section \ref{type:CompositionStateClassType}} \\
 HasSubtype & ObjectType & ControllerModeOverrideClassType & \multicolumn{3}{|l|}{See section \ref{type:ControllerModeOverrideClassType}} \\
 HasSubtype & ObjectType & DirectionClassType & \multicolumn{3}{|l|}{See section \ref{type:DirectionClassType}} \\
 HasSubtype & ObjectType & DoorStateClassType & \multicolumn{3}{|l|}{See section \ref{type:DoorStateClassType}} \\
@@ -2382,6 +2344,35 @@ HasSubtype & ObjectType & PathModeClassType & \multicolumn{3}{|l|}{See section \
 HasSubtype & ObjectType & PowerStateClassType & \multicolumn{3}{|l|}{See section \ref{type:PowerStateClassType}} \\
 HasSubtype & ObjectType & ProgramEditClassType & \multicolumn{3}{|l|}{See section \ref{type:ProgramEditClassType}} \\
 HasSubtype & ObjectType & RotaryModeClassType & \multicolumn{3}{|l|}{See section \ref{type:RotaryModeClassType}} \\
+HasSubtype & ObjectType & InterfaceStateClassType & \multicolumn{3}{|l|}{See section \ref{type:InterfaceStateClassType}} \\
+HasSubtype & ObjectType & MaterialFeedClassType & \multicolumn{3}{|l|}{See section \ref{type:MaterialFeedClassType}} \\
+HasSubtype & ObjectType & MaterialChangeClassType & \multicolumn{3}{|l|}{See section \ref{type:MaterialChangeClassType}} \\
+HasSubtype & ObjectType & MaterialRetractClassType & \multicolumn{3}{|l|}{See section \ref{type:MaterialRetractClassType}} \\
+HasSubtype & ObjectType & MaterialLoadClassType & \multicolumn{3}{|l|}{See section \ref{type:MaterialLoadClassType}} \\
+HasSubtype & ObjectType & MaterialUnloadClassType & \multicolumn{3}{|l|}{See section \ref{type:MaterialUnloadClassType}} \\
+HasSubtype & ObjectType & OpenDoorClassType & \multicolumn{3}{|l|}{See section \ref{type:OpenDoorClassType}} \\
+HasSubtype & ObjectType & CloseDoorClassType & \multicolumn{3}{|l|}{See section \ref{type:CloseDoorClassType}} \\
+HasSubtype & ObjectType & OpenChuckClassType & \multicolumn{3}{|l|}{See section \ref{type:OpenChuckClassType}} \\
+HasSubtype & ObjectType & CloseChuckClassType & \multicolumn{3}{|l|}{See section \ref{type:CloseChuckClassType}} \\
+\multicolumn{6}{|l|}{Continued...} \\
+\end{tabu}
+\end{table}
+\begin{table}[ht]
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+HasSubtype & ObjectType & ActuatorStateClassType & \multicolumn{3}{|l|}{See section \ref{type:ActuatorStateClassType}} \\
+HasSubtype & ObjectType & AvailabilityClassType & \multicolumn{3}{|l|}{See section \ref{type:AvailabilityClassType}} \\
+HasSubtype & ObjectType & AxisCouplingClassType & \multicolumn{3}{|l|}{See section \ref{type:AxisCouplingClassType}} \\
+HasSubtype & ObjectType & AxisInterlockClassType & \multicolumn{3}{|l|}{See section \ref{type:AxisInterlockClassType}} \\
+HasSubtype & ObjectType & AxisStateClassType & \multicolumn{3}{|l|}{See section \ref{type:AxisStateClassType}} \\
+HasSubtype & ObjectType & ChuckInterlockClassType & \multicolumn{3}{|l|}{See section \ref{type:ChuckInterlockClassType}} \\
+HasSubtype & ObjectType & ChuckStateClassType & \multicolumn{3}{|l|}{See section \ref{type:ChuckStateClassType}} \\
+HasSubtype & ObjectType & ControllerModeClassType & \multicolumn{3}{|l|}{See section \ref{type:ControllerModeClassType}} \\
+HasSubtype & ObjectType & ExecutionClassType & \multicolumn{3}{|l|}{See section \ref{type:ExecutionClassType}} \\
+HasSubtype & ObjectType & CompositionStateClassType & \multicolumn{3}{|l|}{See section \ref{type:CompositionStateClassType}} \\
 \end{tabu}
 \end{table} 
 
@@ -3300,6 +3291,393 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{CONTOUR} & \texttt{0} \\
 \texttt{INDEX} & \texttt{1} \\
 \texttt{SPINDLE} & \texttt{2} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ InterfaceStateClassType}} \label{type:InterfaceStateClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{InterfaceStateClassType} Definition}
+  \label{table:InterfaceStateClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{InterfaceStateClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{InterfaceStatusDataType} Enumeration}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{DISABLED} & \texttt{0} \\
+\texttt{ENABLED} & \texttt{1} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MaterialFeedClassType}} \label{type:MaterialFeedClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MaterialFeedClassType} Definition}
+  \label{table:MaterialFeedClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MaterialFeedClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{InterfaceStateDataType} Enumeration}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{ACTIVE} & \texttt{0} \\
+\texttt{COMPLETE} & \texttt{1} \\
+\texttt{FAIL} & \texttt{2} \\
+\texttt{NOT_READY} & \texttt{4} \\
+\texttt{READY} & \texttt{5} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MaterialChangeClassType}} \label{type:MaterialChangeClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MaterialChangeClassType} Definition}
+  \label{table:MaterialChangeClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MaterialChangeClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{InterfaceStateDataType} Enumeration}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{ACTIVE} & \texttt{0} \\
+\texttt{COMPLETE} & \texttt{1} \\
+\texttt{FAIL} & \texttt{2} \\
+\texttt{NOT_READY} & \texttt{4} \\
+\texttt{READY} & \texttt{5} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MaterialRetractClassType}} \label{type:MaterialRetractClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MaterialRetractClassType} Definition}
+  \label{table:MaterialRetractClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MaterialRetractClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{InterfaceStateDataType} Enumeration}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{ACTIVE} & \texttt{0} \\
+\texttt{COMPLETE} & \texttt{1} \\
+\texttt{FAIL} & \texttt{2} \\
+\texttt{NOT_READY} & \texttt{4} \\
+\texttt{READY} & \texttt{5} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MaterialLoadClassType}} \label{type:MaterialLoadClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MaterialLoadClassType} Definition}
+  \label{table:MaterialLoadClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MaterialLoadClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{InterfaceStateDataType} Enumeration}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{ACTIVE} & \texttt{0} \\
+\texttt{COMPLETE} & \texttt{1} \\
+\texttt{FAIL} & \texttt{2} \\
+\texttt{NOT_READY} & \texttt{4} \\
+\texttt{READY} & \texttt{5} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MaterialUnloadClassType}} \label{type:MaterialUnloadClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MaterialUnloadClassType} Definition}
+  \label{table:MaterialUnloadClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MaterialUnloadClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{InterfaceStateDataType} Enumeration}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{ACTIVE} & \texttt{0} \\
+\texttt{COMPLETE} & \texttt{1} \\
+\texttt{FAIL} & \texttt{2} \\
+\texttt{NOT_READY} & \texttt{4} \\
+\texttt{READY} & \texttt{5} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ OpenDoorClassType}} \label{type:OpenDoorClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{OpenDoorClassType} Definition}
+  \label{table:OpenDoorClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{OpenDoorClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{InterfaceStateDataType} Enumeration}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{ACTIVE} & \texttt{0} \\
+\texttt{COMPLETE} & \texttt{1} \\
+\texttt{FAIL} & \texttt{2} \\
+\texttt{NOT_READY} & \texttt{4} \\
+\texttt{READY} & \texttt{5} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ CloseDoorClassType}} \label{type:CloseDoorClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{CloseDoorClassType} Definition}
+  \label{table:CloseDoorClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{CloseDoorClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{InterfaceStateDataType} Enumeration}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{ACTIVE} & \texttt{0} \\
+\texttt{COMPLETE} & \texttt{1} \\
+\texttt{FAIL} & \texttt{2} \\
+\texttt{NOT_READY} & \texttt{4} \\
+\texttt{READY} & \texttt{5} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ OpenChuckClassType}} \label{type:OpenChuckClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{OpenChuckClassType} Definition}
+  \label{table:OpenChuckClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{OpenChuckClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{InterfaceStateDataType} Enumeration}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{ACTIVE} & \texttt{0} \\
+\texttt{COMPLETE} & \texttt{1} \\
+\texttt{FAIL} & \texttt{2} \\
+\texttt{NOT_READY} & \texttt{4} \\
+\texttt{READY} & \texttt{5} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ CloseChuckClassType}} \label{type:CloseChuckClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{CloseChuckClassType} Definition}
+  \label{table:CloseChuckClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{CloseChuckClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Allowable Values}
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{InterfaceStateDataType} Enumeration}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{ACTIVE} & \texttt{0} \\
+\texttt{COMPLETE} & \texttt{1} \\
+\texttt{FAIL} & \texttt{2} \\
+\texttt{NOT_READY} & \texttt{4} \\
+\texttt{READY} & \texttt{5} \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -6065,14 +6443,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 \subsection{MTConnect Device Profile} \label{model:MTConnectDeviceProfile}
 
-\begin{figure}[ht]
-  \centering
-    \includegraphics[width=1.0\textwidth]{./diagrams/MTConnectDeviceProfile.png}
-  \caption{MTConnect Device Profile Diagram}
-  \label{fig:MTConnectDeviceProfile}
-\end{figure}
-
-\FloatBarrier
+./diagrams/MTConnectDeviceProfile.png
 
 
 The device profile documents the common data types and stereotypes that are 

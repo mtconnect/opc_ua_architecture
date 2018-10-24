@@ -12,7 +12,6 @@
            },
 }
 
-
 \node[object] (device) { %
 \begin{tabular}{l l}
   \multicolumn{2}{c}{\underline{\textbf{Mazak01: MTDeviceType}}} \\[4pt]
@@ -32,7 +31,7 @@
 
 \node[object,below left=2cm and -1cm of device] (description) { %
 \begin{tabular}{l l}
-  \multicolumn{2}{c}{\underline{\textbf{Description: DescriptionType}}} \\[4pt]
+  \multicolumn{2}{c}{\underline{\textbf{Description: MTDescriptionType}}} \\[4pt]
   \hline
   NodeId & "mtc_adapter002/Description" \\
   Manufacturer & "Mazak" \\
@@ -42,12 +41,11 @@
  \end{tabular}
 };
 
-
 \node[object,below right=2cm and 0cm of device] (avail) { %
 \begin{tabular}{l l}
   \multicolumn{2}{c}{\underline{\textbf{Availability: MTControlledVocabEventType}}} \\[4pt]
   \hline
-  NodeId & ".../avail" \\
+  NodeId & ".../Mazak01-dtop_1" \\
   Category & "EVENT" \\
   Name & "avail" \\
   MTTypeName & "AVAILABILITY" \\  
@@ -56,7 +54,7 @@
 
 \node[object,below=1cm of avail] (asset-chg) { %
 \begin{tabular}{l l}
-  \multicolumn{2}{c}{\underline{\textbf{AssetChanged: AssetEventType}}} \\[4pt]
+  \multicolumn{2}{c}{\underline{\textbf{AssetChanged: MTAssetEventType}}} \\[4pt]
   \hline
   NodeId & ".../Mazak01_asset_chg" \\
   Category & "EVENT" \\
@@ -66,7 +64,7 @@
 
 \node[object,below=1cm of asset-chg] (asset-rem) { %
 \begin{tabular}{l l}
-  \multicolumn{2}{c}{\underline{\textbf{AssetRemoved: AssetEventType}}} \\[4pt]
+  \multicolumn{2}{c}{\underline{\textbf{AssetRemoved: MTAssetEventType}}} \\[4pt]
   \hline
   NodeId & ".../Mazak01_asset_rem" \\
   Category & "EVENT" \\

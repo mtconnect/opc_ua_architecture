@@ -1,0 +1,96 @@
+\begin{figure}[ht]
+\centering\scalebox{0.8}{
+\begin{tikzpicture}[node distance=1.5cm, font=\small]
+\tikzset{
+   object/.style={
+           rectangle,
+           rounded corners,
+           draw=black, very thick,
+           minimum height=2em,
+           inner sep=2pt,
+           text centered           
+           },
+}
+
+
+\node[object] (device) { %
+\begin{tabular}{l l}
+  \multicolumn{2}{c}{\underline{\textbf{Mazak01: MTDeviceType}}} \\[4pt]
+  \hline
+  NodeId & "mtc_adapter002" \\
+  XmlId & "Mazak01" \\
+  Name & "Mazak01" \\
+  Uuid & "mtc_adapter002" \\ 
+ \end{tabular}
+};
+
+\node[object,right=3cm of device] (server) { %
+\begin{tabular}{l l}
+  \multicolumn{2}{c}{\underline{\textbf{Server: ServerType (OPC)}}} \\[4pt]
+ \end{tabular}
+};
+
+\node[object,below left=2cm and -1cm of device] (description) { %
+\begin{tabular}{l l}
+  \multicolumn{2}{c}{\underline{\textbf{Description: DescriptionType}}} \\[4pt]
+  \hline
+  NodeId & "mtc_adapter002/Description" \\
+  Manufacturer & "Mazak" \\
+  Model & "Integrex" \\
+  SerialNumber & "M7303290458" \\ 
+  Data & "Mazak Integrex 100-IV" \\
+ \end{tabular}
+};
+
+
+\node[object,below right=2cm and 0cm of device] (avail) { %
+\begin{tabular}{l l}
+  \multicolumn{2}{c}{\underline{\textbf{Availability: MTControlledVocabEventType}}} \\[4pt]
+  \hline
+  NodeId & ".../avail" \\
+  Category & "EVENT" \\
+  Name & "avail" \\
+  MTTypeName & "AVAILABILITY" \\  
+\end{tabular}
+};
+
+\node[object,below=1cm of avail] (asset-chg) { %
+\begin{tabular}{l l}
+  \multicolumn{2}{c}{\underline{\textbf{AssetChanged: AssetEventType}}} \\[4pt]
+  \hline
+  NodeId & ".../Mazak01_asset_chg" \\
+  Category & "EVENT" \\
+  MTTypeName & "ASSET_CHANGED" \\  
+\end{tabular}
+};
+
+\node[object,below=1cm of asset-chg] (asset-rem) { %
+\begin{tabular}{l l}
+  \multicolumn{2}{c}{\underline{\textbf{AssetRemoved: AssetEventType}}} \\[4pt]
+  \hline
+  NodeId & ".../Mazak01_asset_rem" \\
+  Category & "EVENT" \\
+  MTTypeName & "ASSET_REMOVED" \\  
+\end{tabular}
+};
+
+\draw[->,thick] (device) -| (description)
+  node[pos=0.5,above]{<<HasComponent>>};
+
+\draw[->,thick] (server) -- (device) 
+  node[pos=0.5,below]{<<HasNotifier>>};
+
+\draw[->,thick] (device) |- (avail) 
+  node[pos=0.75,below]{<<HasComponent>>};
+
+\draw[->,thick] (device) |- (asset-chg) 
+  node[pos=0.75,below]{<<HasComponent>>};
+
+\draw[->,thick] (device) |- (asset-rem) 
+  node[pos=0.75,below]{<<HasComponent>>};
+
+\end{tikzpicture}
+}
+\caption{MTConnect Device Object with Data Items}
+ \label{fig:mtdevice-data-item}
+\end{figure}

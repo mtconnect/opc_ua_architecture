@@ -1,24 +1,22 @@
 \section{Mapping the MTConnect Information Model to OPC UA} 
-  \label{mtconnec-mapping}
+  \label{mtconnect-mapping}
 \DefineShortVerb{\@}
 
-The rendering of the MTConnect information model from its original representation in XML to OPC UA requires some changes to leverage the OPC UA abstractions. OPC UA defines abstractions for the representation of data collected from devices and for alarms and conditions. The abstractions do not provide the semantic meaning; they provide a structure to convey the meta-data and the values as they change. 
+This section details translating the MTConnect model into a UML representation to render the MTConnect information model in OPC UA. More detailed information is provided in Section \ref{mtconnect_devices} for each data type.
 
-MTConnect has similar facilities but uses a different structural model where the meta-data and the streaming values are in separate documents to normalise the data flow in a similar way that many publish-subscribe protocols separate the structure from the data.
+OPC UA defines abstractions representing data collected from devices and for alarms and conditions. The abstractions do not provide the semantic meaning; they provide a structure to convey the meta-data and the values as they change. 
 
-When translating from MTConnect to OPC UA, the MTConnect abstractions of @DataItem@s have converted using the OPC UA  @DataVariable@ abstractions are given in \cite{UAPart9}, and multiple sub-types are utilised to provide the correct mapping. The relationships are de-conflated to multiple types where the category and the type determine the best mapping. Conditions are in a category of their own and also require additional consideration regarding the notification hierarchy. 
+MTConnect has similar facilities but uses different structural model where the meta-data and the streaming values are in separate documents to normalise the data flow in a similar way that many publish-subscribe protocols separate the structure from the data.
 
-The following parts of this section detail the process of translating the MTConnect model into the appropriate UML representation. More detailed information is provided in Section \ref{mtconnect_devices} for each data type.
+When translating from MTConnect to OPC UA, the MTConnect abstractions of @DataItem@s are converted using the OPC UA  @DataVariable@ abstractions as given in \cite{UAPart8}.  The relationships are mapped to multiple @DataVariable@ types where the category and the type determine the correct mapping. Conditions mapped to the OPC UA @ConditionType@ and require additional consideration regarding the notification hierarchy. 
 
 \subsection{MTConnect UML Representation of OPC}
 
-The OPC UA representation as a standard UML representation of the same information model. The following section provides a guide to converting from the OPC representation given in section \ref{intro-to-opc-ua} to the UML presented in the following section. 
-
-In OPC UA, the MTConnect @Component@ abstraction would be given by Figure \ref{fig:mtcomponent-ua} (this is an incomplete model for illustration purposes).
+The following section provides a guide to converting from the OPC UA diagram representation given in section \ref{intro-to-opc-ua} to the UML presented in the remaining of this section. Figure \ref{fig:mtcomponent-ua} is a partial illustration of the MTConnect @Component@ abstraction in OPC UA.
 
 \input{diagrams/mtconnect-mapping/mtcomponent-ua.tex}
 
-The diagram Figure \ref{fig:mtcomponent-uml} represents the same model in UML as the preceding model. The companion specification uses the following conventions:
+Figure \ref{fig:mtcomponent-uml} represents the same model in UML. The companion specification uses the following conventions:
 
 \begin{itemize}
 \item OPC UA Types are represented as UML Classes
@@ -33,7 +31,21 @@ The UML Associations are used to represent OPC UA references. UA Properties repr
 
 When traversing an association between two object types, the name of the source of the association is the browse name associated with the object, and the destination is the type of object that is instantiated. If the name is not given, it represents a dynamic relationship where the browse name is determined during the creation of the object model. An example is the association of the MTConnect @DataItem@s.
 
-OPC UA represents both class and instance diagrams using the same set of primitives. UML provided class and object models using two separate models, one for classification and the other for instances of those classes. This section separates the object instantiation from the classification and uses UML Object diagrams to represent example instances of classes.
+A reference that has a stereotype of \textit{<<Organizes>>}, shown by the @Components@ recursive relationship in the @MTComponentType@, implies an intermediate object of type @FolderType@ with the browse name of the relationship point on the source side. The far side is not constrained within the @FolderType@ but given in the documentation as the expected contents of the folder.
+
+OPC UA represents both class and instance diagrams using the same set of primitives. UML provides separate class and object models using two separate sets of primitives, one for classification and the other for instances of those classes. This section separates the object instantiation from the classification and uses UML Object diagrams to represent example instances of classes.
+
+\FloatBarrier
+
+\subsubsection{MTConnect UML Object Model}
+
+The object models will use a UML representation that represents the members as UML Slots. There is no distinguisign of an attribute and a property, it is assume that the reader will consult the type model for the proper associations. The following convention is used:
+
+\input{diagrams/mtconnect-mapping/example-object.tex}
+
+Figure \ref{fig:example-object} represents an MTConnect @Device@ with the values filled in. The UA @BrowseName@ is given as the object name above and the UA Type is given after the @:@ in the header. Each of the UA @Attributes@ and @Properties@ are provided below. Relationships are shown as edges that have the Reference Type, such as @HasComponent@ provided. The properties contains within will be created using the @HasProperty@ reference, but composed as internal members for brevity.
+
+For example, the object with @MTDeviceType@ has @BrowseName@.
 
 \FloatBarrier
 
@@ -57,6 +69,8 @@ The @Configuration@ is a collection of information about the component that prov
 
 The specification uses examples to illustrate the process of conversion from XML to OPC UA; the following sections cover the main points and concerns when converting an MTConnect Device model to a Nodeset. Following the metamodel discussion will be a section on the handling of streaming data and mapping to the correct data items. 
 
+When the MTConnect nodeset and model is used in OPC UA, it uses the following namespace: @http://opcfoundation.org/UA/MTConnect/v2@. This must be refenced for each of the @ObjectType@s that are referenced in the following section.
+
 \subsection{Mapping The Model}
 
 \lstset{language=XML,numbers=left,xleftmargin=2em}
@@ -79,20 +93,29 @@ The MTConnect \textit{Agent} is capable of supporting multiple @Device@s; a Devi
 
 The @Description@ element describes some characteristics of the device, namely the manufacturer, serial-number and model. These are all optional as is the descriptive text that is contained in the @Description@ element.
 
-The @Device@ is mapped to an @MTDevice@ object in the MTConnect namespace as shown in Figure \ref{fig:
+The @Device@ is mapped to an @MTDevice@ object in the MTConnect namespace as shown in Figure \ref{fig:mazak-01-device-model}.
 
 \input{diagrams/mtconnect-mapping/device-model.tex}
 
 Every device must have a @HasNotifier@ relationship with the server to enable conditions and event notification. The @HasNotifier@ relationships are flowed down through the component hierarchary where the leaf @Component@ has a @HasEventSource@ relationship with its parent component. Each condition will need to have a @HasCondition@ relationship with its parent component as well. 
 
 \begin{lstlisting}[firstnumber=last,%
-    caption={Device Model},label={lst:device-model}]
+    caption={Device Data Items},label={lst:device-data-items}]
       <DataItems>
         <DataItem category="EVENT" id="Mazak01-dtop_1" name="avail" type="AVAILABILITY"/>
         <DataItem category="EVENT" id="Mazak01_asset_chg" type="ASSET_CHANGED"/>
         <DataItem category="EVENT" id="Mazak01_asset_rem" type="ASSET_REMOVED"/>
       </DataItems>
 \end{lstlisting}
+
+The device data items given in Listing \ref{lst:device-data-items} is the required three data items for the standard as of version 1.2. The @AVAILABILITY@ data item indicates if data is available from the device and the @ASSET_CHANGED@ and @ASSET_REMOVED@ data items represent the last asset inserted or updated and removed respectively. The Component adds Data items with a @HasComponent@ relationship, and the BrowseName is constructed using the @type@, @subType@, and related @Composition@ from @compositionId@ if given. A complete example is given later in this section.
+
+\input{diagrams/mtconnect-mapping/mtdevice-data-item.tex}
+
+Figure \ref{fig:mtdevice-data-item} demonstrates the relationship of the DataItems with the parent @MTComponentType@ using a @HasComponent@ relationship. The browse name is constructed to uniquely identify the DataItem and also indicate its semantic meaning within the context of the MTConnect @MTComponentType@, in this case, an @MTDeviceType@ since the @MTDeviceType@ is a sub-type of the @MTComponentType@. These relationships are created dynamically during the instantiation of the model and are not part of the underlying MTConnect Nodeset.
+
+Every MTConnect @DataItem@ has two references that associate them with the class that provides the connection to the semantic meaning of the data item in the address space. This model is very similar to the @ConditionClassId@ relationship for the OPC UA @ConditionType@. These @ClassType@s are inherited from the same tree so they can be used in the MTConnect representation of the MTConnect @CONDITION@ category @DataItem@s.
+
 
 
 \begin{lstlisting}[firstnumber=last,%

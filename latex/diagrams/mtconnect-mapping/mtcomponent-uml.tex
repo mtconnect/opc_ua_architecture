@@ -16,7 +16,10 @@
 <<Deprecated>> + Iso841Class: String[0..1] \\
 }{}
 
-\umlinherit[geometry=--]{MTDeviceType}{MTComponentType}
+\umluniassoc[recursive=90|20|4cm,pos1=0.05,pos2=0.9,%
+    mult1=0..1,arg1=Components,%
+    mult2=1..*,stereo=<<Organizes>>]{MTComponentType}{MTComponentType};
+\umlinherit[geometry=--]{MTDeviceType}{MTComponentType};
 
 \umlclass[below left=1cm and 2cm of MTComponentType.south]{DescriptionType}{
 + Station: String[0..1] \\

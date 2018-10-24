@@ -1,0 +1,55 @@
+\begin{figure}[ht]
+\centering\scalebox{0.8}{
+\begin{tikzpicture}[node distance=1.5cm, font=\small]
+\tikzset{
+   object/.style={
+           rectangle,
+           rounded corners,
+           draw=black, very thick,
+           minimum height=2em,
+           inner sep=2pt,
+           text centered           
+           },
+   class/.style={
+           rectangle,
+           draw=black, very thick,
+           minimum height=2em,
+           inner sep=2pt,
+           text centered           
+           },
+}
+
+\node[object,below right=2cm and 0cm of device] (avail) { %
+\begin{tabular}{l l}
+  \multicolumn{2}{c}{\underline{\textbf{Availability: MTControlledVocabEventType}}} \\[4pt]
+  \hline
+  NodeId & ".../Mazak01-dtop_1" \\
+  Category & "EVENT" \\
+  Name & "avail" \\
+  MTTypeName & "AVAILABILITY" \\  
+\end{tabular}
+};
+
+\node[class,right=3.5cm of avail] (class) { 
+   \textbf{AvailabilityClassType}
+};
+
+\node[class,below=2cm of class] (data) {
+   \textbf{AvailabilityDataType}
+};
+
+\draw[->,thick] (avail) -- (class) 
+  node[pos=0.5,below]{<<HasMTClassType>>};
+
+\draw[->,thick] (avail) |- (data) 
+  node[pos=0.1,left]{EnumValues};
+
+\draw[->,thick, dotted] (class) -- (data) 
+  node[pos=0.4,below]{<<values>>};
+
+
+\end{tikzpicture}
+}
+\caption{MTConnect Data Item References}
+ \label{fig:data-item-references}
+\end{figure}

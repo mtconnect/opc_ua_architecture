@@ -30,7 +30,7 @@ File.open('./latex/types.tex', 'w') do |f|
   Model.generate_latex(f, 'Numeric Event Data Item Types')
   Model.generate_latex(f, 'String Event Data Item Types')
   Model.generate_latex(f, 'Data Item Sub Types')
-  Model.generate_latex(f, 'Factories')
+#  Model.generate_latex(f, 'Factories')
   Model.generate_latex(f, 'MTConnect Device Profile')
   
 end

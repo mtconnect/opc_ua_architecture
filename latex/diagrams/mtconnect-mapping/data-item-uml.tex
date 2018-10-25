@@ -1,0 +1,207 @@
+\begin{figure}[ht]
+\centering\scalebox{0.5}{
+\begin{tikzpicture}[auto]
+
+%MTComponentType
+\umlabstract[x=0, y=0]{MTComponentType}{
++ XmlId: String \\
++ Name: String[0..1] \\
++ NativeName: String[0..1] \\
++ Uuid: String[0..1] \\
+<<Deprecated>> + SampleRate: Float[0..1] \\
++ SampleInterval: Float[0..1] \\
+}
+
+%MTCompositionType
+\umlabstract[below = 4cm of MTComponentType]{MTCompositionType}{
++ Uuid: String[0..1] \\
++ Name: String[0..1] \\
++ MTDescription: String[0..1] \\
+}
+
+%MTAssetEventType
+\umlsimpleclass[above right = 8cm and 0 cm of MTComponentType]{MTAssetEventType}{}
+
+%MTMessageType
+\umlclass[above left = 1cm and 2cm of MTAssetEventType]{MTMessageType}{
++ NativeCode: String[0..1] \\
+}
+
+%MTStringEventType
+\umlsimpleclass[above right= 1cm and -1cm of MTAssetEventType]{MTStringEventType}{}
+
+%MTControlledVocabEventType
+\umlsimpleclass[below right = 1cm and 0cm of MTStringEventType]{MTControlledVocabEventType}{}
+
+%MTSampleType
+\umlsimpleclass[above right = 1cm and 1cm of MTControlledVocabEventType]{MTSampleType}{}
+
+%MTNumericEventType
+\umlclass[right = 1.5cm  of MTSampleType]{MTNumericEventType}{ + EURange: Range[0..1] \\
++ EngineeringUnits: EUInformation[0..1] \\
+<<Attribute Override>>+oDataType: Number \\}
+
+%MTDataItemType
+\umlclass[right =2cm of MTComponentType, yshift=-2em]{MTDataItemType}{
++ Category: MTCategoryType\\
++ MTTypeName: String\\
++ MTSubTypeName: String[0..1]\\
++ SouceName: String[0..1]\\
++ StreamRate: Double[0..1]\\
++ SampleRate: Double[0..1]\\
++ Representation: MTRepresentationType[0..1]\\
+}{
++ deriveSourceName(element)\\
++ getStatusCode()
+}
+
+%MTNumericDataItemType
+\umlclass[right =3cm of MTDataItemType]{MTNumericDataItemType}{
++ SignificantDigits: UInt16[0..1]\\
++ Statistic: String[0..1]\\
++ Units: String[0..1]\\
++ NativeUnits: String[0..1]\\
++ CoordinateSystem: CoordinateSystemType[0..1]\\
++ InitialValue: Double[0..1]\\
++ ResetTrigger: DataItemResetValueType[0..1]\\
++ Nominal: Double[0..1]\\
+}{
++ deriveEngineeringUnits(units)\\
++deriveEURange(constraints)\\
+}
+
+%BaseObjectType
+\umlabstract[below = 3cm of MTNumericDataItemType]{BaseObjectType}{
+}
+
+%SystemEventType
+\umlsimpleclass[above = 5cm of MTMessageType]{SystemEventType}{}
+
+%MTAssetEventDataType
+\umlclass[above = 1cm of SystemEventType]{MTAssetEventDataType}{
++ AssetId: String \\
++ AssetType: String \\
+}
+
+%MultiStateValueDiscreteType
+\umlclass[above = 5cm of MTControlledVocabEventType]{MultiStateValueDiscreteType}{
++ EnumValues: EnumValueType[1..*]\\
++ ValueAsTextL LocalizedText\\
+<<Attribute>>+oDataType: Number \\
+}
+
+%DiscreteItemType
+\umlsimpleclass[above = 2cm of MultiStateValueDiscreteType]{DiscreteItemType}{}
+
+
+%AnalogItemType
+\umlclass[right = 1cm of MultiStateValueDiscreteType.east]{AnalogItemType}{
++ InstrumentRange: Range[0..1]\\
++ EURange: Range\\
++ EngineeringUnits: EUInformation[0..1]\\
+<<Attribute>>+oDataType: Number \\
+}
+
+%DataItemType
+\umlclass[above = 6cm of AnalogItemType]{DataItemType}{
++ Definition: String[0..1] \\
++ ValuePrecision: Double[0..1]\\
+}
+
+%BaseDataVariableType
+\umlabstract[above = 7cm of DiscreteItemType]{BaseDataVariableType}{}
+
+
+%Relationships
+%MTComponentType Rel
+%
+
+\umluniassoc[geometry=--, stereo=Organizes,arg1=Composition, mult1=1..*, arm1=5.5cm] {MTComponentType} {MTCompositionType}
+
+\umluniassoc[geometry=|-|, stereo=HasComponent, mult1=0..*, arm1=5.5cm] {MTComponentType} {MTMessageType}
+
+%
+\umluniassoc[geometry=|-|, arm1=5.5cm] {MTComponentType} {MTAssetEventType}
+
+%
+\umluniassoc[geometry=|-|, arm1=5.5cm] {MTComponentType} {MTControlledVocabEventType}
+
+%
+\umluniassoc[geometry=|-|, arm1=5.5cm] {MTComponentType} {MTStringEventType}
+
+%
+\umluniassoc[geometry=|-|, arm1=5.5cm] {MTComponentType} {MTSampleType}
+
+%
+\umluniassoc[geometry=|-|, arm1=5.5cm] {MTComponentType} {MTNumericEventType}
+
+
+%MTDataItemType Rel
+%
+\umlVHVimpl[stereo =Mixes In, anchor1= -20, arm2=5cm, anchor2=70] {MTAssetEventType} {MTDataItemType}
+
+%
+\umlVHVimpl[stereo =Mixes In, anchor1= -20, arm2=5cm, anchor2=70] {MTControlledVocabEventType} {MTDataItemType}
+
+%
+\umlVHVimpl[stereo =Mixes In, anchor1= -20, arm2=5cm, anchor2=70] {MTStringEventType} {MTDataItemType}
+
+%
+\umlVHVimpl[stereo =Mixes In, anchor1= -20, anchor2=90, arm2=5cm] {MTSampleType} {MTNumericDataItemType}
+
+%
+\umlVHVimpl[stereo =Mixes In, anchor1= -50, anchor2=90, arm2=5cm] {MTNumericEventType} {MTNumericDataItemType}
+
+%
+\umlVHVimpl[stereo =Mixes In, anchor1= -30, arm2=5cm, anchor2=70] {MTMessageType} {MTDataItemType}
+
+%
+\umlinherit[geometry=--]{MTNumericDataItemType}{MTDataItemType}
+
+%
+\umluniassoc[geometry=|-, stereo = HasMTComposition, mult1=0..1, anchor1=230]{MTDataItemType}{MTCompositionType}
+
+%
+\umluniassoc[geometry = |-, stereo = HasMTReference, mult1=0..1, arg1 = Source, anchor1 = 310]{MTDataItemType}{BaseObjectType}
+
+%%Data Item Types Rel
+%
+\umlinherit[geometry=--]{MTMessageType}{SystemEventType}
+
+%
+\umluniassoc[geometry = |-, stereo = Attribute, arg1 = DataType, pos stereo = 0.5, pos1 = 0.1, anchor1=-165]{MTAssetEventType}{MTAssetEventDataType}
+
+%
+\umlinherit[geometry=--]{MTControlledVocabEventType}{MultiStateValueDiscreteType}
+
+%
+\umlinherit[geometry=--]{MultiStateValueDiscreteType}{DiscreteItemType}
+
+%
+\umlinherit[geometry=|-|, arm2=-3cm]{MTSampleType}{AnalogItemType}
+
+%
+\umlinherit[geometry=--]{AnalogItemType}{DataItemType}
+
+%
+\umlinherit[geometry=|-|,arm2=-3cm]{DiscreteItemType}{DataItemType}
+
+%
+\umlinherit[geometry=|-|, arm2=-3cm]{MTNumericEventType}{DataItemType}
+
+%
+\umlinherit[geometry= |-|, arm2=-3cm]{DataItemType}{BaseDataVariableType}
+
+%
+\umlinherit[geometry= |-|, arm2=-3cm]{MTStringEventType}{BaseDataVariableType}
+
+%
+\umlinherit[geometry= |-|, arm2=-3cm, anchor1 =40]{MTAssetEventType}{BaseDataVariableType}
+
+\end{tikzpicture}
+}
+
+
+\caption{MTConnect MTDataItemType in UML}
+ \label{fig:data-item-uml}
+\end{figure}

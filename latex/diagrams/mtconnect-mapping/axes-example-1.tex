@@ -29,7 +29,7 @@
 \begin{tabular}{l l}
   \multicolumn{2}{c}{\underline{\textbf{Axes: AxesType}}} \\[4pt]
   \hline
-  NodeId & "mtc_adapter002/Mazak01-base" \\
+  <<Attribute>> NodeId & ".../Mazak01-base" \\
 \end{tabular}
 };
 
@@ -42,7 +42,7 @@
 \begin{tabular}{l l}
   \multicolumn{2}{c}{\underline{\textbf{Conditions: FolderType}}} \\[4pt]
   \hline
-  NodeId & ".../Conditions" \\
+  <<Attribute>> NodeId & ".../Conditions" \\
 \end{tabular}
 };
 
@@ -50,7 +50,7 @@
 \begin{tabular}{l l}
   \multicolumn{2}{c}{\underline{\textbf{Actuator: MTNonExclusiveConditionType}}} \\[4pt]
   \hline
-  NodeId & "mtc_adapter002/Mazak01-base_1" \\
+  <<Attribute>> NodeId & ".../Mazak01-base_1" \\
   ConditionClassId & (ns=1;i=710090) \\
   ConditionClassName & "ActuatorClassType" \\
   ConditionName & "servo_cond" \\
@@ -66,8 +66,12 @@
 \end{tabular}
 };
 
-\node[class,left=4cm of actuator.west] (class) {
-\underline{\textbf{ActuatorClassType}}
+\node[class,left above=2cm and 4cm of actuator] (class) {
+\begin{tabular}{l l}
+  \multicolumn{2}{c}{\underline{\textbf{ActuatorClassType}}} \\[4pt]
+  \hline
+  <<Attribute>> NodeId & (ns=1;i=710090) \\
+\end{tabular}
 };
 
 \draw[ref] (axes) -- (conditions) 

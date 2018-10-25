@@ -1,5 +1,5 @@
 \begin{figure}[ht]
-\centering\scalebox{0.8}{
+\centering\scalebox{0.7}{
 \begin{tikzpicture}[auto]
 
 \umlabstract[x=0, y=0]{MTComponentType}{
@@ -9,24 +9,38 @@
 + Uuid: String[0..1] \\
 <<Deprecated>> + SampleRate: Float[0..1] \\
 + SampleInterval: Float[0..1] \\
-}{}
+}
+
+\umlabstract[above left =3cm and -3cm of MTComponentType]{BaseObjectType}{}
+
+\umlclass[right=1.5cm of BaseObjectType]{FolderType}{}
+
+\umlinherit[geometry=--]{FolderType}{BaseObjectType};
+
+\umlinherit[geometry=--, anchor1=120,anchor2 =-40]{MTComponentType}{BaseObjectType};
+
+\umluniassoc[geometry = --,anchor1=140,anchor2 =-120, mult1=0..*, mult2=1, stereo=HasMTReference]{MTComponentType}{BaseObjectType};
+
+
 
 \umlclass[right=1.5cm of MTComponentType]{MTDeviceType}{
 + Version: String[0..1] \\
 <<Deprecated>> + Iso841Class: String[0..1] \\
-}{}
+}
 
-\umluniassoc[recursive=90|20|4cm,pos1=0.05,pos2=0.9,%
+\umlinherit[geometry=--]{MTDeviceType}{MTComponentType}
+
+\umluniassoc[recursive=60|20|4cm,pos1=0.15,pos2=0.9,%
     mult1=0..1,arg1=Components,%
-    mult2=1..*,stereo=<<Organizes>>]{MTComponentType}{MTComponentType};
+    mult2=1..*,stereo=Organizes]{MTComponentType}{MTComponentType};
 \umlinherit[geometry=--]{MTDeviceType}{MTComponentType};
 
-\umlclass[below left=1cm and 2cm of MTComponentType.south]{MTDescriptionType}{
+\umlclass[below left=1cm and 4cm of MTComponentType.south]{MTDescriptionType}{
 + Station: String[0..1] \\
 + SerialNumber: String[0..1] \\
 + Manufacturer: String[0..1] \\
 + Data: String[0..1] \\
-}{}
+}
 
 \umluniassoc[geometry=-|,stereo=HasComponent,%
               arg1=Description,pos1=0.5,pos2=1.8,%
@@ -34,13 +48,13 @@
               mult1=0..1,%
               mult2=1]{MTComponentType}{MTDescriptionType}
 
-\umlsimpleclass[below=1cm of MTDeviceType.south]{<Component>Type}
+\umlsimpleclass[below=1cm of MTDeviceType.south]{<Component>Type}{}
 \umlinherit[geometry=-|-,arm2=4.5cm]{<Component>Type}{MTComponentType}
 
-\umlabstract[below right=2.5cm and -0.1cm of MTComponentType.south]{MTConfigurationType}{}{}
+\umlabstract[below right=2.5cm and -2cm of MTComponentType.south]{MTConfigurationType}{}
 
 \umluniassoc[stereo=HasComponent,pos1=.2,%
-              arg1=Configuration,anchor1=-60,anchor2=130,%
+              arg1=Configuration,anchor1=-100,anchor2=120,%
               mult1=0..1,%
               mult2=1]{MTComponentType}{MTConfigurationType}
               
@@ -49,9 +63,33 @@
 + CalibrationDate: UtcTime[0..1] \\
 + NextCalibrationDate: UtcTime[0..1] \\
 + CalibrationInitials: String[0..1] \\
-}{}
+}
 
 \umlinherit[geometry=-|]{MTSensorConfigurationType}{MTConfigurationType}
+
+
+\umlabstract[below right = 2.5cm and 2cm of MTComponentType]{MTCompositionType}{
++ Uuid: String[0..1] \\
++ Name: String[0..1] \\
++ MTDescription: String[0..1] \\
+}
+
+\umluniassoc[geometry=-|-, stereo=Organizes, pos stereo=1.6, pos1=1.4,pos2=1.2, arg1=Composition, anchor1=-40, mult1=1..*] {MTComponentType} {MTCompositionType}
+
+\umlsimpleclass[below=2cm of MTCompositionType]{<Composition>Type}{}
+\umlinherit[geometry=--, stereo = bind]{<Composition>Type}{MTCompositionType}
+
+
+\umlclass[below=2.5cm of MTSensorConfigurationType]{MTChannelType}{
++ Number: Int32 \\
++ Name: String[0..1] \\
++ MTDescription: String[0..1] \\
++ CalibrationDate: UtcTime[0..1] \\
++ NextCalibrationDate: UtcTime[0..1] \\
++ CalibrationInitials: String[0..1] \\
+}
+
+\umluniassoc[geometry=--, stereo=Organizes, arg1=Channels, mult1=0..*, mult2=1..*] {MTSensorConfigurationType} {MTChannelType}
 
 \end{tikzpicture}
 }

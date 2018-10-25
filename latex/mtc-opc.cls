@@ -236,6 +236,30 @@
 \makeatother
 \linenumbers
 
+% ************************* %
+% 	Controlled Vocabulary   %
+% ************************* %
+
+\newcommand{\mtconnectterm}[1]{\textit{#1}}
+\newcommand{\opcuaterm}[1]{\textbf{\textit{#1}}}
+\newcommand{\xmlelement}[1]{{\fontfamily{pcr}\selectfont #1}}
+\newcommand{\tagname}[1]{{\fontfamily{pcr}\selectfont #1}}
+\newcommand{\attribute}[1]{{\fontfamily{pcr}\selectfont #1}}
+\newcommand{\element}[1]{{\fontfamily{pcr}\selectfont #1}}
+\newcommand{\subtype}[1]{{\fontfamily{pcr}\selectfont #1}}
+\newcommand{\xmlattribute}[1]{{\fontfamily{pcr}\selectfont #1}}
+\newcommand{\dataitem}[1]{{\fontfamily{pcr}\selectfont #1}}
+\newcommand{\component}[1]{{\fontfamily{pcr}\selectfont #1}}
+\newcommand{\configuration}[1]{{\fontfamily{pcr}\selectfont #1}}
+\newcommand{\composition}[1]{{\fontfamily{pcr}\selectfont #1}}
+\newcommand{\deprecated}[1]{{\fontfamily{pcr}\selectfont #1}}
+\newcommand{\deprecationwarning}[1]{{\fontfamily{pcr}\selectfont #1}}
+\newcommand{\cdata}[1]{{\fontfamily{pcr}\selectfont #1}}
+\newcommand{\asset}[1]{{\fontfamily{pcr}\selectfont #1}}
+
+
+
+
 % ****************** %
 % 	Other Commands   %
 % ****************** %

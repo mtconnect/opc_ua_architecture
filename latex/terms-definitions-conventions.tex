@@ -2,9 +2,9 @@
 
 \subsection{Overview}
 
-The basic concepts of OPC UA and MTConnect are pre-requisites for understanding and interpreting the content provided in this companion specification. Additionally, the terms and definitions given in OPC UA Part 1, OPC UA Part 3, OPC UA Part 4, OPC UA Part 5, OPC UA Part 7, OPC UA Part 10, and MTConnect Part 1.0 (see section \ref{normativereferences}), as well as the following, apply to this document. 
+The basic concepts of OPC UA and MTConnect are pre-requisites for understanding and interpreting the content provided in this companion specification. Additionally, the terms and definitions given in OPC UA Part 1, OPC UA Part 3, OPC UA Part 4, OPC UA Part 5, OPC UA Part 7, OPC UA Part 10, and MTConnect Part 1.0, (see section \ref{normativereferences}), as well as the following, apply to this document. 
 
-
+\iffalse
 \subsection{OPC UA for MTConnect terms}
 
 \texttt{NEEDS TO BE DISCUSSED}
@@ -21,7 +21,7 @@ Note 1 to entry: Optional additional text if the short description is not consid
 \subsubsection{term\_2}
 <a short description - max two lines>
 ....
-
+\fi
 \subsection{Abbreviations and Symbols}
 The following abbreviation are used in this document:
 \begin{itemize}
@@ -38,23 +38,25 @@ The following abbreviation are used in this document:
     \item XML - eXtensible Mark-up Language
 \end{itemize}
 
-\subsection{Conventions}
+\subsection{Conventions}\label{conventions}
 Following are basic conventions that shall be followed for all formal definitions used.
+\mtconnectterm{mtconnectterm}
+\opcuaterm{opcuaterm}
 
 \subsubsection{Conventions for Node descriptions}
 
-\texttt{Node} definitions are specified using tables (see Table \ref{table:TypeDefinitionTable}).
+\tagname{Node} definitions are specified using tables (see Table \ref{table:TypeDefinitionTable}).
 
-\texttt{Attributes} are defined by providing the Attribute name and a value, or a description of the value.
+\tagname{Attributes} are defined by providing the Attribute name and a value, or a description of the value.
 
-\texttt{References} are defined by providing the \texttt{ReferenceType} name, the \texttt{BrowseName} of the \texttt{TargetNode} and its \texttt{NodeClass}.
+\tagname{References} are defined by providing the \tagname{ReferenceType} name, the \tagname{BrowseName} of the \tagname{TargetNode} and its \tagname{NodeClass}.
 
 \begin{itemize}
-    \item If the \texttt{TargetNode} is a component of the Node being defined in the table the \texttt{Attributes} of the composed Node are defined in the same row of the table. 
-    \item The \texttt{DataType} is only specified for Variables; "[<number>]" indicates a single-dimensional array, for multi-dimensional arrays the expression is repeated for each dimension (e.g. [2][3] for a two-dimensional array). For all arrays the \texttt{ArrayDimensions} is set as identified by <number> values. If no <number> is set, the corresponding dimension is set to 0, indicating an unknown size. If no number is provided at all the \texttt{ArrayDimensions} can be omitted. If no brackets are provided, it identifies a scalar \texttt{DataType} and the \texttt{ValueRank} is set to the corresponding value (see \cite{UAPart3}). In addition, \texttt{ArrayDimensions} is set to null or is omitted. If it can be Any or ScalarOrOneDimension, the value is put into "{<value>}", so either "{Any}" or "{ScalarOrOneDimension}" and the \texttt{ValueRank} is set to the corresponding value (see \cite{UAPart3}) and the \texttt{ArrayDimensions} is set to null or is omitted. Examples are given in Table \ref{table:ExamplesOfDataTypes}.
-    \item The \texttt{TypeDefinition} is specified for Objects and Variables.
-    \item The \texttt{TypeDefinition} column specifies a symbolic name for a \texttt{NodeId}, i.e. the specified Node points with a \texttt{HasTypeDefinition} Reference to the corresponding Node.
-    \item The \texttt{ModellingRule} of the referenced component is provided by specifying the symbolic name of the rule in \texttt{ModellingRule}. In the \texttt{AddressSpace}, the Node shall use a \texttt{HasModellingRule} Reference to point to the corresponding \texttt{ModellingRule} Object.
+    \item If the \opcuaterm{TargetNode} is a component of the Node being defined in the table the \opcuaterm{Attributes} of the composed Node are defined in the same row of the table. 
+    \item The \opcuaterm{DataType} is only specified for Variables; "[<number>]" indicates a single-dimensional array, for multi-dimensional arrays the expression is repeated for each dimension (e.g. [2][3] for a two-dimensional array). For all arrays the \opcuaterm{ArrayDimensions} is set as identified by <number> values. If no <number> is set, the corresponding dimension is set to 0, indicating an unknown size. If no number is provided at all the \opcuaterm{ArrayDimensions} can be omitted. If no brackets are provided, it identifies a scalar \opcuaterm{DataType} and the \opcuaterm{ValueRank} is set to the corresponding value (see \cite{UAPart3}). In addition, \opcuaterm{ArrayDimensions} is set to null or is omitted. If it can be Any or ScalarOrOneDimension, the value is put into "{<value>}", so either "{Any}" or "{ScalarOrOneDimension}" and the \opcuaterm{ValueRank} is set to the corresponding value (see \cite{UAPart3}) and the \opcuaterm{ArrayDimensions} is set to null or is omitted. Examples are given in Table \ref{table:ExamplesOfDataTypes}.
+    \item The \opcuaterm{TypeDefinition} is specified for Objects and Variables.
+    \item The \opcuaterm{TypeDefinition} column specifies a symbolic name for a \opcuaterm{NodeId}, i.e. the specified Node points with a \opcuaterm{HasTypeDefinition} Reference to the corresponding Node.
+    \item The \opcuaterm{ModellingRule} of the referenced component is provided by specifying the symbolic name of the rule in \opcuaterm{ModellingRule}. In the \opcuaterm{AddressSpace}, the Node shall use a \opcuaterm{HasModellingRule} Reference to point to the corresponding \opcuaterm{ModellingRule} Object.
 \end{itemize}
 
 \begin{table}[ht]
@@ -80,11 +82,11 @@ Int32 \{ScalarOrOneDimension\} & Int32 & -3 & omitted or null & An Int32 where i
 
 \FloatBarrier
 
-If the \texttt{NodeId} of a \texttt{DataType} is provided, the symbolic name of the Node representing the \texttt{DataType} shall be used.
+If the \opcuaterm{NodeId} of a \opcuaterm{DataType} is provided, the symbolic name of the Node representing the \opcuaterm{DataType} shall be used.
 
-Nodes of all other \texttt{NodeClasses} cannot be defined in the same table; therefore only the used \texttt{ReferenceType}, their \texttt{NodeClass} and their \texttt{BrowseName} are specified. A reference to another part of this document points to their definition.
+Nodes of all other \opcuaterm{NodeClasses} cannot be defined in the same table; therefore only the used \opcuaterm{ReferenceType}, their \opcuaterm{NodeClass} and their \opcuaterm{BrowseName} are specified. A reference to another part of this document points to their definition.
 
-Table \ref{table:TypeDefinitionTable} illustrates the table. If no components are provided, the \texttt{DataType}, \texttt{TypeDefinition} and \texttt{ModellingRule} columns may be omitted and only a Comment column is introduced to point to the Node definition.
+Table \ref{table:TypeDefinitionTable} illustrates the table. If no components are provided, the \opcuaterm{DataType}, \opcuaterm{TypeDefinition} and \opcuaterm{ModellingRule} columns may be omitted and only a Comment column is introduced to point to the Node definition.
 
 \begin{table}[ht]
 \centering 
@@ -102,7 +104,7 @@ Attribute name & \multicolumn{5}{|l|}{Attribute value. If it is an optional Attr
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \tabucline[1.5pt]{}
 
-\texttt{Reference- Type} name & \texttt{NodeClass} of the target \texttt{Node}. & \texttt{BrowseName} of the target \texttt{Node}. If the \texttt{Reference} is to be instantiated by the server, then the value of the target \texttt{Node}'s \texttt{BrowseName} is "--". & \texttt{DataType} of the referenced \texttt{Node}, only applicable for \texttt{Variables}. & \texttt{Type- Definition} of the referenced \texttt{Node}, only applicable for \texttt{Variables} and \texttt{Objects}. & Referenced \texttt{Modeling- Rule} of the referenced \texttt{Object}. \\
+\opcuaterm{Reference- Type} name & \opcuaterm{NodeClass} of the target \opcuaterm{Node}. & \opcuaterm{BrowseName} of the target \opcuaterm{Node}. If the \opcuaterm{Reference} is to be instantiated by the server, then the value of the target \opcuaterm{Node}'s \opcuaterm{BrowseName} is "--". & \opcuaterm{DataType} of the referenced \opcuaterm{Node}, only applicable for \opcuaterm{Variables}. & \opcuaterm{Type- Definition} of the referenced \opcuaterm{Node}, only applicable for \opcuaterm{Variables} and \opcuaterm{Objects}. & Referenced \opcuaterm{Modeling- Rule} of the referenced \opcuaterm{Object}. \\
 
 \multicolumn{6}{|l|}{Note: Notes referencing footnotes of the table content.} \\
 \end{tabu}
@@ -112,29 +114,29 @@ Attribute name & \multicolumn{5}{|l|}{Attribute value. If it is an optional Attr
 \FloatBarrier
 
 
-Components of \texttt{Nodes} can be complex that is containing components by themselves. The \texttt{TypeDefinition}, \texttt{NodeClass}, \texttt{DataType} and \texttt{ModellingRule} can be derived from the type definitions, and the symbolic name can be created. Therefore, those containing components are not explicitly specified; they are implicitly specified by the type definitions.
+Components of \opcuaterm{Nodes} can be complex that is containing components by themselves. The \opcuaterm{TypeDefinition}, \opcuaterm{NodeClass}, \opcuaterm{DataType} and \opcuaterm{ModellingRule} can be derived from the type definitions, and the symbolic name can be created. Therefore, those containing components are not explicitly specified; they are implicitly specified by the type definitions.
 
 \subsubsection{NodeIds and BrowseNames}
 
 \paragraph{NodeIds}
 
-The \texttt{NodeIds} of all \texttt{Nodes} described in this standard are only symbolic names. Annex A defines the actual \texttt{NodeIds}.
+The \opcuaterm{NodeIds} of all \opcuaterm{Nodes} described in this standard are only symbolic names. Annex A defines the actual \opcuaterm{NodeIds}.
 
-The symbolic name of each \texttt{Node} defined in this specification is its \texttt{BrowseName}, or, when it is part of another Node, the \texttt{BrowseName} of the other \texttt{Node}, a ".", and the \texttt{BrowseName} of itself. In this case "part of" means that the whole has a \texttt{HasProperty} or \texttt{HasComponent} Reference to its part. Since all \texttt{Nodes} not being part of another \texttt{Node} have a unique name in this specification, the symbolic name is unique.
+The symbolic name of each \opcuaterm{Node} defined in this specification is its \opcuaterm{BrowseName}, or, when it is part of another Node, the \opcuaterm{BrowseName} of the other \opcuaterm{Node}, a ".", and the \opcuaterm{BrowseName} of itself. In this case "part of" means that the whole has a \opcuaterm{HasProperty} or \opcuaterm{HasComponent} Reference to its part. Since all \opcuaterm{Nodes} not being part of another \opcuaterm{Node} have a unique name in this specification, the symbolic name is unique.
 
-The namespace for all \texttt{NodeIds} defined in this specification is defined in Annex A. The namespace for this \texttt{NamespaceIndex} is Server-specific and depends on the position of the namespace URI in the server namespace table.
+The namespace for all \opcuaterm{NodeIds} defined in this specification is defined in Annex A. The namespace for this \opcuaterm{NamespaceIndex} is Server-specific and depends on the position of the namespace URI in the server namespace table.
 
-Note that this specification not only defines concrete \texttt{Nodes}, but also requires that some Nodes shall be generated, for example one for each Session running on the Server. The \texttt{NodeIds} of those \texttt{Nodes} are Server-specific, including the namespace. But the \texttt{NamespaceIndex} of those \texttt{Nodes} cannot be the \texttt{NamespaceIndex} used for the Nodes defined in this specification, because they are not defined by this specification but generated by the Server.
+Note that this specification not only defines concrete \opcuaterm{Nodes}, but also requires that some Nodes shall be generated, for example one for each Session running on the Server. The \opcuaterm{NodeIds} of those \opcuaterm{Nodes} are Server-specific, including the namespace. But the \opcuaterm{NamespaceIndex} of those \opcuaterm{Nodes} cannot be the \opcuaterm{NamespaceIndex} used for the Nodes defined in this specification, because they are not defined by this specification but generated by the Server.
 
 \paragraph{BrowseNames}
-The text part of the \texttt{BrowseNames} for all \texttt{Node}s defined in this specification is specified in the tables defining the Nodes. The \texttt{NamespaceIndex} for all \texttt{BrowseNames} defined in this specification is defined in Annex A.
+The text part of the \opcuaterm{BrowseNames} for all \opcuaterm{Node}s defined in this specification is specified in the tables defining the Nodes. The \opcuaterm{NamespaceIndex} for all \opcuaterm{BrowseNames} defined in this specification is defined in Annex A.
 
 \subsubsection{Common Attributes}
 
 \paragraph{General}
-The \texttt{Attributes} of \texttt{Nodes}, their \texttt{DataTypes} and descriptions are defined in \cite{UAPart3}. \texttt{Attributes} not marked as optional are mandatory and shall be provided by a Server. The following tables define if the \texttt{Attribute} value is defined by this specification or if it is server-specific.
+The \opcuaterm{Attributes} of \opcuaterm{Nodes}, their \opcuaterm{DataTypes} and descriptions are defined in \cite{UAPart3}. \opcuaterm{Attributes} not marked as optional are mandatory and shall be provided by a Server. The following tables define if the \opcuaterm{Attribute} value is defined by this specification or if it is server-specific.
 
-For all Nodes specified in this specification, the \texttt{Attributes} named in Table \ref{table:CommonNodeAttributes} shall be set as specified in the table.
+For all Nodes specified in this specification, the \opcuaterm{Attributes} named in Table \ref{table:CommonNodeAttributes} shall be set as specified in the table.
 
 
 

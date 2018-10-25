@@ -1,4 +1,4 @@
-% Generated 2018-10-23 22:32:34 -0700
+% Generated 2018-10-25 13:30:44 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -445,6 +445,7 @@ BrowseName & \multicolumn{5}{|l|}{FilterType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{BaseObjectType} (See \cite{UAPart5} Documentation)} \\
 HasSubtype & ObjectType & MinimumDeltaFilterType & \multicolumn{3}{|l|}{See section \ref{type:MinimumDeltaFilterType}} \\
 HasSubtype & ObjectType & PeriodFilterType & \multicolumn{3}{|l|}{See section \ref{type:PeriodFilterType}} \\
 HasProperty & Variable & Value & Float & PropertyType & Optional \\
@@ -655,6 +656,13 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassType} (See section \ref{type:MTDataItemClassType})} \\
+HasSubtype & ObjectType & ActuatorClassType & \multicolumn{3}{|l|}{See section \ref{type:ActuatorClassType}} \\
+HasSubtype & ObjectType & CommunicationsClassType & \multicolumn{3}{|l|}{See section \ref{type:CommunicationsClassType}} \\
+HasSubtype & ObjectType & DataRangeClassType & \multicolumn{3}{|l|}{See section \ref{type:DataRangeClassType}} \\
+HasSubtype & ObjectType & LogicProgramClassType & \multicolumn{3}{|l|}{See section \ref{type:LogicProgramClassType}} \\
+HasSubtype & ObjectType & HardwareClassType & \multicolumn{3}{|l|}{See section \ref{type:HardwareClassType}} \\
+HasSubtype & ObjectType & MotionProgramClassType & \multicolumn{3}{|l|}{See section \ref{type:MotionProgramClassType}} \\
+HasSubtype & ObjectType & SystemClassType & \multicolumn{3}{|l|}{See section \ref{type:SystemClassType}} \\
 \end{tabu}
 \end{table} 
 
@@ -838,6 +846,10 @@ HasProperty & Variable & NativeCode & String & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
+
+\paragraph{Dependency on MTDataItemType}
+
+This class relates to \texttt{MTDataItemType} (See section \ref{type:MTDataItemType}) for a(n) \texttt{Mixes In} relationship.
 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTNumericEventType}}

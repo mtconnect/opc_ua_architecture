@@ -1,0 +1,97 @@
+\usetikzlibrary{arrows}
+\begin{figure}[ht]
+\centering\scalebox{0.8}{
+\begin{tikzpicture}[node distance=2cm, font=\small]
+\tikzset{
+   object/.style={
+           rectangle,
+           rounded corners,
+           draw=black, very thick,
+           minimum height=2em,
+           inner sep=2pt,
+           text centered           
+           },
+   class/.style={
+           rectangle,
+           draw=black, very thick,
+           minimum height=2em,
+           inner sep=2pt,
+           text centered           
+           },
+   ref/.style={
+           thick,->,>={Stealth[length=8pt,width=8pt,inset=4pt]},
+           rounded corners
+           },
+   seg/.style={thick,rounded corners}
+   }
+
+\node[object] (axes) { %
+\begin{tabular}{l l}
+  \multicolumn{2}{c}{\underline{\textbf{Axes: AxesType}}} \\[4pt]
+  \hline
+  NodeId & "mtc_adapter002/Mazak01-base" \\
+\end{tabular}
+};
+
+
+\node[object, left=3cm of axes.west] (device) { 
+\underline{\textbf{Mazak01 : MTDeviceType}}
+};
+
+\node[object,below=2cm of axes.south] (conditions) { %
+\begin{tabular}{l l}
+  \multicolumn{2}{c}{\underline{\textbf{Conditions: FolderType}}} \\[4pt]
+  \hline
+  NodeId & ".../Conditions" \\
+\end{tabular}
+};
+
+\node[object,below=2cm of conditions.south] (actuator) { %
+\begin{tabular}{l l}
+  \multicolumn{2}{c}{\underline{\textbf{Actuator: MTNonExclusiveConditionType}}} \\[4pt]
+  \hline
+  NodeId & "mtc_adapter002/Mazak01-base_1" \\
+  ConditionClassId & (ns=1;i=710090) \\
+  ConditionClassName & "ActuatorClassType" \\
+  ConditionName & "servo_cond" \\
+  BranchId & 0 \\
+  Retain & false \\
+  EnableState & True \\
+  Quality & Good \\
+  LastSeverity & 0 \\
+  Comment & "" \\
+  ClientUserId & "" \\
+  MTTypeName & "ACTUATOR" \\
+  Category & "CONDITION"
+\end{tabular}
+};
+
+\node[class,left=4cm of actuator.west] (class) {
+\underline{\textbf{ActuatorClassType}}
+};
+
+\draw[ref] (axes) -- (conditions) 
+  node[pos=0.5]{<<Organizes>>};
+
+
+\draw[ref] (conditions) -- (actuator) 
+  node[pos=0.5]{<<HasComponent>>};
+
+\draw[seg] (axes.east) -| (6,-1) coordinate (d1);
+\draw[ref] (d1) |- (actuator.east)
+  node[pos=0.2]{<<HasCondition>>};
+
+\draw[ref] (device) -- (axes)
+  node[pos=0.5,above]{<<HasNotifier>>};  
+
+\draw[ref] (actuator) -- (class)
+  node[pos=0.5,above]{<<HasNotifier>>};  
+
+\draw[ref] (actuator) -- (class) 
+  node[pos=0.5,below]{<<HasMTClassType>>};
+
+\end{tikzpicture}
+}
+\caption{MTConnect Axes Example with Condition}
+ \label{fig:axes-example-1}
+\end{figure}

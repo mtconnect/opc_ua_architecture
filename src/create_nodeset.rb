@@ -88,13 +88,14 @@ Model.generate_nodeset(root, 'Data Items')
 Model.generate_nodeset(root, 'Conditions')
 Model.generate_nodeset(root, 'Data Item Types')
 Model.generate_nodeset(root, 'Sample Data Item Types')
+Model.generate_nodeset(root, 'Condition Data Item Types')
 Model.generate_nodeset(root, 'Controlled Vocab Data Item Types')
 Model.generate_nodeset(root, 'Numeric Event Data Item Types')
 Model.generate_nodeset(root, 'String Event Data Item Types')
 Model.generate_nodeset(root, 'Data Item Sub Types')
 Model.generate_nodeset(root, 'MTConnect Device Profile')
 
-File.open('./MTConnect.Nodeset.xml', 'w') do |f|
+File.open('./MTConnect.Nodeset2.xml', 'w') do |f|
   document << root
   formatter = REXML::Formatters::Pretty.new(2)
   formatter.compact = true

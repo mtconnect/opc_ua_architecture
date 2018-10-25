@@ -222,6 +222,8 @@ class Type
       symmetric = get_attribute_like(/Symmetric$/, /Attribute/)
       is_symmetric = symmetric.default
       node, refs = node('UAReferenceType', node_id, @name, abstract: @abstract, symmetric: is_symmetric)
+    elsif  @stereotype and @stereotype.name == 'mixin'
+      puts "** Skipping mixin #{@name}"
     else
       puts "!! Do not know how to generate #{@name} #{@type}"
     end

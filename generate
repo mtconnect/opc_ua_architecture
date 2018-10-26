@@ -4,8 +4,8 @@
 ruby src/create_documentation.rb
 
 (cd latex; \
-pdflatex -synctex=1 -interaction=nonstopmode -output-directory=../build main.tex > ../build/main.stdout; \
-biber ../build/main.bcf; \
-pdflatex -synctex=1 -interaction=nonstopmode -output-directory=../build main.tex >> ../build/main.stdout)
+pdflatex -synctex=1 -interaction=nonstopmode -output-directory=../build mtc-ua.tex > ../build/mtc-ua.stdout; \
+biber ../build/mtc-ua.bcf; \
+pdflatex -synctex=1 -interaction=nonstopmode -output-directory=../build mtc-ua.tex >> ../build/mtc-ua.stdout)
 
-open build/main.pdf
+open build/mtc-ua.pdf

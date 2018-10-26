@@ -222,10 +222,12 @@ The \texttt{Components} element in Listing \ref{lst:device-axis-component} is re
 
 \input{diagrams/mtconnect-mapping/axes-example-1.tex}
 
-The \texttt{HasNotifier} refererence needs to be created between the \texttt{Axes} object and the \texttt{Mazak01\-:\-MTDeviceType} object to allow for the condition to be associated correctly. The relationship of the condition in Figure~\ref{fig:axes-example-1} illustrates the relationships between the \texttt{Component} and the related condition and the notification hierarchy. The UA Base condition references the \texttt{Actuator\-ClassType} by the node id (for this example it is "ns=1;i=710090" as defined in the 
+The \texttt{HasNotifier} refererence needs to be created between the \texttt{Axes} object and the \texttt{Mazak01\-:\-MTDeviceType} object to allow for the condition to be associated correctly. The relationship of the condition in Figure~\ref{fig:axes-example-1} illustrates the relationships between the \texttt{Component} and the related condition and the notification hierarchy. The UA \texttt{Condition\-ClassId} and \texttt{Condition\-ClassName} use the \texttt{Actuator\-ClassType}'s \texttt{NodeId} and \texttt{BrowseName} respectively to relate to the condition class as required by the UA specification \cite{UAPart9}. In addition the MTConnect \texttt{HasMTClassType} reference directly connects to the type definition as do all MTConnect \texttt{DataItem}s.
+
+Conditions have special mapping rules that differ from the other data items. The conditions are sub-types of the OPC UA base type of \texttt{OffNormalAlarmType} with the \texttt{NormalState} node id of the NormalState mapped to the Normal instance of the UA \texttt{UAStateType}.
 
 \begin{lstlisting}[firstnumber=last,%
-    caption={Components},label={lst:axis-data-items}]
+    caption={Linear X Component},label={lst:linear-x-component}]
           <Components>
             <Linear id="Mazak01-X" name="X">
               <DataItems>
@@ -237,6 +239,24 @@ The \texttt{HasNotifier} refererence needs to be created between the \texttt{Axe
             </Linear>
 \end{lstlisting}
 
+A more complex component definition is the Linear X axis represented in Listing~\ref{lst:linear-x-component}. The Linear X Component is created with with the browse name being composed of the QName of the component element, \texttt{Linear} and the name attribute appended and enclosed in square brackets \texttt{[X]} giving the browse name of \texttt{Linear[X]} and a component type of \texttt{LinearType}.
+
+\input{diagrams/mtconnect-mapping/linear-x-example-1.tex}
+
+Figure~\ref{fig:linear-x-example-1} represents the UA Object model based on \ref{lst:linear-x-component}. The \texttt{Linear[x]} component is a leaf component, there are no components below it, so the \texttt{HasEventSource} relationship is used rather that the \texttt{HasNotifier}. The condition, having a \texttt{MTClassType} of \texttt{PositionClassType}, is connected to the \texttt{Linear[X]} axis with a \texttt{HasCondition} relationship.
+
+Each of the data items in this case are samples, meaning they contain analog values.
+
 \FloatBarrier
 
 \subsection{MTConnect Streaming Data}
+
+\subsubsection{Sample Data Items}
+
+\subsubsection{Controlled Vocabulary Event Data Items}
+
+\subsubsection{String Event Data Items}
+
+\subsubsection{Numeric Event Data Items}
+
+\subsubsection{Condition Data Items}

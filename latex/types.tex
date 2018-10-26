@@ -1,4 +1,4 @@
-% Generated 2018-10-25 13:30:44 -0700
+% Generated 2018-10-25 19:32:37 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -118,7 +118,7 @@ HasComponent & Event & <MTMessage> & \multicolumn{2}{|l|}{MTMessageType} & Optio
 HasComponent & Variable & <MTAssetEvent> & \multicolumn{2}{|l|}{MTAssetEventType} & Optional \\
 Organizes & Object & Components & MTComponentType & FolderType & Optional \\
 Organizes & Object & Compositions & MTCompositionType & FolderType & Optional \\
-Organizes & Object & Conditions & AlarmConditionType & FolderType & Optional \\
+Organizes & Object & Conditions & MTConditionType & FolderType & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -537,6 +537,7 @@ DataType & \multicolumn{5}{|l|}{AssetEventDataType} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{BaseDataVariableType} (See \cite{UAPart8} Documentation)} \\
+HasProperty & Variable & Name & String & PropertyType & Optional \\
 HasProperty & Object & Category & MTCategoryType & PropertyType & Optional \\
 HasProperty & Variable & MTTypeName & String & PropertyType & Optional \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
@@ -584,6 +585,7 @@ DataType & \multicolumn{5}{|l|}{UInteger} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MultiStateDiscreteType} (See \cite{UAPart8} Documentation)} \\
+HasProperty & Variable & Name & String & PropertyType & Optional \\
 HasProperty & Object & Category & MTCategoryType & PropertyType & Optional \\
 HasProperty & Variable & MTTypeName & String & PropertyType & Optional \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
@@ -721,6 +723,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 HasSubtype & ObjectType & MTNumericDataItemType & \multicolumn{3}{|l|}{See section \ref{type:MTNumericDataItemType}} \\
+HasProperty & Variable & Name & String & PropertyType & Optional \\
 HasProperty & Object & Category & MTCategoryType & PropertyType & Optional \\
 HasProperty & Variable & MTTypeName & String & PropertyType & Optional \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
@@ -878,6 +881,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{DataItemType} (See \cite{UAPart8} Documentation)} \\
+HasProperty & Variable & Name & String & PropertyType & Optional \\
 HasProperty & Object & Category & MTCategoryType & PropertyType & Optional \\
 HasProperty & Variable & MTTypeName & String & PropertyType & Optional \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
@@ -932,6 +936,7 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{AnalogItemType} (See \cite{UAPart8} Documentation)} \\
+HasProperty & Variable & Name & String & PropertyType & Optional \\
 HasProperty & Object & Category & MTCategoryType & PropertyType & Optional \\
 HasProperty & Variable & MTTypeName & String & PropertyType & Optional \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
@@ -987,6 +992,7 @@ DataType & \multicolumn{5}{|l|}{String} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{BaseDataVariableType} (See \cite{UAPart8} Documentation)} \\
+HasProperty & Variable & Name & String & PropertyType & Optional \\
 HasProperty & Object & Category & MTCategoryType & PropertyType & Optional \\
 HasProperty & Variable & MTTypeName & String & PropertyType & Optional \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
@@ -1026,37 +1032,35 @@ documentation for the condition behavior in MTConnect can be found in Section 5.
 The MTConnect Data Item with Category of \texttt{CONDITION} are used to map to the 
 OPC UA \texttt{ConditionType} models in \cite{UAPart9}.
 
-\subsubsection{Defintion of \texttt{ MTConnectAlarmConditionType}}
-  \label{type:MTConnectAlarmConditionType}
+\subsubsection{Defintion of \texttt{ MTConditionType}}
+  \label{type:MTConditionType}
 
 \FloatBarrier
 
-The alarm condition type represents a text based alarm with a native code and a text based
-message. These are non-exlusive and will be able to branch if multiple messages and 
-native codes are active at the same time. We will need to find to proper place in the
-OPC UA model to place this type.
+The condition type is a derived from the UA \texttt{OffNormalAlarmType} that 
+references the Normal state object. The object is an instance of the UA \texttt{InitialStateType}
+and represents when the condition of a certain aspect of the component or the 
+component composition.
 
-\begin{quote}
-  \color{red}
-  TODO: Need to find the proper superclass to represent a text based message that 
-  may not be a numeric based alarm and is not a discrete valued set of messages.
-\end{quote}
 
 \begin{table}[ht]
 \centering 
-  \caption{\texttt{MTConnectAlarmConditionType} Definition}
-  \label{table:MTConnectAlarmConditionType}
+  \caption{\texttt{MTConditionType} Definition}
+  \label{table:MTConditionType}
 \fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{MTConnectAlarmConditionType} \\
+BrowseName & \multicolumn{5}{|l|}{MTConditionType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of \texttt{AlarmConditionType} (See \cite{UAPart9} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{OffNormalAlarmType} (See \cite{UAPart9} Documentation)} \\
+HasProperty & Variable & NativeCode & String & PropertyType & Optional \\
+HasProperty & Object & Qualifier & QualifierDataType & PropertyType & Optional \\
+HasProperty & Variable & NativeSeverity & String & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -1065,73 +1069,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 This class relates to \texttt{MTDataItemType} (See section \ref{type:MTDataItemType}) for a(n) \texttt{Mixes In} relationship.
 
-\FloatBarrier
-\subsubsection{Defintion of \texttt{ MTExclusiveLimitConditionType}}
-  \label{type:MTExclusiveLimitConditionType}
+\paragraph{Dependency on Normal}
 
-\FloatBarrier
-
-The OPC UA \texttt{ConditionClassId} and \texttt{ConditionSubClassId} documented in OPC UA Part 9 \cite{UAPart9} 
-will reference the MTConnect Data Item Types \ref{model:DataItemTypes} and \ref{model:DataItemSubTypes}.
-The name placed in the \texttt{ConditionClassName} and \texttt{ConditionClassSubName} will match the 
-data item type names.
-
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{MTExclusiveLimitConditionType} Definition}
-  \label{table:MTExclusiveLimitConditionType}
-\fontsize{9pt}{11pt}\selectfont
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{MTExclusiveLimitConditionType} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of \texttt{ExclusiveLimitAlarmType} (See \cite{UAPart9} Documentation)} \\
-\end{tabu}
-\end{table} 
-
-
-\paragraph{Dependency on MTDataItemType}
-
-This class relates to \texttt{MTDataItemType} (See section \ref{type:MTDataItemType}) for a(n) \texttt{Mixes In} relationship.
-
-\FloatBarrier
-\subsubsection{Defintion of \texttt{ MTNonExclusiveConditionType}}
-  \label{type:MTNonExclusiveConditionType}
-
-\FloatBarrier
-
-The OPC UA \texttt{ConditionClassId} and \texttt{ConditionSubClassId} documented in OPC UA Part 9 \cite{UAPart9} 
-will reference the MTConnect Data Item Types \ref{model:DataItemTypes} and \ref{model:DataItemSubTypes}.
-The name placed in the \texttt{ConditionClassName} and \texttt{ConditionClassSubName} will match the 
-data item type names.
-
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{MTNonExclusiveConditionType} Definition}
-  \label{table:MTNonExclusiveConditionType}
-\fontsize{9pt}{11pt}\selectfont
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{MTNonExclusiveConditionType} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of \texttt{NonExclusiveLimitAlarmType} (See \cite{UAPart9} Documentation)} \\
-\end{tabu}
-\end{table} 
-
-
-\paragraph{Dependency on MTDataItemType}
-
-This class relates to \texttt{MTDataItemType} (See section \ref{type:MTDataItemType}) for a(n) \texttt{Mixes In} relationship.
+This class relates to \texttt{Normal} (See section \ref{type:Normal}) for a(n) \texttt{} relationship.
 
 \FloatBarrier
 \subsection{Data Item Types} \label{model:DataItemTypes}

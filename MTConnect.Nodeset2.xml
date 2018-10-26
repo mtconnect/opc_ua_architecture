@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-10-25T20:09:28Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-10-26T00:59:15Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-10-25T20:09:28Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-10-25T20:09:28Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-10-26T00:59:15Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-10-26T00:59:15Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -1613,27 +1613,151 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=799005</Reference>
     </References>
   </UAObject>
-  <UAObjectType NodeId='ns=1;i=200151' BrowseName='1:MTConnectAlarmConditionType'>
-    <DisplayName>MTConnectAlarmConditionType</DisplayName>
+  <UAObject NodeId='ns=1;i=662921' BrowseName='1:Fault'>
+    <DisplayName>Fault</DisplayName>
     <References>
-      <!-- HasSubtype - - AlarmConditionType i=2915  (forward: false) -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>i=2915</Reference>
+      <!-- HasTypeDefinition - - StateType i=2307  (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=2307</Reference>
+      <!-- HasProperty - - StateNumber ns=1;i=847539 UInt32 (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=847539</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId='ns=1;i=847539' BrowseName='StateNumber' ValueRank='-1' DataType='UInt32'>
+    <DisplayName>StateNumber</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - UInt32 i=68 PropertyType (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasProperty - - Fault ns=1;i=662921  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=662921</Reference>
+    </References>
+    <Value>
+      <UInt32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>2</UInt32>
+    </Value>
+  </UAVariable>
+  <UAObjectType NodeId='ns=1;i=256501' BrowseName='1:MTConditionType'>
+    <DisplayName>MTConditionType</DisplayName>
+    <References>
+      <!-- HasSubtype - - OffNormalAlarmType i=10637  (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=10637</Reference>
+      <!-- HasProperty - - NativeCode ns=1;i=615500 String (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=615500</Reference>
+      <!-- HasProperty - - Qualifier ns=1;i=297902 QualifierDataType (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=297902</Reference>
+      <!-- HasProperty - - NativeSeverity ns=1;i=17439 String (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=17439</Reference>
     </References>
   </UAObjectType>
-  <UAObjectType NodeId='ns=1;i=700699' BrowseName='1:MTExclusiveLimitConditionType'>
-    <DisplayName>MTExclusiveLimitConditionType</DisplayName>
+  <UAVariable NodeId='ns=1;i=615500' BrowseName='1:NativeCode' ValueRank='-1' DataType='String'>
+    <DisplayName>NativeCode</DisplayName>
     <References>
-      <!-- HasSubtype - - ExclusiveLimitAlarmType i=9341  (forward: false) -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>i=9341</Reference>
+      <!-- HasTypeDefinition - - String i=68 PropertyType (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Optional i=80  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - - MTConditionType ns=1;i=256501  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=256501</Reference>
     </References>
-  </UAObjectType>
-  <UAObjectType NodeId='ns=1;i=788327' BrowseName='1:MTNonExclusiveConditionType'>
-    <DisplayName>MTNonExclusiveConditionType</DisplayName>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=297902' BrowseName='1:Qualifier' ValueRank='-1' DataType='ns=1;i=427265'>
+    <DisplayName>Qualifier</DisplayName>
     <References>
-      <!-- HasSubtype - - NonExclusiveLimitAlarmType i=9906  (forward: false) -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>i=9906</Reference>
+      <!-- HasTypeDefinition - - QualifierDataType i=68 PropertyType (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Optional i=80  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - - MTConditionType ns=1;i=256501  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=256501</Reference>
     </References>
-  </UAObjectType>
+  </UAVariable>
+  <UAVariable NodeId='ns=1;i=17439' BrowseName='1:NativeSeverity' ValueRank='-1' DataType='String'>
+    <DisplayName>NativeSeverity</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - String i=68 PropertyType (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Optional i=80  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - - MTConditionType ns=1;i=256501  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=256501</Reference>
+    </References>
+  </UAVariable>
+  <UAObject NodeId='ns=1;i=981658' BrowseName='1:Normal'>
+    <DisplayName>Normal</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - InitialStateType i=2309  (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=2309</Reference>
+      <!-- HasProperty - - StateNumber ns=1;i=30346 UInt32 (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=30346</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId='ns=1;i=30346' BrowseName='StateNumber' ValueRank='-1' DataType='UInt32'>
+    <DisplayName>StateNumber</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - UInt32 i=68 PropertyType (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasProperty - - Normal ns=1;i=981658  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=981658</Reference>
+    </References>
+    <Value>
+      <UInt32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>0</UInt32>
+    </Value>
+  </UAVariable>
+  <UADataType NodeId='ns=1;i=427265' BrowseName='1:QualifierDataType'>
+    <DisplayName>QualifierDataType</DisplayName>
+    <References>
+      <!-- HasSubtype - - Enumeration i=29  (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+      <!-- HasProperty - - EnumStrings ns=1;i=4272651  (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4272651</Reference>
+    </References>
+    <Definition Name='QualifierDataType'>
+      <Field Name='HIGH' Value='0'/>
+      <Field Name='LOW' Value='1'/>
+    </Definition>
+  </UADataType>
+  <UAVariable NodeId='ns=1;i=4272651' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Mandatory i=78  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - - Owner ns=1;i=427265  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=427265</Reference>
+    </References>
+    <Value>
+      <ListOfLocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <LocalizedText>
+          <Locale/>
+          <Text>HIGH</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>LOW</Text>
+        </LocalizedText>
+      </ListOfLocalizedText>
+    </Value>
+  </UAVariable>
+  <UAObject NodeId='ns=1;i=464780' BrowseName='1:Warning'>
+    <DisplayName>Warning</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - StateType i=2307  (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=2307</Reference>
+      <!-- HasProperty - - StateNumber ns=1;i=393654 UInt32 (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=393654</Reference>
+    </References>
+  </UAObject>
+  <UAVariable NodeId='ns=1;i=393654' BrowseName='StateNumber' ValueRank='-1' DataType='UInt32'>
+    <DisplayName>StateNumber</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - UInt32 i=68 PropertyType (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasProperty - - Warning ns=1;i=464780  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=464780</Reference>
+    </References>
+    <Value>
+      <UInt32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>1</UInt32>
+    </Value>
+  </UAVariable>
   <UAObjectType NodeId='ns=1;i=986708' BrowseName='1:MTSampleClassType' IsAbstract='true'>
     <DisplayName>MTSampleClassType</DisplayName>
     <References>

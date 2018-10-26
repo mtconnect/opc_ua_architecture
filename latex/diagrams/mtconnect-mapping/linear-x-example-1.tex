@@ -1,0 +1,195 @@
+\usetikzlibrary{arrows}
+\begin{figure}[ht]
+\centering\scalebox{0.7}{
+\begin{tikzpicture}[node distance=2cm, font=\small]
+\tikzset{
+   object/.style={
+           rectangle,
+           rounded corners,
+           draw=black, very thick,
+           minimum height=2em,
+           inner sep=2pt,
+           text centered           
+           },
+   class/.style={
+           rectangle,
+           draw=black, very thick,
+           minimum height=2em,
+           inner sep=2pt,
+           text centered           
+           },
+   ref/.style={
+           thick,->,>={Stealth[length=8pt,width=8pt,inset=4pt]},
+           rounded corners
+           },
+   seg/.style={thick,rounded corners}
+   }
+
+\node[object] (axes) { %
+\begin{tabular}{l l}
+  \multicolumn{2}{c}{\underline{\textbf{Axes: AxesType}}} \\[4pt]
+  \hline
+  NodeId & "mtc_adapter002/Mazak01-base" \\
+\end{tabular}
+};
+
+
+\node[object, left=3cm of axes.west] (device) { 
+\underline{\textbf{Mazak01 : MTDeviceType}}
+};
+
+\node[object,below=1.5cm of axes.south] (components) { %
+\begin{tabular}{l l}
+  \multicolumn{2}{c}{\underline{\textbf{Components: FolderType}}} \\[4pt]
+  \hline
+  NodeId & ".../Conditions" \\
+\end{tabular}
+};
+
+\node[object, below=1.5cm of components] (linear) { %
+\begin{tabular}{l l}
+  \multicolumn{2}{c}{\underline{\textbf{Linear[X]: LinearType}}} \\[4pt]
+  \hline
+  NodeId & "mtc_adapter002/Mazak01-X" \\
+\end{tabular}
+};
+
+\node[object,below=9cm of linear.south] (conditions) { %
+\begin{tabular}{l l}
+  \multicolumn{2}{c}{\underline{\textbf{Conditions: FolderType}}} \\[4pt]
+  \hline
+  NodeId & ".../Conditions" \\
+\end{tabular}
+};
+
+\node[object,below left=1.5cm and 3cm of linear.south] (position) {
+\begin{tabular}{l l}
+  \multicolumn{2}{c}{\underline{\textbf{ActualPosition: MTSampleType}}} \\[4pt]
+  \hline
+ EngineeringUnits & "MILLIMETER" \\
+ EURange & -INF:INF\\
+ Name & "Xabs" \\
+ Category & "SAMPLE" \\
+ MTTypeName & "POSITION" \\
+ MTSubTypeName & "ACTUAL" \\
+ Units & "MILLIMETER" \\
+ NativeUnits & "MILLIMETER" \\
+\end{tabular}
+};
+
+\node[class,below=6cm of position.north] (position-class) {
+\textbf{PositionClassType}
+};
+
+\node[object,below=1.5cm of linear.south] (load) {
+\begin{tabular}{l l}
+  \multicolumn{2}{c}{\underline{\textbf{Load: MTSampleType}}} \\[4pt]
+  \hline
+ EngineeringUnits & "PERCENT" \\
+ EURange & -INF:INF\\
+ Name & "Xload" \\
+ Category & "SAMPLE" \\
+ MTTypeName & "LOAD" \\
+ Units & "PERCENT" \\
+ NativeUnits & "PERCENT" \\
+\end{tabular}
+};
+
+\node[class,below=6cm of load.north] (load-class) {
+\textbf{LoadClassType}
+};
+
+
+\node[object,below right=1.5cm and 3cm of linear.south] (axis-feedrate) {
+\begin{tabular}{l l}
+  \multicolumn{2}{c}{\underline{\textbf{AxisFeedrate: MTSampleType}}} \\[4pt]
+  \hline
+ EngineeringUnits & "MILLIMETER/SECOND" \\
+ EURange & -INF:INF\\
+ Name & "Xfrt" \\
+ Category & "SAMPLE" \\
+ MTTypeName & "AXIS_FEEDRATE" \\
+ Units & "MILLIMETER/SECOND" \\
+ NativeUnits & "MILLIMETER/SECOND"
+\end{tabular}
+};
+
+\node[class,below=6cm of axis-feedrate.north] (axis-feedrate-class) {
+\textbf{AxisFeedrateClassType}
+};
+
+\node[object,below=1.5cm of conditions.south] (position-cond) { %
+\begin{tabular}{l l}
+  \multicolumn{2}{c}{\underline{\textbf{Position: MTConditionType}}} \\[4pt]
+  \hline
+  <<Attribute>> NodeId & ".../Mazak01-base_1" \\
+  ConditionClassId & (ns=1;i=365705) \\
+  ConditionClassName & "PositionClassType" \\
+  ConditionName & "Xtravel" \\
+  BranchId & 0 \\
+  Retain & false \\
+  EnableState & True \\
+  Quality & Good \\
+  LastSeverity & 0 \\
+  Comment & "" \\
+  ClientUserId & "" \\
+  NormalState & (ns=1;i=981658) \\
+  MTTypeName & "POSITION" \\
+  Category & "CONDITION" \\
+  NativeCode & ""\end{tabular}
+};
+
+\draw[ref] (device) -- (axes)
+  node[pos=0.5,above]{<<HasNotifier>>};  
+
+\draw[ref] (axes) -- (components) 
+  node[pos=0.5]{<<Organizes>>};
+
+\draw[ref] (components) -- (linear) 
+  node[pos=0.5]{<<HasComponent>>};
+  
+\draw[seg] (axes.east) -| (5,-1) coordinate (d1);
+\draw[ref] (d1) |- (linear.east)
+ node[pos=0.2]{<<HasEventSource>>};
+
+\draw[ref] (position) -- (position-class) 
+  node[pos=0.5]{<<HasMTClassType>>};
+
+\draw[ref] (position-cond) -| (position-class) 
+  node[pos=0.5,below]{<<HasMTClassType>>};
+
+\draw[ref] (load) -- (load-class) 
+  node[pos=0.5]{<<HasMTClassType>>};
+
+\draw[ref] (axis-feedrate) -- (axis-feedrate-class) 
+  node[pos=0.5]{<<HasMTClassType>>};
+
+\draw[seg] (linear.south) |- (0,-7) coordinate (d2);
+\draw[ref] (d2) -| (position.north)
+  node[pos=0.5,above]{<<HasComponent>>};
+
+\draw[ref] (linear.south) -- (load.north)
+  node[pos=0.5,above]{<<HasComponent>>};
+
+\draw[seg] (linear.south) |- (0,-7) coordinate (d3);
+\draw[ref] (d3) -| (axis-feedrate.north)
+  node[pos=0.5,above]{<<HasComponent>>};
+  
+\draw[seg] (linear.west) -| (-10,-8.25) coordinate (d4)
+ node[pos=0.2,above]{<<Organizes>>};
+\draw[ref] (d4) |- (conditions.west);
+
+
+\draw[ref] (conditions) -- (position-cond) 
+  node[pos=0.5]{<<Organizes>>};
+
+\draw[seg] (linear.-5) -| (11.25,-8.25) coordinate (d4)
+ node[pos=0.3,above]{<<HasCondition>>};
+\draw[ref] (d4) |- (position-cond.east);
+
+  
+\end{tikzpicture}
+}
+\caption{Linear X Axis Example}
+ \label{fig:linear-x-example-1}
+\end{figure}

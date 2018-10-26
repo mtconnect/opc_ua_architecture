@@ -48,7 +48,7 @@
 
 \node[object,below=2cm of conditions.south] (actuator) { %
 \begin{tabular}{l l}
-  \multicolumn{2}{c}{\underline{\textbf{Actuator: MTNonExclusiveConditionType}}} \\[4pt]
+  \multicolumn{2}{c}{\underline{\textbf{Actuator: MTConditionType}}} \\[4pt]
   \hline
   <<Attribute>> NodeId & ".../Mazak01-base_1" \\
   ConditionClassId & (ns=1;i=710090) \\
@@ -61,12 +61,14 @@
   LastSeverity & 0 \\
   Comment & "" \\
   ClientUserId & "" \\
+  NormalState & (ns=1;i=981658) \\
   MTTypeName & "ACTUATOR" \\
-  Category & "CONDITION"
+  Category & "CONDITION" \\
+  NativeCode & ""
 \end{tabular}
 };
 
-\node[class,left above=2cm and 4cm of actuator] (class) {
+\node[class,above left=2cm and 0.5cm of actuator] (class) {
 \begin{tabular}{l l}
   \multicolumn{2}{c}{\underline{\textbf{ActuatorClassType}}} \\[4pt]
   \hline
@@ -88,10 +90,7 @@
 \draw[ref] (device) -- (axes)
   node[pos=0.5,above]{<<HasNotifier>>};  
 
-\draw[ref] (actuator) -- (class)
-  node[pos=0.5,above]{<<HasNotifier>>};  
-
-\draw[ref] (actuator) -- (class) 
+\draw[ref] (actuator) -| (class) 
   node[pos=0.5,below]{<<HasMTClassType>>};
 
 \end{tikzpicture}

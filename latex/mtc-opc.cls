@@ -335,3 +335,5 @@
 }
 
 \newcommand{\atsign}{\char`\@}
+
+\newcommand{\typeref}[1] {\hyperref[type:#1]{#1}}

@@ -64,7 +64,7 @@
 
 \node[object,below left=1.5cm and 3cm of linear.south] (position) {
 \begin{tabular}{l l}
-  \multicolumn{2}{c}{\underline{\textbf{ActualPosition: MTSampleType}}} \\[4pt]
+  \multicolumn{2}{c}{\underline{\textbf{ActualPosition: \hyperref[type:MTSampleType]{MTSampleType}}}} \\[4pt]
   \hline
  EngineeringUnits & "MILLIMETER" \\
  EURange & -INF:INF\\
@@ -83,7 +83,7 @@
 
 \node[object,below=1.5cm of linear.south] (load) {
 \begin{tabular}{l l}
-  \multicolumn{2}{c}{\underline{\textbf{Load: MTSampleType}}} \\[4pt]
+  \multicolumn{2}{c}{\underline{\textbf{Load: \typeref{MTSampleType}}}} \\[4pt]
   \hline
  EngineeringUnits & "PERCENT" \\
  EURange & -INF:INF\\
@@ -102,7 +102,7 @@
 
 \node[object,below right=1.5cm and 3cm of linear.south] (axis-feedrate) {
 \begin{tabular}{l l}
-  \multicolumn{2}{c}{\underline{\textbf{AxisFeedrate: MTSampleType}}} \\[4pt]
+  \multicolumn{2}{c}{\underline{\textbf{AxisFeedrate: \typeref{MTSampleType}}}} \\[4pt]
   \hline
  EngineeringUnits & "MILLIMETER/SECOND" \\
  EURange & -INF:INF\\
@@ -120,7 +120,7 @@
 
 \node[object,below=1.5cm of conditions.south] (position-cond) { %
 \begin{tabular}{l l}
-  \multicolumn{2}{c}{\underline{\textbf{Position: MTConditionType}}} \\[4pt]
+  \multicolumn{2}{c}{\underline{\textbf{Position: \typeref{MTConditionType}}}} \\[4pt]
   \hline
   <<Attribute>> NodeId & ".../Mazak01-base_1" \\
   ConditionClassId & (ns=1;i=365705) \\

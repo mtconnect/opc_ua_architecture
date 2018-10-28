@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-10-28T05:28:32Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-10-28T05:51:27Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-10-28T05:28:32Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-10-28T05:28:32Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-10-28T05:51:27Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-10-28T05:51:27Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -180,8 +180,8 @@
     <References>
       <!-- HasTypeDefinition - - Int32 i=68 PropertyType (forward: true) -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule - - Optional i=80  (forward: true) -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasModellingRule - - Mandatory i=78  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - - MTChannelType ns=1;i=482918  (forward: false) -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=482918</Reference>
     </References>
@@ -273,8 +273,8 @@
     <References>
       <!-- HasTypeDefinition - - String i=68 PropertyType (forward: true) -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule - - Optional i=80  (forward: true) -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasModellingRule - - Mandatory i=78  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - - MTComponentType ns=1;i=926235  (forward: false) -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=926235</Reference>
     </References>
@@ -372,8 +372,8 @@
     <References>
       <!-- HasTypeDefinition - - FolderType i=61  (forward: true) -->
       <Reference ReferenceType='HasTypeDefinition'>i=61</Reference>
-      <!-- HasModellingRule - - Optional i=80  (forward: true) -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasModellingRule - - Mandatory i=78  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - - MTComponentType ns=1;i=926235  (forward: false) -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=926235</Reference>
     </References>
@@ -486,8 +486,8 @@
     <References>
       <!-- HasTypeDefinition - - String i=68 PropertyType (forward: true) -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule - - Optional i=80  (forward: true) -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasModellingRule - - Mandatory i=78  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - - MTSensorConfigurationType ns=1;i=186889  (forward: false) -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=186889</Reference>
     </References>
@@ -656,8 +656,8 @@
     <References>
       <!-- HasTypeDefinition - - Float i=68 PropertyType (forward: true) -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule - - Optional i=80  (forward: true) -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasModellingRule - - Mandatory i=78  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - - FilterType ns=1;i=650129  (forward: false) -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=650129</Reference>
     </References>
@@ -721,8 +721,8 @@
     <References>
       <!-- HasTypeDefinition - - MTCategoryType i=68 PropertyType (forward: true) -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule - - Optional i=80  (forward: true) -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasModellingRule - - Mandatory i=78  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - - MTDataItemType ns=1;i=799005  (forward: false) -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=799005</Reference>
     </References>
@@ -732,8 +732,8 @@
     <References>
       <!-- HasTypeDefinition - - String i=68 PropertyType (forward: true) -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule - - Optional i=80  (forward: true) -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasModellingRule - - Mandatory i=78  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - - MTDataItemType ns=1;i=799005  (forward: false) -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=799005</Reference>
     </References>
@@ -912,8 +912,8 @@
     <References>
       <!-- HasTypeDefinition - - MTCategoryType i=68 PropertyType (forward: true) -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule - - Optional i=80  (forward: true) -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasModellingRule - - Mandatory i=78  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - - MTDataItemType ns=1;i=799005  (forward: false) -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=799005</Reference>
     </References>
@@ -923,8 +923,8 @@
     <References>
       <!-- HasTypeDefinition - - String i=68 PropertyType (forward: true) -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule - - Optional i=80  (forward: true) -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasModellingRule - - Mandatory i=78  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - - MTDataItemType ns=1;i=799005  (forward: false) -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=799005</Reference>
     </References>
@@ -1123,8 +1123,8 @@
     <References>
       <!-- HasTypeDefinition - - MTCategoryType i=68 PropertyType (forward: true) -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule - - Optional i=80  (forward: true) -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasModellingRule - - Mandatory i=78  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - - MTDataItemType ns=1;i=799005  (forward: false) -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=799005</Reference>
     </References>
@@ -1134,8 +1134,8 @@
     <References>
       <!-- HasTypeDefinition - - String i=68 PropertyType (forward: true) -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule - - Optional i=80  (forward: true) -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasModellingRule - - Mandatory i=78  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - - MTDataItemType ns=1;i=799005  (forward: false) -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=799005</Reference>
     </References>
@@ -1440,8 +1440,8 @@
     <References>
       <!-- HasTypeDefinition - - MTCategoryType i=68 PropertyType (forward: true) -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule - - Optional i=80  (forward: true) -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasModellingRule - - Mandatory i=78  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - - MTDataItemType ns=1;i=799005  (forward: false) -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=799005</Reference>
     </References>
@@ -1451,8 +1451,8 @@
     <References>
       <!-- HasTypeDefinition - - String i=68 PropertyType (forward: true) -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule - - Optional i=80  (forward: true) -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasModellingRule - - Mandatory i=78  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - - MTDataItemType ns=1;i=799005  (forward: false) -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=799005</Reference>
     </References>
@@ -1678,8 +1678,8 @@
     <References>
       <!-- HasTypeDefinition - - MTCategoryType i=68 PropertyType (forward: true) -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule - - Optional i=80  (forward: true) -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasModellingRule - - Mandatory i=78  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - - MTDataItemType ns=1;i=799005  (forward: false) -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=799005</Reference>
     </References>
@@ -1689,8 +1689,8 @@
     <References>
       <!-- HasTypeDefinition - - String i=68 PropertyType (forward: true) -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule - - Optional i=80  (forward: true) -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasModellingRule - - Mandatory i=78  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - - MTDataItemType ns=1;i=799005  (forward: false) -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=799005</Reference>
     </References>
@@ -1838,8 +1838,8 @@
     <References>
       <!-- HasTypeDefinition - - MTCategoryType i=68 PropertyType (forward: true) -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule - - Optional i=80  (forward: true) -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasModellingRule - - Mandatory i=78  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - - MTDataItemType ns=1;i=799005  (forward: false) -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=799005</Reference>
     </References>
@@ -1849,8 +1849,8 @@
     <References>
       <!-- HasTypeDefinition - - String i=68 PropertyType (forward: true) -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule - - Optional i=80  (forward: true) -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasModellingRule - - Mandatory i=78  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - - MTDataItemType ns=1;i=799005  (forward: false) -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=799005</Reference>
     </References>
@@ -1948,8 +1948,8 @@
     <References>
       <!-- HasTypeDefinition - - String i=68 PropertyType (forward: true) -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule - - Optional i=80  (forward: true) -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasModellingRule - - Mandatory i=78  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - - MTConditionType ns=1;i=256501  (forward: false) -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=256501</Reference>
     </References>
@@ -1992,8 +1992,8 @@
     <References>
       <!-- HasTypeDefinition - - TwoStateVariableType i=8995  (forward: true) -->
       <Reference ReferenceType='HasTypeDefinition'>i=8995</Reference>
-      <!-- HasModellingRule - - Optional i=80  (forward: true) -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasModellingRule - - Mandatory i=78  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - - MTConditionType ns=1;i=256501  (forward: false) -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=256501</Reference>
     </References>

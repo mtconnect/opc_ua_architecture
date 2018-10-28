@@ -76,7 +76,7 @@ module Relation
       @type = r['_type']
       @json = r
       @multiplicity = r['multiplicity'] || '1'
-      @optional = @multiplicity and @multiplicity =~ /0\.\./
+      @optional = (@multiplicity and @multiplicity =~ /^0\.\./) != nil
 
       @source = Connection.new('Parent', nil, owner)
       @stereotype = @target = nil
@@ -164,7 +164,7 @@ module Relation
         end
 
         @multiplicity = e['multiplicity'] || '1'
-        @optional = @multiplicity and @multiplicity =~ /0\.\./
+        @optional = (@multiplicity and @multiplicity =~ /0\.\./) != nil
 
         @navigable = e['navigable'].nil? || e['navigable']
         @json = e

@@ -1,4 +1,4 @@
-% Generated 2018-10-27 22:24:46 -0700
+% Generated 2018-10-27 22:51:04 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -39,7 +39,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{BaseObjectType} (See \cite{UAPart5} Documentation)} \\
-HasProperty & Variable & Number & Int32 & PropertyType & Optional \\
+HasProperty & Variable & Number & Int32 & PropertyType & Mandatory \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
 HasProperty & Variable & MTDescription & String & PropertyType & Optional \\
 HasProperty & Variable & CalibrationDate & UtcTime & PropertyType & Optional \\
@@ -101,7 +101,7 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{BaseObjectType} (See \cite{UAPart5} Documentation)} \\
 HasSubtype & ObjectType & MTDeviceType & \multicolumn{3}{|l|}{See section \ref{type:MTDeviceType}} \\
 HasSubtype & ObjectType & <Component>Type & \multicolumn{3}{|l|}{See section \ref{type:<Component>Type}} \\
-HasProperty & Variable & XmlId & String & PropertyType & Optional \\
+HasProperty & Variable & XmlId & String & PropertyType & Mandatory \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
 HasProperty & Variable & NativeName & String & PropertyType & Optional \\
 HasProperty & Variable & Uuid & String & PropertyType & Optional \\
@@ -117,7 +117,7 @@ HasComponent & Variable & <MTSample> & \multicolumn{2}{|l|}{MTSampleType} & Opti
 HasComponent & Event & <MTMessage> & \multicolumn{2}{|l|}{MTMessageType} & Optional \\
 HasComponent & Variable & <MTAssetEvent> & \multicolumn{2}{|l|}{MTAssetEventType} & Optional \\
 Organizes & Object & Components & MTComponentType & FolderType & Optional \\
-Organizes & Object & Compositions & MTCompositionType & FolderType & Optional \\
+Organizes & Object & Compositions & MTCompositionType & FolderType & Mandatory \\
 HasComponent & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
 \end{tabu}
@@ -332,7 +332,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTConfigurationType} (See section \ref{type:MTConfigurationType})} \\
-HasProperty & Variable & FirwareVersion & String & PropertyType & Optional \\
+HasProperty & Variable & FirwareVersion & String & PropertyType & Mandatory \\
 HasProperty & Variable & CalibrationDate & UtcTime & PropertyType & Optional \\
 HasProperty & Variable & NextCalibrationDate & UtcTime & PropertyType & Optional \\
 HasProperty & Variable & CalibrationInitials & String & PropertyType & Optional \\
@@ -449,7 +449,7 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{BaseObjectType} (See \cite{UAPart5} Documentation)} \\
 HasSubtype & ObjectType & MinimumDeltaFilterType & \multicolumn{3}{|l|}{See section \ref{type:MinimumDeltaFilterType}} \\
 HasSubtype & ObjectType & PeriodFilterType & \multicolumn{3}{|l|}{See section \ref{type:PeriodFilterType}} \\
-HasProperty & Variable & Value & Float & PropertyType & Optional \\
+HasProperty & Variable & Value & Float & PropertyType & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -539,21 +539,21 @@ DataType & \multicolumn{5}{|l|}{AssetEventDataType} \\
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{BaseDataVariableType} (See \cite{UAPart8} Documentation)} \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
-HasProperty & Object & Category & MTCategoryType & PropertyType & Optional \\
-HasProperty & Variable & MTTypeName & String & PropertyType & Optional \\
+HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
 HasProperty & Variable & SourceName & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
-HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
+HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
-Attribute Override & Variable & DataType & \multicolumn{2}{|l|}{AssetEventDataType} & Optional \\
+Attribute Override & Variable & DataType & \multicolumn{2}{|l|}{AssetEventDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -588,14 +588,14 @@ DataType & \multicolumn{5}{|l|}{UInteger} \\
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MultiStateDiscreteType} (See \cite{UAPart8} Documentation)} \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
-HasProperty & Object & Category & MTCategoryType & PropertyType & Optional \\
-HasProperty & Variable & MTTypeName & String & PropertyType & Optional \\
+HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
 HasProperty & Variable & SourceName & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
-HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
+HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
@@ -727,14 +727,14 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 HasSubtype & ObjectType & MTNumericDataItemType & \multicolumn{3}{|l|}{See section \ref{type:MTNumericDataItemType}} \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
-HasProperty & Object & Category & MTCategoryType & PropertyType & Optional \\
-HasProperty & Variable & MTTypeName & String & PropertyType & Optional \\
+HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
 HasProperty & Variable & SourceName & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
-HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
+HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
@@ -927,14 +927,14 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{DataItemType} (See \cite{UAPart8} Documentation)} \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
-HasProperty & Object & Category & MTCategoryType & PropertyType & Optional \\
-HasProperty & Variable & MTTypeName & String & PropertyType & Optional \\
+HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
 HasProperty & Variable & SourceName & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
-HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
+HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
@@ -983,14 +983,14 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{AnalogItemType} (See \cite{UAPart8} Documentation)} \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
-HasProperty & Object & Category & MTCategoryType & PropertyType & Optional \\
-HasProperty & Variable & MTTypeName & String & PropertyType & Optional \\
+HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
 HasProperty & Variable & SourceName & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
-HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
+HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
@@ -1040,14 +1040,14 @@ DataType & \multicolumn{5}{|l|}{String} \\
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{BaseDataVariableType} (See \cite{UAPart8} Documentation)} \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
-HasProperty & Object & Category & MTCategoryType & PropertyType & Optional \\
-HasProperty & Variable & MTTypeName & String & PropertyType & Optional \\
+HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
 HasProperty & Variable & SourceName & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
-HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
+HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
@@ -1121,25 +1121,25 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{ConditionType} (See \cite{UAPart9} Documentation)} \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
-HasProperty & Object & Category & MTCategoryType & PropertyType & Optional \\
-HasProperty & Variable & MTTypeName & String & PropertyType & Optional \\
+HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
 HasProperty & Variable & SourceName & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
-HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
+HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
-HasProperty & Variable & NativeCode & String & PropertyType & Optional \\
+HasProperty & Variable & NativeCode & String & PropertyType & Mandatory \\
 HasProperty & Object & Qualifier & QualifierDataType & PropertyType & Optional \\
 HasProperty & Variable & NativeSeverity & String & PropertyType & Optional \\
 HasProperty & Object & MTSeverity & MTSeverityDataType & PropertyType & Optional \\
-HasComponent & Object & ActiveState & \multicolumn{2}{|l|}{TwoStateVariableType} & Optional \\
+HasComponent & Object & ActiveState & \multicolumn{2}{|l|}{TwoStateVariableType} & Mandatory \\
 \end{tabu}
 \end{table} 
 

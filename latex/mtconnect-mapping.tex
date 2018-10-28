@@ -178,9 +178,9 @@ The MTConnect \textit{Agent} is capable of supporting multiple \texttt{Device}s;
       <Description manufacturer="Mazak" model="Integrex" serialNumber="M7303290458">Mazak Integrex 100-IV</Description>
 \end{lstlisting}
 
-The \texttt{Description} element provides some characteristics of the device, namely the manufacturer, serial-number and model. These are all optional as is the descriptive text that is contained in the \texttt{Description} element. The text contained in the \cdata{CDATA} of the \texttt{Description} element is mapped to the \texttt{Data} property of the \mtconnectterm{MTDescription}
+The \texttt{Description} element provides some characteristics of the device, namely the manufacturer, serial-number and model. These are all optional as is the descriptive text that is contained in the \texttt{Description} element. The text contained in the \cdata{CDATA} of the \texttt{Description} element is mapped to the \texttt{Data} property of the \mtuatype{MTDescription}
 
-The \texttt{Device} is mapped to an \mtconnectterm{MTDevice} object in the MTConnect namespace as shown in Figure \ref{fig:mazak-01-device-model}.
+The \texttt{Device} is mapped to an \mtuatype{MTDevice} object in the MTConnect namespace as shown in Figure \ref{fig:mazak-01-device-model}.
 
 \input{diagrams/mtconnect-mapping/device-model.tex}
 
@@ -199,15 +199,15 @@ The device, as shown in Listing \ref{lst:device-data-items}, requires three data
 
 \input{diagrams/mtconnect-mapping/mtdevice-data-item.tex}
 
-Figure \ref{fig:mtdevice-data-item} demonstrates the relationship of the \texttt{Data\-Item}s with the parent \texttt{MTComponent\-Type} using a \texttt{Has\-Component} relationship. The browse name is constructed to uniquely identify the DataItem and also indicate its semantic meaning within the context of the MTConnect \texttt{MTComponent\-Type}, in this case, an \texttt{MTDevice\-Type} since the \texttt{MTDevice\-Type} is a sub-type of the \texttt{MTComponent\-Type}. These relationships are created dynamically during the instantiation of the model and are not part of the underlying MTConnect Nodeset.
+Figure \ref{fig:mtdevice-data-item} demonstrates the relationship of the \texttt{Data\-Item}s with the parent \mtuatype{MTComponent\-Type} using a \texttt{Has\-Component} relationship. The browse name is constructed to uniquely identify the DataItem and also indicate its semantic meaning within the context of the MTConnect \texttt{MTComponent\-Type}, in this case, an \texttt{MTDevice\-Type} since the \texttt{MTDevice\-Type} is a sub-type of the \mtuatype{MTComponent\-Type}. These relationships are created dynamically during the instantiation of the model and are not part of the underlying MTConnect Nodeset.
 
 Every MTConnect \texttt{Data\-Item} has two references that provide the semantic meaning in the UA address space. This model is very similar to the \texttt{Condition\-Class\-Id} relationship for the OPC UA \texttt{Condition\-Type}. These \texttt{Class\-Type}s are inherited from the same tree so they can be used in the MTConnect representation of the MTConnect \dataitem{CONDITION} category \texttt{Data\-Item}s.
 
 \input{diagrams/mtconnect-mapping/data-item-references.tex}
 
-In Figure \ref{fig:data-item-references}, the \texttt{HasMTClassType} reference indicates the semantic meaning of the data item. For enumerated or controlled vocabulary data items, they are represented using a sub-type of the UA \texttt{Multi\-State\-Value\-Discrete\-Type}, the \texttt{MTControlled\-Vocab\-Event\-Type}, where the \texttt{Enum\-Values} attribute is related to the NodeId of the associated enumeration data type, in this case the \texttt{Availability\-Data\-Type}.
+In Figure \ref{fig:data-item-references}, the \mtuatype{HasMTClassType} reference indicates the semantic meaning of the data item. For enumerated or controlled vocabulary data items, they are represented using a sub-type of the UA \texttt{Multi\-State\-Value\-Discrete\-Type}, the \texttt{MTControlled\-Vocab\-Event\-Type}, where the \texttt{Enum\-Values} attribute is related to the NodeId of the associated enumeration data type, in this case the \texttt{Availability\-Data\-Type}.
 
-MTConnect \texttt{subType} will be mapped in the same manner as the type using the \texttt{HasMTSub\-Class\-Type} relationship. This will be covered subsequent examples.
+MTConnect \texttt{subType} will be mapped in the same manner as the type using the \mtuatype{HasMTSub\-Class\-Type} relationship. This will be covered subsequent examples.
 
 \begin{lstlisting}[firstnumber=last,%
     caption={Components and Conditions},label={lst:device-axis-component}]
@@ -224,7 +224,12 @@ The \texttt{Components} element in Listing \ref{lst:device-axis-component} is re
 
 The \texttt{HasNotifier} refererence needs to be created between the \texttt{Axes} object and the \texttt{Mazak01\-:\-MTDeviceType} object to allow for the condition to be associated correctly. The relationship of the condition in Figure~\ref{fig:axes-example-1} illustrates the relationships between the \texttt{Component} and the related condition and the notification hierarchy. The UA \texttt{Condition\-ClassId} and \texttt{Condition\-ClassName} use the \texttt{Actuator\-ClassType}'s \texttt{NodeId} and \texttt{BrowseName} respectively to relate to the condition class as required by the UA specification \cite{UAPart9}. In addition the MTConnect \texttt{HasMTClassType} reference directly connects to the type definition as do all MTConnect \texttt{DataItem}s.
 
-Conditions have special mapping rules that differ from the other data items. The conditions are sub-types of the OPC UA base type of \texttt{OffNormalAlarmType} with the \texttt{NormalState} node id of the NormalState mapped to the Normal instance of the UA \texttt{UAStateType}.
+The conditions are modeled as sub-types of the OPC UA base type of \texttt{OffNormalAlarmType} with the \texttt{NormalState} node id of the NormalState mapped to the Normal instance of the UA \texttt{UAStateType}.
+
+\begin{quote}
+    \color{red}
+    TODO: Do we need to instantiate an entire state machine?
+\end{quote}
 
 \begin{lstlisting}[firstnumber=last,%
     caption={Linear X Component},label={lst:linear-x-component}]
@@ -248,6 +253,57 @@ Figure~\ref{fig:linear-x-example-1} represents the UA Object model based on \ref
 Each of the data items in this case are samples, meaning they contain numeric values and derived from the UA \texttt{AnalogItemType} defined in \cite{UAPart8}.
 
 \FloatBarrier
+
+Listing~\ref{lst:controller-component} represents the control system and the paths of exectution under for each independent set of operations and motion. This controller also has extended data items that are not in the standard. They are prefixed with the XML namespace \texttt{x:}. Data item types and sub-types can be extended. If only the sub-type is an exteneded type, then the browse name will be prepended as normal and the sub type in \textit{Pascal Case} prepended. For example with the data item of type \texttt{PROGRAM} with sub-type \texttt{x:SUB} (line 36), the namespace will be removed and the browse name \texttt{SubProgram} of a \texttt{MTStringEventType} will be used referencing the \texttt{ProgramClassType}. 
+
+When the type is an extended namespace, a new \texttt{ClassType} must be created by taking the \texttt{type} attribute, removing the namespace and creating a new subtype of the \texttt{MTString\-EventType}. A \texttt{MTString\-EventType} must be used unless a better mapping can be determined. For example, the \texttt{x:SEQUENCE_NUMBER} (line 39) data item would be have a \texttt{MTString\-EventType} instantiated with the browse name of \texttt{SequenceNumber} and a new \texttt{ClassType} will be created \texttt{Sequence\-NumberClassType} and related with the \texttt{HasMT\-ClassType} reference. The \texttt{ClassType} must be created as a sub-type of the \texttt{MTStringEventClassType}.
+
+In this case the \texttt{SequenceNumber} may have schema or information associated with it that will determine it to be a numeric value. If this is the case, then it can be mapped to the \texttt{MTNumericEventType} as a better match. The \texttt{classType} must be created as a sub-type of the \texttt{MTNumericEventClassType}.
+
+All data items of \texttt{category} \texttt{SAMPLE} must always be mapped to the \texttt{MTSampleType} instance with the browse name created appropriately. In this case the \texttt{ClassType} must be created as as sub-type of the \texttt{MTSampleClassType}.
+
+\begin{lstlisting}[firstnumber=last,%
+    caption={Controller and Path Components and Their Data Items},label={lst:controller-component}]
+        <Controller id="Mazak01-controller" name="controller">
+          <DataItems>
+            <DataItem category="CONDITION" id="Mazak01-controller_1" name="comms_cond" type="COMMUNICATIONS"/>
+            <DataItem category="CONDITION" id="Mazak01-controller_2" name="logic_cond" type="LOGIC_PROGRAM"/>
+            <DataItem category="CONDITION" id="Mazak01-controller_3" name="system_cond" type="SYSTEM"/>
+            <DataItem category="EVENT" id="Mazak01-controller_4" name="estop" type="EMERGENCY_STOP"/>
+          </DataItems>
+          <Components>
+            <Path id="Mazak01-path" name="path">
+              <DataItems>
+                <DataItem category="EVENT" id="Mazak01-path_1" name="program" type="PROGRAM"/>
+                <DataItem category="EVENT" id="Mazak01-path_2" name="subprogram" subType="x:SUB" type="PROGRAM"/>
+                <DataItem category="EVENT" id="Mazak01-path_3" name="line" type="LINE"/>
+                <DataItem category="EVENT" id="Mazak01-path_4" name="unitNum" type="x:UNIT"/>
+                <DataItem category="EVENT" id="Mazak01-path_5" name="sequenceNum" type="x:SEQUENCE_NUMBER"/>
+                <DataItem category="EVENT" id="Mazak01-path_6" name="PartCountAct" type="PART_COUNT"/>
+                <DataItem category="SAMPLE" coordinateSystem="WORK" id="Mazak01-path_7" name="Fact" nativeUnits="FOOT/MINUTE" subType="ACTUAL" type="PATH_FEEDRATE" units="MILLIMETER/SECOND"/>
+                <DataItem category="EVENT" id="Mazak01-path_8" name="Frapidovr" nativeUnits="PERCENT" subType="RAPID" type="PATH_FEEDRATE_OVERRIDE" units="PERCENT"/>
+                <DataItem category="EVENT" id="Mazak01-path_9" name="Fovr" nativeUnits="PERCENT" subType="PROGRAMMED" type="PATH_FEEDRATE_OVERRIDE" units="PERCENT"/>
+                <DataItem category="EVENT" id="Mazak01-path_10" name="Tool_number" type="TOOL_NUMBER"/>
+                <DataItem category="EVENT" id="Mazak01-path_11" name="Tool_group" type="x:TOOL_GROUP"/>
+                <DataItem category="EVENT" id="Mazak01-path_12" name="Tool_suffix" type="x:TOOL_SUFFIX"/>
+                <DataItem category="EVENT" id="Mazak01-path_13" name="execution" type="EXECUTION"/>
+                <DataItem category="EVENT" id="Mazak01-path_14" name="mode" type="CONTROLLER_MODE"/>
+                <DataItem category="EVENT" id="Mazak01-path_15" name="program_cmt" type="x:PROGRAM_COMMENT"/>
+                <DataItem category="EVENT" id="Mazak01-path_16" name="subprogram_cmt" subType="x:SUB" type="x:PROGRAM_COMMENT"/>
+                <DataItem category="SAMPLE" id="Mazak01-path_17" name="auto_time" subType="x:AUTO" type="ACCUMULATED_TIME"/>
+                <DataItem category="SAMPLE" id="Mazak01-path_18" name="total_time" subType="x:TOTAL" type="ACCUMULATED_TIME"/>
+                <DataItem category="SAMPLE" id="Mazak01-path_19" name="cut_time" subType="x:CUT" type="ACCUMULATED_TIME"/>
+                <DataItem category="CONDITION" id="Mazak01-path_20" name="motion_cond" type="MOTION_PROGRAM"/>
+                <DataItem category="CONDITION" id="Mazak01-path_21" name="path_system" type="SYSTEM"/>
+              </DataItems>
+            </Path>
+          </Components>
+        </Controller>
+\end{lstlisting}
+
+\begin{quote}
+    \color{red} TODO: SensorConfiguration example for an axis.
+\end{quote}
 
 \subsection{MTConnect Streaming Data}
 

@@ -336,4 +336,11 @@
 
 \newcommand{\atsign}{\char`\@}
 
-\newcommand{\typeref}[1] {\hyperref[type:#1]{#1}}
+\newcommand{\typeref}[1]{\hyperref[type:#1]{#1}}
+
+\newcommand{\mtuaref}[1]{{\fontfamily{pcr}\selectfont #1}}
+
+%\DeclareRobustCommand{\mtuatype}[1]{ %
+%  \noblanks[q]{#1}%
+%  \hyperref[type:\alphabetic[v]{\thestring}\relax]{\fontfamily{pcr}\selectfont #1} %
+%}

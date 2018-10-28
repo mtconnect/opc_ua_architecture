@@ -1,4 +1,4 @@
-% Generated 2018-10-27 21:45:23 -0700
+% Generated 2018-10-27 22:08:12 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -552,6 +552,7 @@ HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFi
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
+HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
 Attribute Override & Variable & DataType & \multicolumn{2}{|l|}{AssetEventDataType} & Optional \\
 \end{tabu}
 \end{table} 
@@ -600,6 +601,7 @@ HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFi
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
+HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -738,6 +740,7 @@ HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFi
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
+HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -896,6 +899,7 @@ HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFi
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
+HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
 HasProperty & Variable & SignificantDigits & UInt16 & PropertyType & Optional \\
 HasProperty & Variable & Statistic & String & PropertyType & Optional \\
 HasProperty & Variable & Units & String & PropertyType & Optional \\
@@ -951,6 +955,7 @@ HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFi
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
+HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
 HasProperty & Variable & SignificantDigits & UInt16 & PropertyType & Optional \\
 HasProperty & Variable & Statistic & String & PropertyType & Optional \\
 HasProperty & Variable & Units & String & PropertyType & Optional \\
@@ -1007,6 +1012,7 @@ HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFi
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
+HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -1073,6 +1079,21 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{ConditionType} (See \cite{UAPart9} Documentation)} \\
+HasProperty & Variable & Name & String & PropertyType & Optional \\
+HasProperty & Object & Category & MTCategoryType & PropertyType & Optional \\
+HasProperty & Variable & MTTypeName & String & PropertyType & Optional \\
+HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
+HasProperty & Variable & SourceName & String & PropertyType & Optional \\
+HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
+HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
+HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Optional \\
+HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
+HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
+HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
+HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
+HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
+HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
 HasProperty & Variable & NativeCode & String & PropertyType & Optional \\
 HasProperty & Object & Qualifier & QualifierDataType & PropertyType & Optional \\
 HasProperty & Variable & NativeSeverity & String & PropertyType & Optional \\
@@ -1082,10 +1103,7 @@ HasComponent & Object & ActiveState & \multicolumn{2}{|l|}{TwoStateVariableType}
 \end{table} 
 
 
-\paragraph{Dependency on MTDataItemType}
-
-This class relates to \texttt{MTDataItemType} (See section \ref{type:MTDataItemType}) for a(n) \texttt{Mixes In} relationship.
-
+\paragraph{Mixes in \texttt{MTDataItemType}} (See section \ref{type:MTDataItemType})
 \FloatBarrier
 \subsection{Data Item Types} \label{model:DataItemTypes}
 
@@ -4672,6 +4690,175 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTStringEventClassType} (See section \ref{type:MTStringEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsection{Condition Data Item Types} \label{model:ConditionDataItemTypes}
+\subsubsection{Defintion of \texttt{ ActuatorClassType}}
+  \label{type:ActuatorClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ActuatorClassType} Definition}
+  \label{table:ActuatorClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ActuatorClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTConditionClassType} (See Data Items Documentation)} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ CommunicationsClassType}}
+  \label{type:CommunicationsClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{CommunicationsClassType} Definition}
+  \label{table:CommunicationsClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{CommunicationsClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTConditionClassType} (See Data Items Documentation)} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ DataRangeClassType}}
+  \label{type:DataRangeClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{DataRangeClassType} Definition}
+  \label{table:DataRangeClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{DataRangeClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTConditionClassType} (See Data Items Documentation)} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ HardwareClassType}}
+  \label{type:HardwareClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{HardwareClassType} Definition}
+  \label{table:HardwareClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{HardwareClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTConditionClassType} (See Data Items Documentation)} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ LogicProgramClassType}}
+  \label{type:LogicProgramClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{LogicProgramClassType} Definition}
+  \label{table:LogicProgramClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{LogicProgramClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTConditionClassType} (See Data Items Documentation)} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MotionProgramClassType}}
+  \label{type:MotionProgramClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MotionProgramClassType} Definition}
+  \label{table:MotionProgramClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MotionProgramClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTConditionClassType} (See Data Items Documentation)} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ SystemClassType}}
+  \label{type:SystemClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{SystemClassType} Definition}
+  \label{table:SystemClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{SystemClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTConditionClassType} (See Data Items Documentation)} \\
 \end{tabu}
 \end{table} 
 

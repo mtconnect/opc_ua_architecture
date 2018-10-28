@@ -1,4 +1,4 @@
-% Generated 2018-10-27 22:14:47 -0700
+% Generated 2018-10-27 22:24:46 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -764,6 +764,34 @@ self.Source.CDATA
 \end{itemize}
 
 \end{itemize}
+\paragraph{Allowable Values}
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTRepresentationType} Enumeration}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{DISCRETE} & \texttt{0} \\
+\texttt{TIME_SERIES} & \texttt{1} \\
+\texttt{VALUE} & \texttt{2} \\
+\end{tabu}
+\end{table} 
+\paragraph{Allowable Values}
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTCategoryType} Enumeration}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{EVENT} & \texttt{0} \\
+\texttt{CONDITION} & \texttt{1} \\
+\texttt{SAMPLE} & \texttt{2} \\
+\end{tabu}
+\end{table} 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<mixin>> MTNumericDataItemType}}
   \label{type:MTNumericDataItemType}
@@ -821,6 +849,19 @@ and maximum values for the numeric values. This applies to both the Numeric
 Event and the Sample types.
 
 \end{itemize}
+\paragraph{Allowable Values}
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{CoordinateSystemType} Enumeration}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{MACHINE} & \texttt{0} \\
+\texttt{WORK} & \texttt{1} \\
+\end{tabu}
+\end{table} 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTMessageType}}
   \label{type:MTMessageType}
@@ -1103,6 +1144,32 @@ HasComponent & Object & ActiveState & \multicolumn{2}{|l|}{TwoStateVariableType}
 \end{table} 
 
 
+\paragraph{Allowable Values}
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{QualifierDataType} Enumeration}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{HIGH} & \texttt{0} \\
+\texttt{LOW} & \texttt{1} \\
+\end{tabu}
+\end{table} 
+\paragraph{Allowable Values}
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTSeverityDataType} Enumeration}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{FAULT} & \texttt{0} \\
+\texttt{WARNING} & \texttt{1} \\
+\end{tabu}
+\end{table} 
 \paragraph{Mixes in \texttt{MTDataItemType}} (See section \ref{type:MTDataItemType})
 \FloatBarrier
 \subsection{Data Item Types} \label{model:DataItemTypes}

@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-10-28T05:51:27Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-10-28T05:55:57Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-10-28T05:51:27Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-10-28T05:51:27Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-10-28T05:55:57Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-10-28T05:55:57Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -638,6 +638,77 @@
         <LocalizedText>
           <Locale/>
           <Text>WORK</Text>
+        </LocalizedText>
+      </ListOfLocalizedText>
+    </Value>
+  </UAVariable>
+  <UADataType NodeId='ns=1;i=952256' BrowseName='1:DataItemResetValueType'>
+    <DisplayName>DataItemResetValueType</DisplayName>
+    <References>
+      <!-- HasSubtype - - Enumeration i=29  (forward: false) -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
+      <!-- HasProperty - - EnumStrings ns=1;i=9522561  (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=9522561</Reference>
+    </References>
+    <Definition Name='DataItemResetValueType'>
+      <Field Name='ACTION_COMPLETE' Value='0'/>
+      <Field Name='ANNUAL' Value='1'/>
+      <Field Name='DAY' Value='2'/>
+      <Field Name='MAINTENANCE' Value='3'/>
+      <Field Name='MANUAL' Value='4'/>
+      <Field Name='MONTH' Value='5'/>
+      <Field Name='POWER_ON' Value='6'/>
+      <Field Name='SHIFT' Value='7'/>
+      <Field Name='WEEK' Value='8'/>
+    </Definition>
+  </UADataType>
+  <UAVariable NodeId='ns=1;i=9522561' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+    <DisplayName>EnumStrings</DisplayName>
+    <References>
+      <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule - - Mandatory i=78  (forward: true) -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - - Owner ns=1;i=952256  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=952256</Reference>
+    </References>
+    <Value>
+      <ListOfLocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <LocalizedText>
+          <Locale/>
+          <Text>ACTION_COMPLETE</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>ANNUAL</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>DAY</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>MAINTENANCE</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>MANUAL</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>MONTH</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>POWER_ON</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>SHIFT</Text>
+        </LocalizedText>
+        <LocalizedText>
+          <Locale/>
+          <Text>WEEK</Text>
         </LocalizedText>
       </ListOfLocalizedText>
     </Value>
@@ -4106,77 +4177,6 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=584365</Reference>
     </References>
   </UAObjectType>
-  <UADataType NodeId='ns=1;i=952256' BrowseName='1:DataItemResetValueType'>
-    <DisplayName>DataItemResetValueType</DisplayName>
-    <References>
-      <!-- HasSubtype - - Enumeration i=29  (forward: false) -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
-      <!-- HasProperty - - EnumStrings ns=1;i=9522561  (forward: true) -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=9522561</Reference>
-    </References>
-    <Definition Name='DataItemResetValueType'>
-      <Field Name='ACTION_COMPLETE' Value='0'/>
-      <Field Name='ANNUAL' Value='1'/>
-      <Field Name='DAY' Value='2'/>
-      <Field Name='MAINTENANCE' Value='3'/>
-      <Field Name='MANUAL' Value='4'/>
-      <Field Name='MONTH' Value='5'/>
-      <Field Name='POWER_ON' Value='6'/>
-      <Field Name='SHIFT' Value='7'/>
-      <Field Name='WEEK' Value='8'/>
-    </Definition>
-  </UADataType>
-  <UAVariable NodeId='ns=1;i=9522561' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
-    <DisplayName>EnumStrings</DisplayName>
-    <References>
-      <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule - - Mandatory i=78  (forward: true) -->
-      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasProperty - - Owner ns=1;i=952256  (forward: false) -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=952256</Reference>
-    </References>
-    <Value>
-      <ListOfLocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
-        <LocalizedText>
-          <Locale/>
-          <Text>ACTION_COMPLETE</Text>
-        </LocalizedText>
-        <LocalizedText>
-          <Locale/>
-          <Text>ANNUAL</Text>
-        </LocalizedText>
-        <LocalizedText>
-          <Locale/>
-          <Text>DAY</Text>
-        </LocalizedText>
-        <LocalizedText>
-          <Locale/>
-          <Text>MAINTENANCE</Text>
-        </LocalizedText>
-        <LocalizedText>
-          <Locale/>
-          <Text>MANUAL</Text>
-        </LocalizedText>
-        <LocalizedText>
-          <Locale/>
-          <Text>MONTH</Text>
-        </LocalizedText>
-        <LocalizedText>
-          <Locale/>
-          <Text>POWER_ON</Text>
-        </LocalizedText>
-        <LocalizedText>
-          <Locale/>
-          <Text>SHIFT</Text>
-        </LocalizedText>
-        <LocalizedText>
-          <Locale/>
-          <Text>WEEK</Text>
-        </LocalizedText>
-      </ListOfLocalizedText>
-    </Value>
-  </UAVariable>
   <UAReferenceType NodeId='ns=1;i=442482' BrowseName='1:HasMTClassType' Symmetric='false'>
     <DisplayName>HasMTClassType</DisplayName>
     <References>

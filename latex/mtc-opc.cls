@@ -54,6 +54,8 @@
 \RequirePackage[ampersand]{easylist}	% Loads easylist package to simplify lists using &
 \RequirePackage[english]{babel}
 \RequirePackage{csquotes}
+\RequirePackage{xstring}
+\RequirePackage[htt]{hyphenat}				% Allow hyphenation of fixed space fonts
 
 
 % *********** %
@@ -338,9 +340,4 @@
 
 \newcommand{\typeref}[1]{\hyperref[type:#1]{#1}}
 
-\newcommand{\mtuaref}[1]{{\fontfamily{pcr}\selectfont #1}}
-
-%\DeclareRobustCommand{\mtuatype}[1]{ %
-%  \noblanks[q]{#1}%
-%  \hyperref[type:\alphabetic[v]{\thestring}\relax]{\fontfamily{pcr}\selectfont #1} %
-%}
+\newcommand*{\mtuatype}[1]{\hyperref[type:#1]{\fontfamily{pcr}\selectfont #1}}

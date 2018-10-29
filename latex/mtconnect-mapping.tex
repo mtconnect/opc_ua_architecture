@@ -108,7 +108,7 @@ OPC UA conventions use names in \textit{Pascal Case}, so all MTConnect entities 
 
 The values of the attributes and enumerations are represented in MTConnect in capitals with underscores. OPC UA has the same convention, so these types will remain unchanged when converted to OPC UA. The only caveat is that enumerated values when represented in UA \texttt{DataVariable}s are numeric. All enumerations in MTConnect are sorted alphabetically and assigned monotonically increasing numberic values. For example, the enumeration for the \texttt{Execution} MTConnect data item is in table \ref{table:execution-data-type}.
 
-Extensions to the MTConnect standard that have enumerations will represent the data as strings since the values are not included in the nodeset reference. An extension nodeset can be created by a vendor if the \texttt{MTControlled\-Vocab\-EventType} is desired. The parent type requres a reference to a UA \texttt{MultiState\-Value\-Discrete\-Type} and defines the data type as being a \texttt{Number} and has an attribute that references the \texttt{NodeId} of the enumerated values.
+Extensions to the MTConnect standard that have enumerations will represent the data as strings since the values are not included in the nodeset reference. An extension nodeset can be created by a vendor if the \mtuatype{MTControlledVocabEventType} is desired. The parent type requres a reference to a UA \texttt{MultiState\-Value\-Discrete\-Type} and defines the data type as being a \texttt{Number} and has an attribute that references the \texttt{NodeId} of the enumerated values.
 
 \begin{table}[ht]
 \centering 
@@ -158,7 +158,7 @@ The following types representing base MTConnect types are also prefixed:
 \item $MTNonExclusiveConditionType$
 \end{itemize}
 
-The data item class types and enumeration data types do not have \texttt{MT} prepended. Sub-types of the \texttt{MTComponentType} do not have \texttt{MT} prefixed with the exception of the \texttt{MTDeviceType}. All compositions that are sub-types of the \texttt{MTCompositionType} do not have any prefix.
+The data item class types and enumeration data types do not have \texttt{MT} prepended. Sub-types of the \mtuatype{MTComponentType} do not have \texttt{MT} prefixed with the exception of the \mtuatype{MTDeviceType}. All compositions that are sub-types of the \mtuatype{MTCompositionType} do not have any prefix.
 
 \subsubsection{Mapping Example 1}
 
@@ -199,15 +199,15 @@ The device, as shown in Listing \ref{lst:device-data-items}, requires three data
 
 \input{diagrams/mtconnect-mapping/mtdevice-data-item.tex}
 
-Figure \ref{fig:mtdevice-data-item} demonstrates the relationship of the \texttt{Data\-Item}s with the parent \mtuatype{MTComponent\-Type} using a \texttt{Has\-Component} relationship. The browse name is constructed to uniquely identify the DataItem and also indicate its semantic meaning within the context of the MTConnect \texttt{MTComponent\-Type}, in this case, an \texttt{MTDevice\-Type} since the \texttt{MTDevice\-Type} is a sub-type of the \mtuatype{MTComponent\-Type}. These relationships are created dynamically during the instantiation of the model and are not part of the underlying MTConnect Nodeset.
+Figure \ref{fig:mtdevice-data-item} demonstrates the relationship of the \texttt{Data\-Item}s with the parent \mtuatype{MTComponentType} using a \texttt{Has\-Component} relationship. The browse name is constructed to uniquely identify the DataItem and also indicate its semantic meaning within the context of the MTConnect \mtuatype{MTComponentType}, in this case, an \mtuatype{MTDeviceType} since the \mtuatype{MTDeviceType} is a sub-type of the \mtuatype{MTComponentType}. These relationships are created dynamically during the instantiation of the model and are not part of the underlying MTConnect Nodeset.
 
 Every MTConnect \texttt{Data\-Item} has two references that provide the semantic meaning in the UA address space. This model is very similar to the \texttt{Condition\-Class\-Id} relationship for the OPC UA \texttt{Condition\-Type}. These \texttt{Class\-Type}s are inherited from the same tree so they can be used in the MTConnect representation of the MTConnect \dataitem{CONDITION} category \texttt{Data\-Item}s.
 
 \input{diagrams/mtconnect-mapping/data-item-references.tex}
 
-In Figure \ref{fig:data-item-references}, the \mtuatype{HasMTClassType} reference indicates the semantic meaning of the data item. For enumerated or controlled vocabulary data items, they are represented using a sub-type of the UA \texttt{Multi\-State\-Value\-Discrete\-Type}, the \texttt{MTControlled\-Vocab\-Event\-Type}, where the \texttt{Enum\-Values} attribute is related to the NodeId of the associated enumeration data type, in this case the \texttt{Availability\-Data\-Type}.
+In Figure \ref{fig:data-item-references}, the \mtuatype{HasMTClassType} reference indicates the semantic meaning of the data item. For enumerated or controlled vocabulary data items, they are represented using a sub-type of the UA \texttt{Multi\-State\-Value\-Discrete\-Type}, the \mtuatype{MTControlledVocabEventType}, where the \texttt{Enum\-Values} attribute is related to the NodeId of the associated enumeration data type, in this case the \texttt{Availability\-Data\-Type}.
 
-MTConnect \texttt{subType} will be mapped in the same manner as the type using the \mtuatype{HasMTSub\-Class\-Type} relationship. This will be covered subsequent examples.
+MTConnect \texttt{subType} will be mapped in the same manner as the type using the \mtuatype{HasMTSubClassType} relationship. This will be covered subsequent examples.
 
 \begin{lstlisting}[firstnumber=last,%
     caption={Components and Conditions},label={lst:device-axis-component}]
@@ -222,7 +222,7 @@ The \texttt{Components} element in Listing \ref{lst:device-axis-component} is re
 
 \input{diagrams/mtconnect-mapping/axes-example-1.tex}
 
-The \texttt{HasNotifier} refererence needs to be created between the \texttt{Axes} object and the \texttt{Mazak01\-:\-MTDeviceType} object to allow for the condition to be associated correctly. The relationship of the condition in Figure~\ref{fig:axes-example-1} illustrates the relationships between the \texttt{Component} and the related condition and the notification hierarchy. The UA \texttt{Condition\-ClassId} and \texttt{Condition\-ClassName} use the \texttt{Actuator\-ClassType}'s \texttt{NodeId} and \texttt{BrowseName} respectively to relate to the condition class as required by the UA specification \cite{UAPart9}. In addition the MTConnect \texttt{HasMTClassType} reference directly connects to the type definition as do all MTConnect \texttt{DataItem}s.
+The \texttt{HasNotifier} refererence needs to be created between the \texttt{Axes} object and the \texttt{Mazak01\-:\-MTDeviceType} object to allow for the condition to be associated correctly. The relationship of the condition in Figure~\ref{fig:axes-example-1} illustrates the relationships between the \texttt{Component} and the related condition and the notification hierarchy. The UA \texttt{Condition\-ClassId} and \texttt{Condition\-ClassName} use the \mtuatype{ActuatorClassType}'s \texttt{NodeId} and \texttt{BrowseName} respectively to relate to the condition class as required by the UA specification \cite{UAPart9}. In addition the MTConnect \texttt{HasMTClassType} reference directly connects to the type definition as do all MTConnect \texttt{DataItem}s.
 
 The conditions are modeled as sub-types of the OPC UA base type of \texttt{OffNormalAlarmType} with the \texttt{NormalState} node id of the NormalState mapped to the Normal instance of the UA \texttt{UAStateType}.
 

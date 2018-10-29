@@ -60,7 +60,7 @@
 
 \node[object,below left=2cm and 4cm of linear.south] (position) {
 \begin{tabular}{l l}
-  \multicolumn{2}{c}{\underline{\textbf{ActualPosition: \typeref[MTSampleType}}} \\[4pt]
+  \multicolumn{2}{c}{\underline{\textbf{ActualPosition: \typeref{MTSampleType}}}} \\[4pt]
   \hline
  EngineeringUnits & "MILLIMETER" \\
  EURange & -INF:INF\\
@@ -74,7 +74,11 @@
 };
 
 \node[class,below=6cm of position.north] (position-class) {
-\textbf{PositionClassType}
+\begin{tabular}{l l}
+  \multicolumn{2}{c}{\textbf{\typeref{MTSampleType}}} \\[4pt]
+  \hline
+  NodeId & ns=1;i=365705
+\end{tabular}
 };
 
 \node[object,below right=2cm and 4cm of linear.south] (load) {
@@ -135,7 +139,7 @@
 \draw[ref] (position) -- (position-class) 
   node[pos=0.5]{<<HasMTClassType>>};
 
-\draw[ref] (position-cond.-140) -| (position-class) 
+\draw[ref] (position-cond.-135) -| (position-class) 
   node[pos=0.5,below]{<<HasMTClassType>>};
 
 \draw[ref] (load) -- (load-class) 

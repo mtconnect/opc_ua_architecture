@@ -82,6 +82,10 @@ module Relation
       @stereotype = @target = nil
     end
 
+    def final_target
+      @target
+    end
+
     def is_optional?
       @optional
     end
@@ -153,7 +157,7 @@ module Relation
     attr_reader :final_target
     
     class End < Connection
-      attr_accessor :name, :optional, :navigable, :json, :final_target
+      attr_accessor :name, :optional, :navigable, :json
       
       def initialize(e)
         if e['reference']
@@ -188,6 +192,10 @@ module Relation
       @name = @source.name || @name
       @multiplicity = @source.multiplicity
       @optional = @source.optional
+    end
+
+    def final_target
+      @final_target
     end
 
     def is_reference?

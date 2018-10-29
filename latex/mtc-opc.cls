@@ -260,6 +260,8 @@
 \newcommand{\cdata}[1]{{\fontfamily{pcr}\selectfont #1}}
 \newcommand{\asset}[1]{{\fontfamily{pcr}\selectfont #1}}
 
+\newcommand{\mtterm}[1]{\mtconnectterm{#1}}
+\newcommand{\uaterm}[1]{\opcuaterm{#1}}
 
 
 

@@ -100,10 +100,8 @@ class Type
   def generate_relations(f)
     @relations.each do |r|
       if r.is_reference?
-        if r.is_property?
-          type_info = "#{r.target.type.name} & #{r.target_node_name}"
-        elsif r.is_folder?
-          type_info = "#{r.final_target.type.name} & #{r.target_node_name}"          
+        if r.is_property? or r.is_folder?
+          type_info = "#{r.final_target.type.name} & #{r.target_node_name}"
         else
           type_info = "\\multicolumn{2}{|l|}{#{r.target_node_name}}"
         end
@@ -159,6 +157,20 @@ EOT
     end
   end
 
+  def generate_attribute_docs(f)
+    relations_with_documentation =
+      @relations.select { |r| r.documentation }
+
+    unless relations_with_documentation.empty?
+      f.puts "\\paragraph{Referenced Properties and Objects}\n\n"
+      f.puts "\\begin{itemize}"
+      relations_with_documentation.each do |r|
+        f.puts "\\item \\texttt{#{r.name}::#{r.final_target.type.name}:} #{r.documentation}\n\n"
+      end
+      f.puts "\\end{itemize}"
+    end    
+  end
+  
   def generate_operations(f)
     if !@operations.empty?
       f.puts "\\paragraph{Operations}\n"
@@ -353,6 +365,7 @@ EOT
       generate_type_table(f) 
     end
     
+    generate_attribute_docs(f)
     generate_operations(f)
     generate_constraints(f)
     generate_dependencies(f)    

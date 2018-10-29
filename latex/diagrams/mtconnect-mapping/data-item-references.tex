@@ -17,13 +17,19 @@
            inner sep=2pt,
            text centered           
            },
+    ref/.style={
+           thick,->,>={Stealth[length=8pt,width=8pt,inset=4pt]},
+           rounded corners
+           },
+   seg/.style={thick,rounded corners}
+
 }
 
 \node[object,below right=2cm and 0cm of device] (avail) { %
 \begin{tabular}{l l}
-  \multicolumn{2}{c}{\underline{\textbf{Availability: MTControlledVocabEventType}}} \\[4pt]
+  \multicolumn{2}{c}{\underline{\textbf{Availability: \typeref{MTControlledVocabEventType}}}} \\[4pt]
   \hline
-  NodeId & ".../Mazak01-dtop_1" \\
+  NodeId & "d5b078a0" \\
   Category & "EVENT" \\
   Name & "avail" \\
   MTTypeName & "AVAILABILITY" \\  
@@ -38,13 +44,13 @@
    \textbf{AvailabilityDataType}
 };
 
-\draw[->,thick] (avail) -- (class) 
+\draw[ref] (avail) -- (class) 
   node[pos=0.5,below]{<<HasMTClassType>>};
 
-\draw[->,thick] (avail) |- (data) 
+\draw[ref] (avail) |- (data) 
   node[pos=0.1,left]{EnumValues};
 
-\draw[->,thick, dotted] (class) -- (data) 
+\draw[ref, dotted] (class) -- (data) 
   node[pos=0.4,below]{<<values>>};
 
 

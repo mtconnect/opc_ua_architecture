@@ -35,7 +35,7 @@
 
 
 \node[object, left=3cm of axes.west] (device) { 
-\underline{\textbf{Mazak01 : MTDeviceType}}
+\underline{\textbf{SimpleCnc : \typeref{MTDeviceType}}}
 };
 
 \node[object,below=1.5cm of axes.south] (components) { %
@@ -54,17 +54,9 @@
 \end{tabular}
 };
 
-\node[object,below=9cm of linear.south] (conditions) { %
+\node[object,below left=1.5cm and 4cm of linear.south] (position) {
 \begin{tabular}{l l}
-  \multicolumn{2}{c}{\underline{\textbf{Conditions: FolderType}}} \\[4pt]
-  \hline
-  NodeId & ".../Conditions" \\
-\end{tabular}
-};
-
-\node[object,below left=1.5cm and 3cm of linear.south] (position) {
-\begin{tabular}{l l}
-  \multicolumn{2}{c}{\underline{\textbf{ActualPosition: \hyperref[type:MTSampleType]{MTSampleType}}}} \\[4pt]
+  \multicolumn{2}{c}{\underline{\textbf{ActualPosition: \typeref[MTSampleType}}} \\[4pt]
   \hline
  EngineeringUnits & "MILLIMETER" \\
  EURange & -INF:INF\\
@@ -81,7 +73,7 @@
 \textbf{PositionClassType}
 };
 
-\node[object,below=1.5cm of linear.south] (load) {
+\node[object,below right=1.5cm and 4cm of linear.south] (load) {
 \begin{tabular}{l l}
   \multicolumn{2}{c}{\underline{\textbf{Load: \typeref{MTSampleType}}}} \\[4pt]
   \hline
@@ -99,30 +91,11 @@
 \textbf{LoadClassType}
 };
 
-
-\node[object,below right=1.5cm and 3cm of linear.south] (axis-feedrate) {
+\node[object,below=1.5cm of linear] (position-cond) { %
 \begin{tabular}{l l}
-  \multicolumn{2}{c}{\underline{\textbf{AxisFeedrate: \typeref{MTSampleType}}}} \\[4pt]
+  \multicolumn{2}{c}{\underline{\textbf{PositionCondition: \typeref{MTConditionType}}}} \\[4pt]
   \hline
- EngineeringUnits & "MILLIMETER/SECOND" \\
- EURange & -INF:INF\\
- Name & "Xfrt" \\
- Category & "SAMPLE" \\
- MTTypeName & "AXIS_FEEDRATE" \\
- Units & "MILLIMETER/SECOND" \\
- NativeUnits & "MILLIMETER/SECOND"
-\end{tabular}
-};
-
-\node[class,below=6cm of axis-feedrate.north] (axis-feedrate-class) {
-\textbf{AxisFeedrateClassType}
-};
-
-\node[object,below=1.5cm of conditions.south] (position-cond) { %
-\begin{tabular}{l l}
-  \multicolumn{2}{c}{\underline{\textbf{Position: \typeref{MTConditionType}}}} \\[4pt]
-  \hline
-  <<Attribute>> NodeId & ".../Mazak01-base_1" \\
+  <<Attribute>> NodeId & "e086dd60" \\
   ConditionClassId & (ns=1;i=365705) \\
   ConditionClassName & "PositionClassType" \\
   ConditionName & "Xtravel" \\
@@ -137,7 +110,9 @@
   Name & "Xtravel" \\
   MTTypeName & "POSITION" \\
   Category & "CONDITION" \\
-  NativeCode & ""\end{tabular}
+  NativeCode & "" \\
+  ActiveState & False \\
+\end{tabular}
 };
 
 \draw[ref] (device) -- (axes)
@@ -149,46 +124,34 @@
 \draw[ref] (components) -- (linear) 
   node[pos=0.5]{<<HasComponent>>};
   
-\draw[seg] (axes.east) -| (5,-1) coordinate (d1);
+\draw[seg] (axes.east) -| ++(1,-1) coordinate (d1);
 \draw[ref] (d1) |- (linear.east)
- node[pos=0.2]{<<HasEventSource>>};
+ node[pos=0.2]{<<HssNotifier>>};
 
 \draw[ref] (position) -- (position-class) 
   node[pos=0.5]{<<HasMTClassType>>};
 
-\draw[ref] (position-cond) -| (position-class) 
+\draw[ref] (position-cond.-140) -| (position-class) 
   node[pos=0.5,below]{<<HasMTClassType>>};
 
 \draw[ref] (load) -- (load-class) 
   node[pos=0.5]{<<HasMTClassType>>};
 
-\draw[ref] (axis-feedrate) -- (axis-feedrate-class) 
-  node[pos=0.5]{<<HasMTClassType>>};
-
-\draw[seg] (linear.south) |- (0,-7) coordinate (d2);
+\draw[seg] (linear.south) |- ++(0,-0.75) coordinate (d2);
 \draw[ref] (d2) -| (position.north)
   node[pos=0.5,above]{<<HasComponent>>};
 
-\draw[ref] (linear.south) -- (load.north)
-  node[pos=0.5,above]{<<HasComponent>>};
-
-\draw[seg] (linear.south) |- (0,-7) coordinate (d3);
-\draw[ref] (d3) -| (axis-feedrate.north)
+\draw[seg] (linear.south) |- ++(0,-0.75) coordinate (d3);
+\draw[ref] (d3) -| (load.north)
   node[pos=0.5,above]{<<HasComponent>>};
   
-\draw[seg] (linear.west) -| (-10,-8.25) coordinate (d4)
- node[pos=0.2,above]{<<Organizes>>};
-\draw[ref] (d4) |- (conditions.west);
+\draw[seg] (linear.south) -- (position-cond)
+ node[pos=0.7]{<<HasComponent>>};
 
-
-\draw[ref] (conditions) -- (position-cond) 
-  node[pos=0.5]{<<Organizes>>};
-
-\draw[seg] (linear.-5) -| (11.25,-8.25) coordinate (d4)
+\draw[seg] (linear.-5) -| ++(6.5,-1) coordinate (d4)
  node[pos=0.3,above]{<<HasCondition>>};
-\draw[ref] (d4) |- (position-cond.east);
+\draw[ref] (d4) |- (position-cond.-40);
 
-  
 \end{tikzpicture}
 }
 \caption{Linear X Axis Example}

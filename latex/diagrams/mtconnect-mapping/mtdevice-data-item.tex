@@ -14,12 +14,12 @@
 
 \node[object] (device) { %
 \begin{tabular}{l l}
-  \multicolumn{2}{c}{\underline{\textbf{Mazak01: MTDeviceType}}} \\[4pt]
+  \multicolumn{2}{c}{\underline{\textbf{SimpleCnc: \typeref{MTDeviceType}}}} \\[4pt]
   \hline
-  NodeId & "mtc_adapter002" \\
-  XmlId & "Mazak01" \\
-  Name & "Mazak01" \\
-  Uuid & "mtc_adapter002" \\ 
+  NodeId & "x872a3490" \\
+  XmlId & "x872a3490" \\
+  Name & "SimpleCnc" \\
+  Uuid & "872a3490-\ldots" \\ 
  \end{tabular}
 };
 
@@ -31,21 +31,21 @@
 
 \node[object,below left=2cm and -1cm of device] (description) { %
 \begin{tabular}{l l}
-  \multicolumn{2}{c}{\underline{\textbf{Description: MTDescriptionType}}} \\[4pt]
+  \multicolumn{2}{c}{\underline{\textbf{Description: \typeref{MTDescriptionType}}}} \\[4pt]
   \hline
-  NodeId & "mtc_adapter002/Description" \\
-  Manufacturer & "Mazak" \\
-  Model & "Integrex" \\
-  SerialNumber & "M7303290458" \\ 
-  Data & "Mazak Integrex 100-IV" \\
+  NodeId & "x872a3490/Description" \\
+  Manufacturer & "MTConnectInstitute" \\
+  Model & "Simple" \\
+  SerialNumber & "12" \\ 
+  Data & "This is a simple CNC example" \\
  \end{tabular}
 };
 
 \node[object,below right=2cm and 0cm of device] (avail) { %
 \begin{tabular}{l l}
-  \multicolumn{2}{c}{\underline{\textbf{Availability: MTControlledVocabEventType}}} \\[4pt]
+  \multicolumn{2}{c}{\underline{\textbf{Availability: \typeref{MTControlledVocabEventType}}}} \\[4pt]
   \hline
-  NodeId & ".../Mazak01-dtop_1" \\
+  NodeId & "\ldots/d5b078a0" \\
   Category & "EVENT" \\
   Name & "avail" \\
   MTTypeName & "AVAILABILITY" \\  
@@ -54,9 +54,9 @@
 
 \node[object,below=1cm of avail] (asset-chg) { %
 \begin{tabular}{l l}
-  \multicolumn{2}{c}{\underline{\textbf{AssetChanged: MTAssetEventType}}} \\[4pt]
+  \multicolumn{2}{c}{\underline{\textbf{AssetChanged: \typeref{MTAssetEventType}}}} \\[4pt]
   \hline
-  NodeId & ".../Mazak01_asset_chg" \\
+  NodeId & "\ldots/e4a300e0" \\
   Category & "EVENT" \\
   MTTypeName & "ASSET_CHANGED" \\  
 \end{tabular}
@@ -64,9 +64,9 @@
 
 \node[object,below=1cm of asset-chg] (asset-rem) { %
 \begin{tabular}{l l}
-  \multicolumn{2}{c}{\underline{\textbf{AssetRemoved: MTAssetEventType}}} \\[4pt]
+  \multicolumn{2}{c}{\underline{\textbf{AssetRemoved: \typeref{MTAssetEventType}}}} \\[4pt]
   \hline
-  NodeId & ".../Mazak01_asset_rem" \\
+  NodeId & "\ldots/f2df7550" \\
   Category & "EVENT" \\
   MTTypeName & "ASSET_REMOVED" \\  
 \end{tabular}

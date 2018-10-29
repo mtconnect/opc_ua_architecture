@@ -249,47 +249,83 @@ In this case the \texttt{SequenceNumber} may have schema or information associat
 All data items of \texttt{category} \texttt{SAMPLE} must always be mapped to the \texttt{MTSampleType} instance with the browse name created appropriately. In this case the \texttt{ClassType} must be created as as sub-type of the \texttt{MTSampleClassType}.
 
 \begin{lstlisting}[firstnumber=last,%
+    caption={Rotary C Axis},label={lst:rotary-axis-example-1}]
+            <Rotary id="zf476090" name="C" nativeName="S">
+              <DataItems>
+                <DataItem id="r1841b70" type="LOAD" category="SAMPLE" units="PERCENT" name="Sload"/>
+                <DataItem id="ac6b69c0" type="ROTARY_VELOCITY" subType="PROGRAMMED" category="SAMPLE" units="REVOLUTION/MINUTE" name="Sspeed_prg"/>
+                <DataItem id="vee9c2d0" type="ROTARY_VELOCITY" subType="ACTUAL" category="SAMPLE" units="REVOLUTION/MINUTE" name="Sspeed_act" />
+                <DataItem id="taa7a0f0" type="AMPERAGE" category="SAMPLE" units="AMPERE" compositionId="b7792870" />
+                <DataItem id="afb596b0" type="AMPERAGE" category="CONDITION" compositionId="b7792870" name="Soverload">
+                  <Source dataItemId="taa7a0f0"/>
+                </DataItem>
+              </DataItems>
+              <Compositions>
+                <Composition id="b7792870" type="MOTOR"/>
+              </Compositions>
+            </Rotary>
+\end{lstlisting}
+
+\begin{lstlisting}[firstnumber=last,%
     caption={Controller and Path Components and Their Data Items},label={lst:controller-component}]
-        <Controller id="Mazak01-controller" name="controller">
+        <Controller id="p5add360">
           <DataItems>
-            <DataItem category="CONDITION" id="Mazak01-controller_1" name="comms_cond" type="COMMUNICATIONS"/>
-            <DataItem category="CONDITION" id="Mazak01-controller_2" name="logic_cond" type="LOGIC_PROGRAM"/>
-            <DataItem category="CONDITION" id="Mazak01-controller_3" name="system_cond" type="SYSTEM"/>
-            <DataItem category="EVENT" id="Mazak01-controller_4" name="estop" type="EMERGENCY_STOP"/>
+            <DataItem id="x7ca94e0" type="EMERGENCY_STOP" category="EVENT" name="estop"/>
           </DataItems>
           <Components>
-            <Path id="Mazak01-path" name="path">
+            <Path id="a4a7bdf0" name="P1">
               <DataItems>
-                <DataItem category="EVENT" id="Mazak01-path_1" name="program" type="PROGRAM"/>
-                <DataItem category="EVENT" id="Mazak01-path_2" name="subprogram" subType="x:SUB" type="PROGRAM"/>
-                <DataItem category="EVENT" id="Mazak01-path_3" name="line" type="LINE"/>
-                <DataItem category="EVENT" id="Mazak01-path_4" name="unitNum" type="x:UNIT"/>
-                <DataItem category="EVENT" id="Mazak01-path_5" name="sequenceNum" type="x:SEQUENCE_NUMBER"/>
-                <DataItem category="EVENT" id="Mazak01-path_6" name="PartCountAct" type="PART_COUNT"/>
-                <DataItem category="SAMPLE" coordinateSystem="WORK" id="Mazak01-path_7" name="Fact" nativeUnits="FOOT/MINUTE" subType="ACTUAL" type="PATH_FEEDRATE" units="MILLIMETER/SECOND"/>
-                <DataItem category="EVENT" id="Mazak01-path_8" name="Frapidovr" nativeUnits="PERCENT" subType="RAPID" type="PATH_FEEDRATE_OVERRIDE" units="PERCENT"/>
-                <DataItem category="EVENT" id="Mazak01-path_9" name="Fovr" nativeUnits="PERCENT" subType="PROGRAMMED" type="PATH_FEEDRATE_OVERRIDE" units="PERCENT"/>
-                <DataItem category="EVENT" id="Mazak01-path_10" name="Tool_number" type="TOOL_NUMBER"/>
-                <DataItem category="EVENT" id="Mazak01-path_11" name="Tool_group" type="x:TOOL_GROUP"/>
-                <DataItem category="EVENT" id="Mazak01-path_12" name="Tool_suffix" type="x:TOOL_SUFFIX"/>
-                <DataItem category="EVENT" id="Mazak01-path_13" name="execution" type="EXECUTION"/>
-                <DataItem category="EVENT" id="Mazak01-path_14" name="mode" type="CONTROLLER_MODE"/>
-                <DataItem category="EVENT" id="Mazak01-path_15" name="program_cmt" type="x:PROGRAM_COMMENT"/>
-                <DataItem category="EVENT" id="Mazak01-path_16" name="subprogram_cmt" subType="x:SUB" type="x:PROGRAM_COMMENT"/>
-                <DataItem category="SAMPLE" id="Mazak01-path_17" name="auto_time" subType="x:AUTO" type="ACCUMULATED_TIME"/>
-                <DataItem category="SAMPLE" id="Mazak01-path_18" name="total_time" subType="x:TOTAL" type="ACCUMULATED_TIME"/>
-                <DataItem category="SAMPLE" id="Mazak01-path_19" name="cut_time" subType="x:CUT" type="ACCUMULATED_TIME"/>
-                <DataItem category="CONDITION" id="Mazak01-path_20" name="motion_cond" type="MOTION_PROGRAM"/>
-                <DataItem category="CONDITION" id="Mazak01-path_21" name="path_system" type="SYSTEM"/>
+                <DataItem id="if36ff60" type="CONTROLLER_MODE" category="EVENT"/>
+                <DataItem id="a01c7f30" type="EXECUTION" category="EVENT"/>
+                <DataItem id="k8dd9030" type="PROGRAM" category="EVENT"/>
+                <DataItem id="r63f9b10" type="CONTROLLER_MODE_OVERRIDE" subType="OPTIONAL_STOP" category="EVENT"/>
+                <DataItem id="a557d330" type="LOGIC_PROGRAM" category="CONDITION"/>
+                <DataItem id="a5b23650" type="MOTION_PROGRAM" category="CONDITION"/>
+                <DataItem id="bbafe670" type="LINE" category="EVENT"/>
+                <DataItem id="d2e9e4a0" type="PART_COUNT" category="EVENT"/>
               </DataItems>
             </Path>
           </Components>
         </Controller>
 \end{lstlisting}
 
-\begin{quote}
-    \color{red} TODO: SensorConfiguration example for an axis.
-\end{quote}
+\begin{lstlisting}[firstnumber=last,%
+    caption={Electrical System and Sensor Configuration},label={lst:electric-system-example-1}]
+        <Systems id="if618500">
+          <Components>
+            <Electric id="afb91ba0">
+              <DataItems>
+                <DataItem id="x52ca7e0" name="ptemp" type="TEMPERATURE" category="SAMPLE" units="CELSIUS"/>
+                <DataItem id="r1e58cf0" name="pvolt" type="VOLTAGE" category="SAMPLE" units="VOLT"/>
+                <DataItem id="e25c1130" name="pamp" type="AMPERAGE" category="SAMPLE" units="AMPERE"/>
+                <DataItem id="o63fcd30" name="ppfact" type="POWER_FACTOR" category="SAMPLE" units="PERCENT" />
+                 <DataItem id="b4bb7110" type="AMPERAGE" category="CONDITION" name="poverload">
+                   <Source dataItemId="e25c1130"/>
+                 </DataItem>
+                 <DataItem id="c82e32f0" type="TEMPERATURE" category="CONDITION" name="povertemp">
+                   <Source dataItemId="x52ca7e0"/>
+                 </DataItem>
+              </DataItems>
+              <Components>
+                <Sensor id="q9abfaf0">
+                  <Configuration>
+                    <SensorConfiguration>
+                      <FirmwareVersion>23</FirmwareVersion>
+                      <CalibrationDate>2018-08-12</CalibrationDate>
+                      <Channels>
+                        <Channel number="1">
+                          <Description>Temperature Probe</Description>
+                          <CalibrationDate>2018-09-11</CalibrationDate>
+                        </Channel>
+                      </Channels>
+                    </SensorConfiguration>
+                  </Configuration>
+                </Sensor>              
+              </Components>
+            </Electric>
+          </Components>
+        </Systems>
+\end{lstlisting}
 
 \subsection{MTConnect Streaming Data}
 

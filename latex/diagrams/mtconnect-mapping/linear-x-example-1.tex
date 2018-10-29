@@ -29,6 +29,7 @@
 \begin{tabular}{l l}
   \multicolumn{2}{c}{\underline{\textbf{Axes: AxesType}}} \\[4pt]
   \hline
+  XmlId & "a62a1050" \\
   NodeId & "mtc_adapter002/Mazak01-base" \\
 \end{tabular}
 };
@@ -48,13 +49,16 @@
 
 \node[object, below=1.5cm of components] (linear) { %
 \begin{tabular}{l l}
-  \multicolumn{2}{c}{\underline{\textbf{Linear[X]: LinearType}}} \\[4pt]
+  \multicolumn{2}{c}{\underline{\textbf{Linear[X1]: LinearType}}} \\[4pt]
   \hline
-  NodeId & "mtc_adapter002/Mazak01-X" \\
+  XmlId & "e373fec0" \\
+  NodeId & "e373fec0" \\
+  Name & "X1" \\
+  NativeName & "X"
 \end{tabular}
 };
 
-\node[object,below left=1.5cm and 4cm of linear.south] (position) {
+\node[object,below left=2cm and 4cm of linear.south] (position) {
 \begin{tabular}{l l}
   \multicolumn{2}{c}{\underline{\textbf{ActualPosition: \typeref[MTSampleType}}} \\[4pt]
   \hline
@@ -73,7 +77,7 @@
 \textbf{PositionClassType}
 };
 
-\node[object,below right=1.5cm and 4cm of linear.south] (load) {
+\node[object,below right=2cm and 4cm of linear.south] (load) {
 \begin{tabular}{l l}
   \multicolumn{2}{c}{\underline{\textbf{Load: \typeref{MTSampleType}}}} \\[4pt]
   \hline
@@ -91,7 +95,7 @@
 \textbf{LoadClassType}
 };
 
-\node[object,below=1.5cm of linear] (position-cond) { %
+\node[object,below=2cm of linear] (position-cond) { %
 \begin{tabular}{l l}
   \multicolumn{2}{c}{\underline{\textbf{PositionCondition: \typeref{MTConditionType}}}} \\[4pt]
   \hline
@@ -145,10 +149,10 @@
 \draw[ref] (d3) -| (load.north)
   node[pos=0.5,above]{<<HasComponent>>};
   
-\draw[seg] (linear.south) -- (position-cond)
- node[pos=0.7]{<<HasComponent>>};
+\draw[ref] (linear.south) -- (position-cond)
+ node[pos=0.65]{<<HasComponent>>};
 
-\draw[seg] (linear.-5) -| ++(6.5,-1) coordinate (d4)
+\draw[seg] (linear.-10) -| ++(7.8,-1) coordinate (d4)
  node[pos=0.3,above]{<<HasCondition>>};
 \draw[ref] (d4) |- (position-cond.-40);
 

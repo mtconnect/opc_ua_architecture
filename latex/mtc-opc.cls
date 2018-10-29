@@ -28,6 +28,7 @@
 \usepackage[letterpaper,top=1in,%
             bottom=1in,footskip=0.5in]{geometry}
 
+\RequirePackage[htt]{hyphenat}				% Allow hyphenation of fixed space fonts
 \RequirePackage{fancyvrb}
 \RequirePackage{placeins}
 \RequirePackage{booktabs}
@@ -38,7 +39,8 @@
 \RequirePackage{stringstrings}			% Loads stringstrings to create Camel and Pascal case fonts
 \RequirePackage{ifthen}					% Loads ifthen package for conditional statements
 \RequirePackage[T1]{fontenc}			% Loads fontenc package for controlled vocabulary formatting
-\RequirePackage{underscore}				% Loads underscore package for underscores in text
+\let\BreakableUnderscore\undefined
+\RequirePackage{underscore}
 \RequirePackage{graphicx}				% Loads graphicx package to include figures and images
 \RequirePackage{fancyhdr}				% Loads fancyhdr package to modify headers and footers
 \RequirePackage[hyphens]{url}					% Loads url package to typeset URLs
@@ -55,7 +57,6 @@
 \RequirePackage[english]{babel}
 \RequirePackage{csquotes}
 \RequirePackage{xstring}
-\RequirePackage[htt]{hyphenat}				% Allow hyphenation of fixed space fonts
 
 
 % *********** %

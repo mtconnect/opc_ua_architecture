@@ -7,7 +7,7 @@ OPC UA defines abstractions representing data collected from devices and for ala
 
 MTConnect has similar facilities but uses different structural model where the meta-data and the streaming values are in separate documents to normalize the data flow in a similar way that many publish-subscribe protocols separate the structure from the data.
 
-When translating from MTConnect to OPC UA, the MTConnect abstractions of \dataitem{Data\-Item}s are converted using the OPC UA  \opcuaterm{Data\-Variable} abstractions as given in \cite{UAPart8}.  The relationships are mapped to multiple \opcuaterm{DataVariable} types where the category and the type determine the correct mapping. Conditions mapped to the OPC UA \opcuaterm{ConditionType} and require additional consideration regarding the notification hierarchy. 
+When translating from MTConnect to OPC UA, the MTConnect abstractions of \mtconnectterm{DataItem}s are converted using the OPC UA  \opcuaterm{DataVariable} abstractions as given in \cite{UAPart8}.  The relationships are mapped to multiple \opcuaterm{DataVariable} types where the category and the type determine the correct mapping. Conditions are mapped a sub-type of the OPC UA \opcuaterm{ConditionType} in a similar way. The behavior of the OPC UA \opcuaterm{Condition}s can be found in \cite{UAPart9}.
 
 \subsection{MTConnect UML Representation of OPC}
 
@@ -48,7 +48,7 @@ The object models will use a UML representation that represents the members as U
 
 Figure \ref{fig:example-object} represents an MTConnect \mtconnectterm{Device} with the values filled in. The UA \opcuaterm{Browse\-Name} is given as the object name above and the UA Type is given after the \texttt{:} in the header. Each of the UA \opcuaterm{Attributes} and \opcuaterm{Properties} are provided below. Relationships are shown as edges that have the Reference Type, such as \opcuaterm{Has\-Component} provided. The properties contains within will be created using the \opcuaterm{Has\-Property} reference, but composed as internal members for brevity.
 
-For example, the object with \mtconnectterm{MTDeviceType} has \texttt{BrowseName}.
+For example, the object with \mtuatype{MTDeviceType} has \opcuaterm{BrowseName} of \texttt{SimpleCnc} (the name of the device). There are patterns for creating all the browse names for each MTConnect UA Type as deined. The rules will be presented and then examples will provide the normative patterns as example for each type as defined.
 
 \FloatBarrier
 

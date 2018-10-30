@@ -161,16 +161,25 @@ EOT
 
   def generate_attribute_docs(f)
     relations_with_documentation =
-      @relations.select { |r| r.documentation }
+      @relations.select { |r| r.documentation or r.target.type.type == 'UMLEnumeration' }
 
     unless relations_with_documentation.empty?
       f.puts "\\paragraph{Referenced Properties and Objects}\n\n"
       f.puts "\\begin{itemize}"
       relations_with_documentation.each do |r|
-        f.puts "\\item \\texttt{#{r.name}::#{r.final_target.type.name}:} #{r.documentation}\n\n"
+        if r.documentation
+          f.puts "\\item \\texttt{#{r.name}::#{r.final_target.type.name}:} #{r.documentation}\n\n"
+        end
+        
+        if r.target.type.type == 'UMLEnumeration'
+          f.puts "\\item \\textbf{Allowable Values} for \\texttt{#{r.target.type.name}}"
+          r.target.type.generate_enumerations(f)
+        end
       end
       f.puts "\\end{itemize}"
-    end    
+    end
+
+    
   end
   
   def generate_operations(f)

@@ -11,7 +11,7 @@ When translating from MTConnect to OPC UA, the MTConnect abstractions of \mtconn
 
 \subsection{MTConnect UML Representation of OPC}
 
-This section provides a guide to converting from the OPC UA diagram representation given in section \ref{intro-to-opc-ua} to the UML described throughout section \ref{mtconnect-mapping}. Figure \ref{fig:mtcomponent-ua} is a partial illustration of the MTConnect \mtconnectterm{Component} abstraction in OPC UA.
+To convert from the OPC UA diagram representation given in section \ref{intro-to-opc-ua} to the UML described throughout section \ref{mtconnect-mapping}. Figure \ref{fig:mtcomponent-ua} is a partial illustration of the MTConnect \mtconnectterm{Component} abstraction in OPC UA.
 
 \input{diagrams/mtconnect-mapping/mtcomponent-ua.tex}
 
@@ -34,7 +34,7 @@ When traversing an association between two object types, the name of the source 
 \input{diagrams/mtconnect-mapping/data-item-uml.tex}
 \FloatBarrier
 
-A reference that has a stereotype of \textit{<<Organizes>>}, shown by the \texttt{Components} recursive relationship in the \mtconnectterm{MTComponentType}, implies an intermediate object of type \opcuaterm{FolderType} with the browse name of the relationship point on the source side. The far side is not constrained within the \opcuaterm{FolderType} but given in the documentation as the expected contents of the folder.
+A reference that has a stereotype of \textit{<<Organizes>>}, shown by the \texttt{Components} recursive relationship in the \mtconnectterm{MTComponentType}, implies an intermediate object of type \opcuaterm{FolderType} with the \uaterm{BrowseName} of the relationship point on the source side. The far side is not constrained within the \opcuaterm{FolderType} but given in the documentation as the expected contents of the folder.
 
 OPC UA represents both class and instance diagrams using the same set of primitives. UML provides separate class and object models using two separate sets of primitives, one for classification and the other for instances of those classes. This section separates the object instantiation from the classification and uses UML object diagrams to represent example instances of classes.
 
@@ -46,9 +46,9 @@ The object models will use a UML representation that represents the members as U
 
 \input{diagrams/mtconnect-mapping/example-object.tex}
 
-Figure \ref{fig:example-object} represents an MTConnect \mtconnectterm{Device} with the values filled in. The UA \opcuaterm{Browse\-Name} is given as the object name above and the UA Type is given after the \texttt{:} in the header. Each of the UA \opcuaterm{Attributes} and \opcuaterm{Properties} are provided below. Relationships are shown as edges that have the Reference Type, such as \opcuaterm{Has\-Component} provided. The properties contains within will be created using the \opcuaterm{Has\-Property} reference, but composed as internal members for brevity.
+Figure \ref{fig:example-object} represents an MTConnect \mtconnectterm{Device} with the values filled in. The UA \opcuaterm{Browse\-Name} is given as the object name above, and the UA Type is given after the \texttt{:} in the header. Each of the UA \opcuaterm{Attributes} and \opcuaterm{Properties} are provided below. Relationships are shown as edges that have the Reference Type, such as \opcuaterm{Has\-Component}. The properties contained within will be created using the \opcuaterm{Has\-Property} reference but composed as internal members for brevity.
 
-For example, the object with \mtuatype{MTDeviceType} has \opcuaterm{BrowseName} of \texttt{SimpleCnc} (the name of the device). There are patterns for creating all the browse names for each MTConnect UA Type as deined. The rules will be presented and then examples will provide the normative patterns as example for each type as defined.
+For example, the with type \mtuatype{MTDeviceType} has \opcuaterm{BrowseName} of \texttt{SimpleCnc} (the name of the device). There are patterns for creating all the \uaterm{BrowseName} for each MTConnect UA Type. The rules are presented and in the example to provide the normative patterns for each type in the information model.
 
 \FloatBarrier
 
@@ -64,9 +64,9 @@ The MTConnect information model has the following abstractions:
 \item \mtconnectterm{Assets}
 \end{enumerate}
 
-The first concern of the MTConnect OPC UA companion specification is the \mtconnectterm{Device} model covered in MTConnect \cite{MTCPart2} and \cite{MTCPart3}. The top-level \mtconnectterm{Comp\-onent} of any MTConnect information model is the \mtconnectterm{Device}. A \mtconnectterm{Comp\-onent} represents a logical part or a collection of parts of a piece of equipment. The \mtconnectterm{Data\-Item}s represent information that is communicated from \mtconnectterm{Component}s, and the representation and communication of the information are covered in \cite{MTCPart3}. The \mtconnectterm{Compositions} are the lowest level of contextualization for MTConnect \mtconnectterm{Components} that do not have any structure but can be associated with \mtconnectterm{Data\-Item}s to provide additional context. 
+The first concern of the MTConnect OPC UA companion specification is the \mtterm{Device} model covered in MTConnect \cite{MTCPart2} and \cite{MTCPart3}. The top-level \mtconnectterm{Component} of any MTConnect information model is the \mtconnectterm{Device}. A \mtconnectterm{Component} represents a logical part or a collection of parts of a piece of equipment. The \mtconnectterm{DataItem}s represent information that is communicated from \mtconnectterm{Component}s, and the representation and communication of the information are covered in \cite{MTCPart3}. The \mtconnectterm{Compositions} are the lowest level of contextualization for MTConnect \mtconnectterm{Components} that do not have any structure but can be associated with \mtconnectterm{Data\-Item}s to provide additional context. 
 
-The \mtconnectterm{Configuration} is a collection of information about the component that provides more detail about its capabilities. The standard has only specified the \mtconnectterm{Sensor\-Configuration} at this point.
+The \mtconnectterm{Configuration} is a collection of information about the component that provides more detail about its capabilities. The standard has only specified the \mtconnectterm{SensorConfiguration} at this point.
 
 \mtconnectterm{Asset}s are complex information models that provide a point in time consistent set of information about the use of a physical or logical entity in the manufacturing process. These models, for example, may represent a cutting tool, a program, or a process. The \mtconnectterm{Asset}s will be covered in a subsequent companion specification. The only assets currently in the MTConnect standard are \asset{CuttingTool} and \asset{CuttingToolArchetype}. Refer to MTConnect Part 4.0 \cite{MTCPart40} and MTConnect Part 4.1 \cite{MTCPart41}.
 
@@ -108,8 +108,6 @@ OPC UA conventions use names in \textit{Pascal Case}, so all MTConnect entities 
 
 The values of the attributes and enumerations are represented in MTConnect in capitals with underscores. OPC UA has the same convention, so these types will remain unchanged when converted to OPC UA. The only caveat is that enumerated values when represented in UA \texttt{DataVariable}s are numeric. All enumerations in MTConnect are sorted alphabetically and assigned monotonically increasing numberic values. For example, the enumeration for the \texttt{Execution} MTConnect data item is in table \ref{table:execution-data-type}.
 
-Extensions to the MTConnect standard that have enumerations will represent the data as strings since the values are not included in the nodeset reference. An extension nodeset can be created by a vendor if the \mtuatype{MTControlledVocabEventType} is desired. The parent type requires a reference to a UA \opcuaterm{MultiState\-Value\-Discrete\-Type} and defines the data type as being a \texttt{Number} and has an attribute that references the \opcuaterm{NodeId} of the enumerated values.
-
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ExecutionDataType} Enumeration}
@@ -131,8 +129,9 @@ Extensions to the MTConnect standard that have enumerations will represent the d
 \end{tabu}
 \end{table} 
 
+Extensions to the MTConnect standard that have enumerations will represent the data as strings since the values are not included in the \uaterm{NodeSet} reference. An extension nodeset can be created by a vendor if the \mtuatype{MTControlledVocabEventType} is desired. The parent type requires a reference to a UA \opcuaterm{MultiState\-Value\-Discrete\-Type} and defines the data type as being a \texttt{Number} and has an attribute that references the \opcuaterm{NodeId} of the enumerated values.
 
-MTConnect base types have been prefixed with the letters \texttt{MT} to avoid confusion with OPC UA vocabulary. The following component types and relationships have been annoted:
+MTConnect base types have been prefixed with the letters \texttt{MT} to avoid confusion with OPC UA vocabulary. The following component types and relationships have been annotated:
 
 \begin{itemize}
 \item $Device \rightarrow MTDeviceType$
@@ -165,6 +164,8 @@ The data item class types and enumeration data types do not have \texttt{MT} pre
 
 The first section showing in Listing \ref{lst:device-header} of the MTConnect XML representation gives the information models root element \texttt{MTConnectDevices} and the \texttt{Header} element that is used for the MTConnect protocol. The only root node concern is if there are additional name-spaces declared in the root \texttt{MTConnectDevices} element. The other area of note is the \texttt{version} attribute of the \texttt{Header} element.  The version indicates the most current version of the MTConnect standard currently being provided by this \textit{Agent}. The remaining attributes are relevant during the discussion of streaming data in the following section.
 
+\paragraph{\element{MTConnectDevices} Root Element}
+
 \begin{lstlisting}[caption={Device Header},label={lst:device-header}]
 <MTConnectDevices xmlns="urn:mtconnect.org:MTConnectDevices:1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:1.4 schema/MTConnectDevices_1.4.xsd">
   <Header version="1.4.0" creationTime="2018-10-28T12:33:12Z" instanceId="12345" sender="localhost" bufferSize="1024" assetBufferSize="1024" assetCount="0"/>
@@ -172,6 +173,9 @@ The first section showing in Listing \ref{lst:device-header} of the MTConnect XM
 \end{lstlisting}
 
 The MTConnect \textit{Agent} is capable of supporting multiple \mtterm{Device}s; a \mtterm{Device} element is the only allowed member of the \mtterm{Devices} element. The \texttt{Device} element is the top level component of the MTConnect component hierarchy. The \texttt{Device} is a sub-type of the \texttt{Component} and inherits all the structure of an MTConnect \texttt{Component}. The \texttt{Device} has three required attributes, an \texttt{id}, a \texttt{uuid} and a \texttt{name} attribute. Only the \texttt{id} is mandatory in all other components. 
+
+\paragraph{\element{Device} Element}
+
 
 \begin{lstlisting}[firstnumber=last,%
     caption={\texttt{Device} Element Mapping},label={lst:device-model-device}]
@@ -191,6 +195,8 @@ Every device must have a \opcuaterm{HasNotifier} relationship with the \uaterm{S
 
 The treatment of the component relationships will be covered in the \mtterm{DataItem} examples.
 
+\paragraph{\element{Device} \mtterm{DataItems}}
+
 \begin{lstlisting}[firstnumber=last,%
     caption={Device Data Items},label={lst:device-data-items}]
       <DataItems>
@@ -200,7 +206,7 @@ The treatment of the component relationships will be covered in the \mtterm{Data
       </DataItems>
 \end{lstlisting}
 
-The device requires three data items as of MTConnect version 1.2. The \dataitem{AVAILABILITY} data item indicates if data is available from the device and the \dataitem{ASSET_CHANGED} and \dataitem{ASSET_REMOVED} data items represent the last asset inserted or updated and removed respectively. The Component adds Data items with a \texttt{Has\-Component} relationship, and the BrowseName is constructed using the \texttt{type}, \texttt{sub\-Type}, and related \texttt{Composition} from \texttt{compositionId} if given. A complete example is given later in this section.
+The device requires three data items as of MTConnect version 1.2. The \dataitem{AVAILABILITY} data item indicates if data is available from the device and the \dataitem{ASSET_CHANGED} and \dataitem{ASSET_REMOVED} data items represent the last asset inserted or updated and removed respectively. The Component adds Data items with a \uaterm{Has\-Component} relationship, and the BrowseName is constructed using the \element{type}, \element{sub\-Type}, and related \texttt{Composition} from \element{compositionId} if given. A complete example is given later in this section.
 
 \input{diagrams/mtconnect-mapping/mtdevice-data-item.tex}
 
@@ -210,12 +216,16 @@ Every MTConnect \mtconnectterm{Data\-Item} has two references that provide the s
 
 \input{diagrams/mtconnect-mapping/data-item-references.tex}
 
-In Figure \ref{fig:data-item-references}, the \mtuatype{HasMTClassType} reference indicates the semantic meaning of the data item. For enumerated or controlled vocabulary data items, they are represented using a sub-type of the UA \texttt{Multi\-State\-Value\-Discrete\-Type}, the \mtuatype{MTControlledVocabEventType}, where the \texttt{Enum\-Values} attribute is related to the NodeId of the associated enumeration data type, in this case the \texttt{Availability\-Data\-Type}.
+In Figure \ref{fig:data-item-references}, the \mtuatype{HasMTClassType} reference indicates the semantic meaning of the data item. For enumerated or controlled vocabulary data items, they are represented using a sub-type of the UA \uaterm{Multi\-State\-Value\-Discrete\-Type}, the \mtuatype{MTControlledVocabEventType}, where the \uaterm{Enum\-Values} attribute is related to the NodeId of the associated enumeration data type, in this case the \texttt{Availability\-Data\-Type}.
 
 MTConnect \mtterm{subType} will be mapped in the same manner as the type using the \mtuatype{HasMTSubClassType} relationship. This will be covered subsequent examples.
 
+\FloatBarrier
+
+\paragraph{\element{Axes} and \element{Linear} Comoonents}
+
 \begin{lstlisting}[firstnumber=last,%
-    caption={Components and Conditions},label={lst:device-axis-component}]
+    caption={Components and Conditions},label={lst:linear-x-component}]
       <Components>
         <Axes id="a62a1050">
           <Components>
@@ -228,27 +238,29 @@ MTConnect \mtterm{subType} will be mapped in the same manner as the type using t
             </Linear>
 \end{lstlisting}
 
-The \texttt{Components} element in Listing \ref{lst:device-axis-component} is represented as a UA \texttt{Folder\-Type}. Within the folder, the MTConnect components are semantically identified by the element's QName with a type with the suffix \texttt{Type} appended, in this case \texttt{Axes} browse name with a \opcuaterm{HasTypeDefinition} relaton of \texttt{AxesType}. 
+The \element{Components} element in Listing \ref{lst:linear-x-component} is represented as a UA \uaterm{Folder\-Type}. Within the folder, the MTConnect components are semantically identified by the element's \element{QName} with a type with the suffix \texttt{Type} appended, in this case the \uaterm{BrowseName}  \element{Axes} has a \opcuaterm{HasTypeDefinition} relaton of \texttt{AxesType}. 
 
 \input{diagrams/mtconnect-mapping/linear-x-example-1.tex}
 
-The \uaterm{HasNotifier} refererence needs to be created between the \texttt{Axes} object and the \texttt{SimpleCnc\-:\-MTDeviceType} object to allow for the condition to be associated correctly. The relationship of the condition in Figure~\ref{fig:axes-example-1} illustrates the relationships between the \texttt{Component} and the related condition and the notification hierarchy. The UA \uaterm{Condition\-ClassId} and \uaterm{Condition\-ClassName} use the \mtuatype{ActuatorClassType}'s \uaterm{NodeId} and \uaterm{BrowseName} respectively to relate to the condition class as required by the UA specification \cite{UAPart9}. In addition the MTConnect \texttt{HasMTClassType} reference directly connects to the type definition as do all MTConnect \mtterm{DataItem}s.
+Figure~\ref{fig:linear-x-example-1} represents the UA Object model based on  Listing~\ref{lst:linear-x-component}. The \mtterm{Linear} X \mtterm{Axis}, mapped from \element{Linear} element in Listing~\ref{lst:linear-x-component}, has a \uaterm{BrowseName} composed of the \element{QName} of the element, and the \element{name} attribute appended and enclosed in square brackets \element{[X]}, giving the browse name of \texttt{Linear[X]} and a component type of \texttt{LinearType} using a \uaterm{HasTypeDefinition} \uaterm{Reference}.
 
-A more complex component definition is the Linear X axis represented in Listing~\ref{lst:linear-x-component}. The Linear X Component is created with with the browse name being composed of the QName of the component element, \texttt{Linear} and the name attribute appended and enclosed in square brackets \texttt{[X]} giving the browse name of \texttt{Linear[X]} and a component type of \texttt{LinearType}.
+The \mtterm{DataItem}s for \texttt{ActualPosition} and \texttt{Load} are both of \mtterm{category} \mtterm{SAMPLE}; they contain numeric values are always mapped to the \mtuatype{MTSampleType} which is derived from the UA \uaterm{AnalogItemType} defined in \cite{UAPart8}. The \uaterm{BrowseName} for the \mtterm{DataItem}s are composed of the related \mtterm{Composition} \mtterm{type}, \mtterm{subType}, and \mtterm{type} of the \mtterm{DataItem} represented in \textit{PascalCase}.
 
-Figure~\ref{fig:linear-x-example-1} represents the UA Object model based on \ref{lst:linear-x-component}. The \texttt{Linear[x]} component is a leaf component, there are no components below it, so the \texttt{HasEventSource} relationship is used rather that the \texttt{HasNotifier}. The condition, having a \texttt{MTClassType} of \texttt{PositionClassType}, is connected to the \texttt{Linear[X]} axis with a \texttt{HasCondition} relationship.
+The \uaterm{EngineeringUnits} of the \uaterm{AnalogItemType} will be directly mapped to the \uaterm{EngineeringUnits} \uaterm{Property} of the \mtuatype{MTSampleType}. If the value is constrained, the \uaterm{EURange} will be populated, otherwise it will set to -INF and INF as the range since it is a mandatory \uaterm{Property}. The remaining attributes will be represented as properties of the \mtuatype{MTSampleType} converting the \textit{lowerCamelCase} to \textit{PascalCase} by changing the first character to upper-case. The \mtterm{EVENT} category and complex cases will be specified in the following examples.
 
-Each of the data items in this case are samples, meaning they contain numeric values and derived from the UA \texttt{AnalogItemType} defined in \cite{UAPart8}.
+MTConnect \mtterm{DataItem}s of \mtterm{category} \dataitem{CONDITION} are special types since they represent the state of an alarm or warning associated with a \mtterm{Component} of the \mtterm{Device}. For more information on the \mtterm{conditions} see \cite{MTCPart2} and \cite{MTCPart3}. The mapping of the \mtterm{CONDITION} \mtterm{category} of \mtterm{DataItem}s is to the corresponding \uaterm{ConditionType} sub-type of \mtuatype{MTConditionType}.
+
+The \mtuatype{MTConditionType} has a naming rule similar to the \mtterm{DataItem} referenced above. The same rule applies with \texttt{Condition} appended. In this case the condition is of \mtterm{type} \dataitem{POSITION} so the \uaterm{BrowseName} is \texttt{PositionCondition}. This is to differentiate the UA \uaterm{Component} for other UA \uaterm{Components} of the same type.
+
+The \mtuatype{MTComponentType} is decendent of the \uaterm{BaseEventType} described in \cite{UAPart5} and \cite{UAPart9}, so it has two functions in the UA model. It represents the overall state of the UA \uaterm{Condition} and also it represents each event as the various MTConnect \mtterm{Condition} changes are reported as represented in \cite{MTCPart3}.
+
+The \uaterm{HasNotifier} refererence needs to be created between the \texttt{Axes} object and the \texttt{SimpleCnc:}\mtuatype{MTDeviceType} object to allow for the events to flow down to the conditions for each of the components. The relationship of the condition in Figure~\ref{fig:linear-x-example-1} illustrates the relationships between the \element{Component} and the related condition in the notification hierarchy.
+
+ The \texttt{Linear[x]} component uses a \uaterm{HasNotifier} reference sourced from the parent \texttt{Axes} \uaterm{Object}. The condition, having a \mtuatype{MTClassType} of \mtuatype{PositionClassType}, is connected to the \texttt{Linear[X]} axis with a \uaterm{HasCondition} relationship. 
 
 \FloatBarrier
 
-Listing~\ref{lst:controller-component} represents the control system and the paths of exectution under for each independent set of operations and motion. This controller also has extended data items that are not in the standard. They are prefixed with the XML namespace \texttt{x:}. Data item types and sub-types can be extended. If only the sub-type is an exteneded type, then the browse name will be prepended as normal and the sub type in \textit{Pascal Case} prepended. For example with the data item of type \texttt{PROGRAM} with sub-type \texttt{x:SUB} (line 36), the namespace will be removed and the browse name \texttt{SubProgram} of a \texttt{MTStringEventType} will be used referencing the \texttt{ProgramClassType}. 
-
-When the type is an extended namespace, a new \texttt{ClassType} must be created by taking the \texttt{type} attribute, removing the namespace and creating a new subtype of the \texttt{MTString\-EventType}. A \texttt{MTString\-EventType} must be used unless a better mapping can be determined. For example, the \texttt{x:SEQUENCE_NUMBER} (line 39) data item would be have a \texttt{MTString\-EventType} instantiated with the browse name of \texttt{SequenceNumber} and a new \texttt{ClassType} will be created \texttt{Sequence\-NumberClassType} and related with the \texttt{HasMT\-ClassType} reference. The \texttt{ClassType} must be created as a sub-type of the \texttt{MTStringEventClassType}.
-
-In this case the \texttt{SequenceNumber} may have schema or information associated with it that will determine it to be a numeric value. If this is the case, then it can be mapped to the \texttt{MTNumericEventType} as a better match. The \texttt{classType} must be created as a sub-type of the \texttt{MTNumericEventClassType}.
-
-All data items of \texttt{category} \texttt{SAMPLE} must always be mapped to the \texttt{MTSampleType} instance with the browse name created appropriately. In this case the \texttt{ClassType} must be created as as sub-type of the \texttt{MTSampleClassType}.
+\paragraph{\element{Rotary} Axis and \mtterm{Condition} sources}
 
 \begin{lstlisting}[firstnumber=last,%
     caption={Rotary C Axis},label={lst:rotary-axis-example-1}]
@@ -267,6 +279,10 @@ All data items of \texttt{category} \texttt{SAMPLE} must always be mapped to the
               </Compositions>
             </Rotary>
 \end{lstlisting}
+
+\FloatBarrier
+
+\paragraph{\element{Controller} and \element{Path} \mtterm{Component}s}
 
 \begin{lstlisting}[firstnumber=last,%
     caption={Controller and Path Components and Their Data Items},label={lst:controller-component}]
@@ -290,6 +306,12 @@ All data items of \texttt{category} \texttt{SAMPLE} must always be mapped to the
           </Components>
         </Controller>
 \end{lstlisting}
+
+Listing~\ref{lst:controller-component} represents the control system and the paths of exectution under for each independent set of operations and motion. This controller also has extended data items that are not in the standard. They are prefixed with the XML namespace \texttt{x:}. Data item types and sub-types can be extended. If only the sub-type is an exteneded type, then the browse name will be prepended as normal and the sub type in \textit{Pascal Case} prepended. For example with the data item of type \texttt{PROGRAM} with sub-type \texttt{x:SUB} (line 36), the namespace will be removed and the browse name \texttt{SubProgram} of a \texttt{MTStringEventType} will be used referencing the \texttt{ProgramClassType}. 
+
+In this case the \texttt{SequenceNumber} may have schema or information associated with it that will determine it to be a numeric value. If this is the case, then it can be mapped to the \texttt{MTNumericEventType} as a better match. The \texttt{classType} must be created as a sub-type of the \texttt{MTNumericEventClassType}.
+
+All data items of \texttt{category} \texttt{SAMPLE} must always be mapped to the \texttt{MTSampleType} instance with the browse name created appropriately. In this case the \texttt{ClassType} must be created as as sub-type of the \texttt{MTSampleClassType}.
 
 \begin{lstlisting}[firstnumber=last,%
     caption={Electrical System and Sensor Configuration},label={lst:electric-system-example-1}]

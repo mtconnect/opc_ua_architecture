@@ -160,6 +160,86 @@ The following types representing base MTConnect types are also prefixed:
 
 The data item class types and enumeration data types do not have \texttt{MT} prepended. Sub-types of the \mtuatype{MTComponentType} do not have \texttt{MT} prefixed with the exception of the \mtuatype{MTDeviceType}. All compositions that are sub-types of the \mtuatype{MTCompositionType} do not have any prefix.
 
+\subsubsection{\uaterm{EngineeringUnits}}
+
+OPC UA defines the EngineeringUnits \uaterm{DataType} in \cite{UAPart8} as having the fields show in Table~\ref{table:enineering-untis-data-type}.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{EngineeringUnits} DataType structure}
+  \label{table:enineering-untis-data-type}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X|X|X[2]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Type} & Description \\
+\tabucline[1.5pt]{}
+\texttt{namespaceUri} & String & Identifies the organization (company, standards organization) that defines the EUInformation \\
+unitId & Int32 & Identifier for programmatic evaluation. -1 is used if a unitId is not available. \\
+displayName & LocalizedText & The displayName of the engineering unit is typically the abbreviation of the engineering unit, for example "h" for hour or "m/s" for meter per second. \\
+description & LocalizedText & Contains the full name of the engineering unit such as "hour" or "meter per second". \\
+\end{tabu}
+\end{table} 
+
+In Table~\ref{table:mtconnect-to-ua-eu-mapping}, the mapping between the MTConnect units and the OPC UA EngineeringUnits structure has been specified. There are three units that are not mapped, these are \texttt{COUNT}, \texttt{PERCENT}, and \texttt{MILLIMETER_3D}. The first two are unitless and are therefor cannot mapped directly. The third is a spacial coordinate and is composed of multiple values.
+
+For units other than  \texttt{COUNT}, \texttt{PERCENT}, and \texttt{MILLIMETER_3D}, the \uaterm{namespaceUri} will be set to \url{http://www.opcfoundation.org/UA/units/un/cefact} as specified in \cite{UAPart8} and the values from Table~\ref{table:mtconnect-to-ua-eu-mapping} must be used. The units \texttt{COUNT}, \texttt{PERCENT}, and \texttt{MILLIMETER_3D} will be encoded as follows: UnitId will be -1 and the \uaterm{namespaceUri} will be set to the MTConnect URI: \url{http://opcfoundation.org/UA/MTConnect/v2/units}.  
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{EngineeringUnits} DataType structure}
+  \label{table:mtconnect-to-ua-eu-mapping}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[2.75]|X[0.75]|X|X|X[2]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {MTConnect Unit} & {UNECE Code} & {UnitId} & {Display Name} & {Description} \\
+\tabucline[1.5pt]{}
+AMPERE 	& AMP & 4279632 & A & Amps \\
+CELSIUS	& CEL  & 4408652 &   $^{\circ}Celsuis$ & Degrees Celsius \\
+COUNT	&    & -1    & Count & A counted event \\
+DECIBEL	& 2N & 12878 & dB & Sound Level \\
+DEGREE	& DD & 17476 & $^{\circ}$  & degree [unit of angle] \\
+DEGREE/SECOND &	E96 & 4536630 & $^{\circ}/s$ & Angular degrees per second \\
+DEGREE/SECOND\^{}2 & M45 & 5059637 & $^{\circ}/s^{2}$ & Angular acceleration in degrees per second squared \\
+HERTZ & HTZ & 4740186 & Hz & Frequency measured in cycles per second \\
+JOULE & JOU & 4869973 & J & A measurement of energy. \\
+KILOGRAM & KGM & 4933453 & kg & kilogram \\
+LITER & LTR & 5002322 & l & Litre \\
+LITER/SECOND & G51 & 4666673 & l/s & Litre per second \\
+MICRO_RADIAN & B97 & 4340023 & $\mu rad$ & microradian - Measurement of Tilt \\
+MILLIMETER & MMT & 5066068 & mm & millimetre \\
+MILLIMETER/SECOND & C16 & 4403510 & mm/s & millimetre per second \\
+MILLIMETER/SECOND\^{}2 & M41 & 5059633 & $mm/s^2$ & Acceleration in millimeters per second squared \\
+MILLIMETER_3D & MMT & 5066068 & mm & A point in space identified by X, Y, and Z positions and represented by a space delimited set of numbers each expressed in millimeters. \\
+\end{tabu}
+\end{table}
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{EngineeringUnits} DataType structure (Continued)}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[2.75]|X[0.75]|X|X|X[2]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {MTConnect Unit} & {UNECE Code} & {UnitId} & {Display Name} & {Description} \\
+\tabucline[1.5pt]{}
+NEWTON & NEW & 5129559 & N & Force in Newtons \\
+NEWTON_METER & NU & 20053 & N m & Torque, a unit for force times distance.  \\
+OHM & OHM & 5195853 & $\Omega$ & Measure of Electrical Resistance \\
+PASCAL & PAL & 5259596 & Pa & Pressure in Newtons per square meter  \\
+PASCAL_SECOND & C65 & 4404789 & Pa s & Measurement of Viscosity \\
+PERCENT	&   & -1 & \% & Percentage \\
+PH & Q30 & 5321520 & pH & pH (potential of Hydrogen) - A measure of the acidity or alkalinity of a solution \\
+REVOLUTION/MINUTE & RPM & 5394509 & r/min & revolutions per minute \\
+SECOND	& SEC & 5457219 & s & second [unit of time] \\
+SIEMENS/METER & D10 & 4469040 & S/m & siemens per metre - A measurement of Electrical Conductivity \\
+VOLT & VLT & 5655636 & V & volt \\
+VOLT_AMPERE & D46 & 4469814 & VA & volt - ampere \\
+VOLT_AMPERE_REACTIVE &  & -1 & VAR & Volt-Ampere Reactive  (VAR) \\
+WATT & WTT & 5723220 & W & watt \\
+WATT_SECOND & J55 & 4863285 & W s & Measurement of electrical energy, equal to one Joule
+\end{tabu}
+\end{table} 
+
+\FloatBarrier
 \subsubsection{Mapping Example 1}
 
 The first section showing in Listing \ref{lst:device-header} of the MTConnect XML representation gives the information models root element \texttt{MTConnectDevices} and the \texttt{Header} element that is used for the MTConnect protocol. The only root node concern is if there are additional name-spaces declared in the root \texttt{MTConnectDevices} element. The other area of note is the \texttt{version} attribute of the \texttt{Header} element.  The version indicates the most current version of the MTConnect standard currently being provided by this \textit{Agent}. The remaining attributes are relevant during the discussion of streaming data in the following section.
@@ -252,7 +332,9 @@ MTConnect \mtterm{DataItem}s of \mtterm{category} \dataitem{CONDITION} are speci
 
 The \mtuatype{MTConditionType} has a naming rule similar to the \mtterm{DataItem} referenced above. The same rule applies with \texttt{Condition} appended. In this case the condition is of \mtterm{type} \dataitem{POSITION} so the \uaterm{BrowseName} is \texttt{PositionCondition}. This is to differentiate the UA \uaterm{Component} for other UA \uaterm{Components} of the same type.
 
-The \mtuatype{MTComponentType} is decendent of the \uaterm{BaseEventType} described in \cite{UAPart5} and \cite{UAPart9}, so it has two functions in the UA model. It represents the overall state of the UA \uaterm{Condition} and also it represents each event as the various MTConnect \mtterm{Condition} changes are reported as represented in \cite{MTCPart3}.
+The \mtuatype{MTComponentType} is decendent of the \uaterm{BaseEventType} described in \cite{UAPart5} and \cite{UAPart9}, so it has two functions in the UA model. It represents the overall state of the UA \uaterm{Condition} and also it represents each event as the various MTConnect \mtterm{Condition} changes are reported as represented in the \mtterm{MTConnectStreams} described in \cite{MTCPart3}.
+
+
 
 The \uaterm{HasNotifier} refererence needs to be created between the \texttt{Axes} object and the \texttt{SimpleCnc:}\mtuatype{MTDeviceType} object to allow for the events to flow down to the conditions for each of the components. The relationship of the condition in Figure~\ref{fig:linear-x-example-1} illustrates the relationships between the \element{Component} and the related condition in the notification hierarchy.
 
@@ -301,6 +383,7 @@ The \uaterm{HasNotifier} refererence needs to be created between the \texttt{Axe
                 <DataItem id="a5b23650" type="MOTION_PROGRAM" category="CONDITION"/>
                 <DataItem id="bbafe670" type="LINE" category="EVENT"/>
                 <DataItem id="d2e9e4a0" type="PART_COUNT" category="EVENT"/>
+                <DataItem id="r186cd60" type="PATH_POSITION" category="SAMPLE" units="MILLIMETER_3D"/>
               </DataItems>
             </Path>
           </Components>

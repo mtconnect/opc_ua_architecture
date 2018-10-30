@@ -59,6 +59,7 @@
 \RequirePackage{xstring}
 \RequirePackage{siunitx}
 \RequirePackage{upgreek}
+\RequirePackage{longtable}
 
 % *********** %
 % 	Options   %

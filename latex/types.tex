@@ -1,4 +1,4 @@
-% Generated 2018-10-29 11:48:17 -0700
+% Generated 2018-10-28 22:17:02 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -374,12 +374,6 @@ HasProperty & Variable & Data & String & PropertyType & Optional \\
 \end{table} 
 
 
-\paragraph{Referenced Properties and Objects}
-
-\begin{itemize}
-\item \texttt{Data::String:} From the CDATA of the Description Element in MTConnect.
-
-\end{itemize}
 \paragraph{Operations}
 \begin{itemize}
   \item \texttt{deriveBrowseName(element)}\\
@@ -460,12 +454,6 @@ HasProperty & Variable & Value & Float & PropertyType & Mandatory \\
 \end{table} 
 
 
-\paragraph{Referenced Properties and Objects}
-
-\begin{itemize}
-\item \texttt{Value::Float:} Common abstract base class for the MTConnect filtering of data on input.
-
-\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MinimumDeltaFilterType}}
   \label{type:MinimumDeltaFilterType}
@@ -841,12 +829,6 @@ HasProperty & Variable & Nominal & Double & PropertyType & Optional \\
 \end{table} 
 
 
-\paragraph{Referenced Properties and Objects}
-
-\begin{itemize}
-\item \texttt{Nominal::Double:} This is the nominal value if provided in the constraints.
-
-\end{itemize}
 \paragraph{Operations}
 \begin{itemize}
   \item \texttt{deriveEngineeringUnits(units)}\\
@@ -1050,12 +1032,6 @@ HasProperty & Variable & Nominal & Double & PropertyType & Optional \\
 \end{table} 
 
 
-\paragraph{Referenced Properties and Objects}
-
-\begin{itemize}
-\item \texttt{Supertype::AnalogItemType:} All DataItems with category SAMPLE
-
-\end{itemize}
 \paragraph{Mixes in \texttt{MTNumericDataItemType}} (See section \ref{type:MTNumericDataItemType})
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTStringEventType}}
@@ -1191,31 +1167,6 @@ HasProperty & Object & ActiveState & \multicolumn{2}{|l|}{TwoStateVariableType} 
 \end{table} 
 
 
-\paragraph{Referenced Properties and Objects}
-
-\begin{itemize}
-\item \texttt{NativeCode::String:} When instantiated in the address space this will represent the \texttt{NativeCode} of the last
-\uaterm{Event} that was received. When the ActiveState becomes False and becomes 
-inactive, then the \texttt{NativeCode} will be cleared.
-
-\item \texttt{Qualifier::QualifierDataType:} When instantiated in the address space this will represent the \texttt{Qualifier} of the last
-\uaterm{Event} that was received. When the ActiveState becomes False and becomes 
-inactive, then the \texttt{Qualifier} will be cleared.
-
-\item \texttt{NativeSeverity::String:} When instantiated in the address space this will represent the \texttt{NativeSeverity} of the last
-\uaterm{Event} that was received. When the ActiveState becomes False and becomes 
-inactive, then the \texttt{NativeSeverity} will be cleared.
-
-\item \texttt{MTSeverity::MTSeverityDataType:} The MTSeverity represents the state of the condition in MTConnect. The two states are either
-\texttt{WARN} or \texttt{FAULT} representing the condition QName of the element in the 
-\mtterm{MTConnectStreams} document. The state will also correspond to the OPC UA Severity
-levels of 500 for \texttt{WARN} and 1000 for \texttt{FAULT}.
-
-When instantiated in the address space this will represent the \texttt{MTSeverity} of the last
-\uaterm{Event} that was received. When the ActiveState becomes False and becomes 
-inactive, then the \texttt{MTSeverity} will be cleared.
-
-\end{itemize}
 \paragraph{Allowable Values}
 \begin{table}[ht]
 \centering 
@@ -1844,12 +1795,6 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Referenced Properties and Objects}
-
-\begin{itemize}
-\item \texttt{Supertype::MTSampleClassType:} The length of an object
-
-\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ LinearForceClassType}}
   \label{type:LinearForceClassType}
@@ -4304,12 +4249,6 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Referenced Properties and Objects}
-
-\begin{itemize}
-\item \texttt{Supertype::MTStringEventClassType:} The line of code or command being executed by a Controller \textit{Structural Element}.
-
-\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ CoupledAxesClassType}}
   \label{type:CoupledAxesClassType}

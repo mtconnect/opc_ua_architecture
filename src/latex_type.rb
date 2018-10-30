@@ -100,6 +100,8 @@ class Type
   def generate_relations(f)
     @relations.each do |r|
       if r.is_reference?
+        next if r.stereotype and r.stereotype.name =~ /Attribute/
+        
         if r.is_property? or r.is_folder?
           type_info = "#{r.final_target.type.name} & #{r.target_node_name}"
         else
@@ -257,6 +259,7 @@ EOT
 \\begin{table}[ht]
 \\centering 
   \\caption{\\texttt{#{escape_name}} Enumeration}
+  \\label{enum:#{@name}}
 \\tabulinesep=3pt
 \\begin{tabu} to 6in {|l|r|} \\everyrow{\\hline}
 \\hline
@@ -277,22 +280,31 @@ EOT
   end
 
   def generate_dependencies(f)
-    dependencies.each do |dep|
-      target = dep.target
-      if dep.stereotype and dep.stereotype.name == 'values' and
-            target.type.type == 'UMLEnumeration'
+
+    deps = dependencies
+
+    if !deps.empty? or @mixin
+      f.puts "\\paragraph{Dependencies and Relationships}"
+      f.puts "\\begin{itemize}"
+      
+      deps.each do |dep|
+        target = dep.target
         
-        f.puts "\\paragraph{Allowable Values}"
-        target.type.generate_enumerations(f)
-      elsif target.type.stereotype.nil? or target.type.stereotype.name !~ /Factory/
-        f.puts "\\paragraph{Dependency on #{target.type.name}}\n\n"
-        rel = dep.stereotype && dep.stereotype.name
-        puts "Cannot find stereo for #{@name}::#{dep.name} to #{target.type.name}" unless rel
-        f.puts "This class relates to \\texttt{#{target.type.name}} (#{target.type.reference}) for a(n) \\texttt{#{rel}} relationship.\n\n"
+        if dep.stereotype and dep.stereotype.name == 'values' and
+          target.type.type == 'UMLEnumeration'
+          f.puts "\\item \\textbf{Allowable Values} for \\texttt{#{target.type.name}}"
+          target.type.generate_enumerations(f)
+        elsif target.type.stereotype.nil? or target.type.stereotype.name !~ /Factory/
+          f.puts "\\item Dependency on #{target.type.name}\n\n"
+          rel = dep.stereotype && dep.stereotype.name
+          puts "Cannot find stereo for #{@name}::#{dep.name} to #{target.type.name}" unless rel
+          f.puts "This class relates to \\texttt{#{target.type.name}} (#{target.type.reference}) for a(n) \\texttt{#{rel}} relationship.\n\n"
+        end
       end
-    end
     
-    f.puts "\\paragraph{Mixes in \\texttt{#{@mixin.escape_name}}} (#{@mixin.reference})" if @mixin
+      f.puts "\\item Mixes in \\texttt{#{@mixin.escape_name}}, see #{@mixin.reference}" if @mixin
+      f.puts "\\end{itemize}"
+    end
   end
 
   def generate_data_type(f)
@@ -300,7 +312,7 @@ EOT
 \\begin{table}[ht]
 \\centering 
   \\caption{\\texttt{#{escape_name}} DataType}
-  \\label{table:#{@name}}
+  \\label{data-type:#{@name}}
 \\tabulinesep=3pt
 \\begin{tabu} to 6in {|l|r|} \\everyrow{\\hline}
 \\hline

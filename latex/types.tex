@@ -1,4 +1,4 @@
-% Generated 2018-10-29 19:24:50 -0700
+% Generated 2018-10-30 12:19:41 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -124,6 +124,9 @@ HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & O
 \end{table} 
 
 
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTDeviceType}}
   \label{type:MTDeviceType}
@@ -169,6 +172,9 @@ name->notEmpty()
 \end{lstlisting}
 Documentation: The name of the Device SHALL be given.
 
+\end{itemize}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<Dynamic Type>> <Component>Type}}
@@ -565,12 +571,14 @@ HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & O
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
-Attribute Override & Variable & DataType & \multicolumn{2}{|l|}{AssetEventDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
 
-\paragraph{Mixes in \texttt{MTDataItemType}} (See section \ref{type:MTDataItemType})
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item Mixes in \texttt{MTDataItemType}, see See section \ref{type:MTDataItemType}
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTControlledVocabEventType}}
   \label{type:MTControlledVocabEventType}
@@ -618,7 +626,10 @@ HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & O
 \end{table} 
 
 
-\paragraph{Mixes in \texttt{MTDataItemType}} (See section \ref{type:MTDataItemType})
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item Mixes in \texttt{MTDataItemType}, see See section \ref{type:MTDataItemType}
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTDataItemClassType}}
   \label{type:MTDataItemClassType}
@@ -776,10 +787,13 @@ self.Source.CDATA
 \end{itemize}
 
 \end{itemize}
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{MTRepresentationType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTRepresentationType} Enumeration}
+  \label{table:MTRepresentationType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -790,10 +804,11 @@ self.Source.CDATA
 \texttt{VALUE} & \texttt{2} \\
 \end{tabu}
 \end{table} 
-\paragraph{Allowable Values}
+\item \textbf{Allowable Values} for \texttt{MTCategoryType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTCategoryType} Enumeration}
+  \label{table:MTCategoryType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -804,6 +819,7 @@ self.Source.CDATA
 \texttt{SAMPLE} & \texttt{2} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<mixin>> MTNumericDataItemType}}
   \label{type:MTNumericDataItemType}
@@ -867,10 +883,13 @@ and maximum values for the numeric values. This applies to both the Numeric
 Event and the Sample types.
 
 \end{itemize}
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{CoordinateSystemType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{CoordinateSystemType} Enumeration}
+  \label{table:CoordinateSystemType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -880,13 +899,14 @@ Event and the Sample types.
 \texttt{WORK} & \texttt{1} \\
 \end{tabu}
 \end{table} 
-\paragraph{Allowable Values}
+\item \textbf{Allowable Values} for \texttt{DataItemResetValueType}
 
 These need to become \texttt{Good_} status code in OPC UA.
 
 \begin{table}[ht]
 \centering 
   \caption{\texttt{DataItemResetValueType} Enumeration}
+  \label{table:DataItemResetValueType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -903,6 +923,7 @@ These need to become \texttt{Good_} status code in OPC UA.
 \texttt{WEEK} & \texttt{8} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTMessageType}}
   \label{type:MTMessageType}
@@ -936,10 +957,13 @@ HasProperty & Variable & NativeCode & String & PropertyType & Optional \\
 \end{table} 
 
 
-\paragraph{Dependency on MTDataItemType}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item Dependency on MTDataItemType
 
 This class relates to \texttt{MTDataItemType} (See section \ref{type:MTDataItemType}) for a(n) \texttt{Mixes In} relationship.
 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTNumericEventType}}
   \label{type:MTNumericEventType}
@@ -996,7 +1020,10 @@ HasProperty & Variable & EngineeringUnits & EUInformation & PropertyType & Optio
 \end{table} 
 
 
-\paragraph{Mixes in \texttt{MTNumericDataItemType}} (See section \ref{type:MTNumericDataItemType})
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item Mixes in \texttt{MTNumericDataItemType}, see See section \ref{type:MTNumericDataItemType}
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTSampleType}}
   \label{type:MTSampleType}
@@ -1056,7 +1083,10 @@ HasProperty & Variable & Nominal & Double & PropertyType & Optional \\
 \item \texttt{Supertype::AnalogItemType:} All DataItems with category SAMPLE
 
 \end{itemize}
-\paragraph{Mixes in \texttt{MTNumericDataItemType}} (See section \ref{type:MTNumericDataItemType})
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item Mixes in \texttt{MTNumericDataItemType}, see See section \ref{type:MTNumericDataItemType}
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTStringEventType}}
   \label{type:MTStringEventType}
@@ -1105,7 +1135,84 @@ HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & O
 \end{table} 
 
 
-\paragraph{Mixes in \texttt{MTDataItemType}} (See section \ref{type:MTDataItemType})
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item Mixes in \texttt{MTDataItemType}, see See section \ref{type:MTDataItemType}
+\end{itemize}
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MTThreeSpaceSampleType}}
+  \label{type:MTThreeSpaceSampleType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTThreeSpaceSampleType} Definition}
+  \label{table:MTThreeSpaceSampleType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTThreeSpaceSampleType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{ThreeSpacePositionDataType} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{BaseDataVariableType} (See \cite{UAPart8} Documentation)} \\
+HasProperty & Variable & Name & String & PropertyType & Optional \\
+HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
+HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
+HasProperty & Variable & SourceName & String & PropertyType & Optional \\
+HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
+HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
+HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
+HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
+HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
+HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
+HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
+HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
+HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
+HasProperty & Variable & SignificantDigits & UInt16 & PropertyType & Optional \\
+HasProperty & Variable & Statistic & String & PropertyType & Optional \\
+HasProperty & Variable & Units & String & PropertyType & Optional \\
+HasProperty & Variable & NativeUnits & String & PropertyType & Optional \\
+HasProperty & Object & CoordinateSystem & CoordinateSystemType & PropertyType & Optional \\
+HasProperty & Variable & InitialValue & Double & PropertyType & Optional \\
+HasProperty & Object & ResetTrigger & DataItemResetValueType & PropertyType & Optional \\
+HasProperty & Variable & Nominal & Double & PropertyType & Optional \\
+HasProperty & Variable & EngineeringUnits & EUInformation & PropertyType & Mandatory \\
+HasProperty & Variable & EURange & Range & PropertyType & Mandatory \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item Mixes in \texttt{MTNumericDataItemType}, see See section \ref{type:MTNumericDataItemType}
+\end{itemize}
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ThreeSpacePositionDataType}}
+  \label{type:ThreeSpacePositionDataType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ThreeSpacePositionDataType} DataType}
+  \label{table:ThreeSpacePositionDataType}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Field} & {Type} \\
+\tabucline[1.5pt]{}
+\texttt{X} & \texttt{Double} \\
+\texttt{Y} & \texttt{Double} \\
+\texttt{Z} & \texttt{Double} \\
+\end{tabu}
+\end{table} 
 \FloatBarrier
 \subsection{Conditions} \label{model:Conditions}
 
@@ -1216,10 +1323,13 @@ When instantiated in the address space this will represent the \texttt{MTSeverit
 inactive, then the \texttt{MTSeverity} will be cleared.
 
 \end{itemize}
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{QualifierDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{QualifierDataType} Enumeration}
+  \label{table:QualifierDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -1229,10 +1339,11 @@ inactive, then the \texttt{MTSeverity} will be cleared.
 \texttt{LOW} & \texttt{1} \\
 \end{tabu}
 \end{table} 
-\paragraph{Allowable Values}
+\item \textbf{Allowable Values} for \texttt{MTSeverityDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTSeverityDataType} Enumeration}
+  \label{table:MTSeverityDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -1242,7 +1353,8 @@ inactive, then the \texttt{MTSeverity} will be cleared.
 \texttt{WARNING} & \texttt{1} \\
 \end{tabu}
 \end{table} 
-\paragraph{Mixes in \texttt{MTDataItemType}} (See section \ref{type:MTDataItemType})
+\item Mixes in \texttt{MTDataItemType}, see See section \ref{type:MTDataItemType}
+\end{itemize}
 \FloatBarrier
 \subsection{Data Item Types} \label{model:DataItemTypes}
 
@@ -2607,10 +2719,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{ActiveStateDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ActiveStateDataType} Enumeration}
+  \label{table:ActiveStateDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -2620,6 +2735,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{INACTIVE} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ AvailabilityClassType}}
   \label{type:AvailabilityClassType}
@@ -2648,10 +2764,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{AvailabilityDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{AvailabilityDataType} Enumeration}
+  \label{table:AvailabilityDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -2661,6 +2780,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{UNAVAILABLE} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ AxisCouplingClassType}}
   \label{type:AxisCouplingClassType}
@@ -2692,10 +2812,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{AxisCouplingDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{AxisCouplingDataType} Enumeration}
+  \label{table:AxisCouplingDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -2707,6 +2830,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{TANDEM} & \texttt{3} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ AxisInterlockClassType}}
   \label{type:AxisInterlockClassType}
@@ -2735,10 +2859,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{ActiveStateDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ActiveStateDataType} Enumeration}
+  \label{table:ActiveStateDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -2748,6 +2875,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{INACTIVE} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ AxisStateClassType}}
   \label{type:AxisStateClassType}
@@ -2775,10 +2903,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{AxisStateDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{AxisStateDataType} Enumeration}
+  \label{table:AxisStateDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -2790,6 +2921,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{TRAVEL} & \texttt{3} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ ChuckInterlockClassType}}
   \label{type:ChuckInterlockClassType}
@@ -2818,10 +2950,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{ActiveStateDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ActiveStateDataType} Enumeration}
+  \label{table:ActiveStateDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -2831,6 +2966,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{INACTIVE} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ ChuckStateClassType}}
   \label{type:ChuckStateClassType}
@@ -2860,10 +2996,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{OpenStateDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{OpenStateDataType} Enumeration}
+  \label{table:OpenStateDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -2874,6 +3013,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{UNLATCHED} & \texttt{2} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ ControllerModeClassType}}
   \label{type:ControllerModeClassType}
@@ -2901,10 +3041,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{ControllerModeDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ControllerModeDataType} Enumeration}
+  \label{table:ControllerModeDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -2917,6 +3060,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{SEMI_AUTOMATIC} & \texttt{4} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ ExecutionClassType}}
   \label{type:ExecutionClassType}
@@ -2944,10 +3088,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{ExecutionDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ExecutionDataType} Enumeration}
+  \label{table:ExecutionDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -2963,6 +3110,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{STOPPED} & \texttt{7} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ CompositionStateClassType}}
   \label{type:CompositionStateClassType}
@@ -2994,10 +3142,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{CompositionStateDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{CompositionStateDataType} Enumeration}
+  \label{table:CompositionStateDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3017,6 +3168,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{UP} & \texttt{11} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ ControllerModeOverrideClassType}}
   \label{type:ControllerModeOverrideClassType}
@@ -3044,10 +3196,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{OnOffDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{OnOffDataType} Enumeration}
+  \label{table:OnOffDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3057,6 +3212,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{ON} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ DirectionClassType}}
   \label{type:DirectionClassType}
@@ -3084,10 +3240,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{DirectionDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{DirectionDataType} Enumeration}
+  \label{table:DirectionDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3099,6 +3258,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{POSITIVE} & \texttt{3} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ DoorStateClassType}}
   \label{type:DoorStateClassType}
@@ -3126,10 +3286,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{OpenStateDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{OpenStateDataType} Enumeration}
+  \label{table:OpenStateDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3140,6 +3303,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{UNLATCHED} & \texttt{2} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ EmergencyStopClassType}}
   \label{type:EmergencyStopClassType}
@@ -3167,10 +3331,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{EmergencyStopDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{EmergencyStopDataType} Enumeration}
+  \label{table:EmergencyStopDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3180,6 +3347,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{TRIGGERED} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ EndOfBarClassType}}
   \label{type:EndOfBarClassType}
@@ -3207,10 +3375,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{YesNoDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{YesNoDataType} Enumeration}
+  \label{table:YesNoDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3220,6 +3391,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{YES} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ EquipmentModeClassType}}
   \label{type:EquipmentModeClassType}
@@ -3250,10 +3422,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{OnOffDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{OnOffDataType} Enumeration}
+  \label{table:OnOffDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3263,6 +3438,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{ON} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ FunctionalModeClassType}}
   \label{type:FunctionalModeClassType}
@@ -3293,10 +3469,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{FunctionalModeDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{FunctionalModeDataType} Enumeration}
+  \label{table:FunctionalModeDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3309,6 +3488,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{TEARDOWN} & \texttt{4} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ SpindleInterlockClassType}}
   \label{type:SpindleInterlockClassType}
@@ -3336,10 +3516,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{ActiveStateDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ActiveStateDataType} Enumeration}
+  \label{table:ActiveStateDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3349,6 +3532,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{INACTIVE} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ PathModeClassType}}
   \label{type:PathModeClassType}
@@ -3376,10 +3560,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{PathModeDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{PathModeDataType} Enumeration}
+  \label{table:PathModeDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3391,6 +3578,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{SYNCHRONOUS} & \texttt{3} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ PowerStateClassType}}
   \label{type:PowerStateClassType}
@@ -3421,10 +3609,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{OnOffDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{OnOffDataType} Enumeration}
+  \label{table:OnOffDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3434,6 +3625,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{ON} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ ProgramEditClassType}}
   \label{type:ProgramEditClassType}
@@ -3463,10 +3655,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{ProgramEditDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ProgramEditDataType} Enumeration}
+  \label{table:ProgramEditDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3477,6 +3672,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{READY} & \texttt{2} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ RotaryModeClassType}}
   \label{type:RotaryModeClassType}
@@ -3504,10 +3700,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{RotaryModeDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{RotaryModeDataType} Enumeration}
+  \label{table:RotaryModeDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3518,6 +3717,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{SPINDLE} & \texttt{2} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ InterfaceStateClassType}}
   \label{type:InterfaceStateClassType}
@@ -3545,10 +3745,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{InterfaceStatusDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStatusDataType} Enumeration}
+  \label{table:InterfaceStatusDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3558,6 +3761,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{ENABLED} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MaterialFeedClassType}}
   \label{type:MaterialFeedClassType}
@@ -3585,10 +3789,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
+  \label{table:InterfaceStateDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3601,6 +3808,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{READY} & \texttt{5} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MaterialChangeClassType}}
   \label{type:MaterialChangeClassType}
@@ -3628,10 +3836,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
+  \label{table:InterfaceStateDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3644,6 +3855,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{READY} & \texttt{5} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MaterialRetractClassType}}
   \label{type:MaterialRetractClassType}
@@ -3671,10 +3883,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
+  \label{table:InterfaceStateDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3687,6 +3902,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{READY} & \texttt{5} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MaterialLoadClassType}}
   \label{type:MaterialLoadClassType}
@@ -3714,10 +3930,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
+  \label{table:InterfaceStateDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3730,6 +3949,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{READY} & \texttt{5} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MaterialUnloadClassType}}
   \label{type:MaterialUnloadClassType}
@@ -3757,10 +3977,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
+  \label{table:InterfaceStateDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3773,6 +3996,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{READY} & \texttt{5} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ OpenDoorClassType}}
   \label{type:OpenDoorClassType}
@@ -3800,10 +4024,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
+  \label{table:InterfaceStateDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3816,6 +4043,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{READY} & \texttt{5} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ CloseDoorClassType}}
   \label{type:CloseDoorClassType}
@@ -3843,10 +4071,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
+  \label{table:InterfaceStateDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3859,6 +4090,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{READY} & \texttt{5} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ OpenChuckClassType}}
   \label{type:OpenChuckClassType}
@@ -3886,10 +4118,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
+  \label{table:InterfaceStateDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3902,6 +4137,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{READY} & \texttt{5} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ CloseChuckClassType}}
   \label{type:CloseChuckClassType}
@@ -3929,10 +4165,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
+  \label{table:InterfaceStateDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3945,6 +4184,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{READY} & \texttt{5} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ PartChangeClassType}}
   \label{type:PartChangeClassType}
@@ -3972,10 +4212,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
-\paragraph{Allowable Values}
+\paragraph{Dependencies and Relationships}
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
+  \label{table:InterfaceStateDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -3988,6 +4231,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \texttt{READY} & \texttt{5} \\
 \end{tabu}
 \end{table} 
+\end{itemize}
 \FloatBarrier
 \subsection{Numeric Event Data Item Types} \label{model:NumericEventDataItemTypes}
 

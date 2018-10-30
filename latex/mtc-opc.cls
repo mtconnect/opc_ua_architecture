@@ -57,7 +57,8 @@
 \RequirePackage[english]{babel}
 \RequirePackage{csquotes}
 \RequirePackage{xstring}
-
+\RequirePackage{siunitx}
+\RequirePackage{upgreek}
 
 % *********** %
 % 	Options   %

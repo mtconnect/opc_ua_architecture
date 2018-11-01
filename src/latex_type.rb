@@ -290,7 +290,9 @@ EOT
 
   def generate_dependencies(f)
 
-    deps = dependencies
+    deps = dependencies.select { |d|
+      d.target.type.stereotype.nil? or d.target.type.stereotype.name !~ /Factory/
+    }
 
     if !deps.empty? or @mixin
       f.puts "\\paragraph{Dependencies and Relationships}"
@@ -303,7 +305,7 @@ EOT
           target.type.type == 'UMLEnumeration'
           f.puts "\\item \\textbf{Allowable Values} for \\texttt{#{target.type.name}}"
           target.type.generate_enumerations(f)
-        elsif target.type.stereotype.nil? or target.type.stereotype.name !~ /Factory/
+        else
           f.puts "\\item Dependency on #{target.type.name}\n\n"
           rel = dep.stereotype && dep.stereotype.name
           puts "Cannot find stereo for #{@name}::#{dep.name} to #{target.type.name}" unless rel

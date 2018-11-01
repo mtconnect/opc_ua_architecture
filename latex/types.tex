@@ -1,4 +1,4 @@
-% Generated 2018-11-01 09:24:34 -0700
+% Generated 2018-11-01 11:38:06 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -375,7 +375,7 @@ concat(self.parent.NodeId, BrowseName)
 \FloatBarrier
 
 
-An MTConnect \texttt{DataItem} describes a piece of information that can be collected from a component. The \texttt{DataItemObjectFactory} is used by the parent component to create specific DataItem Types. (See section \ref{type:DataItemObjectFactory}).
+\input ./type-sections/DataItems.tex
 
 \subsubsection{Defintion of \texttt{ AssetEventDataType}}
   \label{type:AssetEventDataType}
@@ -565,6 +565,7 @@ HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
@@ -572,7 +573,6 @@ HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & O
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
-HasProperty & Variable & Constraints & \multicolumn{2}{|l|}{ConstraintDataType} & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -581,6 +581,40 @@ HasProperty & Variable & Constraints & \multicolumn{2}{|l|}{ConstraintDataType} 
 \begin{itemize}
 \item Mixes in \texttt{MTDataItemType}, see See section \ref{type:MTDataItemType}
 \end{itemize}
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MTConditionClassType}}
+  \label{type:MTConditionClassType}
+
+\FloatBarrier
+
+The abstract type for all data items types that are specifically for \texttt{CONDITION} category.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTConditionClassType} Definition}
+  \label{table:MTConditionClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTConditionClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{True} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassType} (See Data Item Types Documentation)} \\
+HasSubtype & ObjectType & ActuatorClassType & \multicolumn{3}{|l|}{See section \ref{type:ActuatorClassType}} \\
+HasSubtype & ObjectType & CommunicationsClassType & \multicolumn{3}{|l|}{See section \ref{type:CommunicationsClassType}} \\
+HasSubtype & ObjectType & DataRangeClassType & \multicolumn{3}{|l|}{See section \ref{type:DataRangeClassType}} \\
+HasSubtype & ObjectType & LogicProgramClassType & \multicolumn{3}{|l|}{See section \ref{type:LogicProgramClassType}} \\
+HasSubtype & ObjectType & HardwareClassType & \multicolumn{3}{|l|}{See section \ref{type:HardwareClassType}} \\
+HasSubtype & ObjectType & MotionProgramClassType & \multicolumn{3}{|l|}{See section \ref{type:MotionProgramClassType}} \\
+HasSubtype & ObjectType & SystemClassType & \multicolumn{3}{|l|}{See section \ref{type:SystemClassType}} \\
+\end{tabu}
+\end{table} 
+
+
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTControlledVocabEventType}}
   \label{type:MTControlledVocabEventType}
@@ -618,6 +652,7 @@ HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
@@ -625,7 +660,6 @@ HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & O
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
-HasProperty & Variable & Constraints & \multicolumn{2}{|l|}{ConstraintDataType} & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -634,101 +668,6 @@ HasProperty & Variable & Constraints & \multicolumn{2}{|l|}{ConstraintDataType} 
 \begin{itemize}
 \item Mixes in \texttt{MTDataItemType}, see See section \ref{type:MTDataItemType}
 \end{itemize}
-\FloatBarrier
-\subsubsection{Defintion of \texttt{ MTDataItemClassType}}
-  \label{type:MTDataItemClassType}
-
-\FloatBarrier
-
-Abstract base class for all the data item class types. The names are created by pascal typing the names
-and then generating appending \texttt{Type}.
-
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{MTDataItemClassType} Definition}
-  \label{table:MTDataItemClassType}
-\fontsize{9pt}{11pt}\selectfont
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{MTDataItemClassType} \\
-IsAbstract & \multicolumn{5}{|l|}{True} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of \texttt{BaseConditionClassType} (See \cite{UAPart9} Documentation)} \\
-HasSubtype & ObjectType & MTSampleClassType & \multicolumn{3}{|l|}{See section \ref{type:MTSampleClassType}} \\
-HasSubtype & ObjectType & MTConditionClassType & \multicolumn{3}{|l|}{See section \ref{type:MTConditionClassType}} \\
-HasSubtype & ObjectType & MTEventClassType & \multicolumn{3}{|l|}{See section \ref{type:MTEventClassType}} \\
-\end{tabu}
-\end{table} 
-
-
-\FloatBarrier
-\subsubsection{Defintion of \texttt{ MTConditionClassType}}
-  \label{type:MTConditionClassType}
-
-\FloatBarrier
-
-The abstract type for all data items types that are specifically for \texttt{CONDITION} category.
-
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{MTConditionClassType} Definition}
-  \label{table:MTConditionClassType}
-\fontsize{9pt}{11pt}\selectfont
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{MTConditionClassType} \\
-IsAbstract & \multicolumn{5}{|l|}{True} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassType} (See section \ref{type:MTDataItemClassType})} \\
-HasSubtype & ObjectType & ActuatorClassType & \multicolumn{3}{|l|}{See section \ref{type:ActuatorClassType}} \\
-HasSubtype & ObjectType & CommunicationsClassType & \multicolumn{3}{|l|}{See section \ref{type:CommunicationsClassType}} \\
-HasSubtype & ObjectType & DataRangeClassType & \multicolumn{3}{|l|}{See section \ref{type:DataRangeClassType}} \\
-HasSubtype & ObjectType & LogicProgramClassType & \multicolumn{3}{|l|}{See section \ref{type:LogicProgramClassType}} \\
-HasSubtype & ObjectType & HardwareClassType & \multicolumn{3}{|l|}{See section \ref{type:HardwareClassType}} \\
-HasSubtype & ObjectType & MotionProgramClassType & \multicolumn{3}{|l|}{See section \ref{type:MotionProgramClassType}} \\
-HasSubtype & ObjectType & SystemClassType & \multicolumn{3}{|l|}{See section \ref{type:SystemClassType}} \\
-\end{tabu}
-\end{table} 
-
-
-\FloatBarrier
-\subsubsection{Defintion of \texttt{ MTEventClassType}}
-  \label{type:MTEventClassType}
-
-\FloatBarrier
-
-The base type class for all data items with a category of \texttt{EVENT}.
-
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{MTEventClassType} Definition}
-  \label{table:MTEventClassType}
-\fontsize{9pt}{11pt}\selectfont
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{MTEventClassType} \\
-IsAbstract & \multicolumn{5}{|l|}{True} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassType} (See section \ref{type:MTDataItemClassType})} \\
-HasSubtype & ObjectType & MTControlledVocabClassType & \multicolumn{3}{|l|}{See section \ref{type:MTControlledVocabClassType}} \\
-HasSubtype & ObjectType & MTNumberEventClassType & \multicolumn{3}{|l|}{See section \ref{type:MTNumberEventClassType}} \\
-HasSubtype & ObjectType & MTStringEventClassType & \multicolumn{3}{|l|}{See section \ref{type:MTStringEventClassType}} \\
-\end{tabu}
-\end{table} 
-
-
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<mixin>> MTDataItemType}}
   \label{type:MTDataItemType}
@@ -762,6 +701,7 @@ HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
@@ -769,7 +709,6 @@ HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & O
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
-HasProperty & Variable & Constraints & \multicolumn{2}{|l|}{ConstraintDataType} & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -1066,6 +1005,36 @@ These need to become \texttt{Good_} status code in OPC UA.
 \end{table} 
 \end{itemize}
 \FloatBarrier
+\subsubsection{Defintion of \texttt{ MTEventClassType}}
+  \label{type:MTEventClassType}
+
+\FloatBarrier
+
+The base type class for all data items with a category of \texttt{EVENT}.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTEventClassType} Definition}
+  \label{table:MTEventClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTEventClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{True} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassType} (See Data Item Types Documentation)} \\
+HasSubtype & ObjectType & MTControlledVocabClassType & \multicolumn{3}{|l|}{See section \ref{type:MTControlledVocabClassType}} \\
+HasSubtype & ObjectType & MTNumberEventClassType & \multicolumn{3}{|l|}{See section \ref{type:MTNumberEventClassType}} \\
+HasSubtype & ObjectType & MTStringEventClassType & \multicolumn{3}{|l|}{See section \ref{type:MTStringEventClassType}} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ MTMessageType}}
   \label{type:MTMessageType}
 
@@ -1093,6 +1062,23 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{SystemEventType} (See \cite{UAPart5} Documentation)} \\
+HasProperty & Variable & XmlId & String & PropertyType & Mandatory \\
+HasProperty & Variable & Name & String & PropertyType & Optional \\
+HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
+HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
+HasProperty & Variable & SourceData & String & PropertyType & Optional \\
+HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
+HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
+HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
+HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
+HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
+HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
+HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
+HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
+HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
+HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
 HasProperty & Variable & NativeCode & String & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
@@ -1100,10 +1086,7 @@ HasProperty & Variable & NativeCode & String & PropertyType & Optional \\
 
 \paragraph{Dependencies and Relationships}
 \begin{itemize}
-\item Dependency on MTDataItemType
-
-This class relates to \texttt{MTDataItemType} (See section \ref{type:MTDataItemType}) for a(n) \texttt{Mixes In} relationship.
-
+\item Mixes in \texttt{MTDataItemType}, see See section \ref{type:MTDataItemType}
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTNumericEventType}}
@@ -1141,6 +1124,7 @@ HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
@@ -1148,7 +1132,6 @@ HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & O
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
-HasProperty & Variable & Constraints & \multicolumn{2}{|l|}{ConstraintDataType} & Optional \\
 HasProperty & Variable & SignificantDigits & UInt16 & PropertyType & Optional \\
 HasProperty & Variable & Statistic & String & PropertyType & Optional \\
 HasProperty & Variable & Units & String & PropertyType & Optional \\
@@ -1201,6 +1184,7 @@ HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
@@ -1208,7 +1192,6 @@ HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & O
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
-HasProperty & Variable & Constraints & \multicolumn{2}{|l|}{ConstraintDataType} & Optional \\
 HasProperty & Variable & SignificantDigits & UInt16 & PropertyType & Optional \\
 HasProperty & Variable & Statistic & String & PropertyType & Optional \\
 HasProperty & Variable & Units & String & PropertyType & Optional \\
@@ -1268,6 +1251,7 @@ HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
@@ -1275,7 +1259,6 @@ HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & O
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
-HasProperty & Variable & Constraints & \multicolumn{2}{|l|}{ConstraintDataType} & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -1315,6 +1298,7 @@ HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
@@ -1322,7 +1306,6 @@ HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & O
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
-HasProperty & Variable & Constraints & \multicolumn{2}{|l|}{ConstraintDataType} & Optional \\
 HasProperty & Variable & SignificantDigits & UInt16 & PropertyType & Optional \\
 HasProperty & Variable & Statistic & String & PropertyType & Optional \\
 HasProperty & Variable & Units & String & PropertyType & Optional \\
@@ -1422,6 +1405,7 @@ HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
@@ -1429,12 +1413,11 @@ HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & O
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
-HasProperty & Variable & Constraints & \multicolumn{2}{|l|}{ConstraintDataType} & Optional \\
 HasProperty & Variable & NativeCode & String & PropertyType & Optional \\
-HasProperty & Object & Qualifier & QualifierDataType & PropertyType & Optional \\
 HasProperty & Variable & NativeSeverity & String & PropertyType & Optional \\
-HasProperty & Object & MTSeverity & MTSeverityDataType & PropertyType & Optional \\
 HasProperty & Object & ActiveState & \multicolumn{2}{|l|}{TwoStateVariableType} & Mandatory \\
+HasProperty & Object & Qualifier & \multicolumn{2}{|l|}{QualifierDataType} & Optional \\
+HasProperty & Object & MTSeverity & \multicolumn{2}{|l|}{MTSeverityDataType} & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -1446,51 +1429,10 @@ HasProperty & Object & ActiveState & \multicolumn{2}{|l|}{TwoStateVariableType} 
 \uaterm{Event} that was received. When the ActiveState becomes False and becomes 
 inactive, then the \texttt{NativeCode} will be cleared.
 
-\item \texttt{Qualifier::QualifierDataType:} When instantiated in the address space this will represent the \texttt{Qualifier} of the last
-\uaterm{Event} that was received. When the ActiveState becomes False and becomes 
-inactive, then the \texttt{Qualifier} will be cleared.
-
-\item \textbf{Allowable Values} for \texttt{QualifierDataType}
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{QualifierDataType} Enumeration}
-  \label{enum:QualifierDataType}
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Name} & {Index} \\
-\tabucline[1.5pt]{}
-\texttt{HIGH} & \texttt{0} \\
-\texttt{LOW} & \texttt{1} \\
-\end{tabu}
-\end{table} 
 \item \texttt{NativeSeverity::String:} When instantiated in the address space this will represent the \texttt{NativeSeverity} of the last
 \uaterm{Event} that was received. When the ActiveState becomes False and becomes 
 inactive, then the \texttt{NativeSeverity} will be cleared.
 
-\item \texttt{MTSeverity::MTSeverityDataType:} The MTSeverity represents the state of the condition in MTConnect. The two states are either
-\texttt{WARN} or \texttt{FAULT} representing the condition QName of the element in the 
-\mtterm{MTConnectStreams} document. The state will also correspond to the OPC UA Severity
-levels of 500 for \texttt{WARN} and 1000 for \texttt{FAULT}.
-
-When instantiated in the address space this will represent the \texttt{MTSeverity} of the last
-\uaterm{Event} that was received. When the ActiveState becomes False and becomes 
-inactive, then the \texttt{MTSeverity} will be cleared.
-
-\item \textbf{Allowable Values} for \texttt{MTSeverityDataType}
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{MTSeverityDataType} Enumeration}
-  \label{enum:MTSeverityDataType}
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Name} & {Index} \\
-\tabucline[1.5pt]{}
-\texttt{FAULT} & \texttt{0} \\
-\texttt{WARNING} & \texttt{1} \\
-\end{tabu}
-\end{table} 
 \item \textbf{Allowable Values} for \texttt{QualifierDataType}
 \begin{table}[ht]
 \centering 
@@ -1522,34 +1464,6 @@ inactive, then the \texttt{MTSeverity} will be cleared.
 \end{itemize}
 \paragraph{Dependencies and Relationships}
 \begin{itemize}
-\item \textbf{Allowable Values} for \texttt{QualifierDataType}
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{QualifierDataType} Enumeration}
-  \label{enum:QualifierDataType}
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Name} & {Index} \\
-\tabucline[1.5pt]{}
-\texttt{HIGH} & \texttt{0} \\
-\texttt{LOW} & \texttt{1} \\
-\end{tabu}
-\end{table} 
-\item \textbf{Allowable Values} for \texttt{MTSeverityDataType}
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{MTSeverityDataType} Enumeration}
-  \label{enum:MTSeverityDataType}
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Name} & {Index} \\
-\tabucline[1.5pt]{}
-\texttt{FAULT} & \texttt{0} \\
-\texttt{WARNING} & \texttt{1} \\
-\end{tabu}
-\end{table} 
 \item Mixes in \texttt{MTDataItemType}, see See section \ref{type:MTDataItemType}
 \end{itemize}
 \FloatBarrier
@@ -1566,10 +1480,41 @@ the representation of the data item type will be derived from the \texttt{BaseCo
 The MTConnect Types will not use the \texttt{...ClassType}, but will be the name as specified
 in the MTConnect standard with \texttt{Type} appended.
 
-For example: The \texttt{CONTOLLER_MODE} will be given as the \texttt{ControllerModeType}. 
-The relationship to the \texttt{Data Item} OPC UA types are presented so that it will be
+For example: The \dataitem{CONTOLLER_MODE} will be given as the \mtterm{ControllerModeType}. 
+The relationship to the \mtterm{DataItem} OPC UA types are presented so that it will be
 easier to map the MTConnect types to the correct super class as given in the OPC UA model.
 
+\subsubsection{Defintion of \texttt{ MTDataItemClassType}}
+  \label{type:MTDataItemClassType}
+
+\FloatBarrier
+
+Abstract base class for all the data item class types. The names are created by pascal typing the names
+and then generating appending \texttt{Type}.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTDataItemClassType} Definition}
+  \label{table:MTDataItemClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTDataItemClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{True} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{BaseConditionClassType} (See \cite{UAPart9} Documentation)} \\
+HasSubtype & ObjectType & MTSampleClassType & \multicolumn{3}{|l|}{See section \ref{type:MTSampleClassType}} \\
+HasSubtype & ObjectType & MTConditionClassType & \multicolumn{3}{|l|}{See section \ref{type:MTConditionClassType}} \\
+HasSubtype & ObjectType & MTEventClassType & \multicolumn{3}{|l|}{See section \ref{type:MTEventClassType}} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
 \subsection{Sample Data Item Types} \label{model:SampleDataItemTypes}
 
 The MTConnect Standard has the definitions of Samples in 
@@ -1601,7 +1546,7 @@ BrowseName & \multicolumn{5}{|l|}{MTSampleClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassType} (See Data Items Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTDataItemClassType} (See Data Item Types Documentation)} \\
 HasSubtype & ObjectType & MassClassType & \multicolumn{3}{|l|}{See section \ref{type:MassClassType}} \\
 HasSubtype & ObjectType & PathFeedrateClassType & \multicolumn{3}{|l|}{See section \ref{type:PathFeedrateClassType}} \\
 HasSubtype & ObjectType & PathPositionClassType & \multicolumn{3}{|l|}{See section \ref{type:PathPositionClassType}} \\
@@ -5538,7 +5483,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{MTDataItemSubClassType} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
+IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{BaseConditionClassType} (See \cite{UAPart9} Documentation)} \\

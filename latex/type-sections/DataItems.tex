@@ -1,0 +1,12 @@
+\mtterm{DataItems} in MTConnect represt data that can be reported by a piece of manufacturing equipment and are mapped to the \uaterm{DataVariableTypes} in OPC UA. The mapping rules are given in Section~\ref{mtconnect-mapping} and leverage the capabilities of the OPC UA standard to represent data reported by manufacturing equipment. There are some MTConnect \mtterm{DataItems} that are represented using mechanisms beyond the \uaterm{DataVariableType}, these are the \mtterm{Condtions} \mtterm{category} and the \mtterm{Messages} \mtterm{type}s.
+
+All the \mtterm{DataItems} of with a \mtterm{category} \dataitem{CONDITION} and are mapped to the \mtuatype{MTConditionType} that is decended from the \uaterm{Event} base types. The \mtterm{Message} is also an \uaterm{Event} type, but does not retain an active state as the \mtterm{Condition} does.
+
+The MTConnect \mtterm{DataItem} has a lot of contextual meta-data that is used in each of the MTConnect types that are decended from different OPC UA \uaterm{DataVariables} to make greatest use of the OPC UA standard \cite{UAPart8}. The Companion specifiction uses a \mtterm{<<mixin>>} pattern that provides a set of common \uaterm{Properties} and \uaterm{Components} that are included in all sub-types that represent MTConnect \mtterm{DataItems}.
+
+The following types all mixin the common properties from the \mtuatype{MTDataItemType} or \mtuatype{MTNumericDataItemType} depending on the nature of the information. 
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../mtc-ua"
+%%% End:

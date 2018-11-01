@@ -159,12 +159,12 @@ EOT
     end
   end
 
-  def generate_attribute_docs(f)
+  def generate_attribute_docs(f, header)
     relations_with_documentation =
       @relations.select { |r| r.documentation or r.target.type.type == 'UMLEnumeration' }
 
     unless relations_with_documentation.empty?
-      f.puts "\\paragraph{Referenced Properties and Objects}\n\n"
+      f.puts "\\paragraph{#{header}}\n\n"
       f.puts "\\begin{itemize}"
       relations_with_documentation.each do |r|
         if r.documentation
@@ -323,20 +323,24 @@ EOT
   \\caption{\\texttt{#{escape_name}} DataType}
   \\label{data-type:#{@name}}
 \\tabulinesep=3pt
-\\begin{tabu} to 6in {|l|r|} \\everyrow{\\hline}
+\\begin{tabu} to 6in {|l|l|} \\everyrow{\\hline}
 \\hline
-\\rowfont\\bfseries {Field} & {Type} \\\\
+\\rowfont\\bfseries {Field} & {Type}  \\\\
 \\tabucline[1.5pt]{}
 EOT
 
       @relations.each do |r|
-        f.puts "\\texttt{#{r.name}} & \\texttt{#{r.target.type.name}} \\\\"
+        array = '[]' if r.multiplicity =~ /..\*$/
+        f.puts "\\texttt{#{r.name}} & \\texttt{#{r.target.type.name}#{array}} \\\\"
       end
         
       f.puts <<EOT
 \\end{tabu}
 \\end{table} 
+
 EOT
+
+      generate_attribute_docs(f, "Data Type Fields")
   end
 
   def generate_class_diagram
@@ -386,7 +390,7 @@ EOT
       generate_type_table(f) 
     end
     
-    generate_attribute_docs(f)
+    generate_attribute_docs(f, "Referenced Properties and Objects")
     generate_operations(f)
     generate_constraints(f)
     generate_dependencies(f)    

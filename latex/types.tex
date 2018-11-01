@@ -1,4 +1,4 @@
-% Generated 2018-10-30 16:15:26 -0700
+% Generated 2018-10-31 20:06:17 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -236,48 +236,15 @@ The data items are added to the \texttt{Composition} by their browse names.
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{MTCompositionType} \\
-IsAbstract & \multicolumn{5}{|l|}{True} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of \texttt{BaseObjectType} (See \cite{UAPart5} Documentation)} \\
-HasSubtype & ObjectType & <Composition>Type & \multicolumn{3}{|l|}{See section \ref{type:<Composition>Type}} \\
-HasProperty & Variable & Uuid & String & PropertyType & Optional \\
-HasProperty & Variable & Name & String & PropertyType & Optional \\
-HasProperty & Variable & MTDescription & String & PropertyType & Optional \\
-\end{tabu}
-\end{table} 
-
-
-\FloatBarrier
-\subsubsection{Defintion of \texttt{<<Dynamic Type>> <Composition>Type}}
-  \label{type:<Composition>Type}
-
-\FloatBarrier
-
-This is a dynamic type that will be created at the time the model is created. The 
-\texttt{\{Composition\}} placeholder will be supplied by the \texttt{CompositionTypeFactory} 
-(\ref{type:CompositionTypeFactory}) that will create the type as a sub-type of the 
-\texttt{MTCompositionType}.
-
-The name will be created using the PascalCase of the \texttt{type} attribute
-of the MTConnect \texttt{Composition} element. More information on the MTConnect
-Composition can be found in MTConnect Part 2 \cite{MTCPart2}.
-
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{<Composition>Type} Definition}
-  \label{table:<Composition>Type}
-\fontsize{9pt}{11pt}\selectfont
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{<Composition>Type} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of \texttt{MTCompositionType} (See section \ref{type:MTCompositionType})} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{BaseObjectType} (See \cite{UAPart5} Documentation)} \\
+HasProperty & Variable & XmlId & String & PropertyType & Mandatory \\
+HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
+HasProperty & Variable & Uuid & String & PropertyType & Optional \\
+HasProperty & Variable & Name & String & PropertyType & Optional \\
+HasProperty & Variable & MTDescription & String & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -425,14 +392,53 @@ An MTConnect \texttt{DataItem} describes a piece of information that can be coll
   \caption{\texttt{AssetEventDataType} DataType}
   \label{data-type:AssetEventDataType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Field} & {Type} \\
+\rowfont\bfseries {Field} & {Type}  \\
 \tabucline[1.5pt]{}
 \texttt{AssetId} & \texttt{String} \\
 \texttt{AssetType} & \texttt{String} \\
 \end{tabu}
 \end{table} 
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ConstraintDataType}}
+  \label{type:ConstraintDataType}
+
+\FloatBarrier
+
+Provides the constraints on the range of values or the allowable values that can be represented in a data item. 
+If a single Value is given in the Values field, the data item is considered to have a static value that
+never changes.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ConstraintDataType} DataType}
+  \label{data-type:ConstraintDataType}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Field} & {Type}  \\
+\tabucline[1.5pt]{}
+\texttt{Values} & \texttt{String[]} \\
+\texttt{Minimum} & \texttt{Double} \\
+\texttt{Nominal} & \texttt{Double} \\
+\texttt{Maximum} & \texttt{Double} \\
+\end{tabu}
+\end{table} 
+
+\paragraph{Data Type Fields}
+
+\begin{itemize}
+\item \texttt{Values::String:} Array of allowable values.
+
+\item \texttt{Minimum::Double:} Set to NaN when not used.
+
+\item \texttt{Nominal::Double:} Set to NaN when not used.
+
+\item \texttt{Maximum::Double:} Set to NaN when not used.
+
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ FilterType}}
   \label{type:FilterType}
@@ -556,11 +562,12 @@ DataType & \multicolumn{5}{|l|}{AssetEventDataType} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{BaseDataVariableType} (See \cite{UAPart8} Documentation)} \\
+HasProperty & Variable & XmlId & String & PropertyType & Mandatory \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
 HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
 HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
-HasProperty & Variable & SourceName & String & PropertyType & Optional \\
+HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
@@ -569,8 +576,9 @@ HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataI
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
-HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
+HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
+HasProperty & Variable & Constraints & \multicolumn{2}{|l|}{ConstraintDataType} & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -607,11 +615,12 @@ DataType & \multicolumn{5}{|l|}{UInteger} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MultiStateDiscreteType} (See \cite{UAPart8} Documentation)} \\
+HasProperty & Variable & XmlId & String & PropertyType & Mandatory \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
 HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
 HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
-HasProperty & Variable & SourceName & String & PropertyType & Optional \\
+HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
@@ -620,8 +629,9 @@ HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataI
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
-HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
+HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
+HasProperty & Variable & Constraints & \multicolumn{2}{|l|}{ConstraintDataType} & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -749,11 +759,12 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 HasSubtype & ObjectType & MTNumericDataItemType & \multicolumn{3}{|l|}{See section \ref{type:MTNumericDataItemType}} \\
+HasProperty & Variable & XmlId & String & PropertyType & Mandatory \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
 HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
 HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
-HasProperty & Variable & SourceName & String & PropertyType & Optional \\
+HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
@@ -762,8 +773,9 @@ HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataI
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
-HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
+HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
+HasProperty & Variable & Constraints & \multicolumn{2}{|l|}{ConstraintDataType} & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -786,6 +798,8 @@ HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & O
 \texttt{SAMPLE} & \texttt{2} \\
 \end{tabu}
 \end{table} 
+\item \texttt{SourceData::String:} The text that is the \texttt{CDATA} of the \xmlelement{Source} element.
+
 \item \textbf{Allowable Values} for \texttt{MTRepresentationType}
 \begin{table}[ht]
 \centering 
@@ -916,7 +930,6 @@ HasProperty & Variable & NativeUnits & String & PropertyType & Optional \\
 HasProperty & Object & CoordinateSystem & CoordinateSystemType & PropertyType & Optional \\
 HasProperty & Variable & InitialValue & Double & PropertyType & Optional \\
 HasProperty & Object & ResetTrigger & DataItemResetValueType & PropertyType & Optional \\
-HasProperty & Variable & Nominal & Double & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -962,8 +975,6 @@ These need to become \texttt{Good_} status code in OPC UA.
 \texttt{WEEK} & \texttt{8} \\
 \end{tabu}
 \end{table} 
-\item \texttt{Nominal::Double:} This is the nominal value if provided in the constraints.
-
 \item \textbf{Allowable Values} for \texttt{CoordinateSystemType}
 \begin{table}[ht]
 \centering 
@@ -1005,12 +1016,6 @@ These need to become \texttt{Good_} status code in OPC UA.
 \end{itemize}
 \paragraph{Operations}
 \begin{itemize}
-  \item \texttt{deriveEngineeringUnits(units)}\\
-    Specification:
-   \indent \begin{lstlisting}
-EngineeringUnits <- self.units
-\end{lstlisting}
-
   \item \texttt{deriveEURange(constraints)}\\
     Specification:
    \indent \begin{lstlisting}
@@ -1131,11 +1136,12 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{DataItemType} (See \cite{UAPart8} Documentation)} \\
+HasProperty & Variable & XmlId & String & PropertyType & Mandatory \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
 HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
 HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
-HasProperty & Variable & SourceName & String & PropertyType & Optional \\
+HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
@@ -1144,8 +1150,9 @@ HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataI
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
-HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
+HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
+HasProperty & Variable & Constraints & \multicolumn{2}{|l|}{ConstraintDataType} & Optional \\
 HasProperty & Variable & SignificantDigits & UInt16 & PropertyType & Optional \\
 HasProperty & Variable & Statistic & String & PropertyType & Optional \\
 HasProperty & Variable & Units & String & PropertyType & Optional \\
@@ -1153,7 +1160,6 @@ HasProperty & Variable & NativeUnits & String & PropertyType & Optional \\
 HasProperty & Object & CoordinateSystem & CoordinateSystemType & PropertyType & Optional \\
 HasProperty & Variable & InitialValue & Double & PropertyType & Optional \\
 HasProperty & Object & ResetTrigger & DataItemResetValueType & PropertyType & Optional \\
-HasProperty & Variable & Nominal & Double & PropertyType & Optional \\
 HasProperty & Variable & EURange & Range & PropertyType & Optional \\
 HasProperty & Variable & EngineeringUnits & EUInformation & PropertyType & Optional \\
 \end{tabu}
@@ -1190,11 +1196,12 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{AnalogItemType} (See \cite{UAPart8} Documentation)} \\
+HasProperty & Variable & XmlId & String & PropertyType & Mandatory \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
 HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
 HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
-HasProperty & Variable & SourceName & String & PropertyType & Optional \\
+HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
@@ -1203,8 +1210,9 @@ HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataI
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
-HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
+HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
+HasProperty & Variable & Constraints & \multicolumn{2}{|l|}{ConstraintDataType} & Optional \\
 HasProperty & Variable & SignificantDigits & UInt16 & PropertyType & Optional \\
 HasProperty & Variable & Statistic & String & PropertyType & Optional \\
 HasProperty & Variable & Units & String & PropertyType & Optional \\
@@ -1212,7 +1220,6 @@ HasProperty & Variable & NativeUnits & String & PropertyType & Optional \\
 HasProperty & Object & CoordinateSystem & CoordinateSystemType & PropertyType & Optional \\
 HasProperty & Variable & InitialValue & Double & PropertyType & Optional \\
 HasProperty & Object & ResetTrigger & DataItemResetValueType & PropertyType & Optional \\
-HasProperty & Variable & Nominal & Double & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -1256,11 +1263,12 @@ DataType & \multicolumn{5}{|l|}{String} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{BaseDataVariableType} (See \cite{UAPart8} Documentation)} \\
+HasProperty & Variable & XmlId & String & PropertyType & Mandatory \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
 HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
 HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
-HasProperty & Variable & SourceName & String & PropertyType & Optional \\
+HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
@@ -1269,8 +1277,9 @@ HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataI
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
-HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
+HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
+HasProperty & Variable & Constraints & \multicolumn{2}{|l|}{ConstraintDataType} & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -1301,11 +1310,12 @@ DataType & \multicolumn{5}{|l|}{ThreeSpacePositionDataType} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{BaseDataVariableType} (See \cite{UAPart8} Documentation)} \\
+HasProperty & Variable & XmlId & String & PropertyType & Mandatory \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
 HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
 HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
-HasProperty & Variable & SourceName & String & PropertyType & Optional \\
+HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
@@ -1314,8 +1324,9 @@ HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataI
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
-HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
+HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
+HasProperty & Variable & Constraints & \multicolumn{2}{|l|}{ConstraintDataType} & Optional \\
 HasProperty & Variable & SignificantDigits & UInt16 & PropertyType & Optional \\
 HasProperty & Variable & Statistic & String & PropertyType & Optional \\
 HasProperty & Variable & Units & String & PropertyType & Optional \\
@@ -1323,7 +1334,6 @@ HasProperty & Variable & NativeUnits & String & PropertyType & Optional \\
 HasProperty & Object & CoordinateSystem & CoordinateSystemType & PropertyType & Optional \\
 HasProperty & Variable & InitialValue & Double & PropertyType & Optional \\
 HasProperty & Object & ResetTrigger & DataItemResetValueType & PropertyType & Optional \\
-HasProperty & Variable & Nominal & Double & PropertyType & Optional \\
 HasProperty & Variable & EngineeringUnits & EUInformation & PropertyType & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -1343,15 +1353,16 @@ HasProperty & Variable & EngineeringUnits & EUInformation & PropertyType & Manda
   \caption{\texttt{ThreeSpacePositionDataType} DataType}
   \label{data-type:ThreeSpacePositionDataType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Field} & {Type} \\
+\rowfont\bfseries {Field} & {Type}  \\
 \tabucline[1.5pt]{}
 \texttt{X} & \texttt{Double} \\
 \texttt{Y} & \texttt{Double} \\
 \texttt{Z} & \texttt{Double} \\
 \end{tabu}
 \end{table} 
+
 \FloatBarrier
 \subsection{Conditions} \label{model:Conditions}
 
@@ -1413,11 +1424,12 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{ConditionType} (See \cite{UAPart9} Documentation)} \\
+HasProperty & Variable & XmlId & String & PropertyType & Mandatory \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
 HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
 HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
-HasProperty & Variable & SourceName & String & PropertyType & Optional \\
+HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
@@ -1426,8 +1438,9 @@ HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataI
 HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
 HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
-HasMTReference & Object & Source & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
+HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
+HasProperty & Variable & Constraints & \multicolumn{2}{|l|}{ConstraintDataType} & Optional \\
 HasProperty & Variable & NativeCode & String & PropertyType & Optional \\
 HasProperty & Object & Qualifier & QualifierDataType & PropertyType & Optional \\
 HasProperty & Variable & NativeSeverity & String & PropertyType & Optional \\
@@ -7641,6 +7654,34 @@ A reference from one component to either a \texttt{DataItem} or a \texttt{Compon
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{HasMTReference} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+Symmetric & \multicolumn{5}{|l|}{true} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{NonHierarchicalReferences} (See \cite{OPCUAProfile} Documentation)} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ <<HasMTSource>>}}
+  \label{type:HasMTSource}
+
+\FloatBarrier
+
+The \texttt{Source} relation to a \mtterm{Component} or \mtterm{DataItem}.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{<<HasMTSource>>} Definition}
+  \label{table:HasMTSource}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{HasMTSource} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 Symmetric & \multicolumn{5}{|l|}{true} \\
 \tabucline[1.5pt]{}

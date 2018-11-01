@@ -60,7 +60,8 @@
 \RequirePackage{siunitx}
 \RequirePackage{upgreek}
 \RequirePackage{longtable}
-
+\usepackage{amsmath}
+\usepackage{amssymb}
 % *********** %
 % 	Options   %
 % *********** %
@@ -346,3 +347,9 @@
 \newcommand{\typeref}[1]{\hyperref[type:#1]{#1}}
 
 \newcommand*{\mtuatype}[1]{\hyperref[type:#1]{\fontfamily{pcr}\selectfont #1}}
+
+\newcommand*{\mtuaenum}[1]{\hyperref[enum:#1]{\fontfamily{pcr}\selectfont #1}}
+
+\newcommand*{\mtuadatatype}[1]{\hyperref[data-type:#1]{\fontfamily{pcr}\selectfont #1}}
+
+\newcommand*{\mtuamodel}[1]{\hyperref[model:#1]{\fontfamily{pcr}\selectfont #1}}

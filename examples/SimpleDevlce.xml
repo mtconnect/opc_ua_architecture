@@ -23,9 +23,19 @@
             </Linear>
             <Rotary id="zf476090" name="C" nativeName="S">
               <DataItems>
-                <DataItem id="r1841b70" type="LOAD" category="SAMPLE" units="PERCENT" name="Sload"/>
+                <DataItem id="bbe3f010" type="ROTARY_MODE" category="EVENT">
+                  <Constraints>
+                    <Value>SPINDLE</Value>
+                  </Constraints>
+                </DataItem>
                 <DataItem id="ac6b69c0" type="ROTARY_VELOCITY" subType="PROGRAMMED" category="SAMPLE" units="REVOLUTION/MINUTE" name="Sspeed_prg"/>
-                <DataItem id="vee9c2d0" type="ROTARY_VELOCITY" subType="ACTUAL" category="SAMPLE" units="REVOLUTION/MINUTE" name="Sspeed_act" />
+                <DataItem id="vee9c2d0" type="ROTARY_VELOCITY" subType="ACTUAL" category="SAMPLE" units="REVOLUTION/MINUTE" name="Sspeed_act">
+                  <Constraints>
+                    <Minimum>0</Minimum>
+                    <Maximum>7000</Maximum>
+                  </Constraints>
+                </DataItem>
+                <DataItem id="r1841b70" type="LOAD" category="SAMPLE" units="PERCENT" name="Sload"/>
                 <DataItem id="taa7a0f0" type="AMPERAGE" category="SAMPLE" units="AMPERE" compositionId="b7792870" />
                 <DataItem id="afb596b0" type="AMPERAGE" category="CONDITION" compositionId="b7792870" name="Soverload">
                   <Source dataItemId="taa7a0f0"/>
@@ -51,7 +61,10 @@
                 <DataItem id="a557d330" type="LOGIC_PROGRAM" category="CONDITION"/>
                 <DataItem id="a5b23650" type="MOTION_PROGRAM" category="CONDITION"/>
                 <DataItem id="bbafe670" type="LINE" category="EVENT"/>
-                <DataItem id="d2e9e4a0" type="PART_COUNT" category="EVENT"/>
+                <DataItem id="d2e9e4a0" type="PART_COUNT" category="EVENT">
+                  <InitialValue>1</InitialValue>
+                </DataItem>
+                <DataItem id="r186cd60" type="PATH_POSITION" category="SAMPLE" units="MILLIMETER_3D"/>
               </DataItems>
             </Path>
           </Components>
@@ -60,9 +73,20 @@
           <Components>
             <Electric id="afb91ba0">
               <DataItems>
-                <DataItem id="x52ca7e0" name="ptemp" type="TEMPERATURE" category="SAMPLE" units="CELSIUS"/>
-                <DataItem id="r1e58cf0" name="pvolt" type="VOLTAGE" category="SAMPLE" units="VOLT"/>
+                <DataItem id="x52ca7e0" name="ptemp" type="TEMPERATURE" category="SAMPLE" units="CELSIUS">
+                  <Filters>
+                    <Filter type="PERIOD">60</Filter>
+                  </Filters>
+                </DataItem>
+                <DataItem id="r1e58cf0" name="pvolt" type="VOLTAGE" category="SAMPLE" units="VOLT">
+                  <Filters>
+                    <Filter type="MINIMUM_DELTA">10</Filter>
+                  </Filters>
+                </DataItem>
                 <DataItem id="e25c1130" name="pamp" type="AMPERAGE" category="SAMPLE" units="AMPERE"/>
+                <DataItem id="qb9212c0" type="AMPERAGE" category="SAMPLE" units="AMPERE" statistic="AVERAGE">
+                  <ResetTrigger>ACTION_COMPLETE</ResetTrigger>
+                </DataItem>
                 <DataItem id="o63fcd30" name="ppfact" type="POWER_FACTOR" category="SAMPLE" units="PERCENT" />
                 
                  <DataItem id="b4bb7110" type="AMPERAGE" category="CONDITION" name="poverload">

@@ -3,15 +3,15 @@
 
 This section details translating the MTConnect model into a UML representation to render the MTConnect information model in OPC UA. More detailed information is provided in Section \ref{mtconnect_information_model} for each data type.
 
-OPC UA defines abstractions representing data collected from devices and for alarms and conditions. The abstractions do not provide the semantic meaning; they provide a structure to convey the meta-data and the values as they change. 
+OPC UA defines abstractions representing data, relationships, and events from devices. The abstractions do not provide the semantic meaning; they provide a structure to convey the meta-data and the values as they change. The OPC UA model has the base building blocks to represent an ontological model where the specific ontology is povided by companion specification for a specific domain.
 
-MTConnect has similar facilities but uses different structural model where the meta-data and the streaming values are in separate documents to normalize the data flow in a similar way that many publish-subscribe protocols separate the structure from the data.
+MTConnect has similar facilities but uses different structural model where the meta-data and the streaming values are in separate documents to normalize the data flow in a similar way that many publish-subscribe protocols separate the structure from the data. MTConnect also supports a store-and-forward capability like many message brokers in a Message Oriented Middleware \textit{(MOM)} architecture to enable resilience and recovery of data in the event of connectivity problems.
 
 When translating from MTConnect to OPC UA, the MTConnect abstractions of \mtconnectterm{DataItem}s are converted using the OPC UA  \opcuaterm{DataVariable} abstractions as given in \cite{UAPart8}.  The relationships are mapped to multiple \opcuaterm{DataVariable} types where the category and the type determine the correct mapping. Conditions are mapped a sub-type of the OPC UA \opcuaterm{ConditionType} in a similar way. The behavior of the OPC UA \opcuaterm{Condition}s can be found in \cite{UAPart9}.
 
 \subsection{MTConnect UML Representation of OPC}
 
-To convert from the OPC UA diagram representation given in section \ref{intro-to-opc-ua} to the UML described throughout section \ref{mtconnect-mapping}. Figure \ref{fig:mtcomponent-ua} is a partial illustration of the MTConnect \mtconnectterm{Component} abstraction in OPC UA.
+This section provides instructions to translate from the OPC UA diagram representation given in section \ref{intro-to-opc-ua} to the UML described throughout section \ref{mtconnect-mapping}. Figure \ref{fig:mtcomponent-ua} is a partial illustration of the MTConnect \mtconnectterm{Component} abstraction in OPC UA.
 
 \input{diagrams/mtconnect-mapping/mtcomponent-ua.tex}
 
@@ -19,9 +19,12 @@ Figure \ref{fig:mtcomponent-uml} represents the same model in UML. The companion
 
 \begin{itemize}
 \item OPC UA Types are represented as UML classes
-\item OPC UA Properties are denoted as UML attributes. UA attributes are also represented as UML Attributes with the stereotype of \mtconnectterm{<<attribute>>}.
-\item OPC UA Component references are represented as UML Unidirectional associations. The reference type is given as the association's \textit{Stereotype}, for example \textit{<<HasComponent>>}. 
-\item HasSubtype relationships are given as an UML Generalization association.  
+\item OPC UA Objects are represented as ``\uaterm{BrowseName}: \uaterm{Type}'' underlined as in the following example: \textbf{\underline{SimpleCnc: MTDeviceType}} where \textbf{\underline{SimpleCnc}} is the name of the device and  \textbf{\underline{MTDeviceType}} is related with a \uaterm{HasTypeDefinition} relationship.
+\item Stereotypes are used to denote properties of types, relationships, and members of types. A stereotype is denoted by angle brackets (\texttt{<<..>>}) and provides additional information about the entity. For example, each reference from one \uaterm{ObjectType} to another has a stereotype denoting the reference type.
+\item OPC UA Properties are denoted as UML Attributes. UA \uaterm{Attributes} are also represented as UML Attributes with the stereotype of \mtconnectterm{<<attribute>>} to differentiate from UA \uaterm{Properties}.
+\item OPC UA \uaterm{Component} \uaterm{References} are represented as UML Unidirectional associations. The reference type is given as the association's \textit{Stereotype}, for example \textit{<<HasComponent>>}. 
+\item \uaterm{HasSubtype} relationships are given as an UML Generalization association.
+\item Combinining of templates and classes can be done using a UML \mtterm{Realization} with the stereotype \mtterm{<<Mixes In>>} to use common properties and relationships in a collection of otherwise unrelated types.
 \end{itemize}
 
 The UML Associations are used to represent OPC UA references. UA Properties represented using the UA \opcuaterm{Has\-Property} relationships are given as UML Attributes (not be confused with the OPC UA Attribute). UML allows for additional information as follows:  the multiplicity of a property, the data type of the property, are specified.
@@ -156,11 +159,53 @@ The following types representing base MTConnect types are also prefixed:
 \item $MTConnectAlarmConditionType$
 \item $MTExclusiveLimitConditionType$
 \item $MTNonExclusiveConditionType$
+\item $MTThreeSpaceSampleType$
 \end{itemize}
 
 The data item class types and enumeration data types do not have \texttt{MT} prepended. Sub-types of the \mtuatype{MTComponentType} do not have \texttt{MT} prefixed with the exception of the \mtuatype{MTDeviceType}. All compositions that are sub-types of the \mtuatype{MTCompositionType} do not have any prefix.
 
-\subsubsection{\uaterm{EngineeringUnits}}
+\subsubsection{\mtterm{DataItem} \uaterm{Type} and \uaterm{BrowseName} Conventions}
+
+The MTConnect \mtterm{DataItem} represents multiple OPC UA \uaterm{DataVariableType}s as well as UA \uaterm{ConditionType}s as described in parts \cite{UAPart8} and \cite{UAPart9} respectively. The mapping rules are as follows:
+
+\begin{enumerate}
+\item Assign the \mtterm{DataItem} \uaterm{Type}:
+    \begin{itemize}
+    \item Evaluate \xmlelement{DataItem} attributes as follows:
+        \begin{enumerate}
+        \item If the category is \texttt{CONDITION}, the type is \mtuatype{MTConditionType}.
+        \item If the category is \texttt{SAMPLE}; apply the following rules:
+            \begin{enumerate}
+            \item If the \xmlattribute{type} is \texttt{PATH_POSITION} then the type is \mtuatype{MTThreeSpaceSampleType}.
+            \item Otherwise, the UA type is \mtuatype{MTSampleType}.
+            \end{enumerate}
+        \item If the category is \texttt{EVENT}; apply the following rules:
+            \begin{enumerate}
+            \item If the \xmlattribute{type} is \texttt{ASSET_CHANGED} or \texttt{ASSET_REMOVED}; the UA type is \mtuatype{MTAssetEventType}
+            \item Convert the \xmlattribute{type} attribite to \textit{PascalCase} and add \texttt{ClassType}.
+            \item Find the MTConnect UA \uaterm{ClassType} that corresponds to the value computed in the previous step.
+            The types can be found in Sections \mtuamodel{ControlledVocabDataItemTypes}, \mtuamodel{NumericEventDataItemTypes}, and \mtuamodel{StringEventDataItemTypes}.
+            \item If the \uaterm{ClassType} matches one of the \mtuamodel{StringEventDataItemTypes}; the MTConnect UA type is \mtuatype{MTStringEventType}.
+            \item If the \uaterm{ClassType} matches one of the \mtuamodel{NumericEventDataItemTypes}; the MTConnect UA type is \mtuatype{MTNumericEventType}.
+            \item If the \uaterm{ClassType} matches one of the  \mtuamodel{ControlledVocabDataItemTypes}, the MTConnect UA type is \mtuatype{MTControlledVocabEventType}. The \uaterm{EnumValues} will be assigned as follows:
+                \begin{enumerate}
+                \item Each of the \uaterm{ClassType}s will have a property \mtterm{EnumValues}. The \uaterm{EnumValues} must reference the \mtterm{EnumValues} property of the \uaterm{ClassType}.
+                \end{enumerate}
+            \item Otherwise, the UA type is \mtuatype{MTStringEventType}. This will apply to all extended types.
+            \end{enumerate}
+        \end{enumerate}
+    \end{itemize}
+    \item Assign the \mtuatype{HasMTClassType} and \mtuatype{HasMTSubClassType} \uaterm{References}
+        \begin{enumerate}
+            \item Convert the \xmlelement{DataItem} \xmlattribute{type} attribute to \textit{PascalCase} and append \texttt{ClassType}. Assign the target of the \mtuatype{HasMTClassType} to the \uaterm{ObjectType}
+            \item Put the text name of the class in the property \mtterm{MTTypeName}.
+            \item Convert the \xmlelement{DataItem} \xmlattribute{subType} attribute to \textit{PascalCase} and append \texttt{SubClassType}. Assign the target of the \mtuatype{HasMTSubClassType} to the \uaterm{ObjectType}
+            \item Put the text name of the class in the property \mtterm{MTSubTypeName}.
+        \end{enumerate}
+        
+\end{enumerate}
+
+\subsubsection{Mapping \mtterm{DataItem} \mtterm{units} to \uaterm{EngineeringUnits}}
 
 OPC UA defines the EngineeringUnits \uaterm{DataType} in \cite{UAPart8} as having the fields show in Table~\ref{table:enineering-untis-data-type}.
 
@@ -169,20 +214,22 @@ OPC UA defines the EngineeringUnits \uaterm{DataType} in \cite{UAPart8} as havin
   \caption{\texttt{EngineeringUnits} DataType structure}
   \label{table:enineering-untis-data-type}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|X|X|X[2]|} \everyrow{\hline}
+\begin{tabu} to 6in {|X|X|X[3]|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Name} & {Type} & Description \\
 \tabucline[1.5pt]{}
-\texttt{namespaceUri} & String & Identifies the organization (company, standards organization) that defines the EUInformation \\
+namespaceUri & String & Identifies the organization (company, standards organization) that defines the EUInformation \\
 unitId & Int32 & Identifier for programmatic evaluation. -1 is used if a unitId is not available. \\
 displayName & LocalizedText & The displayName of the engineering unit is typically the abbreviation of the engineering unit, for example "h" for hour or "m/s" for meter per second. \\
 description & LocalizedText & Contains the full name of the engineering unit such as "hour" or "meter per second". \\
 \end{tabu}
 \end{table} 
 
-In Table~\ref{table:mtconnect-to-ua-eu-mapping}, the mapping between the MTConnect units and the OPC UA EngineeringUnits structure has been specified. There are three units that are not mapped, these are \texttt{COUNT}, \texttt{PERCENT}, and \texttt{MILLIMETER_3D}. The first two are unitless and are therefor cannot mapped directly. The third is a spacial coordinate and is composed of multiple values.
+In Table~\ref{table:mtconnect-to-ua-eu-mapping}, the mapping between the MTConnect units and the OPC UA EngineeringUnits structure has been specified. There are two units that are not mapped, these are \texttt{COUNT} and \texttt{PERCENT}. They are unitless and are therefor cannot mapped directly to SI.
 
-For units other than  \texttt{COUNT}, \texttt{PERCENT}, and \texttt{MILLIMETER_3D}, the \uaterm{namespaceUri} will be set to \url{http://www.opcfoundation.org/UA/units/un/cefact} as specified in \cite{UAPart8} and the values from Table~\ref{table:mtconnect-to-ua-eu-mapping} must be used. The units \texttt{COUNT}, \texttt{PERCENT}, and \texttt{MILLIMETER_3D} will be encoded as follows: UnitId will be -1 and the \uaterm{namespaceUri} will be set to the MTConnect URI: \url{http://opcfoundation.org/UA/MTConnect/v2/units}.  
+For units other than  \texttt{COUNT} and \texttt{PERCENT}, the \uaterm{namespaceUri} will be set to \url{http://www.opcfoundation.org/UA/units/un/cefact} as specified in \cite{UAPart8} and the values from Table~\ref{table:mtconnect-to-ua-eu-mapping} must be used. The units \texttt{COUNT} and \texttt{PERCENT} will be encoded as follows: UnitId will be -1 and the \uaterm{namespaceUri} will be set to the MTConnect URI: \url{http://opcfoundation.org/UA/MTConnect/v2/units}, see Table~\ref{table:mtconnect-to-ua-eu-mapping} for specific fields.
+
+The \texttt{MILLIMETER_3D} unit is special since it will be represented by the \mtuatype{MTThreeSpaceSampleType}. The individual values of the  \mtuadatatype{ThreeSpacePositionDataType} will be given in \textit{millimeters} and a \uaterm{displayName} of $mm(\mathbb{R}^{3})$; the \uaterm{EngineeringUnits} will be provided for consistency. The \uaterm{EURange} will not work since it cannot represent three space volumetric constraints.
 
 \begin{table}[ht]
 \centering 
@@ -193,23 +240,23 @@ For units other than  \texttt{COUNT}, \texttt{PERCENT}, and \texttt{MILLIMETER_3
 \hline
 \rowfont\bfseries {MTConnect Unit} & {UNECE Code} & {UnitId} & {Display Name} & {Description} \\
 \tabucline[1.5pt]{}
-AMPERE 	& AMP & 4279632 & A & Amps \\
-CELSIUS	& CEL  & 4408652 &   $^{\circ}Celsuis$ & Degrees Celsius \\
-COUNT	&    & -1    & Count & A counted event \\
-DECIBEL	& 2N & 12878 & dB & Sound Level \\
+AMPERE 	& AMP & 4279632 & $A$ & Amps \\
+CELSIUS	& CEL  & 4408652 & $^{\circ}Celsuis$ & Degrees Celsius \\
+COUNT	&    & -1    & $Count$ & A counted event \\
+DECIBEL	& 2N & 12878 & $dB$ & Sound Level \\
 DEGREE	& DD & 17476 & $^{\circ}$  & degree [unit of angle] \\
 DEGREE/SECOND &	E96 & 4536630 & $^{\circ}/s$ & Angular degrees per second \\
 DEGREE/SECOND\^{}2 & M45 & 5059637 & $^{\circ}/s^{2}$ & Angular acceleration in degrees per second squared \\
-HERTZ & HTZ & 4740186 & Hz & Frequency measured in cycles per second \\
-JOULE & JOU & 4869973 & J & A measurement of energy. \\
-KILOGRAM & KGM & 4933453 & kg & kilogram \\
-LITER & LTR & 5002322 & l & Litre \\
-LITER/SECOND & G51 & 4666673 & l/s & Litre per second \\
+HERTZ & HTZ & 4740186 & $Hz$ & Frequency measured in cycles per second \\
+JOULE & JOU & 4869973 & $J$ & A measurement of energy. \\
+KILOGRAM & KGM & 4933453 & $kg$ & kilogram \\
+LITER & LTR & 5002322 & $l$ & Litre \\
+LITER/SECOND & G51 & 4666673 & $l/s$ & Litre per second \\
 MICRO_RADIAN & B97 & 4340023 & $\mu rad$ & microradian - Measurement of Tilt \\
-MILLIMETER & MMT & 5066068 & mm & millimetre \\
-MILLIMETER/SECOND & C16 & 4403510 & mm/s & millimetre per second \\
+MILLIMETER & MMT & 5066068 & $mm$ & millimetre \\
+MILLIMETER/SECOND & C16 & 4403510 & $mm/s$ & millimetre per second \\
 MILLIMETER/SECOND\^{}2 & M41 & 5059633 & $mm/s^2$ & Acceleration in millimeters per second squared \\
-MILLIMETER_3D & MMT & 5066068 & mm & A point in space identified by X, Y, and Z positions and represented by a space delimited set of numbers each expressed in millimeters. \\
+MILLIMETER_3D & MMT & 5066068 & $mm (\mathbb{R}^{3})$ & A point in space identified by X, Y, and Z positions and represented by a space delimited set of numbers each expressed in millimeters. \\
 \end{tabu}
 \end{table}
 
@@ -221,21 +268,21 @@ MILLIMETER_3D & MMT & 5066068 & mm & A point in space identified by X, Y, and Z 
 \hline
 \rowfont\bfseries {MTConnect Unit} & {UNECE Code} & {UnitId} & {Display Name} & {Description} \\
 \tabucline[1.5pt]{}
-NEWTON & NEW & 5129559 & N & Force in Newtons \\
-NEWTON_METER & NU & 20053 & N m & Torque, a unit for force times distance.  \\
+NEWTON & NEW & 5129559 & $N$ & Force in Newtons \\
+NEWTON_METER & NU & 20053 & $N \cdot m$ & Torque, a unit for force times distance.  \\
 OHM & OHM & 5195853 & $\Omega$ & Measure of Electrical Resistance \\
-PASCAL & PAL & 5259596 & Pa & Pressure in Newtons per square meter  \\
-PASCAL_SECOND & C65 & 4404789 & Pa s & Measurement of Viscosity \\
-PERCENT	&   & -1 & \% & Percentage \\
-PH & Q30 & 5321520 & pH & pH (potential of Hydrogen) - A measure of the acidity or alkalinity of a solution \\
-REVOLUTION/MINUTE & RPM & 5394509 & r/min & revolutions per minute \\
-SECOND	& SEC & 5457219 & s & second [unit of time] \\
-SIEMENS/METER & D10 & 4469040 & S/m & siemens per metre - A measurement of Electrical Conductivity \\
-VOLT & VLT & 5655636 & V & volt \\
-VOLT_AMPERE & D46 & 4469814 & VA & volt - ampere \\
-VOLT_AMPERE_REACTIVE &  & -1 & VAR & Volt-Ampere Reactive  (VAR) \\
-WATT & WTT & 5723220 & W & watt \\
-WATT_SECOND & J55 & 4863285 & W s & Measurement of electrical energy, equal to one Joule
+PASCAL & PAL & 5259596 & $Pa$ & Pressure in Newtons per square meter  \\
+PASCAL_SECOND & C65 & 4404789 & $Pa \cdot s$ & Measurement of Viscosity \\
+PERCENT	&   & -1 & $\%$ & Percentage \\
+PH & Q30 & 5321520 & $pH$ & pH (potential of Hydrogen) - A measure of the acidity or alkalinity of a solution \\
+REVOLUTION/MINUTE & RPM & 5394509 & $r/min$ & revolutions per minute \\
+SECOND	& SEC & 5457219 & $s$ & second [unit of time] \\
+SIEMENS/METER & D10 & 4469040 & $S/m$ & siemens per metre - A measurement of Electrical Conductivity \\
+VOLT & VLT & 5655636 & $V$ & volt \\
+VOLT_AMPERE & D46 & 4469814 & $VA$ & volt - ampere \\
+VOLT_AMPERE_REACTIVE &  & -1 & $VAR$ & Volt-Ampere Reactive  (VAR) \\
+WATT & WTT & 5723220 & $W$ & watt \\
+WATT_SECOND & J55 & 4863285 & $W \cdot s$ & Measurement of electrical energy, equal to one Joule
 \end{tabu}
 \end{table} 
 

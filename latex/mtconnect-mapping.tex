@@ -34,8 +34,12 @@ The UML Associations are used to represent OPC UA references. UA Properties repr
 
 When traversing an association between two object types, the name of the source of the association is the browse name associated with the object, and the destination is the type of object that is instantiated. If the name is not given, it represents a dynamic relationship where the browse name is determined during the creation of the object model. An example is the association of the MTConnect \mtconnectterm{DataItem}s.
 
-\input{diagrams/mtconnect-mapping/data-item-uml.tex}
-\FloatBarrier
+\begin{quote}
+    \color{red} Move Data Item UML to the Types section.
+\end{quote}
+
+%\input{diagrams/mtconnect-mapping/data-item-uml.tex}
+%\FloatBarrier
 
 A reference that has a stereotype of \textit{<<Organizes>>}, shown by the \texttt{Components} recursive relationship in the \mtconnectterm{MTComponentType}, implies an intermediate object of type \opcuaterm{FolderType} with the \uaterm{BrowseName} of the relationship point on the source side. The far side is not constrained within the \opcuaterm{FolderType} but given in the documentation as the expected contents of the folder.
 
@@ -52,6 +56,10 @@ The object models will use a UML representation that represents the members as U
 Figure \ref{fig:example-object} represents an MTConnect \mtconnectterm{Device} with the values filled in. The UA \opcuaterm{Browse\-Name} is given as the object name above, and the UA Type is given after the \texttt{:} in the header. Each of the UA \opcuaterm{Attributes} and \opcuaterm{Properties} are provided below. Relationships are shown as edges that have the Reference Type, such as \opcuaterm{Has\-Component}. The properties contained within will be created using the \opcuaterm{Has\-Property} reference but composed as internal members for brevity.
 
 For example, the with type \mtuatype{MTDeviceType} has \opcuaterm{BrowseName} of \texttt{SimpleCnc} (the name of the device). There are patterns for creating all the \uaterm{BrowseName} for each MTConnect UA Type. The rules are presented and in the example to provide the normative patterns for each type in the information model.
+
+\begin{quote}
+    \color{red} Dcoument conventions for browse names on edges. Object identity vs. Browse Name. May not be an issue when UML diagrams are converted to Tikz.
+\end{quote}
 
 \FloatBarrier
 
@@ -161,6 +169,8 @@ The following types representing base MTConnect types are also prefixed:
 \item $MTNonExclusiveConditionType$
 \item $MTThreeSpaceSampleType$
 \end{itemize}
+
+\subsubsection{Component and Composition \uaterm{BrowseName} Rules}
 
 The data item class types and enumeration data types do not have \texttt{MT} prepended. Sub-types of the \mtuatype{MTComponentType} do not have \texttt{MT} prefixed with the exception of the \mtuatype{MTDeviceType}. \mtterm{Composition} elements in the MTConnect model will be represented instantiated with the \uaterm{BrowseName} of the \mtterm{Composition} \xmlattribute{type} converted to \textit{PascalCase}. The \xmlattribute{type} will be copied to the \uaterm{Property} \texttt{MTTypeName}.
 
@@ -683,9 +693,9 @@ Tjhe \uaterm{SourceTimestamp} and \uaterm{Quality} will be handled as described 
 
 \subsubsection{Conditions}
 
-Conditions in are represnted by the \mtuatype{MTConditionType} that is a subtype of the \uaterm{ConditonType}. The MTConnect \mtterm{Conditions} are a representation of the transitional state of various alarms and reporting on the functioning of a \mtterm{Component} of the machine. There are three states for a conditon in MTConnect, they are \mtterm{Normal}, \mtterm{Warning}, and \mtterm{Fault} that have the semantic meaning \textit{operating normally}, \textit{a situation has been observed, but may self-correct}, and \textit{a failure has occured and needs manual intervention}. More information can be found in MTConnect \cite{MTCPart2} and \cite{MTCPart3} of the MTConnect Standard on Condition behavior.
+Conditions are represnted by the \mtuatype{MTConditionType} that is a subtype of the \uaterm{ConditonType}. The MTConnect \mtterm{Conditions} are a representation of the transitional state of various alarms and reporting on the functioning of a \mtterm{Component} of the machine. There are three states for a conditon in MTConnect, they are \mtterm{Normal}, \mtterm{Warning}, and \mtterm{Fault} that have the semantic meaning \textit{operating normally}, \textit{a situation has been observed, but may self-correct}, and \textit{a failure has occured and needs manual intervention}. More information can be found in MTConnect \cite{MTCPart2} and \cite{MTCPart3} of the MTConnect Standard on Condition behavior.
 
-The \mtuatype{MTConditionType} has a \uaterm{Property} called \texttt{ActiveState} that represents if there are any warnings or faults associated with the condition. The \texttt{ActiveState} is an OPC UA \uaterm{TwoStateVariableType} defined in \cite{UAPart8}. When a Condition is \mtterm{Normal}, the \texttt{ActiveState} will be \texttt{True} and when either a \mtterm{Warning} or \mtterm{Fault} is active, the \texttt{ActiveState} will be \texttt{True}.
+The \mtuatype{MTConditionType} has a \uaterm{Property} called \texttt{ActiveState} that represents if there are any warnings or faults currently active. The \texttt{ActiveState} is an OPC UA \uaterm{TwoStateVariableType} defined in \cite{UAPart8}. When a Condition is \mtterm{Normal}, the \texttt{ActiveState} will be \texttt{False}, otherwise when either a \mtterm{Warning} or \mtterm{Fault} is present, the \texttt{ActiveState} will be \texttt{True}.
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Rotary C Component Stream},label={lst:rotary-component-stream}]
@@ -697,7 +707,7 @@ The \mtuatype{MTConditionType} has a \uaterm{Property} called \texttt{ActiveStat
         </Condition>
 \end{lstlisting}
 
-The instance of the \mtuatype{MTConditionType} will contain the latest state of the \mtterm{Condition} as they are activated. Each time an MTConnect \mtterm{Condition} activates or deactivates, an \uaterm{Condition} \uaterm{Event} will be created associated with the instance if the \mtuatype{MTConditionType} \uaterm{NodeId}. 
+The instance of the \mtuatype{MTConditionType} will contain the last state of the \mtterm{Condition} as most recently observed. Each time an MTConnect \mtterm{Condition} activates or deactivates, an \uaterm{Condition} \uaterm{Event} will be created associated with the instance if the \mtuatype{MTConditionType} \uaterm{NodeId}. 
 
 The \uaterm{ConditionType} and \uaterm{EventType} properties will be set as follows:
 
@@ -724,5 +734,10 @@ The remaining \uaterm{Properties} will be set from the XML attributes of the sam
 \end{quote}
 
 \subsubsection{Messages}
+
+\begin{quote}
+    \color{red} TODO: Messages are similar to conditions; they are events and they will have a similar duality. The message does not have state, but needs to have a meta data instance to reference. The instance can be mounted in the address space to serve as the NodeId for the Event.
+\end{quote}
+
 
 \subsection{Time Series Samples}

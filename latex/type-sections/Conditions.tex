@@ -1,0 +1,11 @@
+In MTConnect, A \texttt{CONDITION} is a data item that communicates information about the health of a piece of equipment and its ability to function. A valid value for a data item in the category \texttt{CONDITION} can be one of NORMAL, WARNING, or FAULT.  A data item of category CONDITION MAY report multiple values (\texttt{CONDITION}) at one time whereas a data item of category \texttt{SAMPLE} or \texttt{EVENT} can only have a single value at any one point in time . The documentation for the condition behavior in MTConnect can be found in Section 5.7 and 5.8 of \cite{MTCPart3} and an overview in \cite{MTCPart2}.
+
+The parallel modeling of conditions and alarms in MTConnect and OPC UA differ in the attended use of \mtterm{Condition}s in the two standards. In MTConnect they are a mechanism for reporting the health or function of a \mtterm{Component} whereas in OPC UA, Conditions serve a dual role of reporting as well as managing the functionality related to alarms and aberant conditions on a device.
+
+
+The MTConnect Data Item with Category of \texttt{CONDITION} are used to map to the OPC UA \texttt{ConditionType} models in \cite{UAPart9} with a \uaterm{TwoStateVariableType} that represeents the current state of the all the active alarms.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../mtc-ua"
+%%% End:

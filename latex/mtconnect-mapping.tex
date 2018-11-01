@@ -164,12 +164,12 @@ The following types representing base MTConnect types are also prefixed:
 
 The data item class types and enumeration data types do not have \texttt{MT} prepended. Sub-types of the \mtuatype{MTComponentType} do not have \texttt{MT} prefixed with the exception of the \mtuatype{MTDeviceType}. All compositions that are sub-types of the \mtuatype{MTCompositionType} do not have any prefix.
 
-\subsubsection{\mtterm{DataItem} \uaterm{Type} and \uaterm{BrowseName} Conventions}
+\subsubsection{\mtterm{DataItem} \uaterm{HasTypeDefinition} and \uaterm{BrowseName} Conventions}
 
 The MTConnect \mtterm{DataItem} represents multiple OPC UA \uaterm{DataVariableType}s as well as UA \uaterm{ConditionType}s as described in parts \cite{UAPart8} and \cite{UAPart9} respectively. The mapping rules are as follows:
 
 \begin{enumerate}
-\item Assign the \mtterm{DataItem} \uaterm{Type}:
+\item Determine the \mtterm{DataItem} \uaterm{Type} for the \uaterm{HasTypeDefinition} \uaterm{Reference}:
     \begin{itemize}
     \item Evaluate \xmlelement{DataItem} attributes as follows:
         \begin{enumerate}
@@ -195,15 +195,32 @@ The MTConnect \mtterm{DataItem} represents multiple OPC UA \uaterm{DataVariableT
             \end{enumerate}
         \end{enumerate}
     \end{itemize}
-    \item Assign the \mtuatype{HasMTClassType} and \mtuatype{HasMTSubClassType} \uaterm{References}
+\item Assign the \mtuatype{HasMTClassType} and \mtuatype{HasMTSubClassType} \uaterm{References}
+    \begin{enumerate}
+        \item Convert the \xmlelement{DataItem} \xmlattribute{type} attribute to \textit{PascalCase} and append \texttt{ClassType}. Assign the target of the \mtuatype{HasMTClassType} to the \uaterm{ObjectType}
+        \item Put the text name of the class in the property \mtterm{MTTypeName}.
+        \item Convert the \xmlelement{DataItem} \xmlattribute{subType} attribute to \textit{PascalCase} and append \texttt{SubClassType}. Assign the target of the \mtuatype{HasMTSubClassType} to the \uaterm{ObjectType}
+        \item Put the text name of the class in the property \mtterm{MTSubTypeName}.
+    \end{enumerate}
+\item Format the \uaterm{BrowseName} for the \mtterm{Sample} and \mtterm{Event} \mtterm{DataItem}s
+    \begin{enumerate}
+    \item If the \xmlelement{DataItem} attribute \xmlattribute{compositionId} is present, do the following:
         \begin{enumerate}
-            \item Convert the \xmlelement{DataItem} \xmlattribute{type} attribute to \textit{PascalCase} and append \texttt{ClassType}. Assign the target of the \mtuatype{HasMTClassType} to the \uaterm{ObjectType}
-            \item Put the text name of the class in the property \mtterm{MTTypeName}.
-            \item Convert the \xmlelement{DataItem} \xmlattribute{subType} attribute to \textit{PascalCase} and append \texttt{SubClassType}. Assign the target of the \mtuatype{HasMTSubClassType} to the \uaterm{ObjectType}
-            \item Put the text name of the class in the property \mtterm{MTSubTypeName}.
+        \item Resolve the \xmlattribute{compositionId} to the \mtterm{Composition} XML element with that \xmlattribute{id}.
+        \item Set the variable \texttt{composition} to the \textit{PascalCase} of the \mtterm{Composition} attribute \xmlattribute{type}.
         \end{enumerate}
-        
+        Otherwise, set the variable \texttt{composition} to "".
+    \item If the \xmlattribute{subType} is present, set the variable \texttt{subType} to the \textit{PascalCase} of the \xmlattribute{subType}. Otherwise set it the variable \texttt{subType} to "".
+    \item Set the variable \texttt{type} to the \textit{PascalCase} of the \xmlelement{DataItem} attribute \xmlattribute{type}.
+    \item The \uaterm{BrowseName} is the concatination of the \texttt{composition} + \texttt{subType} + \texttt{type}.
+    \end{enumerate}
+\item Format the \uaterm{BrowseName} for the \mtterm{Condition} \mtterm{DataItem}s
+    \begin{enumerate}
+    \item Use the name derived in the previous step for \mtterm{Event}s and \mtterm{Sample}s and append \texttt{Condition}. 
+    \end{enumerate}
 \end{enumerate}
+
+The examples below will provide further guidance on implementing these rules.
 
 \subsubsection{Mapping \mtterm{DataItem} \mtterm{units} to \uaterm{EngineeringUnits}}
 
@@ -287,11 +304,15 @@ WATT_SECOND & J55 & 4863285 & $W \cdot s$ & Measurement of electrical energy, eq
 \end{table} 
 
 \FloatBarrier
-\subsubsection{Mapping Example 1}
+\subsubsection{Mapping Example}
 
-The first section showing in Listing \ref{lst:device-header} of the MTConnect XML representation gives the information models root element \texttt{MTConnectDevices} and the \texttt{Header} element that is used for the MTConnect protocol. The only root node concern is if there are additional name-spaces declared in the root \texttt{MTConnectDevices} element. The other area of note is the \texttt{version} attribute of the \texttt{Header} element.  The version indicates the most current version of the MTConnect standard currently being provided by this \textit{Agent}. The remaining attributes are relevant during the discussion of streaming data in the following section.
+The following is an example of mapping the MTConnect Device Meta-Model to the OPC UA MTConnect model. The example will not be a realistic machine tool configuration, but will demonstrate all the possible combinations of components, compositions, and data items and how to construct the informaiton model using the various rules given above. The first section covers the meta model presented in \cite{MTCPart2} of the MTConnect standard. For more information on any individual entity in the model, please refer to the MTConnect documentation.
+
+
 
 \paragraph{\element{MTConnectDevices} Root Element}
+
+The first lines showing in Listing \ref{lst:device-header} of the MTConnect XML representation are the root element \xmlelement{MTConnectDevices} and the \xmlelement{Header} element that is used for the MTConnect protocol. The only root node concern is if there are additional name-spaces declared in the root \xmlelement{MTConnectDevices} element. The other area of note is the \xmlattribute{version} attribute of the \texttt{Header} element.  The version indicates the most current version of the MTConnect standard currently being provided by this \mtterm{Agent}. The remaining attributes are relevant during the discussion of streaming data in the following section.
 
 \begin{lstlisting}[caption={Device Header},label={lst:device-header}]
 <MTConnectDevices xmlns="urn:mtconnect.org:MTConnectDevices:1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:1.4 schema/MTConnectDevices_1.4.xsd">
@@ -351,14 +372,14 @@ MTConnect \mtterm{subType} will be mapped in the same manner as the type using t
 
 \paragraph{\element{Axes} and \element{Linear} Comoonents}
 
-\begin{lstlisting}[firstnumber=last,%
+\begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Components and Conditions},label={lst:linear-x-component}]
       <Components>
         <Axes id="a62a1050">
           <Components>
             <Linear id="e373fec0" name="X1" nativeName="X">
               <DataItems>
-                <DataItem id="dcbc0570" name="Xpos" type="POSITION" subType="ACTUAL" category="SAMPLE" units="MILLIMETER"/>
+                <DataItem id="dcbc0570" name="Xpos" type="POSITION" subType="ACTUAL" category="SAMPLE" units="MILLIMETER"/> |\label{line:linear-position}|
                 <DataItem id="f646f730" type="LOAD" name="Xload" category="SAMPLE" units="PERCENT"/>
                 <DataItem id="e086dd60" type="POSITION" category="CONDITION" name="Xtravel"/>
               </DataItems>
@@ -373,7 +394,7 @@ Figure~\ref{fig:linear-x-example-1} represents the UA Object model based on  Lis
 
 The \mtterm{DataItem}s for \texttt{ActualPosition} and \texttt{Load} are both of \mtterm{category} \mtterm{SAMPLE}; they contain numeric values are always mapped to the \mtuatype{MTSampleType} which is derived from the UA \uaterm{AnalogItemType} defined in \cite{UAPart8}. The \uaterm{BrowseName} for the \mtterm{DataItem}s are composed of the related \mtterm{Composition} \mtterm{type}, \mtterm{subType}, and \mtterm{type} of the \mtterm{DataItem} represented in \textit{PascalCase}.
 
-The \uaterm{EngineeringUnits} of the \uaterm{AnalogItemType} will be directly mapped to the \uaterm{EngineeringUnits} \uaterm{Property} of the \mtuatype{MTSampleType}. If the value is constrained, the \uaterm{EURange} will be populated, otherwise it will set to -INF and INF as the range since it is a mandatory \uaterm{Property}. The remaining attributes will be represented as properties of the \mtuatype{MTSampleType} converting the \textit{lowerCamelCase} to \textit{PascalCase} by changing the first character to upper-case. The \mtterm{EVENT} category and complex cases will be specified in the following examples.
+The \uaterm{EngineeringUnits} of the \uaterm{AnalogItemType} will be mapped to the \uaterm{EngineeringUnits} \uaterm{Property} of the \mtuatype{MTSampleType}. If the value is constrained, the \uaterm{EURange} will be populated, otherwise the high and low values will set to \uaterm{NaN} as the range since it is a mandatory \uaterm{Property}. The remaining attributes will be represented as properties of the \mtuatype{MTSampleType} converting the \textit{lowerCamelCase} to \textit{PascalCase} by changing the first character to upper-case. The \mtterm{EVENT} category and complex cases will be specified in the following examples.
 
 MTConnect \mtterm{DataItem}s of \mtterm{category} \dataitem{CONDITION} are special types since they represent the state of an alarm or warning associated with a \mtterm{Component} of the \mtterm{Device}. For more information on the \mtterm{conditions} see \cite{MTCPart2} and \cite{MTCPart3}. The mapping of the \mtterm{CONDITION} \mtterm{category} of \mtterm{DataItem}s is to the corresponding \uaterm{ConditionType} sub-type of \mtuatype{MTConditionType}.
 
@@ -381,33 +402,89 @@ The \mtuatype{MTConditionType} has a naming rule similar to the \mtterm{DataItem
 
 The \mtuatype{MTComponentType} is decendent of the \uaterm{BaseEventType} described in \cite{UAPart5} and \cite{UAPart9}, so it has two functions in the UA model. It represents the overall state of the UA \uaterm{Condition} and also it represents each event as the various MTConnect \mtterm{Condition} changes are reported as represented in the \mtterm{MTConnectStreams} described in \cite{MTCPart3}.
 
+The \uaterm{HasNotifier} refererence is created between the \texttt{SimpleCnc:}\mtuatype{MTDeviceType} object and the \texttt{Axes} object to allow for the events to flow down to the conditions for each of the components. The relationship of the condition in Figure~\ref{fig:linear-x-example-1} illustrates the relationships between the \element{Component} and the related condition in the notification hierarchy.
 
-
-The \uaterm{HasNotifier} refererence needs to be created between the \texttt{Axes} object and the \texttt{SimpleCnc:}\mtuatype{MTDeviceType} object to allow for the events to flow down to the conditions for each of the components. The relationship of the condition in Figure~\ref{fig:linear-x-example-1} illustrates the relationships between the \element{Component} and the related condition in the notification hierarchy.
-
- The \texttt{Linear[x]} component uses a \uaterm{HasNotifier} reference sourced from the parent \texttt{Axes} \uaterm{Object}. The condition, having a \mtuatype{MTClassType} of \mtuatype{PositionClassType}, is connected to the \texttt{Linear[X]} axis with a \uaterm{HasCondition} relationship. 
+ The \texttt{Linear[x]} component uses a \uaterm{HasNotifier} reference sourced from the parent \texttt{Axes} \uaterm{Object}. The condition, having a \mtuatype{MTClassType} and a ConditionClassId of \mtuatype{PositionClassType}, is connected to the \texttt{Linear[X]} axis with a \uaterm{HasCondition} relationship. 
 
 \FloatBarrier
 
 \paragraph{\element{Rotary} Axis and \mtterm{Condition} sources}
 
 \begin{lstlisting}[firstnumber=last,%
-    caption={Rotary C Axis},label={lst:rotary-axis-example-1}]
+    caption={Rotary C Axis},label={lst:rotary-c-example},escapechar=|]
             <Rotary id="zf476090" name="C" nativeName="S">
               <DataItems>
-                <DataItem id="r1841b70" type="LOAD" category="SAMPLE" units="PERCENT" name="Sload"/>
-                <DataItem id="ac6b69c0" type="ROTARY_VELOCITY" subType="PROGRAMMED" category="SAMPLE" units="REVOLUTION/MINUTE" name="Sspeed_prg"/>
-                <DataItem id="vee9c2d0" type="ROTARY_VELOCITY" subType="ACTUAL" category="SAMPLE" units="REVOLUTION/MINUTE" name="Sspeed_act" />
-                <DataItem id="taa7a0f0" type="AMPERAGE" category="SAMPLE" units="AMPERE" compositionId="b7792870" />
+                <DataItem id="bbe3f010" type="ROTARY_MODE" category="EVENT">  |\label{line:rotary-mode}|
+                  <Constraints>
+                    <Value>SPINDLE</Value>
+                  </Constraints>
+                </DataItem>
+                <DataItem id="ac6b69c0" type="ROTARY_VELOCITY" subType="PROGRAMMED" category="SAMPLE" units="REVOLUTION/MINUTE" name="Sspeed_prg"/> |\label{line:programmed-rotary-velocity}|
+                <DataItem id="vee9c2d0" type="ROTARY_VELOCITY" subType="ACTUAL" category="SAMPLE" units="REVOLUTION/MINUTE" name="Sspeed_act"> 
+                  <Constraints>
+                    <Minimum>0</Minimum>
+                    <Maximum>7000</Maximum>
+                  </Constraints>
+                </DataItem>  |\label{line:actual-rotary-velocity}|
+                <DataItem id="r1841b70" type="LOAD" category="SAMPLE" units="PERCENT" name="Sload"/> |\label{line:rotary-c-load}|
+                <DataItem id="taa7a0f0" type="AMPERAGE" category="SAMPLE" units="AMPERE" compositionId="b7792870" /> |\label{line:rotary-c-amperage}|
                 <DataItem id="afb596b0" type="AMPERAGE" category="CONDITION" compositionId="b7792870" name="Soverload">
                   <Source dataItemId="taa7a0f0"/>
                 </DataItem>
-              </DataItems>
+              </DataItems> |\label{line:rotary-c-amperage-condition}|
               <Compositions>
-                <Composition id="b7792870" type="MOTOR"/>
+                <Composition id="b7792870" type="MOTOR"/> |\label{line:rotary-c-motor}|
               </Compositions>
             </Rotary>
 \end{lstlisting}
+
+The data item on Line~\ref{line:rotary-mode} of Listing~\ref{lst:rotary-c-example} with \xmlattribute{type} of \dataitem{ROTARY_MODE} is illustrated in Figure~\ref{fig:rotary-c-rotary-mode}. MTConnect allows for a \mtterm{Rotary} axis to provide the function of the axis, Spindle, Contour, or Index. In Many cases the Rotary Mode is a singular values, as in this case when it can only work as a spindle. This is expressed by creating a \uaterm{Property} with a \mtuadatatype{ConstraintDataType} and specifying the \texttt{Values} field with the singular value of ["SPINDLE"] indicating it can only function as a spindle. 
+
+In MTConnect, the value of this data item will never be \mtterm{UNAVAILABLE} or \uaterm{Bad_\ldots} since it is bound to a single value, it will always be present and have that value regardless of the connectivity state to the data source. In the case of constraints on a controlled vocabulary, the \texttt{Values} must always be one of the related EnumValues. See \cite{MTCPart2} for details on the constraints and the relationship to the \mtterm{DataItem}s.
+
+\begin{quote}
+    \textit{Please Note:} An object name as shown in the diagram usually has the browse name as the object identity. If the object will appear in other diagrams, it is identified by a unique name, such as \textbf{<RModeConstraints>}. The \uaterm{BrowseName} is given by the name of the \uaterm{HasProperty} or \uaterm{HasComponent} relationship at the source side of the reference. 
+\end{quote}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/rotary-c-rotary-mode.png}
+    \caption{Rotary[C] Axis RotaryMode DataItem}
+    \label{fig:rotary-c-rotary-mode}
+\end{figure}
+
+\FloatBarrier
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/rotary-c-rotary-velocity.png}
+    \caption{Rotary[C] Axis RotaryVelocity DataItem}
+    \label{fig:rotary-c-rotary-velocity}
+\end{figure}
+
+Figure~\ref{fig:rotary-c-rotary-velocity} corresponds to Lines~\ref{line:programmed-rotary-velocity}-\ref{line:actual-rotary-velocity} of Figure~\ref{fig:rotary-c-rotary-velocity}--the two rotary velocity data items differentiated by their \xmlattribute{subType}s of \texttt{ACTUAL} and \texttt{PROGRAMMED}. In this case they share many of the same property values. The \mtterm{HasMTSubClassType} references the \mtuatype{ActualSubClassType} and the \mtuatype{ProgrammedSubClassType} respectively.
+
+In the case of the \texttt{ActualRotaryVelocity} object, it has an additional constraint that specifies that the maximum spindle speed is 7000 RPM. This is given with the \mtuadatatype{ConstraintDataType}. These values are also reflected in the EURange associated with the two data items. \texttt{ProgrammedRotaryVelocity} references a \texttt{NullRange} where the \uaterm{high} and \uaterm{low} are both set to NaN, and the \texttt{ActualRotaryVelocity} references an \uaterm{EURange} where the \uaterm{high} and \uaterm{low} are the same as the \mtterm{Maximum} and \mtterm{Minimum} of the \mtuadatatype{ConstraintDataTyp} respectively. 
+
+\FloatBarrier
+
+Figure~\ref{fig:rotary-c-load} represents the \dataitem{Load} \mtterm{DataItem} for Listing~\ref{lst:rotary-c-example} Line~\ref{line:rotary-c-load} as an example of a \mtuatype{MTSampleType} where the \uaterm{EngineeringUnits} are not given in the \uaterm{UNECE} set and the \uaterm{unitId} is -1 and the \uaterm{namespaceUri} is set to the MTConnect specific units. The EURange is defined as the NullRange as was done for the \texttt{ProgrammedRotaryVelocity}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/rotary-c-load.png}
+    \caption{Rotary[C] Axis Load DataItem}
+    \label{fig:rotary-c-load}
+\end{figure}
+
+\FloatBarrier
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/rotary-c-amperage.png}
+    \caption{Rotary[C] Axis Motor Amperage DataItem}
+    \label{fig:rotary-c-amperage}
+\end{figure}
 
 \FloatBarrier
 
@@ -429,7 +506,9 @@ The \uaterm{HasNotifier} refererence needs to be created between the \texttt{Axe
                 <DataItem id="a557d330" type="LOGIC_PROGRAM" category="CONDITION"/>
                 <DataItem id="a5b23650" type="MOTION_PROGRAM" category="CONDITION"/>
                 <DataItem id="bbafe670" type="LINE" category="EVENT"/>
-                <DataItem id="d2e9e4a0" type="PART_COUNT" category="EVENT"/>
+                <DataItem id="d2e9e4a0" type="PART_COUNT" category="EVENT">
+                  <InitialValue>1</InitialValue>
+                </DataItem>
                 <DataItem id="r186cd60" type="PATH_POSITION" category="SAMPLE" units="MILLIMETER_3D"/>
               </DataItems>
             </Path>
@@ -437,22 +516,28 @@ The \uaterm{HasNotifier} refererence needs to be created between the \texttt{Axe
         </Controller>
 \end{lstlisting}
 
-Listing~\ref{lst:controller-component} represents the control system and the paths of exectution under for each independent set of operations and motion. This controller also has extended data items that are not in the standard. They are prefixed with the XML namespace \texttt{x:}. Data item types and sub-types can be extended. If only the sub-type is an exteneded type, then the browse name will be prepended as normal and the sub type in \textit{Pascal Case} prepended. For example with the data item of type \texttt{PROGRAM} with sub-type \texttt{x:SUB} (line 36), the namespace will be removed and the browse name \texttt{SubProgram} of a \texttt{MTStringEventType} will be used referencing the \texttt{ProgramClassType}. 
-
-In this case the \texttt{SequenceNumber} may have schema or information associated with it that will determine it to be a numeric value. If this is the case, then it can be mapped to the \texttt{MTNumericEventType} as a better match. The \texttt{classType} must be created as a sub-type of the \texttt{MTNumericEventClassType}.
-
-All data items of \texttt{category} \texttt{SAMPLE} must always be mapped to the \texttt{MTSampleType} instance with the browse name created appropriately. In this case the \texttt{ClassType} must be created as as sub-type of the \texttt{MTSampleClassType}.
-
 \begin{lstlisting}[firstnumber=last,%
     caption={Electrical System and Sensor Configuration},label={lst:electric-system-example-1}]
         <Systems id="if618500">
           <Components>
             <Electric id="afb91ba0">
               <DataItems>
-                <DataItem id="x52ca7e0" name="ptemp" type="TEMPERATURE" category="SAMPLE" units="CELSIUS"/>
-                <DataItem id="r1e58cf0" name="pvolt" type="VOLTAGE" category="SAMPLE" units="VOLT"/>
+                <DataItem id="x52ca7e0" name="ptemp" type="TEMPERATURE" category="SAMPLE" units="CELSIUS">
+                  <Filters>
+                    <Filter type="PERIOD">60</Filter>
+                  </Filters>
+                </DataItem>
+                <DataItem id="r1e58cf0" name="pvolt" type="VOLTAGE" category="SAMPLE" units="VOLT">
+                  <Filters>
+                    <Filter type="MINIMUM_DELTA">10</Filter>
+                  </Filters>
+                </DataItem>
                 <DataItem id="e25c1130" name="pamp" type="AMPERAGE" category="SAMPLE" units="AMPERE"/>
+                <DataItem id="qb9212c0" type="AMPERAGE" category="SAMPLE" units="AMPERE" statistic="AVERAGE">
+                  <ResetTrigger>ACTION_COMPLETE</ResetTrigger>
+                </DataItem>
                 <DataItem id="o63fcd30" name="ppfact" type="POWER_FACTOR" category="SAMPLE" units="PERCENT" />
+                
                  <DataItem id="b4bb7110" type="AMPERAGE" category="CONDITION" name="poverload">
                    <Source dataItemId="e25c1130"/>
                  </DataItem>

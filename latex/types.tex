@@ -1,4 +1,4 @@
-% Generated 2018-10-31 20:06:17 -0700
+% Generated 2018-10-31 23:59:44 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -937,6 +937,8 @@ HasProperty & Object & ResetTrigger & DataItemResetValueType & PropertyType & Op
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
+\item \texttt{SignificantDigits::UInt16:} The significant digits is converted to a \uaterm{ValuePrecision}.
+
 \item \textbf{Allowable Values} for \texttt{CoordinateSystemType}
 \begin{table}[ht]
 \centering 
@@ -1402,7 +1404,6 @@ The \texttt{BrowseName} of the condition uses the same naming convention as the 
 \texttt{DataItem} types with \texttt{Condition} appended as a suffix. For example the 
 condition with \texttt{type} of \texttt{TEMPERATURE} will have the browse name of 
 \texttt{TemperatureCondition} as opposed to the \texttt{MTSampleType} of \texttt{Temperature}.
-
 
 If a \texttt{Source} of the \texttt{DataItem} is provided, then the \texttt{HasCondition} relationship 
 will be from the source \texttt{DataItem} to the \texttt{MTConditionInstance}. Otherwise it will be 

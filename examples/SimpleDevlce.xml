@@ -50,6 +50,7 @@
         <Controller id="p5add360">
           <DataItems>
             <DataItem id="x7ca94e0" type="EMERGENCY_STOP" category="EVENT" name="estop"/>
+            <DataItem id="m17f1750" type="MESSAGE" category="EVENT"/>
           </DataItems>
           <Components>
             <Path id="a4a7bdf0" name="P1">
@@ -83,6 +84,7 @@
                     <Filter type="MINIMUM_DELTA">10</Filter>
                   </Filters>
                 </DataItem>
+                <DataItem id="tc9edc70" name="pampts" type="VOLT_AMPERE" category="SAMPLE" units="VOLT_AMPERE" representation="TIME_SERIES" sampleRate="100"/>
                 <DataItem id="e25c1130" name="pamp" type="AMPERAGE" category="SAMPLE" units="AMPERE"/>
                 <DataItem id="qb9212c0" type="AMPERAGE" category="SAMPLE" units="AMPERE" statistic="AVERAGE">
                   <ResetTrigger>ACTION_COMPLETE</ResetTrigger>

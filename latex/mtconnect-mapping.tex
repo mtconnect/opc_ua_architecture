@@ -162,7 +162,7 @@ The following types representing base MTConnect types are also prefixed:
 \item $MTThreeSpaceSampleType$
 \end{itemize}
 
-The data item class types and enumeration data types do not have \texttt{MT} prepended. Sub-types of the \mtuatype{MTComponentType} do not have \texttt{MT} prefixed with the exception of the \mtuatype{MTDeviceType}. All compositions that are sub-types of the \mtuatype{MTCompositionType} do not have any prefix.
+The data item class types and enumeration data types do not have \texttt{MT} prepended. Sub-types of the \mtuatype{MTComponentType} do not have \texttt{MT} prefixed with the exception of the \mtuatype{MTDeviceType}. \mtterm{Composition} elements in the MTConnect model will be represented instantiated with the \uaterm{BrowseName} of the \mtterm{Composition} \xmlattribute{type} converted to \textit{PascalCase}. The \xmlattribute{type} will be copied to the \uaterm{Property} \texttt{MTTypeName}.
 
 \subsubsection{\mtterm{DataItem} \uaterm{HasTypeDefinition} and \uaterm{BrowseName} Conventions}
 
@@ -479,6 +479,10 @@ Figure~\ref{fig:rotary-c-load} represents the \dataitem{Load} \mtterm{DataItem} 
 
 \FloatBarrier
 
+Figure~\ref{fig:rotary-c-amperage} illustrates the \mtterm{Amperage} \mtterm{DataItem} corresponding to the Listing~\ref{lst:rotary-c-example} Lines~\ref{line:rotary-c-amperage}-\ref{line:rotary-c-amperage-condition}. Unlike the previous example of a MTConnect \mtterm{Condition} relating to the MTConnect \mtterm{Component}, the \xmlelement{Source} element under the \xmlelement{DataItem} references the \mtterm{DataItem} with \xmlattribute{type} \dataitem{AMPERAGE}. When the \mtterm{source} refers to a \mtterm{DataItem} that is part of the same MTConnect \mtterm{Component}, the UA \uaterm{Variable} is given a \uaterm{Reference} \uaterm{HasEventSource} from the \mtterm{RotaryType} (Rotary[C]) and a \uaterm{HasCondition} \uaterm{Reference} is created beteen the \uaterm{Variable} to the \mtterm{MTConditionType}.
+
+As stated above, the \uaterm{HasNotifier} \uaterm{References} must be established between all \mtterm{Components} back to the \mtuatype{MTDeviceType} that has a reference from the \uaterm{Server}. The \texttt{MotorAmperage} and \texttt{MotorAmperageCondition} demonstrate the naming rule where the Composition type is converted to \textit{PascalCase} and then prepended to the \mtterm{DataItem} \xmlattribute{type}. 
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/rotary-c-amperage.png}
@@ -495,6 +499,7 @@ Figure~\ref{fig:rotary-c-load} represents the \dataitem{Load} \mtterm{DataItem} 
         <Controller id="p5add360">
           <DataItems>
             <DataItem id="x7ca94e0" type="EMERGENCY_STOP" category="EVENT" name="estop"/>
+            <DataItem id="m17f1750" type="MESSAGE" category="EVENT"/>
           </DataItems>
           <Components>
             <Path id="a4a7bdf0" name="P1">
@@ -516,6 +521,10 @@ Figure~\ref{fig:rotary-c-load} represents the \dataitem{Load} \mtterm{DataItem} 
         </Controller>
 \end{lstlisting}
 
+\begin{quote}
+    \color{red} TODO: Controller model
+\end{quote}
+
 \begin{lstlisting}[firstnumber=last,%
     caption={Electrical System and Sensor Configuration},label={lst:electric-system-example-1}]
         <Systems id="if618500">
@@ -532,6 +541,7 @@ Figure~\ref{fig:rotary-c-load} represents the \dataitem{Load} \mtterm{DataItem} 
                     <Filter type="MINIMUM_DELTA">10</Filter>
                   </Filters>
                 </DataItem>
+                <DataItem id="tc9edc70" name="pampts" type="VOLT_AMPERE" category="SAMPLE" units="VOLT_AMPERE" representation="TIME_SERIES" sampleRate="100"/>
                 <DataItem id="e25c1130" name="pamp" type="AMPERAGE" category="SAMPLE" units="AMPERE"/>
                 <DataItem id="qb9212c0" type="AMPERAGE" category="SAMPLE" units="AMPERE" statistic="AVERAGE">
                   <ResetTrigger>ACTION_COMPLETE</ResetTrigger>
@@ -566,14 +576,153 @@ Figure~\ref{fig:rotary-c-load} represents the \dataitem{Load} \mtterm{DataItem} 
         </Systems>
 \end{lstlisting}
 
+\begin{quote}
+    \color{red} TODO: Configuration and filters
+\end{quote}
+
 \subsection{MTConnect Streaming Data}
 
-\subsubsection{Sample Data Items}
+MTConnect separates out the the streaming updates to the values of the data from the meta-data describing the semantic meaning of the data. This is covered in detail in \cite{MTCPart3}. The XML document also contains protocol information which will be ignored for handling of the streaming data. 
 
-\subsubsection{Controlled Vocabulary Event Data Items}
+The \mtterm{HTTP REST} protocol providews both a snapshot and time series data from the \mtterm{MTConnect Agent} that is collected from the \mtterm{Device}. Each entry is time-stamped and given a sequence number that indicates the arrival order across all devices in the \mtterm{MTConnect Agent}.
 
-\subsubsection{String Event Data Items}
+The following section provides the rules and mechanism to take data from the MTConnect stream and represent as a series of updates to the \uaterm{Variables} and generate \uaterm{Events} for the \mtterm{MTConditionType} and \mtterm{MTMessageType}.
 
-\subsubsection{Numeric Event Data Items}
+\begin{lstlisting}[firstnumber=1,escapechar=|,%
+    caption={Streams Header},label={lst:streams-header}]
+<?xml version="1.0" encoding="UTF-8"?>
+<MTConnectStreams xmlns="urn:mtconnect.org:MTConnectStreams:1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectStreams:1.4 ./schema/MTConnectStreams_1.4.xsd">
+	<Header version="1.4.0" creationTime="2018-10-31T21:00:01Z" nextSequence="43124" lastSequence="44221" firstSequence="1" instanceId="1541045065" sender="localhost" bufferSize="131072"/>
+	<Streams>
+    <DeviceStream name="SimpleCnc" uuid="872a3490-bd2d-0136-3eb0-0c85909298d9">    
+\end{lstlisting}
 
-\subsubsection{Condition Data Items}
+Listing~\ref{lst:streams-header} root element \xmlelement{MTConnectStreams} contains the standard namespace declarations for MTConnect and XMLSchema. If additional namespaces are noted, they should be added as additional namespaces in the OPC UA \uaterm{Namespace} as well. The streams document begins with a Header with protocol information that represents the version of the standard being references and the store-and-forward buffer sequence numbers. \cite{MTCPart1} provides information on the interaction with the \mtterm{Agent} and the proper sequence of requests to receive a conriguous stream of data.
+
+\begin{lstlisting}[firstnumber=last,escapechar=|,%
+    caption={Comoonent Stream},label={lst:component-stream}]
+      <ComponentStream componentId="e373fec0" component="Linear" name="X1" nativeName="X"> |\label{line:component-stream}|
+        <Samples>
+          <Position sequence="131" timestamp="2018-10-31T20:33:11Z" dataItemId="dcbc0570" name="Xpos">UNAVAILABLE</Position> |\label{line:pos-unavilable}|
+          <Position sequence="794" timestamp="2018-10-31T20:47:09Z" dataItemId="dcbc0570" name="Xpos">205.23</Position> |\label{line:pos-795}|
+        </Samples>
+      </ComponentStream>
+\end{lstlisting}
+
+MTConnect only reports data when it changes. Each change is assigned a monotonically increasing sequence number when it arrives at the \textit{MTConnect Agent}. MTConnect organizes flattens the structure when reporting data and organizes it by \mtterm{Component} and \mtterm{Category}, this is shown in  Listing~\ref{lst:linear-component-stream} Line~\ref{line:component-stream}. When the data stream is initialized or when it disconnects, the MTConnect \mtterm{DataItem Value} is set to \texttt{UNAVAILABLE} as shown on Line~\ref{line:pos-unavilable}.
+
+The sequence number indicates the arrival order in the \mtterm{Agent} and the \xmlattribute{timestamp} indicates the time the observation was made. The \xmlattribute{timestamp} will be used when setting the \uaterm{Variable} with the data that has arrived from the \mtterm{Device}. The data is only reported when it changes with the exception of \mtterm{DataItems} with the \mtterm{representation} of \texttt{DISCRETE} indicating that each value has a discrete meaning, such as a \mtterm{PartCount} where each count indicates an accrual of that many parts. {\color{red} It is unclear how to achieve this in OPC UA, possible with events as is being done with \mtuatype{MTMessageType}}.
+
+The value of \texttt{UNAVAILABLE} will be translated to the OPC UA \uaterm{DataVariable} \uaterm{StatusCode} of \texttt{Bad_NotConnected} to indicate that the value of the data is currently unknown from the data source. 
+
+The followiing examples provide the steps to translate from the \mtterm{MTConnectStreams} document to the OPC UA information model presented above.
+
+\subsubsection{Samples}
+
+The \mtterm{DataItems} with \mtterm{category} \dataitem{SAMPLE} are mapped to the \mtuatype{MTSampleType} which is a subtype of the \uaterm{AnalogItemType} \uaterm{DataVariable}. The numeric value of the sample sets the \uaterm{Variable} 
+
+\begin{lstlisting}[firstnumber=last,escapechar=|,%
+    caption={Linear Component Stream},label={lst:linear-component-stream}]
+      <ComponentStream componentId="e373fec0" component="Linear" name="X1" nativeName="X"> |\label{line:component-stream}|
+        <Samples>
+          <Position sequence="794" timestamp="2018-10-31T20:47:09.1011Z" dataItemId="dcbc0570" name="Xpos">205.23</Position> |\label{line:pos-795}|
+          <Position sequence="809" timestamp="2018-10-31T20:47:09.6021Z" dataItemId="dcbc0570" name="Xpos">206.23</Position> |\label{line:pos-809}|
+        </Samples>
+      </ComponentStream>
+\end{lstlisting}
+
+The OPC UA \uaterm{DataVariableType}s are monitored items and have three attribtues that are updated when the value changes. They are the \uaterm{Value} in the instance of the \uaterm{DataVariable}, the \uaterm{SourceTimestamp}, and the \uaterm{Quality}. When the value is given, not \texttt{UNAVAILABLE}, the \uaterm{Quality} will be set to the Status Code of \uaterm{Good}, the \uaterm{SourceTimestamp} will be set to the \xmlattribute{timestamp} attribute and the \uaterm{Value} set to the contents of the \xmlelement{CDATA} converted to a \mtterm{Double} precision value.
+
+\subsubsection{String and Numeric Events}\label{sec:sting-numeric-events}
+
+The \mtuatype{MTStringEventType} and \mtuatype{MTNumericEventType} \mtterm{DataItems} are managed in the same manner as the \mtuatype{MTSampleType} where the \uaterm{Value}, \uaterm{Quality}, and \uaterm{SourceTimestamp} are taken from the \xmlelement{CDATA}, \texttt{UNAVALAILABLE} state, and \xmlattribute{timestamp} respectively.
+
+\begin{lstlisting}[firstnumber=last,escapechar=|,%
+    caption={Path Component Stream},label={lst:path-component-stream}]
+      <ComponentStream componentId="a4a7bdf0" component="Path" name="P1">
+        <Events>
+          <Program sequence="430" timestamp="2018-10-31T20:47:09Z" dataItemId="k8dd9030">O98877</Program> |\label{line:prog-430}|
+          <PartCount sequence="630" timestamp="2018-10-31T20:57:09Z" dataItemId="d2e9e4a0">662</PartCount> |\label{line:pc-603}|
+          <ControllerMode sequence="255" timestamp="2018-10-31T20:27:09Z" dataItemId="if36ff60">AUTOMATIC</ControllerMode> |\label{line:cmode-255}|
+
+        </Events>
+      </ComponentStream>
+\end{lstlisting}
+
+In Listing~\ref{lst:path-component-stream} on Line~\ref{line:prog-430}, the string value will be assiogned to the Program data item in the Path component. The following Line~\ref{line:pc-603} representing the part count will be converted to a numeric value, in this case an \uaterm{Int32} and assigned to the value.
+
+All extended event types will be treated as \mtuatype{MTStringEventType}s since it can support any value. It will be the responsibility of the application to interpret the value.
+ 
+\subsubsection{Controlled Vocabulary Events}
+
+Controlled Vocabularies are represented as \mtuatype{MTControlledVocabEventType} which is a subtype of the \uaterm{MultiStateValueDiscreteType}. The \uaterm{MultiStateValueDiscreteType} requires an integer index to be used for the value, so the text given in MTConnect must be translated.
+
+Referring to Listing~\ref{lst:path-component-stream} Line~\ref{line:cmode-255}, the values of the \texttt{CDATA} represent the allowed enumerations in the \mtuaenum{ControllerModeDataType} as shown in 
+Table~\ref{table:example-ControllerModeDataType}. In this case the value from mtconnect is \texttt{AUTOMATIC} and is looked up in the associated \uaterm{EnumerationDataType} and the integer value is assigned to the \uaterm{Value} of the \mtuatype{MTControlledVocabEventType} instance, in this example the value will be \texttt{0} for \texttt{AUTOMATIC}.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ControllerModeDataType} Enumeration}
+  \label{table:example-ControllerModeDataType}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{AUTOMATIC} & \texttt{0} \\
+\texttt{EDIT} & \texttt{1} \\
+\texttt{MANUAL} & \texttt{2} \\
+\texttt{MANUAL_DATA_INPUT} & \texttt{3} \\
+\texttt{SEMI_AUTOMATIC} & \texttt{4} \\
+\end{tabu}
+\end{table} 
+
+Tjhe \uaterm{SourceTimestamp} and \uaterm{Quality} will be handled as described in Section~\ref{sec:sting-numeric-events} for \mtterm{String and Numeric Events}.
+
+\FloatBarrier
+
+\subsubsection{Conditions}
+
+Conditions in are represnted by the \mtuatype{MTConditionType} that is a subtype of the \uaterm{ConditonType}. The MTConnect \mtterm{Conditions} are a representation of the transitional state of various alarms and reporting on the functioning of a \mtterm{Component} of the machine. There are three states for a conditon in MTConnect, they are \mtterm{Normal}, \mtterm{Warning}, and \mtterm{Fault} that have the semantic meaning \textit{operating normally}, \textit{a situation has been observed, but may self-correct}, and \textit{a failure has occured and needs manual intervention}. More information can be found in MTConnect \cite{MTCPart2} and \cite{MTCPart3} of the MTConnect Standard on Condition behavior.
+
+The \mtuatype{MTConditionType} has a \uaterm{Property} called \texttt{ActiveState} that represents if there are any warnings or faults associated with the condition. The \texttt{ActiveState} is an OPC UA \uaterm{TwoStateVariableType} defined in \cite{UAPart8}. When a Condition is \mtterm{Normal}, the \texttt{ActiveState} will be \texttt{True} and when either a \mtterm{Warning} or \mtterm{Fault} is active, the \texttt{ActiveState} will be \texttt{True}.
+
+\begin{lstlisting}[firstnumber=last,escapechar=|,%
+    caption={Rotary C Component Stream},label={lst:rotary-component-stream}]
+      <ComponentStream componentId="zf476090" component="Rotary" name="C" nativeName="S">
+        <Condition>
+          <Normal sequence="201" timestamp="2018-10-31T20:34:19.9981Z" dataItemId="afb596b0" type="AMPERAGE" compositionId="b7792870" name="Soverload"/> |\label{line:amp-201}|
+          <Warning sequence="503" timestamp="2018-10-31T20:45:19.9981Z" dataItemId="afb596b0" type="AMPERAGE" compositionId="b7792870" name="Soverload" qualifier="HIGH" nativeCode="MOT-WARN">Spindle Motor Warning</Warning> |\label{line:amp-503}|
+          <Fault sequence="652" timestamp="2018-10-31T20:49:19.9981Z" dataItemId="afb596b0" type="AMPERAGE" compositionId="b7792870" name="Soverload" qualifier="HIGH" nativeCode="MOT-OVR">Spindle Motor Overload</Fault> |\label{line:amp-652}|
+        </Condition>
+\end{lstlisting}
+
+The instance of the \mtuatype{MTConditionType} will contain the latest state of the \mtterm{Condition} as they are activated. Each time an MTConnect \mtterm{Condition} activates or deactivates, an \uaterm{Condition} \uaterm{Event} will be created associated with the instance if the \mtuatype{MTConditionType} \uaterm{NodeId}. 
+
+The \uaterm{ConditionType} and \uaterm{EventType} properties will be set as follows:
+
+\begin{itemize}
+    \item \uaterm{Severity}:
+    \begin{itemize}
+        \item When \mtterm{Normal}, \uaterm{Severity} is 0.
+        \item When \mtterm{Warning}, \uaterm{Severity} is 500.
+        \item When \mtterm{Fault}, \uaterm{Severity} is 1000.
+    \end{itemize}
+    \item \uaterm{Retain}
+    \begin{itemize}
+        \item When \mtterm{Normal}, \uaterm{False}
+        \item When \mtterm{Warning} or \mtterm{Fault}, \uaterm{True}
+    \end{itemize}
+    \item \uaterm{Message} set from the \xmlelement{CDATA}
+    \item \uaterm{Time}, \xmlattribute{timestamp}
+\end{itemize}
+
+The remaining \uaterm{Properties} will be set from the XML attributes of the same name.
+
+\begin{quote}
+    \color{red} TODO: Need to handle branching based on \xmlattribute{nativeCode}.
+\end{quote}
+
+\subsubsection{Messages}
+
+\subsection{Time Series Samples}

@@ -60,8 +60,10 @@
 \RequirePackage{siunitx}
 \RequirePackage{upgreek}
 \RequirePackage{longtable}
+\RequirePackage{enumitem}
 \usepackage{amsmath}
 \usepackage{amssymb}
+
 % *********** %
 % 	Options   %
 % *********** %

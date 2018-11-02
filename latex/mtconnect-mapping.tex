@@ -34,13 +34,6 @@ The UML Associations are used to represent OPC UA references. UA Properties repr
 
 When traversing an association between two object types, the name of the source of the association is the browse name associated with the object, and the destination is the type of object that is instantiated. If the name is not given, it represents a dynamic relationship where the browse name is determined during the creation of the object model. An example is the association of the MTConnect \mtconnectterm{DataItem}s.
 
-\begin{quote}
-    \color{red} Move Data Item UML to the Types section.
-\end{quote}
-
-%\input{diagrams/mtconnect-mapping/data-item-uml.tex}
-%\FloatBarrier
-
 A reference that has a stereotype of \textit{<<Organizes>>}, shown by the \texttt{Components} recursive relationship in the \mtconnectterm{MTComponentType}, implies an intermediate object of type \opcuaterm{FolderType} with the \uaterm{BrowseName} of the relationship point on the source side. The far side is not constrained within the \opcuaterm{FolderType} but given in the documentation as the expected contents of the folder.
 
 OPC UA represents both class and instance diagrams using the same set of primitives. UML provides separate class and object models using two separate sets of primitives, one for classification and the other for instances of those classes. This section separates the object instantiation from the classification and uses UML object diagrams to represent example instances of classes.
@@ -145,29 +138,29 @@ Extensions to the MTConnect standard that have enumerations will represent the d
 MTConnect base types have been prefixed with the letters \texttt{MT} to avoid confusion with OPC UA vocabulary. The following component types and relationships have been annotated:
 
 \begin{itemize}
-\item $Device \rightarrow MTDeviceType$
-\item $Component \rightarrow MTComponentType$
-\item $Composition \rightarrow MTCompositionType$
-\item $Configuration \rightarrow MTConfigurationType$
-\item $Description \rightarrow MTDescriptionType$
-\item $SensorConfiguration \rightarrow MTSensorConfiguration$
-\item $Message \rightarrow MTMessageType$
+\item Device $\rightarrow$ \mtuatype{MTDeviceType}
+\item Component $\rightarrow$  \mtuatype{MTComponentType}
+\item Composition $\rightarrow$ \mtuatype{MTCompositionType}
+\item Configuration $\rightarrow$ \mtuatype{MTConfigurationType}
+\item Description $\rightarrow$ \mtuatype{MTDescriptionType}
+\item SensorConfiguration $\rightarrow$ \mtuatype{MTSensorConfiguration}
+\item Message $\rightarrow$ \mtuatype{MTMessageType}
 \end{itemize}
 
 The following types representing base MTConnect types are also prefixed:
 
 \begin{itemize}
-\item $MTAssetEventType$
-\item $MTControlledVocabEventType$
-\item $MTNumericEventType$
-\item $MTHasClassType$
-\item $MTHasSubClassType$
-\item $MTStringEventType$
-\item $MTSampleType$
-\item $MTConnectAlarmConditionType$
-\item $MTExclusiveLimitConditionType$
-\item $MTNonExclusiveConditionType$
-\item $MTThreeSpaceSampleType$
+\item \mtuatype{MTAssetEventType}
+\item \mtuatype{MTControlledVocabEventType}
+\item \mtuatype{MTNumericEventType}
+\item \mtuatype{MTHasClassType}
+\item \mtuatype{MTHasSubClassType}
+\item \mtuatype{MTStringEventType}
+\item \mtuatype{MTSampleType}
+\item \mtuatype{MTConnectAlarmConditionType}
+\item \mtuatype{MTExclusiveLimitConditionType}
+\item \mtuatype{MTNonExclusiveConditionType}
+\item \mtuatype{MTThreeSpaceSampleType}
 \end{itemize}
 
 \subsubsection{Component and Composition \uaterm{BrowseName} Rules}
@@ -183,37 +176,50 @@ The MTConnect \mtterm{DataItem} represents multiple OPC UA \uaterm{DataVariableT
     \begin{itemize}
     \item Evaluate \xmlelement{DataItem} attributes as follows:
         \begin{enumerate}
+        \setlength\itemsep{1em}
         \item If the category is \texttt{CONDITION}, the type is \mtuatype{MTConditionType}.
+        
         \item If the category is \texttt{SAMPLE}; apply the following rules:
             \begin{enumerate}
             \item If the \xmlattribute{type} is \texttt{PATH_POSITION} then the type is \mtuatype{MTThreeSpaceSampleType}.
             \item Otherwise, the UA type is \mtuatype{MTSampleType}.
             \end{enumerate}
+            
         \item If the category is \texttt{EVENT}; apply the following rules:
             \begin{enumerate}
+            \setlength\itemsep{1em}
             \item If the \xmlattribute{type} is \texttt{ASSET_CHANGED} or \texttt{ASSET_REMOVED}; the UA type is \mtuatype{MTAssetEventType}
+            
             \item Convert the \xmlattribute{type} attribite to \textit{PascalCase} and add \texttt{ClassType}.
+            
             \item Find the MTConnect UA \uaterm{ClassType} that corresponds to the value computed in the previous step.
             The types can be found in Sections \mtuamodel{ControlledVocabDataItemTypes}, \mtuamodel{NumericEventDataItemTypes}, and \mtuamodel{StringEventDataItemTypes}.
+            
             \item If the \uaterm{ClassType} matches one of the \mtuamodel{StringEventDataItemTypes}; the MTConnect UA type is \mtuatype{MTStringEventType}.
+            
             \item If the \uaterm{ClassType} matches one of the \mtuamodel{NumericEventDataItemTypes}; the MTConnect UA type is \mtuatype{MTNumericEventType}.
+            
             \item If the \uaterm{ClassType} matches one of the  \mtuamodel{ControlledVocabDataItemTypes}, the MTConnect UA type is \mtuatype{MTControlledVocabEventType}. The \uaterm{EnumValues} will be assigned as follows:
-                \begin{enumerate}
-                \item Each of the \uaterm{ClassType}s will have a property \mtterm{EnumValues}. The \uaterm{EnumValues} must reference the \mtterm{EnumValues} property of the \uaterm{ClassType}.
-                \end{enumerate}
+            \newline
+            
+            Each of the \uaterm{ClassType}s will have a property \mtterm{EnumValues}. The \uaterm{EnumValues} must reference the \mtterm{EnumValues} property of the \uaterm{ClassType}.
+            
             \item Otherwise, the UA type is \mtuatype{MTStringEventType}. This will apply to all extended types.
             \end{enumerate}
         \end{enumerate}
     \end{itemize}
+    
 \item Assign the \mtuatype{HasMTClassType} and \mtuatype{HasMTSubClassType} \uaterm{References}
     \begin{enumerate}
-        \item Convert the \xmlelement{DataItem} \xmlattribute{type} attribute to \textit{PascalCase} and append \texttt{ClassType}. Assign the target of the \mtuatype{HasMTClassType} to the \uaterm{ObjectType}
-        \item Put the text name of the class in the property \mtterm{MTTypeName}.
-        \item Convert the \xmlelement{DataItem} \xmlattribute{subType} attribute to \textit{PascalCase} and append \texttt{SubClassType}. Assign the target of the \mtuatype{HasMTSubClassType} to the \uaterm{ObjectType}
-        \item Put the text name of the class in the property \mtterm{MTSubTypeName}.
+    \item Convert the \xmlelement{DataItem} \xmlattribute{type} attribute to \textit{PascalCase} and append \texttt{ClassType}. Assign the target of the \mtuatype{HasMTClassType} to the \uaterm{ObjectType}
+    \item Put the text name of the class in the property \mtterm{MTTypeName}.
+    \item Convert the \xmlelement{DataItem} \xmlattribute{subType} attribute to \textit{PascalCase} and append \texttt{SubClassType}. Assign the target of the \mtuatype{HasMTSubClassType} to the \uaterm{ObjectType}
+    \item Put the text name of the class in the property \mtterm{MTSubTypeName}.
     \end{enumerate}
+    
 \item Format the \uaterm{BrowseName} for the \mtterm{Sample} and \mtterm{Event} \mtterm{DataItem}s
-    \begin{enumerate}
+    \begin{enumerate}[after=\vspace{\baselineskip}]
+    \setlength\itemsep{1em}
     \item If the \xmlelement{DataItem} attribute \xmlattribute{compositionId} is present, do the following:
         \begin{enumerate}
         \item Resolve the \xmlattribute{compositionId} to the \mtterm{Composition} XML element with that \xmlattribute{id}.
@@ -223,7 +229,9 @@ The MTConnect \mtterm{DataItem} represents multiple OPC UA \uaterm{DataVariableT
     \item If the \xmlattribute{subType} is present, set the variable \texttt{subType} to the \textit{PascalCase} of the \xmlattribute{subType}. Otherwise set it the variable \texttt{subType} to "".
     \item Set the variable \texttt{type} to the \textit{PascalCase} of the \xmlelement{DataItem} attribute \xmlattribute{type}.
     \item The \uaterm{BrowseName} is the concatination of the \texttt{composition} + \texttt{subType} + \texttt{type}.
+    \item If the \xmlattribute{representation} attribute is given, the \uaterm{BrowseName} will be have the \textit{PascalCase} of the \xmlattribute{representation} appended to the \uaterm{BrowseName}. For example, a \dataitem{AMPERAGE} with \xmlattribute{representation="TIME_SERIES"} will have a \uaterm{BrowseName} of \texttt{AmperageTimeSeries}.
     \end{enumerate}
+
 \item Format the \uaterm{BrowseName} for the \mtterm{Condition} \mtterm{DataItem}s
     \begin{enumerate}
     \item Use the name derived in the previous step for \mtterm{Event}s and \mtterm{Sample}s and append \texttt{Condition}. 
@@ -231,6 +239,16 @@ The MTConnect \mtterm{DataItem} represents multiple OPC UA \uaterm{DataVariableT
 \end{enumerate}
 
 The examples below will provide further guidance on implementing these rules.
+
+\subsubsection{\uaterm{NodeId} Construction Rules}
+
+To ensure unique \uaterm{NodeIds} in the address space, the following rules will be used to compose the \uaterm{NodeId} of each \uaterm{Object} and \uaterm{Variable}:
+
+\begin{itemize}
+    \item The \mtuatype{MTDeviceType} instance will use the \xmlattribute{uuid} attribute as the NodeId.
+    \item XML elements with an \xmlattribute{id} will compose the \mtuatype{MTDeviceType} \xmlattribute{uuid} and the \xmlattribute{id} as follows: $uuid + "/" + id$.
+    \item \uaterm{Object}s and \uaterm{Variable}s that do not have an \xmlattribute{id} associated with the corresponding XML element will use the parent \uaterm{NodeId} composed with the browse name of the object as follows: $parent.NodeId + "/" + self.BrowseName$
+\end{itemize}
 
 \subsubsection{Mapping \mtterm{DataItem} \mtterm{units} to \uaterm{EngineeringUnits}}
 
@@ -415,6 +433,14 @@ The \mtuatype{MTComponentType} is decendent of the \uaterm{BaseEventType} descri
 The \uaterm{HasNotifier} refererence is created between the \texttt{SimpleCnc:}\mtuatype{MTDeviceType} object and the \texttt{Axes} object to allow for the events to flow down to the conditions for each of the components. The relationship of the condition in Figure~\ref{fig:linear-x-example-1} illustrates the relationships between the \element{Component} and the related condition in the notification hierarchy.
 
  The \texttt{Linear[x]} component uses a \uaterm{HasNotifier} reference sourced from the parent \texttt{Axes} \uaterm{Object}. The condition, having a \mtuatype{MTClassType} and a ConditionClassId of \mtuatype{PositionClassType}, is connected to the \texttt{Linear[X]} axis with a \uaterm{HasCondition} relationship. 
+
+\begin{quote}
+    \color{red} Need to handle the following three Conditon Properties: SourceName, SourceNode, and EventType.
+    \begin{itemize}
+        \item SourceNode and SourceName must refer to either the Component or the Variable that is the source of this Condition.
+        \item Is EventType the ...Type that is referenced by the \uaterm{HasTypeDefinition}?
+    \end{itemize}
+\end{quote}
 
 \FloatBarrier
 
@@ -641,7 +667,7 @@ The \mtterm{DataItems} with \mtterm{category} \dataitem{SAMPLE} are mapped to th
       </ComponentStream>
 \end{lstlisting}
 
-The OPC UA \uaterm{DataVariableType}s are monitored items and have three attribtues that are updated when the value changes. They are the \uaterm{Value} in the instance of the \uaterm{DataVariable}, the \uaterm{SourceTimestamp}, and the \uaterm{Quality}. When the value is given, not \texttt{UNAVAILABLE}, the \uaterm{Quality} will be set to the Status Code of \uaterm{Good}, the \uaterm{SourceTimestamp} will be set to the \xmlattribute{timestamp} attribute and the \uaterm{Value} set to the contents of the \xmlelement{CDATA} converted to a \mtterm{Double} precision value.
+The OPC UA \uaterm{DataVariableType}s are monitored items and have three attribtues that are updated when the value changes. They are the \uaterm{Value} in the instance of the \uaterm{DataVariable}, the \uaterm{Time}, and the \uaterm{Quality}. When the value is given, not \texttt{UNAVAILABLE}, the \uaterm{Quality} will be set to the Status Code of \uaterm{Good}, the \uaterm{Time} will be set to the \xmlattribute{timestamp} attribute and the \uaterm{Value} set to the contents of the \xmlelement{CDATA} converted to a \mtterm{Double} precision value.
 
 \subsubsection{String and Numeric Events}\label{sec:sting-numeric-events}
 
@@ -712,6 +738,11 @@ The instance of the \mtuatype{MTConditionType} will contain the last state of th
 The \uaterm{ConditionType} and \uaterm{EventType} properties will be set as follows:
 
 \begin{itemize}
+    \item \uaterm{EnableState} will be set as follows:
+    \begin{itemize}
+        \item If the \xmlelement{QName} is \xmlelement{Unavailable}, \uaterm{EnableState} is \uaterm{False}
+        \item Otherwise, \uaterm{EnableState} is \uaterm{True}
+    \end{itemize}
     \item \uaterm{Severity}:
     \begin{itemize}
         \item When \mtterm{Normal}, \uaterm{Severity} is 0.

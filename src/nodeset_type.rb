@@ -140,12 +140,12 @@ class Type
     end
   end
 
-  def variable_property(ref, suffix = '')
+  def variable_property(ref, owner, suffix = '')
     ele, refs = node('UAVariable', "#{ref.node_id}#{suffix}", ref.name, data_type: ref.target.type.node_alias,
                      value_rank: -1, prefix: !is_opc_instance?)
     node_reference(refs, ref.target.type.name, 'HasTypeDefinition', ref.target_node_id, ref.target_node_name)
     node_reference(refs, ref.rule, 'HasModellingRule', NodeIds[ref.rule]) unless ref.type == 'UMLSlot'
-    node_reference(refs, ref.owner.name, 'HasProperty', ref.owner.node_id, forward: false)
+    node_reference(refs, owner.name, 'HasProperty', owner.node_id, forward: false)
 
     # Add values for slots
     add_value(ele, ref) if ref.type == 'UMLSlot'
@@ -153,11 +153,11 @@ class Type
     ele    
   end
 
-  def component(ref, suffix = '')
+  def component(ref, owner, suffix = '')
     ele, refs = node('UAObject', "#{ref.node_id}#{suffix}", ref.name)
     node_reference(refs, ref.target.type.name, 'HasTypeDefinition', ref.target.type.node_id)
     node_reference(refs, ref.rule, 'HasModellingRule', NodeIds[ref.rule])
-    node_reference(refs, ref.owner.name, 'HasProperty', ref.owner.node_id, forward: false)
+    node_reference(refs, owner.name, 'HasProperty', owner.node_id, forward: false)
     
     ele    
   end
@@ -166,14 +166,15 @@ class Type
     @type == 'UMLObject' and @classifier.is_opc?
   end
   
-  def relationships(refs, suffix = '')
+  def relationships(refs, suffix = '', owner = nil)
     nodes = []
+    owner ||= self
 
     @relations.each do |a|
       if !a.is_attribute? and a.name
         if a.is_property?
           reference(refs, a, suffix)
-          nodes << variable_property(a, suffix)
+          nodes << variable_property(a, owner, suffix)
         elsif a.is_a? Relation::Association
           if @type == 'UMLObject' && a.target.type.is_opc?
             node_reference(refs, a.name, a.reference_type_alias,
@@ -181,7 +182,7 @@ class Type
                            forward: a.target.navigable)
           else
             reference(refs, a, suffix)
-            nodes << component(a, suffix)
+            nodes << component(a, owner, suffix)
           end
         end
       end
@@ -206,9 +207,9 @@ class Type
     stereo
   end
 
-  def add_mixin_relations(refs)
-    pnodes = @parent.add_mixin_relations(refs) if @parent
-    nodes = relationships(refs, @@mixin_suffix)
+  def add_mixin_relations(refs, owner)
+    pnodes = @parent.add_mixin_relations(refs, owner) if @parent
+    nodes = relationships(refs, @@mixin_suffix, owner)
     Array(pnodes).concat(nodes)
   end
 
@@ -235,7 +236,7 @@ class Type
       node_reference(refs, @parent.name, 'HasSubtype', @parent.node_id, forward: false)
       
       if @mixin
-        nodes = @mixin.add_mixin_relations(refs)
+        nodes = @mixin.add_mixin_relations(refs, self)
         nodes.each { |n| root << n }
         @@mixin_suffix += 1
       end

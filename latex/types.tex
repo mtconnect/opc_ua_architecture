@@ -1,4 +1,4 @@
-% Generated 2018-11-03 01:08:16 -0700
+% Generated 2018-11-03 13:27:37 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -109,17 +109,17 @@ HasProperty & Variable & SampleRate & Float & PropertyType & Optional \\
 HasProperty & Variable & SampleInterval & Float & PropertyType & Optional \\
 HasComponent & Object & Description & \multicolumn{2}{|l|}{MTDescriptionType} & Optional \\
 HasComponent & Object & Configuration & \multicolumn{2}{|l|}{MTConfigurationType} & Optional \\
-HasComponent & Variable & <MTControlledVocabEvent> & \multicolumn{2}{|l|}{MTControlledVocabEventType} & Optional \\
-HasComponent & Variable & <MTNumericEvent> & \multicolumn{2}{|l|}{MTNumericEventType} & Optional \\
-HasComponent & Variable & <MTStringEvent> & \multicolumn{2}{|l|}{MTStringEventType} & Optional \\
-HasComponent & Variable & <MTSample> & \multicolumn{2}{|l|}{MTSampleType} & Optional \\
-HasComponent & Event & <MTMessage> & \multicolumn{2}{|l|}{MTMessageType} & Optional \\
-HasComponent & Variable & <MTAssetEvent> & \multicolumn{2}{|l|}{MTAssetEventType} & Optional \\
-HasComponent & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
-HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
-HasComponent & Variable & <MTThreeSpaceSample> & \multicolumn{2}{|l|}{MTThreeSpaceSampleType} & Optional \\
-Organizes & Object & Components & MTComponentType & FolderType & Optional \\
-Organizes & Object & Compositions & MTCompositionType & FolderType & Optional \\
+HasComponent & Variable & <MTControlledVocabEvent> & \multicolumn{2}{|l|}{MTControlledVocabEventType[]} & Optional \\
+HasComponent & Variable & <MTNumericEvent> & \multicolumn{2}{|l|}{MTNumericEventType[]} & Optional \\
+HasComponent & Variable & <MTStringEvent> & \multicolumn{2}{|l|}{MTStringEventType[]} & Optional \\
+HasComponent & Variable & <MTSample> & \multicolumn{2}{|l|}{MTSampleType[]} & Optional \\
+HasComponent & Event & <MTMessage> & \multicolumn{2}{|l|}{MTMessageType[]} & Optional \\
+HasComponent & Variable & <MTAssetEvent> & \multicolumn{2}{|l|}{MTAssetEventType[]} & Optional \\
+HasComponent & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType[]} & Optional \\
+HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType[]} & Optional \\
+HasComponent & Variable & <MTThreeSpaceSample> & \multicolumn{2}{|l|}{MTThreeSpaceSampleType[]} & Optional \\
+Organizes & Object & Components & MTComponentType[] & FolderType & Optional \\
+Organizes & Object & Compositions & MTCompositionType[] & FolderType & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -303,7 +303,7 @@ HasProperty & Variable & FirwareVersion & String & PropertyType & Mandatory \\
 HasProperty & Variable & CalibrationDate & UtcTime & PropertyType & Optional \\
 HasProperty & Variable & NextCalibrationDate & UtcTime & PropertyType & Optional \\
 HasProperty & Variable & CalibrationInitials & String & PropertyType & Optional \\
-Organizes & Object & Channels & MTChannelType & FolderType & Optional \\
+Organizes & Object & Channels & MTChannelType[] & FolderType & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -396,44 +396,6 @@ concat(self.parent.NodeId, BrowseName)
 \end{table} 
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ConstraintDataType}}
-  \label{type:ConstraintDataType}
-
-\FloatBarrier
-
-Provides the constraints on the range of values or the allowable values that can be represented in a data item. 
-If a single Value is given in the Values field, the data item is considered to have a static value that
-never changes.
-
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{ConstraintDataType} DataType}
-  \label{data-type:ConstraintDataType}
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|l|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Field} & {Type}  \\
-\tabucline[1.5pt]{}
-\texttt{Values} & \texttt{String[]} \\
-\texttt{Minimum} & \texttt{Double} \\
-\texttt{Nominal} & \texttt{Double} \\
-\texttt{Maximum} & \texttt{Double} \\
-\end{tabu}
-\end{table} 
-
-\paragraph{Data Type Fields}
-
-\begin{itemize}
-\item \texttt{Values::String:} Array of allowable values.
-
-\item \texttt{Minimum::Double:} Set to NaN when not used.
-
-\item \texttt{Nominal::Double:} Set to NaN when not used.
-
-\item \texttt{Maximum::Double:} Set to NaN when not used.
-
-\end{itemize}
-\FloatBarrier
 \subsubsection{Defintion of \texttt{ MTAssetEventType}}
   \label{type:MTAssetEventType}
 
@@ -469,7 +431,6 @@ HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
-HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasProperty & Variable & MinimumDeltaFilter & Float & PropertyType & Optional \\
 HasProperty & Variable & PeriodFilter & Float & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
@@ -477,6 +438,7 @@ HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataI
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
+HasComponent & Object & Constraints & \multicolumn{2}{|l|}{MTConstraintType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -520,6 +482,34 @@ HasSubtype & ObjectType & SystemClassType & \multicolumn{3}{|l|}{See section \re
 
 
 \FloatBarrier
+\subsubsection{Defintion of \texttt{ MTConstraintType}}
+  \label{type:MTConstraintType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTConstraintType} Definition}
+  \label{table:MTConstraintType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTConstraintType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{BaseObjectType} (See \cite{UAPart5} Documentation)} \\
+HasProperty & Variable & Value & String[] & PropertyType & Optional \\
+HasProperty & Variable & Minimum & Float & PropertyType & Optional \\
+HasProperty & Variable & Maximum & Float & PropertyType & Optional \\
+HasProperty & Variable & Nominal & Float & PropertyType & Optional \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ MTControlledVocabEventType}}
   \label{type:MTControlledVocabEventType}
 
@@ -556,7 +546,6 @@ HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
-HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasProperty & Variable & MinimumDeltaFilter & Float & PropertyType & Optional \\
 HasProperty & Variable & PeriodFilter & Float & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
@@ -564,6 +553,7 @@ HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataI
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
+HasComponent & Object & Constraints & \multicolumn{2}{|l|}{MTConstraintType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -605,7 +595,6 @@ HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
-HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasProperty & Variable & MinimumDeltaFilter & Float & PropertyType & Optional \\
 HasProperty & Variable & PeriodFilter & Float & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
@@ -613,6 +602,7 @@ HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataI
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
+HasComponent & Object & Constraints & \multicolumn{2}{|l|}{MTConstraintType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -979,7 +969,6 @@ HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
-HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasProperty & Variable & MinimumDeltaFilter & Float & PropertyType & Optional \\
 HasProperty & Variable & PeriodFilter & Float & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
@@ -987,6 +976,7 @@ HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataI
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
+HasComponent & Object & Constraints & \multicolumn{2}{|l|}{MTConstraintType} & Mandatory \\
 HasProperty & Variable & NativeCode & String & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
@@ -1032,7 +1022,6 @@ HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
-HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasProperty & Variable & MinimumDeltaFilter & Float & PropertyType & Optional \\
 HasProperty & Variable & PeriodFilter & Float & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
@@ -1040,6 +1029,7 @@ HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataI
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
+HasComponent & Object & Constraints & \multicolumn{2}{|l|}{MTConstraintType} & Mandatory \\
 HasProperty & Variable & SignificantDigits & UInt16 & PropertyType & Optional \\
 HasProperty & Variable & Statistic & String & PropertyType & Optional \\
 HasProperty & Variable & Units & String & PropertyType & Optional \\
@@ -1092,7 +1082,6 @@ HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
-HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasProperty & Variable & MinimumDeltaFilter & Float & PropertyType & Optional \\
 HasProperty & Variable & PeriodFilter & Float & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
@@ -1100,6 +1089,7 @@ HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataI
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
+HasComponent & Object & Constraints & \multicolumn{2}{|l|}{MTConstraintType} & Mandatory \\
 HasProperty & Variable & SignificantDigits & UInt16 & PropertyType & Optional \\
 HasProperty & Variable & Statistic & String & PropertyType & Optional \\
 HasProperty & Variable & Units & String & PropertyType & Optional \\
@@ -1159,7 +1149,6 @@ HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
-HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasProperty & Variable & MinimumDeltaFilter & Float & PropertyType & Optional \\
 HasProperty & Variable & PeriodFilter & Float & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
@@ -1167,6 +1156,7 @@ HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataI
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
+HasComponent & Object & Constraints & \multicolumn{2}{|l|}{MTConstraintType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -1206,7 +1196,6 @@ HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
-HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasProperty & Variable & MinimumDeltaFilter & Float & PropertyType & Optional \\
 HasProperty & Variable & PeriodFilter & Float & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
@@ -1214,6 +1203,7 @@ HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataI
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
+HasComponent & Object & Constraints & \multicolumn{2}{|l|}{MTConstraintType} & Mandatory \\
 HasProperty & Variable & SignificantDigits & UInt16 & PropertyType & Optional \\
 HasProperty & Variable & Statistic & String & PropertyType & Optional \\
 HasProperty & Variable & Units & String & PropertyType & Optional \\
@@ -1313,7 +1303,6 @@ HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
-HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasProperty & Variable & MinimumDeltaFilter & Float & PropertyType & Optional \\
 HasProperty & Variable & PeriodFilter & Float & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
@@ -1321,6 +1310,7 @@ HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataI
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
+HasComponent & Object & Constraints & \multicolumn{2}{|l|}{MTConstraintType} & Mandatory \\
 HasProperty & Variable & NativeCode & String & PropertyType & Optional \\
 HasProperty & Variable & NativeSeverity & String & PropertyType & Optional \\
 HasProperty & Variable & MTSeverity & MTSeverityDataType & PropertyType & Mandatory \\

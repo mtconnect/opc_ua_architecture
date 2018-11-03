@@ -36,6 +36,14 @@ module Relation
         raise "!!!! Cannot find reference type for #{@owner.name}::#{@name}"
       end
     end
+    
+    def value_rank
+      if is_array?
+        1
+      else
+        -1
+      end
+    end
   end
 
   class Association
@@ -174,8 +182,9 @@ class Type
   end
 
   def variable_property(ref, owner, path = [])
+    Root << REXML::Comment.new(" #{owner.name}::#{ref.name} : #{ref.target.type.name}[#{ref.multiplicity}] ")
     refs, ele = node('UAVariable', ref.node_id(path), ref.name, data_type: ref.target.type.node_alias,
-                     value_rank: -1, prefix: !is_opc_instance?)
+                     value_rank: ref.value_rank, prefix: !is_opc_instance?, parent: owner.node_id)
     node_reference(refs, ref.target.type.name, 'HasTypeDefinition', ref.target_node_id, ref.target_node_name)
     node_reference(refs, ref.rule, 'HasModellingRule', Ids[ref.rule]) unless ref.type == 'UMLSlot'
     node_reference(refs, owner.name, 'HasProperty', owner.node_id, forward: false)
@@ -209,15 +218,25 @@ class Type
     attrs
   end
 
+  def create_opc_object_reference(refs, a)
+    slot, = a.target.type.relations.select { |t| t.name == 'NodeId' }
+    if slot
+      nodeId = slot.value
+    else
+      nodeId = a.target.type.node_id
+    end
+    node_reference(refs, a.name, a.reference_type_alias,
+                   nodeId, a.target.type.name,
+                   forward: a.target.navigable)
+  end
+
   def create_relationship(refs, a, owner, path)
     if a.is_property?
       reference(refs, a, path)
       variable_property(a, owner, path)
     elsif a.is_a? Relation::Association
       if @type == 'UMLObject' && a.target.type.is_opc?
-        node_reference(refs, a.name, a.reference_type_alias,
-                       a.target.type.node_id, a.target.type.name,
-                       forward: a.target.navigable)
+        create_opc_object_reference(refs, a)
       else
         reference(refs, a, path)
         component(a, owner, path)
@@ -299,7 +318,7 @@ class Type
     elsif  @stereotype and @stereotype.name == 'mixin'
       puts "** Skipping mixin #{@name}"
     else
-      puts "!! Do not know how to generate #{@name} #{@type}"
+      puts "!! Do not know how to generate #{@name} #{@type} check Generalization Relationship"
     end
     
     if refs

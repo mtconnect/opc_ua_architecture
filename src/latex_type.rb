@@ -101,11 +101,13 @@ class Type
     @relations.each do |r|
       if r.is_reference?
         next if r.stereotype and r.stereotype.name =~ /Attribute/
+
+        array = '[]' if r.is_array?
         
         if r.is_property? or r.is_folder?
-          type_info = "#{r.final_target.type.name} & #{r.target_node_name}"
+          type_info = "#{r.final_target.type.name}#{array} & #{r.target_node_name}"
         else
-          type_info = "\\multicolumn{2}{|l|}{#{r.target_node_name}}"
+          type_info = "\\multicolumn{2}{|l|}{#{r.target_node_name}#{array}}"
         end
 
         f.puts "#{r.reference_type} & #{r.target.type.base_type} & #{r.browse_name} & #{type_info} & #{r.rule} \\\\"          

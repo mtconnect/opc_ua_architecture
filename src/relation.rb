@@ -152,6 +152,10 @@ module Relation
     def rule
       @optional ? 'Optional' : 'Mandatory'
     end
+
+    def is_array?
+      @multiplicity =~ /\.\.\*/
+    end
     
     def is_optional?
       @optional

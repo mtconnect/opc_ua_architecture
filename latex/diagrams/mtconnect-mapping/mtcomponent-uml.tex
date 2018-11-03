@@ -68,17 +68,13 @@
 \umlinherit[geometry=-|]{MTSensorConfigurationType}{MTConfigurationType}
 
 
-\umlabstract[below right = 2.5cm and 2cm of MTComponentType]{MTCompositionType}{
+\umlclass[below right = 2.5cm and 2cm of MTComponentType]{MTCompositionType}{
 + Uuid: String[0..1] \\
 + Name: String[0..1] \\
 + MTDescription: String[0..1] \\
 }
 
-\umluniassoc[geometry=-|-, stereo=Organizes, pos stereo=1.6, pos1=1.4,pos2=1.2, arg1=Composition, anchor1=-40, mult1=1..*] {MTComponentType} {MTCompositionType}
-
-\umlsimpleclass[below=2cm of MTCompositionType]{<Composition>Type}{}
-\umlinherit[geometry=--, stereo = bind]{<Composition>Type}{MTCompositionType}
-
+\umluniassoc[geometry=|-, stereo=Organizes, pos stereo=0.5, pos1=0.2,pos2=1.7, arg1=Compositions, anchor1=-35, mult1=0..1, mult2=1..*] {MTComponentType} {MTCompositionType}
 
 \umlclass[below=2.5cm of MTSensorConfigurationType]{MTChannelType}{
 + Number: Int32 \\
@@ -89,7 +85,7 @@
 + CalibrationInitials: String[0..1] \\
 }
 
-\umluniassoc[geometry=--, stereo=Organizes, arg1=Channels, mult1=0..*, mult2=1..*] {MTSensorConfigurationType} {MTChannelType}
+\umluniassoc[geometry=--, stereo=Organizes, arg1=Channels, mult1=0..1, mult2=1..*] {MTSensorConfigurationType} {MTChannelType}
 
 \end{tikzpicture}
 }

@@ -10,13 +10,25 @@
            inner sep=2pt,
            text centered           
            },
+   class/.style={
+           rectangle,
+           draw=black, very thick,
+           minimum height=2em,
+           inner sep=2pt,
+           text centered           
+           },
+   ref/.style={
+           thick,->,>={Stealth[length=8pt,width=8pt,inset=4pt]},
+           rounded corners
+           },
+   seg/.style={thick,rounded corners}
 }
 
 \node[object] (device) { %
 \begin{tabular}{l l}
   \multicolumn{2}{c}{\underline{\textbf{SimpleCnc: \typeref{MTDeviceType}}}} \\[4pt]
   \hline
-  NodeId & "x872a3490" \\
+  NodeId & "x872a3490-\ldots" \\
   XmlId & "x872a3490" \\
   Name & "SimpleCnc" \\
   Uuid & "872a3490-\ldots" \\ 
@@ -29,7 +41,7 @@
  \end{tabular}
 };
 
-\node[object,below left=2cm and -1cm of device] (description) { %
+\node[object,below left=1cm and -1cm of device] (description) { %
 \begin{tabular}{l l}
   \multicolumn{2}{c}{\underline{\textbf{Description: \typeref{MTDescriptionType}}}} \\[4pt]
   \hline
@@ -46,47 +58,69 @@
   \multicolumn{2}{c}{\underline{\textbf{Availability: \typeref{MTControlledVocabEventType}}}} \\[4pt]
   \hline
   NodeId & "\ldots/d5b078a0" \\
-  Category & "EVENT" \\
+  Category & EVENT \\
   Name & "avail" \\
   MTTypeName & "AVAILABILITY" \\  
 \end{tabular}
 };
 
-\node[object,below=1cm of avail] (asset-chg) { %
+\node[class,below=1.25cm of avail.south] (avail-class) {
+\textbf{AvailabilityClassType}
+};
+
+\node[object,below=1cm of description] (asset-chg) { %
 \begin{tabular}{l l}
   \multicolumn{2}{c}{\underline{\textbf{AssetChanged: \typeref{MTAssetEventType}}}} \\[4pt]
   \hline
   NodeId & "\ldots/e4a300e0" \\
-  Category & "EVENT" \\
+  Category & EVENT \\
   MTTypeName & "ASSET_CHANGED" \\  
 \end{tabular}
 };
 
-\node[object,below=1cm of asset-chg] (asset-rem) { %
+\node[class,below=1.25cm of asset-chg.south] (asset-chg-class) {
+\textbf{AssetRemovedClassType}
+};
+
+\node[object,below=1cm of asset-chg-class] (asset-rem) { %
 \begin{tabular}{l l}
   \multicolumn{2}{c}{\underline{\textbf{AssetRemoved: \typeref{MTAssetEventType}}}} \\[4pt]
   \hline
   NodeId & "\ldots/f2df7550" \\
-  Category & "EVENT" \\
+  Category & EVENT \\
   MTTypeName & "ASSET_REMOVED" \\  
 \end{tabular}
 };
 
-\draw[->,thick] (device) -| (description)
+\node[class,below=1.25cm of asset-rem.south] (asset-rem-class) {
+\textbf{AssetRemovedClassType}
+};
+
+
+\draw[ref] (device) -| (description)
   node[pos=0.5,above]{<<HasComponent>>};
 
-\draw[->,thick] (server) -- (device) 
+\draw[ref] (server) -- (device) 
   node[pos=0.5,below]{<<HasNotifier>>};
 
-\draw[->,thick] (device) |- (avail) 
+\draw[ref] (device) |- (avail) 
   node[pos=0.75,below]{<<HasComponent>>};
 
-\draw[->,thick] (device) |- (asset-chg) 
+\draw[ref] (device) |- (asset-chg) 
   node[pos=0.75,below]{<<HasComponent>>};
 
-\draw[->,thick] (device) |- (asset-rem) 
+\draw[ref] (device) |- (asset-rem) 
   node[pos=0.75,below]{<<HasComponent>>};
+  
+\draw[ref] (avail) -- (avail-class)
+  node[pos=0.5]{<<HasMTClassType>>};
 
+\draw[ref] (asset-chg) -- (asset-chg-class)
+  node[pos=0.5]{<<HasMTClassType>>};
+
+\draw[ref] (asset-rem) -- (asset-rem-class)
+  node[pos=0.5]{<<HasMTClassType>>};
+  
 \end{tikzpicture}
 }
 \caption{MTConnect Device Object with Data Items}

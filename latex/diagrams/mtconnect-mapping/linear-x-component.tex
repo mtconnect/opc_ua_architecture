@@ -69,13 +69,12 @@
  MTTypeName & "POSITION" \\
  MTSubTypeName & "ACTUAL" \\
  Units & "MILLIMETER" \\
- NativeUnits & "MILLIMETER" \\
 \end{tabular}
 };
 
-\node[class,below=6cm of position.north] (position-class) {
+\node[class,below=5.5cm of position.north] (position-class) {
 \begin{tabular}{l l}
-  \multicolumn{2}{c}{\textbf{\typeref{MTSampleType}}} \\[4pt]
+  \multicolumn{2}{c}{\textbf{\typeref{PositionClassType}}} \\[4pt]
   \hline
   NodeId & ns=1;i=365705
 \end{tabular}
@@ -88,10 +87,9 @@
  EngineeringUnits & "PERCENT" \\
  EURange & NaN:NaN\\
  Name & "Xload" \\
- Category & "SAMPLE" \\
+ Category & SAMPLE \\
  MTTypeName & "LOAD" \\
  Units & "PERCENT" \\
- NativeUnits & "PERCENT" \\
 \end{tabular}
 };
 
@@ -103,7 +101,7 @@
 \begin{tabular}{l l}
   \multicolumn{2}{c}{\underline{\textbf{PositionCondition: \typeref{MTConditionType}}}} \\[4pt]
   \hline
-  <<Attribute>> NodeId & "e086dd60" \\
+  NodeId & "e086dd60" \\
   ConditionClassId & (ns=1;i=365705) \\
   ConditionClassName & "PositionClassType" \\
   ConditionName & "Xtravel" \\
@@ -115,7 +113,7 @@
   LastSeverity & 0 \\
   Name & "Xtravel" \\
   MTTypeName & "POSITION" \\
-  Category & "CONDITION" \\
+  Category & CONDITION \\
   NativeCode & "" \\
   ActiveState & False \\
 \end{tabular}
@@ -161,5 +159,5 @@
 \end{tikzpicture}
 }
 \caption{Linear X Axis Example}
- \label{fig:linear-x-example-1}
+ \label{fig:linear-x-component}
 \end{figure}

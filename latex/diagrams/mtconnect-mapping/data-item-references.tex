@@ -30,7 +30,7 @@
   \multicolumn{2}{c}{\underline{\textbf{Availability: \typeref{MTControlledVocabEventType}}}} \\[4pt]
   \hline
   NodeId & "d5b078a0" \\
-  Category & "EVENT" \\
+  Category & EVENT \\
   Name & "avail" \\
   MTTypeName & "AVAILABILITY" \\  
 \end{tabular}
@@ -50,8 +50,8 @@
 \draw[ref] (avail) |- (data) 
   node[pos=0.1,left]{EnumValues};
 
-\draw[ref, dotted] (class) -- (data) 
-  node[pos=0.4,below]{<<values>>};
+\draw[ref] (class) -- (data) 
+  node[pos=0.2, right]{EnumValues};
 
 
 \end{tikzpicture}

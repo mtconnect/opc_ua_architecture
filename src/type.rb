@@ -104,6 +104,8 @@ class Type
     data_type = get_attribute_like(/DataType$/, /Attribute/)
     if data_type
       data_type.target.type
+    elsif @type == 'UMLDataType' or @type == 'UMLEnumeration'
+      self
     else
       raise "Could not find data type for #{@name}"
       nil
@@ -209,10 +211,19 @@ class Type
     generate_relations(f)
   end
 
+  def is_variable?
+    @type == 'UMLDataType' or is_a_type?('BaseVariableType') or
+      @type == 'UMLEnumeration'
+  end
+
+  def is_event?
+    is_a_type?('BaseEventType')
+  end
+  
   def base_type
-    if @type == 'UMLDataType' or is_a_type?('BaseDataVariableType')
+    if is_variable?
       "Variable"
-    elsif is_a_type?('BaseEventType')
+    elsif is_event?
       'Event'
     else
       "Object"

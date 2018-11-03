@@ -1,4 +1,4 @@
-% Generated 2018-11-01 18:20:27 -0700
+% Generated 2018-11-02 10:39:40 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -559,13 +559,13 @@ DataType & \multicolumn{5}{|l|}{AssetEventDataType} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{BaseDataVariableType} (See \cite{UAPart8} Documentation)} \\
 HasProperty & Variable & XmlId & String & PropertyType & Mandatory \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
-HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & Category & MTCategoryType & PropertyType & Mandatory \\
 HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
 HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
-HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
 HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
@@ -646,13 +646,13 @@ DataType & \multicolumn{5}{|l|}{UInteger} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MultiStateDiscreteType} (See \cite{UAPart8} Documentation)} \\
 HasProperty & Variable & XmlId & String & PropertyType & Mandatory \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
-HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & Category & MTCategoryType & PropertyType & Mandatory \\
 HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
 HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
-HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
 HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
@@ -695,13 +695,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 HasSubtype & ObjectType & MTNumericDataItemType & \multicolumn{3}{|l|}{See section \ref{type:MTNumericDataItemType}} \\
 HasProperty & Variable & XmlId & String & PropertyType & Mandatory \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
-HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & Category & MTCategoryType & PropertyType & Mandatory \\
 HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
 HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
-HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
 HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
@@ -861,9 +861,9 @@ HasProperty & Variable & SignificantDigits & UInt16 & PropertyType & Optional \\
 HasProperty & Variable & Statistic & String & PropertyType & Optional \\
 HasProperty & Variable & Units & String & PropertyType & Optional \\
 HasProperty & Variable & NativeUnits & String & PropertyType & Optional \\
-HasProperty & Object & CoordinateSystem & CoordinateSystemType & PropertyType & Optional \\
+HasProperty & Variable & CoordinateSystem & CoordinateSystemType & PropertyType & Optional \\
 HasProperty & Variable & InitialValue & Double & PropertyType & Optional \\
-HasProperty & Object & ResetTrigger & DataItemResetValueType & PropertyType & Optional \\
+HasProperty & Variable & ResetTrigger & DataItemResetValueType & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -1065,13 +1065,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{SystemEventType} (See \cite{UAPart5} Documentation)} \\
 HasProperty & Variable & XmlId & String & PropertyType & Mandatory \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
-HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & Category & MTCategoryType & PropertyType & Mandatory \\
 HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
 HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
-HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
 HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
@@ -1118,13 +1118,13 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{DataItemType} (See \cite{UAPart8} Documentation)} \\
 HasProperty & Variable & XmlId & String & PropertyType & Mandatory \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
-HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & Category & MTCategoryType & PropertyType & Mandatory \\
 HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
 HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
-HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
 HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
@@ -1137,9 +1137,9 @@ HasProperty & Variable & SignificantDigits & UInt16 & PropertyType & Optional \\
 HasProperty & Variable & Statistic & String & PropertyType & Optional \\
 HasProperty & Variable & Units & String & PropertyType & Optional \\
 HasProperty & Variable & NativeUnits & String & PropertyType & Optional \\
-HasProperty & Object & CoordinateSystem & CoordinateSystemType & PropertyType & Optional \\
+HasProperty & Variable & CoordinateSystem & CoordinateSystemType & PropertyType & Optional \\
 HasProperty & Variable & InitialValue & Double & PropertyType & Optional \\
-HasProperty & Object & ResetTrigger & DataItemResetValueType & PropertyType & Optional \\
+HasProperty & Variable & ResetTrigger & DataItemResetValueType & PropertyType & Optional \\
 HasProperty & Variable & EURange & Range & PropertyType & Optional \\
 HasProperty & Variable & EngineeringUnits & EUInformation & PropertyType & Optional \\
 \end{tabu}
@@ -1178,13 +1178,13 @@ DataType & \multicolumn{5}{|l|}{Number} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{AnalogItemType} (See \cite{UAPart8} Documentation)} \\
 HasProperty & Variable & XmlId & String & PropertyType & Mandatory \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
-HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & Category & MTCategoryType & PropertyType & Mandatory \\
 HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
 HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
-HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
 HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
@@ -1197,9 +1197,9 @@ HasProperty & Variable & SignificantDigits & UInt16 & PropertyType & Optional \\
 HasProperty & Variable & Statistic & String & PropertyType & Optional \\
 HasProperty & Variable & Units & String & PropertyType & Optional \\
 HasProperty & Variable & NativeUnits & String & PropertyType & Optional \\
-HasProperty & Object & CoordinateSystem & CoordinateSystemType & PropertyType & Optional \\
+HasProperty & Variable & CoordinateSystem & CoordinateSystemType & PropertyType & Optional \\
 HasProperty & Variable & InitialValue & Double & PropertyType & Optional \\
-HasProperty & Object & ResetTrigger & DataItemResetValueType & PropertyType & Optional \\
+HasProperty & Variable & ResetTrigger & DataItemResetValueType & PropertyType & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -1245,13 +1245,13 @@ DataType & \multicolumn{5}{|l|}{String} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{BaseDataVariableType} (See \cite{UAPart8} Documentation)} \\
 HasProperty & Variable & XmlId & String & PropertyType & Mandatory \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
-HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & Category & MTCategoryType & PropertyType & Mandatory \\
 HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
 HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
-HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
 HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
@@ -1292,13 +1292,13 @@ DataType & \multicolumn{5}{|l|}{ThreeSpacePositionDataType} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{BaseDataVariableType} (See \cite{UAPart8} Documentation)} \\
 HasProperty & Variable & XmlId & String & PropertyType & Mandatory \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
-HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & Category & MTCategoryType & PropertyType & Mandatory \\
 HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
 HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
-HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
 HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
@@ -1311,9 +1311,9 @@ HasProperty & Variable & SignificantDigits & UInt16 & PropertyType & Optional \\
 HasProperty & Variable & Statistic & String & PropertyType & Optional \\
 HasProperty & Variable & Units & String & PropertyType & Optional \\
 HasProperty & Variable & NativeUnits & String & PropertyType & Optional \\
-HasProperty & Object & CoordinateSystem & CoordinateSystemType & PropertyType & Optional \\
+HasProperty & Variable & CoordinateSystem & CoordinateSystemType & PropertyType & Optional \\
 HasProperty & Variable & InitialValue & Double & PropertyType & Optional \\
-HasProperty & Object & ResetTrigger & DataItemResetValueType & PropertyType & Optional \\
+HasProperty & Variable & ResetTrigger & DataItemResetValueType & PropertyType & Optional \\
 HasProperty & Variable & EngineeringUnits & EUInformation & PropertyType & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -1399,13 +1399,13 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{ConditionType} (See \cite{UAPart9} Documentation)} \\
 HasProperty & Variable & XmlId & String & PropertyType & Mandatory \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
-HasProperty & Object & Category & MTCategoryType & PropertyType & Mandatory \\
+HasProperty & Variable & Category & MTCategoryType & PropertyType & Mandatory \\
 HasProperty & Variable & MTTypeName & String & PropertyType & Mandatory \\
 HasProperty & Variable & MTSubTypeName & String & PropertyType & Optional \\
 HasProperty & Variable & SourceData & String & PropertyType & Optional \\
 HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
-HasProperty & Object & Representation & MTRepresentationType & PropertyType & Optional \\
+HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
 HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
@@ -1416,9 +1416,9 @@ HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Opt
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
 HasProperty & Variable & NativeCode & String & PropertyType & Optional \\
 HasProperty & Variable & NativeSeverity & String & PropertyType & Optional \\
-HasProperty & Object & ActiveState & \multicolumn{2}{|l|}{TwoStateVariableType} & Mandatory \\
-HasProperty & Object & Qualifier & \multicolumn{2}{|l|}{QualifierDataType} & Optional \\
-HasProperty & Object & MTSeverity & \multicolumn{2}{|l|}{MTSeverityDataType} & Optional \\
+HasProperty & Variable & MTSeverity & MTSeverityDataType & PropertyType & Mandatory \\
+HasProperty & Variable & Qualifier & QualifierDataType & PropertyType & Optional \\
+HasComponent & Variable & ActiveState & \multicolumn{2}{|l|}{TwoStateVariableType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -1434,6 +1434,21 @@ inactive, then the \texttt{NativeCode} will be cleared.
 \uaterm{Event} that was received. When the ActiveState becomes False and becomes 
 inactive, then the \texttt{NativeSeverity} will be cleared.
 
+\item \textbf{Allowable Values} for \texttt{MTSeverityDataType}
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTSeverityDataType} Enumeration}
+  \label{enum:MTSeverityDataType}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{FAULT} & \texttt{0} \\
+\texttt{NORMAL} & \texttt{1} \\
+\texttt{WARNING} & \texttt{2} \\
+\end{tabu}
+\end{table} 
 \item \textbf{Allowable Values} for \texttt{QualifierDataType}
 \begin{table}[ht]
 \centering 
@@ -1446,20 +1461,6 @@ inactive, then the \texttt{NativeSeverity} will be cleared.
 \tabucline[1.5pt]{}
 \texttt{HIGH} & \texttt{0} \\
 \texttt{LOW} & \texttt{1} \\
-\end{tabu}
-\end{table} 
-\item \textbf{Allowable Values} for \texttt{MTSeverityDataType}
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{MTSeverityDataType} Enumeration}
-  \label{enum:MTSeverityDataType}
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Name} & {Index} \\
-\tabucline[1.5pt]{}
-\texttt{FAULT} & \texttt{0} \\
-\texttt{WARNING} & \texttt{1} \\
 \end{tabu}
 \end{table} 
 \end{itemize}
@@ -2858,7 +2859,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{ActiveStateDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{ActiveStateDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -2905,7 +2906,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{AvailabilityDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{AvailabilityDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -2955,7 +2956,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{AxisCouplingDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{AxisCouplingDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3004,7 +3005,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{ActiveStateDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{ActiveStateDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3050,7 +3051,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{AxisStateDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{AxisStateDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3099,7 +3100,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{ActiveStateDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{ActiveStateDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3147,7 +3148,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{OpenStateDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{OpenStateDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3194,7 +3195,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{ControllerModeDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{ControllerModeDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3243,7 +3244,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{ExecutionDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{ExecutionDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3299,7 +3300,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{CompositionStateDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{CompositionStateDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3355,7 +3356,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{OnOffDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{OnOffDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3401,7 +3402,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{DirectionDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{DirectionDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3449,7 +3450,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{OpenStateDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{OpenStateDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3496,7 +3497,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{EmergencyStopDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{EmergencyStopDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3542,7 +3543,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{YesNoDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{YesNoDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3591,7 +3592,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{OnOffDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{OnOffDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3640,7 +3641,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{FunctionalModeDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{FunctionalModeDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3689,7 +3690,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{ActiveStateDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{ActiveStateDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3735,7 +3736,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{PathModeDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{PathModeDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3786,7 +3787,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{OnOffDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{OnOffDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3834,7 +3835,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{ProgramEditDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{ProgramEditDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3881,7 +3882,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{RotaryModeDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{RotaryModeDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3928,7 +3929,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{InterfaceStatusDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStatusDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3974,7 +3975,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4023,7 +4024,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4072,7 +4073,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4121,7 +4122,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4170,7 +4171,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4219,7 +4220,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4268,7 +4269,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4317,7 +4318,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4366,7 +4367,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4415,7 +4416,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{MTControlledVocabClassType} (See section \ref{type:MTControlledVocabClassType})} \\
-HasProperty & Object & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataType} & Mandatory \\
+HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataType} & Mandatory \\
 \end{tabu}
 \end{table} 
 

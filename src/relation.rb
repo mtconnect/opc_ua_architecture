@@ -142,6 +142,10 @@ module Relation
       unless @source.resolve_type
         raise "    !!!! cannot resolve source for #{@owner.name}::#{@name} #{self.class.name}"
       end
+
+      if @stereotype and @stereotype.name =~ /Override/
+        @name = @name.sub(/^./, '')
+      end
     end
 
     def rule
@@ -257,10 +261,6 @@ module Relation
     def target_node_name
       'PropertyType'
     end
-
-    def target_node_id
-      NodeIds['PropertyType']
-    end
   end
 
   class Dependency < Relation
@@ -286,10 +286,6 @@ module Relation
     def target_node_name
       "ObjectType"
     end
-
-    def target_node_id
-      NodeIds['ObjectType']
-    end    
   end
   
   class Realization < Dependency
@@ -329,10 +325,6 @@ module Relation
 
     def target_node_name
       'PropertyType'
-    end
-
-    def target_node_id
-      NodeIds['PropertyType']
     end
 
     def resolve_types

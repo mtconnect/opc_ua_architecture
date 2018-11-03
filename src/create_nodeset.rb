@@ -6,6 +6,7 @@ require 'nodeset_model'
 require 'rexml/document'
 require 'nokogiri'
 require 'time'
+require 'id_manager'
 
 uml = File.open('MTConnect OPC-UA Devices.mdj').read
 doc = JSON.parse(uml)
@@ -20,8 +21,7 @@ Type.connect_children
 
 puts "\nGenerating Nodeset"
 
-NodeIds = {}
-Aliases = {}
+Ids = IdManager.new('MTConnectNodeIds.csv')
 Namespace = '1'
 NamespaceUri = 'http://opcfoundation.org/UA/MTConnect/v2'
 
@@ -52,31 +52,33 @@ root.add_element('Models').
 
 
 # Parse Reference Documents.
-once = true
-
-['OPC_UA_Nodesets/Opc.Ua.NodeSet2.xml'].each do |f|
-
-  puts "Parsing OPC UA Nodeset: #{f}"
-  File.open(f) do |x|
-    doc = REXML::Document.new(x)
-
-    if once
+if Ids.empty?
+  ['OPC_UA_Nodesets/Opc.Ua.NodeSet2.xml'].each do |f|
+    puts "Parsing OPC UA Nodeset: #{f}"
+    File.open(f) do |x|
+      doc = REXML::Document.new(x)
+      
       # Copy aliases
-      als = root.add_element('Aliases')
       doc.root.each_element('//Aliases/Alias') do |e|
-        Aliases[e.attribute('Alias').value] = e.text
-        als.add_element(e)
+        Ids.add_alias(e.attribute('Alias').value)
       end
-      once = false
-    end
-
-    doc.root.elements.each do |e|
-      name, id = e.attribute('BrowseName'), e.attribute('NodeId')
-      if name and id
-        NodeIds[name.value] = id.value
+      
+      doc.root.elements.each do |e|
+        parent, name, id = e.attribute('ParentNodeId'), e.attribute('BrowseName'), e.attribute('NodeId')
+        parent = "#{parent.value}/" if parent
+        if name and id
+          Ids["#{parent}#{name.value}"] = id.value
+        end
       end
     end
   end
+  
+  Ids.save
+end
+
+als = root.add_element('Aliases')
+Ids.each_alias do |a|
+  als.add_element('Alias', { 'Alias' => a }).add_text(Ids[a])
 end
 
 Type.resolve_node_ids
@@ -101,4 +103,6 @@ File.open('./MTConnect.Nodeset2.xml', 'w') do |f|
   formatter.compact = true
   formatter.write(document, f)  
 end
+
+Ids.save
 

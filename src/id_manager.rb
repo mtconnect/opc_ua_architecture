@@ -10,8 +10,14 @@ class IdManager
 
     CSV.foreach(@file) do |key, id, als|
       @ids[key] = id
+      if id =~ /ns=1;i=([0-9]+)$/o
+        v = $1.to_i
+        @next_id = v + 1 if v >= @next_id
+      end
       @aliases << key if eval(als)
     end
+    puts "Next is #{@next_id}"
+    
   rescue
     puts "File #{@file} cannot be found, starting ids from #{start}"
   end
@@ -40,13 +46,17 @@ class IdManager
     alias_or_id(key)
   end
 
+  def raw_id(key)
+    @ids[key]
+  end
+
   def empty?
     @ids.empty?
   end
 
   def []=(key, id)
-    puts "Key #{key} already defined" if @ids.include?(key)
-    @ids[key] = id
+    # puts "Key #{key} with #{id} already defined" if @ids.include?(key)
+    @ids[key] = id unless @ids.include?(key)
   end
 
   def id_for(key)

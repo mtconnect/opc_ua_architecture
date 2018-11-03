@@ -40,7 +40,7 @@ module Relation
   class Relation
     attr_reader :id, :name, :type, :json, :multiplicity,
                 :source, :target, :owner, :documentation,
-                :stereotype
+                :stereotype, :tags
 
     class Connection
       attr_accessor :name, :type, :type_id, :multiplicity
@@ -74,6 +74,7 @@ module Relation
       @name = r['name']
       @documentation = r['documentation']
       @type = r['_type']
+      @tags = r['tags']
       @json = r
       @multiplicity = r['multiplicity'] || '1'
       @optional = (@multiplicity and @multiplicity =~ /^0\.\./) != nil

@@ -29,20 +29,20 @@ NamespaceUri = 'http://opcfoundation.org/UA/MTConnect/v2'
 document = REXML::Document.new
 document << REXML::XMLDecl.new("1.0", "UTF-8")
 
-root = REXML::Element.new('UANodeSet')
-root.add_namespace('xsd', "http://www.w3.org/2001/XMLSchema")
-root.add_namespace('xsi', "http://www.w3.org/2001/XMLSchema-instance")
-root.add_namespace("http://opcfoundation.org/UA/2011/03/UANodeSet.xsd")
+Root = REXML::Element.new('UANodeSet')
+Root.add_namespace('xsd', "http://www.w3.org/2001/XMLSchema")
+Root.add_namespace('xsi', "http://www.w3.org/2001/XMLSchema-instance")
+Root.add_namespace("http://opcfoundation.org/UA/2011/03/UANodeSet.xsd")
 
-root.add_attribute("xsi:schemaLocation",
+Root.add_attribute("xsi:schemaLocation",
                    "http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd")
                                                                                                                           
-root.add_attribute('LastModified', Time.now.utc.xmlschema)
-root.add_element('NamespaceUris').
+Root.add_attribute('LastModified', Time.now.utc.xmlschema)
+Root.add_element('NamespaceUris').
   add_element('Uri').
   add_text(NamespaceUri)
 
-root.add_element('Models').
+Root.add_element('Models').
   add_element('Model',  { 'ModelUri' => NamespaceUri,
                           "Version" => "2.00",
                           "PublicationDate" => Time.now.utc.xmlschema }).
@@ -64,10 +64,13 @@ if Ids.empty?
       end
       
       doc.root.elements.each do |e|
-        parent, name, id = e.attribute('ParentNodeId'), e.attribute('BrowseName'), e.attribute('NodeId')
-        parent = "#{parent.value}/" if parent
-        if name and id
-          Ids["#{parent}#{name.value}"] = id.value
+        parent, name, id, sym = e.attribute('ParentNodeId'), e.attribute('BrowseName'), e.attribute('NodeId'),
+          e.attribute('SymbolicName')
+
+        if name and id and (e.name =~ /Type$/o or
+                (sym and sym.value =~ /ModellingRule/o) or
+                (name.value == 'Namespaces'))
+          Ids[name.value] = id.value 
         end
       end
     end
@@ -76,29 +79,29 @@ if Ids.empty?
   Ids.save
 end
 
-als = root.add_element('Aliases')
+als = Root.add_element('Aliases')
 Ids.each_alias do |a|
-  als.add_element('Alias', { 'Alias' => a }).add_text(Ids[a])
+  als.add_element('Alias', { 'Alias' => a }).add_text(Ids.raw_id(a))
 end
 
 Type.resolve_node_ids
 Type.check_ids
 
-Model.generate_nodeset(root, 'Namespace Metadata')
-Model.generate_nodeset(root, 'Components')
-Model.generate_nodeset(root, 'Data Items')
-Model.generate_nodeset(root, 'Conditions')
-Model.generate_nodeset(root, 'Data Item Types')
-Model.generate_nodeset(root, 'Sample Data Item Types')
-Model.generate_nodeset(root, 'Condition Data Item Types')
-Model.generate_nodeset(root, 'Controlled Vocab Data Item Types')
-Model.generate_nodeset(root, 'Numeric Event Data Item Types')
-Model.generate_nodeset(root, 'String Event Data Item Types')
-Model.generate_nodeset(root, 'Data Item Sub Types')
-Model.generate_nodeset(root, 'MTConnect Device Profile')
+Model.generate_nodeset('Namespace Metadata')
+Model.generate_nodeset('Components')
+Model.generate_nodeset('Data Items')
+Model.generate_nodeset('Conditions')
+Model.generate_nodeset('Data Item Types')
+Model.generate_nodeset('Sample Data Item Types')
+Model.generate_nodeset('Condition Data Item Types')
+Model.generate_nodeset('Controlled Vocab Data Item Types')
+Model.generate_nodeset('Numeric Event Data Item Types')
+Model.generate_nodeset('String Event Data Item Types')
+Model.generate_nodeset('Data Item Sub Types')
+Model.generate_nodeset('MTConnect Device Profile')
 
 File.open('./MTConnect.Nodeset2.xml', 'w') do |f|
-  document << root
+  document << Root
   formatter = REXML::Formatters::Pretty.new(2)
   formatter.compact = true
   formatter.write(document, f)  

@@ -1,7 +1,8 @@
 require 'relation'
 
 class Type
-  attr_reader :name, :id, :type, :model, :json, :parent, :children, :relations, :stereotype     
+  attr_reader :name, :id, :type, :model, :json, :parent, :children, :relations, :stereotype,
+              :tags
 
   @@types_by_id = {}
   @@types_by_name = {}
@@ -35,6 +36,7 @@ class Type
     @documentation = e['documentation']
     @operations = e['operations'] || []
     @abstract = e['isAbstract'] || false
+    @tags = e['tags']
     @model = model
     @literals = Array(e['literals'])
 

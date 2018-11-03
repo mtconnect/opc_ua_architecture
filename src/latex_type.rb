@@ -72,7 +72,7 @@ module Document
   end
 end
 
-class Type
+class LatexType < Type
   include Diagram
   include Document
 

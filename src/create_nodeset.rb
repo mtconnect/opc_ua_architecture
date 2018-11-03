@@ -13,7 +13,7 @@ doc = JSON.parse(uml)
 models = doc['ownedElements'].select { |e| e['name'] != 'UMLStandardProfile' }
 
 models.each do |e|
-  Model.find_definitions(e)
+  NodesetModel.find_definitions(e)
 end
 
 Type.resolve_types
@@ -83,21 +83,21 @@ Ids.each_alias do |a|
   als.add_element('Alias', { 'Alias' => a }).add_text(Ids.raw_id(a))
 end
 
-Type.resolve_node_ids
-Type.check_ids
+NodesetType.resolve_node_ids
+NodesetType.check_ids
 
-Model.generate_nodeset('Namespace Metadata')
-Model.generate_nodeset('Components')
-Model.generate_nodeset('Data Items')
-Model.generate_nodeset('Conditions')
-Model.generate_nodeset('Data Item Types')
-Model.generate_nodeset('Sample Data Item Types')
-Model.generate_nodeset('Condition Data Item Types')
-Model.generate_nodeset('Controlled Vocab Data Item Types')
-Model.generate_nodeset('Numeric Event Data Item Types')
-Model.generate_nodeset('String Event Data Item Types')
-Model.generate_nodeset('Data Item Sub Types')
-Model.generate_nodeset('MTConnect Device Profile')
+NodesetModel.generate_nodeset('Namespace Metadata')
+NodesetModel.generate_nodeset('Components')
+NodesetModel.generate_nodeset('Data Items')
+NodesetModel.generate_nodeset('Conditions')
+NodesetModel.generate_nodeset('Data Item Types')
+NodesetModel.generate_nodeset('Sample Data Item Types')
+NodesetModel.generate_nodeset('Condition Data Item Types')
+NodesetModel.generate_nodeset('Controlled Vocab Data Item Types')
+NodesetModel.generate_nodeset('Numeric Event Data Item Types')
+NodesetModel.generate_nodeset('String Event Data Item Types')
+NodesetModel.generate_nodeset('Data Item Sub Types')
+NodesetModel.generate_nodeset('MTConnect Device Profile')
 
 File.open('./MTConnect.Nodeset2.xml', 'w') do |f|
   document << Root

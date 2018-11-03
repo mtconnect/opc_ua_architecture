@@ -9,11 +9,11 @@ doc = JSON.parse(uml)
 models = doc['ownedElements'].select { |e| e['name'] != 'UMLStandardProfile' }
 
 models.each do |e|
-  Model.find_definitions(e)
+  LatexModel.find_definitions(e)
 end
 
-Type.resolve_types
-Type.connect_children
+LatexType.resolve_types
+LatexType.connect_children
 
 
 puts "\nGenerating LaTex"
@@ -21,17 +21,17 @@ puts "\nGenerating LaTex"
 File.open('./latex/types.tex', 'w') do |f|
   f.puts "% Generated #{Time.now}"
   
-  Model.generate_latex(f, 'Components')
-  Model.generate_latex(f, 'Data Items')
-  Model.generate_latex(f, 'Conditions')
-  Model.generate_latex(f, 'Data Item Types')
-  Model.generate_latex(f, 'Sample Data Item Types')
-  Model.generate_latex(f, 'Controlled Vocab Data Item Types')
-  Model.generate_latex(f, 'Numeric Event Data Item Types')
-  Model.generate_latex(f, 'String Event Data Item Types')
-  Model.generate_latex(f, 'Condition Data Item Types')
-  Model.generate_latex(f, 'Data Item Sub Types')
+  LatexModel.generate_latex(f, 'Components')
+  LatexModel.generate_latex(f, 'Data Items')
+  LatexModel.generate_latex(f, 'Conditions')
+  LatexModel.generate_latex(f, 'Data Item Types')
+  LatexModel.generate_latex(f, 'Sample Data Item Types')
+  LatexModel.generate_latex(f, 'Controlled Vocab Data Item Types')
+  LatexModel.generate_latex(f, 'Numeric Event Data Item Types')
+  LatexModel.generate_latex(f, 'String Event Data Item Types')
+  LatexModel.generate_latex(f, 'Condition Data Item Types')
+  LatexModel.generate_latex(f, 'Data Item Sub Types')
 #  Model.generate_latex(f, 'Factories')
-  Model.generate_latex(f, 'MTConnect Device Profile')
+  LatexModel.generate_latex(f, 'MTConnect Device Profile')
   
 end

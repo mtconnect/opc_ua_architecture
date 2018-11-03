@@ -1,9 +1,13 @@
 require 'latex_type'
 require 'model'
 
-class Model
+class LatexModel < Model
   include Diagram
   include Document
+
+  def self.type_class
+    LatexType
+  end
 
   def self.generate_latex(f, model)
     @@models[model].generate_latex(f)

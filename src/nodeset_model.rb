@@ -1,9 +1,13 @@
 require 'nodeset_type'
 require 'model'
 
-class Model
+class NodesetModel < Model
   def self.generate_nodeset(model)
     @@models[model].generate_nodeset
+  end
+
+  def self.type_class
+    NodesetType
   end
 
   def generate_nodeset

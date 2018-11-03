@@ -5,6 +5,10 @@ class Model
 
   @@models = {}
 
+  def self.type_class
+    raise "Must use subtype"
+  end
+
   def self.models
     @@models
   end
@@ -50,20 +54,20 @@ class Model
     
     case e['_type']
     when 'UMLClass'
-      Type.new(model, e)
+      type_class.new(model, e)
 
     when 'UMLObject'
-      Type.new(model, e)
+      type_class.new(model, e)
       
     when 'UMLStereotype'
-      Type.new(model, e)
+      type_class.new(model, e)
       
     when 'UMLDataType', 'UMLEnumeration'
       #   puts "#{'  ' * depth}  Adding data type: #{e['name']}  id: #{e['_id']}"
-      Type.new(model, e)
+      type_class.new(model, e)
       
     when 'UMLModel', 'UMLProfile'
-      model = Model.new(e)
+      model = self.new(e)
       recurse(e, depth + 1, model)
 
     else

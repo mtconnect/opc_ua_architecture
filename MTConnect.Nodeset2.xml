@@ -1,49 +1,49 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-11-03T07:28:52Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-11-03T08:16:26Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-11-03T07:28:52Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-11-03T07:28:52Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-11-03T08:16:26Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-11-03T08:16:26Z'/>
     </Model>
   </Models>
   <Aliases>
     <Alias Alias='Boolean'>i=1</Alias>
-    <Alias Alias='SByte'>i=2</Alias>
     <Alias Alias='Byte'>i=3</Alias>
-    <Alias Alias='Int16'>i=4</Alias>
-    <Alias Alias='UInt16'>i=5</Alias>
-    <Alias Alias='Int32'>i=6</Alias>
-    <Alias Alias='UInt32'>i=7</Alias>
-    <Alias Alias='Int64'>i=8</Alias>
-    <Alias Alias='UInt64'>i=9</Alias>
-    <Alias Alias='Float'>i=10</Alias>
-    <Alias Alias='Double'>i=11</Alias>
-    <Alias Alias='DateTime'>i=13</Alias>
-    <Alias Alias='String'>i=12</Alias>
     <Alias Alias='ByteString'>i=15</Alias>
-    <Alias Alias='Guid'>i=14</Alias>
-    <Alias Alias='XmlElement'>i=16</Alias>
-    <Alias Alias='NodeId'>i=17</Alias>
+    <Alias Alias='DateTime'>i=13</Alias>
+    <Alias Alias='Double'>i=11</Alias>
     <Alias Alias='ExpandedNodeId'>i=18</Alias>
-    <Alias Alias='QualifiedName'>i=20</Alias>
-    <Alias Alias='LocalizedText'>i=21</Alias>
-    <Alias Alias='StatusCode'>i=19</Alias>
-    <Alias Alias='Structure'>i=22</Alias>
-    <Alias Alias='Number'>i=26</Alias>
-    <Alias Alias='Integer'>i=27</Alias>
-    <Alias Alias='UInteger'>i=28</Alias>
+    <Alias Alias='Float'>i=10</Alias>
+    <Alias Alias='Guid'>i=14</Alias>
     <Alias Alias='HasComponent'>i=47</Alias>
-    <Alias Alias='HasProperty'>i=46</Alias>
-    <Alias Alias='Organizes'>i=35</Alias>
+    <Alias Alias='HasDescription'>i=39</Alias>
+    <Alias Alias='HasEncoding'>i=38</Alias>
     <Alias Alias='HasEventSource'>i=36</Alias>
+    <Alias Alias='HasModellingRule'>i=37</Alias>
     <Alias Alias='HasNotifier'>i=48</Alias>
+    <Alias Alias='HasProperty'>i=46</Alias>
     <Alias Alias='HasSubtype'>i=45</Alias>
     <Alias Alias='HasTypeDefinition'>i=40</Alias>
-    <Alias Alias='HasModellingRule'>i=37</Alias>
-    <Alias Alias='HasEncoding'>i=38</Alias>
-    <Alias Alias='HasDescription'>i=39</Alias>
+    <Alias Alias='Int16'>i=4</Alias>
+    <Alias Alias='Int32'>i=6</Alias>
+    <Alias Alias='Int64'>i=8</Alias>
+    <Alias Alias='Integer'>i=27</Alias>
+    <Alias Alias='LocalizedText'>i=21</Alias>
+    <Alias Alias='NodeId'>i=17</Alias>
+    <Alias Alias='Number'>i=26</Alias>
+    <Alias Alias='Organizes'>i=35</Alias>
+    <Alias Alias='QualifiedName'>i=20</Alias>
+    <Alias Alias='SByte'>i=2</Alias>
+    <Alias Alias='StatusCode'>i=19</Alias>
+    <Alias Alias='String'>i=12</Alias>
+    <Alias Alias='Structure'>i=22</Alias>
+    <Alias Alias='UInt16'>i=5</Alias>
+    <Alias Alias='UInt32'>i=7</Alias>
+    <Alias Alias='UInt64'>i=9</Alias>
+    <Alias Alias='UInteger'>i=28</Alias>
+    <Alias Alias='XmlElement'>i=16</Alias>
   </Aliases>
   <UAObject NodeId='ns=1;i=2774' BrowseName='1:http://opcfoundation.org/UA/MTConnect/v2'>
     <DisplayName>http://opcfoundation.org/UA/MTConnect/v2</DisplayName>
@@ -812,27 +812,6 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
-  <UAVariableType NodeId='ns=1;i=2363' BrowseName='1:FilterType' IsAbstract='true' ValueRank='-1' DataType='Float'>
-    <DisplayName>FilterType</DisplayName>
-    <References>
-      <!-- HasSubtype - - BaseVariableType i=62  (forward: false) -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>i=62</Reference>
-    </References>
-  </UAVariableType>
-  <UAVariableType NodeId='ns=1;i=2397' BrowseName='1:MinimumDeltaFilterType' ValueRank='-1' DataType='Float'>
-    <DisplayName>MinimumDeltaFilterType</DisplayName>
-    <References>
-      <!-- HasSubtype - - FilterType ns=1;i=2363  (forward: false) -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2363</Reference>
-    </References>
-  </UAVariableType>
-  <UAVariableType NodeId='ns=1;i=2399' BrowseName='1:PeriodFilterType' ValueRank='-1' DataType='Float'>
-    <DisplayName>PeriodFilterType</DisplayName>
-    <References>
-      <!-- HasSubtype - - FilterType ns=1;i=2363  (forward: false) -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2363</Reference>
-    </References>
-  </UAVariableType>
   <UAVariableType NodeId='ns=1;i=2550' BrowseName='1:MTAssetEventType' ValueRank='-1' DataType='ns=1;i=2547'>
     <DisplayName>MTAssetEventType</DisplayName>
     <References>
@@ -858,10 +837,10 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2797</Reference>
       <!-- HasProperty - - Constraints ns=1;i=2798 ConstraintDataType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2798</Reference>
-      <!-- HasProperty - - MinimumDeltaFilter ns=1;i=2799 MinimumDeltaFilterType (forward: true) -->
+      <!-- HasProperty - - MinimumDeltaFilter ns=1;i=2799 Float (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2799</Reference>
-      <!-- HasProperty - - PeriodDelta ns=1;i=2800 PeriodFilterType (forward: true) -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2800</Reference>
+      <!-- HasProperty - - PeriodFilter ns=1;i=2937 Float (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2937</Reference>
     </References>
   </UAVariableType>
   <UAVariable NodeId='ns=1;i=2789' BrowseName='1:XmlId' ValueRank='-1' DataType='String'>
@@ -974,26 +953,26 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2550</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=2799' BrowseName='1:MinimumDeltaFilter' DataType='Float'>
+  <UAVariable NodeId='ns=1;i=2799' BrowseName='1:MinimumDeltaFilter' ValueRank='-1' DataType='Float'>
     <DisplayName>MinimumDeltaFilter</DisplayName>
     <References>
-      <!-- HasTypeDefinition - - MinimumDeltaFilterType ns=1;i=2397  (forward: true) -->
-      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2397</Reference>
+      <!-- HasTypeDefinition - - Float i=68 PropertyType (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule - - Optional i=80  (forward: true) -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasComponent - - MTAssetEventType ns=1;i=2550  (forward: false) -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2550</Reference>
+      <!-- HasProperty - - MTAssetEventType ns=1;i=2550  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2550</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=2800' BrowseName='1:PeriodDelta' DataType='Float'>
-    <DisplayName>PeriodDelta</DisplayName>
+  <UAVariable NodeId='ns=1;i=2937' BrowseName='1:PeriodFilter' ValueRank='-1' DataType='Float'>
+    <DisplayName>PeriodFilter</DisplayName>
     <References>
-      <!-- HasTypeDefinition - - PeriodFilterType ns=1;i=2399  (forward: true) -->
-      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2399</Reference>
+      <!-- HasTypeDefinition - - Float i=68 PropertyType (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule - - Optional i=80  (forward: true) -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasComponent - - MTAssetEventType ns=1;i=2550  (forward: false) -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2550</Reference>
+      <!-- HasProperty - - MTAssetEventType ns=1;i=2550  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2550</Reference>
     </References>
   </UAVariable>
   <UADataType NodeId='ns=1;i=2562' BrowseName='1:MTCategoryType'>
@@ -1069,10 +1048,10 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2810</Reference>
       <!-- HasProperty - - Constraints ns=1;i=2811 ConstraintDataType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2811</Reference>
-      <!-- HasProperty - - MinimumDeltaFilter ns=1;i=2812 MinimumDeltaFilterType (forward: true) -->
+      <!-- HasProperty - - MinimumDeltaFilter ns=1;i=2812 Float (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2812</Reference>
-      <!-- HasProperty - - PeriodDelta ns=1;i=2813 PeriodFilterType (forward: true) -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2813</Reference>
+      <!-- HasProperty - - PeriodFilter ns=1;i=2938 Float (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2938</Reference>
     </References>
   </UAVariableType>
   <UAVariable NodeId='ns=1;i=2802' BrowseName='1:XmlId' ValueRank='-1' DataType='String'>
@@ -1185,26 +1164,26 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2554</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=2812' BrowseName='1:MinimumDeltaFilter' DataType='Float'>
+  <UAVariable NodeId='ns=1;i=2812' BrowseName='1:MinimumDeltaFilter' ValueRank='-1' DataType='Float'>
     <DisplayName>MinimumDeltaFilter</DisplayName>
     <References>
-      <!-- HasTypeDefinition - - MinimumDeltaFilterType ns=1;i=2397  (forward: true) -->
-      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2397</Reference>
+      <!-- HasTypeDefinition - - Float i=68 PropertyType (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule - - Optional i=80  (forward: true) -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasComponent - - MTControlledVocabEventType ns=1;i=2554  (forward: false) -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2554</Reference>
+      <!-- HasProperty - - MTControlledVocabEventType ns=1;i=2554  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2554</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=2813' BrowseName='1:PeriodDelta' DataType='Float'>
-    <DisplayName>PeriodDelta</DisplayName>
+  <UAVariable NodeId='ns=1;i=2938' BrowseName='1:PeriodFilter' ValueRank='-1' DataType='Float'>
+    <DisplayName>PeriodFilter</DisplayName>
     <References>
-      <!-- HasTypeDefinition - - PeriodFilterType ns=1;i=2399  (forward: true) -->
-      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2399</Reference>
+      <!-- HasTypeDefinition - - Float i=68 PropertyType (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule - - Optional i=80  (forward: true) -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasComponent - - MTControlledVocabEventType ns=1;i=2554  (forward: false) -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2554</Reference>
+      <!-- HasProperty - - MTControlledVocabEventType ns=1;i=2554  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2554</Reference>
     </References>
   </UAVariable>
   <UAObjectType NodeId='ns=1;i=2559' BrowseName='1:MTEventClassType' IsAbstract='true'>
@@ -1239,10 +1218,10 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2822</Reference>
       <!-- HasProperty - - Constraints ns=1;i=2823 ConstraintDataType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2823</Reference>
-      <!-- HasProperty - - MinimumDeltaFilter ns=1;i=2824 MinimumDeltaFilterType (forward: true) -->
+      <!-- HasProperty - - MinimumDeltaFilter ns=1;i=2824 Float (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2824</Reference>
-      <!-- HasProperty - - PeriodDelta ns=1;i=2825 PeriodFilterType (forward: true) -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2825</Reference>
+      <!-- HasProperty - - PeriodFilter ns=1;i=2939 Float (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2939</Reference>
       <!-- HasProperty - - NativeCode ns=1;i=2402 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2402</Reference>
     </References>
@@ -1357,26 +1336,26 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2401</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=2824' BrowseName='1:MinimumDeltaFilter' DataType='Float'>
+  <UAVariable NodeId='ns=1;i=2824' BrowseName='1:MinimumDeltaFilter' ValueRank='-1' DataType='Float'>
     <DisplayName>MinimumDeltaFilter</DisplayName>
     <References>
-      <!-- HasTypeDefinition - - MinimumDeltaFilterType ns=1;i=2397  (forward: true) -->
-      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2397</Reference>
+      <!-- HasTypeDefinition - - Float i=68 PropertyType (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule - - Optional i=80  (forward: true) -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasComponent - - MTMessageType ns=1;i=2401  (forward: false) -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2401</Reference>
+      <!-- HasProperty - - MTMessageType ns=1;i=2401  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2401</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=2825' BrowseName='1:PeriodDelta' DataType='Float'>
-    <DisplayName>PeriodDelta</DisplayName>
+  <UAVariable NodeId='ns=1;i=2939' BrowseName='1:PeriodFilter' ValueRank='-1' DataType='Float'>
+    <DisplayName>PeriodFilter</DisplayName>
     <References>
-      <!-- HasTypeDefinition - - PeriodFilterType ns=1;i=2399  (forward: true) -->
-      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2399</Reference>
+      <!-- HasTypeDefinition - - Float i=68 PropertyType (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule - - Optional i=80  (forward: true) -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasComponent - - MTMessageType ns=1;i=2401  (forward: false) -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2401</Reference>
+      <!-- HasProperty - - MTMessageType ns=1;i=2401  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2401</Reference>
     </References>
   </UAVariable>
   <UAVariable NodeId='ns=1;i=2402' BrowseName='1:NativeCode' ValueRank='-1' DataType='String'>
@@ -1415,10 +1394,10 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2834</Reference>
       <!-- HasProperty - - Constraints ns=1;i=2835 ConstraintDataType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2835</Reference>
-      <!-- HasProperty - - MinimumDeltaFilter ns=1;i=2836 MinimumDeltaFilterType (forward: true) -->
+      <!-- HasProperty - - MinimumDeltaFilter ns=1;i=2836 Float (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2836</Reference>
-      <!-- HasProperty - - PeriodDelta ns=1;i=2837 PeriodFilterType (forward: true) -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2837</Reference>
+      <!-- HasProperty - - PeriodFilter ns=1;i=2940 Float (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2940</Reference>
       <!-- HasProperty - - SignificantDigits ns=1;i=2838 UInt16 (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2838</Reference>
       <!-- HasProperty - - Statistic ns=1;i=2839 String (forward: true) -->
@@ -1549,26 +1528,26 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2357</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=2836' BrowseName='1:MinimumDeltaFilter' DataType='Float'>
+  <UAVariable NodeId='ns=1;i=2836' BrowseName='1:MinimumDeltaFilter' ValueRank='-1' DataType='Float'>
     <DisplayName>MinimumDeltaFilter</DisplayName>
     <References>
-      <!-- HasTypeDefinition - - MinimumDeltaFilterType ns=1;i=2397  (forward: true) -->
-      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2397</Reference>
+      <!-- HasTypeDefinition - - Float i=68 PropertyType (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule - - Optional i=80  (forward: true) -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasComponent - - MTNumericEventType ns=1;i=2357  (forward: false) -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2357</Reference>
+      <!-- HasProperty - - MTNumericEventType ns=1;i=2357  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2357</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=2837' BrowseName='1:PeriodDelta' DataType='Float'>
-    <DisplayName>PeriodDelta</DisplayName>
+  <UAVariable NodeId='ns=1;i=2940' BrowseName='1:PeriodFilter' ValueRank='-1' DataType='Float'>
+    <DisplayName>PeriodFilter</DisplayName>
     <References>
-      <!-- HasTypeDefinition - - PeriodFilterType ns=1;i=2399  (forward: true) -->
-      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2399</Reference>
+      <!-- HasTypeDefinition - - Float i=68 PropertyType (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule - - Optional i=80  (forward: true) -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasComponent - - MTNumericEventType ns=1;i=2357  (forward: false) -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2357</Reference>
+      <!-- HasProperty - - MTNumericEventType ns=1;i=2357  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2357</Reference>
     </References>
   </UAVariable>
   <UAVariable NodeId='ns=1;i=2838' BrowseName='1:SignificantDigits' ValueRank='-1' DataType='UInt16'>
@@ -1736,10 +1715,10 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2854</Reference>
       <!-- HasProperty - - Constraints ns=1;i=2855 ConstraintDataType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2855</Reference>
-      <!-- HasProperty - - MinimumDeltaFilter ns=1;i=2856 MinimumDeltaFilterType (forward: true) -->
+      <!-- HasProperty - - MinimumDeltaFilter ns=1;i=2856 Float (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2856</Reference>
-      <!-- HasProperty - - PeriodDelta ns=1;i=2857 PeriodFilterType (forward: true) -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2857</Reference>
+      <!-- HasProperty - - PeriodFilter ns=1;i=2941 Float (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2941</Reference>
       <!-- HasProperty - - SignificantDigits ns=1;i=2858 UInt16 (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2858</Reference>
       <!-- HasProperty - - Statistic ns=1;i=2859 String (forward: true) -->
@@ -1866,26 +1845,26 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=2856' BrowseName='1:MinimumDeltaFilter' DataType='Float'>
+  <UAVariable NodeId='ns=1;i=2856' BrowseName='1:MinimumDeltaFilter' ValueRank='-1' DataType='Float'>
     <DisplayName>MinimumDeltaFilter</DisplayName>
     <References>
-      <!-- HasTypeDefinition - - MinimumDeltaFilterType ns=1;i=2397  (forward: true) -->
-      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2397</Reference>
+      <!-- HasTypeDefinition - - Float i=68 PropertyType (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule - - Optional i=80  (forward: true) -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasComponent - - MTSampleType ns=1;i=2350  (forward: false) -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2350</Reference>
+      <!-- HasProperty - - MTSampleType ns=1;i=2350  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=2857' BrowseName='1:PeriodDelta' DataType='Float'>
-    <DisplayName>PeriodDelta</DisplayName>
+  <UAVariable NodeId='ns=1;i=2941' BrowseName='1:PeriodFilter' ValueRank='-1' DataType='Float'>
+    <DisplayName>PeriodFilter</DisplayName>
     <References>
-      <!-- HasTypeDefinition - - PeriodFilterType ns=1;i=2399  (forward: true) -->
-      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2399</Reference>
+      <!-- HasTypeDefinition - - Float i=68 PropertyType (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule - - Optional i=80  (forward: true) -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasComponent - - MTSampleType ns=1;i=2350  (forward: false) -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2350</Reference>
+      <!-- HasProperty - - MTSampleType ns=1;i=2350  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
     </References>
   </UAVariable>
   <UAVariable NodeId='ns=1;i=2858' BrowseName='1:SignificantDigits' ValueRank='-1' DataType='UInt16'>
@@ -1990,10 +1969,10 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2873</Reference>
       <!-- HasProperty - - Constraints ns=1;i=2874 ConstraintDataType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2874</Reference>
-      <!-- HasProperty - - MinimumDeltaFilter ns=1;i=2875 MinimumDeltaFilterType (forward: true) -->
+      <!-- HasProperty - - MinimumDeltaFilter ns=1;i=2875 Float (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2875</Reference>
-      <!-- HasProperty - - PeriodDelta ns=1;i=2876 PeriodFilterType (forward: true) -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2876</Reference>
+      <!-- HasProperty - - PeriodFilter ns=1;i=2942 Float (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2942</Reference>
     </References>
   </UAVariableType>
   <UAVariable NodeId='ns=1;i=2865' BrowseName='1:XmlId' ValueRank='-1' DataType='String'>
@@ -2106,29 +2085,29 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2353</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=2875' BrowseName='1:MinimumDeltaFilter' DataType='Float'>
+  <UAVariable NodeId='ns=1;i=2875' BrowseName='1:MinimumDeltaFilter' ValueRank='-1' DataType='Float'>
     <DisplayName>MinimumDeltaFilter</DisplayName>
     <References>
-      <!-- HasTypeDefinition - - MinimumDeltaFilterType ns=1;i=2397  (forward: true) -->
-      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2397</Reference>
+      <!-- HasTypeDefinition - - Float i=68 PropertyType (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule - - Optional i=80  (forward: true) -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasComponent - - MTStringEventType ns=1;i=2353  (forward: false) -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2353</Reference>
+      <!-- HasProperty - - MTStringEventType ns=1;i=2353  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2353</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=2876' BrowseName='1:PeriodDelta' DataType='Float'>
-    <DisplayName>PeriodDelta</DisplayName>
+  <UAVariable NodeId='ns=1;i=2942' BrowseName='1:PeriodFilter' ValueRank='-1' DataType='Float'>
+    <DisplayName>PeriodFilter</DisplayName>
     <References>
-      <!-- HasTypeDefinition - - PeriodFilterType ns=1;i=2399  (forward: true) -->
-      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2399</Reference>
+      <!-- HasTypeDefinition - - Float i=68 PropertyType (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule - - Optional i=80  (forward: true) -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasComponent - - MTStringEventType ns=1;i=2353  (forward: false) -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2353</Reference>
+      <!-- HasProperty - - MTStringEventType ns=1;i=2353  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2353</Reference>
     </References>
   </UAVariable>
-  <UAVariableType NodeId='ns=1;i=2569' BrowseName='1:MTThreeSpaceSampleType' ValueRank='-1' DataType='i=24'>
+  <UAVariableType NodeId='ns=1;i=2569' BrowseName='1:MTThreeSpaceSampleType' ValueRank='-1' DataType='ns=1;i=2565'>
     <DisplayName>MTThreeSpaceSampleType</DisplayName>
     <References>
       <!-- HasSubtype - - BaseDataVariableType i=63  (forward: false) -->
@@ -2153,10 +2132,10 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2885</Reference>
       <!-- HasProperty - - Constraints ns=1;i=2886 ConstraintDataType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2886</Reference>
-      <!-- HasProperty - - MinimumDeltaFilter ns=1;i=2887 MinimumDeltaFilterType (forward: true) -->
+      <!-- HasProperty - - MinimumDeltaFilter ns=1;i=2887 Float (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2887</Reference>
-      <!-- HasProperty - - PeriodDelta ns=1;i=2888 PeriodFilterType (forward: true) -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2888</Reference>
+      <!-- HasProperty - - PeriodFilter ns=1;i=2943 Float (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2943</Reference>
       <!-- HasProperty - - SignificantDigits ns=1;i=2889 UInt16 (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2889</Reference>
       <!-- HasProperty - - Statistic ns=1;i=2890 String (forward: true) -->
@@ -2285,26 +2264,26 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2569</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=2887' BrowseName='1:MinimumDeltaFilter' DataType='Float'>
+  <UAVariable NodeId='ns=1;i=2887' BrowseName='1:MinimumDeltaFilter' ValueRank='-1' DataType='Float'>
     <DisplayName>MinimumDeltaFilter</DisplayName>
     <References>
-      <!-- HasTypeDefinition - - MinimumDeltaFilterType ns=1;i=2397  (forward: true) -->
-      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2397</Reference>
+      <!-- HasTypeDefinition - - Float i=68 PropertyType (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule - - Optional i=80  (forward: true) -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasComponent - - MTThreeSpaceSampleType ns=1;i=2569  (forward: false) -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2569</Reference>
+      <!-- HasProperty - - MTThreeSpaceSampleType ns=1;i=2569  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2569</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=2888' BrowseName='1:PeriodDelta' DataType='Float'>
-    <DisplayName>PeriodDelta</DisplayName>
+  <UAVariable NodeId='ns=1;i=2943' BrowseName='1:PeriodFilter' ValueRank='-1' DataType='Float'>
+    <DisplayName>PeriodFilter</DisplayName>
     <References>
-      <!-- HasTypeDefinition - - PeriodFilterType ns=1;i=2399  (forward: true) -->
-      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2399</Reference>
+      <!-- HasTypeDefinition - - Float i=68 PropertyType (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule - - Optional i=80  (forward: true) -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasComponent - - MTThreeSpaceSampleType ns=1;i=2569  (forward: false) -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2569</Reference>
+      <!-- HasProperty - - MTThreeSpaceSampleType ns=1;i=2569  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2569</Reference>
     </References>
   </UAVariable>
   <UAVariable NodeId='ns=1;i=2889' BrowseName='1:SignificantDigits' ValueRank='-1' DataType='UInt16'>
@@ -2432,10 +2411,10 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2904</Reference>
       <!-- HasProperty - - Constraints ns=1;i=2905 ConstraintDataType (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2905</Reference>
-      <!-- HasProperty - - MinimumDeltaFilter ns=1;i=2906 MinimumDeltaFilterType (forward: true) -->
+      <!-- HasProperty - - MinimumDeltaFilter ns=1;i=2906 Float (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2906</Reference>
-      <!-- HasProperty - - PeriodDelta ns=1;i=2907 PeriodFilterType (forward: true) -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2907</Reference>
+      <!-- HasProperty - - PeriodFilter ns=1;i=2944 Float (forward: true) -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2944</Reference>
       <!-- HasProperty - - NativeCode ns=1;i=2580 String (forward: true) -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2580</Reference>
       <!-- HasProperty - - NativeSeverity ns=1;i=2581 String (forward: true) -->
@@ -2558,26 +2537,26 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2579</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=2906' BrowseName='1:MinimumDeltaFilter' DataType='Float'>
+  <UAVariable NodeId='ns=1;i=2906' BrowseName='1:MinimumDeltaFilter' ValueRank='-1' DataType='Float'>
     <DisplayName>MinimumDeltaFilter</DisplayName>
     <References>
-      <!-- HasTypeDefinition - - MinimumDeltaFilterType ns=1;i=2397  (forward: true) -->
-      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2397</Reference>
+      <!-- HasTypeDefinition - - Float i=68 PropertyType (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule - - Optional i=80  (forward: true) -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasComponent - - MTConditionType ns=1;i=2579  (forward: false) -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2579</Reference>
+      <!-- HasProperty - - MTConditionType ns=1;i=2579  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2579</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=2907' BrowseName='1:PeriodDelta' DataType='Float'>
-    <DisplayName>PeriodDelta</DisplayName>
+  <UAVariable NodeId='ns=1;i=2944' BrowseName='1:PeriodFilter' ValueRank='-1' DataType='Float'>
+    <DisplayName>PeriodFilter</DisplayName>
     <References>
-      <!-- HasTypeDefinition - - PeriodFilterType ns=1;i=2399  (forward: true) -->
-      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2399</Reference>
+      <!-- HasTypeDefinition - - Float i=68 PropertyType (forward: true) -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule - - Optional i=80  (forward: true) -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasComponent - - MTConditionType ns=1;i=2579  (forward: false) -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2579</Reference>
+      <!-- HasProperty - - MTConditionType ns=1;i=2579  (forward: false) -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2579</Reference>
     </References>
   </UAVariable>
   <UAVariable NodeId='ns=1;i=2580' BrowseName='1:NativeCode' ValueRank='-1' DataType='String'>

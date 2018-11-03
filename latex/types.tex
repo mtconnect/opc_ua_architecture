@@ -1,4 +1,4 @@
-% Generated 2018-11-02 10:39:40 -0700
+% Generated 2018-11-03 01:08:16 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -109,7 +109,6 @@ HasProperty & Variable & SampleRate & Float & PropertyType & Optional \\
 HasProperty & Variable & SampleInterval & Float & PropertyType & Optional \\
 HasComponent & Object & Description & \multicolumn{2}{|l|}{MTDescriptionType} & Optional \\
 HasComponent & Object & Configuration & \multicolumn{2}{|l|}{MTConfigurationType} & Optional \\
-HasMTReference & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasComponent & Variable & <MTControlledVocabEvent> & \multicolumn{2}{|l|}{MTControlledVocabEventType} & Optional \\
 HasComponent & Variable & <MTNumericEvent> & \multicolumn{2}{|l|}{MTNumericEventType} & Optional \\
 HasComponent & Variable & <MTStringEvent> & \multicolumn{2}{|l|}{MTStringEventType} & Optional \\
@@ -435,102 +434,6 @@ never changes.
 
 \end{itemize}
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ FilterType}}
-  \label{type:FilterType}
-
-\FloatBarrier
-
-These features will be subsumed by the OPC/UA client filtering directives. They are included
-since they document the MTConnect filtering on the incoming stream of data. The
-subtypes will be instantiated by the FilterObjectFactory if they are secified
-for this data item. See \ref{type:FilterObjectFactory} for more information.
-
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{FilterType} Definition}
-  \label{table:FilterType}
-\fontsize{9pt}{11pt}\selectfont
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{FilterType} \\
-IsAbstract & \multicolumn{5}{|l|}{True} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of \texttt{BaseObjectType} (See \cite{UAPart5} Documentation)} \\
-HasSubtype & ObjectType & MinimumDeltaFilterType & \multicolumn{3}{|l|}{See section \ref{type:MinimumDeltaFilterType}} \\
-HasSubtype & ObjectType & PeriodFilterType & \multicolumn{3}{|l|}{See section \ref{type:PeriodFilterType}} \\
-HasProperty & Variable & Value & Float & PropertyType & Mandatory \\
-\end{tabu}
-\end{table} 
-
-
-\paragraph{Referenced Properties and Objects}
-
-\begin{itemize}
-\item \texttt{Value::Float:} Common abstract base class for the MTConnect filtering of data on input.
-
-\end{itemize}
-\FloatBarrier
-\subsubsection{Defintion of \texttt{ MinimumDeltaFilterType}}
-  \label{type:MinimumDeltaFilterType}
-
-\FloatBarrier
-
-The minimum delta filter will not report data if the change in the value of the
-data item is less than the given value in the \texttt{Value} property. 
-
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{MinimumDeltaFilterType} Definition}
-  \label{table:MinimumDeltaFilterType}
-\fontsize{9pt}{11pt}\selectfont
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{MinimumDeltaFilterType} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of \texttt{FilterType} (See section \ref{type:FilterType})} \\
-\end{tabu}
-\end{table} 
-
-
-\FloatBarrier
-\subsubsection{Defintion of \texttt{ PeriodFilterType}}
-  \label{type:PeriodFilterType}
-
-\FloatBarrier
-
-A period filter sets the minimum number of seconds that must elapse before
-a change is reported as given in the \texttt{Value} property.
-
-
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{PeriodFilterType} Definition}
-  \label{table:PeriodFilterType}
-\fontsize{9pt}{11pt}\selectfont
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{PeriodFilterType} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
-\multicolumn{6}{|l|}{Subtype of \texttt{FilterType} (See section \ref{type:FilterType})} \\
-\end{tabu}
-\end{table} 
-
-
-\FloatBarrier
 \subsubsection{Defintion of \texttt{ MTAssetEventType}}
   \label{type:MTAssetEventType}
 
@@ -567,10 +470,10 @@ HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
 HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
+HasProperty & Variable & MinimumDeltaFilter & Float & PropertyType & Optional \\
+HasProperty & Variable & PeriodFilter & Float & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
-HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
-HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
@@ -654,10 +557,10 @@ HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
 HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
+HasProperty & Variable & MinimumDeltaFilter & Float & PropertyType & Optional \\
+HasProperty & Variable & PeriodFilter & Float & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
-HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
-HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
@@ -703,10 +606,10 @@ HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
 HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
+HasProperty & Variable & MinimumDeltaFilter & Float & PropertyType & Optional \\
+HasProperty & Variable & PeriodFilter & Float & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
-HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
-HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
@@ -749,6 +652,10 @@ HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & O
 \texttt{VALUE} & \texttt{2} \\
 \end{tabu}
 \end{table} 
+\item \texttt{MinimumDeltaFilter::Float:} Represents the MTConnect \mtterm{Filter} subtype of \mtterm{MinimumDeltaFilter}.
+
+\item \texttt{PeriodFilter::Float:} Represents the MTConnect \mtterm{Filter} subtype of \mtterm{PeriodFilter}.
+
 \item \textbf{Allowable Values} for \texttt{MTRepresentationType}
 \begin{table}[ht]
 \centering 
@@ -1073,10 +980,10 @@ HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
 HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
+HasProperty & Variable & MinimumDeltaFilter & Float & PropertyType & Optional \\
+HasProperty & Variable & PeriodFilter & Float & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
-HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
-HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
@@ -1126,10 +1033,10 @@ HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
 HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
+HasProperty & Variable & MinimumDeltaFilter & Float & PropertyType & Optional \\
+HasProperty & Variable & PeriodFilter & Float & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
-HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
-HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
@@ -1186,10 +1093,10 @@ HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
 HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
+HasProperty & Variable & MinimumDeltaFilter & Float & PropertyType & Optional \\
+HasProperty & Variable & PeriodFilter & Float & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
-HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
-HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
@@ -1253,10 +1160,10 @@ HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
 HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
+HasProperty & Variable & MinimumDeltaFilter & Float & PropertyType & Optional \\
+HasProperty & Variable & PeriodFilter & Float & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
-HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
-HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
@@ -1300,10 +1207,10 @@ HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
 HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
+HasProperty & Variable & MinimumDeltaFilter & Float & PropertyType & Optional \\
+HasProperty & Variable & PeriodFilter & Float & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
-HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
-HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\
@@ -1407,10 +1314,10 @@ HasProperty & Variable & StreamRate & Double & PropertyType & Optional \\
 HasProperty & Variable & SampleRate & Double & PropertyType & Optional \\
 HasProperty & Variable & Representation & MTRepresentationType & PropertyType & Optional \\
 HasProperty & Variable & Constraints & ConstraintDataType & PropertyType & Optional \\
+HasProperty & Variable & MinimumDeltaFilter & Float & PropertyType & Optional \\
+HasProperty & Variable & PeriodFilter & Float & PropertyType & Optional \\
 HasMTClassType & Object & <MTDataItemClass> & \multicolumn{2}{|l|}{MTDataItemClassType} & Mandatory \\
 HasMTSubClassType & Object & <MTDataItemSubClass> & \multicolumn{2}{|l|}{MTDataItemSubClassType} & Optional \\
-HasComponent & Object & MinimumDeltaFilter & \multicolumn{2}{|l|}{MinimumDeltaFilterType} & Optional \\
-HasComponent & Object & PeriodDelta & \multicolumn{2}{|l|}{PeriodFilterType} & Optional \\
 HasMTComposition & Object & <MTComposition> & \multicolumn{2}{|l|}{MTCompositionType} & Optional \\
 HasMTSource & Object & <BaseObject> & \multicolumn{2}{|l|}{BaseObjectType} & Optional \\
 HasCondition & Event & <MTCondition> & \multicolumn{2}{|l|}{MTConditionType} & Optional \\

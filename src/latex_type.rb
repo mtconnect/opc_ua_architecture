@@ -2,11 +2,11 @@ require 'type'
 
 module Diagram
   def png_diagram_name
-    "./diagrams/#{short_name}.png"
+    "./diagrams/types/#{short_name}.png"
   end
 
   def tex_diagram_name
-    "./diagrams/#{short_name}.tex"
+    "./diagrams/types/#{short_name}.tex"
   end
 
   def png_diagram_file_name

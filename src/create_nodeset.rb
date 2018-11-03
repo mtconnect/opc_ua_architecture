@@ -68,8 +68,7 @@ if Ids.empty?
           e.attribute('SymbolicName')
 
         if name and id and (e.name =~ /Type$/o or
-                (sym and sym.value =~ /ModellingRule/o) or
-                (name.value == 'Namespaces'))
+                (sym and sym.value =~ /ModellingRule/o))
           Ids[name.value] = id.value 
         end
       end

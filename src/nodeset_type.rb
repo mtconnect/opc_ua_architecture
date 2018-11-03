@@ -350,7 +350,7 @@ class Type
       field.add_element('Description').add_text(l['documentation']) if l['documentation']
 
       text = values.add_element('LocalizedText')
-      text.add_element('Locale')
+      text.add_element('Locale').add_text('en')
       text.add_element('Text').add_text(name)      
     end
     

@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-11-04T00:15:23Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-11-04T00:17:12Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-11-04T00:15:23Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-11-04T00:15:23Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-11-04T00:17:12Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-11-04T00:17:12Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -1015,8 +1015,8 @@
   <UAObject NodeId='ns=1;i=2798' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2550'>
     <DisplayName>Constraints</DisplayName>
     <References>
-      <!-- HasProperty -  - Value ns=1;i=2951 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2951</Reference>
+      <!-- HasProperty -  - Values ns=1;i=3010 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3010</Reference>
       <!-- HasProperty -  - Minimum ns=1;i=2952 Float  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2952</Reference>
       <!-- HasProperty -  - Maximum ns=1;i=2953 Float  -->
@@ -1031,9 +1031,9 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2550</Reference>
     </References>
   </UAObject>
-  <!-- Constraints::Value : String[0..*] -->
-  <UAVariable NodeId='ns=1;i=2951' BrowseName='1:Value' ValueRank='1' DataType='String' ParentNodeId='ns=1;i=2798'>
-    <DisplayName>Value</DisplayName>
+  <!-- Constraints::Values : String[0..*] -->
+  <UAVariable NodeId='ns=1;i=3010' BrowseName='1:Values' ValueRank='1' DataType='String' ParentNodeId='ns=1;i=2798'>
+    <DisplayName>Values</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
@@ -1136,8 +1136,8 @@
     <References>
       <!-- HasSubtype - (Reverse) - BaseObjectType i=58   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=58</Reference>
-      <!-- HasProperty -  - Value ns=1;i=2947 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2947</Reference>
+      <!-- HasProperty -  - Values ns=1;i=3009 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3009</Reference>
       <!-- HasProperty -  - Minimum ns=1;i=2948 Float  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2948</Reference>
       <!-- HasProperty -  - Maximum ns=1;i=2949 Float  -->
@@ -1146,9 +1146,9 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2950</Reference>
     </References>
   </UAObjectType>
-  <!-- MTConstraintType::Value : String[0..*] -->
-  <UAVariable NodeId='ns=1;i=2947' BrowseName='1:Value' ValueRank='1' DataType='String' ParentNodeId='ns=1;i=2946'>
-    <DisplayName>Value</DisplayName>
+  <!-- MTConstraintType::Values : String[0..*] -->
+  <UAVariable NodeId='ns=1;i=3009' BrowseName='1:Values' ValueRank='1' DataType='String' ParentNodeId='ns=1;i=2946'>
+    <DisplayName>Values</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
@@ -1362,8 +1362,8 @@
   <UAObject NodeId='ns=1;i=2811' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2554'>
     <DisplayName>Constraints</DisplayName>
     <References>
-      <!-- HasProperty -  - Value ns=1;i=2955 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2955</Reference>
+      <!-- HasProperty -  - Values ns=1;i=3011 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3011</Reference>
       <!-- HasProperty -  - Minimum ns=1;i=2956 Float  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2956</Reference>
       <!-- HasProperty -  - Maximum ns=1;i=2957 Float  -->
@@ -1378,9 +1378,9 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2554</Reference>
     </References>
   </UAObject>
-  <!-- Constraints::Value : String[0..*] -->
-  <UAVariable NodeId='ns=1;i=2955' BrowseName='1:Value' ValueRank='1' DataType='String' ParentNodeId='ns=1;i=2811'>
-    <DisplayName>Value</DisplayName>
+  <!-- Constraints::Values : String[0..*] -->
+  <UAVariable NodeId='ns=1;i=3011' BrowseName='1:Values' ValueRank='1' DataType='String' ParentNodeId='ns=1;i=2811'>
+    <DisplayName>Values</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
@@ -1604,8 +1604,8 @@
   <UAObject NodeId='ns=1;i=2823' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2401'>
     <DisplayName>Constraints</DisplayName>
     <References>
-      <!-- HasProperty -  - Value ns=1;i=2959 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2959</Reference>
+      <!-- HasProperty -  - Values ns=1;i=3012 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3012</Reference>
       <!-- HasProperty -  - Minimum ns=1;i=2960 Float  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2960</Reference>
       <!-- HasProperty -  - Maximum ns=1;i=2961 Float  -->
@@ -1620,9 +1620,9 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2401</Reference>
     </References>
   </UAObject>
-  <!-- Constraints::Value : String[0..*] -->
-  <UAVariable NodeId='ns=1;i=2959' BrowseName='1:Value' ValueRank='1' DataType='String' ParentNodeId='ns=1;i=2823'>
-    <DisplayName>Value</DisplayName>
+  <!-- Constraints::Values : String[0..*] -->
+  <UAVariable NodeId='ns=1;i=3012' BrowseName='1:Values' ValueRank='1' DataType='String' ParentNodeId='ns=1;i=2823'>
+    <DisplayName>Values</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
@@ -1866,8 +1866,8 @@
   <UAObject NodeId='ns=1;i=2835' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2357'>
     <DisplayName>Constraints</DisplayName>
     <References>
-      <!-- HasProperty -  - Value ns=1;i=2963 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2963</Reference>
+      <!-- HasProperty -  - Values ns=1;i=3013 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3013</Reference>
       <!-- HasProperty -  - Minimum ns=1;i=2964 Float  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2964</Reference>
       <!-- HasProperty -  - Maximum ns=1;i=2965 Float  -->
@@ -1882,9 +1882,9 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2357</Reference>
     </References>
   </UAObject>
-  <!-- Constraints::Value : String[0..*] -->
-  <UAVariable NodeId='ns=1;i=2963' BrowseName='1:Value' ValueRank='1' DataType='String' ParentNodeId='ns=1;i=2835'>
-    <DisplayName>Value</DisplayName>
+  <!-- Constraints::Values : String[0..*] -->
+  <UAVariable NodeId='ns=1;i=3013' BrowseName='1:Values' ValueRank='1' DataType='String' ParentNodeId='ns=1;i=2835'>
+    <DisplayName>Values</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
@@ -2263,8 +2263,8 @@
   <UAObject NodeId='ns=1;i=2855' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2350'>
     <DisplayName>Constraints</DisplayName>
     <References>
-      <!-- HasProperty -  - Value ns=1;i=2967 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2967</Reference>
+      <!-- HasProperty -  - Values ns=1;i=3014 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3014</Reference>
       <!-- HasProperty -  - Minimum ns=1;i=2968 Float  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2968</Reference>
       <!-- HasProperty -  - Maximum ns=1;i=2969 Float  -->
@@ -2279,9 +2279,9 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2350</Reference>
     </References>
   </UAObject>
-  <!-- Constraints::Value : String[0..*] -->
-  <UAVariable NodeId='ns=1;i=2967' BrowseName='1:Value' ValueRank='1' DataType='String' ParentNodeId='ns=1;i=2855'>
-    <DisplayName>Value</DisplayName>
+  <!-- Constraints::Values : String[0..*] -->
+  <UAVariable NodeId='ns=1;i=3014' BrowseName='1:Values' ValueRank='1' DataType='String' ParentNodeId='ns=1;i=2855'>
+    <DisplayName>Values</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
@@ -2579,8 +2579,8 @@
   <UAObject NodeId='ns=1;i=2874' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2353'>
     <DisplayName>Constraints</DisplayName>
     <References>
-      <!-- HasProperty -  - Value ns=1;i=2971 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2971</Reference>
+      <!-- HasProperty -  - Values ns=1;i=3015 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3015</Reference>
       <!-- HasProperty -  - Minimum ns=1;i=2972 Float  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2972</Reference>
       <!-- HasProperty -  - Maximum ns=1;i=2973 Float  -->
@@ -2595,9 +2595,9 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2353</Reference>
     </References>
   </UAObject>
-  <!-- Constraints::Value : String[0..*] -->
-  <UAVariable NodeId='ns=1;i=2971' BrowseName='1:Value' ValueRank='1' DataType='String' ParentNodeId='ns=1;i=2874'>
-    <DisplayName>Value</DisplayName>
+  <!-- Constraints::Values : String[0..*] -->
+  <UAVariable NodeId='ns=1;i=3015' BrowseName='1:Values' ValueRank='1' DataType='String' ParentNodeId='ns=1;i=2874'>
+    <DisplayName>Values</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
@@ -2827,8 +2827,8 @@
   <UAObject NodeId='ns=1;i=2886' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2569'>
     <DisplayName>Constraints</DisplayName>
     <References>
-      <!-- HasProperty -  - Value ns=1;i=2975 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2975</Reference>
+      <!-- HasProperty -  - Values ns=1;i=3016 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3016</Reference>
       <!-- HasProperty -  - Minimum ns=1;i=2976 Float  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2976</Reference>
       <!-- HasProperty -  - Maximum ns=1;i=2977 Float  -->
@@ -2843,9 +2843,9 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2569</Reference>
     </References>
   </UAObject>
-  <!-- Constraints::Value : String[0..*] -->
-  <UAVariable NodeId='ns=1;i=2975' BrowseName='1:Value' ValueRank='1' DataType='String' ParentNodeId='ns=1;i=2886'>
-    <DisplayName>Value</DisplayName>
+  <!-- Constraints::Values : String[0..*] -->
+  <UAVariable NodeId='ns=1;i=3016' BrowseName='1:Values' ValueRank='1' DataType='String' ParentNodeId='ns=1;i=2886'>
+    <DisplayName>Values</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
@@ -3178,8 +3178,8 @@
   <UAObject NodeId='ns=1;i=2905' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2579'>
     <DisplayName>Constraints</DisplayName>
     <References>
-      <!-- HasProperty -  - Value ns=1;i=2979 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2979</Reference>
+      <!-- HasProperty -  - Values ns=1;i=3017 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3017</Reference>
       <!-- HasProperty -  - Minimum ns=1;i=2980 Float  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2980</Reference>
       <!-- HasProperty -  - Maximum ns=1;i=2981 Float  -->
@@ -3194,9 +3194,9 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2579</Reference>
     </References>
   </UAObject>
-  <!-- Constraints::Value : String[0..*] -->
-  <UAVariable NodeId='ns=1;i=2979' BrowseName='1:Value' ValueRank='1' DataType='String' ParentNodeId='ns=1;i=2905'>
-    <DisplayName>Value</DisplayName>
+  <!-- Constraints::Values : String[0..*] -->
+  <UAVariable NodeId='ns=1;i=3017' BrowseName='1:Values' ValueRank='1' DataType='String' ParentNodeId='ns=1;i=2905'>
+    <DisplayName>Values</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>

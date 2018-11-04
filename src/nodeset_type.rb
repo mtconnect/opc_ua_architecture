@@ -227,13 +227,16 @@ class NodesetType < Type
 
   def generate_object_or_variable
     if is_a_type?('BaseObjectType') or is_a_type?('BaseEventType')
+      Root << REXML::Comment.new(" Definition of Object #{@name} #{node_id} ")
       puts "      ** Generating ObjectType"
       refs, = node('UAObjectType', node_id, @name, abstract: @abstract)
     elsif is_a_type?('BaseVariableType')
+      Root << REXML::Comment.new(" Definition of Variable #{@name} #{node_id} ")
       puts "      ** Generating VariableType"
       refs, = node('UAVariableType', node_id, @name, abstract: @abstract, value_rank: -1,
                         data_type: variable_data_type.node_alias)
     elsif is_a_type?('References')
+      Root << REXML::Comment.new(" Definition of Reference #{@name} #{node_id} ")
       symmetric = get_attribute_like(/Symmetric$/, /Attribute/)
       is_symmetric = symmetric.default
       refs, = node('UAReferenceType', node_id, @name, abstract: @abstract, symmetric: is_symmetric)
@@ -255,8 +258,10 @@ class NodesetType < Type
 
   def generate_enumeration
     puts "  => Enumeration #{@name} #{@id}"
+    Root << REXML::Comment.new(" Definition of Enumeration #{@name} #{node_id} ")
     refs, node = node('UADataType', node_id, @name)
     enum_nid = Ids.id_for("#{browse_name}/EnumStrings")
+    
     # node.add_element('Description').add_text(@documentation) if @documentation
     node_reference(refs, 'Enumeration', 'HasSubtype', Ids['Enumeration'], forward: false)
     node_reference(refs, 'EnumStrings', 'HasProperty', enum_nid)
@@ -277,8 +282,9 @@ class NodesetType < Type
     end
     
     # now create the enum strings property
+    Root << REXML::Comment.new(" #{@name}::EnumStrings #{enum_nid} ")
     refs, node = node('UAVariable', enum_nid, 'EnumStrings', data_type: 'LocalizedText',
-                      value_rank: 1)
+                      value_rank: 1, parent: node_id)
     node_reference(refs, 'PropertyType', 'HasTypeDefinition', Ids['PropertyType'])
     node_reference(refs, 'Mandatory', 'HasModellingRule', Ids['Mandatory'])
     node_reference(refs, 'Owner', 'HasProperty', node_id, forward: false)
@@ -288,6 +294,7 @@ class NodesetType < Type
 
   def generate_data_type
     puts "  => DataType #{@name}"
+    Root << REXML::Comment.new(" Definition of DataType #{@name} #{node_id} ")
     refs, node = node('UADataType', node_id, @name)
     #node.add_element('Description').add_text(@documentation) if @documentation
     node_reference(refs, 'BaseDataType', 'HasSubtype', Ids['BaseDataType'], forward: false)
@@ -304,6 +311,7 @@ class NodesetType < Type
 
   def generate_instance
     puts "  => Object Instance #{@name}"
+    Root << REXML::Comment.new(" Instantiation of Object #{@name} #{node_id} ")
     refs, node = node('UAObject', node_id, @name)
     
     node_reference(refs, @classifier.name, 'HasTypeDefinition', @classifier.node_id)

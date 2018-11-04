@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-11-04T00:00:26Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-11-04T00:11:07Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-11-04T00:00:26Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-11-04T00:00:26Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-11-04T00:11:07Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-11-04T00:11:07Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -45,6 +45,7 @@
     <Alias Alias='UInteger'>i=28</Alias>
     <Alias Alias='XmlElement'>i=16</Alias>
   </Aliases>
+  <!-- Instantiation of Object http://opcfoundation.org/UA/MTConnect/v2 ns=1;i=2774 -->
   <UAObject NodeId='ns=1;i=2774' BrowseName='1:http://opcfoundation.org/UA/MTConnect/v2'>
     <DisplayName>http://opcfoundation.org/UA/MTConnect/v2</DisplayName>
     <References>
@@ -163,6 +164,7 @@
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'/>
     </Value>
   </UAVariable>
+  <!-- Definition of Object MTChannelType ns=1;i=2058 -->
   <UAObjectType NodeId='ns=1;i=2058' BrowseName='1:MTChannelType'>
     <DisplayName>MTChannelType</DisplayName>
     <References>
@@ -254,6 +256,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2058</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object MTComponentType ns=1;i=2019 -->
   <UAObjectType NodeId='ns=1;i=2019' BrowseName='1:MTComponentType' IsAbstract='true'>
     <DisplayName>MTComponentType</DisplayName>
     <References>
@@ -457,6 +460,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2019</Reference>
     </References>
   </UAObject>
+  <!-- Definition of Object MTDeviceType ns=1;i=2013 -->
   <UAObjectType NodeId='ns=1;i=2013' BrowseName='1:MTDeviceType'>
     <DisplayName>MTDeviceType</DisplayName>
     <References>
@@ -492,6 +496,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2013</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object MTCompositionType ns=1;i=2068 -->
   <UAObjectType NodeId='ns=1;i=2068' BrowseName='1:MTCompositionType'>
     <DisplayName>MTCompositionType</DisplayName>
     <References>
@@ -569,6 +574,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2068</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object MTConfigurationType ns=1;i=2043 -->
   <UAObjectType NodeId='ns=1;i=2043' BrowseName='1:MTConfigurationType' IsAbstract='true'>
     <DisplayName>MTConfigurationType</DisplayName>
     <References>
@@ -576,6 +582,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=58</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object MTSensorConfigurationType ns=1;i=2045 -->
   <UAObjectType NodeId='ns=1;i=2045' BrowseName='1:MTSensorConfigurationType'>
     <DisplayName>MTSensorConfigurationType</DisplayName>
     <References>
@@ -653,6 +660,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2045</Reference>
     </References>
   </UAObject>
+  <!-- Definition of Object MTDescriptionType ns=1;i=2052 -->
   <UAObjectType NodeId='ns=1;i=2052' BrowseName='1:MTDescriptionType'>
     <DisplayName>MTDescriptionType</DisplayName>
     <References>
@@ -716,6 +724,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2052</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of DataType AssetEventDataType ns=1;i=2547 -->
   <UADataType NodeId='ns=1;i=2547' BrowseName='1:AssetEventDataType'>
     <DisplayName>AssetEventDataType</DisplayName>
     <References>
@@ -727,6 +736,7 @@
       <Field Name='AssetType' DataType='String'/>
     </Definition>
   </UADataType>
+  <!-- Definition of Enumeration CoordinateSystemType ns=1;i=2563 -->
   <UADataType NodeId='ns=1;i=2563' BrowseName='1:CoordinateSystemType'>
     <DisplayName>CoordinateSystemType</DisplayName>
     <References>
@@ -740,7 +750,8 @@
       <Field Name='WORK' Value='1'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2787' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- CoordinateSystemType::EnumStrings ns=1;i=2787 -->
+  <UAVariable NodeId='ns=1;i=2787' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2563'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -763,6 +774,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Enumeration DataItemResetValueType ns=1;i=2564 -->
   <UADataType NodeId='ns=1;i=2564' BrowseName='1:DataItemResetValueType'>
     <DisplayName>DataItemResetValueType</DisplayName>
     <References>
@@ -783,7 +795,8 @@
       <Field Name='WEEK' Value='8'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2788' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- DataItemResetValueType::EnumStrings ns=1;i=2788 -->
+  <UAVariable NodeId='ns=1;i=2788' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2564'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -834,6 +847,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Variable MTAssetEventType ns=1;i=2550 -->
   <UAVariableType NodeId='ns=1;i=2550' BrowseName='1:MTAssetEventType' ValueRank='-1' DataType='ns=1;i=2547'>
     <DisplayName>MTAssetEventType</DisplayName>
     <References>
@@ -1065,6 +1079,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2798</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Enumeration MTCategoryType ns=1;i=2562 -->
   <UADataType NodeId='ns=1;i=2562' BrowseName='1:MTCategoryType'>
     <DisplayName>MTCategoryType</DisplayName>
     <References>
@@ -1079,7 +1094,8 @@
       <Field Name='SAMPLE' Value='2'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2801' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- MTCategoryType::EnumStrings ns=1;i=2801 -->
+  <UAVariable NodeId='ns=1;i=2801' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2562'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -1106,6 +1122,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Object MTConditionClassType ns=1;i=2557 -->
   <UAObjectType NodeId='ns=1;i=2557' BrowseName='1:MTConditionClassType' IsAbstract='true'>
     <DisplayName>MTConditionClassType</DisplayName>
     <References>
@@ -1113,6 +1130,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2348</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object MTConstraintType ns=1;i=2946 -->
   <UAObjectType NodeId='ns=1;i=2946' BrowseName='1:MTConstraintType'>
     <DisplayName>MTConstraintType</DisplayName>
     <References>
@@ -1176,6 +1194,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2946</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Variable MTControlledVocabEventType ns=1;i=2554 -->
   <UAVariableType NodeId='ns=1;i=2554' BrowseName='1:MTControlledVocabEventType' ValueRank='-1' DataType='UInteger'>
     <DisplayName>MTControlledVocabEventType</DisplayName>
     <References>
@@ -1407,6 +1426,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2811</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object MTEventClassType ns=1;i=2559 -->
   <UAObjectType NodeId='ns=1;i=2559' BrowseName='1:MTEventClassType' IsAbstract='true'>
     <DisplayName>MTEventClassType</DisplayName>
     <References>
@@ -1414,6 +1434,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2348</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object MTMessageType ns=1;i=2401 -->
   <UAObjectType NodeId='ns=1;i=2401' BrowseName='1:MTMessageType'>
     <DisplayName>MTMessageType</DisplayName>
     <References>
@@ -1659,6 +1680,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2401</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Variable MTNumericEventType ns=1;i=2357 -->
   <UAVariableType NodeId='ns=1;i=2357' BrowseName='1:MTNumericEventType' ValueRank='-1' DataType='Number'>
     <DisplayName>MTNumericEventType</DisplayName>
     <References>
@@ -2016,6 +2038,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2357</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Enumeration MTRepresentationType ns=1;i=2561 -->
   <UADataType NodeId='ns=1;i=2561' BrowseName='1:MTRepresentationType'>
     <DisplayName>MTRepresentationType</DisplayName>
     <References>
@@ -2030,7 +2053,8 @@
       <Field Name='VALUE' Value='2'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2845' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- MTRepresentationType::EnumStrings ns=1;i=2845 -->
+  <UAVariable NodeId='ns=1;i=2845' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2561'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -2057,6 +2081,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Variable MTSampleType ns=1;i=2350 -->
   <UAVariableType NodeId='ns=1;i=2350' BrowseName='1:MTSampleType' ValueRank='-1' DataType='Number'>
     <DisplayName>MTSampleType</DisplayName>
     <References>
@@ -2386,6 +2411,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Variable MTStringEventType ns=1;i=2353 -->
   <UAVariableType NodeId='ns=1;i=2353' BrowseName='1:MTStringEventType' ValueRank='-1' DataType='String'>
     <DisplayName>MTStringEventType</DisplayName>
     <References>
@@ -2617,6 +2643,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2874</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Variable MTThreeSpaceSampleType ns=1;i=2569 -->
   <UAVariableType NodeId='ns=1;i=2569' BrowseName='1:MTThreeSpaceSampleType' ValueRank='-1' DataType='ns=1;i=2565'>
     <DisplayName>MTThreeSpaceSampleType</DisplayName>
     <References>
@@ -2960,6 +2987,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2569</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of DataType ThreeSpacePositionDataType ns=1;i=2565 -->
   <UADataType NodeId='ns=1;i=2565' BrowseName='1:ThreeSpacePositionDataType'>
     <DisplayName>ThreeSpacePositionDataType</DisplayName>
     <References>
@@ -2972,6 +3000,7 @@
       <Field Name='Z' DataType='Double'/>
     </Definition>
   </UADataType>
+  <!-- Definition of Object MTConditionType ns=1;i=2579 -->
   <UAObjectType NodeId='ns=1;i=2579' BrowseName='1:MTConditionType'>
     <DisplayName>MTConditionType</DisplayName>
     <References>
@@ -3397,6 +3426,7 @@
       </LocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Enumeration MTSeverityDataType ns=1;i=2588 -->
   <UADataType NodeId='ns=1;i=2588' BrowseName='1:MTSeverityDataType'>
     <DisplayName>MTSeverityDataType</DisplayName>
     <References>
@@ -3411,7 +3441,8 @@
       <Field Name='WARNING' Value='2'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2916' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- MTSeverityDataType::EnumStrings ns=1;i=2916 -->
+  <UAVariable NodeId='ns=1;i=2916' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2588'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -3438,6 +3469,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Enumeration QualifierDataType ns=1;i=2587 -->
   <UADataType NodeId='ns=1;i=2587' BrowseName='1:QualifierDataType'>
     <DisplayName>QualifierDataType</DisplayName>
     <References>
@@ -3451,7 +3483,8 @@
       <Field Name='LOW' Value='1'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2917' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- QualifierDataType::EnumStrings ns=1;i=2917 -->
+  <UAVariable NodeId='ns=1;i=2917' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2587'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -3474,6 +3507,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Object MTDataItemClassType ns=1;i=2348 -->
   <UAObjectType NodeId='ns=1;i=2348' BrowseName='1:MTDataItemClassType' IsAbstract='true'>
     <DisplayName>MTDataItemClassType</DisplayName>
     <References>
@@ -3481,6 +3515,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=11163</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object MTSampleClassType ns=1;i=2276 -->
   <UAObjectType NodeId='ns=1;i=2276' BrowseName='1:MTSampleClassType' IsAbstract='true'>
     <DisplayName>MTSampleClassType</DisplayName>
     <References>
@@ -3488,6 +3523,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2348</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object LoadClassType ns=1;i=2194 -->
   <UAObjectType NodeId='ns=1;i=2194' BrowseName='1:LoadClassType'>
     <DisplayName>LoadClassType</DisplayName>
     <References>
@@ -3495,6 +3531,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object AccelerationClassType ns=1;i=2196 -->
   <UAObjectType NodeId='ns=1;i=2196' BrowseName='1:AccelerationClassType'>
     <DisplayName>AccelerationClassType</DisplayName>
     <References>
@@ -3502,6 +3539,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object AccumulatedTimeClassType ns=1;i=2198 -->
   <UAObjectType NodeId='ns=1;i=2198' BrowseName='1:AccumulatedTimeClassType'>
     <DisplayName>AccumulatedTimeClassType</DisplayName>
     <References>
@@ -3509,6 +3547,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object AngularAccelerationClassType ns=1;i=2200 -->
   <UAObjectType NodeId='ns=1;i=2200' BrowseName='1:AngularAccelerationClassType'>
     <DisplayName>AngularAccelerationClassType</DisplayName>
     <References>
@@ -3516,6 +3555,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object AngularVelocityClassType ns=1;i=2202 -->
   <UAObjectType NodeId='ns=1;i=2202' BrowseName='1:AngularVelocityClassType'>
     <DisplayName>AngularVelocityClassType</DisplayName>
     <References>
@@ -3523,6 +3563,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object AmperageClassType ns=1;i=2204 -->
   <UAObjectType NodeId='ns=1;i=2204' BrowseName='1:AmperageClassType'>
     <DisplayName>AmperageClassType</DisplayName>
     <References>
@@ -3530,6 +3571,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object AngleClassType ns=1;i=2206 -->
   <UAObjectType NodeId='ns=1;i=2206' BrowseName='1:AngleClassType'>
     <DisplayName>AngleClassType</DisplayName>
     <References>
@@ -3537,6 +3579,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object AxisFeedrateClassType ns=1;i=2208 -->
   <UAObjectType NodeId='ns=1;i=2208' BrowseName='1:AxisFeedrateClassType'>
     <DisplayName>AxisFeedrateClassType</DisplayName>
     <References>
@@ -3544,6 +3587,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ClockTimeClassType ns=1;i=2210 -->
   <UAObjectType NodeId='ns=1;i=2210' BrowseName='1:ClockTimeClassType'>
     <DisplayName>ClockTimeClassType</DisplayName>
     <References>
@@ -3551,6 +3595,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ConcentrationClassType ns=1;i=2212 -->
   <UAObjectType NodeId='ns=1;i=2212' BrowseName='1:ConcentrationClassType'>
     <DisplayName>ConcentrationClassType</DisplayName>
     <References>
@@ -3558,6 +3603,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ConductivityClassType ns=1;i=2214 -->
   <UAObjectType NodeId='ns=1;i=2214' BrowseName='1:ConductivityClassType'>
     <DisplayName>ConductivityClassType</DisplayName>
     <References>
@@ -3565,6 +3611,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object DisplacementClassType ns=1;i=2216 -->
   <UAObjectType NodeId='ns=1;i=2216' BrowseName='1:DisplacementClassType'>
     <DisplayName>DisplacementClassType</DisplayName>
     <References>
@@ -3572,6 +3619,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ElectricalEnergyClassType ns=1;i=2218 -->
   <UAObjectType NodeId='ns=1;i=2218' BrowseName='1:ElectricalEnergyClassType'>
     <DisplayName>ElectricalEnergyClassType</DisplayName>
     <References>
@@ -3579,6 +3627,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object EquipmentTimerClassType ns=1;i=2220 -->
   <UAObjectType NodeId='ns=1;i=2220' BrowseName='1:EquipmentTimerClassType'>
     <DisplayName>EquipmentTimerClassType</DisplayName>
     <References>
@@ -3586,6 +3635,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object FillLevelClassType ns=1;i=2222 -->
   <UAObjectType NodeId='ns=1;i=2222' BrowseName='1:FillLevelClassType'>
     <DisplayName>FillLevelClassType</DisplayName>
     <References>
@@ -3593,6 +3643,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object FlowClassType ns=1;i=2224 -->
   <UAObjectType NodeId='ns=1;i=2224' BrowseName='1:FlowClassType'>
     <DisplayName>FlowClassType</DisplayName>
     <References>
@@ -3600,6 +3651,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object FrequencyClassType ns=1;i=2226 -->
   <UAObjectType NodeId='ns=1;i=2226' BrowseName='1:FrequencyClassType'>
     <DisplayName>FrequencyClassType</DisplayName>
     <References>
@@ -3607,6 +3659,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object LengthClassType ns=1;i=2228 -->
   <UAObjectType NodeId='ns=1;i=2228' BrowseName='1:LengthClassType'>
     <DisplayName>LengthClassType</DisplayName>
     <References>
@@ -3614,6 +3667,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object LinearForceClassType ns=1;i=2230 -->
   <UAObjectType NodeId='ns=1;i=2230' BrowseName='1:LinearForceClassType'>
     <DisplayName>LinearForceClassType</DisplayName>
     <References>
@@ -3621,6 +3675,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object MassClassType ns=1;i=2232 -->
   <UAObjectType NodeId='ns=1;i=2232' BrowseName='1:MassClassType'>
     <DisplayName>MassClassType</DisplayName>
     <References>
@@ -3628,6 +3683,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object PathFeedrateClassType ns=1;i=2234 -->
   <UAObjectType NodeId='ns=1;i=2234' BrowseName='1:PathFeedrateClassType'>
     <DisplayName>PathFeedrateClassType</DisplayName>
     <References>
@@ -3635,6 +3691,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object PathPositionClassType ns=1;i=2236 -->
   <UAObjectType NodeId='ns=1;i=2236' BrowseName='1:PathPositionClassType'>
     <DisplayName>PathPositionClassType</DisplayName>
     <References>
@@ -3642,6 +3699,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object PHClassType ns=1;i=2238 -->
   <UAObjectType NodeId='ns=1;i=2238' BrowseName='1:PHClassType'>
     <DisplayName>PHClassType</DisplayName>
     <References>
@@ -3649,6 +3707,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object PositionClassType ns=1;i=2240 -->
   <UAObjectType NodeId='ns=1;i=2240' BrowseName='1:PositionClassType'>
     <DisplayName>PositionClassType</DisplayName>
     <References>
@@ -3656,6 +3715,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object PowerFactorClassType ns=1;i=2242 -->
   <UAObjectType NodeId='ns=1;i=2242' BrowseName='1:PowerFactorClassType'>
     <DisplayName>PowerFactorClassType</DisplayName>
     <References>
@@ -3663,6 +3723,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object PressureClassType ns=1;i=2244 -->
   <UAObjectType NodeId='ns=1;i=2244' BrowseName='1:PressureClassType'>
     <DisplayName>PressureClassType</DisplayName>
     <References>
@@ -3670,6 +3731,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ProcessTimerClassType ns=1;i=2246 -->
   <UAObjectType NodeId='ns=1;i=2246' BrowseName='1:ProcessTimerClassType'>
     <DisplayName>ProcessTimerClassType</DisplayName>
     <References>
@@ -3677,6 +3739,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ResistenceClassType ns=1;i=2248 -->
   <UAObjectType NodeId='ns=1;i=2248' BrowseName='1:ResistenceClassType'>
     <DisplayName>ResistenceClassType</DisplayName>
     <References>
@@ -3684,6 +3747,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object RotaryVelocityClassType ns=1;i=2250 -->
   <UAObjectType NodeId='ns=1;i=2250' BrowseName='1:RotaryVelocityClassType'>
     <DisplayName>RotaryVelocityClassType</DisplayName>
     <References>
@@ -3691,6 +3755,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object SoundLevelClassType ns=1;i=2252 -->
   <UAObjectType NodeId='ns=1;i=2252' BrowseName='1:SoundLevelClassType'>
     <DisplayName>SoundLevelClassType</DisplayName>
     <References>
@@ -3698,6 +3763,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object StrainClassType ns=1;i=2254 -->
   <UAObjectType NodeId='ns=1;i=2254' BrowseName='1:StrainClassType'>
     <DisplayName>StrainClassType</DisplayName>
     <References>
@@ -3705,6 +3771,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object TemperatureClassType ns=1;i=2256 -->
   <UAObjectType NodeId='ns=1;i=2256' BrowseName='1:TemperatureClassType'>
     <DisplayName>TemperatureClassType</DisplayName>
     <References>
@@ -3712,6 +3779,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object TensionClassType ns=1;i=2258 -->
   <UAObjectType NodeId='ns=1;i=2258' BrowseName='1:TensionClassType'>
     <DisplayName>TensionClassType</DisplayName>
     <References>
@@ -3719,6 +3787,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object TiltClassType ns=1;i=2260 -->
   <UAObjectType NodeId='ns=1;i=2260' BrowseName='1:TiltClassType'>
     <DisplayName>TiltClassType</DisplayName>
     <References>
@@ -3726,6 +3795,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object TorqueClassType ns=1;i=2262 -->
   <UAObjectType NodeId='ns=1;i=2262' BrowseName='1:TorqueClassType'>
     <DisplayName>TorqueClassType</DisplayName>
     <References>
@@ -3733,6 +3803,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object VoltAmpereClassType ns=1;i=2264 -->
   <UAObjectType NodeId='ns=1;i=2264' BrowseName='1:VoltAmpereClassType'>
     <DisplayName>VoltAmpereClassType</DisplayName>
     <References>
@@ -3740,6 +3811,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object VelocityClassType ns=1;i=2266 -->
   <UAObjectType NodeId='ns=1;i=2266' BrowseName='1:VelocityClassType'>
     <DisplayName>VelocityClassType</DisplayName>
     <References>
@@ -3747,6 +3819,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object VoltAmpereReactiveClassType ns=1;i=2268 -->
   <UAObjectType NodeId='ns=1;i=2268' BrowseName='1:VoltAmpereReactiveClassType'>
     <DisplayName>VoltAmpereReactiveClassType</DisplayName>
     <References>
@@ -3754,6 +3827,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ViscosityClassType ns=1;i=2270 -->
   <UAObjectType NodeId='ns=1;i=2270' BrowseName='1:ViscosityClassType'>
     <DisplayName>ViscosityClassType</DisplayName>
     <References>
@@ -3761,6 +3835,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object VoltageClassType ns=1;i=2272 -->
   <UAObjectType NodeId='ns=1;i=2272' BrowseName='1:VoltageClassType'>
     <DisplayName>VoltageClassType</DisplayName>
     <References>
@@ -3768,6 +3843,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object WattageClassType ns=1;i=2274 -->
   <UAObjectType NodeId='ns=1;i=2274' BrowseName='1:WattageClassType'>
     <DisplayName>WattageClassType</DisplayName>
     <References>
@@ -3775,6 +3851,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2276</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ActuatorClassType ns=1;i=2334 -->
   <UAObjectType NodeId='ns=1;i=2334' BrowseName='1:ActuatorClassType'>
     <DisplayName>ActuatorClassType</DisplayName>
     <References>
@@ -3782,6 +3859,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2557</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object CommunicationsClassType ns=1;i=2336 -->
   <UAObjectType NodeId='ns=1;i=2336' BrowseName='1:CommunicationsClassType'>
     <DisplayName>CommunicationsClassType</DisplayName>
     <References>
@@ -3789,6 +3867,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2557</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object DataRangeClassType ns=1;i=2338 -->
   <UAObjectType NodeId='ns=1;i=2338' BrowseName='1:DataRangeClassType'>
     <DisplayName>DataRangeClassType</DisplayName>
     <References>
@@ -3796,6 +3875,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2557</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object HardwareClassType ns=1;i=2342 -->
   <UAObjectType NodeId='ns=1;i=2342' BrowseName='1:HardwareClassType'>
     <DisplayName>HardwareClassType</DisplayName>
     <References>
@@ -3803,6 +3883,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2557</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object LogicProgramClassType ns=1;i=2340 -->
   <UAObjectType NodeId='ns=1;i=2340' BrowseName='1:LogicProgramClassType'>
     <DisplayName>LogicProgramClassType</DisplayName>
     <References>
@@ -3810,6 +3891,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2557</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object MotionProgramClassType ns=1;i=2344 -->
   <UAObjectType NodeId='ns=1;i=2344' BrowseName='1:MotionProgramClassType'>
     <DisplayName>MotionProgramClassType</DisplayName>
     <References>
@@ -3817,6 +3899,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2557</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object SystemClassType ns=1;i=2346 -->
   <UAObjectType NodeId='ns=1;i=2346' BrowseName='1:SystemClassType'>
     <DisplayName>SystemClassType</DisplayName>
     <References>
@@ -3824,6 +3907,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2557</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Enumeration ActiveStateDataType ns=1;i=2128 -->
   <UADataType NodeId='ns=1;i=2128' BrowseName='1:ActiveStateDataType'>
     <DisplayName>ActiveStateDataType</DisplayName>
     <References>
@@ -3837,7 +3921,8 @@
       <Field Name='INACTIVE' Value='1'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2918' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- ActiveStateDataType::EnumStrings ns=1;i=2918 -->
+  <UAVariable NodeId='ns=1;i=2918' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2128'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -3860,6 +3945,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Enumeration AvailabilityDataType ns=1;i=2129 -->
   <UADataType NodeId='ns=1;i=2129' BrowseName='1:AvailabilityDataType'>
     <DisplayName>AvailabilityDataType</DisplayName>
     <References>
@@ -3873,7 +3959,8 @@
       <Field Name='UNAVAILABLE' Value='1'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2919' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- AvailabilityDataType::EnumStrings ns=1;i=2919 -->
+  <UAVariable NodeId='ns=1;i=2919' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2129'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -3896,6 +3983,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Enumeration AxisCouplingDataType ns=1;i=2130 -->
   <UADataType NodeId='ns=1;i=2130' BrowseName='1:AxisCouplingDataType'>
     <DisplayName>AxisCouplingDataType</DisplayName>
     <References>
@@ -3911,7 +3999,8 @@
       <Field Name='TANDEM' Value='3'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2920' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- AxisCouplingDataType::EnumStrings ns=1;i=2920 -->
+  <UAVariable NodeId='ns=1;i=2920' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2130'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -3942,6 +4031,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Enumeration AxisStateDataType ns=1;i=2131 -->
   <UADataType NodeId='ns=1;i=2131' BrowseName='1:AxisStateDataType'>
     <DisplayName>AxisStateDataType</DisplayName>
     <References>
@@ -3957,7 +4047,8 @@
       <Field Name='TRAVEL' Value='3'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2921' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- AxisStateDataType::EnumStrings ns=1;i=2921 -->
+  <UAVariable NodeId='ns=1;i=2921' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2131'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -3988,6 +4079,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Enumeration CompositionStateDataType ns=1;i=2133 -->
   <UADataType NodeId='ns=1;i=2133' BrowseName='1:CompositionStateDataType'>
     <DisplayName>CompositionStateDataType</DisplayName>
     <References>
@@ -4011,7 +4103,8 @@
       <Field Name='UP' Value='11'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2922' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- CompositionStateDataType::EnumStrings ns=1;i=2922 -->
+  <UAVariable NodeId='ns=1;i=2922' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2133'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -4074,6 +4167,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Enumeration ControllerModeDataType ns=1;i=2134 -->
   <UADataType NodeId='ns=1;i=2134' BrowseName='1:ControllerModeDataType'>
     <DisplayName>ControllerModeDataType</DisplayName>
     <References>
@@ -4090,7 +4184,8 @@
       <Field Name='SEMI_AUTOMATIC' Value='4'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2923' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- ControllerModeDataType::EnumStrings ns=1;i=2923 -->
+  <UAVariable NodeId='ns=1;i=2923' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2134'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -4125,6 +4220,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Enumeration DirectionDataType ns=1;i=2136 -->
   <UADataType NodeId='ns=1;i=2136' BrowseName='1:DirectionDataType'>
     <DisplayName>DirectionDataType</DisplayName>
     <References>
@@ -4140,7 +4236,8 @@
       <Field Name='POSITIVE' Value='3'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2924' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- DirectionDataType::EnumStrings ns=1;i=2924 -->
+  <UAVariable NodeId='ns=1;i=2924' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2136'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -4171,6 +4268,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Enumeration EmergencyStopDataType ns=1;i=2138 -->
   <UADataType NodeId='ns=1;i=2138' BrowseName='1:EmergencyStopDataType'>
     <DisplayName>EmergencyStopDataType</DisplayName>
     <References>
@@ -4184,7 +4282,8 @@
       <Field Name='TRIGGERED' Value='1'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2925' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- EmergencyStopDataType::EnumStrings ns=1;i=2925 -->
+  <UAVariable NodeId='ns=1;i=2925' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2138'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -4207,6 +4306,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Enumeration ExecutionDataType ns=1;i=2193 -->
   <UADataType NodeId='ns=1;i=2193' BrowseName='1:ExecutionDataType'>
     <DisplayName>ExecutionDataType</DisplayName>
     <References>
@@ -4226,7 +4326,8 @@
       <Field Name='STOPPED' Value='7'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2926' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- ExecutionDataType::EnumStrings ns=1;i=2926 -->
+  <UAVariable NodeId='ns=1;i=2926' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2193'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -4273,6 +4374,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Enumeration FunctionalModeDataType ns=1;i=2139 -->
   <UADataType NodeId='ns=1;i=2139' BrowseName='1:FunctionalModeDataType'>
     <DisplayName>FunctionalModeDataType</DisplayName>
     <References>
@@ -4289,7 +4391,8 @@
       <Field Name='TEARDOWN' Value='4'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2927' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- FunctionalModeDataType::EnumStrings ns=1;i=2927 -->
+  <UAVariable NodeId='ns=1;i=2927' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2139'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -4324,6 +4427,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Enumeration InterfaceStateDataType ns=1;i=2165 -->
   <UADataType NodeId='ns=1;i=2165' BrowseName='1:InterfaceStateDataType'>
     <DisplayName>InterfaceStateDataType</DisplayName>
     <References>
@@ -4340,7 +4444,8 @@
       <Field Name='READY' Value='5'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2928' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- InterfaceStateDataType::EnumStrings ns=1;i=2928 -->
+  <UAVariable NodeId='ns=1;i=2928' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2165'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -4375,6 +4480,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Enumeration InterfaceStatusDataType ns=1;i=2161 -->
   <UADataType NodeId='ns=1;i=2161' BrowseName='1:InterfaceStatusDataType'>
     <DisplayName>InterfaceStatusDataType</DisplayName>
     <References>
@@ -4388,7 +4494,8 @@
       <Field Name='ENABLED' Value='1'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2929' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- InterfaceStatusDataType::EnumStrings ns=1;i=2929 -->
+  <UAVariable NodeId='ns=1;i=2929' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2161'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -4411,6 +4518,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Object MTControlledVocabClassType ns=1;i=2075 -->
   <UAObjectType NodeId='ns=1;i=2075' BrowseName='1:MTControlledVocabClassType' IsAbstract='true'>
     <DisplayName>MTControlledVocabClassType</DisplayName>
     <References>
@@ -4418,6 +4526,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2559</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ActuatorStateClassType ns=1;i=2077 -->
   <UAObjectType NodeId='ns=1;i=2077' BrowseName='1:ActuatorStateClassType'>
     <DisplayName>ActuatorStateClassType</DisplayName>
     <References>
@@ -4439,6 +4548,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2077</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object AvailabilityClassType ns=1;i=2080 -->
   <UAObjectType NodeId='ns=1;i=2080' BrowseName='1:AvailabilityClassType'>
     <DisplayName>AvailabilityClassType</DisplayName>
     <References>
@@ -4460,6 +4570,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2080</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object AxisCouplingClassType ns=1;i=2083 -->
   <UAObjectType NodeId='ns=1;i=2083' BrowseName='1:AxisCouplingClassType'>
     <DisplayName>AxisCouplingClassType</DisplayName>
     <References>
@@ -4481,6 +4592,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2083</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object AxisInterlockClassType ns=1;i=2086 -->
   <UAObjectType NodeId='ns=1;i=2086' BrowseName='1:AxisInterlockClassType'>
     <DisplayName>AxisInterlockClassType</DisplayName>
     <References>
@@ -4502,6 +4614,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2086</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object AxisStateClassType ns=1;i=2089 -->
   <UAObjectType NodeId='ns=1;i=2089' BrowseName='1:AxisStateClassType'>
     <DisplayName>AxisStateClassType</DisplayName>
     <References>
@@ -4523,6 +4636,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2089</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object ChuckInterlockClassType ns=1;i=2092 -->
   <UAObjectType NodeId='ns=1;i=2092' BrowseName='1:ChuckInterlockClassType'>
     <DisplayName>ChuckInterlockClassType</DisplayName>
     <References>
@@ -4544,6 +4658,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2092</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object ChuckStateClassType ns=1;i=2095 -->
   <UAObjectType NodeId='ns=1;i=2095' BrowseName='1:ChuckStateClassType'>
     <DisplayName>ChuckStateClassType</DisplayName>
     <References>
@@ -4565,6 +4680,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2095</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object ControllerModeClassType ns=1;i=2098 -->
   <UAObjectType NodeId='ns=1;i=2098' BrowseName='1:ControllerModeClassType'>
     <DisplayName>ControllerModeClassType</DisplayName>
     <References>
@@ -4586,6 +4702,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2098</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object ExecutionClassType ns=1;i=2101 -->
   <UAObjectType NodeId='ns=1;i=2101' BrowseName='1:ExecutionClassType'>
     <DisplayName>ExecutionClassType</DisplayName>
     <References>
@@ -4607,6 +4724,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2101</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object CompositionStateClassType ns=1;i=2104 -->
   <UAObjectType NodeId='ns=1;i=2104' BrowseName='1:CompositionStateClassType'>
     <DisplayName>CompositionStateClassType</DisplayName>
     <References>
@@ -4628,6 +4746,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2104</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object ControllerModeOverrideClassType ns=1;i=2107 -->
   <UAObjectType NodeId='ns=1;i=2107' BrowseName='1:ControllerModeOverrideClassType'>
     <DisplayName>ControllerModeOverrideClassType</DisplayName>
     <References>
@@ -4649,6 +4768,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2107</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object DirectionClassType ns=1;i=2110 -->
   <UAObjectType NodeId='ns=1;i=2110' BrowseName='1:DirectionClassType'>
     <DisplayName>DirectionClassType</DisplayName>
     <References>
@@ -4670,6 +4790,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2110</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object DoorStateClassType ns=1;i=2113 -->
   <UAObjectType NodeId='ns=1;i=2113' BrowseName='1:DoorStateClassType'>
     <DisplayName>DoorStateClassType</DisplayName>
     <References>
@@ -4691,6 +4812,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2113</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object EmergencyStopClassType ns=1;i=2116 -->
   <UAObjectType NodeId='ns=1;i=2116' BrowseName='1:EmergencyStopClassType'>
     <DisplayName>EmergencyStopClassType</DisplayName>
     <References>
@@ -4712,6 +4834,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2116</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object EndOfBarClassType ns=1;i=2119 -->
   <UAObjectType NodeId='ns=1;i=2119' BrowseName='1:EndOfBarClassType'>
     <DisplayName>EndOfBarClassType</DisplayName>
     <References>
@@ -4733,6 +4856,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2119</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object EquipmentModeClassType ns=1;i=2122 -->
   <UAObjectType NodeId='ns=1;i=2122' BrowseName='1:EquipmentModeClassType'>
     <DisplayName>EquipmentModeClassType</DisplayName>
     <References>
@@ -4754,6 +4878,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2122</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object FunctionalModeClassType ns=1;i=2125 -->
   <UAObjectType NodeId='ns=1;i=2125' BrowseName='1:FunctionalModeClassType'>
     <DisplayName>FunctionalModeClassType</DisplayName>
     <References>
@@ -4775,6 +4900,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2125</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object SpindleInterlockClassType ns=1;i=2143 -->
   <UAObjectType NodeId='ns=1;i=2143' BrowseName='1:SpindleInterlockClassType'>
     <DisplayName>SpindleInterlockClassType</DisplayName>
     <References>
@@ -4796,6 +4922,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2143</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object PathModeClassType ns=1;i=2146 -->
   <UAObjectType NodeId='ns=1;i=2146' BrowseName='1:PathModeClassType'>
     <DisplayName>PathModeClassType</DisplayName>
     <References>
@@ -4817,6 +4944,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2146</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object PowerStateClassType ns=1;i=2149 -->
   <UAObjectType NodeId='ns=1;i=2149' BrowseName='1:PowerStateClassType'>
     <DisplayName>PowerStateClassType</DisplayName>
     <References>
@@ -4838,6 +4966,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2149</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object ProgramEditClassType ns=1;i=2152 -->
   <UAObjectType NodeId='ns=1;i=2152' BrowseName='1:ProgramEditClassType'>
     <DisplayName>ProgramEditClassType</DisplayName>
     <References>
@@ -4859,6 +4988,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2152</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object RotaryModeClassType ns=1;i=2155 -->
   <UAObjectType NodeId='ns=1;i=2155' BrowseName='1:RotaryModeClassType'>
     <DisplayName>RotaryModeClassType</DisplayName>
     <References>
@@ -4880,6 +5010,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2155</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object InterfaceStateClassType ns=1;i=2158 -->
   <UAObjectType NodeId='ns=1;i=2158' BrowseName='1:InterfaceStateClassType'>
     <DisplayName>InterfaceStateClassType</DisplayName>
     <References>
@@ -4901,6 +5032,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2158</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object MaterialFeedClassType ns=1;i=2162 -->
   <UAObjectType NodeId='ns=1;i=2162' BrowseName='1:MaterialFeedClassType'>
     <DisplayName>MaterialFeedClassType</DisplayName>
     <References>
@@ -4922,6 +5054,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2162</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object MaterialChangeClassType ns=1;i=2166 -->
   <UAObjectType NodeId='ns=1;i=2166' BrowseName='1:MaterialChangeClassType'>
     <DisplayName>MaterialChangeClassType</DisplayName>
     <References>
@@ -4943,6 +5076,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2166</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object MaterialRetractClassType ns=1;i=2169 -->
   <UAObjectType NodeId='ns=1;i=2169' BrowseName='1:MaterialRetractClassType'>
     <DisplayName>MaterialRetractClassType</DisplayName>
     <References>
@@ -4964,6 +5098,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2169</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object MaterialLoadClassType ns=1;i=2172 -->
   <UAObjectType NodeId='ns=1;i=2172' BrowseName='1:MaterialLoadClassType'>
     <DisplayName>MaterialLoadClassType</DisplayName>
     <References>
@@ -4985,6 +5120,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2172</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object MaterialUnloadClassType ns=1;i=2175 -->
   <UAObjectType NodeId='ns=1;i=2175' BrowseName='1:MaterialUnloadClassType'>
     <DisplayName>MaterialUnloadClassType</DisplayName>
     <References>
@@ -5006,6 +5142,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2175</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object OpenDoorClassType ns=1;i=2178 -->
   <UAObjectType NodeId='ns=1;i=2178' BrowseName='1:OpenDoorClassType'>
     <DisplayName>OpenDoorClassType</DisplayName>
     <References>
@@ -5027,6 +5164,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2178</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object CloseDoorClassType ns=1;i=2181 -->
   <UAObjectType NodeId='ns=1;i=2181' BrowseName='1:CloseDoorClassType'>
     <DisplayName>CloseDoorClassType</DisplayName>
     <References>
@@ -5048,6 +5186,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2181</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object OpenChuckClassType ns=1;i=2184 -->
   <UAObjectType NodeId='ns=1;i=2184' BrowseName='1:OpenChuckClassType'>
     <DisplayName>OpenChuckClassType</DisplayName>
     <References>
@@ -5069,6 +5208,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2184</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object CloseChuckClassType ns=1;i=2187 -->
   <UAObjectType NodeId='ns=1;i=2187' BrowseName='1:CloseChuckClassType'>
     <DisplayName>CloseChuckClassType</DisplayName>
     <References>
@@ -5090,6 +5230,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2187</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object PartChangeClassType ns=1;i=2190 -->
   <UAObjectType NodeId='ns=1;i=2190' BrowseName='1:PartChangeClassType'>
     <DisplayName>PartChangeClassType</DisplayName>
     <References>
@@ -5111,6 +5252,7 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2190</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Enumeration OnOffDataType ns=1;i=2135 -->
   <UADataType NodeId='ns=1;i=2135' BrowseName='1:OnOffDataType'>
     <DisplayName>OnOffDataType</DisplayName>
     <References>
@@ -5124,7 +5266,8 @@
       <Field Name='ON' Value='1'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2930' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- OnOffDataType::EnumStrings ns=1;i=2930 -->
+  <UAVariable NodeId='ns=1;i=2930' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2135'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -5147,6 +5290,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Enumeration OpenStateDataType ns=1;i=2132 -->
   <UADataType NodeId='ns=1;i=2132' BrowseName='1:OpenStateDataType'>
     <DisplayName>OpenStateDataType</DisplayName>
     <References>
@@ -5161,7 +5305,8 @@
       <Field Name='UNLATCHED' Value='2'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2931' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- OpenStateDataType::EnumStrings ns=1;i=2931 -->
+  <UAVariable NodeId='ns=1;i=2931' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2132'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -5188,6 +5333,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Enumeration PathModeDataType ns=1;i=2140 -->
   <UADataType NodeId='ns=1;i=2140' BrowseName='1:PathModeDataType'>
     <DisplayName>PathModeDataType</DisplayName>
     <References>
@@ -5203,7 +5349,8 @@
       <Field Name='SYNCHRONOUS' Value='3'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2932' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- PathModeDataType::EnumStrings ns=1;i=2932 -->
+  <UAVariable NodeId='ns=1;i=2932' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2140'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -5234,6 +5381,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Enumeration ProgramEditDataType ns=1;i=2141 -->
   <UADataType NodeId='ns=1;i=2141' BrowseName='1:ProgramEditDataType'>
     <DisplayName>ProgramEditDataType</DisplayName>
     <References>
@@ -5248,7 +5396,8 @@
       <Field Name='READY' Value='2'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2933' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- ProgramEditDataType::EnumStrings ns=1;i=2933 -->
+  <UAVariable NodeId='ns=1;i=2933' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2141'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -5275,6 +5424,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Enumeration RotaryModeDataType ns=1;i=2142 -->
   <UADataType NodeId='ns=1;i=2142' BrowseName='1:RotaryModeDataType'>
     <DisplayName>RotaryModeDataType</DisplayName>
     <References>
@@ -5289,7 +5439,8 @@
       <Field Name='SPINDLE' Value='2'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2934' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- RotaryModeDataType::EnumStrings ns=1;i=2934 -->
+  <UAVariable NodeId='ns=1;i=2934' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2142'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -5316,6 +5467,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Enumeration YesNoDataType ns=1;i=2137 -->
   <UADataType NodeId='ns=1;i=2137' BrowseName='1:YesNoDataType'>
     <DisplayName>YesNoDataType</DisplayName>
     <References>
@@ -5329,7 +5481,8 @@
       <Field Name='YES' Value='1'/>
     </Definition>
   </UADataType>
-  <UAVariable NodeId='ns=1;i=2935' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText'>
+  <!-- YesNoDataType::EnumStrings ns=1;i=2935 -->
+  <UAVariable NodeId='ns=1;i=2935' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2137'>
     <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PropertyType i=68  (forward: true) -->
@@ -5352,6 +5505,7 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
+  <!-- Definition of Object MTNumberEventClassType ns=1;i=2290 -->
   <UAObjectType NodeId='ns=1;i=2290' BrowseName='1:MTNumberEventClassType' IsAbstract='true'>
     <DisplayName>MTNumberEventClassType</DisplayName>
     <References>
@@ -5359,6 +5513,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2559</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object AxisFeedrateOverrideClassType ns=1;i=2278 -->
   <UAObjectType NodeId='ns=1;i=2278' BrowseName='1:AxisFeedrateOverrideClassType'>
     <DisplayName>AxisFeedrateOverrideClassType</DisplayName>
     <References>
@@ -5366,6 +5521,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2290</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object BlockCountClassType ns=1;i=2280 -->
   <UAObjectType NodeId='ns=1;i=2280' BrowseName='1:BlockCountClassType'>
     <DisplayName>BlockCountClassType</DisplayName>
     <References>
@@ -5373,6 +5529,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2290</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object HardnessClassType ns=1;i=2282 -->
   <UAObjectType NodeId='ns=1;i=2282' BrowseName='1:HardnessClassType'>
     <DisplayName>HardnessClassType</DisplayName>
     <References>
@@ -5380,6 +5537,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2290</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object LineNumberClassType ns=1;i=2284 -->
   <UAObjectType NodeId='ns=1;i=2284' BrowseName='1:LineNumberClassType'>
     <DisplayName>LineNumberClassType</DisplayName>
     <References>
@@ -5387,6 +5545,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2290</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object PartCountClassType ns=1;i=2286 -->
   <UAObjectType NodeId='ns=1;i=2286' BrowseName='1:PartCountClassType'>
     <DisplayName>PartCountClassType</DisplayName>
     <References>
@@ -5394,6 +5553,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2290</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object RotaryVelocityOverrideClassType ns=1;i=2288 -->
   <UAObjectType NodeId='ns=1;i=2288' BrowseName='1:RotaryVelocityOverrideClassType'>
     <DisplayName>RotaryVelocityOverrideClassType</DisplayName>
     <References>
@@ -5401,6 +5561,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2290</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object MTStringEventClassType ns=1;i=2292 -->
   <UAObjectType NodeId='ns=1;i=2292' BrowseName='1:MTStringEventClassType' IsAbstract='true'>
     <DisplayName>MTStringEventClassType</DisplayName>
     <References>
@@ -5408,6 +5569,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2559</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object BlockClassType ns=1;i=2294 -->
   <UAObjectType NodeId='ns=1;i=2294' BrowseName='1:BlockClassType'>
     <DisplayName>BlockClassType</DisplayName>
     <References>
@@ -5415,6 +5577,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2292</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object CoupledAxesClassType ns=1;i=2296 -->
   <UAObjectType NodeId='ns=1;i=2296' BrowseName='1:CoupledAxesClassType'>
     <DisplayName>CoupledAxesClassType</DisplayName>
     <References>
@@ -5422,6 +5585,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2292</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object LineLabelClassType ns=1;i=2298 -->
   <UAObjectType NodeId='ns=1;i=2298' BrowseName='1:LineLabelClassType'>
     <DisplayName>LineLabelClassType</DisplayName>
     <References>
@@ -5429,6 +5593,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2292</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object MaterialClassType ns=1;i=2300 -->
   <UAObjectType NodeId='ns=1;i=2300' BrowseName='1:MaterialClassType'>
     <DisplayName>MaterialClassType</DisplayName>
     <References>
@@ -5436,6 +5601,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2292</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object OperatorIdClassType ns=1;i=2302 -->
   <UAObjectType NodeId='ns=1;i=2302' BrowseName='1:OperatorIdClassType'>
     <DisplayName>OperatorIdClassType</DisplayName>
     <References>
@@ -5443,6 +5609,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2292</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object PalletIdClassType ns=1;i=2304 -->
   <UAObjectType NodeId='ns=1;i=2304' BrowseName='1:PalletIdClassType'>
     <DisplayName>PalletIdClassType</DisplayName>
     <References>
@@ -5450,6 +5617,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2292</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object PartIdClassType ns=1;i=2306 -->
   <UAObjectType NodeId='ns=1;i=2306' BrowseName='1:PartIdClassType'>
     <DisplayName>PartIdClassType</DisplayName>
     <References>
@@ -5457,6 +5625,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2292</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object PartNumberClassType ns=1;i=2308 -->
   <UAObjectType NodeId='ns=1;i=2308' BrowseName='1:PartNumberClassType'>
     <DisplayName>PartNumberClassType</DisplayName>
     <References>
@@ -5464,6 +5633,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2292</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ProgramClassType ns=1;i=2310 -->
   <UAObjectType NodeId='ns=1;i=2310' BrowseName='1:ProgramClassType'>
     <DisplayName>ProgramClassType</DisplayName>
     <References>
@@ -5471,6 +5641,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2292</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ProgramEditNameClassType ns=1;i=2312 -->
   <UAObjectType NodeId='ns=1;i=2312' BrowseName='1:ProgramEditNameClassType'>
     <DisplayName>ProgramEditNameClassType</DisplayName>
     <References>
@@ -5478,6 +5649,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2292</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ProgramHeaderClassType ns=1;i=2314 -->
   <UAObjectType NodeId='ns=1;i=2314' BrowseName='1:ProgramHeaderClassType'>
     <DisplayName>ProgramHeaderClassType</DisplayName>
     <References>
@@ -5485,6 +5657,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2292</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ProgramCommentClassType ns=1;i=2316 -->
   <UAObjectType NodeId='ns=1;i=2316' BrowseName='1:ProgramCommentClassType'>
     <DisplayName>ProgramCommentClassType</DisplayName>
     <References>
@@ -5492,6 +5665,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2292</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object SerialNumberClassType ns=1;i=2318 -->
   <UAObjectType NodeId='ns=1;i=2318' BrowseName='1:SerialNumberClassType'>
     <DisplayName>SerialNumberClassType</DisplayName>
     <References>
@@ -5499,6 +5673,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2292</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ToolAssetIdClassType ns=1;i=2320 -->
   <UAObjectType NodeId='ns=1;i=2320' BrowseName='1:ToolAssetIdClassType'>
     <DisplayName>ToolAssetIdClassType</DisplayName>
     <References>
@@ -5506,6 +5681,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2292</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ToolNumberClassType ns=1;i=2322 -->
   <UAObjectType NodeId='ns=1;i=2322' BrowseName='1:ToolNumberClassType'>
     <DisplayName>ToolNumberClassType</DisplayName>
     <References>
@@ -5513,6 +5689,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2292</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ToolOffsetClassType ns=1;i=2324 -->
   <UAObjectType NodeId='ns=1;i=2324' BrowseName='1:ToolOffsetClassType'>
     <DisplayName>ToolOffsetClassType</DisplayName>
     <References>
@@ -5520,6 +5697,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2292</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object UserClassType ns=1;i=2326 -->
   <UAObjectType NodeId='ns=1;i=2326' BrowseName='1:UserClassType'>
     <DisplayName>UserClassType</DisplayName>
     <References>
@@ -5527,6 +5705,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2292</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object WireClassType ns=1;i=2328 -->
   <UAObjectType NodeId='ns=1;i=2328' BrowseName='1:WireClassType'>
     <DisplayName>WireClassType</DisplayName>
     <References>
@@ -5534,6 +5713,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2292</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object WorkholdingClassType ns=1;i=2330 -->
   <UAObjectType NodeId='ns=1;i=2330' BrowseName='1:WorkholdingClassType'>
     <DisplayName>WorkholdingClassType</DisplayName>
     <References>
@@ -5541,6 +5721,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2292</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object WorkOffsetClassType ns=1;i=2332 -->
   <UAObjectType NodeId='ns=1;i=2332' BrowseName='1:WorkOffsetClassType'>
     <DisplayName>WorkOffsetClassType</DisplayName>
     <References>
@@ -5548,6 +5729,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2292</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object MTDataItemSubClassType ns=1;i=2405 -->
   <UAObjectType NodeId='ns=1;i=2405' BrowseName='1:MTDataItemSubClassType' IsAbstract='true'>
     <DisplayName>MTDataItemSubClassType</DisplayName>
     <References>
@@ -5555,6 +5737,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=11163</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object AbsoluteSubClassType ns=1;i=2407 -->
   <UAObjectType NodeId='ns=1;i=2407' BrowseName='1:AbsoluteSubClassType'>
     <DisplayName>AbsoluteSubClassType</DisplayName>
     <References>
@@ -5562,6 +5745,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ActualSubClassType ns=1;i=2409 -->
   <UAObjectType NodeId='ns=1;i=2409' BrowseName='1:ActualSubClassType'>
     <DisplayName>ActualSubClassType</DisplayName>
     <References>
@@ -5569,6 +5753,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ActionSubClassType ns=1;i=2411 -->
   <UAObjectType NodeId='ns=1;i=2411' BrowseName='1:ActionSubClassType'>
     <DisplayName>ActionSubClassType</DisplayName>
     <References>
@@ -5576,6 +5761,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object AllSubClassType ns=1;i=2413 -->
   <UAObjectType NodeId='ns=1;i=2413' BrowseName='1:AllSubClassType'>
     <DisplayName>AllSubClassType</DisplayName>
     <References>
@@ -5583,6 +5769,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object AlternatingSubClassType ns=1;i=2415 -->
   <UAObjectType NodeId='ns=1;i=2415' BrowseName='1:AlternatingSubClassType'>
     <DisplayName>AlternatingSubClassType</DisplayName>
     <References>
@@ -5590,6 +5777,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object AScaleSubClassType ns=1;i=2417 -->
   <UAObjectType NodeId='ns=1;i=2417' BrowseName='1:AScaleSubClassType'>
     <DisplayName>AScaleSubClassType</DisplayName>
     <References>
@@ -5597,6 +5785,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object AuxiliarySubClassType ns=1;i=2419 -->
   <UAObjectType NodeId='ns=1;i=2419' BrowseName='1:AuxiliarySubClassType'>
     <DisplayName>AuxiliarySubClassType</DisplayName>
     <References>
@@ -5604,6 +5793,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object BadSubClassType ns=1;i=2421 -->
   <UAObjectType NodeId='ns=1;i=2421' BrowseName='1:BadSubClassType'>
     <DisplayName>BadSubClassType</DisplayName>
     <References>
@@ -5611,6 +5801,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object BrinellSubClassType ns=1;i=2423 -->
   <UAObjectType NodeId='ns=1;i=2423' BrowseName='1:BrinellSubClassType'>
     <DisplayName>BrinellSubClassType</DisplayName>
     <References>
@@ -5618,6 +5809,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object BScaleSubClassType ns=1;i=2425 -->
   <UAObjectType NodeId='ns=1;i=2425' BrowseName='1:BScaleSubClassType'>
     <DisplayName>BScaleSubClassType</DisplayName>
     <References>
@@ -5625,6 +5817,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object CommandedSubClassType ns=1;i=2427 -->
   <UAObjectType NodeId='ns=1;i=2427' BrowseName='1:CommandedSubClassType'>
     <DisplayName>CommandedSubClassType</DisplayName>
     <References>
@@ -5632,6 +5825,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object GoodSubClassType ns=1;i=2429 -->
   <UAObjectType NodeId='ns=1;i=2429' BrowseName='1:GoodSubClassType'>
     <DisplayName>GoodSubClassType</DisplayName>
     <References>
@@ -5639,6 +5833,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ControlSubClassType ns=1;i=2431 -->
   <UAObjectType NodeId='ns=1;i=2431' BrowseName='1:ControlSubClassType'>
     <DisplayName>ControlSubClassType</DisplayName>
     <References>
@@ -5646,6 +5841,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object CScaleSubClassType ns=1;i=2433 -->
   <UAObjectType NodeId='ns=1;i=2433' BrowseName='1:CScaleSubClassType'>
     <DisplayName>CScaleSubClassType</DisplayName>
     <References>
@@ -5653,6 +5849,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object DelaySubClassType ns=1;i=2435 -->
   <UAObjectType NodeId='ns=1;i=2435' BrowseName='1:DelaySubClassType'>
     <DisplayName>DelaySubClassType</DisplayName>
     <References>
@@ -5660,6 +5857,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object DirectSubClassType ns=1;i=2437 -->
   <UAObjectType NodeId='ns=1;i=2437' BrowseName='1:DirectSubClassType'>
     <DisplayName>DirectSubClassType</DisplayName>
     <References>
@@ -5667,6 +5865,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object DryRunSubClassType ns=1;i=2439 -->
   <UAObjectType NodeId='ns=1;i=2439' BrowseName='1:DryRunSubClassType'>
     <DisplayName>DryRunSubClassType</DisplayName>
     <References>
@@ -5674,6 +5873,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object DScaleSubClassType ns=1;i=2441 -->
   <UAObjectType NodeId='ns=1;i=2441' BrowseName='1:DScaleSubClassType'>
     <DisplayName>DScaleSubClassType</DisplayName>
     <References>
@@ -5681,6 +5881,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object FixtureSubClassType ns=1;i=2443 -->
   <UAObjectType NodeId='ns=1;i=2443' BrowseName='1:FixtureSubClassType'>
     <DisplayName>FixtureSubClassType</DisplayName>
     <References>
@@ -5688,6 +5889,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object IncrementalSubClassType ns=1;i=2445 -->
   <UAObjectType NodeId='ns=1;i=2445' BrowseName='1:IncrementalSubClassType'>
     <DisplayName>IncrementalSubClassType</DisplayName>
     <References>
@@ -5695,6 +5897,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object JobSubClassType ns=1;i=2447 -->
   <UAObjectType NodeId='ns=1;i=2447' BrowseName='1:JobSubClassType'>
     <DisplayName>JobSubClassType</DisplayName>
     <References>
@@ -5702,6 +5905,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object KineticSubClassType ns=1;i=2449 -->
   <UAObjectType NodeId='ns=1;i=2449' BrowseName='1:KineticSubClassType'>
     <DisplayName>KineticSubClassType</DisplayName>
     <References>
@@ -5709,6 +5913,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object LateralSubClassType ns=1;i=2451 -->
   <UAObjectType NodeId='ns=1;i=2451' BrowseName='1:LateralSubClassType'>
     <DisplayName>LateralSubClassType</DisplayName>
     <References>
@@ -5716,6 +5921,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object LeebSubClassType ns=1;i=2453 -->
   <UAObjectType NodeId='ns=1;i=2453' BrowseName='1:LeebSubClassType'>
     <DisplayName>LeebSubClassType</DisplayName>
     <References>
@@ -5723,6 +5929,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object LengthSubClassType ns=1;i=2455 -->
   <UAObjectType NodeId='ns=1;i=2455' BrowseName='1:LengthSubClassType'>
     <DisplayName>LengthSubClassType</DisplayName>
     <References>
@@ -5730,6 +5937,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object LinearSubClassType ns=1;i=2457 -->
   <UAObjectType NodeId='ns=1;i=2457' BrowseName='1:LinearSubClassType'>
     <DisplayName>LinearSubClassType</DisplayName>
     <References>
@@ -5737,6 +5945,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object LineSubClassType ns=1;i=2459 -->
   <UAObjectType NodeId='ns=1;i=2459' BrowseName='1:LineSubClassType'>
     <DisplayName>LineSubClassType</DisplayName>
     <References>
@@ -5744,6 +5953,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object LoadedSubClassType ns=1;i=2461 -->
   <UAObjectType NodeId='ns=1;i=2461' BrowseName='1:LoadedSubClassType'>
     <DisplayName>LoadedSubClassType</DisplayName>
     <References>
@@ -5751,6 +5961,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object MachineAxisLockSubClassType ns=1;i=2463 -->
   <UAObjectType NodeId='ns=1;i=2463' BrowseName='1:MachineAxisLockSubClassType'>
     <DisplayName>MachineAxisLockSubClassType</DisplayName>
     <References>
@@ -5758,6 +5969,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object MaintenanceSubClassType ns=1;i=2465 -->
   <UAObjectType NodeId='ns=1;i=2465' BrowseName='1:MaintenanceSubClassType'>
     <DisplayName>MaintenanceSubClassType</DisplayName>
     <References>
@@ -5765,6 +5977,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ManualUnclampSubClassType ns=1;i=2467 -->
   <UAObjectType NodeId='ns=1;i=2467' BrowseName='1:ManualUnclampSubClassType'>
     <DisplayName>ManualUnclampSubClassType</DisplayName>
     <References>
@@ -5772,6 +5985,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object MaximumSubClassType ns=1;i=2469 -->
   <UAObjectType NodeId='ns=1;i=2469' BrowseName='1:MaximumSubClassType'>
     <DisplayName>MaximumSubClassType</DisplayName>
     <References>
@@ -5779,6 +5993,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object MinimumSubClassType ns=1;i=2471 -->
   <UAObjectType NodeId='ns=1;i=2471' BrowseName='1:MinimumSubClassType'>
     <DisplayName>MinimumSubClassType</DisplayName>
     <References>
@@ -5786,6 +6001,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object MohsSubClassType ns=1;i=2473 -->
   <UAObjectType NodeId='ns=1;i=2473' BrowseName='1:MohsSubClassType'>
     <DisplayName>MohsSubClassType</DisplayName>
     <References>
@@ -5793,6 +6009,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object MoleSubClassType ns=1;i=2475 -->
   <UAObjectType NodeId='ns=1;i=2475' BrowseName='1:MoleSubClassType'>
     <DisplayName>MoleSubClassType</DisplayName>
     <References>
@@ -5800,6 +6017,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object MotionSubClassType ns=1;i=2477 -->
   <UAObjectType NodeId='ns=1;i=2477' BrowseName='1:MotionSubClassType'>
     <DisplayName>MotionSubClassType</DisplayName>
     <References>
@@ -5807,6 +6025,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object NoScaleSubClassType ns=1;i=2479 -->
   <UAObjectType NodeId='ns=1;i=2479' BrowseName='1:NoScaleSubClassType'>
     <DisplayName>NoScaleSubClassType</DisplayName>
     <References>
@@ -5814,6 +6033,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object OperatingSubClassType ns=1;i=2481 -->
   <UAObjectType NodeId='ns=1;i=2481' BrowseName='1:OperatingSubClassType'>
     <DisplayName>OperatingSubClassType</DisplayName>
     <References>
@@ -5821,6 +6041,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object OperatorSubClassType ns=1;i=2483 -->
   <UAObjectType NodeId='ns=1;i=2483' BrowseName='1:OperatorSubClassType'>
     <DisplayName>OperatorSubClassType</DisplayName>
     <References>
@@ -5828,6 +6049,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object OptionalStopSubClassType ns=1;i=2485 -->
   <UAObjectType NodeId='ns=1;i=2485' BrowseName='1:OptionalStopSubClassType'>
     <DisplayName>OptionalStopSubClassType</DisplayName>
     <References>
@@ -5835,6 +6057,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object OverrideSubClassType ns=1;i=2487 -->
   <UAObjectType NodeId='ns=1;i=2487' BrowseName='1:OverrideSubClassType'>
     <DisplayName>OverrideSubClassType</DisplayName>
     <References>
@@ -5842,6 +6065,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object PrimarySubClassType ns=1;i=2489 -->
   <UAObjectType NodeId='ns=1;i=2489' BrowseName='1:PrimarySubClassType'>
     <DisplayName>PrimarySubClassType</DisplayName>
     <References>
@@ -5849,6 +6073,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object PoweredSubClassType ns=1;i=2491 -->
   <UAObjectType NodeId='ns=1;i=2491' BrowseName='1:PoweredSubClassType'>
     <DisplayName>PoweredSubClassType</DisplayName>
     <References>
@@ -5856,6 +6081,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ProbeSubClassType ns=1;i=2493 -->
   <UAObjectType NodeId='ns=1;i=2493' BrowseName='1:ProbeSubClassType'>
     <DisplayName>ProbeSubClassType</DisplayName>
     <References>
@@ -5863,6 +6089,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ProcessSubClassType ns=1;i=2495 -->
   <UAObjectType NodeId='ns=1;i=2495' BrowseName='1:ProcessSubClassType'>
     <DisplayName>ProcessSubClassType</DisplayName>
     <References>
@@ -5870,6 +6097,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ProgrammedSubClassType ns=1;i=2497 -->
   <UAObjectType NodeId='ns=1;i=2497' BrowseName='1:ProgrammedSubClassType'>
     <DisplayName>ProgrammedSubClassType</DisplayName>
     <References>
@@ -5877,6 +6105,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object RadialSubClassType ns=1;i=2499 -->
   <UAObjectType NodeId='ns=1;i=2499' BrowseName='1:RadialSubClassType'>
     <DisplayName>RadialSubClassType</DisplayName>
     <References>
@@ -5884,6 +6113,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object RapidSubClassType ns=1;i=2501 -->
   <UAObjectType NodeId='ns=1;i=2501' BrowseName='1:RapidSubClassType'>
     <DisplayName>RapidSubClassType</DisplayName>
     <References>
@@ -5891,6 +6121,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object RelativeSubClassType ns=1;i=2503 -->
   <UAObjectType NodeId='ns=1;i=2503' BrowseName='1:RelativeSubClassType'>
     <DisplayName>RelativeSubClassType</DisplayName>
     <References>
@@ -5898,6 +6129,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object RemainingSubClassType ns=1;i=2505 -->
   <UAObjectType NodeId='ns=1;i=2505' BrowseName='1:RemainingSubClassType'>
     <DisplayName>RemainingSubClassType</DisplayName>
     <References>
@@ -5905,6 +6137,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object RequestSubClassType ns=1;i=2507 -->
   <UAObjectType NodeId='ns=1;i=2507' BrowseName='1:RequestSubClassType'>
     <DisplayName>RequestSubClassType</DisplayName>
     <References>
@@ -5912,6 +6145,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ResponseSubClassType ns=1;i=2509 -->
   <UAObjectType NodeId='ns=1;i=2509' BrowseName='1:ResponseSubClassType'>
     <DisplayName>ResponseSubClassType</DisplayName>
     <References>
@@ -5919,6 +6153,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object RockwellSubClassType ns=1;i=2511 -->
   <UAObjectType NodeId='ns=1;i=2511' BrowseName='1:RockwellSubClassType'>
     <DisplayName>RockwellSubClassType</DisplayName>
     <References>
@@ -5926,6 +6161,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object RotarySubClassType ns=1;i=2513 -->
   <UAObjectType NodeId='ns=1;i=2513' BrowseName='1:RotarySubClassType'>
     <DisplayName>RotarySubClassType</DisplayName>
     <References>
@@ -5933,6 +6169,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object SetUpSubClassType ns=1;i=2515 -->
   <UAObjectType NodeId='ns=1;i=2515' BrowseName='1:SetUpSubClassType'>
     <DisplayName>SetUpSubClassType</DisplayName>
     <References>
@@ -5940,6 +6177,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ShoreSubClassType ns=1;i=2517 -->
   <UAObjectType NodeId='ns=1;i=2517' BrowseName='1:ShoreSubClassType'>
     <DisplayName>ShoreSubClassType</DisplayName>
     <References>
@@ -5947,6 +6185,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object StandardSubClassType ns=1;i=2519 -->
   <UAObjectType NodeId='ns=1;i=2519' BrowseName='1:StandardSubClassType'>
     <DisplayName>StandardSubClassType</DisplayName>
     <References>
@@ -5954,6 +6193,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object SwitchedSubClassType ns=1;i=2521 -->
   <UAObjectType NodeId='ns=1;i=2521' BrowseName='1:SwitchedSubClassType'>
     <DisplayName>SwitchedSubClassType</DisplayName>
     <References>
@@ -5961,6 +6201,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object TargetSubClassType ns=1;i=2523 -->
   <UAObjectType NodeId='ns=1;i=2523' BrowseName='1:TargetSubClassType'>
     <DisplayName>TargetSubClassType</DisplayName>
     <References>
@@ -5968,6 +6209,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ToolChangeStopSubClassType ns=1;i=2525 -->
   <UAObjectType NodeId='ns=1;i=2525' BrowseName='1:ToolChangeStopSubClassType'>
     <DisplayName>ToolChangeStopSubClassType</DisplayName>
     <References>
@@ -5975,6 +6217,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ToolEdgeSubClassType ns=1;i=2527 -->
   <UAObjectType NodeId='ns=1;i=2527' BrowseName='1:ToolEdgeSubClassType'>
     <DisplayName>ToolEdgeSubClassType</DisplayName>
     <References>
@@ -5982,6 +6225,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ToolGroupSubClassType ns=1;i=2529 -->
   <UAObjectType NodeId='ns=1;i=2529' BrowseName='1:ToolGroupSubClassType'>
     <DisplayName>ToolGroupSubClassType</DisplayName>
     <References>
@@ -5989,6 +6233,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object ToolSubClassType ns=1;i=2531 -->
   <UAObjectType NodeId='ns=1;i=2531' BrowseName='1:ToolSubClassType'>
     <DisplayName>ToolSubClassType</DisplayName>
     <References>
@@ -5996,6 +6241,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object UasbleSubClassType ns=1;i=2533 -->
   <UAObjectType NodeId='ns=1;i=2533' BrowseName='1:UasbleSubClassType'>
     <DisplayName>UasbleSubClassType</DisplayName>
     <References>
@@ -6003,6 +6249,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object VerticalSubClassType ns=1;i=2535 -->
   <UAObjectType NodeId='ns=1;i=2535' BrowseName='1:VerticalSubClassType'>
     <DisplayName>VerticalSubClassType</DisplayName>
     <References>
@@ -6010,6 +6257,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object VolumeSubClassType ns=1;i=2537 -->
   <UAObjectType NodeId='ns=1;i=2537' BrowseName='1:VolumeSubClassType'>
     <DisplayName>VolumeSubClassType</DisplayName>
     <References>
@@ -6017,6 +6265,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object VickersSubClassType ns=1;i=2539 -->
   <UAObjectType NodeId='ns=1;i=2539' BrowseName='1:VickersSubClassType'>
     <DisplayName>VickersSubClassType</DisplayName>
     <References>
@@ -6024,6 +6273,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object WeightSubClassType ns=1;i=2541 -->
   <UAObjectType NodeId='ns=1;i=2541' BrowseName='1:WeightSubClassType'>
     <DisplayName>WeightSubClassType</DisplayName>
     <References>
@@ -6031,6 +6281,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object WorkingSubClassType ns=1;i=2543 -->
   <UAObjectType NodeId='ns=1;i=2543' BrowseName='1:WorkingSubClassType'>
     <DisplayName>WorkingSubClassType</DisplayName>
     <References>
@@ -6038,6 +6289,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Object WorkpieceSubClassType ns=1;i=2545 -->
   <UAObjectType NodeId='ns=1;i=2545' BrowseName='1:WorkpieceSubClassType'>
     <DisplayName>WorkpieceSubClassType</DisplayName>
     <References>
@@ -6045,6 +6297,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2405</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Reference HasMTClassType ns=1;i=2603 -->
   <UAReferenceType NodeId='ns=1;i=2603' BrowseName='1:HasMTClassType' Symmetric='false'>
     <DisplayName>HasMTClassType</DisplayName>
     <References>
@@ -6052,6 +6305,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=32</Reference>
     </References>
   </UAReferenceType>
+  <!-- Definition of Reference HasMTComposition ns=1;i=2611 -->
   <UAReferenceType NodeId='ns=1;i=2611' BrowseName='1:HasMTComposition' Symmetric='true'>
     <DisplayName>HasMTComposition</DisplayName>
     <References>
@@ -6059,6 +6313,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=32</Reference>
     </References>
   </UAReferenceType>
+  <!-- Definition of Reference HasMTReference ns=1;i=2591 -->
   <UAReferenceType NodeId='ns=1;i=2591' BrowseName='1:HasMTReference' Symmetric='true'>
     <DisplayName>HasMTReference</DisplayName>
     <References>
@@ -6066,6 +6321,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=32</Reference>
     </References>
   </UAReferenceType>
+  <!-- Definition of Reference HasMTSource ns=1;i=2613 -->
   <UAReferenceType NodeId='ns=1;i=2613' BrowseName='1:HasMTSource' Symmetric='true'>
     <DisplayName>HasMTSource</DisplayName>
     <References>
@@ -6073,6 +6329,7 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=32</Reference>
     </References>
   </UAReferenceType>
+  <!-- Definition of Reference HasMTSubClassType ns=1;i=2606 -->
   <UAReferenceType NodeId='ns=1;i=2606' BrowseName='1:HasMTSubClassType' Symmetric='false'>
     <DisplayName>HasMTSubClassType</DisplayName>
     <References>

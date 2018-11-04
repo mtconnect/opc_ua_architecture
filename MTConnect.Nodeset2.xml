@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-11-04T00:19:23Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-11-04T01:02:04Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-11-04T00:19:23Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-11-04T00:19:23Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-11-04T01:02:04Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-11-04T01:02:04Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -3513,6 +3513,14 @@
     <References>
       <!-- HasSubtype - (Reverse) - BaseConditionClassType i=11163   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=11163</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object MTMessageClassType ns=1;i=2976 -->
+  <UAObjectType NodeId='ns=1;i=2976' BrowseName='1:MTMessageClassType'>
+    <DisplayName>MTMessageClassType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - MTEventClassType ns=1;i=2552   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2552</Reference>
     </References>
   </UAObjectType>
   <!-- Definition of Object MTSampleClassType ns=1;i=2276 -->

@@ -18,7 +18,7 @@ module Diagram
   end
 
   def png_diagram_exists?
-      File.exists?(png_diagram_file_name)      
+    File.exists?(png_diagram_file_name)      
   end
 
   def tex_diagram_exists?
@@ -166,6 +166,7 @@ EOT
       @relations.select { |r| r.documentation or r.target.type.type == 'UMLEnumeration' }
 
     unless relations_with_documentation.empty?
+      f.puts "\\FloatBarrier"
       f.puts "\\paragraph{#{header}}\n\n"
       f.puts "\\begin{itemize}"
       relations_with_documentation.each do |r|
@@ -175,7 +176,9 @@ EOT
         
         if r.target.type.type == 'UMLEnumeration'
           f.puts "\\item \\textbf{Allowable Values} for \\texttt{#{r.target.type.name}}"
+          f.puts "\\FloatBarrier"
           r.target.type.generate_enumerations(f)
+          f.puts "\\FloatBarrier"
         end
       end
       f.puts "\\end{itemize}"
@@ -298,15 +301,17 @@ EOT
 
     if !deps.empty? or @mixin
       f.puts "\\paragraph{Dependencies and Relationships}"
-      f.puts "\\begin{itemize}"
       
       deps.each do |dep|
         target = dep.target
         
         if dep.stereotype and dep.stereotype.name == 'values' and
-          target.type.type == 'UMLEnumeration'
+            target.type.type == 'UMLEnumeration'
+          
           f.puts "\\item \\textbf{Allowable Values} for \\texttt{#{target.type.name}}"
+          f.puts "\\FloatBarrier"
           target.type.generate_enumerations(f)
+          f.puts "\\FloatBarrier"
         else
           f.puts "\\item Dependency on #{target.type.name}\n\n"
           rel = dep.stereotype && dep.stereotype.name

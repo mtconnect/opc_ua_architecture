@@ -76,7 +76,7 @@ class Type
     @relations.each do |r|
       if r.is_mixin?
         @mixin = r.target.type
-        puts "==>  Found Mixin #{r.target.name} for #{@name}"
+        # puts "==>  Found Mixin #{r.target.name} for #{@name}"
         return
       end
     end
@@ -143,11 +143,11 @@ class Type
   def connect_links
     @relations.each do |r|
       if r.type == 'UMLAssociationClassLink'
-        puts "********* Connecting relation for #{@name}"
+        # puts "********* Connecting relation for #{@name}"
         @relations.each do |r|
           if r.type == 'UMLAssociation'            
             source = r.source
-            puts "********* -> Connecting to #{source.name}"
+            # puts "********* -> Connecting to #{source.name}"
             source.relations << r if source
             return
           end

@@ -1,4 +1,4 @@
-% Generated 2018-11-03 15:21:45 -0700
+% Generated 2018-11-03 20:18:28 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -101,6 +101,13 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{BaseObjectType} (See \cite{UAPart5} Documentation)} \\
 HasSubtype & ObjectType & MTDeviceType & \multicolumn{3}{|l|}{See section \ref{type:MTDeviceType}} \\
 HasSubtype & ObjectType & <Component>Type & \multicolumn{3}{|l|}{See section \ref{type:<Component>Type}} \\
+HasSubtype & ObjectType & ControllerType & \multicolumn{3}{|l|}{See section \ref{type:ControllerType}} \\
+HasSubtype & ObjectType & AxesType & \multicolumn{3}{|l|}{See section \ref{type:AxesType}} \\
+HasSubtype & ObjectType & RotaryType & \multicolumn{3}{|l|}{See section \ref{type:RotaryType}} \\
+HasSubtype & ObjectType & PathType & \multicolumn{3}{|l|}{See section \ref{type:PathType}} \\
+HasSubtype & ObjectType & SystemsType & \multicolumn{3}{|l|}{See section \ref{type:SystemsType}} \\
+HasSubtype & ObjectType & ElectricType & \multicolumn{3}{|l|}{See section \ref{type:ElectricType}} \\
+HasSubtype & ObjectType & LinearType & \multicolumn{3}{|l|}{See section \ref{type:LinearType}} \\
 HasProperty & Variable & XmlId & String & PropertyType & Mandatory \\
 HasProperty & Variable & Name & String & PropertyType & Optional \\
 HasProperty & Variable & NativeName & String & PropertyType & Optional \\
@@ -341,6 +348,7 @@ HasProperty & Variable & Data & String & PropertyType & Optional \\
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
@@ -444,7 +452,6 @@ HasComponent & Object & Constraints & \multicolumn{2}{|l|}{MTConstraintType} & M
 
 
 \paragraph{Dependencies and Relationships}
-\begin{itemize}
 \item Mixes in \texttt{MTDataItemType}, see See section \ref{type:MTDataItemType}
 \end{itemize}
 \FloatBarrier
@@ -486,6 +493,11 @@ HasSubtype & ObjectType & SystemClassType & \multicolumn{3}{|l|}{See section \re
   \label{type:MTConstraintType}
 
 \FloatBarrier
+
+The MTConnect constraints. The Values or the Minimum, Maximum, and Nominal values should be 
+provided. Multiple Values can be provided as an array as a set of allowable values for this
+\mtterm{DataItem}.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTConstraintType} Definition}
@@ -501,7 +513,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \multicolumn{6}{|l|}{Subtype of \texttt{BaseObjectType} (See \cite{UAPart5} Documentation)} \\
-HasProperty & Variable & Value & String[] & PropertyType & Optional \\
+HasProperty & Variable & Values & String[] & PropertyType & Optional \\
 HasProperty & Variable & Minimum & Float & PropertyType & Optional \\
 HasProperty & Variable & Maximum & Float & PropertyType & Optional \\
 HasProperty & Variable & Nominal & Float & PropertyType & Optional \\
@@ -559,7 +571,6 @@ HasComponent & Object & Constraints & \multicolumn{2}{|l|}{MTConstraintType} & M
 
 
 \paragraph{Dependencies and Relationships}
-\begin{itemize}
 \item Mixes in \texttt{MTDataItemType}, see See section \ref{type:MTDataItemType}
 \end{itemize}
 \FloatBarrier
@@ -607,10 +618,15 @@ HasComponent & Object & Constraints & \multicolumn{2}{|l|}{MTConstraintType} & M
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{MTCategoryType}
+\FloatBarrier
+
+Represents the \texttt{category} attribute of the MTConnect \mtterm{DataItem}.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTCategoryType} Enumeration}
@@ -625,9 +641,14 @@ HasComponent & Object & Constraints & \multicolumn{2}{|l|}{MTConstraintType} & M
 \texttt{SAMPLE} & \texttt{2} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \item \texttt{SourceData::String:} The text that is the \texttt{CDATA} of the \xmlelement{Source} element.
 
 \item \textbf{Allowable Values} for \texttt{MTRepresentationType}
+\FloatBarrier
+
+Represents the \texttt{representation} attribute of the MTConnect \mtterm{DataItem}.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTRepresentationType} Enumeration}
@@ -642,11 +663,16 @@ HasComponent & Object & Constraints & \multicolumn{2}{|l|}{MTConstraintType} & M
 \texttt{VALUE} & \texttt{2} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \item \texttt{MinimumDeltaFilter::Float:} Represents the MTConnect \mtterm{Filter} subtype of \mtterm{MinimumDeltaFilter}.
 
 \item \texttt{PeriodFilter::Float:} Represents the MTConnect \mtterm{Filter} subtype of \mtterm{PeriodFilter}.
 
 \item \textbf{Allowable Values} for \texttt{MTRepresentationType}
+\FloatBarrier
+
+Represents the \texttt{representation} attribute of the MTConnect \mtterm{DataItem}.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTRepresentationType} Enumeration}
@@ -661,7 +687,12 @@ HasComponent & Object & Constraints & \multicolumn{2}{|l|}{MTConstraintType} & M
 \texttt{VALUE} & \texttt{2} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \item \textbf{Allowable Values} for \texttt{MTCategoryType}
+\FloatBarrier
+
+Represents the \texttt{category} attribute of the MTConnect \mtterm{DataItem}.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTCategoryType} Enumeration}
@@ -676,17 +707,10 @@ HasComponent & Object & Constraints & \multicolumn{2}{|l|}{MTConstraintType} & M
 \texttt{SAMPLE} & \texttt{2} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \paragraph{Operations}
 \begin{itemize}
-  \item \texttt{deriveSourceName(element)}\\
-    Specification:
-   \indent \begin{lstlisting}
-self.Source.CDATA
-\end{lstlisting}
-
-    Documentation: Derive the source name from the Source element CDATA. This will represent the alternative long name for the data item's source.
-
   \item \texttt{getStatusCode()}
     Documentation: The OPC/UA status code will be created using the following process:
 
@@ -697,8 +721,11 @@ self.Source.CDATA
 
 \end{itemize}
 \paragraph{Dependencies and Relationships}
-\begin{itemize}
 \item \textbf{Allowable Values} for \texttt{MTRepresentationType}
+\FloatBarrier
+
+Represents the \texttt{representation} attribute of the MTConnect \mtterm{DataItem}.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTRepresentationType} Enumeration}
@@ -713,7 +740,12 @@ self.Source.CDATA
 \texttt{VALUE} & \texttt{2} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \item \textbf{Allowable Values} for \texttt{MTCategoryType}
+\FloatBarrier
+
+Represents the \texttt{category} attribute of the MTConnect \mtterm{DataItem}.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTCategoryType} Enumeration}
@@ -728,6 +760,7 @@ self.Source.CDATA
 \texttt{SAMPLE} & \texttt{2} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<mixin>> MTNumericDataItemType}}
@@ -765,12 +798,17 @@ HasProperty & Variable & ResetTrigger & DataItemResetValueType & PropertyType & 
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \texttt{SignificantDigits::UInt16:} The significant digits is converted to a \uaterm{ValuePrecision}.
 
 \item \textbf{Allowable Values} for \texttt{CoordinateSystemType}
+\FloatBarrier
+
+Represents the \texttt{coordinateSystem} attribute of the MTConnect \mtterm{DataItem}.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{CoordinateSystemType} Enumeration}
@@ -784,7 +822,9 @@ HasProperty & Variable & ResetTrigger & DataItemResetValueType & PropertyType & 
 \texttt{WORK} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \item \textbf{Allowable Values} for \texttt{DataItemResetValueType}
+\FloatBarrier
 
 These need to become \texttt{Good_} status code in OPC UA.
 
@@ -808,7 +848,12 @@ These need to become \texttt{Good_} status code in OPC UA.
 \texttt{WEEK} & \texttt{8} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \item \textbf{Allowable Values} for \texttt{CoordinateSystemType}
+\FloatBarrier
+
+Represents the \texttt{coordinateSystem} attribute of the MTConnect \mtterm{DataItem}.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{CoordinateSystemType} Enumeration}
@@ -822,7 +867,9 @@ These need to become \texttt{Good_} status code in OPC UA.
 \texttt{WORK} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \item \textbf{Allowable Values} for \texttt{DataItemResetValueType}
+\FloatBarrier
 
 These need to become \texttt{Good_} status code in OPC UA.
 
@@ -846,24 +893,14 @@ These need to become \texttt{Good_} status code in OPC UA.
 \texttt{WEEK} & \texttt{8} \\
 \end{tabu}
 \end{table} 
-\end{itemize}
-\paragraph{Operations}
-\begin{itemize}
-  \item \texttt{deriveEURange(constraints)}\\
-    Specification:
-   \indent \begin{lstlisting}
-EURange.Low <- self.Constraints.Minimum
-EURange.High <- self.Constraints.Maximum
-\end{lstlisting}
-
-    Documentation: Uses the MTConnect Constraints element if present to derive the minimum 
-and maximum values for the numeric values. This applies to both the Numeric 
-Event and the Sample types.
-
+\FloatBarrier
 \end{itemize}
 \paragraph{Dependencies and Relationships}
-\begin{itemize}
 \item \textbf{Allowable Values} for \texttt{CoordinateSystemType}
+\FloatBarrier
+
+Represents the \texttt{coordinateSystem} attribute of the MTConnect \mtterm{DataItem}.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{CoordinateSystemType} Enumeration}
@@ -877,7 +914,9 @@ Event and the Sample types.
 \texttt{WORK} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \item \textbf{Allowable Values} for \texttt{DataItemResetValueType}
+\FloatBarrier
 
 These need to become \texttt{Good_} status code in OPC UA.
 
@@ -901,6 +940,7 @@ These need to become \texttt{Good_} status code in OPC UA.
 \texttt{WEEK} & \texttt{8} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTEventClassType}}
@@ -928,6 +968,7 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 HasSubtype & ObjectType & MTControlledVocabClassType & \multicolumn{3}{|l|}{See section \ref{type:MTControlledVocabClassType}} \\
 HasSubtype & ObjectType & MTNumberEventClassType & \multicolumn{3}{|l|}{See section \ref{type:MTNumberEventClassType}} \\
 HasSubtype & ObjectType & MTStringEventClassType & \multicolumn{3}{|l|}{See section \ref{type:MTStringEventClassType}} \\
+HasSubtype & ObjectType & MTMessageClassType & \multicolumn{3}{|l|}{See section \ref{type:MTMessageClassType}} \\
 \end{tabu}
 \end{table} 
 
@@ -983,7 +1024,6 @@ HasProperty & Variable & NativeCode & String & PropertyType & Optional \\
 
 
 \paragraph{Dependencies and Relationships}
-\begin{itemize}
 \item Mixes in \texttt{MTDataItemType}, see See section \ref{type:MTDataItemType}
 \end{itemize}
 \FloatBarrier
@@ -1044,7 +1084,6 @@ HasProperty & Variable & EngineeringUnits & EUInformation & PropertyType & Optio
 
 
 \paragraph{Dependencies and Relationships}
-\begin{itemize}
 \item Mixes in \texttt{MTNumericDataItemType}, see See section \ref{type:MTNumericDataItemType}
 \end{itemize}
 \FloatBarrier
@@ -1101,6 +1140,7 @@ HasProperty & Variable & ResetTrigger & DataItemResetValueType & PropertyType & 
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
@@ -1108,7 +1148,6 @@ HasProperty & Variable & ResetTrigger & DataItemResetValueType & PropertyType & 
 
 \end{itemize}
 \paragraph{Dependencies and Relationships}
-\begin{itemize}
 \item Mixes in \texttt{MTNumericDataItemType}, see See section \ref{type:MTNumericDataItemType}
 \end{itemize}
 \FloatBarrier
@@ -1162,7 +1201,6 @@ HasComponent & Object & Constraints & \multicolumn{2}{|l|}{MTConstraintType} & M
 
 
 \paragraph{Dependencies and Relationships}
-\begin{itemize}
 \item Mixes in \texttt{MTDataItemType}, see See section \ref{type:MTDataItemType}
 \end{itemize}
 \FloatBarrier
@@ -1170,6 +1208,10 @@ HasComponent & Object & Constraints & \multicolumn{2}{|l|}{MTConstraintType} & M
   \label{type:MTThreeSpaceSampleType}
 
 \FloatBarrier
+
+A special data item type that represents a three space coordinate. It uses a data type with three fields, X, Y, and Z, where 
+the coordinates are given in millimeters. The EngineeringUnits will always be set to MMT in the UNECE convetion.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTThreeSpaceSampleType} Definition}
@@ -1217,7 +1259,6 @@ HasProperty & Variable & EngineeringUnits & EUInformation & PropertyType & Manda
 
 
 \paragraph{Dependencies and Relationships}
-\begin{itemize}
 \item Mixes in \texttt{MTNumericDataItemType}, see See section \ref{type:MTNumericDataItemType}
 \end{itemize}
 \FloatBarrier
@@ -1225,6 +1266,9 @@ HasProperty & Variable & EngineeringUnits & EUInformation & PropertyType & Manda
   \label{type:ThreeSpacePositionDataType}
 
 \FloatBarrier
+
+Represents a position in a three space coordinate system. The positions must be given in millimeters.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ThreeSpacePositionDataType} DataType}
@@ -1240,6 +1284,17 @@ HasProperty & Variable & EngineeringUnits & EUInformation & PropertyType & Manda
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+\paragraph{Data Type Fields}
+
+\begin{itemize}
+\item \texttt{X::Double:} If not present, must be set to NaN.
+
+\item \texttt{Y::Double:} If not present, must be set to NaN.
+
+\item \texttt{Z::Double:} If not present, must be set to NaN.
+
+\end{itemize}
 \FloatBarrier
 \subsection{Conditions} \label{model:Conditions}
 
@@ -1320,6 +1375,7 @@ HasComponent & Variable & ActiveState & \multicolumn{2}{|l|}{TwoStateVariableTyp
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
@@ -1332,6 +1388,7 @@ inactive, then the \texttt{NativeCode} will be cleared.
 inactive, then the \texttt{NativeSeverity} will be cleared.
 
 \item \textbf{Allowable Values} for \texttt{MTSeverityDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTSeverityDataType} Enumeration}
@@ -1346,7 +1403,9 @@ inactive, then the \texttt{NativeSeverity} will be cleared.
 \texttt{WARNING} & \texttt{2} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \item \textbf{Allowable Values} for \texttt{QualifierDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{QualifierDataType} Enumeration}
@@ -1360,9 +1419,9 @@ inactive, then the \texttt{NativeSeverity} will be cleared.
 \texttt{LOW} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \paragraph{Dependencies and Relationships}
-\begin{itemize}
 \item Mixes in \texttt{MTDataItemType}, see See section \ref{type:MTDataItemType}
 \end{itemize}
 \FloatBarrier
@@ -1409,6 +1468,30 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 HasSubtype & ObjectType & MTSampleClassType & \multicolumn{3}{|l|}{See section \ref{type:MTSampleClassType}} \\
 HasSubtype & ObjectType & MTConditionClassType & \multicolumn{3}{|l|}{See section \ref{type:MTConditionClassType}} \\
 HasSubtype & ObjectType & MTEventClassType & \multicolumn{3}{|l|}{See section \ref{type:MTEventClassType}} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MTMessageClassType}}
+  \label{type:MTMessageClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTMessageClassType} Definition}
+  \label{table:MTMessageClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTMessageClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\multicolumn{6}{|l|}{Subtype of \texttt{MTEventClassType} (See Data Items Documentation)} \\
 \end{tabu}
 \end{table} 
 
@@ -1997,6 +2080,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
@@ -2761,10 +2845,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{ActiveStateDataType} 
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{ActiveStateDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ActiveStateDataType} Enumeration}
@@ -2778,6 +2864,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{ActiveStateDataType} 
 \texttt{INACTIVE} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ AvailabilityClassType}}
@@ -2808,10 +2895,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{AvailabilityDataType}
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{AvailabilityDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{AvailabilityDataType} Enumeration}
@@ -2825,6 +2914,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{AvailabilityDataType}
 \texttt{UNAVAILABLE} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ AxisCouplingClassType}}
@@ -2858,10 +2948,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{AxisCouplingDataType}
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{AxisCouplingDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{AxisCouplingDataType} Enumeration}
@@ -2877,6 +2969,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{AxisCouplingDataType}
 \texttt{TANDEM} & \texttt{3} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ AxisInterlockClassType}}
@@ -2907,10 +3000,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{ActiveStateDataType} 
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{ActiveStateDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ActiveStateDataType} Enumeration}
@@ -2924,6 +3019,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{ActiveStateDataType} 
 \texttt{INACTIVE} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ AxisStateClassType}}
@@ -2953,10 +3049,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{AxisStateDataType} & 
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{AxisStateDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{AxisStateDataType} Enumeration}
@@ -2972,6 +3070,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{AxisStateDataType} & 
 \texttt{TRAVEL} & \texttt{3} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ ChuckInterlockClassType}}
@@ -3002,10 +3101,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{ActiveStateDataType} 
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{ActiveStateDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ActiveStateDataType} Enumeration}
@@ -3019,6 +3120,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{ActiveStateDataType} 
 \texttt{INACTIVE} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ ChuckStateClassType}}
@@ -3050,10 +3152,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{OpenStateDataType} & 
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{OpenStateDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{OpenStateDataType} Enumeration}
@@ -3068,6 +3172,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{OpenStateDataType} & 
 \texttt{UNLATCHED} & \texttt{2} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ ControllerModeClassType}}
@@ -3097,10 +3202,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{ControllerModeDataTyp
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{ControllerModeDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ControllerModeDataType} Enumeration}
@@ -3117,6 +3224,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{ControllerModeDataTyp
 \texttt{SEMI_AUTOMATIC} & \texttt{4} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ ExecutionClassType}}
@@ -3146,10 +3254,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{ExecutionDataType} & 
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{ExecutionDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ExecutionDataType} Enumeration}
@@ -3169,6 +3279,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{ExecutionDataType} & 
 \texttt{STOPPED} & \texttt{7} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ CompositionStateClassType}}
@@ -3202,10 +3313,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{CompositionStateDataT
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{CompositionStateDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{CompositionStateDataType} Enumeration}
@@ -3229,6 +3342,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{CompositionStateDataT
 \texttt{UP} & \texttt{11} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ ControllerModeOverrideClassType}}
@@ -3258,10 +3372,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{OnOffDataType} & Mand
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{OnOffDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{OnOffDataType} Enumeration}
@@ -3275,6 +3391,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{OnOffDataType} & Mand
 \texttt{ON} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ DirectionClassType}}
@@ -3304,10 +3421,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{DirectionDataType} & 
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{DirectionDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{DirectionDataType} Enumeration}
@@ -3323,6 +3442,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{DirectionDataType} & 
 \texttt{POSITIVE} & \texttt{3} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ DoorStateClassType}}
@@ -3352,10 +3472,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{OpenStateDataType} & 
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{OpenStateDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{OpenStateDataType} Enumeration}
@@ -3370,6 +3492,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{OpenStateDataType} & 
 \texttt{UNLATCHED} & \texttt{2} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ EmergencyStopClassType}}
@@ -3399,10 +3522,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{EmergencyStopDataType
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{EmergencyStopDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{EmergencyStopDataType} Enumeration}
@@ -3416,6 +3541,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{EmergencyStopDataType
 \texttt{TRIGGERED} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ EndOfBarClassType}}
@@ -3445,10 +3571,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{YesNoDataType} & Mand
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{YesNoDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{YesNoDataType} Enumeration}
@@ -3462,6 +3590,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{YesNoDataType} & Mand
 \texttt{YES} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ EquipmentModeClassType}}
@@ -3494,10 +3623,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{OnOffDataType} & Mand
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{OnOffDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{OnOffDataType} Enumeration}
@@ -3511,6 +3642,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{OnOffDataType} & Mand
 \texttt{ON} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ FunctionalModeClassType}}
@@ -3543,10 +3675,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{FunctionalModeDataTyp
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{FunctionalModeDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{FunctionalModeDataType} Enumeration}
@@ -3563,6 +3697,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{FunctionalModeDataTyp
 \texttt{TEARDOWN} & \texttt{4} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ SpindleInterlockClassType}}
@@ -3592,10 +3727,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{ActiveStateDataType} 
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{ActiveStateDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ActiveStateDataType} Enumeration}
@@ -3609,6 +3746,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{ActiveStateDataType} 
 \texttt{INACTIVE} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ PathModeClassType}}
@@ -3638,10 +3776,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{PathModeDataType} & M
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{PathModeDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{PathModeDataType} Enumeration}
@@ -3657,6 +3797,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{PathModeDataType} & M
 \texttt{SYNCHRONOUS} & \texttt{3} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ PowerStateClassType}}
@@ -3689,10 +3830,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{OnOffDataType} & Mand
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{OnOffDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{OnOffDataType} Enumeration}
@@ -3706,6 +3849,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{OnOffDataType} & Mand
 \texttt{ON} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ ProgramEditClassType}}
@@ -3737,10 +3881,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{ProgramEditDataType} 
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{ProgramEditDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ProgramEditDataType} Enumeration}
@@ -3755,6 +3901,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{ProgramEditDataType} 
 \texttt{READY} & \texttt{2} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ RotaryModeClassType}}
@@ -3784,10 +3931,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{RotaryModeDataType} &
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{RotaryModeDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{RotaryModeDataType} Enumeration}
@@ -3802,6 +3951,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{RotaryModeDataType} &
 \texttt{SPINDLE} & \texttt{2} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ InterfaceStateClassType}}
@@ -3831,10 +3981,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStatusDataTy
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{InterfaceStatusDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStatusDataType} Enumeration}
@@ -3848,6 +4000,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStatusDataTy
 \texttt{ENABLED} & \texttt{1} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MaterialFeedClassType}}
@@ -3877,10 +4030,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataTyp
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
@@ -3897,6 +4052,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataTyp
 \texttt{READY} & \texttt{5} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MaterialChangeClassType}}
@@ -3926,10 +4082,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataTyp
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
@@ -3946,6 +4104,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataTyp
 \texttt{READY} & \texttt{5} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MaterialRetractClassType}}
@@ -3975,10 +4134,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataTyp
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
@@ -3995,6 +4156,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataTyp
 \texttt{READY} & \texttt{5} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MaterialLoadClassType}}
@@ -4024,10 +4186,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataTyp
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
@@ -4044,6 +4208,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataTyp
 \texttt{READY} & \texttt{5} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MaterialUnloadClassType}}
@@ -4073,10 +4238,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataTyp
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
@@ -4093,6 +4260,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataTyp
 \texttt{READY} & \texttt{5} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ OpenDoorClassType}}
@@ -4122,10 +4290,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataTyp
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
@@ -4142,6 +4312,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataTyp
 \texttt{READY} & \texttt{5} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ CloseDoorClassType}}
@@ -4171,10 +4342,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataTyp
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
@@ -4191,6 +4364,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataTyp
 \texttt{READY} & \texttt{5} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ OpenChuckClassType}}
@@ -4220,10 +4394,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataTyp
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
@@ -4240,6 +4416,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataTyp
 \texttt{READY} & \texttt{5} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ CloseChuckClassType}}
@@ -4269,10 +4446,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataTyp
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
@@ -4289,6 +4468,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataTyp
 \texttt{READY} & \texttt{5} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ PartChangeClassType}}
@@ -4318,10 +4498,12 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataTyp
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
+\FloatBarrier
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
@@ -4338,6 +4520,7 @@ HasProperty & Variable & EnumValues & \multicolumn{2}{|l|}{InterfaceStateDataTyp
 \texttt{READY} & \texttt{5} \\
 \end{tabu}
 \end{table} 
+\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsection{Numeric Event Data Item Types} \label{model:NumericEventDataItemTypes}
@@ -4655,6 +4838,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \end{table} 
 
 
+\FloatBarrier
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}

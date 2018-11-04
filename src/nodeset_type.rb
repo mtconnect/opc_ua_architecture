@@ -71,7 +71,7 @@ class NodesetType < Type
   end
   
   def node_reference(refs, name, type, target, target_type = nil, forward: true)
-    refs << REXML::Comment.new(" #{type} - - #{name} #{target} #{target_type} (forward: #{forward}) ")
+    refs << REXML::Comment.new(" #{type} - #{!forward ? '(Reverse)' : ''} - #{name} #{target} #{target_type}  ")
     ref = REXML::Element.new('Reference')
     ref = refs.add_element('Reference', { 'ReferenceType' => type })
     ref.add_attribute('IsForward', 'false') unless forward

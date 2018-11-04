@@ -173,11 +173,13 @@ class NodesetType < Type
 
   def component(ref, owner, path)
     nid = ref.node_id(path)
+    Root << REXML::Comment.new(" #{owner.name}::#{ref.name} : #{ref.target.type.name}[#{ref.multiplicity}] ")
     if ref.target.type.is_variable?
       refs, ele = node('UAVariable', nid, ref.name,
-                   data_type: ref.target.type.variable_data_type.node_alias)
+                       data_type: ref.target.type.variable_data_type.node_alias,
+                       parent: owner.node_id)
     else
-      refs, ele = node('UAObject', nid, ref.name)
+      refs, ele = node('UAObject', nid, ref.name, parent: owner.node_id)
     end
 
     pnt = OwnerReference.new(ref.name, nid, ref.tags)

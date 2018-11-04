@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-11-03T21:03:07Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-11-04T00:00:26Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-11-03T21:03:07Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-11-03T21:03:07Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-11-04T00:00:26Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-11-04T00:00:26Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -353,7 +353,8 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2019</Reference>
     </References>
   </UAVariable>
-  <UAObject NodeId='ns=1;i=2026' BrowseName='1:Description'>
+  <!-- MTComponentType::Description : MTDescriptionType[0..1] -->
+  <UAObject NodeId='ns=1;i=2026' BrowseName='1:Description' ParentNodeId='ns=1;i=2019'>
     <DisplayName>Description</DisplayName>
     <References>
       <!-- HasProperty - - Station ns=1;i=2783 String (forward: true) -->
@@ -420,7 +421,8 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2026</Reference>
     </References>
   </UAVariable>
-  <UAObject NodeId='ns=1;i=2027' BrowseName='1:Configuration'>
+  <!-- MTComponentType::Configuration : MTConfigurationType[0..1] -->
+  <UAObject NodeId='ns=1;i=2027' BrowseName='1:Configuration' ParentNodeId='ns=1;i=2019'>
     <DisplayName>Configuration</DisplayName>
     <References>
       <!-- HasTypeDefinition - - MTConfigurationType ns=1;i=2043  (forward: true) -->
@@ -431,7 +433,8 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2019</Reference>
     </References>
   </UAObject>
-  <UAObject NodeId='ns=1;i=2041' BrowseName='1:Components'>
+  <!-- MTComponentType::Components : FolderType[0..*] -->
+  <UAObject NodeId='ns=1;i=2041' BrowseName='1:Components' ParentNodeId='ns=1;i=2019'>
     <DisplayName>Components</DisplayName>
     <References>
       <!-- HasTypeDefinition - - FolderType i=61  (forward: true) -->
@@ -442,7 +445,8 @@
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2019</Reference>
     </References>
   </UAObject>
-  <UAObject NodeId='ns=1;i=2042' BrowseName='1:Compositions'>
+  <!-- MTComponentType::Compositions : FolderType[0..*] -->
+  <UAObject NodeId='ns=1;i=2042' BrowseName='1:Compositions' ParentNodeId='ns=1;i=2019'>
     <DisplayName>Compositions</DisplayName>
     <References>
       <!-- HasTypeDefinition - - FolderType i=61  (forward: true) -->
@@ -637,7 +641,8 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2045</Reference>
     </References>
   </UAVariable>
-  <UAObject NodeId='ns=1;i=2051' BrowseName='1:Channels'>
+  <!-- MTSensorConfigurationType::Channels : FolderType[0..*] -->
+  <UAObject NodeId='ns=1;i=2051' BrowseName='1:Channels' ParentNodeId='ns=1;i=2045'>
     <DisplayName>Channels</DisplayName>
     <References>
       <!-- HasTypeDefinition - - FolderType i=61  (forward: true) -->
@@ -992,7 +997,8 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2550</Reference>
     </References>
   </UAVariable>
-  <UAObject NodeId='ns=1;i=2798' BrowseName='1:Constraints'>
+  <!-- MTAssetEventType::Constraints : MTConstraintType[1] -->
+  <UAObject NodeId='ns=1;i=2798' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2550'>
     <DisplayName>Constraints</DisplayName>
     <References>
       <!-- HasProperty - - Value ns=1;i=2951 String (forward: true) -->
@@ -1333,7 +1339,8 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2554</Reference>
     </References>
   </UAVariable>
-  <UAObject NodeId='ns=1;i=2811' BrowseName='1:Constraints'>
+  <!-- MTControlledVocabEventType::Constraints : MTConstraintType[1] -->
+  <UAObject NodeId='ns=1;i=2811' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2554'>
     <DisplayName>Constraints</DisplayName>
     <References>
       <!-- HasProperty - - Value ns=1;i=2955 String (forward: true) -->
@@ -1572,7 +1579,8 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2401</Reference>
     </References>
   </UAVariable>
-  <UAObject NodeId='ns=1;i=2823' BrowseName='1:Constraints'>
+  <!-- MTMessageType::Constraints : MTConstraintType[1] -->
+  <UAObject NodeId='ns=1;i=2823' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2401'>
     <DisplayName>Constraints</DisplayName>
     <References>
       <!-- HasProperty - - Value ns=1;i=2959 String (forward: true) -->
@@ -1832,7 +1840,8 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2357</Reference>
     </References>
   </UAVariable>
-  <UAObject NodeId='ns=1;i=2835' BrowseName='1:Constraints'>
+  <!-- MTNumericEventType::Constraints : MTConstraintType[1] -->
+  <UAObject NodeId='ns=1;i=2835' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2357'>
     <DisplayName>Constraints</DisplayName>
     <References>
       <!-- HasProperty - - Value ns=1;i=2963 String (forward: true) -->
@@ -2225,7 +2234,8 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
     </References>
   </UAVariable>
-  <UAObject NodeId='ns=1;i=2855' BrowseName='1:Constraints'>
+  <!-- MTSampleType::Constraints : MTConstraintType[1] -->
+  <UAObject NodeId='ns=1;i=2855' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2350'>
     <DisplayName>Constraints</DisplayName>
     <References>
       <!-- HasProperty - - Value ns=1;i=2967 String (forward: true) -->
@@ -2539,7 +2549,8 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2353</Reference>
     </References>
   </UAVariable>
-  <UAObject NodeId='ns=1;i=2874' BrowseName='1:Constraints'>
+  <!-- MTStringEventType::Constraints : MTConstraintType[1] -->
+  <UAObject NodeId='ns=1;i=2874' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2353'>
     <DisplayName>Constraints</DisplayName>
     <References>
       <!-- HasProperty - - Value ns=1;i=2971 String (forward: true) -->
@@ -2785,7 +2796,8 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2569</Reference>
     </References>
   </UAVariable>
-  <UAObject NodeId='ns=1;i=2886' BrowseName='1:Constraints'>
+  <!-- MTThreeSpaceSampleType::Constraints : MTConstraintType[1] -->
+  <UAObject NodeId='ns=1;i=2886' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2569'>
     <DisplayName>Constraints</DisplayName>
     <References>
       <!-- HasProperty - - Value ns=1;i=2975 String (forward: true) -->
@@ -3133,7 +3145,8 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2579</Reference>
     </References>
   </UAVariable>
-  <UAObject NodeId='ns=1;i=2905' BrowseName='1:Constraints'>
+  <!-- MTConditionType::Constraints : MTConstraintType[1] -->
+  <UAObject NodeId='ns=1;i=2905' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2579'>
     <DisplayName>Constraints</DisplayName>
     <References>
       <!-- HasProperty - - Value ns=1;i=2979 String (forward: true) -->
@@ -3248,7 +3261,8 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2579</Reference>
     </References>
   </UAVariable>
-  <UAVariable NodeId='ns=1;i=2585' BrowseName='1:ActiveState' DataType='LocalizedText'>
+  <!-- MTConditionType::ActiveState : TwoStateVariableType[1] -->
+  <UAVariable NodeId='ns=1;i=2585' BrowseName='1:ActiveState' DataType='LocalizedText' ParentNodeId='ns=1;i=2579'>
     <DisplayName>ActiveState</DisplayName>
     <References>
       <!-- HasProperty - - Id ns=1;i=2908 Boolean (forward: true) -->
@@ -4413,7 +4427,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2079</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2079' BrowseName='1:EnumValues' DataType='ns=1;i=2128'>
+  <!-- ActuatorStateClassType::EnumValues : ActiveStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2079' BrowseName='1:EnumValues' DataType='ns=1;i=2128' ParentNodeId='ns=1;i=2077'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - ActiveStateDataType ns=1;i=2128  (forward: true) -->
@@ -4433,7 +4448,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2082</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2082' BrowseName='1:EnumValues' DataType='ns=1;i=2129'>
+  <!-- AvailabilityClassType::EnumValues : AvailabilityDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2082' BrowseName='1:EnumValues' DataType='ns=1;i=2129' ParentNodeId='ns=1;i=2080'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - AvailabilityDataType ns=1;i=2129  (forward: true) -->
@@ -4453,7 +4469,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2085</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2085' BrowseName='1:EnumValues' DataType='ns=1;i=2130'>
+  <!-- AxisCouplingClassType::EnumValues : AxisCouplingDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2085' BrowseName='1:EnumValues' DataType='ns=1;i=2130' ParentNodeId='ns=1;i=2083'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - AxisCouplingDataType ns=1;i=2130  (forward: true) -->
@@ -4473,7 +4490,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2088</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2088' BrowseName='1:EnumValues' DataType='ns=1;i=2128'>
+  <!-- AxisInterlockClassType::EnumValues : ActiveStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2088' BrowseName='1:EnumValues' DataType='ns=1;i=2128' ParentNodeId='ns=1;i=2086'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - ActiveStateDataType ns=1;i=2128  (forward: true) -->
@@ -4493,7 +4511,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2091</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2091' BrowseName='1:EnumValues' DataType='ns=1;i=2131'>
+  <!-- AxisStateClassType::EnumValues : AxisStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2091' BrowseName='1:EnumValues' DataType='ns=1;i=2131' ParentNodeId='ns=1;i=2089'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - AxisStateDataType ns=1;i=2131  (forward: true) -->
@@ -4513,7 +4532,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2094</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2094' BrowseName='1:EnumValues' DataType='ns=1;i=2128'>
+  <!-- ChuckInterlockClassType::EnumValues : ActiveStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2094' BrowseName='1:EnumValues' DataType='ns=1;i=2128' ParentNodeId='ns=1;i=2092'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - ActiveStateDataType ns=1;i=2128  (forward: true) -->
@@ -4533,7 +4553,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2097</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2097' BrowseName='1:EnumValues' DataType='ns=1;i=2132'>
+  <!-- ChuckStateClassType::EnumValues : OpenStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2097' BrowseName='1:EnumValues' DataType='ns=1;i=2132' ParentNodeId='ns=1;i=2095'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - OpenStateDataType ns=1;i=2132  (forward: true) -->
@@ -4553,7 +4574,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2100</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2100' BrowseName='1:EnumValues' DataType='ns=1;i=2134'>
+  <!-- ControllerModeClassType::EnumValues : ControllerModeDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2100' BrowseName='1:EnumValues' DataType='ns=1;i=2134' ParentNodeId='ns=1;i=2098'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - ControllerModeDataType ns=1;i=2134  (forward: true) -->
@@ -4573,7 +4595,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2103</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2103' BrowseName='1:EnumValues' DataType='ns=1;i=2193'>
+  <!-- ExecutionClassType::EnumValues : ExecutionDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2103' BrowseName='1:EnumValues' DataType='ns=1;i=2193' ParentNodeId='ns=1;i=2101'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - ExecutionDataType ns=1;i=2193  (forward: true) -->
@@ -4593,7 +4616,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2106</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2106' BrowseName='1:EnumValues' DataType='ns=1;i=2133'>
+  <!-- CompositionStateClassType::EnumValues : CompositionStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2106' BrowseName='1:EnumValues' DataType='ns=1;i=2133' ParentNodeId='ns=1;i=2104'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - CompositionStateDataType ns=1;i=2133  (forward: true) -->
@@ -4613,7 +4637,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2109</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2109' BrowseName='1:EnumValues' DataType='ns=1;i=2135'>
+  <!-- ControllerModeOverrideClassType::EnumValues : OnOffDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2109' BrowseName='1:EnumValues' DataType='ns=1;i=2135' ParentNodeId='ns=1;i=2107'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - OnOffDataType ns=1;i=2135  (forward: true) -->
@@ -4633,7 +4658,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2112</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2112' BrowseName='1:EnumValues' DataType='ns=1;i=2136'>
+  <!-- DirectionClassType::EnumValues : DirectionDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2112' BrowseName='1:EnumValues' DataType='ns=1;i=2136' ParentNodeId='ns=1;i=2110'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - DirectionDataType ns=1;i=2136  (forward: true) -->
@@ -4653,7 +4679,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2115</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2115' BrowseName='1:EnumValues' DataType='ns=1;i=2132'>
+  <!-- DoorStateClassType::EnumValues : OpenStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2115' BrowseName='1:EnumValues' DataType='ns=1;i=2132' ParentNodeId='ns=1;i=2113'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - OpenStateDataType ns=1;i=2132  (forward: true) -->
@@ -4673,7 +4700,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2118</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2118' BrowseName='1:EnumValues' DataType='ns=1;i=2138'>
+  <!-- EmergencyStopClassType::EnumValues : EmergencyStopDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2118' BrowseName='1:EnumValues' DataType='ns=1;i=2138' ParentNodeId='ns=1;i=2116'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - EmergencyStopDataType ns=1;i=2138  (forward: true) -->
@@ -4693,7 +4721,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2121</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2121' BrowseName='1:EnumValues' DataType='ns=1;i=2137'>
+  <!-- EndOfBarClassType::EnumValues : YesNoDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2121' BrowseName='1:EnumValues' DataType='ns=1;i=2137' ParentNodeId='ns=1;i=2119'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - YesNoDataType ns=1;i=2137  (forward: true) -->
@@ -4713,7 +4742,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2124</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2124' BrowseName='1:EnumValues' DataType='ns=1;i=2135'>
+  <!-- EquipmentModeClassType::EnumValues : OnOffDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2124' BrowseName='1:EnumValues' DataType='ns=1;i=2135' ParentNodeId='ns=1;i=2122'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - OnOffDataType ns=1;i=2135  (forward: true) -->
@@ -4733,7 +4763,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2127</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2127' BrowseName='1:EnumValues' DataType='ns=1;i=2139'>
+  <!-- FunctionalModeClassType::EnumValues : FunctionalModeDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2127' BrowseName='1:EnumValues' DataType='ns=1;i=2139' ParentNodeId='ns=1;i=2125'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - FunctionalModeDataType ns=1;i=2139  (forward: true) -->
@@ -4753,7 +4784,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2145</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2145' BrowseName='1:EnumValues' DataType='ns=1;i=2128'>
+  <!-- SpindleInterlockClassType::EnumValues : ActiveStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2145' BrowseName='1:EnumValues' DataType='ns=1;i=2128' ParentNodeId='ns=1;i=2143'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - ActiveStateDataType ns=1;i=2128  (forward: true) -->
@@ -4773,7 +4805,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2148</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2148' BrowseName='1:EnumValues' DataType='ns=1;i=2140'>
+  <!-- PathModeClassType::EnumValues : PathModeDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2148' BrowseName='1:EnumValues' DataType='ns=1;i=2140' ParentNodeId='ns=1;i=2146'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - PathModeDataType ns=1;i=2140  (forward: true) -->
@@ -4793,7 +4826,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2151</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2151' BrowseName='1:EnumValues' DataType='ns=1;i=2135'>
+  <!-- PowerStateClassType::EnumValues : OnOffDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2151' BrowseName='1:EnumValues' DataType='ns=1;i=2135' ParentNodeId='ns=1;i=2149'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - OnOffDataType ns=1;i=2135  (forward: true) -->
@@ -4813,7 +4847,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2154</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2154' BrowseName='1:EnumValues' DataType='ns=1;i=2141'>
+  <!-- ProgramEditClassType::EnumValues : ProgramEditDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2154' BrowseName='1:EnumValues' DataType='ns=1;i=2141' ParentNodeId='ns=1;i=2152'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - ProgramEditDataType ns=1;i=2141  (forward: true) -->
@@ -4833,7 +4868,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2157</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2157' BrowseName='1:EnumValues' DataType='ns=1;i=2142'>
+  <!-- RotaryModeClassType::EnumValues : RotaryModeDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2157' BrowseName='1:EnumValues' DataType='ns=1;i=2142' ParentNodeId='ns=1;i=2155'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - RotaryModeDataType ns=1;i=2142  (forward: true) -->
@@ -4853,7 +4889,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2160</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2160' BrowseName='1:EnumValues' DataType='ns=1;i=2161'>
+  <!-- InterfaceStateClassType::EnumValues : InterfaceStatusDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2160' BrowseName='1:EnumValues' DataType='ns=1;i=2161' ParentNodeId='ns=1;i=2158'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - InterfaceStatusDataType ns=1;i=2161  (forward: true) -->
@@ -4873,7 +4910,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2164</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2164' BrowseName='1:EnumValues' DataType='ns=1;i=2165'>
+  <!-- MaterialFeedClassType::EnumValues : InterfaceStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2164' BrowseName='1:EnumValues' DataType='ns=1;i=2165' ParentNodeId='ns=1;i=2162'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - InterfaceStateDataType ns=1;i=2165  (forward: true) -->
@@ -4893,7 +4931,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2168</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2168' BrowseName='1:EnumValues' DataType='ns=1;i=2165'>
+  <!-- MaterialChangeClassType::EnumValues : InterfaceStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2168' BrowseName='1:EnumValues' DataType='ns=1;i=2165' ParentNodeId='ns=1;i=2166'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - InterfaceStateDataType ns=1;i=2165  (forward: true) -->
@@ -4913,7 +4952,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2171</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2171' BrowseName='1:EnumValues' DataType='ns=1;i=2165'>
+  <!-- MaterialRetractClassType::EnumValues : InterfaceStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2171' BrowseName='1:EnumValues' DataType='ns=1;i=2165' ParentNodeId='ns=1;i=2169'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - InterfaceStateDataType ns=1;i=2165  (forward: true) -->
@@ -4933,7 +4973,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2174</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2174' BrowseName='1:EnumValues' DataType='ns=1;i=2165'>
+  <!-- MaterialLoadClassType::EnumValues : InterfaceStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2174' BrowseName='1:EnumValues' DataType='ns=1;i=2165' ParentNodeId='ns=1;i=2172'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - InterfaceStateDataType ns=1;i=2165  (forward: true) -->
@@ -4953,7 +4994,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2177</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2177' BrowseName='1:EnumValues' DataType='ns=1;i=2165'>
+  <!-- MaterialUnloadClassType::EnumValues : InterfaceStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2177' BrowseName='1:EnumValues' DataType='ns=1;i=2165' ParentNodeId='ns=1;i=2175'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - InterfaceStateDataType ns=1;i=2165  (forward: true) -->
@@ -4973,7 +5015,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2180</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2180' BrowseName='1:EnumValues' DataType='ns=1;i=2165'>
+  <!-- OpenDoorClassType::EnumValues : InterfaceStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2180' BrowseName='1:EnumValues' DataType='ns=1;i=2165' ParentNodeId='ns=1;i=2178'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - InterfaceStateDataType ns=1;i=2165  (forward: true) -->
@@ -4993,7 +5036,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2183</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2183' BrowseName='1:EnumValues' DataType='ns=1;i=2165'>
+  <!-- CloseDoorClassType::EnumValues : InterfaceStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2183' BrowseName='1:EnumValues' DataType='ns=1;i=2165' ParentNodeId='ns=1;i=2181'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - InterfaceStateDataType ns=1;i=2165  (forward: true) -->
@@ -5013,7 +5057,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2186</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2186' BrowseName='1:EnumValues' DataType='ns=1;i=2165'>
+  <!-- OpenChuckClassType::EnumValues : InterfaceStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2186' BrowseName='1:EnumValues' DataType='ns=1;i=2165' ParentNodeId='ns=1;i=2184'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - InterfaceStateDataType ns=1;i=2165  (forward: true) -->
@@ -5033,7 +5078,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2189</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2189' BrowseName='1:EnumValues' DataType='ns=1;i=2165'>
+  <!-- CloseChuckClassType::EnumValues : InterfaceStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2189' BrowseName='1:EnumValues' DataType='ns=1;i=2165' ParentNodeId='ns=1;i=2187'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - InterfaceStateDataType ns=1;i=2165  (forward: true) -->
@@ -5053,7 +5099,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2192</Reference>
     </References>
   </UAObjectType>
-  <UAVariable NodeId='ns=1;i=2192' BrowseName='1:EnumValues' DataType='ns=1;i=2165'>
+  <!-- PartChangeClassType::EnumValues : InterfaceStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=2192' BrowseName='1:EnumValues' DataType='ns=1;i=2165' ParentNodeId='ns=1;i=2190'>
     <DisplayName>EnumValues</DisplayName>
     <References>
       <!-- HasTypeDefinition - - InterfaceStateDataType ns=1;i=2165  (forward: true) -->

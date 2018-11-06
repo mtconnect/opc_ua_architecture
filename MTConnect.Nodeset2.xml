@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-11-04T01:02:04Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-11-04T18:35:34Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-11-04T01:02:04Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-11-04T01:02:04Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-11-04T18:35:34Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-11-04T18:35:34Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -2995,9 +2995,15 @@
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=24</Reference>
     </References>
     <Definition Name='ThreeSpacePositionDataType'>
-      <Field Name='X' DataType='Double'/>
-      <Field Name='Y' DataType='Double'/>
-      <Field Name='Z' DataType='Double'/>
+      <Field Name='X' DataType='Double'>
+        <Description>If not present, must be set to NaN.</Description>
+      </Field>
+      <Field Name='Y' DataType='Double'>
+        <Description>If not present, must be set to NaN.</Description>
+      </Field>
+      <Field Name='Z' DataType='Double'>
+        <Description>If not present, must be set to NaN.</Description>
+      </Field>
     </Definition>
   </UADataType>
   <!-- Definition of Object MTConditionType ns=1;i=2573 -->

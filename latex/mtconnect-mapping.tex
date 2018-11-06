@@ -1,7 +1,7 @@
 \section{Mapping the MTConnect Information Model to OPC UA} 
   \label{mtconnect-mapping}
 
-This section details translating the MTConnect model into a UML representation to render the MTConnect information model in OPC UA. More detailed information is provided in Section \ref{mtconnect_information_model} for each data type.
+This section describes a UML representation of MTConnect semantic data models for mapping MTConnect into OPC UA. More detailed information is provided in Section \ref{mtconnect_information_model} for each data type.
 
 OPC UA defines abstractions representing data, relationships, and events from devices. The abstractions do not provide the semantic meaning; they provide a structure to convey the meta-data and the values as they change. The OPC UA model has the base building blocks to represent an ontological model where the specific ontology is povided by companion specification for a specific domain.
 
@@ -168,6 +168,7 @@ The following types representing base MTConnect types are also prefixed:
 The data item class types and enumeration data types do not have \texttt{MT} prepended. Sub-types of the \mtuatype{MTComponentType} do not have \texttt{MT} prefixed with the exception of the \mtuatype{MTDeviceType}. \mtterm{Composition} elements in the MTConnect model will be represented instantiated with the \uaterm{BrowseName} of the \mtterm{Composition} \xmlattribute{type} converted to \textit{PascalCase}. The \xmlattribute{type} will be copied to the \uaterm{Property} \texttt{MTTypeName}.
 
 \subsubsection{\mtterm{DataItem} \uaterm{HasTypeDefinition} and \uaterm{BrowseName} Conventions}
+    \label{sec:data-item-conventions}
 
 The MTConnect \mtterm{DataItem} represents multiple OPC UA \uaterm{DataVariableType}s as well as UA \uaterm{ConditionType}s as described in parts \cite{UAPart8} and \cite{UAPart9} respectively. The mapping rules are as follows:
 
@@ -229,7 +230,7 @@ The MTConnect \mtterm{DataItem} represents multiple OPC UA \uaterm{DataVariableT
     \item If the \xmlattribute{subType} is present, set the variable \texttt{subType} to the \textit{PascalCase} of the \xmlattribute{subType}. Otherwise set it the variable \texttt{subType} to "".
     \item Set the variable \texttt{type} to the \textit{PascalCase} of the \xmlelement{DataItem} attribute \xmlattribute{type}.
     \item The \uaterm{BrowseName} is the concatination of the \texttt{composition} + \texttt{subType} + \texttt{type}.
-    \item If the \xmlattribute{representation} attribute is given, the \uaterm{BrowseName} will be have the \textit{PascalCase} of the \xmlattribute{representation} appended to the \uaterm{BrowseName}. For example, a \dataitem{AMPERAGE} with \xmlattribute{representation="TIME_SERIES"} will have a \uaterm{BrowseName} of \texttt{AmperageTimeSeries}.
+    \item If the \xmlattribute{representation} attribute is given and it has a value other than the default \texttt{VALUE}, the \uaterm{BrowseName} will be have the \textit{PascalCase} of the \xmlattribute{representation} appended to the \uaterm{BrowseName}. For example, a \dataitem{AMPERAGE} with \xmlattribute{representation="TIME_SERIES"} will have a \uaterm{BrowseName} of \texttt{AmperageTimeSeries}.
     \end{enumerate}
 
 \item Format the \uaterm{BrowseName} for the \mtterm{Condition} \mtterm{DataItem}s
@@ -420,28 +421,20 @@ The \element{Components} element in Listing \ref{lst:linear-x-component} is repr
 
 Figure~\ref{fig:linear-x-component} represents the UA Object model based on  Listing~\ref{lst:linear-x-component}. The \mtterm{Linear} X \mtterm{Axis}, mapped from \element{Linear} element in Listing~\ref{lst:linear-x-component}, has a \uaterm{BrowseName} composed of the \element{QName} of the element, and the \element{name} attribute appended and enclosed in square brackets \element{[X]}, giving the browse name of \texttt{Linear[X]} and a component type of \texttt{LinearType} using a \uaterm{HasTypeDefinition} \uaterm{Reference}.
 
-The \mtterm{DataItem}s for \texttt{ActualPosition} and \texttt{Load} are both of \mtterm{category} \mtterm{SAMPLE}; they contain numeric values are always mapped to the \mtuatype{MTSampleType} which is derived from the UA \uaterm{AnalogItemType} defined in \cite{UAPart8}. The \uaterm{BrowseName} for the \mtterm{DataItem}s are composed of the related \mtterm{Composition} \mtterm{type}, \mtterm{subType}, and \mtterm{type} of the \mtterm{DataItem} represented in \textit{PascalCase}.
+The \mtterm{DataItem}s for \texttt{ActualPosition} and \texttt{Load} are both of \mtterm{category} \mtterm{SAMPLE}; they contain numeric values are always mapped to the \mtuatype{MTSampleType} which is derived from the UA \uaterm{AnalogItemType} defined in \cite{UAPart8}. The \uaterm{BrowseName} for the \mtterm{DataItem}s are composed of the related \mtterm{Composition} \mtterm{type}, \mtterm{subType}, and \mtterm{type} of the \mtterm{DataItem} represented in \textit{PascalCase}. See Section~\ref{sec:data-item-conventions} for details.
 
 The \uaterm{EngineeringUnits} of the \uaterm{AnalogItemType} will be mapped to the \uaterm{EngineeringUnits} \uaterm{Property} of the \mtuatype{MTSampleType}. If the value is constrained, the \uaterm{EURange} will be populated, otherwise the high and low values will set to \uaterm{NaN} as the range since it is a mandatory \uaterm{Property}. The remaining attributes will be represented as properties of the \mtuatype{MTSampleType} converting the \textit{lowerCamelCase} to \textit{PascalCase} by changing the first character to upper-case. The \mtterm{EVENT} category and complex cases will be specified in the following examples.
 
-MTConnect \mtterm{DataItem}s of \mtterm{category} \dataitem{CONDITION} are special types since they represent the state of an alarm or warning associated with a \mtterm{Component} of the \mtterm{Device}. For more information on the \mtterm{conditions} see \cite{MTCPart2} and \cite{MTCPart3}. The mapping of the \mtterm{CONDITION} \mtterm{category} of \mtterm{DataItem}s is to the corresponding \uaterm{ConditionType} sub-type of \mtuatype{MTConditionType}.
+MTConnect \mtterm{DataItem}s of \mtterm{category} \dataitem{CONDITION} are special types since they represent the state of an alarm or warning associated with a \mtterm{Component} of the \mtterm{Device}. For more information on the \mtterm{conditions} see \cite{MTCPart2} and \cite{MTCPart3}. The mapping of the \mtterm{CONDITION} \mtterm{category} of \mtterm{DataItem}s is to the \mtuatype{MTConditionType}.
 
-The \mtuatype{MTConditionType} has a naming rule similar to the \mtterm{DataItem} referenced above. The same rule applies with \texttt{Condition} appended. In this case the condition is of \mtterm{type} \dataitem{POSITION} so the \uaterm{BrowseName} is \texttt{PositionCondition}. This is to differentiate the UA \uaterm{Component} for other UA \uaterm{Components} of the same type.
+The \mtuatype{MTConditionType} has a naming rule similar to the \mtterm{DataItem} referenced above. The same rule applies with \texttt{Condition} appended. In this case the condition is of \mtterm{type} \dataitem{POSITION} so the \uaterm{BrowseName} is \texttt{PositionCondition}. This is to differentiate the \mtterm{Conditions} from other \mtterm{DataItem}s.
 
-The \mtuatype{MTComponentType} is decendent of the \uaterm{BaseEventType} described in \cite{UAPart5} and \cite{UAPart9}, so it has two functions in the UA model. It represents the overall state of the UA \uaterm{Condition} and also it represents each event as the various MTConnect \mtterm{Condition} changes are reported as represented in the \mtterm{MTConnectStreams} described in \cite{MTCPart3}.
+The \mtuatype{MTConditionsType} is decendent of the \uaterm{BaseEventType} described in \cite{UAPart5} and \cite{UAPart9}, so it has two functions in the UA model. It represents the overall state of the UA \uaterm{Condition} and also it represents each event as the various MTConnect \mtterm{Condition} changes are reported as represented in the \mtterm{MTConnectStreams} described in \cite{MTCPart3}.
 
-The \uaterm{HasNotifier} refererence is created between the \texttt{SimpleCnc:}\mtuatype{MTDeviceType} object and the \texttt{Axes} object to allow for the events to flow down to the conditions for each of the components. The relationship of the condition in Figure~\ref{fig:linear-x-example-1} illustrates the relationships between the \element{Component} and the related condition in the notification hierarchy.
+The \uaterm{HasNotifier} reference must be created between the \texttt{SimpleCnc:}\mtuatype{MTDeviceType} object and the \texttt{Axes} object to allow for the events to flow down to the conditions for each of the components. The relationship of the condition in Figure~\ref{fig:linear-x-component} illustrates the relationships between the \element{Component} and the related condition in the notification hierarchy.
 
- The \texttt{Linear[x]} component uses a \uaterm{HasNotifier} reference sourced from the parent \texttt{Axes} \uaterm{Object}. The condition, having a \mtuatype{MTClassType} and a ConditionClassId of \mtuatype{PositionClassType}, is connected to the \texttt{Linear[X]} axis with a \uaterm{HasCondition} relationship. 
-
-\begin{quote}
-    \color{red} Need to handle the following three Conditon Properties: SourceName, SourceNode, and EventType.
-    \begin{itemize}
-        \item SourceNode and SourceName must refer to either the Component or the Variable that is the source of this Condition.
-        \item Is EventType the ...Type that is referenced by the \uaterm{HasTypeDefinition}?
-    \end{itemize}
-\end{quote}
-
+ The \texttt{Linear[x]} component uses a \uaterm{HasNotifier} reference sourced from the parent \texttt{Axes} \uaterm{Object}. The condition, having a \mtuatype{MTClassType} and a \uaterm{ConditionClassId} of \mtuatype{PositionClassType}, is connected to the \texttt{Linear[X]} axis with a \uaterm{HasCondition} relationship to indicate the souorce of the events for the \uaterm{ConditonType}.
+ 
 \FloatBarrier
 
 \paragraph{\element{Rotary} Axis and \mtterm{Condition} sources}
@@ -474,7 +467,7 @@ The \uaterm{HasNotifier} refererence is created between the \texttt{SimpleCnc:}\
             </Rotary>
 \end{lstlisting}
 
-The data item on Line~\ref{line:rotary-mode} of Listing~\ref{lst:rotary-c-example} with \xmlattribute{type} of \dataitem{ROTARY_MODE} is illustrated in Figure~\ref{fig:rotary-c-rotary-mode}. MTConnect allows for a \mtterm{Rotary} axis to provide the function of the axis, Spindle, Contour, or Index. In Many cases the Rotary Mode is a singular values, as in this case when it can only work as a spindle. This is expressed by creating a \uaterm{Property} with a \mtuadatatype{ConstraintDataType} and specifying the \texttt{Values} field with the singular value of ["SPINDLE"] indicating it can only function as a spindle. 
+The data item on Line~\ref{line:rotary-mode} of Listing~\ref{lst:rotary-c-example} with \xmlattribute{type} of \dataitem{ROTARY_MODE} is illustrated in Figure~\ref{fig:rotary-c-rotary-mode}. MTConnect allows for a \mtterm{Rotary} axis to provide the function of the axis, Spindle, Contour, or Index. In Many cases the Rotary Mode is a singular values, as in this case when it can only work as a spindle. This is expressed by creating a \uaterm{HasComponent} reference to a \mtuadatatype{ConstraintType} \uaterm{Object} and specifying the \texttt{Values} \uaterm{Property}  with the singular value of\texttt{["SPINDLE"]} indicating it can only function as a spindle. 
 
 In MTConnect, the value of this data item will never be \mtterm{UNAVAILABLE} or \uaterm{Bad_\ldots} since it is bound to a single value, it will always be present and have that value regardless of the connectivity state to the data source. In the case of constraints on a controlled vocabulary, the \texttt{Values} must always be one of the related EnumValues. See \cite{MTCPart2} for details on the constraints and the relationship to the \mtterm{DataItem}s.
 
@@ -557,9 +550,33 @@ As stated above, the \uaterm{HasNotifier} \uaterm{References} must be establishe
         </Controller>
 \end{lstlisting}
 
-\begin{quote}
-    \color{red} TODO: Controller model
-\end{quote}
+The \mtterm{Controller} has two \mtterm{DataItems}, a \mtterm{Message} and \mtterm{EmergencyStop} as shown in Figure~\ref{fig:controller-component}. The \mtuatype{MTMessageType} is of special note since it is not a \uaterm{VariableType}, but it is an \uaterm{EventType} and decended from the \uaterm{SystemEventType} class described in \cite{UAPart5}. {\color{red} Does the message require a special relation like the Condition and the HasCondition reference?}
+
+In MTConnect, the \mtterm{Controller} has common data and information relating to all \mtterm{Path}s of operation. The \mtterm{Path} element below has the specific information relating to the execution of the part program and the path related motion and conditions. In some simple machines, the \mtterm{Path} will be merged to the \mtterm{Controller}. These relationships are covered in \cite{MTCPart2}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/controller-component.png}
+    \caption{Controller Component and Data Items}
+    \label{fig:controller-component}
+\end{figure}
+
+Figure~\ref{fig:path-component} illustrates the \mtterm{Path} component with \mtterm{DataItems}. Many of the \mtterm{DataItems} types have been covered in prior examples, so the \mtterm{Path} will only focus on the \mtterm{DataItems} that have differentiated features. 
+
+The \dataitem{PATH_POSITION} is mapped to the \mtuatype{MTThreeSpaceSampleType} that represents a spacial coordinate in three space ($\mathbb{R}^{3}$) with each coordinate being giving in millimeters. The EngineeringUnits for this type will therefor always be mapped to MMT in the UNECE conventions.
+
+The \mtuatype{MTThreeSpaceSampleType} uses the \mtuatype{ThreeSpacePositionDataType} that contains an \mtterm{X, Y, and Z} \uaterm{Field}. If one of the dimensions cannot be provided, it must be set to \uaterm{NaN}.
+
+The two \mtterm{Conditions} in this component capable of branching. The model will use the \uaterm{BranchId} in this case. This occurs when there are multiple simultaneous problems with either the logic or motion program in the controller. These cases will be discussed in the section on the streaming data.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/path-component.png}
+    \caption{Path Component and Data Items}
+    \label{fig:path-component}
+\end{figure}
+
+\FloatBarrier
 
 \begin{lstlisting}[firstnumber=last,%
     caption={Electrical System and Sensor Configuration},label={lst:electric-system-example-1}]

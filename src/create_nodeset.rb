@@ -99,6 +99,42 @@ NodesetModel.generate_nodeset('String Event Data Item Types')
 NodesetModel.generate_nodeset('Data Item Sub Types')
 NodesetModel.generate_nodeset('MTConnect Device Profile')
 
+error = false
+
+puts "Validating all references are resolved"
+puts "  Collecting all defined node ids"
+node_ids = Set.new
+Root.each_element('*') do |e|
+  nid = e.attribute('NodeId')
+  if nid
+    if node_ids.include?(nid.value)
+      error = true
+      puts "!!!! Node Id #{nid.value} is a duplicate: #{e.inspect}"
+    end
+    node_ids << nid.value
+  end
+end
+
+puts "  Checking all references"
+Root.each_element('*') do |e|
+  nid = e.attribute('DataType')
+  if nid and nid.value =~ /^ns=1;/ and !node_ids.include?(nid.value)
+    puts "!!!! Data Type NodeId #{nid} is a broken relationship #{e.inspect}"
+    error = true
+  end
+  e.each_element("./References/Reference") do |r|
+    if r.text =~ /^ns=1;/ and !node_ids.include?(r.text)
+      puts "!!!! Reference #{r.text} is a broken relationship #{r.inspect} of #{e.inspect}"
+      error = true
+    end
+  end
+end
+
+if error
+  puts "XML is not valid"
+  exit 1
+end
+
 File.open('./MTConnect.Nodeset2.xml', 'w') do |f|
   document << Root
   formatter = REXML::Formatters::Pretty.new(2)

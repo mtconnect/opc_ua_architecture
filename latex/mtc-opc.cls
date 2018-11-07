@@ -301,12 +301,16 @@
   frame=single, framexrightmargin=0.5in, breaklines,
   breakautoindent=true}
 
+\definecolor{maroon}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+
 % Formatting for internal links in document:
 \hypersetup{%
 	colorlinks=true,
     linkcolor=black,
     filecolor=magenta,
-    urlcolor=blue
+    urlcolor=blue,
+    citecolor=maroon
 }
 
 % Use styles for OPC and UML drawings
@@ -324,10 +328,6 @@
 \tikzstyle{tikzuml inherit style}=%
    [color=\tikzumlDefaultDrawColor, {-{Stealth[inset=0pt,scale=2.5,fill=white,angle'=45]}},%
    rounded corners]
-
-
-\definecolor{maroon}{rgb}{0.5,0,0}
-\definecolor{darkgreen}{rgb}{0,0.5,0}
 
 \lstdefinelanguage{XML}
 {

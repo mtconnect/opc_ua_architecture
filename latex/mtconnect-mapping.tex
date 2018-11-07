@@ -18,7 +18,7 @@ This section provides instructions to translate from the OPC UA diagram represen
 Figure \ref{fig:mtcomponent-uml} represents the same model in UML. The companion specification uses the following conventions:
 
 \begin{itemize}
-\item OPC UA Types are represented as UML classes
+\item OPC UA Types are represented as \mtterm{UML Classes}
 \item OPC UA Objects are represented as ``\uaterm{BrowseName}: \uaterm{Type}'' underlined as in the following example: \textbf{\underline{SimpleCnc: MTDeviceType}} where \textbf{\underline{SimpleCnc}} is the name of the device and  \textbf{\underline{MTDeviceType}} is related with a \uaterm{HasTypeDefinition} relationship.
 \item Stereotypes are used to denote properties of types, relationships, and members of types. A stereotype is denoted by angle brackets (\texttt{<<..>>}) and provides additional information about the entity. For example, each reference from one \uaterm{ObjectType} to another has a stereotype denoting the reference type.
 \item OPC UA Properties are denoted as UML Attributes. UA \uaterm{Attributes} are also represented as UML Attributes with the stereotype of \mtconnectterm{<<attribute>>} to differentiate from UA \uaterm{Properties}.
@@ -27,7 +27,7 @@ Figure \ref{fig:mtcomponent-uml} represents the same model in UML. The companion
 \item Combinining of templates and classes can be done using a UML \mtterm{Realization} with the stereotype \mtterm{<<Mixes In>>} to use common properties and relationships in a collection of otherwise unrelated types.
 \end{itemize}
 
-The UML Associations are used to represent OPC UA references. UA Properties represented using the UA \opcuaterm{Has\-Property} relationships are given as UML Attributes (not be confused with the OPC UA Attribute). UML allows for additional information as follows:  the multiplicity of a property, the data type of the property, are specified.
+The \mtterm{UML Associations} are used to represent OPC UA R`eferences. \uaterm{UA Properties} represented using the UA \opcuaterm{HasProperty} relationships are given as UML Attributes (not be confused with the \uaterm{OPC UA Attribute}). UML allows for additional information as follows:  the multiplicity of a property, the data type of the property, are specified.
 
 \input{diagrams/mtconnect-mapping/mtcomponent-uml.tex}
 \FloatBarrier
@@ -133,7 +133,7 @@ The values of the attributes and enumerations are represented in MTConnect in ca
 \end{tabu}
 \end{table} 
 
-Extensions to the MTConnect standard that have enumerations will represent the data as strings since the values are not included in the \uaterm{NodeSet} reference. An extension nodeset can be created by a vendor if the \mtuatype{MTControlledVocabEventType} is desired. The parent type requires a reference to a UA \opcuaterm{MultiState\-Value\-Discrete\-Type} and defines the data type as being a \texttt{Number} and has an attribute that references the \opcuaterm{NodeId} of the enumerated values.
+Extensions to the MTConnect standard with enumerations will represent the data as strings since the values are not included in the address space. An extension nodeset can be created by a vendor if the \mtuatype{MTControlledVocabEventType} is desired. The EnumValues needs to reference the \uaterm{EnumValues Attribute} of the UA \opcuaterm{MultiStateValueDiscreteType} and the associated indexes with the translation to the text values for mapping.
 
 MTConnect base types have been prefixed with the letters \texttt{MT} to avoid confusion with OPC UA vocabulary. The following component types and relationships have been annotated:
 
@@ -229,9 +229,10 @@ The MTConnect \mtterm{DataItem} represents multiple OPC UA \uaterm{DataVariableT
         Otherwise, set the variable \texttt{composition} to "".
     \item If the \xmlattribute{subType} is present, set the variable \texttt{subType} to the \textit{PascalCase} of the \xmlattribute{subType}. Otherwise set it the variable \texttt{subType} to "".
     \item Set the variable \texttt{type} to the \textit{PascalCase} of the \xmlelement{DataItem} attribute \xmlattribute{type}.
-    \item The \uaterm{BrowseName} is the concatination of the \texttt{composition} + \texttt{subType} + \texttt{type}.
-    \item If the \xmlattribute{representation} attribute is given and it has a value other than the default \texttt{VALUE}, the \uaterm{BrowseName} will be have the \textit{PascalCase} of the \xmlattribute{representation} appended to the \uaterm{BrowseName}. For example, a \dataitem{AMPERAGE} with \xmlattribute{representation="TIME_SERIES"} will have a \uaterm{BrowseName} of \texttt{AmperageTimeSeries}.
-    \end{enumerate}
+    \item The \uaterm{BrowseName} is the concatination of the \texttt{composition} + \texttt{subType} + \texttt{type}. \label{item:browse-name}.
+    \item If the \xmlattribute{representation} attribute is given and it has a value other than the default \texttt{VALUE}, the \uaterm{BrowseName} will be have the \textit{PascalCase} of the \xmlattribute{representation} appended to the \uaterm{BrowseName}  as specified in \ref{item:browse-name} . For example, a \dataitem{AMPERAGE} with \xmlattribute{representation="TIME_SERIES"} will have a \uaterm{BrowseName} of \texttt{AmperageTimeSeries}. \label{item:representation}.
+    \item If the \xmlattribute{statistic} is given, the \textit{PascalCase} of the \xmlattribute{statistic} attribute will be prepended to the \uaterm{BrowseName}  as specified in \ref{item:representation}. For example, if the \xmlattribute{statistic="AVERAGE"} for a \mtterm{DataItem} of \dataitem{AMPERAGE} and a \xmlattribute{representation} of \dataitem{TIME_SERIES}, the \uaterm{BrowseName} will be  \texttt{AverageAmperageTimeSeries}.
+    \end{enumerate} 
 
 \item Format the \uaterm{BrowseName} for the \mtterm{Condition} \mtterm{DataItem}s
     \begin{enumerate}
@@ -523,6 +524,10 @@ As stated above, the \uaterm{HasNotifier} \uaterm{References} must be establishe
 
 \paragraph{\element{Controller} and \element{Path} \mtterm{Component}s}
 
+In MTConnect, the \mtterm{Controller} component represents the control system of the machine. This includes both the PLC (Programmable Logic Controller) and the CNC (Computerized Numerical Controller) of the machine. In a CNC machine tool, the CNC and PLC are often thought of as a single component of the machine since they both control the operation of the machine.
+
+The MTConnect information model does not differentiate between the two controllers, but represents them as a common controller category with data items that apply to both. Within a controller, there can be multiple \mtterm{Path}s, each representing a set of coordinated motion. The \mtterm{Path} is optional if the \mtterm{Controller} is representing a simple machine with a PLC and no motion, such as a boiler or oven. This is covered in MTConnect Part 2 \cite{MTCPart2}.
+
 \begin{lstlisting}[firstnumber=last,%
     caption={Controller and Path Components and Their Data Items},label={lst:controller-component}]
         <Controller id="p5add360">
@@ -550,9 +555,7 @@ As stated above, the \uaterm{HasNotifier} \uaterm{References} must be establishe
         </Controller>
 \end{lstlisting}
 
-The \mtterm{Controller} has two \mtterm{DataItems}, a \mtterm{Message} and \mtterm{EmergencyStop} as shown in Figure~\ref{fig:controller-component}. The \mtuatype{MTMessageType} is of special note since it is not a \uaterm{VariableType}, but it is an \uaterm{EventType} and decended from the \uaterm{SystemEventType} class described in \cite{UAPart5}. {\color{red} Does the message require a special relation like the Condition and the HasCondition reference?}
-
-In MTConnect, the \mtterm{Controller} has common data and information relating to all \mtterm{Path}s of operation. The \mtterm{Path} element below has the specific information relating to the execution of the part program and the path related motion and conditions. In some simple machines, the \mtterm{Path} will be merged to the \mtterm{Controller}. These relationships are covered in \cite{MTCPart2}.
+The \mtterm{Controller} has two \mtterm{DataItems}, \mtterm{Message} and \mtterm{EmergencyStop} as shown in Figure~\ref{fig:controller-component}. The \mtuatype{MTMessageType} is of special note since it is not a \uaterm{VariableType}, but it is an \uaterm{EventType} and decended from the \uaterm{SystemEventType} class described in \cite{UAPart5}. {\color{red} Does the message require a special relation like the Condition and the HasCondition reference?}
 
 \begin{figure}[ht]
     \centering
@@ -561,7 +564,7 @@ In MTConnect, the \mtterm{Controller} has common data and information relating t
     \label{fig:controller-component}
 \end{figure}
 
-Figure~\ref{fig:path-component} illustrates the \mtterm{Path} component with \mtterm{DataItems}. Many of the \mtterm{DataItems} types have been covered in prior examples, so the \mtterm{Path} will only focus on the \mtterm{DataItems} that have differentiated features. 
+Figure~\ref{fig:path-component} illustrates the \mtterm{Path} component. Many of the \mtterm{DataItems} types have been covered in prior examples, so the \mtterm{Path} will only focus on the \mtterm{DataItems} that have differentiated features. Those \mtterm{DataItem}s will be represented without additional properties or relations.
 
 The \dataitem{PATH_POSITION} is mapped to the \mtuatype{MTThreeSpaceSampleType} that represents a spacial coordinate in three space ($\mathbb{R}^{3}$) with each coordinate being giving in millimeters. The EngineeringUnits for this type will therefor always be mapped to MMT in the UNECE conventions.
 
@@ -578,25 +581,29 @@ The two \mtterm{Conditions} in this component capable of branching. The model wi
 
 \FloatBarrier
 
-\begin{lstlisting}[firstnumber=last,%
-    caption={Electrical System and Sensor Configuration},label={lst:electric-system-example-1}]
+\paragraph{\xmlelement{Electric} \mtterm{System} of the \xmlelement{Device}}
+
+The following example is the \xmlelement{Electric} system of the machine. The top level \xmlelement{Systems} component is an organizational component, similar to an \uaterm{Folder} that collects \mtterm{Components} that are central to a function in the device. The \uaterm{Electric} component represents sensor data with some of the more advanced capabilities of the MTConnect standard. The \xmlelement{Electric} component demonstrate the use of a \xmlelement{Sensor} and \xmlelement{Configuration}.
+
+\begin{lstlisting}[firstnumber=last,,escapechar=|,%
+    caption={Electrical System and Sensor Configuration},label={lst:electric-system}]
         <Systems id="if618500">
           <Components>
             <Electric id="afb91ba0">
               <DataItems>
-                <DataItem id="x52ca7e0" name="ptemp" type="TEMPERATURE" category="SAMPLE" units="CELSIUS">
+                <DataItem id="x52ca7e0" name="ptemp" type="TEMPERATURE" category="SAMPLE" units="CELSIUS">  |\label{line:electric-temp-60}|
                   <Filters>
                     <Filter type="PERIOD">60</Filter>
                   </Filters>
                 </DataItem>
-                <DataItem id="r1e58cf0" name="pvolt" type="VOLTAGE" category="SAMPLE" units="VOLT">
+                <DataItem id="r1e58cf0" name="pvolt" type="VOLTAGE" category="SAMPLE" units="VOLT"> |\label{line:electric-voltage-10}|
                   <Filters>
                     <Filter type="MINIMUM_DELTA">10</Filter>
                   </Filters>
                 </DataItem>
-                <DataItem id="tc9edc70" name="pampts" type="VOLT_AMPERE" category="SAMPLE" units="VOLT_AMPERE" representation="TIME_SERIES" sampleRate="100"/>
-                <DataItem id="e25c1130" name="pamp" type="AMPERAGE" category="SAMPLE" units="AMPERE"/>
-                <DataItem id="qb9212c0" type="AMPERAGE" category="SAMPLE" units="AMPERE" statistic="AVERAGE">
+                <DataItem id="tc9edc70" name="pampts" type="VOLT_AMPERE" category="SAMPLE" units="VOLT_AMPERE" representation="TIME_SERIES" sampleRate="100"/>  |\label{line:electric-voltage-ampere}|
+                <DataItem id="e25c1130" name="pamp" type="AMPERAGE" category="SAMPLE" units="AMPERE"/>  |\label{line:electric-amperage}|
+                <DataItem id="qb9212c0" type="AMPERAGE" category="SAMPLE" units="AMPERE" statistic="AVERAGE">  |\label{line:electric-average-amperage}|
                   <ResetTrigger>ACTION_COMPLETE</ResetTrigger>
                 </DataItem>
                 <DataItem id="o63fcd30" name="ppfact" type="POWER_FACTOR" category="SAMPLE" units="PERCENT" />
@@ -608,6 +615,24 @@ The two \mtterm{Conditions} in this component capable of branching. The model wi
                    <Source dataItemId="x52ca7e0"/>
                  </DataItem>
               </DataItems>
+\end{lstlisting}
+
+In the first set of data items from Listing~\ref{lst:electric-system} as shown in Figure~\ref{fig:electric-system}, the first data item on line~\ref{line:electric-temp-60} has a period filter that is represented in the OPC UA \uaterm{Object} Temperature as a \mtterm{PeriodFilter} \uaterm{Property} with a value of 60.0. The period filters only recognize changes to data if the change after a period of the given value, in this case 60 seconds. This will only publish changed data every minute in this instance.
+
+The following \mtterm{DataItem} on line~\ref{line:electric-voltage-10} has a \mtterm{Filter} using a \mtterm{MINIUM_DELTA} that is represened as a \mtterm{MinimumDeltaFilter} in the UA \uaterm{Object} reprenenting the \mtterm{MTSampleType} Voltage. The \mtterm{MinimumDelta} represents the smallest amount of change before the change is reported. In this case the minimum change is 10 volts. Changes smaller than 10 volts will not be reported for this data item.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/electric-system.png}
+    \caption{Electric System Component}
+    \label{fig:electric-system}
+\end{figure}
+
+
+\FloatBarrier
+
+\begin{lstlisting}[firstnumber=last,%
+    caption={Electrical System Sensor Configuration},label={lst:sensor-component}]
               <Components>
                 <Sensor id="q9abfaf0">
                   <Configuration>
@@ -629,15 +654,11 @@ The two \mtterm{Conditions} in this component capable of branching. The model wi
         </Systems>
 \end{lstlisting}
 
-\begin{quote}
-    \color{red} TODO: Configuration and filters
-\end{quote}
-
 \subsection{MTConnect Streaming Data}
 
 MTConnect separates out the the streaming updates to the values of the data from the meta-data describing the semantic meaning of the data. This is covered in detail in \cite{MTCPart3}. The XML document also contains protocol information which will be ignored for handling of the streaming data. 
 
-The \mtterm{HTTP REST} protocol providews both a snapshot and time series data from the \mtterm{MTConnect Agent} that is collected from the \mtterm{Device}. Each entry is time-stamped and given a sequence number that indicates the arrival order across all devices in the \mtterm{MTConnect Agent}.
+The \mtterm{HTTP REST} protocol provides both a snapshot and time series data from the \mtterm{MTConnect Agent} that is collected from the \mtterm{Device}s. Each entry is time-stamped and is given a sequence number that indicates the arrival order across all devices whose information is aggregated in the \mtterm{MTConnect Agent}.
 
 The following section provides the rules and mechanism to take data from the MTConnect stream and represent as a series of updates to the \uaterm{Variables} and generate \uaterm{Events} for the \mtterm{MTConditionType} and \mtterm{MTMessageType}.
 

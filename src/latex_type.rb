@@ -301,6 +301,8 @@ EOT
 
     if !deps.empty? or @mixin
       f.puts "\\paragraph{Dependencies and Relationships}"
+
+      f.puts "\n\\begin{itemize}"
       
       deps.each do |dep|
         target = dep.target

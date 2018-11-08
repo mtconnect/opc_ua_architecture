@@ -62,7 +62,7 @@ class Model
     when 'UMLStereotype'
       type_class.new(model, e)
       
-    when 'UMLDataType', 'UMLEnumeration'
+    when 'UMLDataType', 'UMLEnumeration', 'UMLPrimitiveType'
       #   puts "#{'  ' * depth}  Adding data type: #{e['name']}  id: #{e['_id']}"
       type_class.new(model, e)
       

@@ -29,7 +29,7 @@ class LatexModel < Model
 
   def reference
     if @name =~ /OPC/
-      return "\\cite{#{@name.sub(/OPC /, '').gsub(' ', '')}}"
+      return "\\cite{#{@name.sub(/OPC /, '').gsub(' ', '').sub(/Profile/, 'Part5')}}"
     else
       @name
     end

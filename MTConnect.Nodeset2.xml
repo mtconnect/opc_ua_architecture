@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-11-04T18:35:34Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-11-08T05:24:12Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-11-04T18:35:34Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-11-04T18:35:34Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-11-08T05:24:12Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-11-08T05:24:12Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -865,8 +865,6 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2801</Reference>
       <!-- HasProperty -  - SourceData ns=1;i=2802 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2802</Reference>
-      <!-- HasProperty -  - StreamRate ns=1;i=2803 Double  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2803</Reference>
       <!-- HasProperty -  - SampleRate ns=1;i=2804 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2804</Reference>
       <!-- HasProperty -  - Representation ns=1;i=2805 MTRepresentationType  -->
@@ -944,18 +942,6 @@
     <DisplayName>SourceData</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTAssetEventType ns=1;i=2543   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2543</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTAssetEventType::StreamRate : Double[0..1] -->
-  <UAVariable NodeId='ns=1;i=2803' BrowseName='1:StreamRate' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=2543'>
-    <DisplayName>StreamRate</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
@@ -1212,8 +1198,6 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2818</Reference>
       <!-- HasProperty -  - SourceData ns=1;i=2819 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2819</Reference>
-      <!-- HasProperty -  - StreamRate ns=1;i=2820 Double  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2820</Reference>
       <!-- HasProperty -  - SampleRate ns=1;i=2821 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2821</Reference>
       <!-- HasProperty -  - Representation ns=1;i=2822 MTRepresentationType  -->
@@ -1291,18 +1275,6 @@
     <DisplayName>SourceData</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTControlledVocabEventType ns=1;i=2547   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2547</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTControlledVocabEventType::StreamRate : Double[0..1] -->
-  <UAVariable NodeId='ns=1;i=2820' BrowseName='1:StreamRate' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=2547'>
-    <DisplayName>StreamRate</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
@@ -1452,8 +1424,6 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2834</Reference>
       <!-- HasProperty -  - SourceData ns=1;i=2835 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2835</Reference>
-      <!-- HasProperty -  - StreamRate ns=1;i=2836 Double  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2836</Reference>
       <!-- HasProperty -  - SampleRate ns=1;i=2837 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2837</Reference>
       <!-- HasProperty -  - Representation ns=1;i=2838 MTRepresentationType  -->
@@ -1533,18 +1503,6 @@
     <DisplayName>SourceData</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTMessageType ns=1;i=2394   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2394</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTMessageType::StreamRate : Double[0..1] -->
-  <UAVariable NodeId='ns=1;i=2836' BrowseName='1:StreamRate' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=2394'>
-    <DisplayName>StreamRate</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
@@ -1698,8 +1656,6 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2850</Reference>
       <!-- HasProperty -  - SourceData ns=1;i=2851 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2851</Reference>
-      <!-- HasProperty -  - StreamRate ns=1;i=2852 Double  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2852</Reference>
       <!-- HasProperty -  - SampleRate ns=1;i=2853 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2853</Reference>
       <!-- HasProperty -  - Representation ns=1;i=2854 MTRepresentationType  -->
@@ -1795,18 +1751,6 @@
     <DisplayName>SourceData</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTNumericEventType ns=1;i=2357   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2357</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTNumericEventType::StreamRate : Double[0..1] -->
-  <UAVariable NodeId='ns=1;i=2852' BrowseName='1:StreamRate' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=2357'>
-    <DisplayName>StreamRate</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
@@ -2099,8 +2043,6 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2874</Reference>
       <!-- HasProperty -  - SourceData ns=1;i=2875 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2875</Reference>
-      <!-- HasProperty -  - StreamRate ns=1;i=2876 Double  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2876</Reference>
       <!-- HasProperty -  - SampleRate ns=1;i=2877 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2877</Reference>
       <!-- HasProperty -  - Representation ns=1;i=2878 MTRepresentationType  -->
@@ -2192,18 +2134,6 @@
     <DisplayName>SourceData</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTSampleType::StreamRate : Double[0..1] -->
-  <UAVariable NodeId='ns=1;i=2876' BrowseName='1:StreamRate' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=2350'>
-    <DisplayName>StreamRate</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
@@ -2429,8 +2359,6 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2897</Reference>
       <!-- HasProperty -  - SourceData ns=1;i=2898 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2898</Reference>
-      <!-- HasProperty -  - StreamRate ns=1;i=2899 Double  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2899</Reference>
       <!-- HasProperty -  - SampleRate ns=1;i=2900 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - Representation ns=1;i=2901 MTRepresentationType  -->
@@ -2508,18 +2436,6 @@
     <DisplayName>SourceData</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTStringEventType ns=1;i=2353   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2353</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTStringEventType::StreamRate : Double[0..1] -->
-  <UAVariable NodeId='ns=1;i=2899' BrowseName='1:StreamRate' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=2353'>
-    <DisplayName>StreamRate</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
@@ -2661,8 +2577,6 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2913</Reference>
       <!-- HasProperty -  - SourceData ns=1;i=2914 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2914</Reference>
-      <!-- HasProperty -  - StreamRate ns=1;i=2915 Double  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2915</Reference>
       <!-- HasProperty -  - SampleRate ns=1;i=2916 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2916</Reference>
       <!-- HasProperty -  - Representation ns=1;i=2917 MTRepresentationType  -->
@@ -2756,18 +2670,6 @@
     <DisplayName>SourceData</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTThreeSpaceSampleType ns=1;i=2562   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2562</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTThreeSpaceSampleType::StreamRate : Double[0..1] -->
-  <UAVariable NodeId='ns=1;i=2915' BrowseName='1:StreamRate' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=2562'>
-    <DisplayName>StreamRate</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
@@ -3024,8 +2926,6 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2936</Reference>
       <!-- HasProperty -  - SourceData ns=1;i=2937 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2937</Reference>
-      <!-- HasProperty -  - StreamRate ns=1;i=2938 Double  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2938</Reference>
       <!-- HasProperty -  - SampleRate ns=1;i=2939 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2939</Reference>
       <!-- HasProperty -  - Representation ns=1;i=2940 MTRepresentationType  -->
@@ -3113,18 +3013,6 @@
     <DisplayName>SourceData</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTConditionType ns=1;i=2573   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2573</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTConditionType::StreamRate : Double[0..1] -->
-  <UAVariable NodeId='ns=1;i=2938' BrowseName='1:StreamRate' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=2573'>
-    <DisplayName>StreamRate</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>

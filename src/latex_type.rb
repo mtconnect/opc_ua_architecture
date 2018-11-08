@@ -76,6 +76,8 @@ class LatexType < Type
   include Diagram
   include Document
 
+  ROW_FORMAT = "|X[-1.35]|X[-0.7]|X[-1.5]|X[-1.2]|X|X[-1]|"
+
   def reference
     "See section \\ref{type:#{@name}}"
   end
@@ -97,6 +99,13 @@ class LatexType < Type
     generate_relations(f)
   end
 
+  def hyphenate(s)
+    s.gsub(/([a-z])([A-Z])/, '\1\\-\2').
+      gsub(/(MT)([A-Z])/, '\1\\-\2')
+  end
+
+  
+
   def generate_relations(f)
     @relations.each do |r|
       if r.is_reference?
@@ -105,12 +114,14 @@ class LatexType < Type
         array = '[]' if r.is_array?
         
         if r.is_property? or r.is_folder?
-          type_info = "#{r.final_target.type.name}#{array} & #{r.target_node_name}"
+          type_info = "#{hyphenate(r.final_target.type.name)}#{array} & #{hyphenate(r.target_node_name)}"
+        elsif r.target.type.is_variable?
+          type_info = "#{hyphenate(r.target.type.variable_data_type.name)}#{array} & #{hyphenate(r.target_node_name)}"
         else
-          type_info = "\\multicolumn{2}{|l|}{#{r.target_node_name}#{array}}"
+          type_info = "\\multicolumn{2}{l|}{#{r.target_node_name}#{array}}"
         end
 
-        f.puts "#{r.reference_type} & #{r.target.type.base_type} & #{r.browse_name} & #{type_info} & #{r.rule} \\\\"          
+        f.puts "#{hyphenate(r.reference_type)} & #{r.target.type.base_type} & #{hyphenate(r.browse_name)} & #{type_info} & #{r.rule} \\\\"          
       end
     end
   end
@@ -132,11 +143,11 @@ class LatexType < Type
 
   def generate_subtype(f, c)
     t = c.is_a_type?('BaseVariableType') ? 'VariableType' : 'ObjectType'
-    f.puts "HasSubtype & #{t} & #{c.escape_name} & \\multicolumn{3}{|l|}{#{c.reference}} \\\\"
+    f.puts "HasSubtype & #{t} & \\multicolumn{2}{l}{#{c.escape_name}} & \\multicolumn{2}{|l|}{#{c.reference}} \\\\"
   end
 
   def generate_children(f)
-    cs = @children.dup
+    cs = @children.dup.select { |t| t.model.name !~ /Example/ }
     l = cs.pop(22)
     l.each do |c|
       generate_subtype(f, c)
@@ -150,9 +161,9 @@ class LatexType < Type
 \\begin{table}[ht]
 \\fontsize{9pt}{11pt}\\selectfont
 \\tabulinesep=3pt
-\\begin{tabu} to 6in {|l|l|l|l|l|l|} \\everyrow{\\hline}
+\\begin{tabu} to 6in {#{ROW_FORMAT}} \\everyrow{\\hline}
 \\hline
-\\rowfont \\bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\\\
+\\rowfont \\bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling\\-Rule} \\\\
 EOT
       l = cs.pop(22)
       l.each do |c|
@@ -225,7 +236,7 @@ EOT
   \\label{table:#{@name}}
 \\fontsize{9pt}{11pt}\\selectfont
 \\tabulinesep=3pt
-\\begin{tabu} to 6in {|l|l|l|l|l|l|} \\everyrow{\\hline}
+\\begin{tabu} to 6in {#{ROW_FORMAT}} \\everyrow{\\hline}
 \\hline
 \\rowfont\\bfseries {Attribute} & \\multicolumn{5}{|l|}{Value} \\\\
 \\tabucline[1.5pt]{}
@@ -245,7 +256,7 @@ EOT
 
     f.puts <<EOT
 \\tabucline[1.5pt]{}
-\\rowfont \\bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\\\
+\\rowfont \\bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling\\-Rule} \\\\
 EOT
 
     generate_supertype(f)

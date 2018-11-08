@@ -214,8 +214,8 @@ class Type
   end
 
   def is_variable?
-    @type == 'UMLDataType' or is_a_type?('BaseVariableType') or
-      @type == 'UMLEnumeration'
+    @type == 'UMLDataType' or @type == 'UMLPrimitiveType' or
+      @type == 'UMLEnumeration' or is_a_type?('BaseVariableType')
   end
 
   def is_event?

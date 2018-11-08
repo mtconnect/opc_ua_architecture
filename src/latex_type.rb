@@ -429,7 +429,7 @@ EOT
     generate_diagram(f)
     generate_documentation(f)
 
-    if @type == 'UMLDataType'
+    if @type == 'UMLDataType' or @type == 'UMLPrimitiveType'
       generate_data_type(f)
     else
       generate_class(f)

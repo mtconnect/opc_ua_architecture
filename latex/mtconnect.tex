@@ -1,24 +1,18 @@
 \section{Introduction to MTConnect and OPC UA}\label{intro}
 
 \subsection{MTConnect}\label{intro-to-mtconnect}
+MTConnect is a data and information exchange standard based on a data dictionary of terms describing information associated with manufacturing operations.  The standard also defines a series of semantic data models that provide a clear and unambiguous representation of how that information relates to a manufacturing operation.  The MTConnect Standard has been designed to enhance the data acquisition capabilities from equipment in manufacturing facilities, expand the use of data-driven decision making in manufacturing operations, and enable software applications and manufacturing equipment to move toward a plug-and-play environment to reduce the cost of integration of manufacturing software systems.
+The MTConnect standard supports two primary communications methods - Request/Response and Publish/Subscribe.
+Although the MTConnect Standard has been defined for manufacturing, it can also be readily applied to other application areas.
 
-MTConnect is a standard that contains a number of semantic information models defining information passed between the equipment used in manufacturing operations and software applications or other pieces of equipment. While the standard is primarily focused on addressing solutions for the manufacturing environment, it can be applied to any number of application areas that can benefit from a semantic model for exchanging information. 
-   
+The MTConnect Standard is an open, royalty free standard - meaning that it is available for anyone to download, implement, and utilize in software systems at no cost.
+The semantic data models defined in the MTConnect standard provide the information required to fully characterize data with both a clear and unambiguous meaning and a mechanism to directly relate that data to the manufacturing operation where the data originated.  Without a semantic data model, client software applications must apply an additional layer of logic to convey as much meaning.  The MTConnect modeling approach allows applications to easily interpret data from a wide variety of data sources, reducing complexity and development effort.
+Where the data dictionary and semantic data models are insufficient, MTConnect can be extended with additional data items and information models.
+
+MTConnect is designed to maximize interoperability with other standards, applications, and manufacturing equipment, and uses a variety of other standards to do so. Examples in the standard are based on HTTP for transport protocol and XML for representing semantic data models. The transport protocol and the programming language used to represent or transfer the information provided by the semantic data models are not restricted in the standard to HTTP and XML. Other protocols and programming languages may be used to represent the semantic models and/or transport the information provided by these data models between an MTConnect Agent (server) and a client software application.
+
 The standard was initially sponsored by AMT - The Association for Manufacturing Technology in 2008.  AMT formed the MTConnect Institute in 2011 to further standard development and engage a wider community. The role of the Institute is to support the continued development of the standard and to expand the deployment of MTConnect compliant technologies throughout industry. The Institute has over 250 member companies world-wide.  
 
-MTConnect is a royalty free standard; meaning that there is no licensing or royalty fee to participate in the MTConnect Institute or use the standard.
-
-MTConnect differs from most other communication solutions since it provides both:
-\begin{itemize}
-    \item A dictionary of terms describing a wide variety of types of manufacturing data
-    \item Semantic data models which describe how each piece of data relates to the originally measured or calculated values. This means that all data is provided with full context including name, definition, scaling, relationship to the physical and logical configuration for a piece of equipment that generated the data, etc.
-\end{itemize}
-
-With most communication networking solutions, all data is defined at the point of use (the application).  With MTConnect, the data is defined at the source (the device or piece of equipment). 
-
-MTConnect compliant devices process information locally and then provide that data in a consistent format to any client application requesting data - ERP, MES, Production Management Systems, Maintenance Systems or a standard Browser, as examples.
-
-The MTConnect Standard is organized into a series of documents - each focused on a specific type of information associated with shop operations.   Each document defines a portion of the data dictionary and details the semantic model applicable to those terms.   These two concepts form the key components of the MTConnect Standard. 
 
 \subsubsection{Data Dictionary}
 

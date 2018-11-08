@@ -1,3 +1,4 @@
+\clearpage
 \section{Mapping the MTConnect Information Model to OPC UA} 
   \label{mtconnect-mapping}
 
@@ -50,9 +51,7 @@ Figure \ref{fig:example-object} represents an MTConnect \mtconnectterm{Device} w
 
 For example, the with type \mtuatype{MTDeviceType} has \opcuaterm{BrowseName} of \texttt{SimpleCnc} (the name of the device). There are patterns for creating all the \uaterm{BrowseName} for each MTConnect UA Type. The rules are presented and in the example to provide the normative patterns for each type in the information model.
 
-\begin{quote}
-    \color{red} Dcoument conventions for browse names on edges. Object identity vs. Browse Name. May not be an issue when UML diagrams are converted to Tikz.
-\end{quote}
+Common elements, like \xmlelement{Components} or \xmlelement{Compositions}, that provide structure that are mapped to \uaterm{FolderType} objects have common browse names. These will be prefixed with the context of the parent component. For example, \texttt{Controller.Components} will refer to an \uaterm{Object} of type \uaterm{FolderType} with the \uaterm{BrowseName} \texttt{Components}. The prefix before the period (\texttt{.}) will be ignored for the \texttt{BrowseName}. {\color{red} This rule will be removed when UML Diagrams are converted to TIKz as this is a requirement of UML modeling to have unique object names}
 
 \FloatBarrier
 
@@ -138,6 +137,7 @@ Extensions to the MTConnect standard with enumerations will represent the data a
 MTConnect base types have been prefixed with the letters \texttt{MT} to avoid confusion with OPC UA vocabulary. The following component types and relationships have been annotated:
 
 \begin{itemize}
+    \setlength\itemsep{0em}
 \item Device $\rightarrow$ \mtuatype{MTDeviceType}
 \item Component $\rightarrow$  \mtuatype{MTComponentType}
 \item Composition $\rightarrow$ \mtuatype{MTCompositionType}
@@ -150,6 +150,7 @@ MTConnect base types have been prefixed with the letters \texttt{MT} to avoid co
 The following types representing base MTConnect types are also prefixed:
 
 \begin{itemize}
+\setlength\itemsep{0em}
 \item \mtuatype{MTAssetEventType}
 \item \mtuatype{MTControlledVocabEventType}
 \item \mtuatype{MTNumericEventType}
@@ -163,9 +164,29 @@ The following types representing base MTConnect types are also prefixed:
 \item \mtuatype{MTThreeSpaceSampleType}
 \end{itemize}
 
-\subsubsection{Component and Composition \uaterm{BrowseName} Rules}
+The data item class types and enumeration data types do not have \texttt{MT} prepended.
 
-The data item class types and enumeration data types do not have \texttt{MT} prepended. Sub-types of the \mtuatype{MTComponentType} do not have \texttt{MT} prefixed with the exception of the \mtuatype{MTDeviceType}. \mtterm{Composition} elements in the MTConnect model will be represented instantiated with the \uaterm{BrowseName} of the \mtterm{Composition} \xmlattribute{type} converted to \textit{PascalCase}. The \xmlattribute{type} will be copied to the \uaterm{Property} \texttt{MTTypeName}.
+\subsubsection{Component and Composition \uaterm{BrowseName} and \uaterm{Type} Rules}
+
+The rules for determining the \uaterm{BrowseName} for the MTConnect \mtterm{Component} are as follows:
+
+\begin{enumerate}
+\item If the \mtterm{Component} is \xmlelement{Device}, the \uaterm{BrowseName} is the \xmlattribute{name} attribute of the \xmlelement{Device} and the UA \uaterm{TypeDefinition} is \texttt{MTDeviceType}.
+\item The browse name is the \xmlelement{QName} of the XML Element of the \mtterm{Component}. \label{item:component-browse-name}
+\item The \uaterm{HasTypeDefinition} references a type that is created by appending the word \texttt{Type} to the \xmlelement{QName} of the \mtterm{Component} element. For example, a \xmlelement{Controller} will have a \uaterm{BrowseName} of \texttt{Controller} and a \uaterm{HasTypeDefinition} referencing \texttt{ControllerType}.
+\item The \uaterm{ObjectType} is only defined once for all \mtterm{Components} of that type. There is no \texttt{MT} prepended to the front of the \uaterm{ObjectType} \uaterm{BrowseName}.
+\item If there are two \mtterm{Components} with the same \texttt{BrowseName}s or if the \mtterm{Component} are \xmlelement{Linear} or \xmlelement{Rotary}, they must have the \xmlattribute{name} attribute appended in square brackets (\texttt{[]}) to the name as specified in item \ref{item:component-browse-name}. 
+\item For example, if there are two \xmlelement{Path} \mtterm{Components} with names \xmlattribute{name="P1"} and \xmlattribute{name="P2"}, the \uaterm{BrowseName}s will be as follows: \texttt{Path[P1]} and \texttt{Path[P2]} where each \uaterm{HaveTypeDefinition} of \texttt{PathType}.
+\end{enumerate}
+
+The rules for \mtterm{Composition} elements are as follows:
+
+\begin{enumerate}
+\item  \mtterm{Composition} elements in the MTConnect model will be represented instantiated with the \uaterm{BrowseName} of the \mtterm{Composition} \xmlattribute{type} converted to \textit{PascalCase}. \label{item:composition-browse-name}
+\item If two \mtterm{Composition} elements of the same \mtterm{Component} have the same \xmlattribute{type}, they must have the \xmlattribute{name} attribute appended in square brackets (\texttt{[]}) to the name as specified in item \ref{item:composition-browse-name}.
+\item For example, a component has two \xmlattribute{type="TANK"}s with the names \xmlattribute{name="top"} and \xmlattribute{name="bottom"}, the \uaterm{BrowseName}s will be \texttt{Tank[top]} and \texttt{Tank[bottom]} respectively.
+\item The type is placed is the \texttt{MTTypeName} \uaterm{Property}.
+\end{enumerate}
 
 \subsubsection{\mtterm{DataItem} \uaterm{HasTypeDefinition} and \uaterm{BrowseName} Conventions}
     \label{sec:data-item-conventions}
@@ -231,13 +252,17 @@ The MTConnect \mtterm{DataItem} represents multiple OPC UA \uaterm{DataVariableT
     \item Set the variable \texttt{type} to the \textit{PascalCase} of the \xmlelement{DataItem} attribute \xmlattribute{type}.
     \item The \uaterm{BrowseName} is the concatination of the \texttt{composition} + \texttt{subType} + \texttt{type}. \label{item:browse-name}.
     \item If the \xmlattribute{representation} attribute is given and it has a value other than the default \texttt{VALUE}, the \uaterm{BrowseName} will be have the \textit{PascalCase} of the \xmlattribute{representation} appended to the \uaterm{BrowseName}  as specified in \ref{item:browse-name} . For example, a \dataitem{AMPERAGE} with \xmlattribute{representation="TIME_SERIES"} will have a \uaterm{BrowseName} of \texttt{AmperageTimeSeries}. \label{item:representation}.
-    \item If the \xmlattribute{statistic} is given, the \textit{PascalCase} of the \xmlattribute{statistic} attribute will be prepended to the \uaterm{BrowseName}  as specified in \ref{item:representation}. For example, if the \xmlattribute{statistic="AVERAGE"} for a \mtterm{DataItem} of \dataitem{AMPERAGE} and a \xmlattribute{representation} of \dataitem{TIME_SERIES}, the \uaterm{BrowseName} will be  \texttt{AverageAmperageTimeSeries}.
+    \item If the \xmlattribute{statistic} is given, the \textit{PascalCase} of the \xmlattribute{statistic} attribute will be prepended to the \uaterm{BrowseName}  as specified in \ref{item:representation}. For example, if the \xmlattribute{statistic="AVERAGE"} for a \mtterm{DataItem} of \dataitem{AMPERAGE} and a \xmlattribute{representation} of \dataitem{TIME_SERIES}, the \uaterm{BrowseName} will be  \texttt{AverageAmperageTimeSeries}. \label{item:statistic}
+    \item If two browse names are identical for the same component, the \xmlattribute{name} must be used to differentiate between the data items by placing the \xmlattribute{name} in square brackets (\texttt{[]}). For example, if there are two \dataitem{TEMPERATURE} data items with the attributes \xmlattribute{name="front"} and \xmlattribute{name="back"} the \mtterm{DataItem}s will have the \uaterm{BrowseName}s \texttt{Temperature[front]} and \texttt{Temperature[back]} respectively. \label{item:data-item-name}
     \end{enumerate} 
 
 \item Format the \uaterm{BrowseName} for the \mtterm{Condition} \mtterm{DataItem}s
     \begin{enumerate}
-    \item Use the name derived in the previous step for \mtterm{Event}s and \mtterm{Sample}s and append \texttt{Condition}. 
+    \item Use the name derived in the previous step for \mtterm{Event}s and \mtterm{Sample}s as specified in item \ref{item:statistic} and append \texttt{Condition}. \label{item:condition-browse-name}
+    \item Apply rule specified in item \ref{item:data-item-name} if two conditions have identical \uaterm{BrowseName}s to the result of item \ref{item:condition-browse-name}.
     \end{enumerate}
+    
+\item The type is placed is the \texttt{MTTypeName} \uaterm{Property}.
 \end{enumerate}
 
 The examples below will provide further guidance on implementing these rules.
@@ -472,10 +497,6 @@ The data item on Line~\ref{line:rotary-mode} of Listing~\ref{lst:rotary-c-exampl
 
 In MTConnect, the value of this data item will never be \mtterm{UNAVAILABLE} or \uaterm{Bad_\ldots} since it is bound to a single value, it will always be present and have that value regardless of the connectivity state to the data source. In the case of constraints on a controlled vocabulary, the \texttt{Values} must always be one of the related EnumValues. See \cite{MTCPart2} for details on the constraints and the relationship to the \mtterm{DataItem}s.
 
-\begin{quote}
-    \textit{Please Note:} An object name as shown in the diagram usually has the browse name as the object identity. If the object will appear in other diagrams, it is identified by a unique name, such as \textbf{<RModeConstraints>}. The \uaterm{BrowseName} is given by the name of the \uaterm{HasProperty} or \uaterm{HasComponent} relationship at the source side of the reference. 
-\end{quote}
-
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/rotary-c-rotary-mode.png}
@@ -590,8 +611,10 @@ The following example is the \xmlelement{Electric} system of the machine. The to
         <Systems id="if618500">
           <Components>
             <Electric id="afb91ba0">
+              <!-- Electric System Component First Set -->
               <DataItems>
                 <DataItem id="x52ca7e0" name="ptemp" type="TEMPERATURE" category="SAMPLE" units="CELSIUS">  |\label{line:electric-temp-60}|
+                  <Source componentId="q9abfaf0"/>
                   <Filters>
                     <Filter type="PERIOD">60</Filter>
                   </Filters>
@@ -602,39 +625,23 @@ The following example is the \xmlelement{Electric} system of the machine. The to
                   </Filters>
                 </DataItem>
                 <DataItem id="tc9edc70" name="pampts" type="VOLT_AMPERE" category="SAMPLE" units="VOLT_AMPERE" representation="TIME_SERIES" sampleRate="100"/>  |\label{line:electric-voltage-ampere}|
+                
+                <!-- Electric System Component Second Set -->
                 <DataItem id="e25c1130" name="pamp" type="AMPERAGE" category="SAMPLE" units="AMPERE"/>  |\label{line:electric-amperage}|
-                <DataItem id="qb9212c0" type="AMPERAGE" category="SAMPLE" units="AMPERE" statistic="AVERAGE">  |\label{line:electric-average-amperage}|
+                <DataItem id="qb9212c0" name="pampavg" type="AMPERAGE" category="SAMPLE" units="AMPERE" statistic="AVERAGE">  |\label{line:electric-average-amperage}|
                   <ResetTrigger>ACTION_COMPLETE</ResetTrigger>
                 </DataItem>
                 <DataItem id="o63fcd30" name="ppfact" type="POWER_FACTOR" category="SAMPLE" units="PERCENT" />
                 
-                 <DataItem id="b4bb7110" type="AMPERAGE" category="CONDITION" name="poverload">
+                 <DataItem id="b4bb7110" type="AMPERAGE" category="CONDITION" name="poverload"> |\label{line:amperage-condition}|
                    <Source dataItemId="e25c1130"/>
                  </DataItem>
-                 <DataItem id="c82e32f0" type="TEMPERATURE" category="CONDITION" name="povertemp">
+                 <DataItem id="c82e32f0" type="TEMPERATURE" category="CONDITION" name="povertemp"> |\label{line:temperature-condition}|
                    <Source dataItemId="x52ca7e0"/>
                  </DataItem>
               </DataItems>
-\end{lstlisting}
-
-In the first set of data items from Listing~\ref{lst:electric-system} as shown in Figure~\ref{fig:electric-system}, the first data item on line~\ref{line:electric-temp-60} has a period filter that is represented in the OPC UA \uaterm{Object} Temperature as a \mtterm{PeriodFilter} \uaterm{Property} with a value of 60.0. The period filters only recognize changes to data if the change after a period of the given value, in this case 60 seconds. This will only publish changed data every minute in this instance.
-
-The following \mtterm{DataItem} on line~\ref{line:electric-voltage-10} has a \mtterm{Filter} using a \mtterm{MINIUM_DELTA} that is represened as a \mtterm{MinimumDeltaFilter} in the UA \uaterm{Object} reprenenting the \mtterm{MTSampleType} Voltage. The \mtterm{MinimumDelta} represents the smallest amount of change before the change is reported. In this case the minimum change is 10 volts. Changes smaller than 10 volts will not be reported for this data item.
-
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/electric-system.png}
-    \caption{Electric System Component}
-    \label{fig:electric-system}
-\end{figure}
-
-
-\FloatBarrier
-
-\begin{lstlisting}[firstnumber=last,%
-    caption={Electrical System Sensor Configuration},label={lst:sensor-component}]
               <Components>
-                <Sensor id="q9abfaf0">
+                <Sensor id="q9abfaf0">  |\label{line:electric-temp-sensor}|
                   <Configuration>
                     <SensorConfiguration>
                       <FirmwareVersion>23</FirmwareVersion>
@@ -653,6 +660,28 @@ The following \mtterm{DataItem} on line~\ref{line:electric-voltage-10} has a \mt
           </Components>
         </Systems>
 \end{lstlisting}
+
+In the first set of \mtterm{DataItems} from Listing~\ref{lst:electric-system} as shown in Figure~\ref{fig:electric-system}, the first data item on line~\ref{line:electric-temp-60} has a period filter that is represented in the OPC UA \uaterm{Object} Temperature as a \mtterm{PeriodFilter} \uaterm{Property} with a value of 60.0. The period filters only recognize changes to data if the change after a period of the given value, in this case 60 seconds. This will only publish changed data every minute in this instance.
+
+The Temperature \uaterm{Object} also has a \xmlelement{Source} element that references the \mtterm{Sensor} with a \xmlelement{Configuration} of type \mtterm{SensorConfigurationType} that has information about the \mtterm{FirmwareVersion} and \mtterm{CalibrationDate} The \mtterm{Sensor} configuration also has \mtterm{Channels} that represent the multiple inputs to the \mtterm{Sensor} unit. The first \mtterm{Channel} has a \mtterm{Description} and a \mtterm{CalibrationDate} of the probe attached to the \mtterm{Channel}. For moe information on the \mtterm{Channel}, see MTConnect Devices \cite{MTCPart2}.
+
+The following \mtterm{DataItem} on line~\ref{line:electric-voltage-10} has a \mtterm{Filter} using a \mtterm{MINIUM_DELTA} that is represened as a \mtterm{MinimumDeltaFilter} in the UA \uaterm{Object} reprenenting the \mtterm{MTSampleType} Voltage. The \mtterm{MinimumDelta} represents the smallest amount of change before the change is reported. In this case the minimum change is 10 volts. Changes smaller than 10 volts will not be reported for this data item.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/electric-system.png}
+    \caption{Electric System Component First Set}
+    \label{fig:electric-system}
+\end{figure}
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/electric-system-2.png}
+    \caption{Electric System Component Second Set}
+    \label{fig:electric-system-2}
+\end{figure}
+
+\FloatBarrier
 
 \subsection{MTConnect Streaming Data}
 

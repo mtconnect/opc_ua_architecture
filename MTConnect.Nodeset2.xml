@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-11-08T18:34:16Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-11-08T22:17:43Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-11-08T18:34:16Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-11-08T18:34:16Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-11-08T22:17:43Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-11-08T22:17:43Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -997,7 +997,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2543</Reference>
     </References>
   </UAVariable>
-  <!-- MTAssetEventType::Constraints : MTConstraintType[1] -->
+  <!-- MTAssetEventType::Constraints : MTConstraintType[0..1] -->
   <UAObject NodeId='ns=1;i=2808' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2543'>
     <DisplayName>Constraints</DisplayName>
     <References>
@@ -1011,8 +1011,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2812</Reference>
       <!-- HasTypeDefinition -  - MTConstraintType ns=1;i=2567   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2567</Reference>
-      <!-- HasModellingRule -  - Mandatory i=78   -->
-      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
       <!-- HasComponent - (Reverse) - MTAssetEventType ns=1;i=2543   -->
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2543</Reference>
     </References>
@@ -1330,7 +1330,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2547</Reference>
     </References>
   </UAVariable>
-  <!-- MTControlledVocabEventType::Constraints : MTConstraintType[1] -->
+  <!-- MTControlledVocabEventType::Constraints : MTConstraintType[0..1] -->
   <UAObject NodeId='ns=1;i=2825' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2547'>
     <DisplayName>Constraints</DisplayName>
     <References>
@@ -1344,8 +1344,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2829</Reference>
       <!-- HasTypeDefinition -  - MTConstraintType ns=1;i=2567   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2567</Reference>
-      <!-- HasModellingRule -  - Mandatory i=78   -->
-      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
       <!-- HasComponent - (Reverse) - MTControlledVocabEventType ns=1;i=2547   -->
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2547</Reference>
     </References>
@@ -1558,7 +1558,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2394</Reference>
     </References>
   </UAVariable>
-  <!-- MTMessageType::Constraints : MTConstraintType[1] -->
+  <!-- MTMessageType::Constraints : MTConstraintType[0..1] -->
   <UAObject NodeId='ns=1;i=2841' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2394'>
     <DisplayName>Constraints</DisplayName>
     <References>
@@ -1572,8 +1572,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2845</Reference>
       <!-- HasTypeDefinition -  - MTConstraintType ns=1;i=2567   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2567</Reference>
-      <!-- HasModellingRule -  - Mandatory i=78   -->
-      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
       <!-- HasComponent - (Reverse) - MTMessageType ns=1;i=2394   -->
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2394</Reference>
     </References>
@@ -1806,7 +1806,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2357</Reference>
     </References>
   </UAVariable>
-  <!-- MTNumericEventType::Constraints : MTConstraintType[1] -->
+  <!-- MTNumericEventType::Constraints : MTConstraintType[0..1] -->
   <UAObject NodeId='ns=1;i=2857' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2357'>
     <DisplayName>Constraints</DisplayName>
     <References>
@@ -1820,8 +1820,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2861</Reference>
       <!-- HasTypeDefinition -  - MTConstraintType ns=1;i=2567   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2567</Reference>
-      <!-- HasModellingRule -  - Mandatory i=78   -->
-      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
       <!-- HasComponent - (Reverse) - MTNumericEventType ns=1;i=2357   -->
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2357</Reference>
     </References>
@@ -2189,7 +2189,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
     </References>
   </UAVariable>
-  <!-- MTSampleType::Constraints : MTConstraintType[1] -->
+  <!-- MTSampleType::Constraints : MTConstraintType[0..1] -->
   <UAObject NodeId='ns=1;i=2881' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2350'>
     <DisplayName>Constraints</DisplayName>
     <References>
@@ -2203,8 +2203,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2885</Reference>
       <!-- HasTypeDefinition -  - MTConstraintType ns=1;i=2567   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2567</Reference>
-      <!-- HasModellingRule -  - Mandatory i=78   -->
-      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
       <!-- HasComponent - (Reverse) - MTSampleType ns=1;i=2350   -->
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2350</Reference>
     </References>
@@ -2491,7 +2491,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2353</Reference>
     </References>
   </UAVariable>
-  <!-- MTStringEventType::Constraints : MTConstraintType[1] -->
+  <!-- MTStringEventType::Constraints : MTConstraintType[0..1] -->
   <UAObject NodeId='ns=1;i=2904' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2353'>
     <DisplayName>Constraints</DisplayName>
     <References>
@@ -2505,8 +2505,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2908</Reference>
       <!-- HasTypeDefinition -  - MTConstraintType ns=1;i=2567   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2567</Reference>
-      <!-- HasModellingRule -  - Mandatory i=78   -->
-      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
       <!-- HasComponent - (Reverse) - MTStringEventType ns=1;i=2353   -->
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2353</Reference>
     </References>
@@ -2725,7 +2725,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2562</Reference>
     </References>
   </UAVariable>
-  <!-- MTThreeSpaceSampleType::Constraints : MTConstraintType[1] -->
+  <!-- MTThreeSpaceSampleType::Constraints : MTConstraintType[0..1] -->
   <UAObject NodeId='ns=1;i=2920' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2562'>
     <DisplayName>Constraints</DisplayName>
     <References>
@@ -2739,8 +2739,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2924</Reference>
       <!-- HasTypeDefinition -  - MTConstraintType ns=1;i=2567   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2567</Reference>
-      <!-- HasModellingRule -  - Mandatory i=78   -->
-      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
       <!-- HasComponent - (Reverse) - MTThreeSpaceSampleType ns=1;i=2562   -->
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2562</Reference>
     </References>
@@ -3068,7 +3068,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2573</Reference>
     </References>
   </UAVariable>
-  <!-- MTConditionType::Constraints : MTConstraintType[1] -->
+  <!-- MTConditionType::Constraints : MTConstraintType[0..1] -->
   <UAObject NodeId='ns=1;i=2943' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2573'>
     <DisplayName>Constraints</DisplayName>
     <References>
@@ -3082,8 +3082,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2947</Reference>
       <!-- HasTypeDefinition -  - MTConstraintType ns=1;i=2567   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2567</Reference>
-      <!-- HasModellingRule -  - Mandatory i=78   -->
-      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
       <!-- HasComponent - (Reverse) - MTConditionType ns=1;i=2573   -->
       <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2573</Reference>
     </References>

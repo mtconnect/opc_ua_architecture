@@ -36,7 +36,7 @@
                   </Constraints>
                 </DataItem>
                 <DataItem id="r1841b70" type="LOAD" category="SAMPLE" units="PERCENT" name="Sload"/>
-                <DataItem id="taa7a0f0" type="AMPERAGE" category="SAMPLE" units="AMPERE" compositionId="b7792870" />
+                <DataItem id="taa7a0f0" type="AMPERAGE" category="SAMPLE" units="AMPERE" compositionId="b7792870"/>
                 <DataItem id="afb596b0" type="AMPERAGE" category="CONDITION" compositionId="b7792870" name="Soverload">
                   <Source dataItemId="taa7a0f0"/>
                 </DataItem>
@@ -89,14 +89,13 @@
                 <DataItem id="qb9212c0" type="AMPERAGE" category="SAMPLE" units="AMPERE" statistic="AVERAGE">
                   <ResetTrigger>ACTION_COMPLETE</ResetTrigger>
                 </DataItem>
-                <DataItem id="o63fcd30" name="ppfact" type="POWER_FACTOR" category="SAMPLE" units="PERCENT" />
-                
-                 <DataItem id="b4bb7110" type="AMPERAGE" category="CONDITION" name="poverload">
-                   <Source dataItemId="e25c1130"/>
-                 </DataItem>
-                 <DataItem id="c82e32f0" type="TEMPERATURE" category="CONDITION" name="povertemp">
-                   <Source dataItemId="x52ca7e0"/>
-                 </DataItem>
+                <DataItem id="o63fcd30" name="ppfact" type="POWER_FACTOR" category="SAMPLE" units="PERCENT"/>
+                <DataItem id="b4bb7110" type="AMPERAGE" category="CONDITION" name="poverload">
+                  <Source dataItemId="e25c1130"/>
+                </DataItem>
+                <DataItem id="c82e32f0" type="TEMPERATURE" category="CONDITION" name="povertemp">
+                  <Source dataItemId="x52ca7e0"/>
+                </DataItem>
               </DataItems>
               <Components>
                 <Sensor id="q9abfaf0">
@@ -112,9 +111,29 @@
                       </Channels>
                     </SensorConfiguration>
                   </Configuration>
-                </Sensor>              
+                </Sensor>
               </Components>
             </Electric>
+            <Coolant id="x5ef9730" name="low">
+              <DataItems>
+                <DataItem id="r25176b0" type="FILL_LEVEL" category="SAMPLE" units="CELSIUS" name="low_main_level" compositionId="t59d1170"/>
+                <DataItem id="obc97840" type="FILL_LEVEL" category="SAMPLE" units="CELSIUS" name="low_main_level" compositionId="a7973930"/>
+              </DataItems>
+              <Compositions>
+                <Composition id="t59d1170" type="TANK" name="main"/>
+                <Composition id="a7973930" type="TANK" name="reserve"/>
+              </Compositions>
+            </Coolant>
+            <Coolant id="b36e0070" name="high">
+              <DataItems>
+                <DataItem id="q94f81e0" type="FILL_LEVEL" category="SAMPLE" units="CELSIUS" name="high_main_level" compositionId="a59bd5b0"/>
+                <DataItem id="wf2848e0" type="FILL_LEVEL" category="SAMPLE" units="CELSIUS" name="high_main_level" compositionId="aa373750"/>
+              </DataItems>
+              <Compositions>
+                <Composition id="a59bd5b0" type="TANK" name="main"/>
+                <Composition id="aa373750" type="TANK" name="reserve"/>
+              </Compositions>
+            </Coolant>
           </Components>
         </Systems>
       </Components>

@@ -76,7 +76,7 @@ class LatexType < Type
   include Diagram
   include Document
 
-  ROW_FORMAT = "|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.2]|X|X[-1]|"
+  ROW_FORMAT = "|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|"
 
   def reference
     "See section \\ref{type:#{@name}}"
@@ -90,7 +90,7 @@ class LatexType < Type
       else
         ref = parent.reference
       end
-      f.puts "\\multicolumn{6}{|l|}{Subtype of \\texttt{#{parent.name}} (#{ref})} \\\\"
+      f.puts "\\multicolumn{6}{|l|}{Subtype of #{parent.name} (#{ref})} \\\\"
     end
   end
 
@@ -163,7 +163,7 @@ class LatexType < Type
 \\tabulinesep=3pt
 \\begin{tabu} to 6in {#{ROW_FORMAT}} \\everyrow{\\hline}
 \\hline
-\\rowfont \\bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling\\-Rule} \\\\
+\\rowfont \\bfseries References & NodeClass & BrowseName & DataType & Type\\-Definition & {Modeling\\-Rule} \\\\
 EOT
       l = cs.pop(22)
       l.each do |c|
@@ -256,7 +256,7 @@ EOT
 
     f.puts <<EOT
 \\tabucline[1.5pt]{}
-\\rowfont \\bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling\\-Rule} \\\\
+\\rowfont \\bfseries References & NodeClass & BrowseName & DataType & Type\\-Definition & {Modeling\\-Rule} \\\\
 EOT
 
     generate_supertype(f)
@@ -419,6 +419,8 @@ EOT
   end
      
   def generate_latex(f = STDOUT)
+    return if @name =~ /Factory/
+    
     f.puts <<EOT
 \\subsubsection{Defintion of \\texttt{#{stereotype_name} #{escape_name}}}
   \\label{type:#{@name}}

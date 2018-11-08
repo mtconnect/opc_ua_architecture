@@ -28,7 +28,7 @@ Figure \ref{fig:mtcomponent-uml} represents the same model in UML. The companion
 \item Combinining of templates and classes can be done using a UML \mtterm{Realization} with the stereotype \mtterm{<<Mixes In>>} to use common properties and relationships in a collection of otherwise unrelated types.
 \end{itemize}
 
-The \mtterm{UML Associations} are used to represent OPC UA R`eferences. \uaterm{UA Properties} represented using the UA \opcuaterm{HasProperty} relationships are given as UML Attributes (not be confused with the \uaterm{OPC UA Attribute}). UML allows for additional information as follows:  the multiplicity of a property, the data type of the property, are specified.
+The \mtterm{UMLAssociations} are used to represent OPC UA R`eferences. \uaterm{UA Properties} represented using the UA \opcuaterm{HasProperty} relationships are given as UML Attributes (not be confused with the \uaterm{OPC UA Attribute}). UML allows for additional information as follows:  the multiplicity of a property, the data type of the property, are specified.
 
 \input{diagrams/mtconnect-mapping/mtcomponent-uml.tex}
 \FloatBarrier
@@ -657,15 +657,7 @@ The following example is the \xmlelement{Electric} system of the machine. The to
                 </Sensor>              
               </Components>
             </Electric>
-          </Components>
-        </Systems>
 \end{lstlisting}
-
-In the first set of \mtterm{DataItems} from Listing~\ref{lst:electric-system} as shown in Figure~\ref{fig:electric-system}, the first data item on line~\ref{line:electric-temp-60} has a period filter that is represented in the OPC UA \uaterm{Object} Temperature as a \mtterm{PeriodFilter} \uaterm{Property} with a value of 60.0. The period filters only recognize changes to data if the change after a period of the given value, in this case 60 seconds. This will only publish changed data every minute in this instance.
-
-The Temperature \uaterm{Object} also has a \xmlelement{Source} element that references the \mtterm{Sensor} with a \xmlelement{Configuration} of type \mtterm{SensorConfigurationType} that has information about the \mtterm{FirmwareVersion} and \mtterm{CalibrationDate} The \mtterm{Sensor} configuration also has \mtterm{Channels} that represent the multiple inputs to the \mtterm{Sensor} unit. The first \mtterm{Channel} has a \mtterm{Description} and a \mtterm{CalibrationDate} of the probe attached to the \mtterm{Channel}. For moe information on the \mtterm{Channel}, see MTConnect Devices \cite{MTCPart2}.
-
-The following \mtterm{DataItem} on line~\ref{line:electric-voltage-10} has a \mtterm{Filter} using a \mtterm{MINIUM_DELTA} that is represened as a \mtterm{MinimumDeltaFilter} in the UA \uaterm{Object} reprenenting the \mtterm{MTSampleType} Voltage. The \mtterm{MinimumDelta} represents the smallest amount of change before the change is reported. In this case the minimum change is 10 volts. Changes smaller than 10 volts will not be reported for this data item.
 
 \begin{figure}[ht]
     \centering
@@ -674,11 +666,64 @@ The following \mtterm{DataItem} on line~\ref{line:electric-voltage-10} has a \mt
     \label{fig:electric-system}
 \end{figure}
 
+In the first set of \mtterm{DataItems} from Listing~\ref{lst:electric-system} as shown in Figure~\ref{fig:electric-system}, the first data item on line~\ref{line:electric-temp-60} has a period filter that is represented in the OPC UA \uaterm{Object} Temperature as a \mtterm{PeriodFilter} \uaterm{Property} with a value of 60.0. The period filters only recognize changes to data if the change after a period of the given value, in this case 60 seconds. This will only publish changed data every minute in this instance.
+
+The Temperature \uaterm{Object} also has a \xmlelement{Source} element that references the \mtterm{Sensor} with a \xmlelement{Configuration} of type \mtterm{SensorConfigurationType} that has information about the \mtterm{FirmwareVersion} and \mtterm{CalibrationDate} The \mtterm{Sensor} configuration also has \mtterm{Channels} that represent the multiple inputs to the \mtterm{Sensor} unit. The first \mtterm{Channel} has a \mtterm{Description} and a \mtterm{CalibrationDate} of the probe attached to the \mtterm{Channel}. For moe information on the \mtterm{Channel}, see MTConnect Devices \cite{MTCPart2}.
+
+The following \mtterm{DataItem} on line~\ref{line:electric-voltage-10} has a \mtterm{Filter} using a \mtterm{MINIUM_DELTA} that is represened as a \mtterm{MinimumDeltaFilter} in the UA \uaterm{Object} reprenenting the \mtterm{MTSampleType} Voltage. The \mtterm{MinimumDelta} represents the smallest amount of change before the change is reported. In this case the minimum change is 10 volts. Changes smaller than 10 volts will not be reported for this data item.
+
+The second set of \mtterm{DataItems} starting on line~\ref{line:electric-amperage} shown in Figure~\ref{fig:electric-system-2} shows the relationship between the conditions and the other \mtterm{DataItems}. As has been shown before the conditions here are both related to a \mtterm{DataItem} that is the source of the \mtterm{Condition}. The \mtterm{DataItem} therefor has a \uaterm{HasCondition} relationship to the \uaterm{Condition} and the \mtterm{Component} has a \uaterm{HasEventSource} relationship to the \mtterm{DataItem}. 
+
+The \texttt{AverageAmperage} on line~\ref{line:electric-average-amperage} has a \mtterm{ResetTrigger} that is added to the meta data indicating that the \mtterm{Average} statistic is taken until the current \mtterm{Action} has \mtterm{Completed} as defined by the process. This \mtterm{DataItem} will only update on when the \mtterm{ResetTrigger} fires. {\color{red} Need to add the status codes to represent the reset triggers as Good_...}.
+
 \begin{figure}[ht]
     \centering
     \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/electric-system-2.png}
     \caption{Electric System Component Second Set}
     \label{fig:electric-system-2}
+\end{figure}
+
+\FloatBarrier
+
+\paragraph{\xmlelement{Coolant} \mtterm{System} with multiple \mtterm{Tanks}}
+
+The following example in Listing~\ref{lst:coolant-system} demonstrates the situation where there are multiple components and data items of the same semantic type differentiated only by name. The machine has two coolant systems, one high pressure and one low pressure. Each of the two coolant systems has two tanks, a main and a reserve tank that are represented by compositions. 
+
+\begin{lstlisting}[firstnumber=last,,escapechar=|,%
+    caption={Coolant System and Sensor Configuration},label={lst:coolant-system}]
+            <Coolant id="x5ef9730" name="low">
+              <DataItems>
+                <DataItem id="r25176b0" type="FILL_LEVEL" category="SAMPLE" units="PERCENT" name="low_main_level" compositionId="t59d1170"/>
+                <DataItem id="obc97840" type="FILL_LEVEL" category="SAMPLE" units="PERCENT" name="low_reserve_level" compositionId="a7973930"/>
+              </DataItems>
+              <Compositions>
+                <Composition id="t59d1170" type="TANK" name="main"/>
+                <Composition id="a7973930" type="TANK" name="reserve"/>
+              </Compositions>
+            </Coolant>
+            <Coolant id="b36e0070" name="high">
+              <DataItems>
+                <DataItem id="q94f81e0" type="FILL_LEVEL" category="SAMPLE" units="PERCENT" name="high_main_level" compositionId="a59bd5b0"/>
+                <DataItem id="wf2848e0" type="FILL_LEVEL" category="SAMPLE" units="PERCENT" name="high_reserve_level" compositionId="aa373750"/>
+              </DataItems>
+              <Compositions>
+                <Composition id="a59bd5b0" type="TANK" name="main"/>
+                <Composition id="aa373750" type="TANK" name="reserve"/>
+              </Compositions>
+            </Coolant>
+ \end{lstlisting}
+
+Figure~\ref{fig:coolant-system} presents the two coolant systems with names \texttt{high} and \texttt{low}. They are identical, each composed of two \mtterm{Tank} compositions and each with two data items indication the \mtterm{Fill Level} of the main and reserve \mtterm{Tank}. The naming follows the rules for \texttt{TankFillLevel[low_main_level]} and \texttt{TankFillLevel[low_reserve_level]} for the \texttt{low} \mtterm{Coolant System}. 
+
+In this case the \mtterm{Composition} name is converted to \textit{PascalCase} and prepended to the \textit{PascalCase} of the \mtterm{DataItem} to create the base \uaterm{BrowseName}. Since there are two identical \uaterm{BrowseNames}, the \xmlattribute{name} is appended in square brackets (\texttt{[]}). The same is done for the \mtterm{Composition} \uaterm{BrowseName} and the \mtterm{Component} \uaterm{BrowseName} "\mtterm{Coolant}" giving \texttt{Coolant[high]} and \texttt{Coolant[low]}.
+
+The two \mtterm{Tank} compositions have similar treatment where they are named \texttt{Tank[main]} and \texttt{Tank[reserve]} for each of the two components. The \mtterm{DataItems} then refer to each of the appropriate tanks to correctly reference the composition they are associated with. What is not show in the Figure~\ref{fig:coolant-system} is the \mtuatype{FillLevelClassType} to save space. Each of the \mtterm{DataItems} will have a \mtterm{HasMTClassType} reference to the \uaterm{ClassType}.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/coolant-system.png}
+    \caption{Coolant System}
+    \label{fig:coolant-system}
 \end{figure}
 
 \FloatBarrier
@@ -703,7 +748,7 @@ The following section provides the rules and mechanism to take data from the MTC
 Listing~\ref{lst:streams-header} root element \xmlelement{MTConnectStreams} contains the standard namespace declarations for MTConnect and XMLSchema. If additional namespaces are noted, they should be added as additional namespaces in the OPC UA \uaterm{Namespace} as well. The streams document begins with a Header with protocol information that represents the version of the standard being references and the store-and-forward buffer sequence numbers. \cite{MTCPart1} provides information on the interaction with the \mtterm{Agent} and the proper sequence of requests to receive a conriguous stream of data.
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
-    caption={Comoonent Stream},label={lst:component-stream}]
+    caption={Component Stream},label={lst:component-stream}]
       <ComponentStream componentId="e373fec0" component="Linear" name="X1" nativeName="X"> |\label{line:component-stream}|
         <Samples>
           <Position sequence="131" timestamp="2018-10-31T20:33:11Z" dataItemId="dcbc0570" name="Xpos">UNAVAILABLE</Position> |\label{line:pos-unavilable}|

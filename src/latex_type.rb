@@ -76,7 +76,7 @@ class LatexType < Type
   include Diagram
   include Document
 
-  ROW_FORMAT = "|X[-1.35]|X[-0.7]|X[-1.5]|X[-1.2]|X|X[-1]|"
+  ROW_FORMAT = "|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.2]|X|X[-1]|"
 
   def reference
     "See section \\ref{type:#{@name}}"

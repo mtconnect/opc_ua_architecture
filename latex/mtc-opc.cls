@@ -63,6 +63,8 @@
 \RequirePackage{enumitem}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{amssymb}
+\usepackage{amsmath}
 
 % *********** %
 % 	Options   %

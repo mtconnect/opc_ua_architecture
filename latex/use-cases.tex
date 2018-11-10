@@ -1,10 +1,10 @@
 \section{Use Cases}
 
-This is a non-exhaustive list illustrating the benefits of a common information model and showing the value of integrating the MTConnect data dictionary and semantic models with the OPC UA communication architecture.
+This is a non-exhaustive list illustrating the benefits of the  information model defined in this document and demonstrates the value of integrating the MTConnect data dictionary and semantic models with the OPC UA communication architecture.
 
 \subsection{Device Maker}
 
-Figure \ref{fig:devicemanufacturingusecase}, illustrates the use case for a manufacturer of a piece of equipment (device) that needs to connect to other systems. OPC UA provides the network interface and MTConnect supplies meaning and structure to device data. Figure \ref{fig:devicemanufacturingusecase} shows several clients developed for different purposes that can access information produced by the device via OPC UA.
+Figure \ref{fig:devicemanufacturingusecase}, illustrates the use case for a manufacturer of a piece of equipment (device) that needs to connect to other systems. OPC UA provides the network interface technologies and the MTConnect semantics supply meaning and structure to device data. Figure \ref{fig:devicemanufacturingusecase} shows several clients developed for different purposes that can access information produced by the device via OPC UA.
 
 \input diagrams/DeviceManufacturingUseCase.tex
 \FloatBarrier
@@ -15,7 +15,6 @@ The device manufacturer may also have a native MTConnect device and make use of 
 
 
 
-\textit{Should we add Minimum Level of OPC Functionality required to support this scenario}
 
 \input diagrams/DeviceManufacturerNativeMTConnect.tex
 \FloatBarrier
@@ -24,14 +23,14 @@ The device manufacturer may also have a native MTConnect device and make use of 
 
 \subsubsection{Independent Software Vendor}
 
-Figure \ref{fig:isvusecase} illustrates the use case for an Independent Software Vendor (ISV) supplying industrial equipment users. A typical ISV offering includes gateway(s) that convert information between MTConnect and OPC UA and additional features built on MTConnect. The OPC Unified Architecture for MTConnect Companion Specification allows the ISV to extend the MTConnect-OPC UA information model with application specific constructs. These can be easily accessed via any standard OPC UA client product and exist in parallel to existing features built on MTConnect. Figure \ref{fig:isvusecase} shows an ISV product that consumes data from MTConnect and OPC UA enabled devices and then makes it available via MTConnect and OPC UA.
+Figure \ref{fig:isvusecase} illustrates the use case for an Independent Software Vendor (ISV) supplying products to industrial equipment users. A typical ISV offering includes gateway(s) that convert information between MTConnect and OPC UA and may also provide additional features required for MTConnect implementations; e.g. enhanced security features. The OPC Unified Architecture for MTConnect Companion Specification allows the ISV to extend the MTConnect-OPC UA information model with application specific constructs. These can be easily accessed via any standard OPC UA client product and will function in parallel to existing features provided by MTConnect. Figure \ref{fig:isvusecase} shows an ISV product that consumes data from MTConnect and OPC UA enabled devices and then makes it available via MTConnect and OPC UA.
 
 \input diagrams/ISVUseCase.tex
 \FloatBarrier
 
 \subsection{End-User Engineer}
 
-Figure \ref{fig:enduserusecase} illustrates the use case for an engineer or systems integrator setting up and configuring an MTConnect enabled system for an equipment user. The engineer is familiar with MTConnect but needs to configure OPC UA client applications. This companion specification shows the engineer how MTConnect concepts are represented in OPC UA in order to configure OPC UA applications. Without this specification, that requires manually mapping tags to MTConnect concepts. This specification eliminates the need for that mapping and reduces reliance on vendor documentations.  Figure \ref{fig:enduserusecase} shows how the common Information Model defined by this specification gives the End User Engineer choices when it comes to accessing device data.
+Figure \ref{fig:enduserusecase} illustrates the use case for an engineer or systems integrator setting up and configuring an MTConnect enabled system for an equipment user. The engineer is familiar with MTConnect but needs to configure OPC UA client applications. This companion specification shows the engineer how MTConnect concepts are represented in OPC UA in order to configure OPC UA applications. Without this specification, an engineer would have to manually map each tag to MTConnect concepts. This specification eliminates the need for that mapping and reduces reliance on vendor documentations.  Figure \ref{fig:enduserusecase} shows how the common Information Model defined by this specification gives the End User Engineer choices when it comes to accessing device data.
 
 \input diagrams/EndUserUseCase.tex
 \FloatBarrier

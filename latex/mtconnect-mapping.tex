@@ -33,11 +33,11 @@ The \mtterm{UMLAssociations} are used to represent OPC UA R`eferences. \uaterm{U
 \input{diagrams/mtconnect-mapping/mtcomponent-uml.tex}
 \FloatBarrier
 
-When traversing an association between two object types, the name of the source of the association is the browse name associated with the object, and the destination is the type of object that is instantiated. If the name is not given, it represents a dynamic relationship where the browse name is determined during the creation of the object model. An example is the association of the MTConnect \mtconnectterm{DataItem}s.
+When traversing an association between two object types, the name of the source of the association is the \uaterm{BrowseName} of the object, and the destination is the type of object that is instantiated. If the name is not given, it represents a dynamic relationship where the uaterm{BrowseName} is determined during the creation of the object model. An example is the association of the MTConnect \mtconnectterm{DataItem}s. The rules for creating the \uaterm{BrowseName} are givin below in Section~\ref{sec:mapping-rules}.
 
 A reference that has a stereotype of \textit{<<Organizes>>}, shown by the \texttt{Components} recursive relationship in the \mtconnectterm{MTComponentType}, implies an intermediate object of type \opcuaterm{FolderType} with the \uaterm{BrowseName} of the relationship point on the source side. The far side is not constrained within the \opcuaterm{FolderType} but given in the documentation as the expected contents of the folder.
 
-OPC UA represents both class and instance diagrams using the same set of primitives. UML provides separate class and object models using two separate sets of primitives, one for classification and the other for instances of those classes. This section separates the object instantiation from the classification and uses UML object diagrams to represent example instances of classes.
+OPC UA represents both class and instance diagrams using the same set of primitives. UML provides separate class and object models using two separate sets of diagram and representations, one for classification and the other for instances of those classes. This section separates the object instantiation from the classification and uses UML object diagrams to represent example instances of classes.
 
 \FloatBarrier
 
@@ -80,7 +80,7 @@ The specification uses examples to illustrate the process of conversion from XML
 
 The MTConnect information model is represented in the UA address space as set of object and variable types. Most have pre-existing type definitions whereas others will be created dynamically following riles in the following section. The rules provide a way for a developer of a server to extend the nodeset to include the types present in a given MTConnectDevices XML document as presented from an MTConnect \textit{Agent} in response to a \texttt{/probe} requires.
 
-\subsubsection{Mapping Rules and Conventions}
+\subsubsection{Mapping Rules and Conventions}\label{sec:mapping-rules}
 
 MTConnect has conventions regarding the format of elements, attributes, and values of attributes or CDATA the represent controlled vocabularies or enumerations. 
 
@@ -266,16 +266,6 @@ The MTConnect \mtterm{DataItem} represents multiple OPC UA \uaterm{DataVariableT
 \end{enumerate}
 
 The examples below will provide further guidance on implementing these rules.
-
-\subsubsection{\uaterm{NodeId} Construction Rules}
-
-To ensure unique \uaterm{NodeIds} in the address space, the following rules will be used to compose the \uaterm{NodeId} of each \uaterm{Object} and \uaterm{Variable}:
-
-\begin{itemize}
-    \item The \mtuatype{MTDeviceType} instance will use the \xmlattribute{uuid} attribute as the NodeId.
-    \item XML elements with an \xmlattribute{id} will compose the \mtuatype{MTDeviceType} \xmlattribute{uuid} and the \xmlattribute{id} as follows: $uuid + "/" + id$.
-    \item \uaterm{Object}s and \uaterm{Variable}s that do not have an \xmlattribute{id} associated with the corresponding XML element will use the parent \uaterm{NodeId} composed with the browse name of the object as follows: $parent.NodeId + "/" + self.BrowseName$
-\end{itemize}
 
 \subsubsection{Mapping \mtterm{DataItem} \mtterm{units} to \uaterm{EngineeringUnits}}
 
@@ -495,7 +485,7 @@ The \uaterm{HasNotifier} reference must be created between the \texttt{SimpleCnc
 
 The data item on Line~\ref{line:rotary-mode} of Listing~\ref{lst:rotary-c-example} with \xmlattribute{type} of \dataitem{ROTARY_MODE} is illustrated in Figure~\ref{fig:rotary-c-rotary-mode}. MTConnect allows for a \mtterm{Rotary} axis to provide the function of the axis, Spindle, Contour, or Index. In Many cases the Rotary Mode is a singular values, as in this case when it can only work as a spindle. This is expressed by creating a \uaterm{HasComponent} reference to a \mtuadatatype{ConstraintType} \uaterm{Object} and specifying the \texttt{Values} \uaterm{Property}  with the singular value of\texttt{["SPINDLE"]} indicating it can only function as a spindle. 
 
-In MTConnect, the value of this data item will never be \mtterm{UNAVAILABLE} or \uaterm{Bad_\ldots} since it is bound to a single value, it will always be present and have that value regardless of the connectivity state to the data source. In the case of constraints on a controlled vocabulary, the \texttt{Values} must always be one of the related EnumValues. See \cite{MTCPart2} for details on the constraints and the relationship to the \mtterm{DataItem}s.
+In MTConnect, the value of this data item will never be \mtterm{UNAVAILABLE} since it is bound to a single value, it will always be present and have that value regardless of the connectivity state to the data source. Since the value is static and never changes, the \uaterm{Quality} will be \uaterm{Uncertain_InitialValue} if it is never provided. In the case of constraints on a controlled vocabulary, the \texttt{Values} must always be one of the related EnumValues. See \cite{MTCPart2} for details on the constraints and the relationship to the \mtterm{DataItem}s.
 
 \begin{figure}[ht]
     \centering
@@ -576,7 +566,7 @@ The MTConnect information model does not differentiate between the two controlle
         </Controller>
 \end{lstlisting}
 
-The \mtterm{Controller} has two \mtterm{DataItems}, \mtterm{Message} and \mtterm{EmergencyStop} as shown in Figure~\ref{fig:controller-component}. The \mtuatype{MTMessageType} is of special note since it is not a \uaterm{VariableType}, but it is an \uaterm{EventType} and decended from the \uaterm{SystemEventType} class described in \cite{UAPart5}. {\color{red} Does the message require a special relation like the Condition and the HasCondition reference?}
+The \mtterm{Controller} has two \mtterm{DataItems}, \mtterm{Message} and \mtterm{EmergencyStop} as shown in Figure~\ref{fig:controller-component}. The \mtuatype{MTMessageType} is of special note since it is not a \uaterm{VariableType}, but it is an \uaterm{EventType} and decended from the \uaterm{SystemEventType} class described in \cite{UAPart5}.
 
 \begin{figure}[ht]
     \centering
@@ -730,11 +720,15 @@ The two \mtterm{Tank} compositions have similar treatment where they are named \
 
 \subsection{MTConnect Streaming Data}
 
-MTConnect separates out the the streaming updates to the values of the data from the meta-data describing the semantic meaning of the data. This is covered in detail in \cite{MTCPart3}. The XML document also contains protocol information which will be ignored for handling of the streaming data. 
+MTConnect separates streaming updates of data from the meta-data describing the semantic meaning of the data. \cite{MTCPart3} covers the streaming information model and the \textit{HTTP REST Protocol}\cite{Fielding2000ArchitecturalArchitectures} is covered in \cite{MTCPart1}. The protocol data in the \mtterm{Header,} of the XML document, is ignored representing the data in OPC UA. 
 
-The \mtterm{HTTP REST} protocol provides both a snapshot and time series data from the \mtterm{MTConnect Agent} that is collected from the \mtterm{Device}s. Each entry is time-stamped and is given a sequence number that indicates the arrival order across all devices whose information is aggregated in the \mtterm{MTConnect Agent}.
+The \mtterm{HTTP REST Protocol}  provides two capabilities with respect to the collection of data that are common to most \textit{publish/subscribe} technologies. They are as follows: first, a snapshot of the most recent know value for each \mtterm{DataItem}, referred to as a \mtterm{current} request, and second, a time-series of changes that occurred going back to the beginning of the store-and-forward \mtterm{buffer}, referred to as a \mtterm{sample} request.
 
-The following section provides the rules and mechanism to take data from the MTConnect stream and represent as a series of updates to the \uaterm{Variables} and generate \uaterm{Events} for the \mtterm{MTConditionType} and \mtterm{MTMessageType}.
+Each entry in the \mtterm{buffer} is time-stamped and assigned a sequence number that indicates the arrival order unique across all devices represented in the \mtterm{MTConnect Agent}. The sequence number is monotonically increasing and is unique concerning the instance (execution) of the agent. When the agent is restarted, the sequence and may be reset to one indicating the expunging of history. 
+
+The following section provides the rules for taking data from the \mtterm{MTConnectStream} XML Document and represent as a series of updates to the \uaterm{Variables} and generate \uaterm{Events} for the \mtterm{MTConditionType} and \mtterm{MTMessageType} \uaterm{Objects}.
+
+\subsubsection{MTConnectStreams Document Header}
 
 \begin{lstlisting}[firstnumber=1,escapechar=|,%
     caption={Streams Header},label={lst:streams-header}]
@@ -742,14 +736,16 @@ The following section provides the rules and mechanism to take data from the MTC
 <MTConnectStreams xmlns="urn:mtconnect.org:MTConnectStreams:1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectStreams:1.4 ./schema/MTConnectStreams_1.4.xsd">
 	<Header version="1.4.0" creationTime="2018-10-31T21:00:01Z" nextSequence="43124" lastSequence="44221" firstSequence="1" instanceId="1541045065" sender="localhost" bufferSize="131072"/>
 	<Streams>
-    <DeviceStream name="SimpleCnc" uuid="872a3490-bd2d-0136-3eb0-0c85909298d9">    
 \end{lstlisting}
 
-Listing~\ref{lst:streams-header} root element \xmlelement{MTConnectStreams} contains the standard namespace declarations for MTConnect and XMLSchema. If additional namespaces are noted, they should be added as additional namespaces in the OPC UA \uaterm{Namespace} as well. The streams document begins with a Header with protocol information that represents the version of the standard being references and the store-and-forward buffer sequence numbers. \cite{MTCPart1} provides information on the interaction with the \mtterm{Agent} and the proper sequence of requests to receive a conriguous stream of data.
+Listing~\ref{lst:streams-header} is an example of the \textit{XML Root Element} of the \xmlelement{MTConnectStreams} Document and contains the standard namespace declarations for MTConnect and XMLSchema. If additional namespaces are present, they must be added as additional namespaces in the OPC UA \uaterm{Namespace} as well. The streams document begins with a Header containing protocol information that represents the version of the standard referenced and the store-and-forward buffer sequence numbers. \cite{MTCPart1} provides information on the interaction with the \mtterm{Agent} and the proper sequence of requests to receive a contiguous stream of data from any point in the sequence of data.
+
+\subsubsection{MTConnectStreams Device and Component Stream}
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Component Stream},label={lst:component-stream}]
       <ComponentStream componentId="e373fec0" component="Linear" name="X1" nativeName="X"> |\label{line:component-stream}|
+    <DeviceStream name="SimpleCnc" uuid="872a3490-bd2d-0136-3eb0-0c85909298d9">    
         <Samples>
           <Position sequence="131" timestamp="2018-10-31T20:33:11Z" dataItemId="dcbc0570" name="Xpos">UNAVAILABLE</Position> |\label{line:pos-unavilable}|
           <Position sequence="794" timestamp="2018-10-31T20:47:09Z" dataItemId="dcbc0570" name="Xpos">205.23</Position> |\label{line:pos-795}|
@@ -757,17 +753,17 @@ Listing~\ref{lst:streams-header} root element \xmlelement{MTConnectStreams} cont
       </ComponentStream>
 \end{lstlisting}
 
-MTConnect only reports data when it changes. Each change is assigned a monotonically increasing sequence number when it arrives at the \textit{MTConnect Agent}. MTConnect organizes flattens the structure when reporting data and organizes it by \mtterm{Component} and \mtterm{Category}, this is shown in  Listing~\ref{lst:linear-component-stream} Line~\ref{line:component-stream}. When the data stream is initialized or when it disconnects, the MTConnect \mtterm{DataItem Value} is set to \texttt{UNAVAILABLE} as shown on Line~\ref{line:pos-unavilable}.
+ MTConnect flattens the structure when reporting data and organizes it by \mtterm{Device}, \mtterm{Component} and \mtterm{Category}; this is shown in  Listing~\ref{lst:linear-component-stream} Line~\ref{line:component-stream} with the \xmlelement{DeviceStream}, \xmlelement{ComponentStream}, and \xmlelement{Samples} elements (not shown are the \xmlelement{Events} and \xmlelement{Condition} elements that will be address later). When the data stream is initialized or when it disconnects, the MTConnect \mtterm{DataItem Value} is set to \texttt{UNAVAILABLE} as shown on Line~\ref{line:pos-unavilable}.
 
-The sequence number indicates the arrival order in the \mtterm{Agent} and the \xmlattribute{timestamp} indicates the time the observation was made. The \xmlattribute{timestamp} will be used when setting the \uaterm{Variable} with the data that has arrived from the \mtterm{Device}. The data is only reported when it changes with the exception of \mtterm{DataItems} with the \mtterm{representation} of \texttt{DISCRETE} indicating that each value has a discrete meaning, such as a \mtterm{PartCount} where each count indicates an accrual of that many parts. {\color{red} It is unclear how to achieve this in OPC UA, possible with events as is being done with \mtuatype{MTMessageType}}.
+MTConnect only reports data when it changes, and each change is assigned a monotonically increasing \mtterm{sequence} number when it arrives at the \textit{MTConnect Agent}. In addition to the \mtterm{sequence} number; the XML attribute \xmlattribute{timestamp} indicates the time the observation was made. The \xmlattribute{timestamp} is used when setting the \uaterm{Variable} \uaterm{Time} along with the data and status. The data is only reported when it changes except for \mtterm{DataItems} with the \mtterm{representation} of \texttt{DISCRETE} indicating that each value has a discrete meaning, such as a \mtterm{PartCount} where each count indicates an accrual of that many parts. {\color{red} It is unclear how to achieve this in OPC UA, possible with events as is being done with \mtuatype{MTMessageType}}.
 
 The value of \texttt{UNAVAILABLE} will be translated to the OPC UA \uaterm{DataVariable} \uaterm{StatusCode} of \texttt{Bad_NotConnected} to indicate that the value of the data is currently unknown from the data source. 
 
-The followiing examples provide the steps to translate from the \mtterm{MTConnectStreams} document to the OPC UA information model presented above.
+The following examples provide the steps to translate from the \mtterm{MTConnectStreams} document to the OPC UA information model presented above.
 
 \subsubsection{Samples}
 
-The \mtterm{DataItems} with \mtterm{category} \dataitem{SAMPLE} are mapped to the \mtuatype{MTSampleType} which is a subtype of the \uaterm{AnalogItemType} \uaterm{DataVariable}. The numeric value of the sample sets the \uaterm{Variable} 
+The \mtterm{DataItems} with \mtterm{category} \dataitem{SAMPLE} are mapped to the \mtuatype{MTSampleType} which is a subtype of the \uaterm{AnalogItemType} \uaterm{DataVariable}. The numeric value of the sample sets the \uaterm{Value} in the \uaterm{AnalogItemType} \uaterm{Variable} instance.
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Linear Component Stream},label={lst:linear-component-stream}]
@@ -783,7 +779,7 @@ The OPC UA \uaterm{DataVariableType}s are monitored items and have three attribt
 
 \subsubsection{String and Numeric Events}\label{sec:sting-numeric-events}
 
-The \mtuatype{MTStringEventType} and \mtuatype{MTNumericEventType} \mtterm{DataItems} are managed in the same manner as the \mtuatype{MTSampleType} where the \uaterm{Value}, \uaterm{Quality}, and \uaterm{SourceTimestamp} are taken from the \xmlelement{CDATA}, \texttt{UNAVALAILABLE} state, and \xmlattribute{timestamp} respectively.
+The \mtuatype{MTStringEventType} and \mtuatype{MTNumericEventType} \mtterm{DataItems} are managed in the same manner as the \mtuatype{MTSampleType} where the \uaterm{Value}, \uaterm{Quality}, and \uaterm{Time} are taken from the \xmlelement{CDATA}, \texttt{UNAVALAILABLE} state, and \xmlattribute{timestamp} respectively.
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Path Component Stream},label={lst:path-component-stream}]
@@ -792,21 +788,19 @@ The \mtuatype{MTStringEventType} and \mtuatype{MTNumericEventType} \mtterm{DataI
           <Program sequence="430" timestamp="2018-10-31T20:47:09Z" dataItemId="k8dd9030">O98877</Program> |\label{line:prog-430}|
           <PartCount sequence="630" timestamp="2018-10-31T20:57:09Z" dataItemId="d2e9e4a0">662</PartCount> |\label{line:pc-603}|
           <ControllerMode sequence="255" timestamp="2018-10-31T20:27:09Z" dataItemId="if36ff60">AUTOMATIC</ControllerMode> |\label{line:cmode-255}|
-
         </Events>
       </ComponentStream>
 \end{lstlisting}
 
-In Listing~\ref{lst:path-component-stream} on Line~\ref{line:prog-430}, the string value will be assiogned to the Program data item in the Path component. The following Line~\ref{line:pc-603} representing the part count will be converted to a numeric value, in this case an \uaterm{Int32} and assigned to the value.
+In Listing~\ref{lst:path-component-stream} on Line~\ref{line:prog-430}, the string value will be assigned to the \mtterm{Program} \mtterm{DataItem} in the \mtterm{Path} component. The following Line~\ref{line:pc-603} representing the \xmlelement{PartCount} will be converted to a numeric value, in this case an \uaterm{Int32} and assigned to the \uaterm{Value}.
 
-All extended event types will be treated as \mtuatype{MTStringEventType}s since it can support any value. It will be the responsibility of the application to interpret the value.
+All extended event types will be treated as \mtuatype{MTStringEventType}s since it can support any value. It will be the responsibility of the application to interpret the value based on the extended \uaterm{ClassType} associated with the \uaterm{Variable}.
  
 \subsubsection{Controlled Vocabulary Events}
 
-Controlled Vocabularies are represented as \mtuatype{MTControlledVocabEventType} which is a subtype of the \uaterm{MultiStateValueDiscreteType}. The \uaterm{MultiStateValueDiscreteType} requires an integer index to be used for the value, so the text given in MTConnect must be translated.
+Controlled Vocabularies are represented as \mtuatype{MTControlledVocabEventType} which is a subtype of the \uaterm{MultiStateValueDiscreteType}. The \uaterm{MultiStateValueDiscreteType} requires an integer index to be used for the \uaterm{Value}, so the text given in MTConnect must be looked up in the \uaterm{Ennumerations} in the \texttt{EnumValues} \uaterm{Property} of the \mtterm{ClassType} referenced by the \mtterm{HasMTTypeClass} association. The index can be found by matching the \texttt{CDATA} to the \uaterm{Fields} in the \uaterm{Enumeration}.
 
-Referring to Listing~\ref{lst:path-component-stream} Line~\ref{line:cmode-255}, the values of the \texttt{CDATA} represent the allowed enumerations in the \mtuaenum{ControllerModeDataType} as shown in 
-Table~\ref{table:example-ControllerModeDataType}. In this case the value from mtconnect is \texttt{AUTOMATIC} and is looked up in the associated \uaterm{EnumerationDataType} and the integer value is assigned to the \uaterm{Value} of the \mtuatype{MTControlledVocabEventType} instance, in this example the value will be \texttt{0} for \texttt{AUTOMATIC}.
+Referring to Listing~\ref{lst:path-component-stream} Line~\ref{line:cmode-255}, the values of the \texttt{CDATA} represent the allowed enumerations in the \mtuaenum{ControllerModeDataType} as shown in Table~\ref{table:example-ControllerModeDataType}. In this case the value from mtconnect is \texttt{AUTOMATIC} and is looked up in the associated \uaterm{EnumerationDataType} and the integer value is assigned to the \uaterm{Value} of the \mtuatype{MTControlledVocabEventType} instance, in this example the value will be \texttt{0} for \texttt{AUTOMATIC}.
 
 \begin{table}[ht]
 \centering 
@@ -825,15 +819,15 @@ Table~\ref{table:example-ControllerModeDataType}. In this case the value from mt
 \end{tabu}
 \end{table} 
 
-Tjhe \uaterm{SourceTimestamp} and \uaterm{Quality} will be handled as described in Section~\ref{sec:sting-numeric-events} for \mtterm{String and Numeric Events}.
+The \uaterm{SourceTimestamp} and \uaterm{Quality} will be handled as described in Section~\ref{sec:sting-numeric-events} for \mtterm{String and Numeric Events}.
 
 \FloatBarrier
 
 \subsubsection{Conditions}
 
-Conditions are represnted by the \mtuatype{MTConditionType} that is a subtype of the \uaterm{ConditonType}. The MTConnect \mtterm{Conditions} are a representation of the transitional state of various alarms and reporting on the functioning of a \mtterm{Component} of the machine. There are three states for a conditon in MTConnect, they are \mtterm{Normal}, \mtterm{Warning}, and \mtterm{Fault} that have the semantic meaning \textit{operating normally}, \textit{a situation has been observed, but may self-correct}, and \textit{a failure has occured and needs manual intervention}. More information can be found in MTConnect \cite{MTCPart2} and \cite{MTCPart3} of the MTConnect Standard on Condition behavior.
+Conditions are represented by the \mtuatype{MTConditionType} that is a subtype of the \uaterm{ConditonType}. The MTConnect \mtterm{Conditions} are a representation of the  state of various alarms and health of a \mtterm{Component} of the machine. There are three states for a condition in MTConnect, they are \mtterm{Normal}, \mtterm{Warning}, and \mtterm{Fault} and have the semantic meaning \textit{operating normally}, \textit{a situation has been observed, but may self-correct}, and \textit{a failure has occured and needs manual intervention}. More information can be found in MTConnect \cite{MTCPart2} and \cite{MTCPart3} of the MTConnect Standard for Condition modeling and behavior.
 
-The \mtuatype{MTConditionType} has a \uaterm{Property} called \texttt{ActiveState} that represents if there are any warnings or faults currently active. The \texttt{ActiveState} is an OPC UA \uaterm{TwoStateVariableType} defined in \cite{UAPart8}. When a Condition is \mtterm{Normal}, the \texttt{ActiveState} will be \texttt{False}, otherwise when either a \mtterm{Warning} or \mtterm{Fault} is present, the \texttt{ActiveState} will be \texttt{True}.
+The \mtuatype{MTConditionType} has a \uaterm{Property} called \texttt{ActiveState} that represents if there are any \mtterm{Warnings} or \mtterm{Faults} currently active. The \texttt{ActiveState} is an OPC UA \uaterm{TwoStateVariableType} \uaterm{Variable} defined in \cite{UAPart8}. When a Condition is \mtterm{Normal}, the \texttt{ActiveState} is \texttt{False}, otherwise when either a \mtterm{Warning} or \mtterm{Fault} is present, the \texttt{ActiveState} is \texttt{True}.
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Rotary C Component Stream},label={lst:rotary-component-stream}]
@@ -847,30 +841,38 @@ The \mtuatype{MTConditionType} has a \uaterm{Property} called \texttt{ActiveStat
 
 The instance of the \mtuatype{MTConditionType} will contain the last state of the \mtterm{Condition} as most recently observed. Each time an MTConnect \mtterm{Condition} activates or deactivates, an \uaterm{Condition} \uaterm{Event} will be created associated with the instance if the \mtuatype{MTConditionType} \uaterm{NodeId}. 
 
+\mtuatype{MTConditionType} is a subtype of the \uaterm{Event} and therefor is instantiated in the address space as an \uaterm{Object} to maintain the \uaterm{ActiveState} as well as each occurance of the \mtterm{Condition} results in a instance of the \uaterm{Event} being published as specified in \cite{UAPart3} and \cite{UAPart9}.
+
+\paragraph{Mapping Conditions}
+
 The \uaterm{ConditionType} and \uaterm{EventType} properties will be set as follows:
 
-\begin{itemize}
-    \item \uaterm{EnableState} will be set as follows:
+ \begin{description}[font=\it\bfseries,labelindent=4em,labelwidth=6em,leftmargin=!]    
+    \item[EnableState]
     \begin{itemize}
         \item If the \xmlelement{QName} is \xmlelement{Unavailable}, \uaterm{EnableState} is \uaterm{False}
         \item Otherwise, \uaterm{EnableState} is \uaterm{True}
     \end{itemize}
-    \item \uaterm{Severity}:
+    \vspace{1em}
+    \item[Severity]
     \begin{itemize}
-        \item When \mtterm{Normal}, \uaterm{Severity} is 0.
-        \item When \mtterm{Warning}, \uaterm{Severity} is 500.
-        \item When \mtterm{Fault}, \uaterm{Severity} is 1000.
+        \item When \xmlelement{Normal}, \uaterm{Severity} is 0.
+        \item When \xmlelement{Warning}, \uaterm{Severity} is 500.
+        \item When \xmlelement{Fault}, \uaterm{Severity} is 1000.
     \end{itemize}
-    \item \uaterm{Retain}
+    \vspace{1em}
+    \item[Retain]
     \begin{itemize}
         \item When \mtterm{Normal}, \uaterm{False}
         \item When \mtterm{Warning} or \mtterm{Fault}, \uaterm{True}
     \end{itemize}
-    \item \uaterm{Message} set from the \xmlelement{CDATA}
-    \item \uaterm{Time}, \xmlattribute{timestamp}
-\end{itemize}
-
-The remaining \uaterm{Properties} will be set from the XML attributes of the same name.
+    \vspace{1em}
+    \item[Message] Set from the \xmlelement{CDATA}
+    \item[Time] \xmlattribute{timestamp}
+    \item[NodeId] The \uaterm{NodeId} of the \uaterm{Event} is set to the \uaterm{NodeId} of the \mtuatype{MTConditionType} \uaterm{Object} instance.
+    \item[Message] The \xmlelement{CDATA} of the \mtterm{Condition} when \xmlelement{Normal} or \xmlelement{Warning}.
+    \item[\ldots] The remaining \uaterm{Properties} will be set from the XML attributes of the same name.
+\end{description}
 
 \begin{quote}
     \color{red} TODO: Need to handle branching based on \xmlattribute{nativeCode}.
@@ -878,9 +880,52 @@ The remaining \uaterm{Properties} will be set from the XML attributes of the sam
 
 \subsubsection{Messages}
 
-\begin{quote}
-    \color{red} TODO: Messages are similar to conditions; they are events and they will have a similar duality. The message does not have state, but needs to have a meta data instance to reference. The instance can be mounted in the address space to serve as the NodeId for the Event.
-\end{quote}
+The \mtuatype{MTMessageType} will be instantiated as an \uaterm{Object} and each time a \mtterm{Message} occurs. The values from the last event will be recorded in the \uaterm{Object} and the \uaterm{Event} \uaterm{Properties} and \uaterm{Attributes} will be set as follows: 
 
+\begin{description}[font=\it\bfseries,labelindent=4em,labelwidth=6em,leftmargin=!]    
+    \item[Severity] Fixed at 1 as the lowest severity of an \uaterm{Event}
+    \item[Message] Set from the \xmlelement{CDATA}
+    \item[Time] \xmlattribute{timestamp}
+    \item[NodeId] The \uaterm{NodeId} of the \uaterm{Event} is set to the \uaterm{NodeId} of the \mtuatype{MTMessageType} \uaterm{Object} instance.
+    \item[Message] The \xmlelement{CDATA} of the \mtterm{Condition} when \xmlelement{Normal} or \xmlelement{Warning}.
+    \item[\ldots] The remaining \uaterm{Properties} will be set from the XML attributes of the same name.
+\end{description}
 
 \subsection{Time Series Samples}
+
+\mtterm{DataItems} with \mtterm{TIME_SERIES} \xmlattribute{representation} provides a mechanism to pubish high frequency data by combining multiple observations into a single vector of values. The attribute \xmlattribute{sampleRate} is specified in the \mtterm{Devices} information model if it is imuttable or for each entity with the attribute \xmlattribute{sampleRate} if it is variable. 
+
+In Listing~\ref{lst:electric-timeseries}, both examples are given, line~\ref{line:va-wo-sample-rate} does not specify the \xmlattribute{sampleRate} whereas line~\ref{line:va-w-sample-rate} specifies the \xmlattribute{sampleRate}. The \xmlattribute{sampleRate} is always given in hertz, if not specied in the \mtterm{Streams} document, it defaults to the value given in the \mtterm{DataItem}.
+
+\begin{lstlisting}[firstnumber=last,escapechar=|,%
+    caption={Electric Component Time Series Example},label={lst:electric-timeseries}]
+      <ComponentStream componentId="afb91ba0" component="Electric">
+        <Samples>
+         <VoltAmpereTimeSeries sequence="1122" timestamp="2018-10-31T20:49:19.1981Z" dataItemId="tc9edc70" sampleCount="10">421.23 422.36 419.55 420.14 421.98 422.32 418.25 419.75 418.88 420.02</VoltAmpereTimeSeries> |\label{line:va-wo-sample-rate}|
+         <VoltAmpereTimeSeries sequence="1123" timestamp="2018-10-31T20:49:19.2981Z" dataItemId="tc9edc70" sampleCount="10">418.20 421.45 420.11 420.49 419.81 419.06 417.54 420.53 417.67 421.48</VoltAmpereTimeSeries>
+         <VoltAmpereTimeSeries sequence="1124" timestamp="2018-10-31T20:49:19.3981Z" dataItemId="tc9edc70" sampleCount="10" sampleRate="100">418.09 420.48 418.25 419.86 419.47 420.39 421.90 418.92 418.95 420.73</VoltAmpereTimeSeries> |\label{line:va-w-sample-rate}|
+         <VoltAmpereTimeSeries sequence="1125" timestamp="2018-10-31T20:49:19.4981Z" dataItemId="tc9edc70" sampleCount="10" sampleRate="100">420.27 419.63 421.60 420.45 422.16 417.76 420.78 418.61 421.60 418.04</VoltAmpereTimeSeries>
+        </Samples>
+      </ComponentStream>
+\end{lstlisting}
+
+In MTConnect, the \mtterm{DataItem} element QName in the \mtterm{Streams} document appends the \textit{PascalCase} of the \xmlattribute{representation} to the \textit{PascalCase} of the \mtterm{type}. For example, \xmlattribute{type} \xmlattribute{VOLT_AMPERE} with the \xmlattribute{representation} of \xmlattribute{TIME_SERIES} becomes \xmlelement{VoltAmpereTimeSeries}. 
+
+All \mtterm{DataItems} with \xmlattribute{representation} of \xmlattribute{TIME_SERIES} when reported in the \mtterm{Streams} document require the attribute \mtterm{sampleCount} to give the number of entries in the space delimited series. MTConnect specifies in \cite{MTCPart3} that the \xmlattribute{timestamp} is reported at the time of the last observation. To compute the timestamp for each observation, use the follow procedure.
+
+\begin{align}
+    \delta =& \frac{1}{sampleRate}\ s \\
+    timestamp_1 =& timestamp_a - (\delta \times sampleCount\ s) \\
+    timestamp_2 =& timestamp_1 + \delta \\
+    timestamp_n =& timestamp_1 + \delta \times n
+\end{align}
+
+\quote{Where $timestamp_a$ is the \xmlattribute{timestamp} given as the XML Attribute.}
+    
+When mapping \mtterm{Time Series} to OPC UA, for each value in the series, compute the observation time as specified above and then update the UA \uaterm{Value} with the \uaterm{Time} set to the $timestamp_n$ for the $n^{th}$ entry in the series. Do this once for every entry in the series causing \xmlattribute{sampleCount} updates per MTConnet \mtterm{Time Series} mtterm{Element}.
+
+\begin{quote}
+    \color{red} Can OPC UA handle 100 or 1000hz update rates?
+\end{quote}
+
+Time series timestamps will often be contiguous when giving a stream of values for audio displacement or other series that must be reassembled. In Listing~\ref{lst:electric-timeseries}, each set of ten values are separated by 0.10 seconds. 

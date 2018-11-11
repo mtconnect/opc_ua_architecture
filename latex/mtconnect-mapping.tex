@@ -287,11 +287,11 @@ description & LocalizedText & Contains the full name of the engineering unit suc
 \end{tabu}
 \end{table} 
 
-In Table~\ref{table:mtconnect-to-ua-eu-mapping}, the mapping between the MTConnect units and the OPC UA EngineeringUnits structure has been specified. There are two units that are not mapped, these are \texttt{COUNT} and \texttt{PERCENT}. They are unitless and are therefor cannot mapped directly to SI.
+In Table~\ref{table:mtconnect-to-ua-eu-mapping}, the mapping between the MTConnect units and the OPC UA EngineeringUnits structure has been specified. There are two units that are not mapped, these are \texttt{COUNT} and \texttt{PERCENT}. They are unit-less and are therefor cannot mapped directly to SI. The EngineeringUnits will not be sepecified and the \uaterm{Property} will not be created.
 
-For units other than  \texttt{COUNT} and \texttt{PERCENT}, the \uaterm{namespaceUri} will be set to \url{http://www.opcfoundation.org/UA/units/un/cefact} as specified in \cite{UAPart8} and the values from Table~\ref{table:mtconnect-to-ua-eu-mapping} must be used. The units \texttt{COUNT} and \texttt{PERCENT} will be encoded as follows: UnitId will be -1 and the \uaterm{namespaceUri} will be set to the MTConnect URI: \url{http://opcfoundation.org/UA/MTConnect/v2/units}, see Table~\ref{table:mtconnect-to-ua-eu-mapping} for specific fields.
+For units other than  \texttt{COUNT} and \texttt{PERCENT}, the \uaterm{namespaceUri} will be set to \url{http://www.opcfoundation.org/UA/units/un/cefact} as specified in \cite{UAPart8} and the values from Table~\ref{table:mtconnect-to-ua-eu-mapping} must be used..
 
-The \texttt{MILLIMETER_3D} unit is special since it will be represented by the \mtuatype{MTThreeSpaceSampleType}. The individual values of the  \mtuadatatype{ThreeSpacePositionDataType} will be given in \textit{millimeters} and a \uaterm{displayName} of $mm(\mathbb{R}^{3})$; the \uaterm{EngineeringUnits} will be provided for consistency. The \uaterm{EURange} will not work since it cannot represent three space volumetric constraints.
+The \texttt{MILLIMETER_3D} unit is special since it will be represented by the \mtuatype{MTThreeSpaceSampleType}. The individual values of the  \mtuadatatype{ThreeSpacePositionDataType} will be given in \textit{millimeters} and a \uaterm{displayName} of $mm(\mathbb{R}^{3})$; the \uaterm{EngineeringUnits} will be provided for consistency. The \uaterm{EURange} will not work since it cannot represent three space volumetric constraints and the \uaterm{Property} will not be created.
 
 \begin{table}[ht]
 \centering 
@@ -335,7 +335,7 @@ NEWTON_METER & NU & 20053 & $N \cdot m$ & Torque, a unit for force times distanc
 OHM & OHM & 5195853 & $\Omega$ & Measure of Electrical Resistance \\
 PASCAL & PAL & 5259596 & $Pa$ & Pressure in Newtons per square meter  \\
 PASCAL_SECOND & C65 & 4404789 & $Pa \cdot s$ & Measurement of Viscosity \\
-PERCENT	&   & -1 & $\%$ & Percentage \\
+PERCENT	& P1  & 20529 & $\% or pct$ & Percent \\
 PH & Q30 & 5321520 & $pH$ & pH (potential of Hydrogen) - A measure of the acidity or alkalinity of a solution \\
 REVOLUTION/MINUTE & RPM & 5394509 & $r/min$ & revolutions per minute \\
 SECOND	& SEC & 5457219 & $s$ & second [unit of time] \\
@@ -353,8 +353,6 @@ WATT_SECOND & J55 & 4863285 & $W \cdot s$ & Measurement of electrical energy, eq
 
 The following is an example of mapping the MTConnect Device Meta-Model to the OPC UA MTConnect model. The example will not be a realistic machine tool configuration, but will demonstrate all the possible combinations of components, compositions, and data items and how to construct the informaiton model using the various rules given above. The first section covers the meta model presented in \cite{MTCPart2} of the MTConnect standard. For more information on any individual entity in the model, please refer to the MTConnect documentation.
 
-
-
 \paragraph{\element{MTConnectDevices} Root Element}
 
 The first lines showing in Listing \ref{lst:device-header} of the MTConnect XML representation are the root element \xmlelement{MTConnectDevices} and the \xmlelement{Header} element that is used for the MTConnect protocol. The only root node concern is if there are additional name-spaces declared in the root \xmlelement{MTConnectDevices} element. The other area of note is the \xmlattribute{version} attribute of the \texttt{Header} element.  The version indicates the most current version of the MTConnect standard currently being provided by this \mtterm{Agent}. The remaining attributes are relevant during the discussion of streaming data in the following section.
@@ -368,7 +366,6 @@ The first lines showing in Listing \ref{lst:device-header} of the MTConnect XML 
 The MTConnect \textit{Agent} is capable of supporting multiple \mtterm{Device}s; a \mtterm{Device} element is the only allowed member of the \mtterm{Devices} element. The \texttt{Device} element is the top level component of the MTConnect component hierarchy. The \texttt{Device} is a sub-type of the \texttt{Component} and inherits all the structure of an MTConnect \texttt{Component}. The \texttt{Device} has three required attributes, an \texttt{id}, a \texttt{uuid} and a \texttt{name} attribute. Only the \texttt{id} is mandatory in all other components. 
 
 \paragraph{\element{Device} Element}
-
 
 \begin{lstlisting}[firstnumber=last,%
     caption={\texttt{Device} Element Mapping},label={lst:device-model-device}]
@@ -485,7 +482,7 @@ The \uaterm{HasNotifier} reference must be created between the \texttt{SimpleCnc
 
 The data item on Line~\ref{line:rotary-mode} of Listing~\ref{lst:rotary-c-example} with \xmlattribute{type} of \dataitem{ROTARY_MODE} is illustrated in Figure~\ref{fig:rotary-c-rotary-mode}. MTConnect allows for a \mtterm{Rotary} axis to provide the function of the axis, Spindle, Contour, or Index. In Many cases the Rotary Mode is a singular values, as in this case when it can only work as a spindle. This is expressed by creating a \uaterm{HasComponent} reference to a \mtuadatatype{ConstraintType} \uaterm{Object} and specifying the \texttt{Values} \uaterm{Property}  with the singular value of\texttt{["SPINDLE"]} indicating it can only function as a spindle. 
 
-In MTConnect, the value of this data item will never be \mtterm{UNAVAILABLE} since it is bound to a single value, it will always be present and have that value regardless of the connectivity state to the data source. Since the value is static and never changes, the \uaterm{Quality} will be \uaterm{Uncertain_InitialValue} if it is never provided. In the case of constraints on a controlled vocabulary, the \texttt{Values} must always be one of the related EnumValues. See \cite{MTCPart2} for details on the constraints and the relationship to the \mtterm{DataItem}s.
+In MTConnect, the value of this data item will never be \mtterm{UNAVAILABLE} since it is bound to a single value, it will always be present and have that value regardless of the connectivity state to the data source. Since the value is static and never changes, the \uaterm{Quality} will be \uaterm{Uncertain_SubstituteValue} if it is never provided. In the case of constraints on a controlled vocabulary, the \texttt{Values} must always be one of the related EnumValues. See \cite{MTCPart2} for details on the constraints and the relationship to the \mtterm{DataItem}s.
 
 \begin{figure}[ht]
     \centering
@@ -505,7 +502,11 @@ In MTConnect, the value of this data item will never be \mtterm{UNAVAILABLE} sin
 
 Figure~\ref{fig:rotary-c-rotary-velocity} corresponds to Lines~\ref{line:programmed-rotary-velocity}-\ref{line:actual-rotary-velocity} of Figure~\ref{fig:rotary-c-rotary-velocity}--the two rotary velocity data items differentiated by their \xmlattribute{subType}s of \texttt{ACTUAL} and \texttt{PROGRAMMED}. In this case they share many of the same property values. The \mtterm{HasMTSubClassType} references the \mtuatype{ActualSubClassType} and the \mtuatype{ProgrammedSubClassType} respectively.
 
-In the case of the \texttt{ActualRotaryVelocity} object, it has an additional constraint that specifies that the maximum spindle speed is 7000 RPM. This is given with the \mtuadatatype{ConstraintDataType}. These values are also reflected in the EURange associated with the two data items. \texttt{ProgrammedRotaryVelocity} references a \texttt{NullRange} where the \uaterm{high} and \uaterm{low} are both set to NaN, and the \texttt{ActualRotaryVelocity} references an \uaterm{EURange} where the \uaterm{high} and \uaterm{low} are the same as the \mtterm{Maximum} and \mtterm{Minimum} of the \mtuadatatype{ConstraintDataTyp} respectively. 
+In the case of the \texttt{ActualRotaryVelocity} object, it has an additional constraint that specifies that the maximum spindle speed is 7000 RPM. This is given with the \mtuadatatype{ConstraintDataType}. 
+
+UA 1.04 Ammedment 1 for \uaterm{AnalogItem Types} provides the \uaterm{Type} \uaterm{BaseAnalogType} where the \uaterm{EURange} is \uaterm{Optional}. When this is available, the \mtuatype{MTSampleType} will be a sub-type of \uaterm{BaseAnalogType}. 
+
+If the \uaterm{Constraints} are given with both \mtterm{Maximum} and \mtterm{Minimum} values, then the \uaterm{EURange} will be created with \uaterm{high} set to \mtterm{Maximum} and \uaterm{low} set to the \mtterm{Minimum}, otherwise if either are not given, the \uaterm{EURange} will not be created. The \texttt{ActualRotaryVelocity} references an \uaterm{EURange} where the \uaterm{high} and \uaterm{low} are the same as the \mtterm{Maximum} and \mtterm{Minimum} of the \mtuadatatype{ConstraintDataTyp} respectively. 
 
 \FloatBarrier
 

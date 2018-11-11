@@ -1,4 +1,4 @@
-% Generated 2018-11-10 23:27:29 -0800
+% Generated 2018-11-10 23:39:09 -0800
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -431,7 +431,6 @@ Has\-Property & Variable & MT\-Sub\-Type\-Name & String & Property\-Type & Optio
 Has\-Property & Variable & Source\-Data & String & Property\-Type & Optional \\
 Has\-Property & Variable & Sample\-Rate & Double & Property\-Type & Optional \\
 Has\-Property & Variable & Representation & MT\-Representation\-Type & Property\-Type & Optional \\
-Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
 Has\-Property & Variable & Period\-Filter & Float & Property\-Type & Optional \\
 Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
 Has\-MT\-Sub\-Class\-Type & Object & <MT\-Data\-Item\-Sub\-Class> & \multicolumn{2}{l|}{MTDataItemSubClassType} & Optional \\
@@ -551,7 +550,6 @@ Has\-Property & Variable & MT\-Sub\-Type\-Name & String & Property\-Type & Optio
 Has\-Property & Variable & Source\-Data & String & Property\-Type & Optional \\
 Has\-Property & Variable & Sample\-Rate & Double & Property\-Type & Optional \\
 Has\-Property & Variable & Representation & MT\-Representation\-Type & Property\-Type & Optional \\
-Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
 Has\-Property & Variable & Period\-Filter & Float & Property\-Type & Optional \\
 Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
 Has\-MT\-Sub\-Class\-Type & Object & <MT\-Data\-Item\-Sub\-Class> & \multicolumn{2}{l|}{MTDataItemSubClassType} & Optional \\
@@ -600,7 +598,6 @@ Has\-Property & Variable & MT\-Sub\-Type\-Name & String & Property\-Type & Optio
 Has\-Property & Variable & Source\-Data & String & Property\-Type & Optional \\
 Has\-Property & Variable & Sample\-Rate & Double & Property\-Type & Optional \\
 Has\-Property & Variable & Representation & MT\-Representation\-Type & Property\-Type & Optional \\
-Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
 Has\-Property & Variable & Period\-Filter & Float & Property\-Type & Optional \\
 Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
 Has\-MT\-Sub\-Class\-Type & Object & <MT\-Data\-Item\-Sub\-Class> & \multicolumn{2}{l|}{MTDataItemSubClassType} & Optional \\
@@ -658,8 +655,6 @@ Represents the \texttt{representation} attribute of the MTConnect \mtterm{DataIt
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\item \texttt{MinimumDeltaFilter::Float:} Represents the MTConnect \mtterm{Filter} subtype of \mtterm{MinimumDeltaFilter}.
-
 \item \texttt{PeriodFilter::Float:} Represents the MTConnect \mtterm{Filter} subtype of \mtterm{PeriodFilter}.
 
 \item \textbf{Allowable Values} for \texttt{MTRepresentationType}
@@ -785,11 +780,12 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \multicolumn{6}{|l|}{Subtype of MTDataItemType (See section \ref{type:MTDataItemType})} \\
 Has\-Property & Variable & Significant\-Digits & UInt16 & Property\-Type & Optional \\
 Has\-Property & Variable & Statistic & String & Property\-Type & Optional \\
-Has\-Property & Variable & Units & String & Property\-Type & Optional \\
 Has\-Property & Variable & Native\-Units & String & Property\-Type & Optional \\
 Has\-Property & Variable & Coordinate\-System & Coordinate\-System\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Initial\-Value & Double & Property\-Type & Optional \\
 Has\-Property & Variable & Reset\-Trigger & Data\-Item\-Reset\-Value\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Units & String & Property\-Type & Optional \\
+Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -845,6 +841,8 @@ These need to become \texttt{Good_} status code in OPC UA.
 \end{tabu}
 \end{table} 
 \FloatBarrier
+\item \texttt{MinimumDeltaFilter::Float:} Represents the MTConnect \mtterm{Filter} subtype of \mtterm{MinimumDeltaFilter}.
+
 \item \textbf{Allowable Values} for \texttt{CoordinateSystemType}
 \FloatBarrier
 
@@ -1007,7 +1005,6 @@ Has\-Property & Variable & MT\-Sub\-Type\-Name & String & Property\-Type & Optio
 Has\-Property & Variable & Source\-Data & String & Property\-Type & Optional \\
 Has\-Property & Variable & Sample\-Rate & Double & Property\-Type & Optional \\
 Has\-Property & Variable & Representation & MT\-Representation\-Type & Property\-Type & Optional \\
-Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
 Has\-Property & Variable & Period\-Filter & Float & Property\-Type & Optional \\
 Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
 Has\-MT\-Sub\-Class\-Type & Object & <MT\-Data\-Item\-Sub\-Class> & \multicolumn{2}{l|}{MTDataItemSubClassType} & Optional \\
@@ -1060,7 +1057,6 @@ Has\-Property & Variable & MT\-Sub\-Type\-Name & String & Property\-Type & Optio
 Has\-Property & Variable & Source\-Data & String & Property\-Type & Optional \\
 Has\-Property & Variable & Sample\-Rate & Double & Property\-Type & Optional \\
 Has\-Property & Variable & Representation & MT\-Representation\-Type & Property\-Type & Optional \\
-Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
 Has\-Property & Variable & Period\-Filter & Float & Property\-Type & Optional \\
 Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
 Has\-MT\-Sub\-Class\-Type & Object & <MT\-Data\-Item\-Sub\-Class> & \multicolumn{2}{l|}{MTDataItemSubClassType} & Optional \\
@@ -1070,11 +1066,12 @@ Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} 
 Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & Optional \\
 Has\-Property & Variable & Significant\-Digits & UInt16 & Property\-Type & Optional \\
 Has\-Property & Variable & Statistic & String & Property\-Type & Optional \\
-Has\-Property & Variable & Units & String & Property\-Type & Optional \\
 Has\-Property & Variable & Native\-Units & String & Property\-Type & Optional \\
 Has\-Property & Variable & Coordinate\-System & Coordinate\-System\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Initial\-Value & Double & Property\-Type & Optional \\
 Has\-Property & Variable & Reset\-Trigger & Data\-Item\-Reset\-Value\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Units & String & Property\-Type & Optional \\
+Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
 Has\-Property & Variable & EURange & Range & Property\-Type & Optional \\
 Has\-Property & Variable & Engineering\-Units & EUInformation & Property\-Type & Optional \\
 \end{tabu}
@@ -1130,7 +1127,6 @@ Has\-Property & Variable & MT\-Sub\-Type\-Name & String & Property\-Type & Optio
 Has\-Property & Variable & Source\-Data & String & Property\-Type & Optional \\
 Has\-Property & Variable & Sample\-Rate & Double & Property\-Type & Optional \\
 Has\-Property & Variable & Representation & MT\-Representation\-Type & Property\-Type & Optional \\
-Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
 Has\-Property & Variable & Period\-Filter & Float & Property\-Type & Optional \\
 Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
 Has\-MT\-Sub\-Class\-Type & Object & <MT\-Data\-Item\-Sub\-Class> & \multicolumn{2}{l|}{MTDataItemSubClassType} & Optional \\
@@ -1140,11 +1136,12 @@ Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} 
 Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & Optional \\
 Has\-Property & Variable & Significant\-Digits & UInt16 & Property\-Type & Optional \\
 Has\-Property & Variable & Statistic & String & Property\-Type & Optional \\
-Has\-Property & Variable & Units & String & Property\-Type & Optional \\
 Has\-Property & Variable & Native\-Units & String & Property\-Type & Optional \\
 Has\-Property & Variable & Coordinate\-System & Coordinate\-System\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Initial\-Value & Double & Property\-Type & Optional \\
 Has\-Property & Variable & Reset\-Trigger & Data\-Item\-Reset\-Value\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Units & String & Property\-Type & Optional \\
+Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -1198,7 +1195,6 @@ Has\-Property & Variable & MT\-Sub\-Type\-Name & String & Property\-Type & Optio
 Has\-Property & Variable & Source\-Data & String & Property\-Type & Optional \\
 Has\-Property & Variable & Sample\-Rate & Double & Property\-Type & Optional \\
 Has\-Property & Variable & Representation & MT\-Representation\-Type & Property\-Type & Optional \\
-Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
 Has\-Property & Variable & Period\-Filter & Float & Property\-Type & Optional \\
 Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
 Has\-MT\-Sub\-Class\-Type & Object & <MT\-Data\-Item\-Sub\-Class> & \multicolumn{2}{l|}{MTDataItemSubClassType} & Optional \\
@@ -1249,7 +1245,6 @@ Has\-Property & Variable & MT\-Sub\-Type\-Name & String & Property\-Type & Optio
 Has\-Property & Variable & Source\-Data & String & Property\-Type & Optional \\
 Has\-Property & Variable & Sample\-Rate & Double & Property\-Type & Optional \\
 Has\-Property & Variable & Representation & MT\-Representation\-Type & Property\-Type & Optional \\
-Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
 Has\-Property & Variable & Period\-Filter & Float & Property\-Type & Optional \\
 Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
 Has\-MT\-Sub\-Class\-Type & Object & <MT\-Data\-Item\-Sub\-Class> & \multicolumn{2}{l|}{MTDataItemSubClassType} & Optional \\
@@ -1259,11 +1254,12 @@ Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} 
 Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & Optional \\
 Has\-Property & Variable & Significant\-Digits & UInt16 & Property\-Type & Optional \\
 Has\-Property & Variable & Statistic & String & Property\-Type & Optional \\
-Has\-Property & Variable & Units & String & Property\-Type & Optional \\
 Has\-Property & Variable & Native\-Units & String & Property\-Type & Optional \\
 Has\-Property & Variable & Coordinate\-System & Coordinate\-System\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Initial\-Value & Double & Property\-Type & Optional \\
 Has\-Property & Variable & Reset\-Trigger & Data\-Item\-Reset\-Value\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Units & String & Property\-Type & Optional \\
+Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
 Has\-Property & Variable & Engineering\-Units & EUInformation & Property\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -1370,7 +1366,6 @@ Has\-Property & Variable & MT\-Sub\-Type\-Name & String & Property\-Type & Optio
 Has\-Property & Variable & Source\-Data & String & Property\-Type & Optional \\
 Has\-Property & Variable & Sample\-Rate & Double & Property\-Type & Optional \\
 Has\-Property & Variable & Representation & MT\-Representation\-Type & Property\-Type & Optional \\
-Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
 Has\-Property & Variable & Period\-Filter & Float & Property\-Type & Optional \\
 Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
 Has\-MT\-Sub\-Class\-Type & Object & <MT\-Data\-Item\-Sub\-Class> & \multicolumn{2}{l|}{MTDataItemSubClassType} & Optional \\

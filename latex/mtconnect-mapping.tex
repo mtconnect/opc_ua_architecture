@@ -287,11 +287,11 @@ description & LocalizedText & Contains the full name of the engineering unit suc
 \end{tabu}
 \end{table} 
 
-In Table~\ref{table:mtconnect-to-ua-eu-mapping}, the mapping between the MTConnect units and the OPC UA EngineeringUnits structure has been specified. There are two units that are not mapped, these are \texttt{COUNT} and \texttt{PERCENT}. They are unit-less and are therefor cannot mapped directly to SI. The EngineeringUnits will not be sepecified and the \uaterm{Property} will not be created.
+In Table~\ref{table:mtconnect-to-ua-eu-mapping}, the mapping between the MTConnect units and the OPC UA EngineeringUnits structure has been specified. There is one unit type, \texttt{COUNT} that is unitless and therefor not mapped. The \texttt{COUNT} is only used with \mtterm{Events} and therefor is not an \uaterm{Analog Type}, and is instantiated as an \mtuatype{MTNumericEventType}.
 
-For units other than  \texttt{COUNT} and \texttt{PERCENT}, the \uaterm{namespaceUri} will be set to \url{http://www.opcfoundation.org/UA/units/un/cefact} as specified in \cite{UAPart8} and the values from Table~\ref{table:mtconnect-to-ua-eu-mapping} must be used..
+The \uaterm{namespaceUri} will be set to \url{http://www.opcfoundation.org/UA/units/un/cefact} as specified in \cite{UAPart8} and the values from Table~\ref{table:mtconnect-to-ua-eu-mapping} must be used..
 
-The \texttt{MILLIMETER_3D} unit is special since it will be represented by the \mtuatype{MTThreeSpaceSampleType}. The individual values of the  \mtuadatatype{ThreeSpacePositionDataType} will be given in \textit{millimeters} and a \uaterm{displayName} of $mm(\mathbb{R}^{3})$; the \uaterm{EngineeringUnits} will be provided for consistency. The \uaterm{EURange} will not work since it cannot represent three space volumetric constraints and the \uaterm{Property} will not be created.
+The \texttt{MILLIMETER_3D} unit is special since it will be represented by the \mtuatype{MTThreeSpaceSampleType}. The individual values of the  \mtuadatatype{ThreeSpacePositionDataType} will be given in \textit{millimeters} and a \uaterm{displayName} of $mm(\mathbb{R}^{3})$; the \uaterm{EngineeringUnits} will be provided for consistency. The \uaterm{EURange} will not work since it cannot represent three space volumetric constraints and the\uaterm{EURange} \uaterm{Property} will not be created.
 
 \begin{table}[ht]
 \centering 
@@ -304,7 +304,7 @@ The \texttt{MILLIMETER_3D} unit is special since it will be represented by the \
 \tabucline[1.5pt]{}
 AMPERE 	& AMP & 4279632 & $A$ & Amps \\
 CELSIUS	& CEL  & 4408652 & $^{\circ}Celsuis$ & Degrees Celsius \\
-COUNT	&    & -1    & $Count$ & A counted event \\
+\textcolor{red}{COUNT}	&   &  & & \textcolor{red}{A counted event \newline Cannot be used for EUInformation \vspace{2pt} } \\
 DECIBEL	& 2N & 12878 & $dB$ & Sound Level \\
 DEGREE	& DD & 17476 & $^{\circ}$  & degree [unit of angle] \\
 DEGREE/SECOND &	E96 & 4536630 & $^{\circ}/s$ & Angular degrees per second \\
@@ -335,7 +335,7 @@ NEWTON_METER & NU & 20053 & $N \cdot m$ & Torque, a unit for force times distanc
 OHM & OHM & 5195853 & $\Omega$ & Measure of Electrical Resistance \\
 PASCAL & PAL & 5259596 & $Pa$ & Pressure in Newtons per square meter  \\
 PASCAL_SECOND & C65 & 4404789 & $Pa \cdot s$ & Measurement of Viscosity \\
-PERCENT	& P1  & 20529 & $\% or pct$ & Percent \\
+PERCENT	& P1  & 20529 & $\%\ or\ pct$ & Percent \\
 PH & Q30 & 5321520 & $pH$ & pH (potential of Hydrogen) - A measure of the acidity or alkalinity of a solution \\
 REVOLUTION/MINUTE & RPM & 5394509 & $r/min$ & revolutions per minute \\
 SECOND	& SEC & 5457219 & $s$ & second [unit of time] \\
@@ -351,7 +351,7 @@ WATT_SECOND & J55 & 4863285 & $W \cdot s$ & Measurement of electrical energy, eq
 \FloatBarrier
 \subsubsection{Mapping Example}
 
-The following is an example of mapping the MTConnect Device Meta-Model to the OPC UA MTConnect model. The example will not be a realistic machine tool configuration, but will demonstrate all the possible combinations of components, compositions, and data items and how to construct the informaiton model using the various rules given above. The first section covers the meta model presented in \cite{MTCPart2} of the MTConnect standard. For more information on any individual entity in the model, please refer to the MTConnect documentation.
+The following is an example of mapping the MTConnect Device Meta-Model to the OPC UA MTConnect model. The example will not be a realistic machine tool configuration, but will demonstrate all the possible combinations of components, compositions, and data items and how to construct the information model using the various rules given above. The first section covers the meta model presented in \cite{MTCPart2} of the MTConnect standard. For more information on any individual entity in the model, please refer to the MTConnect documentation.
 
 \paragraph{\element{MTConnectDevices} Root Element}
 
@@ -436,7 +436,7 @@ Figure~\ref{fig:linear-x-component} represents the UA Object model based on  Lis
 
 The \mtterm{DataItem}s for \texttt{ActualPosition} and \texttt{Load} are both of \mtterm{category} \mtterm{SAMPLE}; they contain numeric values are always mapped to the \mtuatype{MTSampleType} which is derived from the UA \uaterm{AnalogItemType} defined in \cite{UAPart8}. The \uaterm{BrowseName} for the \mtterm{DataItem}s are composed of the related \mtterm{Composition} \mtterm{type}, \mtterm{subType}, and \mtterm{type} of the \mtterm{DataItem} represented in \textit{PascalCase}. See Section~\ref{sec:data-item-conventions} for details.
 
-The \uaterm{EngineeringUnits} of the \uaterm{AnalogItemType} will be mapped to the \uaterm{EngineeringUnits} \uaterm{Property} of the \mtuatype{MTSampleType}. If the value is constrained, the \uaterm{EURange} will be populated, otherwise the high and low values will set to \uaterm{NaN} as the range since it is a mandatory \uaterm{Property}. The remaining attributes will be represented as properties of the \mtuatype{MTSampleType} converting the \textit{lowerCamelCase} to \textit{PascalCase} by changing the first character to upper-case. The \mtterm{EVENT} category and complex cases will be specified in the following examples.
+The \uaterm{EngineeringUnits} of the \uaterm{AnalogUnitType} will be mapped to the \uaterm{EngineeringUnits} \uaterm{Property} of the \mtuatype{MTSampleType}. If the value is constrained, the \uaterm{EURange} will be created, otherwise it will not be specified. The remaining attributes will be represented as properties of the \mtuatype{MTSampleType} converting the \textit{lowerCamelCase} to \textit{PascalCase} by changing the first character to upper-case. The \mtterm{EVENT} category and complex cases will be specified in the following examples.
 
 MTConnect \mtterm{DataItem}s of \mtterm{category} \dataitem{CONDITION} are special types since they represent the state of an alarm or warning associated with a \mtterm{Component} of the \mtterm{Device}. For more information on the \mtterm{conditions} see \cite{MTCPart2} and \cite{MTCPart3}. The mapping of the \mtterm{CONDITION} \mtterm{category} of \mtterm{DataItem}s is to the \mtuatype{MTConditionType}.
 
@@ -504,13 +504,13 @@ Figure~\ref{fig:rotary-c-rotary-velocity} corresponds to Lines~\ref{line:program
 
 In the case of the \texttt{ActualRotaryVelocity} object, it has an additional constraint that specifies that the maximum spindle speed is 7000 RPM. This is given with the \mtuadatatype{ConstraintDataType}. 
 
-UA 1.04 Ammedment 1 for \uaterm{AnalogItem Types} provides the \uaterm{Type} \uaterm{BaseAnalogType} where the \uaterm{EURange} is \uaterm{Optional}. When this is available, the \mtuatype{MTSampleType} will be a sub-type of \uaterm{BaseAnalogType}. 
+UA 1.04 Ammedment 1 \cite{UAAmend1} for \uaterm{AnalogItem Types} provides the \uaterm{Type} \uaterm{AnalogUnitType} where the \uaterm{EURange} is \uaterm{Optional}. The \mtuatype{MTSampleType} will inherit from \uaterm{AnalogUnitType} instead of  \uaterm{AnalogItemType} as this matches the MTConnect unit requirements.
 
 If the \uaterm{Constraints} are given with both \mtterm{Maximum} and \mtterm{Minimum} values, then the \uaterm{EURange} will be created with \uaterm{high} set to \mtterm{Maximum} and \uaterm{low} set to the \mtterm{Minimum}, otherwise if either are not given, the \uaterm{EURange} will not be created. The \texttt{ActualRotaryVelocity} references an \uaterm{EURange} where the \uaterm{high} and \uaterm{low} are the same as the \mtterm{Maximum} and \mtterm{Minimum} of the \mtuadatatype{ConstraintDataTyp} respectively. 
 
 \FloatBarrier
 
-Figure~\ref{fig:rotary-c-load} represents the \dataitem{Load} \mtterm{DataItem} for Listing~\ref{lst:rotary-c-example} Line~\ref{line:rotary-c-load} as an example of a \mtuatype{MTSampleType} where the \uaterm{EngineeringUnits} are not given in the \uaterm{UNECE} set and the \uaterm{unitId} is -1 and the \uaterm{namespaceUri} is set to the MTConnect specific units. The EURange is defined as the NullRange as was done for the \texttt{ProgrammedRotaryVelocity}.
+Figure~\ref{fig:rotary-c-load} represents the \dataitem{Load} \mtterm{DataItem} for Listing~\ref{lst:rotary-c-example} Line~\ref{line:rotary-c-load} as an example of a \mtuatype{MTSampleType} with a \xmlattribute{units="PERCENT"} and mapped to the \uaterm{EngineeringUnits} for \uaterm{Percent}. There is no \mtterm{Constraints} so the \mtterm{EURange} is not provided as specified in 
 
 \begin{figure}[ht]
     \centering
@@ -705,6 +705,8 @@ The following example in Listing~\ref{lst:coolant-system} demonstrates the situa
  \end{lstlisting}
 
 Figure~\ref{fig:coolant-system} presents the two coolant systems with names \texttt{high} and \texttt{low}. They are identical, each composed of two \mtterm{Tank} compositions and each with two data items indication the \mtterm{Fill Level} of the main and reserve \mtterm{Tank}. The naming follows the rules for \texttt{TankFillLevel[low_main_level]} and \texttt{TankFillLevel[low_reserve_level]} for the \texttt{low} \mtterm{Coolant System}. 
+
+The \uaterm{EngineeringUnits} were not included in the figure as they have been covered before. The \mtterm{Fill Level} \mtuatype{MTSampleType} will reference a \mtterm{PERCENT} \uaterm{EUInformation} \uaterm{Property} as illustrated in the previous depiction of \mtterm{Load} in Figure~\ref{fig:rotary-c-load}.
 
 In this case the \mtterm{Composition} name is converted to \textit{PascalCase} and prepended to the \textit{PascalCase} of the \mtterm{DataItem} to create the base \uaterm{BrowseName}. Since there are two identical \uaterm{BrowseNames}, the \xmlattribute{name} is appended in square brackets (\texttt{[]}). The same is done for the \mtterm{Composition} \uaterm{BrowseName} and the \mtterm{Component} \uaterm{BrowseName} "\mtterm{Coolant}" giving \texttt{Coolant[high]} and \texttt{Coolant[low]}.
 
@@ -915,18 +917,21 @@ In MTConnect, the \mtterm{DataItem} element QName in the \mtterm{Streams} docume
 All \mtterm{DataItems} with \xmlattribute{representation} of \xmlattribute{TIME_SERIES} when reported in the \mtterm{Streams} document require the attribute \mtterm{sampleCount} to give the number of entries in the space delimited series. MTConnect specifies in \cite{MTCPart3} that the \xmlattribute{timestamp} is reported at the time of the last observation. To compute the timestamp for each observation, use the follow procedure.
 
 \begin{align}
-    \delta =& \frac{1}{sampleRate}\ s \\
-    timestamp_1 =& timestamp_a - (\delta \times sampleCount\ s) \\
-    timestamp_2 =& timestamp_1 + \delta \\
-    timestamp_n =& timestamp_1 + \delta \times n
+    \delta =& \frac{1}{sampleRate}\ s \label{eqn:ts-delta} \\
+    timestamp_1 =& timestamp_a - (\delta \times sampleCount\ s) \label{eqn:ts-first} \\
+    timestamp_2 =& timestamp_1 + \delta  \label{eqn:ts-second} \\
+    timestamp_n =& timestamp_1 + \delta \times n \label{eqn:ts-n}
 \end{align}
-
-\quote{Where $timestamp_a$ is the \xmlattribute{timestamp} given as the XML Attribute.}
-    
-When mapping \mtterm{Time Series} to OPC UA, for each value in the series, compute the observation time as specified above and then update the UA \uaterm{Value} with the \uaterm{Time} set to the $timestamp_n$ for the $n^{th}$ entry in the series. Do this once for every entry in the series causing \xmlattribute{sampleCount} updates per MTConnet \mtterm{Time Series} mtterm{Element}.
-
 \begin{quote}
-    \color{red} Can OPC UA handle 100 or 1000hz update rates?
+    Where $timestamp_a$ is the \xmlattribute{timestamp} given as the XML Attribute.
 \end{quote}
 
-Time series timestamps will often be contiguous when giving a stream of values for audio displacement or other series that must be reassembled. In Listing~\ref{lst:electric-timeseries}, each set of ten values are separated by 0.10 seconds. 
+When mapping \mtterm{Time Series} to OPC UA, for each value in the series, compute the observation time as specified above and then update the UA \uaterm{Value} with the \uaterm{Time} set to the $timestamp_n$ for the $n^{th}$ entry in the series. Do this once for every entry in the series causing \xmlattribute{sampleCount} updates per MTConnet \mtterm{Time Series} mtterm{Element}.
+
+The $\delta$ in Equation~\ref{eqn:ts-delta} is the time interval for each sample and by subtracting the $\delta \times sampleCount$ seconds, the given in Equation~\ref{eqn:ts-first} is the first timestamp in the series. Every other timestamp can be derived by adding the $\delta \times n$ as showin in Equation~\ref{eqn:ts-n} to the first timestamp. One can also arrive at the same result by taking the \xmlattribute{timestamp} and counting backward from the last, where $r$ is the reverse index starting at 0, $r \times \delta$ seconds from $timestamp_a$.
+
+\begin{quote}
+    \color{red} Can OPC UA handle 100 or 1khz update rates?
+\end{quote}
+
+Time series timestamps will often be contiguous when giving a stream of values for audio displacement or other series that must be reassembled. In Listing~\ref{lst:electric-timeseries}, each set of ten values are separated by 0.10 seconds which will allow for a 100hz sample frequence and continuous values from the sensor. The format is more efficient and allows for communication of waveform and high frequency data.

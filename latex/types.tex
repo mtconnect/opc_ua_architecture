@@ -1,4 +1,4 @@
-% Generated 2018-11-10 22:54:19 -0800
+% Generated 2018-11-10 23:21:13 -0800
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -1093,7 +1093,11 @@ Has\-Property & Variable & Engineering\-Units & EUInformation & Property\-Type &
 \FloatBarrier
 
 Data Items with category \texttt{SAMPLE}. The simplest mapping since all these types are 
-floating numeric data and comply with the AnalogItemType from \cite{UAPart8}.
+floating numeric data and comply with the BaseAnalogType from \cite{UAPart8} Amendment 1.
+The \uaterm{EURange} and \uaterm{EngineeringUnits} are optional. The \uaterm{EURange} will be
+created if the \mtterm{Constraints} are given and there is both a \mtterm{Maximum} and 
+\mtterm{Minimum} value. The \uaterm{EngineeringUnits} will be created if the \mtterm{Units}
+are anything other than \mtterm{PERCENT} or \mtterm{COUNT}.
 
 \begin{table}[ht]
 \centering 

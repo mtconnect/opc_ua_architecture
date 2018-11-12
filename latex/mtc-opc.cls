@@ -143,27 +143,28 @@
 \newcommand{\drafttext}[1]{\gdef\@drafttext{#1}}
 
 \renewcommand{\maketitle}{%
-	\begin{titlepage}%
-    	\begin{center}%
-        	\includegraphics[width=0.4\linewidth]{mtconnect.png} 
-        	\includegraphics[width=0.4\linewidth]{opc-logo.jpg} \\%
-        \end{center}%
-        \vfill%
-        \begin{center}%
-            \huge{\@doctitle} \protect\\%
-            \LARGE{\quad \protect\\\@drafttext \@versionnum \protect\\ \quad \protect\\\@preparedon} \protect\\%
-        \end{center}%
-        \vfill%
-        %\hspace*{\fill}%
-		%\begin{tabular}[t]{l@{}}%
-		%	Prepared for: \@preparedfor \\%
-		%	Prepared by: \@preparedby \\%
-        %	Prepared on: \@preparedon \\%
-		%\end{tabular}%
-		%\vfill%
-		\noindent \footnotesize{\mtconnect is a registered trademark of AMT - The Association for Manufacturing Technology. Use of \mtconnect is limited to use as specified on \url{http://www.mtconnect.org/}.}%
-    \end{titlepage}%
-    \setcounter{page}{1}%
+  \begin{titlepage}%
+    \begin{center}%
+      \quad \\ \vspace{0.25in}
+      \includegraphics[width=0.4\linewidth]{opc-logo.jpg} \hspace{0.25in}
+      \includegraphics[width=0.4\linewidth]{mtconnect.png} \\%
+    \end{center}%
+    \quad \\ \vspace{0.1in}
+    \begin{center}%
+      \huge{\@doctitle} \protect\\%
+      \LARGE{\quad \protect\\\@drafttext \@versionnum \protect\\ \quad \protect\\\@preparedon} \protect\\%
+    \end{center}%
+    \vfill%
+    % \hspace*{\fill}%
+    % \begin{tabular}[t]{l@{}}%
+    % Prepared for: \@preparedfor \\%
+    %	Prepared by: \@preparedby \\%
+    %	Prepared on: \@preparedon \\%
+    % \end{tabular}%
+    % \vfill%
+    \noindent \footnotesize{\mtconnect is a registered trademark of AMT - The Association for Manufacturing Technology. Use of \mtconnect is limited to use as specified on \url{http://www.mtconnect.org/}.}%
+  \end{titlepage}%
+  \setcounter{page}{1}%
 }
 
 % ************************************ %

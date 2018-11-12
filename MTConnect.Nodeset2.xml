@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-11-10T04:33:16Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-11-12T00:48:59Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-11-10T04:33:16Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-11-10T04:33:16Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-11-12T00:48:59Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-11-12T00:48:59Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -736,6 +736,394 @@
       <Field Name='AssetType' DataType='String'/>
     </Definition>
   </UADataType>
+  <!-- Definition of Variable BaseAnalogType ns=1;i=3242 -->
+  <UAVariableType NodeId='ns=1;i=3242' BrowseName='1:BaseAnalogType' ValueRank='-2' DataType='Number'>
+    <DisplayName>BaseAnalogType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - DataItemType i=2365   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=2365</Reference>
+      <!-- HasProperty -  - InstrumentRange ns=1;i=3243 Range  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3243</Reference>
+      <!-- HasProperty -  - EURange ns=1;i=3244 Range  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3244</Reference>
+      <!-- HasProperty -  - EngineeringUnits ns=1;i=3245 EUInformation  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3245</Reference>
+    </References>
+  </UAVariableType>
+  <!-- BaseAnalogType::InstrumentRange : Range[0..1] -->
+  <UAVariable NodeId='ns=1;i=3243' BrowseName='1:InstrumentRange' ValueRank='-1' DataType='i=884' ParentNodeId='ns=1;i=3242'>
+    <DisplayName>InstrumentRange</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Range i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - BaseAnalogType ns=1;i=3242   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3242</Reference>
+    </References>
+  </UAVariable>
+  <!-- BaseAnalogType::EURange : Range[0..1] -->
+  <UAVariable NodeId='ns=1;i=3244' BrowseName='1:EURange' ValueRank='-1' DataType='i=884' ParentNodeId='ns=1;i=3242'>
+    <DisplayName>EURange</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Range i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - BaseAnalogType ns=1;i=3242   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3242</Reference>
+    </References>
+  </UAVariable>
+  <!-- BaseAnalogType::EngineeringUnits : EUInformation[0..1] -->
+  <UAVariable NodeId='ns=1;i=3245' BrowseName='1:EngineeringUnits' ValueRank='-1' DataType='i=887' ParentNodeId='ns=1;i=3242'>
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - EUInformation i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - BaseAnalogType ns=1;i=3242   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3242</Reference>
+    </References>
+  </UAVariable>
+  <!-- Definition of Variable AnalogUnitType ns=1;i=3239 -->
+  <UAVariableType NodeId='ns=1;i=3239' BrowseName='1:AnalogUnitType' ValueRank='-2' DataType='Number'>
+    <DisplayName>AnalogUnitType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - BaseAnalogType ns=1;i=3242   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3242</Reference>
+      <!-- HasProperty -  - EngineeringUnits ns=1;i=3240 EUInformation  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3240</Reference>
+    </References>
+  </UAVariableType>
+  <!-- AnalogUnitType::EngineeringUnits : EUInformation[1] -->
+  <UAVariable NodeId='ns=1;i=3240' BrowseName='1:EngineeringUnits' ValueRank='-1' DataType='i=887' ParentNodeId='ns=1;i=3239'>
+    <DisplayName>EngineeringUnits</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - EUInformation i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - AnalogUnitType ns=1;i=3239   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3239</Reference>
+    </References>
+  </UAVariable>
+  <!-- Definition of Variable MTSampleType ns=1;i=2350 -->
+  <UAVariableType NodeId='ns=1;i=2350' BrowseName='1:MTSampleType' ValueRank='-1' DataType='Number'>
+    <DisplayName>MTSampleType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - AnalogUnitType ns=1;i=3239   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3239</Reference>
+      <!-- HasProperty -  - XmlId ns=1;i=2870 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2870</Reference>
+      <!-- HasProperty -  - Name ns=1;i=2871 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2871</Reference>
+      <!-- HasProperty -  - Category ns=1;i=2872 MTCategoryType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2872</Reference>
+      <!-- HasProperty -  - MTTypeName ns=1;i=2873 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2873</Reference>
+      <!-- HasProperty -  - MTSubTypeName ns=1;i=2874 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2874</Reference>
+      <!-- HasProperty -  - SourceData ns=1;i=2875 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2875</Reference>
+      <!-- HasProperty -  - SampleRate ns=1;i=2877 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2877</Reference>
+      <!-- HasProperty -  - Representation ns=1;i=2878 MTRepresentationType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2878</Reference>
+      <!-- HasProperty -  - PeriodFilter ns=1;i=2880 Float  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2880</Reference>
+      <!-- HasComponent -  - Constraints ns=1;i=2881 MTConstraintType  -->
+      <Reference ReferenceType='HasComponent'>ns=1;i=2881</Reference>
+      <!-- HasProperty -  - SignificantDigits ns=1;i=2886 UInt16  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2886</Reference>
+      <!-- HasProperty -  - Statistic ns=1;i=2887 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2887</Reference>
+      <!-- HasProperty -  - NativeUnits ns=1;i=2889 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2889</Reference>
+      <!-- HasProperty -  - CoordinateSystem ns=1;i=2890 CoordinateSystemType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2890</Reference>
+      <!-- HasProperty -  - InitialValue ns=1;i=2891 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2891</Reference>
+      <!-- HasProperty -  - ResetTrigger ns=1;i=2892 DataItemResetValueType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2892</Reference>
+      <!-- HasProperty -  - Units ns=1;i=2888 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2888</Reference>
+      <!-- HasProperty -  - MinimumDeltaFilter ns=1;i=3268 Float  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3268</Reference>
+    </References>
+  </UAVariableType>
+  <!-- MTSampleType::XmlId : String[1] -->
+  <UAVariable NodeId='ns=1;i=2870' BrowseName='1:XmlId' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2350'>
+    <DisplayName>XmlId</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTSampleType::Name : String[0..1] -->
+  <UAVariable NodeId='ns=1;i=2871' BrowseName='1:Name' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2350'>
+    <DisplayName>Name</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTSampleType::Category : MTCategoryType[1] -->
+  <UAVariable NodeId='ns=1;i=2872' BrowseName='1:Category' ValueRank='-1' DataType='ns=1;i=2555' ParentNodeId='ns=1;i=2350'>
+    <DisplayName>Category</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - MTCategoryType i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTSampleType::MTTypeName : String[1] -->
+  <UAVariable NodeId='ns=1;i=2873' BrowseName='1:MTTypeName' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2350'>
+    <DisplayName>MTTypeName</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTSampleType::MTSubTypeName : String[0..1] -->
+  <UAVariable NodeId='ns=1;i=2874' BrowseName='1:MTSubTypeName' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2350'>
+    <DisplayName>MTSubTypeName</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTSampleType::SourceData : String[0..1] -->
+  <UAVariable NodeId='ns=1;i=2875' BrowseName='1:SourceData' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2350'>
+    <DisplayName>SourceData</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTSampleType::SampleRate : Double[0..1] -->
+  <UAVariable NodeId='ns=1;i=2877' BrowseName='1:SampleRate' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=2350'>
+    <DisplayName>SampleRate</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTSampleType::Representation : MTRepresentationType[0..1] -->
+  <UAVariable NodeId='ns=1;i=2878' BrowseName='1:Representation' ValueRank='-1' DataType='ns=1;i=2554' ParentNodeId='ns=1;i=2350'>
+    <DisplayName>Representation</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - MTRepresentationType i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTSampleType::PeriodFilter : Float[0..1] -->
+  <UAVariable NodeId='ns=1;i=2880' BrowseName='1:PeriodFilter' ValueRank='-1' DataType='Float' ParentNodeId='ns=1;i=2350'>
+    <DisplayName>PeriodFilter</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Float i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTSampleType::Constraints : MTConstraintType[0..1] -->
+  <UAObject NodeId='ns=1;i=2881' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2350'>
+    <DisplayName>Constraints</DisplayName>
+    <References>
+      <!-- HasProperty -  - Values ns=1;i=2882 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2882</Reference>
+      <!-- HasProperty -  - Minimum ns=1;i=2883 Float  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2883</Reference>
+      <!-- HasProperty -  - Maximum ns=1;i=2884 Float  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2884</Reference>
+      <!-- HasProperty -  - Nominal ns=1;i=2885 Float  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2885</Reference>
+      <!-- HasTypeDefinition -  - MTConstraintType ns=1;i=2567   -->
+      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2567</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasComponent - (Reverse) - MTSampleType ns=1;i=2350   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2350</Reference>
+    </References>
+  </UAObject>
+  <!-- Constraints::Values : String[0..*] -->
+  <UAVariable NodeId='ns=1;i=2882' BrowseName='1:Values' ValueRank='1' DataType='String' ParentNodeId='ns=1;i=2881'>
+    <DisplayName>Values</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - Constraints ns=1;i=2881   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2881</Reference>
+    </References>
+  </UAVariable>
+  <!-- Constraints::Minimum : Float[0..1] -->
+  <UAVariable NodeId='ns=1;i=2883' BrowseName='1:Minimum' ValueRank='-1' DataType='Float' ParentNodeId='ns=1;i=2881'>
+    <DisplayName>Minimum</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Float i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - Constraints ns=1;i=2881   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2881</Reference>
+    </References>
+  </UAVariable>
+  <!-- Constraints::Maximum : Float[0..1] -->
+  <UAVariable NodeId='ns=1;i=2884' BrowseName='1:Maximum' ValueRank='-1' DataType='Float' ParentNodeId='ns=1;i=2881'>
+    <DisplayName>Maximum</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Float i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - Constraints ns=1;i=2881   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2881</Reference>
+    </References>
+  </UAVariable>
+  <!-- Constraints::Nominal : Float[0..1] -->
+  <UAVariable NodeId='ns=1;i=2885' BrowseName='1:Nominal' ValueRank='-1' DataType='Float' ParentNodeId='ns=1;i=2881'>
+    <DisplayName>Nominal</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Float i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - Constraints ns=1;i=2881   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2881</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTSampleType::SignificantDigits : UInt16[0..1] -->
+  <UAVariable NodeId='ns=1;i=2886' BrowseName='1:SignificantDigits' ValueRank='-1' DataType='UInt16' ParentNodeId='ns=1;i=2350'>
+    <DisplayName>SignificantDigits</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - UInt16 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTSampleType::Statistic : String[0..1] -->
+  <UAVariable NodeId='ns=1;i=2887' BrowseName='1:Statistic' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2350'>
+    <DisplayName>Statistic</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTSampleType::NativeUnits : String[0..1] -->
+  <UAVariable NodeId='ns=1;i=2889' BrowseName='1:NativeUnits' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2350'>
+    <DisplayName>NativeUnits</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTSampleType::CoordinateSystem : CoordinateSystemType[0..1] -->
+  <UAVariable NodeId='ns=1;i=2890' BrowseName='1:CoordinateSystem' ValueRank='-1' DataType='ns=1;i=2556' ParentNodeId='ns=1;i=2350'>
+    <DisplayName>CoordinateSystem</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - CoordinateSystemType i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTSampleType::InitialValue : Double[0..1] -->
+  <UAVariable NodeId='ns=1;i=2891' BrowseName='1:InitialValue' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=2350'>
+    <DisplayName>InitialValue</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTSampleType::ResetTrigger : DataItemResetValueType[0..1] -->
+  <UAVariable NodeId='ns=1;i=2892' BrowseName='1:ResetTrigger' ValueRank='-1' DataType='ns=1;i=2557' ParentNodeId='ns=1;i=2350'>
+    <DisplayName>ResetTrigger</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - DataItemResetValueType i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTSampleType::Units : String[0..1] -->
+  <UAVariable NodeId='ns=1;i=2888' BrowseName='1:Units' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2350'>
+    <DisplayName>Units</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTSampleType::MinimumDeltaFilter : Float[0..1] -->
+  <UAVariable NodeId='ns=1;i=3268' BrowseName='1:MinimumDeltaFilter' ValueRank='-1' DataType='Float' ParentNodeId='ns=1;i=2350'>
+    <DisplayName>MinimumDeltaFilter</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Float i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
+    </References>
+  </UAVariable>
   <!-- Definition of Enumeration CoordinateSystemType ns=1;i=2556 -->
   <UADataType NodeId='ns=1;i=2556' BrowseName='1:CoordinateSystemType'>
     <DisplayName>CoordinateSystemType</DisplayName>
@@ -869,8 +1257,6 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2804</Reference>
       <!-- HasProperty -  - Representation ns=1;i=2805 MTRepresentationType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2805</Reference>
-      <!-- HasProperty -  - MinimumDeltaFilter ns=1;i=2806 Float  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2806</Reference>
       <!-- HasProperty -  - PeriodFilter ns=1;i=2807 Float  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2807</Reference>
       <!-- HasComponent -  - Constraints ns=1;i=2808 MTConstraintType  -->
@@ -966,18 +1352,6 @@
     <DisplayName>Representation</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - MTRepresentationType i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTAssetEventType ns=1;i=2543   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2543</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTAssetEventType::MinimumDeltaFilter : Float[0..1] -->
-  <UAVariable NodeId='ns=1;i=2806' BrowseName='1:MinimumDeltaFilter' ValueRank='-1' DataType='Float' ParentNodeId='ns=1;i=2543'>
-    <DisplayName>MinimumDeltaFilter</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - Float i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
@@ -1181,7 +1555,7 @@
     </References>
   </UAVariable>
   <!-- Definition of Variable MTControlledVocabEventType ns=1;i=2547 -->
-  <UAVariableType NodeId='ns=1;i=2547' BrowseName='1:MTControlledVocabEventType' ValueRank='-1' DataType='UInteger'>
+  <UAVariableType NodeId='ns=1;i=2547' BrowseName='1:MTControlledVocabEventType' ValueRank='-2' DataType='UInteger'>
     <DisplayName>MTControlledVocabEventType</DisplayName>
     <References>
       <!-- HasSubtype - (Reverse) - MultiStateDiscreteType i=2376   -->
@@ -1202,8 +1576,6 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2821</Reference>
       <!-- HasProperty -  - Representation ns=1;i=2822 MTRepresentationType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2822</Reference>
-      <!-- HasProperty -  - MinimumDeltaFilter ns=1;i=2823 Float  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2823</Reference>
       <!-- HasProperty -  - PeriodFilter ns=1;i=2824 Float  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2824</Reference>
       <!-- HasComponent -  - Constraints ns=1;i=2825 MTConstraintType  -->
@@ -1299,18 +1671,6 @@
     <DisplayName>Representation</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - MTRepresentationType i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTControlledVocabEventType ns=1;i=2547   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2547</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTControlledVocabEventType::MinimumDeltaFilter : Float[0..1] -->
-  <UAVariable NodeId='ns=1;i=2823' BrowseName='1:MinimumDeltaFilter' ValueRank='-1' DataType='Float' ParentNodeId='ns=1;i=2547'>
-    <DisplayName>MinimumDeltaFilter</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - Float i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
@@ -1428,8 +1788,6 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2837</Reference>
       <!-- HasProperty -  - Representation ns=1;i=2838 MTRepresentationType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2838</Reference>
-      <!-- HasProperty -  - MinimumDeltaFilter ns=1;i=2839 Float  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2839</Reference>
       <!-- HasProperty -  - PeriodFilter ns=1;i=2840 Float  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2840</Reference>
       <!-- HasComponent -  - Constraints ns=1;i=2841 MTConstraintType  -->
@@ -1527,18 +1885,6 @@
     <DisplayName>Representation</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - MTRepresentationType i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTMessageType ns=1;i=2394   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2394</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTMessageType::MinimumDeltaFilter : Float[0..1] -->
-  <UAVariable NodeId='ns=1;i=2839' BrowseName='1:MinimumDeltaFilter' ValueRank='-1' DataType='Float' ParentNodeId='ns=1;i=2394'>
-    <DisplayName>MinimumDeltaFilter</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - Float i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
@@ -1660,8 +2006,6 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2853</Reference>
       <!-- HasProperty -  - Representation ns=1;i=2854 MTRepresentationType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2854</Reference>
-      <!-- HasProperty -  - MinimumDeltaFilter ns=1;i=2855 Float  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2855</Reference>
       <!-- HasProperty -  - PeriodFilter ns=1;i=2856 Float  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2856</Reference>
       <!-- HasComponent -  - Constraints ns=1;i=2857 MTConstraintType  -->
@@ -1670,8 +2014,6 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2862</Reference>
       <!-- HasProperty -  - Statistic ns=1;i=2863 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2863</Reference>
-      <!-- HasProperty -  - Units ns=1;i=2864 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2864</Reference>
       <!-- HasProperty -  - NativeUnits ns=1;i=2865 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2865</Reference>
       <!-- HasProperty -  - CoordinateSystem ns=1;i=2866 CoordinateSystemType  -->
@@ -1680,10 +2022,10 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2867</Reference>
       <!-- HasProperty -  - ResetTrigger ns=1;i=2868 DataItemResetValueType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2868</Reference>
-      <!-- HasProperty -  - EURange ns=1;i=2358 Range  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2358</Reference>
-      <!-- HasProperty -  - EngineeringUnits ns=1;i=2359 EUInformation  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2359</Reference>
+      <!-- HasProperty -  - Units ns=1;i=2864 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2864</Reference>
+      <!-- HasProperty -  - MinimumDeltaFilter ns=1;i=3269 Float  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3269</Reference>
     </References>
   </UAVariableType>
   <!-- MTNumericEventType::XmlId : String[1] -->
@@ -1775,18 +2117,6 @@
     <DisplayName>Representation</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - MTRepresentationType i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTNumericEventType ns=1;i=2357   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2357</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTNumericEventType::MinimumDeltaFilter : Float[0..1] -->
-  <UAVariable NodeId='ns=1;i=2855' BrowseName='1:MinimumDeltaFilter' ValueRank='-1' DataType='Float' ParentNodeId='ns=1;i=2357'>
-    <DisplayName>MinimumDeltaFilter</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - Float i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
@@ -1898,18 +2228,6 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2357</Reference>
     </References>
   </UAVariable>
-  <!-- MTNumericEventType::Units : String[0..1] -->
-  <UAVariable NodeId='ns=1;i=2864' BrowseName='1:Units' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2357'>
-    <DisplayName>Units</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTNumericEventType ns=1;i=2357   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2357</Reference>
-    </References>
-  </UAVariable>
   <!-- MTNumericEventType::NativeUnits : String[0..1] -->
   <UAVariable NodeId='ns=1;i=2865' BrowseName='1:NativeUnits' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2357'>
     <DisplayName>NativeUnits</DisplayName>
@@ -1958,11 +2276,11 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2357</Reference>
     </References>
   </UAVariable>
-  <!-- MTNumericEventType::EURange : Range[0..1] -->
-  <UAVariable NodeId='ns=1;i=2358' BrowseName='1:EURange' ValueRank='-1' DataType='i=884' ParentNodeId='ns=1;i=2357'>
-    <DisplayName>EURange</DisplayName>
+  <!-- MTNumericEventType::Units : String[0..1] -->
+  <UAVariable NodeId='ns=1;i=2864' BrowseName='1:Units' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2357'>
+    <DisplayName>Units</DisplayName>
     <References>
-      <!-- HasTypeDefinition -  - Range i=68 PropertyType  -->
+      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
@@ -1970,11 +2288,11 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2357</Reference>
     </References>
   </UAVariable>
-  <!-- MTNumericEventType::EngineeringUnits : EUInformation[0..1] -->
-  <UAVariable NodeId='ns=1;i=2359' BrowseName='1:EngineeringUnits' ValueRank='-1' DataType='i=887' ParentNodeId='ns=1;i=2357'>
-    <DisplayName>EngineeringUnits</DisplayName>
+  <!-- MTNumericEventType::MinimumDeltaFilter : Float[0..1] -->
+  <UAVariable NodeId='ns=1;i=3269' BrowseName='1:MinimumDeltaFilter' ValueRank='-1' DataType='Float' ParentNodeId='ns=1;i=2357'>
+    <DisplayName>MinimumDeltaFilter</DisplayName>
     <References>
-      <!-- HasTypeDefinition -  - EUInformation i=68 PropertyType  -->
+      <!-- HasTypeDefinition -  - Float i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
@@ -2025,322 +2343,6 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
-  <!-- Definition of Variable MTSampleType ns=1;i=2350 -->
-  <UAVariableType NodeId='ns=1;i=2350' BrowseName='1:MTSampleType' ValueRank='-1' DataType='Number'>
-    <DisplayName>MTSampleType</DisplayName>
-    <References>
-      <!-- HasSubtype - (Reverse) - AnalogItemType i=2368   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>i=2368</Reference>
-      <!-- HasProperty -  - XmlId ns=1;i=2870 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2870</Reference>
-      <!-- HasProperty -  - Name ns=1;i=2871 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2871</Reference>
-      <!-- HasProperty -  - Category ns=1;i=2872 MTCategoryType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2872</Reference>
-      <!-- HasProperty -  - MTTypeName ns=1;i=2873 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2873</Reference>
-      <!-- HasProperty -  - MTSubTypeName ns=1;i=2874 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2874</Reference>
-      <!-- HasProperty -  - SourceData ns=1;i=2875 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2875</Reference>
-      <!-- HasProperty -  - SampleRate ns=1;i=2877 Double  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2877</Reference>
-      <!-- HasProperty -  - Representation ns=1;i=2878 MTRepresentationType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2878</Reference>
-      <!-- HasProperty -  - MinimumDeltaFilter ns=1;i=2879 Float  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2879</Reference>
-      <!-- HasProperty -  - PeriodFilter ns=1;i=2880 Float  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2880</Reference>
-      <!-- HasComponent -  - Constraints ns=1;i=2881 MTConstraintType  -->
-      <Reference ReferenceType='HasComponent'>ns=1;i=2881</Reference>
-      <!-- HasProperty -  - SignificantDigits ns=1;i=2886 UInt16  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2886</Reference>
-      <!-- HasProperty -  - Statistic ns=1;i=2887 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2887</Reference>
-      <!-- HasProperty -  - Units ns=1;i=2888 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2888</Reference>
-      <!-- HasProperty -  - NativeUnits ns=1;i=2889 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2889</Reference>
-      <!-- HasProperty -  - CoordinateSystem ns=1;i=2890 CoordinateSystemType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2890</Reference>
-      <!-- HasProperty -  - InitialValue ns=1;i=2891 Double  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2891</Reference>
-      <!-- HasProperty -  - ResetTrigger ns=1;i=2892 DataItemResetValueType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2892</Reference>
-    </References>
-  </UAVariableType>
-  <!-- MTSampleType::XmlId : String[1] -->
-  <UAVariable NodeId='ns=1;i=2870' BrowseName='1:XmlId' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2350'>
-    <DisplayName>XmlId</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Mandatory i=78   -->
-      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTSampleType::Name : String[0..1] -->
-  <UAVariable NodeId='ns=1;i=2871' BrowseName='1:Name' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2350'>
-    <DisplayName>Name</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTSampleType::Category : MTCategoryType[1] -->
-  <UAVariable NodeId='ns=1;i=2872' BrowseName='1:Category' ValueRank='-1' DataType='ns=1;i=2555' ParentNodeId='ns=1;i=2350'>
-    <DisplayName>Category</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - MTCategoryType i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Mandatory i=78   -->
-      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTSampleType::MTTypeName : String[1] -->
-  <UAVariable NodeId='ns=1;i=2873' BrowseName='1:MTTypeName' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2350'>
-    <DisplayName>MTTypeName</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Mandatory i=78   -->
-      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTSampleType::MTSubTypeName : String[0..1] -->
-  <UAVariable NodeId='ns=1;i=2874' BrowseName='1:MTSubTypeName' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2350'>
-    <DisplayName>MTSubTypeName</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTSampleType::SourceData : String[0..1] -->
-  <UAVariable NodeId='ns=1;i=2875' BrowseName='1:SourceData' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2350'>
-    <DisplayName>SourceData</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTSampleType::SampleRate : Double[0..1] -->
-  <UAVariable NodeId='ns=1;i=2877' BrowseName='1:SampleRate' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=2350'>
-    <DisplayName>SampleRate</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTSampleType::Representation : MTRepresentationType[0..1] -->
-  <UAVariable NodeId='ns=1;i=2878' BrowseName='1:Representation' ValueRank='-1' DataType='ns=1;i=2554' ParentNodeId='ns=1;i=2350'>
-    <DisplayName>Representation</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - MTRepresentationType i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTSampleType::MinimumDeltaFilter : Float[0..1] -->
-  <UAVariable NodeId='ns=1;i=2879' BrowseName='1:MinimumDeltaFilter' ValueRank='-1' DataType='Float' ParentNodeId='ns=1;i=2350'>
-    <DisplayName>MinimumDeltaFilter</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - Float i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTSampleType::PeriodFilter : Float[0..1] -->
-  <UAVariable NodeId='ns=1;i=2880' BrowseName='1:PeriodFilter' ValueRank='-1' DataType='Float' ParentNodeId='ns=1;i=2350'>
-    <DisplayName>PeriodFilter</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - Float i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTSampleType::Constraints : MTConstraintType[0..1] -->
-  <UAObject NodeId='ns=1;i=2881' BrowseName='1:Constraints' ParentNodeId='ns=1;i=2350'>
-    <DisplayName>Constraints</DisplayName>
-    <References>
-      <!-- HasProperty -  - Values ns=1;i=2882 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2882</Reference>
-      <!-- HasProperty -  - Minimum ns=1;i=2883 Float  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2883</Reference>
-      <!-- HasProperty -  - Maximum ns=1;i=2884 Float  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2884</Reference>
-      <!-- HasProperty -  - Nominal ns=1;i=2885 Float  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2885</Reference>
-      <!-- HasTypeDefinition -  - MTConstraintType ns=1;i=2567   -->
-      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2567</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasComponent - (Reverse) - MTSampleType ns=1;i=2350   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2350</Reference>
-    </References>
-  </UAObject>
-  <!-- Constraints::Values : String[0..*] -->
-  <UAVariable NodeId='ns=1;i=2882' BrowseName='1:Values' ValueRank='1' DataType='String' ParentNodeId='ns=1;i=2881'>
-    <DisplayName>Values</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - Constraints ns=1;i=2881   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2881</Reference>
-    </References>
-  </UAVariable>
-  <!-- Constraints::Minimum : Float[0..1] -->
-  <UAVariable NodeId='ns=1;i=2883' BrowseName='1:Minimum' ValueRank='-1' DataType='Float' ParentNodeId='ns=1;i=2881'>
-    <DisplayName>Minimum</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - Float i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - Constraints ns=1;i=2881   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2881</Reference>
-    </References>
-  </UAVariable>
-  <!-- Constraints::Maximum : Float[0..1] -->
-  <UAVariable NodeId='ns=1;i=2884' BrowseName='1:Maximum' ValueRank='-1' DataType='Float' ParentNodeId='ns=1;i=2881'>
-    <DisplayName>Maximum</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - Float i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - Constraints ns=1;i=2881   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2881</Reference>
-    </References>
-  </UAVariable>
-  <!-- Constraints::Nominal : Float[0..1] -->
-  <UAVariable NodeId='ns=1;i=2885' BrowseName='1:Nominal' ValueRank='-1' DataType='Float' ParentNodeId='ns=1;i=2881'>
-    <DisplayName>Nominal</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - Float i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - Constraints ns=1;i=2881   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2881</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTSampleType::SignificantDigits : UInt16[0..1] -->
-  <UAVariable NodeId='ns=1;i=2886' BrowseName='1:SignificantDigits' ValueRank='-1' DataType='UInt16' ParentNodeId='ns=1;i=2350'>
-    <DisplayName>SignificantDigits</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - UInt16 i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTSampleType::Statistic : String[0..1] -->
-  <UAVariable NodeId='ns=1;i=2887' BrowseName='1:Statistic' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2350'>
-    <DisplayName>Statistic</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTSampleType::Units : String[0..1] -->
-  <UAVariable NodeId='ns=1;i=2888' BrowseName='1:Units' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2350'>
-    <DisplayName>Units</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTSampleType::NativeUnits : String[0..1] -->
-  <UAVariable NodeId='ns=1;i=2889' BrowseName='1:NativeUnits' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2350'>
-    <DisplayName>NativeUnits</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTSampleType::CoordinateSystem : CoordinateSystemType[0..1] -->
-  <UAVariable NodeId='ns=1;i=2890' BrowseName='1:CoordinateSystem' ValueRank='-1' DataType='ns=1;i=2556' ParentNodeId='ns=1;i=2350'>
-    <DisplayName>CoordinateSystem</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - CoordinateSystemType i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTSampleType::InitialValue : Double[0..1] -->
-  <UAVariable NodeId='ns=1;i=2891' BrowseName='1:InitialValue' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=2350'>
-    <DisplayName>InitialValue</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTSampleType::ResetTrigger : DataItemResetValueType[0..1] -->
-  <UAVariable NodeId='ns=1;i=2892' BrowseName='1:ResetTrigger' ValueRank='-1' DataType='ns=1;i=2557' ParentNodeId='ns=1;i=2350'>
-    <DisplayName>ResetTrigger</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - DataItemResetValueType i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2350   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2350</Reference>
-    </References>
-  </UAVariable>
   <!-- Definition of Variable MTStringEventType ns=1;i=2353 -->
   <UAVariableType NodeId='ns=1;i=2353' BrowseName='1:MTStringEventType' ValueRank='-1' DataType='String'>
     <DisplayName>MTStringEventType</DisplayName>
@@ -2363,8 +2365,6 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - Representation ns=1;i=2901 MTRepresentationType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2901</Reference>
-      <!-- HasProperty -  - MinimumDeltaFilter ns=1;i=2902 Float  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2902</Reference>
       <!-- HasProperty -  - PeriodFilter ns=1;i=2903 Float  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2903</Reference>
       <!-- HasComponent -  - Constraints ns=1;i=2904 MTConstraintType  -->
@@ -2460,18 +2460,6 @@
     <DisplayName>Representation</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - MTRepresentationType i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTStringEventType ns=1;i=2353   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2353</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTStringEventType::MinimumDeltaFilter : Float[0..1] -->
-  <UAVariable NodeId='ns=1;i=2902' BrowseName='1:MinimumDeltaFilter' ValueRank='-1' DataType='Float' ParentNodeId='ns=1;i=2353'>
-    <DisplayName>MinimumDeltaFilter</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - Float i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
@@ -2581,8 +2569,6 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2916</Reference>
       <!-- HasProperty -  - Representation ns=1;i=2917 MTRepresentationType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2917</Reference>
-      <!-- HasProperty -  - MinimumDeltaFilter ns=1;i=2918 Float  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2918</Reference>
       <!-- HasProperty -  - PeriodFilter ns=1;i=2919 Float  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2919</Reference>
       <!-- HasComponent -  - Constraints ns=1;i=2920 MTConstraintType  -->
@@ -2591,8 +2577,6 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2925</Reference>
       <!-- HasProperty -  - Statistic ns=1;i=2926 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2926</Reference>
-      <!-- HasProperty -  - Units ns=1;i=2927 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2927</Reference>
       <!-- HasProperty -  - NativeUnits ns=1;i=2928 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2928</Reference>
       <!-- HasProperty -  - CoordinateSystem ns=1;i=2929 CoordinateSystemType  -->
@@ -2601,6 +2585,10 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2930</Reference>
       <!-- HasProperty -  - ResetTrigger ns=1;i=2931 DataItemResetValueType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2931</Reference>
+      <!-- HasProperty -  - Units ns=1;i=2927 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2927</Reference>
+      <!-- HasProperty -  - MinimumDeltaFilter ns=1;i=3270 Float  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3270</Reference>
       <!-- HasProperty -  - EngineeringUnits ns=1;i=2563 EUInformation  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2563</Reference>
     </References>
@@ -2694,18 +2682,6 @@
     <DisplayName>Representation</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - MTRepresentationType i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTThreeSpaceSampleType ns=1;i=2562   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2562</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTThreeSpaceSampleType::MinimumDeltaFilter : Float[0..1] -->
-  <UAVariable NodeId='ns=1;i=2918' BrowseName='1:MinimumDeltaFilter' ValueRank='-1' DataType='Float' ParentNodeId='ns=1;i=2562'>
-    <DisplayName>MinimumDeltaFilter</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - Float i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
@@ -2817,18 +2793,6 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2562</Reference>
     </References>
   </UAVariable>
-  <!-- MTThreeSpaceSampleType::Units : String[0..1] -->
-  <UAVariable NodeId='ns=1;i=2927' BrowseName='1:Units' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2562'>
-    <DisplayName>Units</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTThreeSpaceSampleType ns=1;i=2562   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2562</Reference>
-    </References>
-  </UAVariable>
   <!-- MTThreeSpaceSampleType::NativeUnits : String[0..1] -->
   <UAVariable NodeId='ns=1;i=2928' BrowseName='1:NativeUnits' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2562'>
     <DisplayName>NativeUnits</DisplayName>
@@ -2870,6 +2834,30 @@
     <DisplayName>ResetTrigger</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataItemResetValueType i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTThreeSpaceSampleType ns=1;i=2562   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2562</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTThreeSpaceSampleType::Units : String[0..1] -->
+  <UAVariable NodeId='ns=1;i=2927' BrowseName='1:Units' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2562'>
+    <DisplayName>Units</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTThreeSpaceSampleType ns=1;i=2562   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2562</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTThreeSpaceSampleType::MinimumDeltaFilter : Float[0..1] -->
+  <UAVariable NodeId='ns=1;i=3270' BrowseName='1:MinimumDeltaFilter' ValueRank='-1' DataType='Float' ParentNodeId='ns=1;i=2562'>
+    <DisplayName>MinimumDeltaFilter</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Float i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
@@ -2930,8 +2918,6 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2939</Reference>
       <!-- HasProperty -  - Representation ns=1;i=2940 MTRepresentationType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2940</Reference>
-      <!-- HasProperty -  - MinimumDeltaFilter ns=1;i=2941 Float  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2941</Reference>
       <!-- HasProperty -  - PeriodFilter ns=1;i=2942 Float  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2942</Reference>
       <!-- HasComponent -  - Constraints ns=1;i=2943 MTConstraintType  -->
@@ -3037,18 +3023,6 @@
     <DisplayName>Representation</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - MTRepresentationType i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTConditionType ns=1;i=2573   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2573</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTConditionType::MinimumDeltaFilter : Float[0..1] -->
-  <UAVariable NodeId='ns=1;i=2941' BrowseName='1:MinimumDeltaFilter' ValueRank='-1' DataType='Float' ParentNodeId='ns=1;i=2573'>
-    <DisplayName>MinimumDeltaFilter</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - Float i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>

@@ -1,4 +1,4 @@
-% Generated 2018-11-10 23:39:09 -0800
+% Generated 2018-11-11 16:38:40 -0800
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -364,7 +364,7 @@ concat(self.parent.NodeId, BrowseName)
 
 \end{itemize}
 \FloatBarrier
-\subsection{Data Items} \label{model:DataItems} 
+\subsection{Data Items} \label{model:DataItems}
 
 \begin{figure}[ht]
   \centering
@@ -396,6 +396,145 @@ concat(self.parent.NodeId, BrowseName)
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ BaseAnalogType}}
+  \label{type:BaseAnalogType}
+
+\FloatBarrier
+
+This type is part of OPC UA Amendment 1 \cite{UAAmend1} to Part 8 \cite{UAPart8}. Once it is available
+in the OPC UA Nodeset, it will be removed. It is placed here to generate the MTConnect Nodeset
+correctly.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{BaseAnalogType} Definition}
+  \label{table:BaseAnalogType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{BaseAnalogType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-2} \\
+DataType & \multicolumn{5}{|l|}{Number} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of DataItemType (See \cite{UAPart8} Documentation)} \\
+HasSubtype & VariableType & \multicolumn{2}{l}{AnalogItemType} & \multicolumn{2}{|l|}{See section \ref{type:AnalogItemType}} \\
+HasSubtype & VariableType & \multicolumn{2}{l}{AnalogUnitType} & \multicolumn{2}{|l|}{See section \ref{type:AnalogUnitType}} \\
+Has\-Property & Variable & Instrument\-Range & Range & Property\-Type & Optional \\
+Has\-Property & Variable & EURange & Range & Property\-Type & Optional \\
+Has\-Property & Variable & Engineering\-Units & EUInformation & Property\-Type & Optional \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ AnalogUnitType}}
+  \label{type:AnalogUnitType}
+
+\FloatBarrier
+
+This type is part of OPC UA Amendment 1 \cite{UAAmend1} to Part 8 \cite{UAPart8}. Once it is available
+in the OPC UA Nodeset, it will be removed. It is placed here to generate the MTConnect Nodeset
+correctly.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{AnalogUnitType} Definition}
+  \label{table:AnalogUnitType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{AnalogUnitType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-2} \\
+DataType & \multicolumn{5}{|l|}{Number} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of BaseAnalogType (See section \ref{type:BaseAnalogType})} \\
+HasSubtype & VariableType & \multicolumn{2}{l}{MTSampleType} & \multicolumn{2}{|l|}{See section \ref{type:MTSampleType}} \\
+Has\-Property & Variable & Engineering\-Units & EUInformation & Property\-Type & Mandatory \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MTSampleType}}
+  \label{type:MTSampleType}
+
+\FloatBarrier
+
+Data Items with category \texttt{SAMPLE}. The simplest mapping since all these types are 
+floating point numeric data and comply with the \uaterm{AnalogUnitType} from \cite{UAPart8} Amendment 1.
+In ammendment 1, the \uaterm{EURange} is optional. \uaterm{EngineeringUnits} for all \mtuatype{MTSampleType} Data Items.
+
+The \uaterm{EURange} will becreated if the \xmlelement{Constraints} element exists and both \mtterm{Maximum} 
+and \mtterm{Minimum} values are given. 
+
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTSampleType} Definition}
+  \label{table:MTSampleType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTSampleType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Number} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of AnalogUnitType (See section \ref{type:AnalogUnitType})} \\
+Has\-Property & Variable & Xml\-Id & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & Name & String & Property\-Type & Optional \\
+Has\-Property & Variable & Category & MT\-Category\-Type & Property\-Type & Mandatory \\
+Has\-Property & Variable & MT\-Type\-Name & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & MT\-Sub\-Type\-Name & String & Property\-Type & Optional \\
+Has\-Property & Variable & Source\-Data & String & Property\-Type & Optional \\
+Has\-Property & Variable & Sample\-Rate & Double & Property\-Type & Optional \\
+Has\-Property & Variable & Representation & MT\-Representation\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Period\-Filter & Float & Property\-Type & Optional \\
+Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
+Has\-MT\-Sub\-Class\-Type & Object & <MT\-Data\-Item\-Sub\-Class> & \multicolumn{2}{l|}{MTDataItemSubClassType} & Optional \\
+Has\-MT\-Composition & Object & <MT\-Composition> & \multicolumn{2}{l|}{MTCompositionType} & Optional \\
+Has\-MT\-Source & Object & <Base\-Object> & \multicolumn{2}{l|}{BaseObjectType} & Optional \\
+Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
+Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & Optional \\
+Has\-Property & Variable & Significant\-Digits & UInt16 & Property\-Type & Optional \\
+Has\-Property & Variable & Statistic & String & Property\-Type & Optional \\
+Has\-Property & Variable & Native\-Units & String & Property\-Type & Optional \\
+Has\-Property & Variable & Coordinate\-System & Coordinate\-System\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Initial\-Value & Double & Property\-Type & Optional \\
+Has\-Property & Variable & Reset\-Trigger & Data\-Item\-Reset\-Value\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Units & String & Property\-Type & Optional \\
+Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\paragraph{Referenced Properties and Objects}
+
+\begin{itemize}
+\item \texttt{Supertype::AnalogUnitType:} All DataItems with category SAMPLE
+
+\end{itemize}
+\paragraph{Dependencies and Relationships}
+
+\begin{itemize}
+\item Mixes in \texttt{MTNumericDataItemType}, see See section \ref{type:MTNumericDataItemType}
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTAssetEventType}}
   \label{type:MTAssetEventType}
@@ -537,7 +676,7 @@ MTConnect equivalent elements that can be found in the MTConnect Part 3 \cite{MT
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{MTControlledVocabEventType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
-ValueRank & \multicolumn{5}{|l|}{-1} \\
+ValueRank & \multicolumn{5}{|l|}{-2} \\
 DataType & \multicolumn{5}{|l|}{UInteger} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
@@ -1072,87 +1211,10 @@ Has\-Property & Variable & Initial\-Value & Double & Property\-Type & Optional \
 Has\-Property & Variable & Reset\-Trigger & Data\-Item\-Reset\-Value\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Units & String & Property\-Type & Optional \\
 Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
-Has\-Property & Variable & EURange & Range & Property\-Type & Optional \\
-Has\-Property & Variable & Engineering\-Units & EUInformation & Property\-Type & Optional \\
 \end{tabu}
 \end{table} 
 
 
-\paragraph{Dependencies and Relationships}
-
-\begin{itemize}
-\item Mixes in \texttt{MTNumericDataItemType}, see See section \ref{type:MTNumericDataItemType}
-\end{itemize}
-\FloatBarrier
-\subsubsection{Defintion of \texttt{ MTSampleType}}
-  \label{type:MTSampleType}
-
-\FloatBarrier
-
-Data Items with category \texttt{SAMPLE}. The simplest mapping since all these types are 
-floating point numeric data and comply with the BaseAnalogType from \cite{UAPart8} Amendment 1.
-In ammendment 1, the \uaterm{EURange} and \uaterm{EngineeringUnits} are optional. 
-
-The rules are as follows:
-\begin{itemize}
-\item The \uaterm{EURange} will be
-created if the \xmlelement{Constraints} element exists and both \mtterm{Maximum} and 
-\mtterm{Minimum} values are given. 
-\item The \uaterm{EngineeringUnits} will be created if the \mtterm{Units}
-are anything other than \mtterm{PERCENT} or \mtterm{COUNT}.
-\end{itemize}
-
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{MTSampleType} Definition}
-  \label{table:MTSampleType}
-\fontsize{9pt}{11pt}\selectfont
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
-\tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{MTSampleType} \\
-IsAbstract & \multicolumn{5}{|l|}{False} \\
-ValueRank & \multicolumn{5}{|l|}{-1} \\
-DataType & \multicolumn{5}{|l|}{Number} \\
-\tabucline[1.5pt]{}
-\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of BaseAnalogType (See \cite{UAPart8} Documentation)} \\
-Has\-Property & Variable & Xml\-Id & String & Property\-Type & Mandatory \\
-Has\-Property & Variable & Name & String & Property\-Type & Optional \\
-Has\-Property & Variable & Category & MT\-Category\-Type & Property\-Type & Mandatory \\
-Has\-Property & Variable & MT\-Type\-Name & String & Property\-Type & Mandatory \\
-Has\-Property & Variable & MT\-Sub\-Type\-Name & String & Property\-Type & Optional \\
-Has\-Property & Variable & Source\-Data & String & Property\-Type & Optional \\
-Has\-Property & Variable & Sample\-Rate & Double & Property\-Type & Optional \\
-Has\-Property & Variable & Representation & MT\-Representation\-Type & Property\-Type & Optional \\
-Has\-Property & Variable & Period\-Filter & Float & Property\-Type & Optional \\
-Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
-Has\-MT\-Sub\-Class\-Type & Object & <MT\-Data\-Item\-Sub\-Class> & \multicolumn{2}{l|}{MTDataItemSubClassType} & Optional \\
-Has\-MT\-Composition & Object & <MT\-Composition> & \multicolumn{2}{l|}{MTCompositionType} & Optional \\
-Has\-MT\-Source & Object & <Base\-Object> & \multicolumn{2}{l|}{BaseObjectType} & Optional \\
-Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
-Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & Optional \\
-Has\-Property & Variable & Significant\-Digits & UInt16 & Property\-Type & Optional \\
-Has\-Property & Variable & Statistic & String & Property\-Type & Optional \\
-Has\-Property & Variable & Native\-Units & String & Property\-Type & Optional \\
-Has\-Property & Variable & Coordinate\-System & Coordinate\-System\-Type & Property\-Type & Optional \\
-Has\-Property & Variable & Initial\-Value & Double & Property\-Type & Optional \\
-Has\-Property & Variable & Reset\-Trigger & Data\-Item\-Reset\-Value\-Type & Property\-Type & Optional \\
-Has\-Property & Variable & Units & String & Property\-Type & Optional \\
-Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
-\end{tabu}
-\end{table} 
-
-
-\FloatBarrier
-\paragraph{Referenced Properties and Objects}
-
-\begin{itemize}
-\item \texttt{Supertype::BaseAnalogType:} All DataItems with category SAMPLE
-
-\end{itemize}
 \paragraph{Dependencies and Relationships}
 
 \begin{itemize}

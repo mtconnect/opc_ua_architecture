@@ -231,9 +231,10 @@ class NodesetType < Type
       puts "      ** Generating ObjectType"
       refs, = node('UAObjectType', node_id, @name, abstract: @abstract)
     elsif is_a_type?('BaseVariableType')
+      v = get_attribute_like(/ValueRank$/)
       Root << REXML::Comment.new(" Definition of Variable #{@name} #{node_id} ")
       puts "      ** Generating VariableType"
-      refs, = node('UAVariableType', node_id, @name, abstract: @abstract, value_rank: -1,
+      refs, = node('UAVariableType', node_id, @name, abstract: @abstract, value_rank: v.default,
                         data_type: variable_data_type.node_alias)
     elsif is_a_type?('References')
       Root << REXML::Comment.new(" Definition of Reference #{@name} #{node_id} ")

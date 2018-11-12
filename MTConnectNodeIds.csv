@@ -89,6 +89,9 @@
 1:Ampere/displayName,ns=1;i=2758,false
 1:Ampere/namepsaceUri,ns=1;i=2756,false
 1:Ampere/unitId,ns=1;i=2757,false
+1:AnalogUnitType,ns=1;i=3239,false
+1:AnalogUnitType/EngineeringUnits,ns=1;i=3240,false
+1:AnalogUnitType/Supertype,ns=1;i=3241,false
 1:AngleClassType,ns=1;i=2206,false
 1:AngleClassType/Supertype,ns=1;i=2207,false
 1:AngularAccelerationClassType,ns=1;i=2200,false
@@ -110,6 +113,7 @@
 1:AverageAmperage/Category,ns=1;i=3120,false
 1:AverageAmperage/MTTypeName,ns=1;i=3121,false
 1:AverageAmperage/Name,ns=1;i=3119,false
+1:AverageAmperage/ResetTrigger,ns=1;i=3252,false
 1:AverageAmperage/Statistic,ns=1;i=3123,false
 1:AverageAmperage/Units,ns=1;i=3122,false
 1:AverageAmperage/XmlId,ns=1;i=3118,false
@@ -145,6 +149,12 @@
 1:BScaleSubClassType/Supertype,ns=1;i=2419,false
 1:BadSubClassType,ns=1;i=2414,false
 1:BadSubClassType/Supertype,ns=1;i=2415,false
+1:BaseAnalogType,ns=1;i=3242,false
+1:BaseAnalogType/DataType,ns=1;i=3246,false
+1:BaseAnalogType/EURange,ns=1;i=3244,false
+1:BaseAnalogType/EngineeringUnits,ns=1;i=3245,false
+1:BaseAnalogType/InstrumentRange,ns=1;i=3243,false
+1:BaseAnalogType/Supertype,ns=1;i=3247,false
 1:BlockClassType,ns=1;i=2294,false
 1:BlockClassType/Supertype,ns=1;i=2295,false
 1:BlockCountClassType,ns=1;i=2280,false
@@ -169,6 +179,11 @@
 1:CL.Tank[reserve]/XmlId,ns=1;i=3212,false
 1:CScaleSubClassType,ns=1;i=2426,false
 1:CScaleSubClassType/Supertype,ns=1;i=2427,false
+1:Celcuis,ns=1;i=3253,false
+1:Celcuis/description,ns=1;i=3257,false
+1:Celcuis/displayName,ns=1;i=3256,false
+1:Celcuis/namespaceUri,ns=1;i=3254,false
+1:Celcuis/unitId,ns=1;i=3255,false
 1:Channel,ns=1;i=3152,false
 1:Channel/CalibrationDate,ns=1;i=3155,false
 1:Channel/Description,ns=1;i=3154,false
@@ -449,6 +464,7 @@
 1:MTAssetEventType/DataType,ns=1;i=2544,false
 1:MTAssetEventType/Realization,ns=1;i=2546,false
 1:MTAssetEventType/Supertype,ns=1;i=2545,false
+1:MTAssetEventType/ValueRank,ns=1;i=3274,false
 1:MTCategoryType,ns=1;i=2555,false
 1:MTCategoryType/EnumStrings,ns=1;i=2813,false
 1:MTChannelType,ns=1;i=2058,false
@@ -624,6 +640,7 @@
 1:MTNumericDataItemType/<DataItemResetValue>,ns=1;i=2393,false
 1:MTNumericDataItemType/CoordinateSystem,ns=1;i=2388,false
 1:MTNumericDataItemType/InitialValue,ns=1;i=2389,false
+1:MTNumericDataItemType/MinimumDeltaFilter,ns=1;i=3238,false
 1:MTNumericDataItemType/NativeUnits,ns=1;i=2387,false
 1:MTNumericDataItemType/ResetTrigger,ns=1;i=2390,false
 1:MTNumericDataItemType/SignificantDigits,ns=1;i=2384,false
@@ -649,6 +666,7 @@
 1:MTNumericEventType/1:MTDataItemType/XmlId,ns=1;i=2846,false
 1:MTNumericEventType/1:MTNumericDataItemType/CoordinateSystem,ns=1;i=2866,false
 1:MTNumericEventType/1:MTNumericDataItemType/InitialValue,ns=1;i=2867,false
+1:MTNumericEventType/1:MTNumericDataItemType/MinimumDeltaFilter,ns=1;i=3269,false
 1:MTNumericEventType/1:MTNumericDataItemType/NativeUnits,ns=1;i=2865,false
 1:MTNumericEventType/1:MTNumericDataItemType/ResetTrigger,ns=1;i=2868,false
 1:MTNumericEventType/1:MTNumericDataItemType/SignificantDigits,ns=1;i=2862,false
@@ -659,6 +677,7 @@
 1:MTNumericEventType/EngineeringUnits,ns=1;i=2359,false
 1:MTNumericEventType/Realization,ns=1;i=2362,false
 1:MTNumericEventType/Supertype,ns=1;i=2361,false
+1:MTNumericEventType/ValueRank,ns=1;i=3273,false
 1:MTRepresentationType,ns=1;i=2554,false
 1:MTRepresentationType/EnumStrings,ns=1;i=2869,false
 1:MTSampleClassType,ns=1;i=2276,false
@@ -682,6 +701,7 @@
 1:MTSampleType/1:MTDataItemType/XmlId,ns=1;i=2870,false
 1:MTSampleType/1:MTNumericDataItemType/CoordinateSystem,ns=1;i=2890,false
 1:MTSampleType/1:MTNumericDataItemType/InitialValue,ns=1;i=2891,false
+1:MTSampleType/1:MTNumericDataItemType/MinimumDeltaFilter,ns=1;i=3268,false
 1:MTSampleType/1:MTNumericDataItemType/NativeUnits,ns=1;i=2889,false
 1:MTSampleType/1:MTNumericDataItemType/ResetTrigger,ns=1;i=2892,false
 1:MTSampleType/1:MTNumericDataItemType/SignificantDigits,ns=1;i=2886,false
@@ -689,6 +709,7 @@
 1:MTSampleType/1:MTNumericDataItemType/Units,ns=1;i=2888,false
 1:MTSampleType/Realization,ns=1;i=2352,false
 1:MTSampleType/Supertype,ns=1;i=2351,false
+1:MTSampleType/ValueRank,ns=1;i=3271,false
 1:MTSensorConfigurationType,ns=1;i=2045,false
 1:MTSensorConfigurationType/CalibrationDate,ns=1;i=2047,false
 1:MTSensorConfigurationType/CalibrationInitials,ns=1;i=2049,false
@@ -720,6 +741,7 @@
 1:MTStringEventType/DataType,ns=1;i=2354,false
 1:MTStringEventType/Realization,ns=1;i=2356,false
 1:MTStringEventType/Supertype,ns=1;i=2355,false
+1:MTStringEventType/ValueRank,ns=1;i=3272,false
 1:MTThreeSpaceSampleType,ns=1;i=2562,false
 1:MTThreeSpaceSampleType/1:MTDataItemType/1:MTConstraintType/Maximum,ns=1;i=2923,false
 1:MTThreeSpaceSampleType/1:MTDataItemType/1:MTConstraintType/Minimum,ns=1;i=2922,false
@@ -739,6 +761,7 @@
 1:MTThreeSpaceSampleType/1:MTDataItemType/XmlId,ns=1;i=2909,false
 1:MTThreeSpaceSampleType/1:MTNumericDataItemType/CoordinateSystem,ns=1;i=2929,false
 1:MTThreeSpaceSampleType/1:MTNumericDataItemType/InitialValue,ns=1;i=2930,false
+1:MTThreeSpaceSampleType/1:MTNumericDataItemType/MinimumDeltaFilter,ns=1;i=3270,false
 1:MTThreeSpaceSampleType/1:MTNumericDataItemType/NativeUnits,ns=1;i=2928,false
 1:MTThreeSpaceSampleType/1:MTNumericDataItemType/ResetTrigger,ns=1;i=2931,false
 1:MTThreeSpaceSampleType/1:MTNumericDataItemType/SignificantDigits,ns=1;i=2925,false
@@ -748,6 +771,7 @@
 1:MTThreeSpaceSampleType/EngineeringUnits,ns=1;i=2563,false
 1:MTThreeSpaceSampleType/Realization,ns=1;i=2566,false
 1:MTThreeSpaceSampleType/Supertype,ns=1;i=2565,false
+1:MTThreeSpaceSampleType/ValueRank,ns=1;i=3275,false
 1:MachineAxisLockSubClassType,ns=1;i=2456,false
 1:MachineAxisLockSubClassType/Supertype,ns=1;i=2457,false
 1:MaintenanceSubClassType,ns=1;i=2458,false
@@ -872,6 +896,7 @@
 1:PartCount/InitialValue,ns=1;i=3055,false
 1:PartCount/MTTypeName,ns=1;i=3054,false
 1:PartCount/NodeId,ns=1;i=3052,false
+1:PartCount/Units,ns=1;i=3248,false
 1:PartCount/XmlId,ns=1;i=3051,false
 1:PartCountClassType,ns=1;i=2286,false
 1:PartCountClassType/Supertype,ns=1;i=2287,false
@@ -1114,6 +1139,7 @@
 1:Temperature/<Sensor>,ns=1;i=3091,false
 1:Temperature/<TemperatureClass>,ns=1;i=3092,false
 1:Temperature/Category,ns=1;i=3097,false
+1:Temperature/EngineeringUnits,ns=1;i=3249,false
 1:Temperature/MTTypeName,ns=1;i=3096,false
 1:Temperature/Name,ns=1;i=3094,false
 1:Temperature/PeriodFilter,ns=1;i=3098,false
@@ -1167,12 +1193,23 @@
 1:VickersSubClassType/Supertype,ns=1;i=2533,false
 1:ViscosityClassType,ns=1;i=2270,false
 1:ViscosityClassType/Supertype,ns=1;i=2271,false
+1:Volt,ns=1;i=3258,false
+1:Volt/description,ns=1;i=3262,false
+1:Volt/displayName,ns=1;i=3261,false
+1:Volt/namespaceUri,ns=1;i=3259,false
+1:Volt/unitId,ns=1;i=3260,false
+1:VoltAmpere,ns=1;i=3263,false
+1:VoltAmpere/description,ns=1;i=3267,false
+1:VoltAmpere/displayName,ns=1;i=3266,false
+1:VoltAmpere/namespaceUri,ns=1;i=3264,false
+1:VoltAmpere/unitId,ns=1;i=3265,false
 1:VoltAmpereClassType,ns=1;i=2264,false
 1:VoltAmpereClassType/Supertype,ns=1;i=2265,false
 1:VoltAmpereReactiveClassType,ns=1;i=2268,false
 1:VoltAmpereReactiveClassType/Supertype,ns=1;i=2269,false
 1:VoltAmpereTimeSeries,ns=1;i=3106,false
 1:VoltAmpereTimeSeries/Category,ns=1;i=3109,false
+1:VoltAmpereTimeSeries/EngineeringUnits,ns=1;i=3251,false
 1:VoltAmpereTimeSeries/MTTypeName,ns=1;i=3111,false
 1:VoltAmpereTimeSeries/Name,ns=1;i=3108,false
 1:VoltAmpereTimeSeries/Representation,ns=1;i=3110,false
@@ -1181,6 +1218,7 @@
 1:VoltAmpereTimeSeries/XmlId,ns=1;i=3107,false
 1:Voltage,ns=1;i=3099,false
 1:Voltage/Category,ns=1;i=3101,false
+1:Voltage/EngineeringUnits,ns=1;i=3250,false
 1:Voltage/MTTypeName,ns=1;i=3102,false
 1:Voltage/MinimumDeltaFilter,ns=1;i=3105,false
 1:Voltage/Name,ns=1;i=3103,false
@@ -1241,6 +1279,7 @@ AlarmRateVariableType,i=17277,false
 AlwaysGeneratesEvent,i=3065,false
 AnalogItemType,i=2368,false
 AnalogUnitItemType,i=17503,false
+AnalogUnitRange,ns=1;i=3237,false
 Annotation,i=891,false
 AnonymousIdentityToken,i=319,false
 ApplicationCertificateType,i=12557,false

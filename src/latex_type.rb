@@ -245,7 +245,8 @@ IsAbstract & \\multicolumn{5}{|l|}{#{@abstract.to_s.capitalize}} \\\\
 EOT
 
     if is_a_type?('BaseVariableType')
-      f.puts "ValueRank & \\multicolumn{5}{|l|}{-1} \\\\"
+      v = get_attribute_like(/ValueRank$/)
+      f.puts "ValueRank & \\multicolumn{5}{|l|}{#{v.default}} \\\\"
       a = get_attribute_like(/DataType$/) || 'BaseVariableType'
       f.puts "DataType & \\multicolumn{5}{|l|}{#{a.target.type.name}} \\\\"
     elsif is_a_type?('References')

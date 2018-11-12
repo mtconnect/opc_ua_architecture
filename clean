@@ -1,4 +1,4 @@
 #! /bin/sh
 
-(cd latex; rm -f main.aux *.bbl *.bcf *.blg *.lof *.log *.pdf *.run.xml *.synctex.gz *.toc *.out)
-rm -f build/*
+(cd latex; latexmk -C main)
+

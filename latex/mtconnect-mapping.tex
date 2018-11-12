@@ -1,6 +1,6 @@
 \clearpage
 \section{Mapping the MTConnect Information Model to OPC UA} 
-  \label{mtconnect-mapping}
+\label{mtconnect-mapping}
 
 This section describes a UML representation of MTConnect semantic data models for mapping MTConnect into OPC UA. More detailed information is provided in Section \ref{mtconnect_information_model} for each data type.
 
@@ -19,13 +19,13 @@ This section provides instructions to translate from the OPC UA diagram represen
 Figure \ref{fig:mtcomponent-uml} represents the same model in UML. The companion specification uses the following conventions:
 
 \begin{itemize}
-\item OPC UA Types are represented as \mtterm{UML Classes}
-\item OPC UA Objects are represented as ``\uaterm{BrowseName}: \uaterm{Type}'' underlined as in the following example: \textbf{\underline{SimpleCnc: MTDeviceType}} where \textbf{\underline{SimpleCnc}} is the name of the device and  \textbf{\underline{MTDeviceType}} is related with a \uaterm{HasTypeDefinition} relationship.
-\item Stereotypes are used to denote properties of types, relationships, and members of types. A stereotype is denoted by angle brackets (\texttt{<<..>>}) and provides additional information about the entity. For example, each reference from one \uaterm{ObjectType} to another has a stereotype denoting the reference type.
-\item OPC UA Properties are denoted as UML Attributes. UA \uaterm{Attributes} are also represented as UML Attributes with the stereotype of \mtconnectterm{<<attribute>>} to differentiate from UA \uaterm{Properties}.
-\item OPC UA \uaterm{Component} \uaterm{References} are represented as UML Unidirectional associations. The reference type is given as the association's \textit{Stereotype}, for example \textit{<<HasComponent>>}. 
-\item \uaterm{HasSubtype} relationships are given as an UML Generalization association.
-\item Combinining of templates and classes can be done using a UML \mtterm{Realization} with the stereotype \mtterm{<<Mixes In>>} to use common properties and relationships in a collection of otherwise unrelated types.
+  \item OPC UA Types are represented as \mtterm{UML Classes}
+  \item OPC UA Objects are represented as ``\uaterm{BrowseName}: \uaterm{Type}'' underlined as in the following example: \textbf{\underline{SimpleCnc: MTDeviceType}} where \textbf{\underline{SimpleCnc}} is the name of the device and  \textbf{\underline{MTDeviceType}} is related with a \uaterm{HasTypeDefinition} relationship.
+  \item Stereotypes are used to denote properties of types, relationships, and members of types. A stereotype is denoted by angle brackets (\texttt{<<..>>}) and provides additional information about the entity. For example, each reference from one \uaterm{ObjectType} to another has a stereotype denoting the reference type.
+  \item OPC UA Properties are denoted as UML Attributes. UA \uaterm{Attributes} are also represented as UML Attributes with the stereotype of \mtconnectterm{<<attribute>>} to differentiate from UA \uaterm{Properties}.
+  \item OPC UA \uaterm{Component} \uaterm{References} are represented as UML Unidirectional associations. The reference type is given as the association's \textit{Stereotype}, for example \textit{<<HasComponent>>}. 
+  \item \uaterm{HasSubtype} relationships are given as an UML Generalization association.
+  \item Combinining of templates and classes can be done using a UML \mtterm{Realization} with the stereotype \mtterm{<<Mixes In>>} to use common properties and relationships in a collection of otherwise unrelated types.
 \end{itemize}
 
 The \mtterm{UMLAssociations} are used to represent OPC UA R`eferences. \uaterm{UA Properties} represented using the UA \opcuaterm{HasProperty} relationships are given as UML Attributes (not be confused with the \uaterm{OPC UA Attribute}). UML allows for additional information as follows:  the multiplicity of a property, the data type of the property, are specified.
@@ -60,11 +60,11 @@ Common elements, like \xmlelement{Components} or \xmlelement{Compositions}, that
 The MTConnect information model has the following abstractions:
 
 \begin{enumerate}
-\item \mtconnectterm{Components}
-\item \mtconnectterm{DataItems}
-\item \mtconnectterm{Configuration}
-\item \mtconnectterm{Compositions}
-\item \mtconnectterm{Assets}
+  \item \mtconnectterm{Components}
+  \item \mtconnectterm{DataItems}
+  \item \mtconnectterm{Configuration}
+  \item \mtconnectterm{Compositions}
+  \item \mtconnectterm{Assets}
 \end{enumerate}
 
 The first concern of the MTConnect OPC UA companion specification is the \mtterm{Device} model covered in MTConnect \cite{MTCPart2} and \cite{MTCPart3}. The top-level \mtconnectterm{Component} of any MTConnect information model is the \mtconnectterm{Device}. A \mtconnectterm{Component} represents a logical part or a collection of parts of a piece of equipment. The \mtconnectterm{DataItem}s represent information that is communicated from \mtconnectterm{Component}s, and the representation and communication of the information are covered in \cite{MTCPart3}. The \mtconnectterm{Compositions} are the lowest level of contextualization for MTConnect \mtconnectterm{Components} that do not have any structure but can be associated with \mtconnectterm{Data\-Item}s to provide additional context. 
@@ -92,9 +92,9 @@ The third form used in MTConnect is uppercase with underscores separating charac
 
 The rules are as follows:
 \begin{itemize}
-\item XML Elements are in \textit{Pascal Case}.
-\item XML Attributes are in \textit{Lower Camel Case}
-\item Controlled vocabulary, a fixed or enumerated set of values, for attribtues or the CDATA of elements are all caps with an underscore ("\_") separating words. 
+  \item XML Elements are in \textit{Pascal Case}.
+  \item XML Attributes are in \textit{Lower Camel Case}
+  \item Controlled vocabulary, a fixed or enumerated set of values, for attribtues or the CDATA of elements are all caps with an underscore ("\_") separating words. 
 \end{itemize}
 
 When the value of an attribute, such as the data item type as given in Listing \ref{lst:type-attr-conversion}:
@@ -112,24 +112,24 @@ OPC UA conventions use names in \textit{Pascal Case}, so all MTConnect entities 
 The values of the attributes and enumerations are represented in MTConnect in capitals with underscores. OPC UA has the same convention, so these types will remain unchanged when converted to OPC UA. The only caveat is that enumerated values when represented in UA \texttt{DataVariable}s are numeric. All enumerations in MTConnect are sorted alphabetically and assigned monotonically increasing numberic values. For example, the enumeration for the \texttt{Execution} MTConnect data item is in table \ref{table:execution-data-type}.
 
 \begin{table}[ht]
-\centering 
+  \centering 
   \caption{\texttt{ExecutionDataType} Enumeration}
   \label{table:execution-data-type}
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Name} & {Index} \\
-\tabucline[1.5pt]{}
-\texttt{ACTIVE} & \texttt{0} \\
-\texttt{FEED_HOLD} & \texttt{1} \\
-\texttt{INTERRUPTED} & \texttt{2} \\
-\texttt{OPTIONAL_STOP} & \texttt{3} \\
-\texttt{READY} & \texttt{4} \\
+  \tabulinesep=3pt
+  \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+    \hline
+    \rowfont\bfseries {Name} & {Index} \\
+    \tabucline[1.5pt]{}
+    \texttt{ACTIVE} & \texttt{0} \\
+    \texttt{FEED_HOLD} & \texttt{1} \\
+    \texttt{INTERRUPTED} & \texttt{2} \\
+    \texttt{OPTIONAL_STOP} & \texttt{3} \\
+    \texttt{READY} & \texttt{4} \\
 
-\texttt{PROGRAM_COMPLETED} & \texttt{5} \\
-\texttt{PROGRAM_STOPPED} & \texttt{6} \\
-\texttt{STOPPED} & \texttt{7} \\
-\end{tabu}
+    \texttt{PROGRAM_COMPLETED} & \texttt{5} \\
+    \texttt{PROGRAM_STOPPED} & \texttt{6} \\
+    \texttt{STOPPED} & \texttt{7} \\
+  \end{tabu}
 \end{table} 
 
 Extensions to the MTConnect standard with enumerations will represent the data as strings since the values are not included in the address space. An extension nodeset can be created by a vendor if the \mtuatype{MTControlledVocabEventType} is desired. The EnumValues needs to reference the \uaterm{EnumValues Attribute} of the UA \opcuaterm{MultiStateValueDiscreteType} and the associated indexes with the translation to the text values for mapping.
@@ -137,31 +137,31 @@ Extensions to the MTConnect standard with enumerations will represent the data a
 MTConnect base types have been prefixed with the letters \texttt{MT} to avoid confusion with OPC UA vocabulary. The following component types and relationships have been annotated:
 
 \begin{itemize}
-    \setlength\itemsep{0em}
-\item Device $\rightarrow$ \mtuatype{MTDeviceType}
-\item Component $\rightarrow$  \mtuatype{MTComponentType}
-\item Composition $\rightarrow$ \mtuatype{MTCompositionType}
-\item Configuration $\rightarrow$ \mtuatype{MTConfigurationType}
-\item Description $\rightarrow$ \mtuatype{MTDescriptionType}
-\item SensorConfiguration $\rightarrow$ \mtuatype{MTSensorConfiguration}
-\item Message $\rightarrow$ \mtuatype{MTMessageType}
+  \setlength\itemsep{0em}
+  \item Device $\rightarrow$ \mtuatype{MTDeviceType}
+  \item Component $\rightarrow$  \mtuatype{MTComponentType}
+  \item Composition $\rightarrow$ \mtuatype{MTCompositionType}
+  \item Configuration $\rightarrow$ \mtuatype{MTConfigurationType}
+  \item Description $\rightarrow$ \mtuatype{MTDescriptionType}
+  \item SensorConfiguration $\rightarrow$ \mtuatype{MTSensorConfiguration}
+  \item Message $\rightarrow$ \mtuatype{MTMessageType}
 \end{itemize}
 
 The following types representing base MTConnect types are also prefixed:
 
 \begin{itemize}
-\setlength\itemsep{0em}
-\item \mtuatype{MTAssetEventType}
-\item \mtuatype{MTControlledVocabEventType}
-\item \mtuatype{MTNumericEventType}
-\item \mtuatype{MTHasClassType}
-\item \mtuatype{MTHasSubClassType}
-\item \mtuatype{MTStringEventType}
-\item \mtuatype{MTSampleType}
-\item \mtuatype{MTConnectAlarmConditionType}
-\item \mtuatype{MTExclusiveLimitConditionType}
-\item \mtuatype{MTNonExclusiveConditionType}
-\item \mtuatype{MTThreeSpaceSampleType}
+  \setlength\itemsep{0em}
+  \item \mtuatype{MTAssetEventType}
+  \item \mtuatype{MTControlledVocabEventType}
+  \item \mtuatype{MTNumericEventType}
+  \item \mtuatype{MTHasClassType}
+  \item \mtuatype{MTHasSubClassType}
+  \item \mtuatype{MTStringEventType}
+  \item \mtuatype{MTSampleType}
+  \item \mtuatype{MTConnectAlarmConditionType}
+  \item \mtuatype{MTExclusiveLimitConditionType}
+  \item \mtuatype{MTNonExclusiveConditionType}
+  \item \mtuatype{MTThreeSpaceSampleType}
 \end{itemize}
 
 The data item class types and enumeration data types do not have \texttt{MT} prepended.
@@ -171,98 +171,98 @@ The data item class types and enumeration data types do not have \texttt{MT} pre
 The rules for determining the \uaterm{BrowseName} for the MTConnect \mtterm{Component} are as follows:
 
 \begin{enumerate}
-\item If the \mtterm{Component} is \xmlelement{Device}, the \uaterm{BrowseName} is the \xmlattribute{name} attribute of the \xmlelement{Device} and the UA \uaterm{TypeDefinition} is \texttt{MTDeviceType}.
-\item The browse name is the \xmlelement{QName} of the XML Element of the \mtterm{Component}. \label{item:component-browse-name}
-\item The \uaterm{HasTypeDefinition} references a type that is created by appending the word \texttt{Type} to the \xmlelement{QName} of the \mtterm{Component} element. For example, a \xmlelement{Controller} will have a \uaterm{BrowseName} of \texttt{Controller} and a \uaterm{HasTypeDefinition} referencing \texttt{ControllerType}.
-\item The \uaterm{ObjectType} is only defined once for all \mtterm{Components} of that type. There is no \texttt{MT} prepended to the front of the \uaterm{ObjectType} \uaterm{BrowseName}.
-\item If there are two \mtterm{Components} with the same \texttt{BrowseName}s or if the \mtterm{Component} are \xmlelement{Linear} or \xmlelement{Rotary}, they must have the \xmlattribute{name} attribute appended in square brackets (\texttt{[]}) to the name as specified in item \ref{item:component-browse-name}. 
-\item For example, if there are two \xmlelement{Path} \mtterm{Components} with names \xmlattribute{name="P1"} and \xmlattribute{name="P2"}, the \uaterm{BrowseName}s will be as follows: \texttt{Path[P1]} and \texttt{Path[P2]} where each \uaterm{HaveTypeDefinition} of \texttt{PathType}.
+  \item If the \mtterm{Component} is \xmlelement{Device}, the \uaterm{BrowseName} is the \xmlattribute{name} attribute of the \xmlelement{Device} and the UA \uaterm{TypeDefinition} is \texttt{MTDeviceType}.
+  \item The browse name is the \xmlelement{QName} of the XML Element of the \mtterm{Component}. \label{item:component-browse-name}
+  \item The \uaterm{HasTypeDefinition} references a type that is created by appending the word \texttt{Type} to the \xmlelement{QName} of the \mtterm{Component} element. For example, a \xmlelement{Controller} will have a \uaterm{BrowseName} of \texttt{Controller} and a \uaterm{HasTypeDefinition} referencing \texttt{ControllerType}.
+  \item The \uaterm{ObjectType} is only defined once for all \mtterm{Components} of that type. There is no \texttt{MT} prepended to the front of the \uaterm{ObjectType} \uaterm{BrowseName}.
+  \item If there are two \mtterm{Components} with the same \texttt{BrowseName}s or if the \mtterm{Component} are \xmlelement{Linear} or \xmlelement{Rotary}, they must have the \xmlattribute{name} attribute appended in square brackets (\texttt{[]}) to the name as specified in item \ref{item:component-browse-name}. 
+  \item For example, if there are two \xmlelement{Path} \mtterm{Components} with names \xmlattribute{name="P1"} and \xmlattribute{name="P2"}, the \uaterm{BrowseName}s will be as follows: \texttt{Path[P1]} and \texttt{Path[P2]} where each \uaterm{HaveTypeDefinition} of \texttt{PathType}.
 \end{enumerate}
 
 The rules for \mtterm{Composition} elements are as follows:
 
 \begin{enumerate}
-\item  \mtterm{Composition} elements in the MTConnect model will be represented instantiated with the \uaterm{BrowseName} of the \mtterm{Composition} \xmlattribute{type} converted to \textit{PascalCase}. \label{item:composition-browse-name}
-\item If two \mtterm{Composition} elements of the same \mtterm{Component} have the same \xmlattribute{type}, they must have the \xmlattribute{name} attribute appended in square brackets (\texttt{[]}) to the name as specified in item \ref{item:composition-browse-name}.
-\item For example, a component has two \xmlattribute{type="TANK"}s with the names \xmlattribute{name="top"} and \xmlattribute{name="bottom"}, the \uaterm{BrowseName}s will be \texttt{Tank[top]} and \texttt{Tank[bottom]} respectively.
-\item The type is placed is the \texttt{MTTypeName} \uaterm{Property}.
+  \item  \mtterm{Composition} elements in the MTConnect model will be represented instantiated with the \uaterm{BrowseName} of the \mtterm{Composition} \xmlattribute{type} converted to \textit{PascalCase}. \label{item:composition-browse-name}
+  \item If two \mtterm{Composition} elements of the same \mtterm{Component} have the same \xmlattribute{type}, they must have the \xmlattribute{name} attribute appended in square brackets (\texttt{[]}) to the name as specified in item \ref{item:composition-browse-name}.
+  \item For example, a component has two \xmlattribute{type="TANK"}s with the names \xmlattribute{name="top"} and \xmlattribute{name="bottom"}, the \uaterm{BrowseName}s will be \texttt{Tank[top]} and \texttt{Tank[bottom]} respectively.
+  \item The type is placed is the \texttt{MTTypeName} \uaterm{Property}.
 \end{enumerate}
 
 \subsubsection{\mtterm{DataItem} \uaterm{HasTypeDefinition} and \uaterm{BrowseName} Conventions}
-    \label{sec:data-item-conventions}
+\label{sec:data-item-conventions}
 
 The MTConnect \mtterm{DataItem} represents multiple OPC UA \uaterm{DataVariableType}s as well as UA \uaterm{ConditionType}s as described in parts \cite{UAPart8} and \cite{UAPart9} respectively. The mapping rules are as follows:
 
 \begin{enumerate}
-\item Determine the \mtterm{DataItem} \uaterm{Type} for the \uaterm{HasTypeDefinition} \uaterm{Reference}:
-    \begin{itemize}
+  \item Determine the \mtterm{DataItem} \uaterm{Type} for the \uaterm{HasTypeDefinition} \uaterm{Reference}:
+  \begin{itemize}
     \item Evaluate \xmlelement{DataItem} attributes as follows:
-        \begin{enumerate}
-        \setlength\itemsep{1em}
-        \item If the category is \texttt{CONDITION}, the type is \mtuatype{MTConditionType}.
-        
-        \item If the category is \texttt{SAMPLE}; apply the following rules:
-            \begin{enumerate}
-            \item If the \xmlattribute{type} is \texttt{PATH_POSITION} then the type is \mtuatype{MTThreeSpaceSampleType}.
-            \item Otherwise, the UA type is \mtuatype{MTSampleType}.
-            \end{enumerate}
-            
-        \item If the category is \texttt{EVENT}; apply the following rules:
-            \begin{enumerate}
-            \setlength\itemsep{1em}
-            \item If the \xmlattribute{type} is \texttt{ASSET_CHANGED} or \texttt{ASSET_REMOVED}; the UA type is \mtuatype{MTAssetEventType}
-            
-            \item Convert the \xmlattribute{type} attribite to \textit{PascalCase} and add \texttt{ClassType}.
-            
-            \item Find the MTConnect UA \uaterm{ClassType} that corresponds to the value computed in the previous step.
-            The types can be found in Sections \mtuamodel{ControlledVocabDataItemTypes}, \mtuamodel{NumericEventDataItemTypes}, and \mtuamodel{StringEventDataItemTypes}.
-            
-            \item If the \uaterm{ClassType} matches one of the \mtuamodel{StringEventDataItemTypes}; the MTConnect UA type is \mtuatype{MTStringEventType}.
-            
-            \item If the \uaterm{ClassType} matches one of the \mtuamodel{NumericEventDataItemTypes}; the MTConnect UA type is \mtuatype{MTNumericEventType}.
-            
-            \item If the \uaterm{ClassType} matches one of the  \mtuamodel{ControlledVocabDataItemTypes}, the MTConnect UA type is \mtuatype{MTControlledVocabEventType}. The \uaterm{EnumValues} will be assigned as follows:
-            \newline
-            
-            Each of the \uaterm{ClassType}s will have a property \mtterm{EnumValues}. The \uaterm{EnumValues} must reference the \mtterm{EnumValues} property of the \uaterm{ClassType}.
-            
-            \item Otherwise, the UA type is \mtuatype{MTStringEventType}. This will apply to all extended types.
-            \end{enumerate}
-        \end{enumerate}
-    \end{itemize}
-    
-\item Assign the \mtuatype{HasMTClassType} and \mtuatype{HasMTSubClassType} \uaterm{References}
     \begin{enumerate}
+      \setlength\itemsep{1em}
+      \item If the category is \texttt{CONDITION}, the type is \mtuatype{MTConditionType}.
+      
+      \item If the category is \texttt{SAMPLE}; apply the following rules:
+      \begin{enumerate}
+        \item If the \xmlattribute{type} is \texttt{PATH_POSITION} then the type is \mtuatype{MTThreeSpaceSampleType}.
+        \item Otherwise, the UA type is \mtuatype{MTSampleType}.
+      \end{enumerate}
+      
+      \item If the category is \texttt{EVENT}; apply the following rules:
+      \begin{enumerate}
+        \setlength\itemsep{1em}
+        \item If the \xmlattribute{type} is \texttt{ASSET_CHANGED} or \texttt{ASSET_REMOVED}; the UA type is \mtuatype{MTAssetEventType}
+        
+        \item Convert the \xmlattribute{type} attribite to \textit{PascalCase} and add \texttt{ClassType}.
+        
+        \item Find the MTConnect UA \uaterm{ClassType} that corresponds to the value computed in the previous step.
+        The types can be found in Sections \mtuamodel{ControlledVocabDataItemTypes}, \mtuamodel{NumericEventDataItemTypes}, and \mtuamodel{StringEventDataItemTypes}.
+        
+        \item If the \uaterm{ClassType} matches one of the \mtuamodel{StringEventDataItemTypes}; the MTConnect UA type is \mtuatype{MTStringEventType}.
+        
+        \item If the \uaterm{ClassType} matches one of the \mtuamodel{NumericEventDataItemTypes}; the MTConnect UA type is \mtuatype{MTNumericEventType}.
+        
+        \item If the \uaterm{ClassType} matches one of the  \mtuamodel{ControlledVocabDataItemTypes}, the MTConnect UA type is \mtuatype{MTControlledVocabEventType}. The \uaterm{EnumValues} will be assigned as follows:
+        \newline
+        
+        Each of the \uaterm{ClassType}s will have a property \mtterm{EnumValues}. The \uaterm{EnumValues} must reference the \mtterm{EnumValues} property of the \uaterm{ClassType}.
+        
+        \item Otherwise, the UA type is \mtuatype{MTStringEventType}. This will apply to all extended types.
+      \end{enumerate}
+    \end{enumerate}
+  \end{itemize}
+  
+  \item Assign the \mtuatype{HasMTClassType} and \mtuatype{HasMTSubClassType} \uaterm{References}
+  \begin{enumerate}
     \item Convert the \xmlelement{DataItem} \xmlattribute{type} attribute to \textit{PascalCase} and append \texttt{ClassType}. Assign the target of the \mtuatype{HasMTClassType} to the \uaterm{ObjectType}
     \item Put the text name of the class in the property \mtterm{MTTypeName}.
     \item Convert the \xmlelement{DataItem} \xmlattribute{subType} attribute to \textit{PascalCase} and append \texttt{SubClassType}. Assign the target of the \mtuatype{HasMTSubClassType} to the \uaterm{ObjectType}
     \item Put the text name of the class in the property \mtterm{MTSubTypeName}.
-    \end{enumerate}
-    
-\item Format the \uaterm{BrowseName} for the \mtterm{Sample} and \mtterm{Event} \mtterm{DataItem}s
-    \begin{enumerate}[after=\vspace{\baselineskip}]
+  \end{enumerate}
+  
+  \item Format the \uaterm{BrowseName} for the \mtterm{Sample} and \mtterm{Event} \mtterm{DataItem}s
+  \begin{enumerate}[after=\vspace{\baselineskip}]
     \setlength\itemsep{1em}
     \item If the \xmlelement{DataItem} attribute \xmlattribute{compositionId} is present, do the following:
-        \begin{enumerate}
-        \item Resolve the \xmlattribute{compositionId} to the \mtterm{Composition} XML element with that \xmlattribute{id}.
-        \item Set the variable \texttt{composition} to the \textit{PascalCase} of the \mtterm{Composition} attribute \xmlattribute{type}.
-        \end{enumerate}
-        Otherwise, set the variable \texttt{composition} to "".
+    \begin{enumerate}
+      \item Resolve the \xmlattribute{compositionId} to the \mtterm{Composition} XML element with that \xmlattribute{id}.
+      \item Set the variable \texttt{composition} to the \textit{PascalCase} of the \mtterm{Composition} attribute \xmlattribute{type}.
+    \end{enumerate}
+    Otherwise, set the variable \texttt{composition} to "".
     \item If the \xmlattribute{subType} is present, set the variable \texttt{subType} to the \textit{PascalCase} of the \xmlattribute{subType}. Otherwise set it the variable \texttt{subType} to "".
     \item Set the variable \texttt{type} to the \textit{PascalCase} of the \xmlelement{DataItem} attribute \xmlattribute{type}.
     \item The \uaterm{BrowseName} is the concatination of the \texttt{composition} + \texttt{subType} + \texttt{type}. \label{item:browse-name}.
     \item If the \xmlattribute{representation} attribute is given and it has a value other than the default \texttt{VALUE}, the \uaterm{BrowseName} will be have the \textit{PascalCase} of the \xmlattribute{representation} appended to the \uaterm{BrowseName}  as specified in \ref{item:browse-name} . For example, a \dataitem{AMPERAGE} with \xmlattribute{representation="TIME_SERIES"} will have a \uaterm{BrowseName} of \texttt{AmperageTimeSeries}. \label{item:representation}.
     \item If the \xmlattribute{statistic} is given, the \textit{PascalCase} of the \xmlattribute{statistic} attribute will be prepended to the \uaterm{BrowseName}  as specified in \ref{item:representation}. For example, if the \xmlattribute{statistic="AVERAGE"} for a \mtterm{DataItem} of \dataitem{AMPERAGE} and a \xmlattribute{representation} of \dataitem{TIME_SERIES}, the \uaterm{BrowseName} will be  \texttt{AverageAmperageTimeSeries}. \label{item:statistic}
     \item If two browse names are identical for the same component, the \xmlattribute{name} must be used to differentiate between the data items by placing the \xmlattribute{name} in square brackets (\texttt{[]}). For example, if there are two \dataitem{TEMPERATURE} data items with the attributes \xmlattribute{name="front"} and \xmlattribute{name="back"} the \mtterm{DataItem}s will have the \uaterm{BrowseName}s \texttt{Temperature[front]} and \texttt{Temperature[back]} respectively. \label{item:data-item-name}
-    \end{enumerate} 
+  \end{enumerate} 
 
-\item Format the \uaterm{BrowseName} for the \mtterm{Condition} \mtterm{DataItem}s
-    \begin{enumerate}
+  \item Format the \uaterm{BrowseName} for the \mtterm{Condition} \mtterm{DataItem}s
+  \begin{enumerate}
     \item Use the name derived in the previous step for \mtterm{Event}s and \mtterm{Sample}s as specified in item \ref{item:statistic} and append \texttt{Condition}. \label{item:condition-browse-name}
     \item Apply rule specified in item \ref{item:data-item-name} if two conditions have identical \uaterm{BrowseName}s to the result of item \ref{item:condition-browse-name}.
-    \end{enumerate}
-    
-\item The type is placed is the \texttt{MTTypeName} \uaterm{Property}.
+  \end{enumerate}
+  
+  \item The type is placed is the \texttt{MTTypeName} \uaterm{Property}.
 \end{enumerate}
 
 The examples below will provide further guidance on implementing these rules.
@@ -272,19 +272,19 @@ The examples below will provide further guidance on implementing these rules.
 OPC UA defines the EngineeringUnits \uaterm{DataType} in \cite{UAPart8} as having the fields show in Table~\ref{table:enineering-untis-data-type}.
 
 \begin{table}[ht]
-\centering 
+  \centering 
   \caption{\texttt{EngineeringUnits} DataType structure}
   \label{table:enineering-untis-data-type}
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X|X|X[3]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Name} & {Type} & Description \\
-\tabucline[1.5pt]{}
-namespaceUri & String & Identifies the organization (company, standards organization) that defines the EUInformation \\
-unitId & Int32 & Identifier for programmatic evaluation. -1 is used if a unitId is not available. \\
-displayName & LocalizedText & The displayName of the engineering unit is typically the abbreviation of the engineering unit, for example "h" for hour or "m/s" for meter per second. \\
-description & LocalizedText & Contains the full name of the engineering unit such as "hour" or "meter per second". \\
-\end{tabu}
+  \tabulinesep=3pt
+  \begin{tabu} to 6in {|X|X|X[3]|} \everyrow{\hline}
+    \hline
+    \rowfont\bfseries {Name} & {Type} & Description \\
+    \tabucline[1.5pt]{}
+    namespaceUri & String & Identifies the organization (company, standards organization) that defines the EUInformation \\
+    unitId & Int32 & Identifier for programmatic evaluation. -1 is used if a unitId is not available. \\
+    displayName & LocalizedText & The displayName of the engineering unit is typically the abbreviation of the engineering unit, for example "h" for hour or "m/s" for meter per second. \\
+    description & LocalizedText & Contains the full name of the engineering unit such as "hour" or "meter per second". \\
+  \end{tabu}
 \end{table} 
 
 In Table~\ref{table:mtconnect-to-ua-eu-mapping}, the mapping between the MTConnect units and the OPC UA EngineeringUnits structure has been specified. There is one unit type, \texttt{COUNT} that is unitless and therefor not mapped. The \texttt{COUNT} is only used with \mtterm{Events} and therefor is not an \uaterm{Analog Type}, and is instantiated as an \mtuatype{MTNumericEventType}.
@@ -294,58 +294,62 @@ The \uaterm{namespaceUri} will be set to \url{http://www.opcfoundation.org/UA/un
 The \texttt{MILLIMETER_3D} unit is special since it will be represented by the \mtuatype{MTThreeSpaceSampleType}. The individual values of the  \mtuadatatype{ThreeSpacePositionDataType} will be given in \textit{millimeters} and a \uaterm{displayName} of $mm(\mathbb{R}^{3})$; the \uaterm{EngineeringUnits} will be provided for consistency. The \uaterm{EURange} will not work since it cannot represent three space volumetric constraints and the\uaterm{EURange} \uaterm{Property} will not be created.
 
 \begin{table}[ht]
-\centering 
+  \centering 
   \caption{\texttt{EngineeringUnits} DataType structure}
   \label{table:mtconnect-to-ua-eu-mapping}
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[2.75]|X[0.75]|X|X|X[2]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {MTConnect Unit} & {UNECE Code} & {UnitId} & {Display Name} & {Description} \\
-\tabucline[1.5pt]{}
-AMPERE 	& AMP & 4279632 & $A$ & Amps \\
-CELSIUS	& CEL  & 4408652 & $^{\circ}Celsuis$ & Degrees Celsius \\
-\textcolor{red}{COUNT}	&   &  & & \textcolor{red}{A counted event \newline Cannot be used for EUInformation \vspace{2pt} } \\
-DECIBEL	& 2N & 12878 & $dB$ & Sound Level \\
-DEGREE	& DD & 17476 & $^{\circ}$  & degree [unit of angle] \\
-DEGREE/SECOND &	E96 & 4536630 & $^{\circ}/s$ & Angular degrees per second \\
-DEGREE/SECOND\^{}2 & M45 & 5059637 & $^{\circ}/s^{2}$ & Angular acceleration in degrees per second squared \\
-HERTZ & HTZ & 4740186 & $Hz$ & Frequency measured in cycles per second \\
-JOULE & JOU & 4869973 & $J$ & A measurement of energy. \\
-KILOGRAM & KGM & 4933453 & $kg$ & kilogram \\
-LITER & LTR & 5002322 & $l$ & Litre \\
-LITER/SECOND & G51 & 4666673 & $l/s$ & Litre per second \\
-MICRO_RADIAN & B97 & 4340023 & $\mu rad$ & microradian - Measurement of Tilt \\
-MILLIMETER & MMT & 5066068 & $mm$ & millimetre \\
-MILLIMETER/SECOND & C16 & 4403510 & $mm/s$ & millimetre per second \\
-MILLIMETER/SECOND\^{}2 & M41 & 5059633 & $mm/s^2$ & Acceleration in millimeters per second squared \\
-MILLIMETER_3D & MMT & 5066068 & $mm (\mathbb{R}^{3})$ & A point in space identified by X, Y, and Z positions and represented by a space delimited set of numbers each expressed in millimeters. \\
-\end{tabu}
+  \fontsize{9pt}{11pt}\selectfont
+  \tabulinesep=3pt
+  \begin{tabu} to 6in {|X[2.75]|X[0.75]|X|X|X[2]|} \everyrow{\hline}
+    \hline
+    \rowfont\bfseries {MTConnect Unit} & {UNECE Code} & {UnitId} & {Display Name} & {Description} \\
+    \tabucline[1.5pt]{}
+    AMPERE 	& AMP & 4279632 & $A$ & Amps \\
+    CELSIUS	& CEL  & 4408652 & $^{\circ}Celsuis$ & Degrees Celsius \\
+    \textcolor{red}{COUNT}	&   &  & & \textcolor{red}{A counted event \newline Cannot be used for EUInformation \vspace{2pt} } \\
+    DECIBEL	& 2N & 12878 & $dB$ & Sound Level \\
+    DEGREE	& DD & 17476 & $^{\circ}$  & degree [unit of angle] \\
+    DEGREE/SECOND &	E96 & 4536630 & $^{\circ}/s$ & Angular degrees per second \\
+    DEGREE/SECOND\^{}2 & M45 & 5059637 & $^{\circ}/s^{2}$ & Angular acceleration in degrees per second squared \\
+    HERTZ & HTZ & 4740186 & $Hz$ & Frequency measured in cycles per second \\
+    JOULE & JOU & 4869973 & $J$ & A measurement of energy. \\
+    KILOGRAM & KGM & 4933453 & $kg$ & kilogram \\
+    LITER & LTR & 5002322 & $l$ & Litre \\
+    LITER/SECOND & G51 & 4666673 & $l/s$ & Litre per second \\
+    MICRO_RADIAN & B97 & 4340023 & $\mu rad$ & microradian - Measurement of Tilt \\
+    MILLIMETER & MMT & 5066068 & $mm$ & millimetre \\
+    MILLIMETER/SECOND & C16 & 4403510 & $mm/s$ & millimetre per second \\
+    MILLIMETER/SECOND\^{}2 & M41 & 5059633 & $mm/s^2$ & Acceleration in millimeters per second squared \\
+    MILLIMETER_3D & MMT & 5066068 & $mm (\mathbb{R}^{3})$ & A point in space identified by X, Y, and Z positions and represented by a space delimited set of numbers each expressed in millimeters. \\
+    NEWTON & NEW & 5129559 & $N$ & Force in Newtons \\
+    NEWTON_METER & NU & 20053 & $N \cdot m$ & Torque, a unit for force times distance.  \\
+    OHM & OHM & 5195853 & $\Omega$ & Measure of Electrical Resistance \\
+    PASCAL & PAL & 5259596 & $Pa$ & Pressure in Newtons per square meter  \\
+    PASCAL_SECOND & C65 & 4404789 & $Pa \cdot s$ & Measurement of Viscosity \\
+    PERCENT	& P1  & 20529 & $\%\ or\ pct$ & Percent \\
+    PH & Q30 & 5321520 & $pH$ & pH (potential of Hydrogen) - A measure of the acidity or alkalinity of a solution \\
+    REVOLUTION/MINUTE & RPM & 5394509 & $r/min$ & revolutions per minute \\
+    SECOND	& SEC & 5457219 & $s$ & second [unit of time] \\
+  \end{tabu}
 \end{table}
 
+\clearpage
+
 \begin{table}[ht]
-\centering 
+  \centering 
   \caption{\texttt{EngineeringUnits} DataType structure (Continued)}
-\tabulinesep=3pt
-\begin{tabu} to 6in {|X[2.75]|X[0.75]|X|X|X[2]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {MTConnect Unit} & {UNECE Code} & {UnitId} & {Display Name} & {Description} \\
-\tabucline[1.5pt]{}
-NEWTON & NEW & 5129559 & $N$ & Force in Newtons \\
-NEWTON_METER & NU & 20053 & $N \cdot m$ & Torque, a unit for force times distance.  \\
-OHM & OHM & 5195853 & $\Omega$ & Measure of Electrical Resistance \\
-PASCAL & PAL & 5259596 & $Pa$ & Pressure in Newtons per square meter  \\
-PASCAL_SECOND & C65 & 4404789 & $Pa \cdot s$ & Measurement of Viscosity \\
-PERCENT	& P1  & 20529 & $\%\ or\ pct$ & Percent \\
-PH & Q30 & 5321520 & $pH$ & pH (potential of Hydrogen) - A measure of the acidity or alkalinity of a solution \\
-REVOLUTION/MINUTE & RPM & 5394509 & $r/min$ & revolutions per minute \\
-SECOND	& SEC & 5457219 & $s$ & second [unit of time] \\
-SIEMENS/METER & D10 & 4469040 & $S/m$ & siemens per metre - A measurement of Electrical Conductivity \\
-VOLT & VLT & 5655636 & $V$ & volt \\
-VOLT_AMPERE & D46 & 4469814 & $VA$ & volt - ampere \\
-VOLT_AMPERE_REACTIVE &  & -1 & $VAR$ & Volt-Ampere Reactive  (VAR) \\
-WATT & WTT & 5723220 & $W$ & watt \\
-WATT_SECOND & J55 & 4863285 & $W \cdot s$ & Measurement of electrical energy, equal to one Joule
-\end{tabu}
+  \fontsize{9pt}{11pt}\selectfont
+  \tabulinesep=3pt
+  \begin{tabu} to 6in {|X[2.75]|X[0.75]|X|X|X[2]|} \everyrow{\hline}
+    \hline
+    \rowfont\bfseries {MTConnect Unit} & {UNECE Code} & {UnitId} & {Display Name} & {Description} \\
+    \tabucline[1.5pt]{}
+    SIEMENS/METER & D10 & 4469040 & $S/m$ & siemens per metre - A measurement of Electrical Conductivity \\
+    VOLT & VLT & 5655636 & $V$ & volt \\
+    VOLT_AMPERE & D46 & 4469814 & $VA$ & volt - ampere \\
+    VOLT_AMPERE_REACTIVE &  & -1 & $VAR$ & Volt-Ampere Reactive  (VAR) \\
+    WATT & WTT & 5723220 & $W$ & watt \\
+    WATT_SECOND & J55 & 4863285 & $W \cdot s$ & Measurement of electrical energy, equal to one Joule
+  \end{tabu}
 \end{table} 
 
 \FloatBarrier
@@ -446,8 +450,8 @@ The \mtuatype{MTConditionsType} is decendent of the \uaterm{BaseEventType} descr
 
 The \uaterm{HasNotifier} reference must be created between the \texttt{SimpleCnc:}\mtuatype{MTDeviceType} object and the \texttt{Axes} object to allow for the events to flow down to the conditions for each of the components. The relationship of the condition in Figure~\ref{fig:linear-x-component} illustrates the relationships between the \element{Component} and the related condition in the notification hierarchy.
 
- The \texttt{Linear[x]} component uses a \uaterm{HasNotifier} reference sourced from the parent \texttt{Axes} \uaterm{Object}. The condition, having a \mtuatype{MTClassType} and a \uaterm{ConditionClassId} of \mtuatype{PositionClassType}, is connected to the \texttt{Linear[X]} axis with a \uaterm{HasCondition} relationship to indicate the souorce of the events for the \uaterm{ConditonType}.
- 
+The \texttt{Linear[x]} component uses a \uaterm{HasNotifier} reference sourced from the parent \texttt{Axes} \uaterm{Object}. The condition, having a \mtuatype{MTClassType} and a \uaterm{ConditionClassId} of \mtuatype{PositionClassType}, is connected to the \texttt{Linear[X]} axis with a \uaterm{HasCondition} relationship to indicate the souorce of the events for the \uaterm{ConditonType}.
+
 \FloatBarrier
 
 \paragraph{\element{Rotary} Axis and \mtterm{Condition} sources}
@@ -485,19 +489,19 @@ The data item on Line~\ref{line:rotary-mode} of Listing~\ref{lst:rotary-c-exampl
 In MTConnect, the value of this data item will never be \mtterm{UNAVAILABLE} since it is bound to a single value, it will always be present and have that value regardless of the connectivity state to the data source. Since the value is static and never changes, the \uaterm{Quality} will be \uaterm{Uncertain_SubstituteValue} if it is never provided. In the case of constraints on a controlled vocabulary, the \texttt{Values} must always be one of the related EnumValues. See \cite{MTCPart2} for details on the constraints and the relationship to the \mtterm{DataItem}s.
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/rotary-c-rotary-mode.png}
-    \caption{Rotary[C] Axis RotaryMode DataItem}
-    \label{fig:rotary-c-rotary-mode}
+  \centering
+  \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/rotary-c-rotary-mode.png}
+  \caption{Rotary[C] Axis RotaryMode DataItem}
+  \label{fig:rotary-c-rotary-mode}
 \end{figure}
 
 \FloatBarrier
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/rotary-c-rotary-velocity.png}
-    \caption{Rotary[C] Axis RotaryVelocity DataItem}
-    \label{fig:rotary-c-rotary-velocity}
+  \centering
+  \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/rotary-c-rotary-velocity.png}
+  \caption{Rotary[C] Axis RotaryVelocity DataItem}
+  \label{fig:rotary-c-rotary-velocity}
 \end{figure}
 
 Figure~\ref{fig:rotary-c-rotary-velocity} corresponds to Lines~\ref{line:programmed-rotary-velocity}-\ref{line:actual-rotary-velocity} of Figure~\ref{fig:rotary-c-rotary-velocity}--the two rotary velocity data items differentiated by their \xmlattribute{subType}s of \texttt{ACTUAL} and \texttt{PROGRAMMED}. In this case they share many of the same property values. The \mtterm{HasMTSubClassType} references the \mtuatype{ActualSubClassType} and the \mtuatype{ProgrammedSubClassType} respectively.
@@ -513,10 +517,10 @@ If the \uaterm{Constraints} are given with both \mtterm{Maximum} and \mtterm{Min
 Figure~\ref{fig:rotary-c-load} represents the \dataitem{Load} \mtterm{DataItem} for Listing~\ref{lst:rotary-c-example} Line~\ref{line:rotary-c-load} as an example of a \mtuatype{MTSampleType} with a \xmlattribute{units="PERCENT"} and mapped to the \uaterm{EngineeringUnits} for \uaterm{Percent}. There is no \mtterm{Constraints} so the \mtterm{EURange} is not provided as specified in 
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/rotary-c-load.png}
-    \caption{Rotary[C] Axis Load DataItem}
-    \label{fig:rotary-c-load}
+  \centering
+  \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/rotary-c-load.png}
+  \caption{Rotary[C] Axis Load DataItem}
+  \label{fig:rotary-c-load}
 \end{figure}
 
 \FloatBarrier
@@ -526,10 +530,10 @@ Figure~\ref{fig:rotary-c-amperage} illustrates the \mtterm{Amperage} \mtterm{Dat
 As stated above, the \uaterm{HasNotifier} \uaterm{References} must be established between all \mtterm{Components} back to the \mtuatype{MTDeviceType} that has a reference from the \uaterm{Server}. The \texttt{MotorAmperage} and \texttt{MotorAmperageCondition} demonstrate the naming rule where the Composition type is converted to \textit{PascalCase} and then prepended to the \mtterm{DataItem} \xmlattribute{type}. 
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/rotary-c-amperage.png}
-    \caption{Rotary[C] Axis Motor Amperage DataItem}
-    \label{fig:rotary-c-amperage}
+  \centering
+  \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/rotary-c-amperage.png}
+  \caption{Rotary[C] Axis Motor Amperage DataItem}
+  \label{fig:rotary-c-amperage}
 \end{figure}
 
 \FloatBarrier
@@ -570,10 +574,10 @@ The MTConnect information model does not differentiate between the two controlle
 The \mtterm{Controller} has two \mtterm{DataItems}, \mtterm{Message} and \mtterm{EmergencyStop} as shown in Figure~\ref{fig:controller-component}. The \mtuatype{MTMessageType} is of special note since it is not a \uaterm{VariableType}, but it is an \uaterm{EventType} and decended from the \uaterm{SystemEventType} class described in \cite{UAPart5}.
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/controller-component.png}
-    \caption{Controller Component and Data Items}
-    \label{fig:controller-component}
+  \centering
+  \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/controller-component.png}
+  \caption{Controller Component and Data Items}
+  \label{fig:controller-component}
 \end{figure}
 
 Figure~\ref{fig:path-component} illustrates the \mtterm{Path} component. Many of the \mtterm{DataItems} types have been covered in prior examples, so the \mtterm{Path} will only focus on the \mtterm{DataItems} that have differentiated features. Those \mtterm{DataItem}s will be represented without additional properties or relations.
@@ -585,10 +589,10 @@ The \mtuatype{MTThreeSpaceSampleType} uses the \mtuatype{ThreeSpacePositionDataT
 The two \mtterm{Conditions} in this component capable of branching. The model will use the \uaterm{BranchId} in this case. This occurs when there are multiple simultaneous problems with either the logic or motion program in the controller. These cases will be discussed in the section on the streaming data.
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/path-component.png}
-    \caption{Path Component and Data Items}
-    \label{fig:path-component}
+  \centering
+  \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/path-component.png}
+  \caption{Path Component and Data Items}
+  \label{fig:path-component}
 \end{figure}
 
 \FloatBarrier
@@ -651,10 +655,10 @@ The following example is the \xmlelement{Electric} system of the machine. The to
 \end{lstlisting}
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/electric-system.png}
-    \caption{Electric System Component First Set}
-    \label{fig:electric-system}
+  \centering
+  \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/electric-system.png}
+  \caption{Electric System Component First Set}
+  \label{fig:electric-system}
 \end{figure}
 
 In the first set of \mtterm{DataItems} from Listing~\ref{lst:electric-system} as shown in Figure~\ref{fig:electric-system}, the first data item on line~\ref{line:electric-temp-60} has a period filter that is represented in the OPC UA \uaterm{Object} Temperature as a \mtterm{PeriodFilter} \uaterm{Property} with a value of 60.0. The period filters only recognize changes to data if the change after a period of the given value, in this case 60 seconds. This will only publish changed data every minute in this instance.
@@ -668,10 +672,10 @@ The second set of \mtterm{DataItems} starting on line~\ref{line:electric-amperag
 The \texttt{AverageAmperage} on line~\ref{line:electric-average-amperage} has a \mtterm{ResetTrigger} that is added to the meta data indicating that the \mtterm{Average} statistic is taken until the current \mtterm{Action} has \mtterm{Completed} as defined by the process. This \mtterm{DataItem} will only update on when the \mtterm{ResetTrigger} fires. {\color{red} Need to add the status codes to represent the reset triggers as Good_...}.
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/electric-system-2.png}
-    \caption{Electric System Component Second Set}
-    \label{fig:electric-system-2}
+  \centering
+  \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/electric-system-2.png}
+  \caption{Electric System Component Second Set}
+  \label{fig:electric-system-2}
 \end{figure}
 
 \FloatBarrier
@@ -702,7 +706,7 @@ The following example in Listing~\ref{lst:coolant-system} demonstrates the situa
                 <Composition id="aa373750" type="TANK" name="reserve"/>
               </Compositions>
             </Coolant>
- \end{lstlisting}
+\end{lstlisting}
 
 Figure~\ref{fig:coolant-system} presents the two coolant systems with names \texttt{high} and \texttt{low}. They are identical, each composed of two \mtterm{Tank} compositions and each with two data items indication the \mtterm{Fill Level} of the main and reserve \mtterm{Tank}. The naming follows the rules for \texttt{TankFillLevel[low_main_level]} and \texttt{TankFillLevel[low_reserve_level]} for the \texttt{low} \mtterm{Coolant System}. 
 
@@ -713,10 +717,10 @@ In this case the \mtterm{Composition} name is converted to \textit{PascalCase} a
 The two \mtterm{Tank} compositions have similar treatment where they are named \texttt{Tank[main]} and \texttt{Tank[reserve]} for each of the two components. The \mtterm{DataItems} then refer to each of the appropriate tanks to correctly reference the composition they are associated with. What is not show in the Figure~\ref{fig:coolant-system} is the \mtuatype{FillLevelClassType} to save space. Each of the \mtterm{DataItems} will have a \mtterm{HasMTClassType} reference to the \uaterm{ClassType}.
 
 \begin{figure}[ht]
-    \centering
-    \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/coolant-system.png}
-    \caption{Coolant System}
-    \label{fig:coolant-system}
+  \centering
+  \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/coolant-system.png}
+  \caption{Coolant System}
+  \label{fig:coolant-system}
 \end{figure}
 
 \FloatBarrier
@@ -756,7 +760,7 @@ Listing~\ref{lst:streams-header} is an example of the \textit{XML Root Element} 
       </ComponentStream>
 \end{lstlisting}
 
- MTConnect flattens the structure when reporting data and organizes it by \mtterm{Device}, \mtterm{Component} and \mtterm{Category}; this is shown in  Listing~\ref{lst:linear-component-stream} Line~\ref{line:component-stream} with the \xmlelement{DeviceStream}, \xmlelement{ComponentStream}, and \xmlelement{Samples} elements (not shown are the \xmlelement{Events} and \xmlelement{Condition} elements that will be address later). When the data stream is initialized or when it disconnects, the MTConnect \mtterm{DataItem Value} is set to \texttt{UNAVAILABLE} as shown on Line~\ref{line:pos-unavilable}.
+MTConnect flattens the structure when reporting data and organizes it by \mtterm{Device}, \mtterm{Component} and \mtterm{Category}; this is shown in  Listing~\ref{lst:linear-component-stream} Line~\ref{line:component-stream} with the \xmlelement{DeviceStream}, \xmlelement{ComponentStream}, and \xmlelement{Samples} elements (not shown are the \xmlelement{Events} and \xmlelement{Condition} elements that will be address later). When the data stream is initialized or when it disconnects, the MTConnect \mtterm{DataItem Value} is set to \texttt{UNAVAILABLE} as shown on Line~\ref{line:pos-unavilable}.
 
 MTConnect only reports data when it changes, and each change is assigned a monotonically increasing \mtterm{sequence} number when it arrives at the \textit{MTConnect Agent}. In addition to the \mtterm{sequence} number; the XML attribute \xmlattribute{timestamp} indicates the time the observation was made. The \xmlattribute{timestamp} is used when setting the \uaterm{Variable} \uaterm{Time} along with the data and status. The data is only reported when it changes except for \mtterm{DataItems} with the \mtterm{representation} of \texttt{DISCRETE} indicating that each value has a discrete meaning, such as a \mtterm{PartCount} where each count indicates an accrual of that many parts. {\color{red} It is unclear how to achieve this in OPC UA, possible with events as is being done with \mtuatype{MTMessageType}}.
 
@@ -798,7 +802,7 @@ The \mtuatype{MTStringEventType} and \mtuatype{MTNumericEventType} \mtterm{DataI
 In Listing~\ref{lst:path-component-stream} on Line~\ref{line:prog-430}, the string value will be assigned to the \mtterm{Program} \mtterm{DataItem} in the \mtterm{Path} component. The following Line~\ref{line:pc-603} representing the \xmlelement{PartCount} will be converted to a numeric value, in this case an \uaterm{Int32} and assigned to the \uaterm{Value}.
 
 All extended event types will be treated as \mtuatype{MTStringEventType}s since it can support any value. It will be the responsibility of the application to interpret the value based on the extended \uaterm{ClassType} associated with the \uaterm{Variable}.
- 
+
 \subsubsection{Controlled Vocabulary Events}
 
 Controlled Vocabularies are represented as \mtuatype{MTControlledVocabEventType} which is a subtype of the \uaterm{MultiStateValueDiscreteType}. The \uaterm{MultiStateValueDiscreteType} requires an integer index to be used for the \uaterm{Value}, so the text given in MTConnect must be looked up in the \uaterm{Ennumerations} in the \texttt{EnumValues} \uaterm{Property} of the \mtterm{ClassType} referenced by the \mtterm{HasMTTypeClass} association. The index can be found by matching the \texttt{CDATA} to the \uaterm{Fields} in the \uaterm{Enumeration}.
@@ -806,20 +810,20 @@ Controlled Vocabularies are represented as \mtuatype{MTControlledVocabEventType}
 Referring to Listing~\ref{lst:path-component-stream} Line~\ref{line:cmode-255}, the values of the \texttt{CDATA} represent the allowed enumerations in the \mtuaenum{ControllerModeDataType} as shown in Table~\ref{table:example-ControllerModeDataType}. In this case the value from mtconnect is \texttt{AUTOMATIC} and is looked up in the associated \uaterm{EnumerationDataType} and the integer value is assigned to the \uaterm{Value} of the \mtuatype{MTControlledVocabEventType} instance, in this example the value will be \texttt{0} for \texttt{AUTOMATIC}.
 
 \begin{table}[ht]
-\centering 
+  \centering 
   \caption{\texttt{ControllerModeDataType} Enumeration}
   \label{table:example-ControllerModeDataType}
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Name} & {Index} \\
-\tabucline[1.5pt]{}
-\texttt{AUTOMATIC} & \texttt{0} \\
-\texttt{EDIT} & \texttt{1} \\
-\texttt{MANUAL} & \texttt{2} \\
-\texttt{MANUAL_DATA_INPUT} & \texttt{3} \\
-\texttt{SEMI_AUTOMATIC} & \texttt{4} \\
-\end{tabu}
+  \tabulinesep=3pt
+  \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+    \hline
+    \rowfont\bfseries {Name} & {Index} \\
+    \tabucline[1.5pt]{}
+    \texttt{AUTOMATIC} & \texttt{0} \\
+    \texttt{EDIT} & \texttt{1} \\
+    \texttt{MANUAL} & \texttt{2} \\
+    \texttt{MANUAL_DATA_INPUT} & \texttt{3} \\
+    \texttt{SEMI_AUTOMATIC} & \texttt{4} \\
+  \end{tabu}
 \end{table} 
 
 The \uaterm{SourceTimestamp} and \uaterm{Quality} will be handled as described in Section~\ref{sec:sting-numeric-events} for \mtterm{String and Numeric Events}.
@@ -850,35 +854,35 @@ The instance of the \mtuatype{MTConditionType} will contain the last state of th
 
 The \uaterm{ConditionType} and \uaterm{EventType} properties will be set as follows:
 
- \begin{description}[font=\it\bfseries,labelindent=4em,labelwidth=6em,leftmargin=!]    
-    \item[EnableState]
-    \begin{itemize}
-        \item If the \xmlelement{QName} is \xmlelement{Unavailable}, \uaterm{EnableState} is \uaterm{False}
-        \item Otherwise, \uaterm{EnableState} is \uaterm{True}
-    \end{itemize}
-    \vspace{1em}
-    \item[Severity]
-    \begin{itemize}
-        \item When \xmlelement{Normal}, \uaterm{Severity} is 0.
-        \item When \xmlelement{Warning}, \uaterm{Severity} is 500.
-        \item When \xmlelement{Fault}, \uaterm{Severity} is 1000.
-    \end{itemize}
-    \vspace{1em}
-    \item[Retain]
-    \begin{itemize}
-        \item When \mtterm{Normal}, \uaterm{False}
-        \item When \mtterm{Warning} or \mtterm{Fault}, \uaterm{True}
-    \end{itemize}
-    \vspace{1em}
-    \item[Message] Set from the \xmlelement{CDATA}
-    \item[Time] \xmlattribute{timestamp}
-    \item[NodeId] The \uaterm{NodeId} of the \uaterm{Event} is set to the \uaterm{NodeId} of the \mtuatype{MTConditionType} \uaterm{Object} instance.
-    \item[Message] The \xmlelement{CDATA} of the \mtterm{Condition} when \xmlelement{Normal} or \xmlelement{Warning}.
-    \item[\ldots] The remaining \uaterm{Properties} will be set from the XML attributes of the same name.
+\begin{description}[font=\it\bfseries,labelindent=4em,labelwidth=6em,leftmargin=!]    
+  \item[EnableState]
+  \begin{itemize}
+    \item If the \xmlelement{QName} is \xmlelement{Unavailable}, \uaterm{EnableState} is \uaterm{False}
+    \item Otherwise, \uaterm{EnableState} is \uaterm{True}
+  \end{itemize}
+  \vspace{1em}
+  \item[Severity]
+  \begin{itemize}
+    \item When \xmlelement{Normal}, \uaterm{Severity} is 0.
+    \item When \xmlelement{Warning}, \uaterm{Severity} is 500.
+    \item When \xmlelement{Fault}, \uaterm{Severity} is 1000.
+  \end{itemize}
+  \vspace{1em}
+  \item[Retain]
+  \begin{itemize}
+    \item When \mtterm{Normal}, \uaterm{False}
+    \item When \mtterm{Warning} or \mtterm{Fault}, \uaterm{True}
+  \end{itemize}
+  \vspace{1em}
+  \item[Message] Set from the \xmlelement{CDATA}
+  \item[Time] \xmlattribute{timestamp}
+  \item[NodeId] The \uaterm{NodeId} of the \uaterm{Event} is set to the \uaterm{NodeId} of the \mtuatype{MTConditionType} \uaterm{Object} instance.
+  \item[Message] The \xmlelement{CDATA} of the \mtterm{Condition} when \xmlelement{Normal} or \xmlelement{Warning}.
+  \item[\ldots] The remaining \uaterm{Properties} will be set from the XML attributes of the same name.
 \end{description}
 
 \begin{quote}
-    \color{red} TODO: Need to handle branching based on \xmlattribute{nativeCode}.
+  \color{red} TODO: Need to handle branching based on \xmlattribute{nativeCode}.
 \end{quote}
 
 \subsubsection{Messages}
@@ -886,12 +890,12 @@ The \uaterm{ConditionType} and \uaterm{EventType} properties will be set as foll
 The \mtuatype{MTMessageType} will be instantiated as an \uaterm{Object} and each time a \mtterm{Message} occurs. The values from the last event will be recorded in the \uaterm{Object} and the \uaterm{Event} \uaterm{Properties} and \uaterm{Attributes} will be set as follows: 
 
 \begin{description}[font=\it\bfseries,labelindent=4em,labelwidth=6em,leftmargin=!]    
-    \item[Severity] Fixed at 1 as the lowest severity of an \uaterm{Event}
-    \item[Message] Set from the \xmlelement{CDATA}
-    \item[Time] \xmlattribute{timestamp}
-    \item[NodeId] The \uaterm{NodeId} of the \uaterm{Event} is set to the \uaterm{NodeId} of the \mtuatype{MTMessageType} \uaterm{Object} instance.
-    \item[Message] The \xmlelement{CDATA} of the \mtterm{Condition} when \xmlelement{Normal} or \xmlelement{Warning}.
-    \item[\ldots] The remaining \uaterm{Properties} will be set from the XML attributes of the same name.
+  \item[Severity] Fixed at 1 as the lowest severity of an \uaterm{Event}
+  \item[Message] Set from the \xmlelement{CDATA}
+  \item[Time] \xmlattribute{timestamp}
+  \item[NodeId] The \uaterm{NodeId} of the \uaterm{Event} is set to the \uaterm{NodeId} of the \mtuatype{MTMessageType} \uaterm{Object} instance.
+  \item[Message] The \xmlelement{CDATA} of the \mtterm{Condition} when \xmlelement{Normal} or \xmlelement{Warning}.
+  \item[\ldots] The remaining \uaterm{Properties} will be set from the XML attributes of the same name.
 \end{description}
 
 \subsection{Time Series Samples}
@@ -917,13 +921,13 @@ In MTConnect, the \mtterm{DataItem} element QName in the \mtterm{Streams} docume
 All \mtterm{DataItems} with \xmlattribute{representation} of \xmlattribute{TIME_SERIES} when reported in the \mtterm{Streams} document require the attribute \mtterm{sampleCount} to give the number of entries in the space delimited series. MTConnect specifies in \cite{MTCPart3} that the \xmlattribute{timestamp} is reported at the time of the last observation. To compute the timestamp for each observation, use the follow procedure.
 
 \begin{align}
-    \delta =& \frac{1}{sampleRate}\ s \label{eqn:ts-delta} \\
-    timestamp_1 =& timestamp_a - (\delta \times sampleCount\ s) \label{eqn:ts-first} \\
-    timestamp_2 =& timestamp_1 + \delta  \label{eqn:ts-second} \\
-    timestamp_n =& timestamp_1 + \delta \times n \label{eqn:ts-n}
+  \delta =& \frac{1}{sampleRate}\ s \label{eqn:ts-delta} \\
+  timestamp_1 =& timestamp_a - (\delta \times sampleCount\ s) \label{eqn:ts-first} \\
+  timestamp_2 =& timestamp_1 + \delta  \label{eqn:ts-second} \\
+  timestamp_n =& timestamp_1 + \delta \times n \label{eqn:ts-n}
 \end{align}
 \begin{quote}
-    Where $timestamp_a$ is the \xmlattribute{timestamp} given as the XML Attribute.
+  Where $timestamp_a$ is the \xmlattribute{timestamp} given as the XML Attribute.
 \end{quote}
 
 When mapping \mtterm{Time Series} to OPC UA, for each value in the series, compute the observation time as specified above and then update the UA \uaterm{Value} with the \uaterm{Time} set to the $timestamp_n$ for the $n^{th}$ entry in the series. Do this once for every entry in the series causing \xmlattribute{sampleCount} updates per MTConnet \mtterm{Time Series} mtterm{Element}.
@@ -931,7 +935,12 @@ When mapping \mtterm{Time Series} to OPC UA, for each value in the series, compu
 The $\delta$ in Equation~\ref{eqn:ts-delta} is the time interval for each sample and by subtracting the $\delta \times sampleCount$ seconds, the given in Equation~\ref{eqn:ts-first} is the first timestamp in the series. Every other timestamp can be derived by adding the $\delta \times n$ as showin in Equation~\ref{eqn:ts-n} to the first timestamp. One can also arrive at the same result by taking the \xmlattribute{timestamp} and counting backward from the last, where $r$ is the reverse index starting at 0, $r \times \delta$ seconds from $timestamp_a$.
 
 \begin{quote}
-    \color{red} Can OPC UA handle 100 or 1khz update rates?
+  \color{red} Can OPC UA handle 100 or 1khz update rates?
 \end{quote}
 
 Time series timestamps will often be contiguous when giving a stream of values for audio displacement or other series that must be reassembled. In Listing~\ref{lst:electric-timeseries}, each set of ten values are separated by 0.10 seconds which will allow for a 100hz sample frequence and continuous values from the sensor. The format is more efficient and allows for communication of waveform and high frequency data.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:

@@ -669,7 +669,11 @@ The following \mtterm{DataItem} on line~\ref{line:electric-voltage-10} has a \mt
 
 The second set of \mtterm{DataItems} starting on line~\ref{line:electric-amperage} shown in Figure~\ref{fig:electric-system-2} shows the relationship between the conditions and the other \mtterm{DataItems}. As has been shown before the conditions here are both related to a \mtterm{DataItem} that is the source of the \mtterm{Condition}. The \mtterm{DataItem} therefor has a \uaterm{HasCondition} relationship to the \uaterm{Condition} and the \mtterm{Component} has a \uaterm{HasEventSource} relationship to the \mtterm{DataItem}. 
 
-The \texttt{AverageAmperage} on line~\ref{line:electric-average-amperage} has a \mtterm{ResetTrigger} that is added to the meta data indicating that the \mtterm{Average} statistic is taken until the current \mtterm{Action} has \mtterm{Completed} as defined by the process. This \mtterm{DataItem} will only update on when the \mtterm{ResetTrigger} fires. {\color{red} Need to add the status codes to represent the reset triggers as Good_...}.
+The \texttt{AverageAmperage} on line~\ref{line:electric-average-amperage} has a \mtterm{ResetTrigger}, specified using the \texttt{ResetTrigger} element having \texttt{CDATA} \texttt{ACTION_COMPLETE}, indicating that the \mtterm{Average} statistic is taken only when the current \mtterm{Action} has \mtterm{Completed}, as defined by the process. This \mtterm{DataItem} will only update on when the \mtterm{ResetTrigger} fires.
+
+\begin{quote}
+  {\color{red} TODO: As discussed in the WG, there will need to be status codes to represent the reset triggers as Good_... indicating that this value is due to a reset}.
+\end{quote}
 
 \begin{figure}[ht]
   \centering
@@ -686,26 +690,26 @@ The following example in Listing~\ref{lst:coolant-system} demonstrates the situa
 
 \begin{lstlisting}[firstnumber=last,,escapechar=|,%
     caption={Coolant System and Sensor Configuration},label={lst:coolant-system}]
-            <Coolant id="x5ef9730" name="low">
-              <DataItems>
-                <DataItem id="r25176b0" type="FILL_LEVEL" category="SAMPLE" units="PERCENT" name="low_main_level" compositionId="t59d1170"/>
-                <DataItem id="obc97840" type="FILL_LEVEL" category="SAMPLE" units="PERCENT" name="low_reserve_level" compositionId="a7973930"/>
-              </DataItems>
-              <Compositions>
-                <Composition id="t59d1170" type="TANK" name="main"/>
-                <Composition id="a7973930" type="TANK" name="reserve"/>
-              </Compositions>
-            </Coolant>
-            <Coolant id="b36e0070" name="high">
-              <DataItems>
-                <DataItem id="q94f81e0" type="FILL_LEVEL" category="SAMPLE" units="PERCENT" name="high_main_level" compositionId="a59bd5b0"/>
-                <DataItem id="wf2848e0" type="FILL_LEVEL" category="SAMPLE" units="PERCENT" name="high_reserve_level" compositionId="aa373750"/>
-              </DataItems>
-              <Compositions>
-                <Composition id="a59bd5b0" type="TANK" name="main"/>
-                <Composition id="aa373750" type="TANK" name="reserve"/>
-              </Compositions>
-            </Coolant>
+<Coolant id="x5ef9730" name="low">
+  <DataItems>
+    <DataItem id="r25176b0" type="FILL_LEVEL" category="SAMPLE" units="PERCENT" name="low_main_level" compositionId="t59d1170"/>
+    <DataItem id="obc97840" type="FILL_LEVEL" category="SAMPLE" units="PERCENT" name="low_reserve_level" compositionId="a7973930"/>
+  </DataItems>
+  <Compositions>
+    <Composition id="t59d1170" type="TANK" name="main"/>
+    <Composition id="a7973930" type="TANK" name="reserve"/>
+  </Compositions>
+</Coolant>
+<Coolant id="b36e0070" name="high">
+  <DataItems>
+    <DataItem id="q94f81e0" type="FILL_LEVEL" category="SAMPLE" units="PERCENT" name="high_main_level" compositionId="a59bd5b0"/>
+    <DataItem id="wf2848e0" type="FILL_LEVEL" category="SAMPLE" units="PERCENT" name="high_reserve_level" compositionId="aa373750"/>
+  </DataItems>
+  <Compositions>
+    <Composition id="a59bd5b0" type="TANK" name="main"/>
+    <Composition id="aa373750" type="TANK" name="reserve"/>
+  </Compositions>
+</Coolant>
 \end{lstlisting}
 
 Figure~\ref{fig:coolant-system} presents the two coolant systems with names \texttt{high} and \texttt{low}. They are identical, each composed of two \mtterm{Tank} compositions and each with two data items indication the \mtterm{Fill Level} of the main and reserve \mtterm{Tank}. The naming follows the rules for \texttt{TankFillLevel[low_main_level]} and \texttt{TankFillLevel[low_reserve_level]} for the \texttt{low} \mtterm{Coolant System}. 

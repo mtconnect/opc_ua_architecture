@@ -36,15 +36,17 @@
     \node [blockred, left of=internalapi, node distance =2.3cm] (mtcagent) {MTConnect Agent};
     \node [blockblue, right of=internalapi, node distance =2.3cm] (devicehardware) {Device Hardware};
     
+    \coordinate [left of = mtcopcgateway, node distance = 3.5cm ] (a);
+    \coordinate [below of = mtcopcgateway, node distance = 3cm ] (b);
     % Draw edges
     \path [line] (mtcopcgateway) -- (opcuaclient);
     \path [line]  (opcuaclient) -- (mtcopcgateway);
-    \path [line] (mtcopcgateway) |- (genericopcuaclient);
-    \path [line] (mtcopcgateway) |- (mtcopcclient);
-    \path [line] (genericopcuaclient) -| (mtcopcgateway);
-    \path [line] (mtcopcclient) -| (mtcopcgateway);
-    \path [line] (parentnode) -- (mtcopcgateway);
-    \path [line] (mtcopcgateway) -- (parentnode);
+    \path [line] (mtcopcgateway) -- (a) |- (genericopcuaclient);
+    \path [line] (mtcopcgateway) --(a)  |- (mtcopcclient);
+    \path [line] (genericopcuaclient) -| (a) -- (mtcopcgateway);
+    \path [line] (mtcopcclient) -| (a) -- (mtcopcgateway);
+    \path [line] (mtcagent) |- (b) -- (mtcopcgateway);
+    \path [line] (mtcopcgateway) -- (b) -| (mtcagent);
     \path [line] (mtcapplication) -- (mtcagent);
     \path [line] (mtcagent) -- (mtcapplication);
     \end{tikzpicture}

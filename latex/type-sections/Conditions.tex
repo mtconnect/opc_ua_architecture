@@ -1,4 +1,4 @@
-The \mtterm{Condition} \mtterm{DataItem} \mtterm{category} in MTConnect is the mechanism for reporting alarms on the machine classified by type and subType–such as an overload of a motor or high temperature or a collection of system level warnings or faults.
+The \mtterm{Condition} \mtterm{DataItem} \mtterm{category} in MTConnect is the mechanism for reporting alarms on the machine classified by type and subType--such as an overload of a motor or high temperature or a collection of system level warnings or faults.
 
 The earlier \mtterm{Alarm} \mtterm{Event} facility changed to a more state-based architecture where the \mtterm{Condition} was in one of the following three states: Normal – everything is fine, Warning – something is going wrong, but may self-correct, to Fault – a failure that needs manual attention. The change was to address the semantic classification of \mtterm{Alarms} and remove ambiguity about the \mtterm{Alarm} severity.
 
@@ -12,4 +12,4 @@ The Condition uses the attribute \xmlattribute{nativeCode} as you use the Branch
 
 The documentation for the condition behavior in MTConnect can be found in Section 5.7 and 5.8 of \cite{MTCPart3} and an overview in \cite{MTCPart2}.
 
-The MTConnect Data Item with Category of \texttt{CONDITION} are mapped to the OPC UA \uaterm{ConditionType}s  in \cite{UAPart9} with a \uaterm{TwoStateVariableType} that represents the current state of the all the active \uaterm{branches} of this \mtterm{Condition}.
+The MTConnect Data Item with Category of \texttt{CONDITION} are mapped to the OPC UA \uaterm{ConditionType}s  in \cite{UAPart9} with a \uaterm{TwoStateVariableType} that represents the current state of all the active \uaterm{branches} of this \mtterm{Condition}.

@@ -4,14 +4,14 @@ This is a non-exhaustive list illustrating the benefits of the  information mode
 
 \subsection{Device Maker}
 
-Figure \ref{fig:devicemanufacturingusecase}, illustrates the use case for a manufacturer of a piece of equipment (device) that needs to connect to other systems. OPC UA provides the network interface technologies and the MTConnect semantics supply meaning and structure to device data. Figure \ref{fig:devicemanufacturingusecase} shows several clients developed for different purposes that can access information produced by the device via OPC UA.
+Figure \ref{fig:devicemanufacturingusecase}, illustrates the use case for a manufacturer of a piece of equipment (device) that needs to connect to other systems. OPC UA provides the network interface technologies and the MTConnect semantics provide meaning and structure to device data. Figure \ref{fig:devicemanufacturingusecase} shows several clients developed for different purposes that can access information produced by the device via OPC UA.
 
 \input diagrams/DeviceManufacturingUseCase.tex
 \FloatBarrier
 
 The MTConnect or OPC UA interface may reside directly in the machine or in a separate device that communicates with the machine. The actual location for the interface is up to the implementer.
 
-The device manufacturer may also have a native MTConnect device and make use of an MTConnect to OPC UA gateway to provide  information to OPC UA aware clients (see Figure \ref{fig:devicemanufacturernativemtconnect} and Figure \ref{fig:devicemanufacturerseparateagent}); this companion specification allows for easy information flow between Client and Server that support either MTConnect or OPC UA.
+The device manufacturer may also have a native MTConnect device and make use of an MTConnect to OPC UA gateway to provide  information to OPC UA aware clients (see Figure \ref{fig:devicemanufacturernativemtconnect} and Figure \ref{fig:devicemanufacturerseparateagent}); this companion specification allows for easy information flow between clients and servers that support either MTConnect or OPC UA.
 
 
 
@@ -30,7 +30,7 @@ Figure \ref{fig:isvusecase} illustrates the use case for an Independent Software
 
 \subsection{End-User Engineer}
 
-Figure \ref{fig:enduserusecase} illustrates the use case for an engineer or systems integrator setting up and configuring an MTConnect enabled system for an equipment user. The engineer is familiar with MTConnect but needs to configure OPC UA client applications. This companion specification shows the engineer how MTConnect concepts are represented in OPC UA in order to configure OPC UA applications. Without this specification, an engineer would have to manually map each tag to MTConnect concepts. This specification eliminates the need for that mapping and reduces reliance on vendor documentations.  Figure \ref{fig:enduserusecase} shows how the common Information Model defined by this specification gives the End User Engineer choices when it comes to accessing device data.
+Figure \ref{fig:enduserusecase} illustrates the use case for an engineer or systems integrator setting up and configuring an MTConnect enabled system for an equipment user. The engineer is familiar with MTConnect but needs to configure OPC UA client applications. This companion specification shows the engineer how MTConnect concepts are represented in OPC UA in order to configure OPC UA applications. This in turn reduces manual mapping between OPC UA and MTConnect concepts and reduces reliance on vendor documentation. Figure \ref{fig:enduserusecase} shows how the common Information Model defined by this specification gives the End User Engineer choices when it comes to accessing device data.
 
 \input diagrams/EndUserUseCase.tex
 \FloatBarrier

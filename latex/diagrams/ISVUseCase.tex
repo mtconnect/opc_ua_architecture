@@ -33,16 +33,16 @@
     \node [blockwhitelarge, right of=genericopcuaclient, node distance = 6cm, xshift = -1.35em, yshift = 2.4em] (parentnode) {};
     \node [blockred, right of=genericopcuaclient, node distance = 3.7cm] (opcuaserver) {\small{OPC UA Server}};
     
-    \node [blockyellow, right of=opcuaserver, node distance = 3.4 cm] (opcuaclient2) {\small{OPC UA Client}};
+    \node [blockyellow, right of=opcuaserver, node distance = 3.4 cm] (opcuaserver2) {\small{OPC UA Server}};
     \node [blockblue, above of=opcuaserver, node distance = 2.1cm] (mtcagent) {\small{MTConnect Agent}};
-    \node [blockblue, above of=opcuaclient2, node distance = 2.1 cm, fill = blue!30] (mtcagent2) {\small{MTConnect Agent}};
+    \node [blockblue, above of=opcuaserver2, node distance = 2.1 cm, fill = blue!30] (mtcagent2) {\small{MTConnect Agent}};
     
     \node [blockwhite, below of=opcuaserver, node distance =  1.6cm, xshift = 2.5em, yshift = -0.2em] (analysis) {\small{Value Added Analysis Engine}};
     
     \node [blockblue, above right of=mtcagent2, node distance = 4 cm, minimum height = 2.5em, fill = blue!10] (device1) {Device};
     \node [blockblue, below of=device1, node distance = 2 cm, minimum height = 2.5em, fill = blue!10] (device2) {Device};
     
-    \node [blockyellow, below right of=opcuaclient2, node distance = 4 cm, minimum height = 2.5em, fill = yellow!10, yshift =-2em] (device3) {Device};
+    \node [blockyellow, below right of=opcuaserver2, node distance = 4 cm, minimum height = 2.5em, fill = yellow!10, yshift =-2em] (device3) {Device};
     \node [blockyellow, above of=device3, node distance = 3 cm, minimum height = 2.5em, fill = yellow!10] (device4) {Device};
     
     
@@ -64,10 +64,10 @@
     \path [line] (device1) -- (b) -| (mtcagent2);
     \path [line] (device2) -- (b) -| (mtcagent2);
     
-    \path [line] (device3) -- (c) -| (opcuaclient2);
-    \path [line] (device4) -- (c) -| (opcuaclient2);
-    \path [line] (opcuaclient2) |- (c) -- (device3);
-    \path [line] (opcuaclient2) |- (c) -- (device4);
+    \path [line] (device3) -- (c) -| (opcuaserver2);
+    \path [line] (device4) -- (c) -| (opcuaserver2);
+    \path [line] (opcuaserver2) |- (c) -- (device3);
+    \path [line] (opcuaserver2) |- (c) -- (device4);
     
     \end{tikzpicture}
     }

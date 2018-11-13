@@ -78,7 +78,7 @@ The specification uses examples to illustrate the process of conversion from XML
 \subsection{Mapping The Model}
 \lstset{language=XML,numbers=left,xleftmargin=2em}
 
-The MTConnect information model is represented in the UA address space as set of object and variable types. Most have pre-existing type definitions whereas others will be created dynamically following riles in the following section. The rules provide a way for a developer of a server to extend the nodeset to include the types present in a given MTConnectDevices XML document as presented from an MTConnect \textit{Agent} in response to a \texttt{/probe} requires.
+The MTConnect information model is represented in the UA address space as set of object and variable types. Most have pre-existing type definitions whereas others will be created dynamically following rules in the following section. The rules provide a way for a developer of a server to extend the nodeset to include the types present in a given MTConnectDevices XML document as presented from an MTConnect \textit{Agent} in response to a \texttt{/probe}.
 
 \subsubsection{Mapping Rules and Conventions}\label{sec:mapping-rules}
 
@@ -416,7 +416,7 @@ MTConnect \mtterm{subType} will be mapped in the same manner as the type using t
 
 \FloatBarrier
 
-\paragraph{\element{Axes} and \element{Linear} Comoonents}
+\paragraph{\element{Axes} and \element{Linear} Components}
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Components and Conditions},label={lst:linear-x-component}]
@@ -582,7 +582,7 @@ The \mtterm{Controller} has two \mtterm{DataItems}, \mtterm{Message} and \mtterm
 
 Figure~\ref{fig:path-component} illustrates the \mtterm{Path} component. Many of the \mtterm{DataItems} types have been covered in prior examples, so the \mtterm{Path} will only focus on the \mtterm{DataItems} that have differentiated features. Those \mtterm{DataItem}s will be represented without additional properties or relations.
 
-The \dataitem{PATH_POSITION} is mapped to the \mtuatype{MTThreeSpaceSampleType} that represents a spacial coordinate in three space ($\mathbb{R}^{3}$) with each coordinate being giving in millimeters. The EngineeringUnits for this type will therefor always be mapped to MMT in the UNECE conventions.
+The \dataitem{PATH_POSITION} is mapped to the \mtuatype{MTThreeSpaceSampleType} that represents a spacial coordinate in three space ($\mathbb{R}^{3}$) with each coordinate given in millimeters. The EngineeringUnits for this type will therefor always be mapped to MMT in the UNECE conventions.
 
 The \mtuatype{MTThreeSpaceSampleType} uses the \mtuatype{ThreeSpacePositionDataType} that contains an \mtterm{X, Y, and Z} \uaterm{Field}. If one of the dimensions cannot be provided, it must be set to \uaterm{NaN}.
 
@@ -731,7 +731,7 @@ MTConnect separates streaming updates of data from the meta-data describing the 
 
 The \mtterm{HTTP REST Protocol}  provides two capabilities with respect to the collection of data that are common to most \textit{publish/subscribe} technologies. They are as follows: first, a snapshot of the most recent know value for each \mtterm{DataItem}, referred to as a \mtterm{current} request, and second, a time-series of changes that occurred going back to the beginning of the store-and-forward \mtterm{buffer}, referred to as a \mtterm{sample} request.
 
-Each entry in the \mtterm{buffer} is time-stamped and assigned a sequence number that indicates the arrival order unique across all devices represented in the \mtterm{MTConnect Agent}. The sequence number is monotonically increasing and is unique concerning the instance (execution) of the agent. When the agent is restarted, the sequence and may be reset to one indicating the expunging of history. 
+Each entry in the \mtterm{buffer} is time-stamped and assigned a sequence number that indicates the arrival order unique across all devices represented in the \mtterm{MTConnect Agent}. The sequence number is monotonically increasing and is unique concerning the instance (execution) of the agent. When the agent is restarted, the sequence may be reset to one indicating history has been expunged. 
 
 The following section provides the rules for taking data from the \mtterm{MTConnectStream} XML Document and represent as a series of updates to the \uaterm{Variables} and generate \uaterm{Events} for the \mtterm{MTConditionType} and \mtterm{MTMessageType} \uaterm{Objects}.
 

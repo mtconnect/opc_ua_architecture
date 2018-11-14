@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd' LastModified='2018-11-14T04:19:32Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2018-11-14T04:36:23Z'>
   <NamespaceUris>
-    <Uri>http://opcfoundation.org/UA/MTConnect/v2</Uri>
+    <Uri>http://opcfoundation.org/UA/MTConnect/v2/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2' Version='2.00' PublicationDate='2018-11-14T04:19:32Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA' Version='1.04' PublicationDate='2018-11-14T04:19:32Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2018-11-14T04:36:23Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2018-11-14T04:36:23Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -45,90 +45,90 @@
     <Alias Alias='UInteger'>i=28</Alias>
     <Alias Alias='XmlElement'>i=16</Alias>
   </Aliases>
-  <!-- Instantiation of Object http://opcfoundation.org/UA/MTConnect/v2 ns=1;i=3027 -->
-  <UAObject NodeId='ns=1;i=3027' BrowseName='1:http://opcfoundation.org/UA/MTConnect/v2'>
-    <DisplayName>http://opcfoundation.org/UA/MTConnect/v2</DisplayName>
+  <!-- Instantiation of Object http://opcfoundation.org/UA/MTConnect/v2/ ns=1;i=3208 -->
+  <UAObject NodeId='ns=1;i=3208' BrowseName='1:http://opcfoundation.org/UA/MTConnect/v2/'>
+    <DisplayName>http://opcfoundation.org/UA/MTConnect/v2/</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - NamespaceMetadataType i=11616   -->
       <Reference ReferenceType='HasTypeDefinition'>i=11616</Reference>
       <!-- HasComponent - (Reverse) - Namespaces i=11715 Namespaces  -->
       <Reference ReferenceType='HasComponent' IsForward='false'>i=11715</Reference>
-      <!-- HasProperty -  - NamespaceUri ns=1;i=3029 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=3029</Reference>
-      <!-- HasProperty -  - NamespaceVersion ns=1;i=3030 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=3030</Reference>
-      <!-- HasProperty -  - NamespacePublicationDate ns=1;i=3031 DateTime  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=3031</Reference>
-      <!-- HasProperty -  - IsNamespaceSubset ns=1;i=3032 Boolean  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=3032</Reference>
-      <!-- HasProperty -  - StaticNodeIdTypes ns=1;i=3033 IdType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=3033</Reference>
-      <!-- HasProperty -  - StaticNumericNodeIdRange ns=1;i=3034 NumericRange  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=3034</Reference>
-      <!-- HasProperty -  - StaticStringNodeIdPattern ns=1;i=3035 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=3035</Reference>
+      <!-- HasProperty -  - NamespaceUri ns=1;i=3210 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3210</Reference>
+      <!-- HasProperty -  - NamespaceVersion ns=1;i=3211 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3211</Reference>
+      <!-- HasProperty -  - NamespacePublicationDate ns=1;i=3212 DateTime  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3212</Reference>
+      <!-- HasProperty -  - IsNamespaceSubset ns=1;i=3213 Boolean  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3213</Reference>
+      <!-- HasProperty -  - StaticNodeIdTypes ns=1;i=3214 IdType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3214</Reference>
+      <!-- HasProperty -  - StaticNumericNodeIdRange ns=1;i=3215 NumericRange  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3215</Reference>
+      <!-- HasProperty -  - StaticStringNodeIdPattern ns=1;i=3216 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3216</Reference>
     </References>
   </UAObject>
-  <!-- http://opcfoundation.org/UA/MTConnect/v2::NamespaceUri : String[1] -->
-  <UAVariable NodeId='ns=1;i=3029' BrowseName='NamespaceUri' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=3027'>
+  <!-- http://opcfoundation.org/UA/MTConnect/v2/::NamespaceUri : String[1] -->
+  <UAVariable NodeId='ns=1;i=3210' BrowseName='NamespaceUri' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=3208'>
     <DisplayName>NamespaceUri</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasProperty - (Reverse) - http://opcfoundation.org/UA/MTConnect/v2 ns=1;i=3027   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3027</Reference>
+      <!-- HasProperty - (Reverse) - http://opcfoundation.org/UA/MTConnect/v2/ ns=1;i=3208   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3208</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>http://opcfoundation.org/UA/MTConnect/v2/</String>
     </Value>
   </UAVariable>
-  <!-- http://opcfoundation.org/UA/MTConnect/v2::NamespaceVersion : String[1] -->
-  <UAVariable NodeId='ns=1;i=3030' BrowseName='NamespaceVersion' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=3027'>
+  <!-- http://opcfoundation.org/UA/MTConnect/v2/::NamespaceVersion : String[1] -->
+  <UAVariable NodeId='ns=1;i=3211' BrowseName='NamespaceVersion' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=3208'>
     <DisplayName>NamespaceVersion</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasProperty - (Reverse) - http://opcfoundation.org/UA/MTConnect/v2 ns=1;i=3027   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3027</Reference>
+      <!-- HasProperty - (Reverse) - http://opcfoundation.org/UA/MTConnect/v2/ ns=1;i=3208   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3208</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>2.00</String>
     </Value>
   </UAVariable>
-  <!-- http://opcfoundation.org/UA/MTConnect/v2::NamespacePublicationDate : DateTime[1] -->
-  <UAVariable NodeId='ns=1;i=3031' BrowseName='NamespacePublicationDate' ValueRank='-1' DataType='DateTime' ParentNodeId='ns=1;i=3027'>
+  <!-- http://opcfoundation.org/UA/MTConnect/v2/::NamespacePublicationDate : DateTime[1] -->
+  <UAVariable NodeId='ns=1;i=3212' BrowseName='NamespacePublicationDate' ValueRank='-1' DataType='DateTime' ParentNodeId='ns=1;i=3208'>
     <DisplayName>NamespacePublicationDate</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DateTime i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasProperty - (Reverse) - http://opcfoundation.org/UA/MTConnect/v2 ns=1;i=3027   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3027</Reference>
+      <!-- HasProperty - (Reverse) - http://opcfoundation.org/UA/MTConnect/v2/ ns=1;i=3208   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3208</Reference>
     </References>
     <Value>
       <DateTime xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>2018-10-31T00:00:00Z</DateTime>
     </Value>
   </UAVariable>
-  <!-- http://opcfoundation.org/UA/MTConnect/v2::IsNamespaceSubset : Boolean[1] -->
-  <UAVariable NodeId='ns=1;i=3032' BrowseName='IsNamespaceSubset' ValueRank='-1' DataType='Boolean' ParentNodeId='ns=1;i=3027'>
+  <!-- http://opcfoundation.org/UA/MTConnect/v2/::IsNamespaceSubset : Boolean[1] -->
+  <UAVariable NodeId='ns=1;i=3213' BrowseName='IsNamespaceSubset' ValueRank='-1' DataType='Boolean' ParentNodeId='ns=1;i=3208'>
     <DisplayName>IsNamespaceSubset</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - Boolean i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasProperty - (Reverse) - http://opcfoundation.org/UA/MTConnect/v2 ns=1;i=3027   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3027</Reference>
+      <!-- HasProperty - (Reverse) - http://opcfoundation.org/UA/MTConnect/v2/ ns=1;i=3208   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3208</Reference>
     </References>
     <Value>
       <Boolean xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>false</Boolean>
     </Value>
   </UAVariable>
-  <!-- http://opcfoundation.org/UA/MTConnect/v2::StaticNodeIdTypes : IdType[1] -->
-  <UAVariable NodeId='ns=1;i=3033' BrowseName='StaticNodeIdTypes' ValueRank='-1' DataType='i=256' ParentNodeId='ns=1;i=3027'>
+  <!-- http://opcfoundation.org/UA/MTConnect/v2/::StaticNodeIdTypes : IdType[1] -->
+  <UAVariable NodeId='ns=1;i=3214' BrowseName='StaticNodeIdTypes' ValueRank='-1' DataType='i=256' ParentNodeId='ns=1;i=3208'>
     <DisplayName>StaticNodeIdTypes</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - IdType i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasProperty - (Reverse) - http://opcfoundation.org/UA/MTConnect/v2 ns=1;i=3027   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3027</Reference>
+      <!-- HasProperty - (Reverse) - http://opcfoundation.org/UA/MTConnect/v2/ ns=1;i=3208   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3208</Reference>
     </References>
     <Value>
       <ListOfInt32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
@@ -136,14 +136,14 @@
       </ListOfInt32>
     </Value>
   </UAVariable>
-  <!-- http://opcfoundation.org/UA/MTConnect/v2::StaticNumericNodeIdRange : NumericRange[1] -->
-  <UAVariable NodeId='ns=1;i=3034' BrowseName='StaticNumericNodeIdRange' ValueRank='-1' DataType='i=291' ParentNodeId='ns=1;i=3027'>
+  <!-- http://opcfoundation.org/UA/MTConnect/v2/::StaticNumericNodeIdRange : NumericRange[1] -->
+  <UAVariable NodeId='ns=1;i=3215' BrowseName='StaticNumericNodeIdRange' ValueRank='-1' DataType='i=291' ParentNodeId='ns=1;i=3208'>
     <DisplayName>StaticNumericNodeIdRange</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - NumericRange i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasProperty - (Reverse) - http://opcfoundation.org/UA/MTConnect/v2 ns=1;i=3027   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3027</Reference>
+      <!-- HasProperty - (Reverse) - http://opcfoundation.org/UA/MTConnect/v2/ ns=1;i=3208   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3208</Reference>
     </References>
     <Value>
       <ListOfString xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
@@ -151,14 +151,14 @@
       </ListOfString>
     </Value>
   </UAVariable>
-  <!-- http://opcfoundation.org/UA/MTConnect/v2::StaticStringNodeIdPattern : String[1] -->
-  <UAVariable NodeId='ns=1;i=3035' BrowseName='StaticStringNodeIdPattern' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=3027'>
+  <!-- http://opcfoundation.org/UA/MTConnect/v2/::StaticStringNodeIdPattern : String[1] -->
+  <UAVariable NodeId='ns=1;i=3216' BrowseName='StaticStringNodeIdPattern' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=3208'>
     <DisplayName>StaticStringNodeIdPattern</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasProperty - (Reverse) - http://opcfoundation.org/UA/MTConnect/v2 ns=1;i=3027   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3027</Reference>
+      <!-- HasProperty - (Reverse) - http://opcfoundation.org/UA/MTConnect/v2/ ns=1;i=3208   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3208</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'/>

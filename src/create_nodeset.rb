@@ -23,7 +23,7 @@ puts "\nGenerating Nodeset"
 
 Ids = IdManager.new('MTConnectNodeIds.csv')
 Namespace = '1'
-NamespaceUri = 'http://opcfoundation.org/UA/MTConnect/v2'
+NamespaceUri = 'http://opcfoundation.org/UA/MTConnect/v2/'
 
 
 document = REXML::Document.new
@@ -35,7 +35,7 @@ Root.add_namespace('xsi', "http://www.w3.org/2001/XMLSchema-instance")
 Root.add_namespace("http://opcfoundation.org/UA/2011/03/UANodeSet.xsd")
 
 Root.add_attribute("xsi:schemaLocation",
-                   "http://opcfoundation.org/UA/2011/03/UANodeSet.xsd file:///Z:/projects/MTConnect/OPC-UA/UANodeSet.xsd")
+                   "http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd")
                                                                                                                           
 Root.add_attribute('LastModified', Time.now.utc.xmlschema)
 Root.add_element('NamespaceUris').
@@ -46,7 +46,7 @@ Root.add_element('Models').
   add_element('Model',  { 'ModelUri' => NamespaceUri,
                           "Version" => "2.00",
                           "PublicationDate" => Time.now.utc.xmlschema }).
-  add_element('RequiredModel', { "ModelUri" => "http://opcfoundation.org/UA",
+  add_element('RequiredModel', { "ModelUri" => "http://opcfoundation.org/UA/",
                                  "Version" => "1.04",
                                  "PublicationDate" => Time.now.utc.xmlschema } )
 

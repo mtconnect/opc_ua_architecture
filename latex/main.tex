@@ -24,6 +24,8 @@ backend=biber,
 style=alphabetic,
 ]{biblatex}
 
+\definecolor{light-gray}{gray}{0.90}
+
 \addbibresource{opc.bib}
 \addbibresource{mtc.bib}
 \addbibresource{references.bib}
@@ -66,7 +68,25 @@ style=alphabetic,
 
 \pagenumbering{roman}
 
-\input legal.tex
+\begin{nolinenumbers}
+\begin{table}[ht]
+  \centering 
+  \tabulinesep=8pt
+  \taburowcolors[1]{light-gray .. light-gray}
+  \taburulecolor |light-gray|{black}
+  \begin{tabu} to 6in {||X[0.45] X X[0.4] X||}
+  \hline \hline
+   Specification Type: & Industry Standard Specification & Comments: & \\ \tabucline[1pt]{2-2} \tabucline[1pt]{4-4}
+  Title: & OPC Unified Architecture for MTConnect & Date: & \today \\  \tabucline[1pt]{2-2} \tabucline[1pt]{4-4}
+  Version: & Release 2.0 & Software Source: & LaTeX \newline OPC\_UA\_MTConnect\_V2.0.pdf \\   \tabucline[1pt]{2-2} \tabucline[1pt]{4-4}
+  Author: & MTConnect Institute & Status: & Draft \\
+  \hline \hline
+  \end{tabu}
+\end{table}
+
+\end{nolinenumbers}
+
+\clearpage
 
 \tableofcontents
 \thispagestyle{fancy}
@@ -76,6 +96,9 @@ style=alphabetic,
 \clearpage
 %\listoftables
 \clearpage
+
+\input legal.tex
+
 \pagenumbering{arabic}
 
 % ************************************************************************* %

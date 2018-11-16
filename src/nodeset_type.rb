@@ -188,7 +188,7 @@ class NodesetType < Type
 
     node_reference(refs, ref.target.type.name, 'HasTypeDefinition', ref.target.type.node_id)
     node_reference(refs, ref.rule, 'HasModellingRule', Ids[ref.rule])
-    node_reference(refs, owner.name, 'HasComponent', owner.node_id, forward: false)
+    node_reference(refs, owner.name, ref.reference_type, owner.node_id, forward: false)
   end
 
   def is_opc_instance?
@@ -201,23 +201,6 @@ class NodesetType < Type
         create_relationship(refs, a, owner, path)
       end
     end
-  end
-
-  def relation_type(r)
-    stereo = r['stereotype'] && resolve_type_name(r['stereotype'])
-    if !Aliases.include?(stereo)
-      st = resolve_type(r['stereotype'])
-      if st
-        stereo = st.node_id
-      else
-        puts "***** Cannot find stereotype for #{r.inspect}"
-      end
-    end
-    unless stereo
-      puts "Relation #{r['name']} has no stereotype"
-      stereo = 'HasComponent'
-    end
-    stereo
   end
 
   def add_mixin_relations(refs, owner, path)

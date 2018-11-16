@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2018-11-16T19:44:57Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2018-11-16T20:41:42Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2018-11-16T19:44:57Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2018-11-16T19:44:57Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2018-11-16T20:41:42Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2018-11-16T20:41:42Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -444,8 +444,8 @@
       <Reference ReferenceType='HasTypeDefinition'>i=61</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasComponent - (Reverse) - MTComponentType ns=1;i=2021   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2021</Reference>
+      <!-- Organizes - (Reverse) - MTComponentType ns=1;i=2021   -->
+      <Reference ReferenceType='Organizes' IsForward='false'>ns=1;i=2021</Reference>
     </References>
   </UAObject>
   <!-- MTComponentType::Compositions : FolderType[0..*] -->
@@ -456,8 +456,8 @@
       <Reference ReferenceType='HasTypeDefinition'>i=61</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasComponent - (Reverse) - MTComponentType ns=1;i=2021   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2021</Reference>
+      <!-- Organizes - (Reverse) - MTComponentType ns=1;i=2021   -->
+      <Reference ReferenceType='Organizes' IsForward='false'>ns=1;i=2021</Reference>
     </References>
   </UAObject>
   <!-- Definition of Object MTDeviceType ns=1;i=2015 -->
@@ -656,8 +656,8 @@
       <Reference ReferenceType='HasTypeDefinition'>i=61</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasComponent - (Reverse) - MTSensorConfigurationType ns=1;i=2046   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2046</Reference>
+      <!-- Organizes - (Reverse) - MTSensorConfigurationType ns=1;i=2046   -->
+      <Reference ReferenceType='Organizes' IsForward='false'>ns=1;i=2046</Reference>
     </References>
   </UAObject>
   <!-- Definition of Object MTDescriptionType ns=1;i=2053 -->
@@ -4348,8 +4348,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2129</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - ActuatorStateClassType ns=1;i=2078   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2078</Reference>
+      <!-- HasProperty - (Reverse) - ActuatorStateClassType ns=1;i=2078   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2078</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object AvailabilityClassType ns=1;i=2081 -->
@@ -4370,8 +4370,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2130</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - AvailabilityClassType ns=1;i=2081   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2081</Reference>
+      <!-- HasProperty - (Reverse) - AvailabilityClassType ns=1;i=2081   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2081</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object AxisCouplingClassType ns=1;i=2084 -->
@@ -4392,8 +4392,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2131</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - AxisCouplingClassType ns=1;i=2084   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2084</Reference>
+      <!-- HasProperty - (Reverse) - AxisCouplingClassType ns=1;i=2084   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2084</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object AxisInterlockClassType ns=1;i=2087 -->
@@ -4414,8 +4414,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2129</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - AxisInterlockClassType ns=1;i=2087   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2087</Reference>
+      <!-- HasProperty - (Reverse) - AxisInterlockClassType ns=1;i=2087   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2087</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object AxisStateClassType ns=1;i=2090 -->
@@ -4436,8 +4436,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2132</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - AxisStateClassType ns=1;i=2090   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2090</Reference>
+      <!-- HasProperty - (Reverse) - AxisStateClassType ns=1;i=2090   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2090</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object ChuckInterlockClassType ns=1;i=2093 -->
@@ -4458,8 +4458,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2129</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - ChuckInterlockClassType ns=1;i=2093   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2093</Reference>
+      <!-- HasProperty - (Reverse) - ChuckInterlockClassType ns=1;i=2093   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2093</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object ChuckStateClassType ns=1;i=2096 -->
@@ -4480,8 +4480,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2133</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - ChuckStateClassType ns=1;i=2096   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2096</Reference>
+      <!-- HasProperty - (Reverse) - ChuckStateClassType ns=1;i=2096   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2096</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object ControllerModeClassType ns=1;i=2099 -->
@@ -4502,8 +4502,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2135</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - ControllerModeClassType ns=1;i=2099   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2099</Reference>
+      <!-- HasProperty - (Reverse) - ControllerModeClassType ns=1;i=2099   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2099</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object ExecutionClassType ns=1;i=2102 -->
@@ -4524,8 +4524,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2194</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - ExecutionClassType ns=1;i=2102   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2102</Reference>
+      <!-- HasProperty - (Reverse) - ExecutionClassType ns=1;i=2102   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2102</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object CompositionStateClassType ns=1;i=2105 -->
@@ -4546,8 +4546,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2134</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - CompositionStateClassType ns=1;i=2105   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2105</Reference>
+      <!-- HasProperty - (Reverse) - CompositionStateClassType ns=1;i=2105   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2105</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object ControllerModeOverrideClassType ns=1;i=2108 -->
@@ -4568,8 +4568,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2136</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - ControllerModeOverrideClassType ns=1;i=2108   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2108</Reference>
+      <!-- HasProperty - (Reverse) - ControllerModeOverrideClassType ns=1;i=2108   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2108</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object DirectionClassType ns=1;i=2111 -->
@@ -4590,8 +4590,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2137</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - DirectionClassType ns=1;i=2111   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2111</Reference>
+      <!-- HasProperty - (Reverse) - DirectionClassType ns=1;i=2111   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2111</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object DoorStateClassType ns=1;i=2114 -->
@@ -4612,8 +4612,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2133</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - DoorStateClassType ns=1;i=2114   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2114</Reference>
+      <!-- HasProperty - (Reverse) - DoorStateClassType ns=1;i=2114   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2114</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object EmergencyStopClassType ns=1;i=2117 -->
@@ -4634,8 +4634,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2139</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - EmergencyStopClassType ns=1;i=2117   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2117</Reference>
+      <!-- HasProperty - (Reverse) - EmergencyStopClassType ns=1;i=2117   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2117</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object EndOfBarClassType ns=1;i=2120 -->
@@ -4656,8 +4656,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2138</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - EndOfBarClassType ns=1;i=2120   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2120</Reference>
+      <!-- HasProperty - (Reverse) - EndOfBarClassType ns=1;i=2120   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2120</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object EquipmentModeClassType ns=1;i=2123 -->
@@ -4678,8 +4678,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2136</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - EquipmentModeClassType ns=1;i=2123   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2123</Reference>
+      <!-- HasProperty - (Reverse) - EquipmentModeClassType ns=1;i=2123   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2123</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object FunctionalModeClassType ns=1;i=2126 -->
@@ -4700,8 +4700,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2140</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - FunctionalModeClassType ns=1;i=2126   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2126</Reference>
+      <!-- HasProperty - (Reverse) - FunctionalModeClassType ns=1;i=2126   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2126</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object SpindleInterlockClassType ns=1;i=2144 -->
@@ -4722,8 +4722,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2129</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - SpindleInterlockClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasProperty - (Reverse) - SpindleInterlockClassType ns=1;i=2144   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2144</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object PathModeClassType ns=1;i=2147 -->
@@ -4744,8 +4744,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2141</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - PathModeClassType ns=1;i=2147   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2147</Reference>
+      <!-- HasProperty - (Reverse) - PathModeClassType ns=1;i=2147   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2147</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object PowerStateClassType ns=1;i=2150 -->
@@ -4766,8 +4766,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2136</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - PowerStateClassType ns=1;i=2150   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2150</Reference>
+      <!-- HasProperty - (Reverse) - PowerStateClassType ns=1;i=2150   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2150</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object ProgramEditClassType ns=1;i=2153 -->
@@ -4788,8 +4788,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2142</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - ProgramEditClassType ns=1;i=2153   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2153</Reference>
+      <!-- HasProperty - (Reverse) - ProgramEditClassType ns=1;i=2153   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2153</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object RotaryModeClassType ns=1;i=2156 -->
@@ -4810,8 +4810,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2143</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - RotaryModeClassType ns=1;i=2156   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2156</Reference>
+      <!-- HasProperty - (Reverse) - RotaryModeClassType ns=1;i=2156   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2156</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object InterfaceStateClassType ns=1;i=2159 -->
@@ -4832,8 +4832,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2162</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - InterfaceStateClassType ns=1;i=2159   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2159</Reference>
+      <!-- HasProperty - (Reverse) - InterfaceStateClassType ns=1;i=2159   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2159</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object MaterialFeedClassType ns=1;i=2163 -->
@@ -4854,8 +4854,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2166</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - MaterialFeedClassType ns=1;i=2163   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2163</Reference>
+      <!-- HasProperty - (Reverse) - MaterialFeedClassType ns=1;i=2163   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2163</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object MaterialChangeClassType ns=1;i=2167 -->
@@ -4876,8 +4876,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2166</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - MaterialChangeClassType ns=1;i=2167   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2167</Reference>
+      <!-- HasProperty - (Reverse) - MaterialChangeClassType ns=1;i=2167   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2167</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object MaterialRetractClassType ns=1;i=2170 -->
@@ -4898,8 +4898,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2166</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - MaterialRetractClassType ns=1;i=2170   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2170</Reference>
+      <!-- HasProperty - (Reverse) - MaterialRetractClassType ns=1;i=2170   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2170</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object MaterialLoadClassType ns=1;i=2173 -->
@@ -4920,8 +4920,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2166</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - MaterialLoadClassType ns=1;i=2173   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2173</Reference>
+      <!-- HasProperty - (Reverse) - MaterialLoadClassType ns=1;i=2173   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2173</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object MaterialUnloadClassType ns=1;i=2176 -->
@@ -4942,8 +4942,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2166</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - MaterialUnloadClassType ns=1;i=2176   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2176</Reference>
+      <!-- HasProperty - (Reverse) - MaterialUnloadClassType ns=1;i=2176   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2176</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object OpenDoorClassType ns=1;i=2179 -->
@@ -4964,8 +4964,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2166</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - OpenDoorClassType ns=1;i=2179   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2179</Reference>
+      <!-- HasProperty - (Reverse) - OpenDoorClassType ns=1;i=2179   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2179</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object CloseDoorClassType ns=1;i=2182 -->
@@ -4986,8 +4986,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2166</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - CloseDoorClassType ns=1;i=2182   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2182</Reference>
+      <!-- HasProperty - (Reverse) - CloseDoorClassType ns=1;i=2182   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2182</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object OpenChuckClassType ns=1;i=2185 -->
@@ -5008,8 +5008,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2166</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - OpenChuckClassType ns=1;i=2185   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2185</Reference>
+      <!-- HasProperty - (Reverse) - OpenChuckClassType ns=1;i=2185   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2185</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object CloseChuckClassType ns=1;i=2188 -->
@@ -5030,8 +5030,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2166</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - CloseChuckClassType ns=1;i=2188   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2188</Reference>
+      <!-- HasProperty - (Reverse) - CloseChuckClassType ns=1;i=2188   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2188</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object PartChangeClassType ns=1;i=2191 -->
@@ -5052,8 +5052,8 @@
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2166</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - PartChangeClassType ns=1;i=2191   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2191</Reference>
+      <!-- HasProperty - (Reverse) - PartChangeClassType ns=1;i=2191   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2191</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Enumeration OnOffDataType ns=1;i=2136 -->

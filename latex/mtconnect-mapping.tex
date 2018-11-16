@@ -885,9 +885,61 @@ The \uaterm{ConditionType} and \uaterm{EventType} properties will be set as foll
   \item[\ldots] The remaining \uaterm{Properties} will be set from the XML attributes of the same name.
 \end{description}
 
-\begin{quote}
-  \color{red} TODO: Need to handle branching based on \xmlattribute{nativeCode}.
-\end{quote}
+\paragraph{MTConnect Condition Branching Example}
+
+MTConnect allows for multiple \mtterm{Condition}s to be active at the same time. This is similar to the concept of \uaterm{Branching} in OPC UA. In MTConnect the unique identifier that is used for the \uaterm{BranchId} is the attribute \mtterm{nativeCode}.
+
+MTConnect uses the \xmlattribute(nativeCode} to determine the uniqueness of each activation of the Condition. If the \mtterm{Path} component has a \mtterm{DataItem} with a \texttt{type} of \texttt{MOTION_PROGRAM} and there are four syntax errors for lines 10, 120, 320, and 500; there are five faults reported by MTConnect for the Condition. The response to a \mtterm{current} request is shown in listing~\ref{lst:path-motion-program-condition}.
+
+\begin{lstlisting}[firstnumber=last,escapechar=|,%
+    caption={Path Motion Program Syntax Errors},label={lst:path-motion-program-condition}]
+  <ComponentStream componentId="a4a7bdf0" component="Path" name="P1">
+    <Condition>
+      <Fault sequence="5201" timestamp="2018-10-31T20:34:19.9981Z" dataItemId="a5b23650" type="MOTION_PROGRAM" nativeCode="SYNTX-10">Syntax error on line 10</Fault>
+      <Fault sequence="5205" timestamp="2018-10-31T20:34:19.9981Z" dataItemId="a5b23650" type="MOTION_PROGRAM" nativeCode="SYNTX-120">Syntax error on line 120</Fault>
+      <Fault sequence="5207" timestamp="2018-10-31T20:34:19.9981Z" dataItemId="a5b23650" type="MOTION_PROGRAM" nativeCode="SYNTX-500">Syntax error on line 500</Fault>
+      <Fault sequence="5210" timestamp="2018-10-31T20:34:19.9981Z" dataItemId="a5b23650" type="MOTION_PROGRAM" nativeCode="SYNTX-320">Syntax error on line 320</Fault>
+    </Condition>
+  </ComponentStream>
+\end{lstlisting}
+
+When the syntax error is fixed on line 120, there will be a \mtterm{Condition} streamed with a state of \mtterm{Normal} and a \mtterm{nativeCode} of \texttt{SYNTX-120}. The results of a \mtterm{current} request are shown in listing~\ref{lst:path-motion-program-condition-2}.
+
+\begin{lstlisting}[firstnumber=last,escapechar=|,%
+    caption={Path Motion Program Clearing Syntax Error on Line 120},label={lst:path-motion-program-condition-2}]
+  <ComponentStream componentId="a4a7bdf0" component="Path" name="P1">
+    <Condition>
+      <Fault sequence="5201" timestamp="2018-10-31T20:34:19.9981Z" dataItemId="a5b23650" type="MOTION_PROGRAM" nativeCode="SYNTX-10">Syntax error on line 10</Fault>
+      <Fault sequence="5207" timestamp="2018-10-31T20:34:19.9981Z" dataItemId="a5b23650" type="MOTION_PROGRAM" nativeCode="SYNTX-500">Syntax error on line 500</Fault>
+      <Fault sequence="5210" timestamp="2018-10-31T20:34:19.9981Z" dataItemId="a5b23650" type="MOTION_PROGRAM" nativeCode="SYNTX-320">Syntax error on line 320</Fault>
+    </Condition>
+  </ComponentStream>
+\end{lstlisting}
+
+The streaming data event is as shown in listing~\ref{lst:path-motion-program-condition-2.1} in response to a \mtterm{sample} request.
+
+\begin{lstlisting}[firstnumber=last,escapechar=|,%
+    caption={Path Motion Program Syntax Error on Line 120 Normal},label={lst:path-motion-program-condition-2.1}]
+  <ComponentStream componentId="a4a7bdf0" component="Path" name="P1">
+    <Condition>
+      <Normal sequence="5801" timestamp="2018-10-31T20:36:19.9981Z" dataItemId="a5b23650" type="MOTION_PROGRAM" nativeCode="SYNTX-120"/>
+    </Condition>
+  </ComponentStream>
+\end{lstlisting}
+
+
+When all the syntax errors are fixed a condition will be streamed with a state of \mtterm{Normal} with no \texttt{nativeCode}. The condition will reset to \mtterm{Normal} as shown in listing~\ref{lst:path-motion-program-condition-3} as the result of a \mtterm{current} request.
+
+\begin{lstlisting}[firstnumber=last,escapechar=|,%
+    caption={Path Motion Program Normal},label={lst:path-motion-program-condition-3}]
+  <ComponentStream componentId="a4a7bdf0" component="Path" name="P1">
+    <Condition>
+      <Normal sequence="6221" timestamp="2018-10-31T20:37:19.9981Z" dataItemId="a5b23650" type="MOTION_PROGRAM"/>
+    </Condition>
+  </ComponentStream>
+\end{lstlisting}
+
+The streaming data will be identical to listing~\ref{lst:path-motion-program-condition-3} in response to a \mtterm{sample} request.
 
 \subsubsection{Messages}
 

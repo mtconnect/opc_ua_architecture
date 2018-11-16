@@ -208,13 +208,11 @@
 	\@minus .2ex}{-1em}{\normalfont \normalsize \bfseries }}%
 \makeatother
 
-% \definecolor{mtc1}{RGB}{43,105,145}
-\definecolor{mtc1}{RGB}{0,0,0}
-\sectionfont{\bfseries\color{mtc1}\fontsize{20}{22}\selectfont}
-\subsectionfont{\bfseries\color{mtc1}\fontsize{18}{20}\selectfont}
+\sectionfont{\bfseries\color{black}\fontsize{20}{22}\selectfont}
+\subsectionfont{\bfseries\color{black}\fontsize{18}{20}\selectfont}
 \subsubsectionfont{\bfseries\color{black}\fontsize{16}{18}\selectfont}
 \paragraphfont{\bfseries\color{black}\fontsize{14}{16}\selectfont}
-\subparagraphfont{\bfseries\color{black}\normalsize}
+\subparagraphfont{\bfseries\color{black}\normalsize\selectfont}
 
 \newcommand{\onesection}[1]{\section{#1}}
 \newcommand{\twosection}[1]{\subsection{#1}}

@@ -1,4 +1,4 @@
-% Generated 2018-11-12 10:40:58 -0800
+% Generated 2018-11-15 20:51:42 -0800
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -249,9 +249,8 @@ Has\-Property & Variable & MT\-Description & String & Property\-Type & Optional 
 
 \FloatBarrier
 
-The abstract \texttt{MTConfigurationType} currently has only one sub-type, \\
-\texttt{SensorConfigurationType} (see 
-\ref{type:SensorConfigurationType}). In the future, the configurations will also contain component 
+The abstract \mtuatype{MTConfigurationType} currently has only one sub-type, \\
+\mtuatype{MTSensorConfigurationType}. In the future, the configurations will also contain component 
 and device configuration information as sub-types. 
 
 \begin{table}[ht]
@@ -346,21 +345,6 @@ Has\-Property & Variable & Data & String & Property\-Type & Optional \\
 
 \begin{itemize}
 \item \texttt{Data::String:} From the CDATA of the Description Element in MTConnect.
-
-\end{itemize}
-\paragraph{Operations}
-\begin{itemize}
-  \item \texttt{deriveBrowseName(element)}\\
-    Specification:
-   \indent \begin{lstlisting}
-"Description"
-\end{lstlisting}
-
-  \item \texttt{deriveNodeId(element)}\\
-    Specification:
-   \indent \begin{lstlisting}
-concat(self.parent.NodeId, BrowseName)
-\end{lstlisting}
 
 \end{itemize}
 \FloatBarrier
@@ -962,7 +946,7 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTDataItemClassType (See Data Item Types Documentation)} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{MTControlledVocabClassType} & \multicolumn{2}{|l|}{See section \ref{type:MTControlledVocabClassType}} \\
-HasSubtype & ObjectType & \multicolumn{2}{l}{MTNumberEventClassType} & \multicolumn{2}{|l|}{See section \ref{type:MTNumberEventClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{MTNumericEventClassType} & \multicolumn{2}{|l|}{See section \ref{type:MTNumericEventClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{MTStringEventClassType} & \multicolumn{2}{|l|}{See section \ref{type:MTStringEventClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{MTMessageClassType} & \multicolumn{2}{|l|}{See section \ref{type:MTMessageClassType}} \\
 \end{tabu}
@@ -2183,7 +2167,7 @@ numbers representing a point in 3-D space. The position of the control point MUS
 be reported in units of \texttt{MILLIMETER} and listed in order of X, Y, and Z 
 referenced to the coordinate system of the piece of equipment.
 
-$MILLIMETER^3$
+$MILLIMETER (\mathbb{R}^{3})$
 
 \begin{table}[ht]
 \centering 
@@ -4531,21 +4515,24 @@ The description of each type was copied from the MTConnect Standard,
 but this not the definitive text for each type. For authoritative normative text, please refer to the sources \cite{MTCPart2} and \cite{MTCPart3}.
 
 
-\subsubsection{Defintion of \texttt{ MTNumberEventClassType}}
-  \label{type:MTNumberEventClassType}
+\subsubsection{Defintion of \texttt{ MTNumericEventClassType}}
+  \label{type:MTNumericEventClassType}
 
 \FloatBarrier
+
+The root type for all of the event types that have numeric CDATA.
+
 \begin{table}[ht]
 \centering 
-  \caption{\texttt{MTNumberEventClassType} Definition}
-  \label{table:MTNumberEventClassType}
+  \caption{\texttt{MTNumericEventClassType} Definition}
+  \label{table:MTNumericEventClassType}
 \fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
 \begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{MTNumberEventClassType} \\
+BrowseName & \multicolumn{5}{|l|}{MTNumericEventClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
@@ -4591,7 +4578,7 @@ BrowseName & \multicolumn{5}{|l|}{AxisFeedrateOverrideClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTNumberEventClassType (See section \ref{type:MTNumberEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTNumericEventClassType (See section \ref{type:MTNumericEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4624,7 +4611,7 @@ BrowseName & \multicolumn{5}{|l|}{BlockCountClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTNumberEventClassType (See section \ref{type:MTNumberEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTNumericEventClassType (See section \ref{type:MTNumericEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4655,7 +4642,7 @@ BrowseName & \multicolumn{5}{|l|}{HardnessClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTNumberEventClassType (See section \ref{type:MTNumberEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTNumericEventClassType (See section \ref{type:MTNumericEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4687,7 +4674,7 @@ BrowseName & \multicolumn{5}{|l|}{LineNumberClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTNumberEventClassType (See section \ref{type:MTNumberEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTNumericEventClassType (See section \ref{type:MTNumericEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4714,7 +4701,7 @@ BrowseName & \multicolumn{5}{|l|}{PartCountClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTNumberEventClassType (See section \ref{type:MTNumberEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTNumericEventClassType (See section \ref{type:MTNumericEventClassType})} \\
 \end{tabu}
 \end{table} 
 
@@ -4745,7 +4732,7 @@ BrowseName & \multicolumn{5}{|l|}{RotaryVelocityOverrideClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTNumberEventClassType (See section \ref{type:MTNumberEventClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTNumericEventClassType (See section \ref{type:MTNumericEventClassType})} \\
 \end{tabu}
 \end{table} 
 

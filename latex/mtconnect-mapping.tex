@@ -755,7 +755,7 @@ Listing~\ref{lst:streams-header} is an example of the \textit{XML Root Element} 
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Component Stream},label={lst:component-stream}]
-      <ComponentStream componentId="e373fec0" component="Linear" name="X1" nativeName="X"> |\label{line:component-stream}|
+      <ComponentStream componentId="e373fec0" component="Linear" name="X1" nativeName="X"> |\label{line:component-stream-1}|
     <DeviceStream name="SimpleCnc" uuid="872a3490-bd2d-0136-3eb0-0c85909298d9">    
         <Samples>
           <Position sequence="131" timestamp="2018-10-31T20:33:11Z" dataItemId="dcbc0570" name="Xpos">UNAVAILABLE</Position> |\label{line:pos-unavilable}|
@@ -764,7 +764,7 @@ Listing~\ref{lst:streams-header} is an example of the \textit{XML Root Element} 
       </ComponentStream>
 \end{lstlisting}
 
-MTConnect flattens the structure when reporting data and organizes it by \mtterm{Device}, \mtterm{Component} and \mtterm{Category}; this is shown in  Listing~\ref{lst:linear-component-stream} Line~\ref{line:component-stream} with the \xmlelement{DeviceStream}, \xmlelement{ComponentStream}, and \xmlelement{Samples} elements (not shown are the \xmlelement{Events} and \xmlelement{Condition} elements that will be address later). When the data stream is initialized or when it disconnects, the MTConnect \mtterm{DataItem Value} is set to \texttt{UNAVAILABLE} as shown on Line~\ref{line:pos-unavilable}.
+MTConnect flattens the structure when reporting data and organizes it by \mtterm{Device}, \mtterm{Component} and \mtterm{Category}; this is shown in  Listing~\ref{lst:linear-component-stream} Line~\ref{line:component-stream-1} with the \xmlelement{DeviceStream}, \xmlelement{ComponentStream}, and \xmlelement{Samples} elements (not shown are the \xmlelement{Events} and \xmlelement{Condition} elements that will be address later). When the data stream is initialized or when it disconnects, the MTConnect \mtterm{DataItem Value} is set to \texttt{UNAVAILABLE} as shown on Line~\ref{line:pos-unavilable}.
 
 MTConnect only reports data when it changes, and each change is assigned a monotonically increasing \mtterm{sequence} number when it arrives at the \textit{MTConnect Agent}. In addition to the \mtterm{sequence} number; the XML attribute \xmlattribute{timestamp} indicates the time the observation was made. The \xmlattribute{timestamp} is used when setting the \uaterm{Variable} \uaterm{Time} along with the data and status. The data is only reported when it changes except for \mtterm{DataItems} with the \mtterm{representation} of \texttt{DISCRETE} indicating that each value has a discrete meaning, such as a \mtterm{PartCount} where each count indicates an accrual of that many parts. {\color{red} It is unclear how to achieve this in OPC UA, possible with events as is being done with \mtuatype{MTMessageType}}.
 
@@ -778,9 +778,9 @@ The \mtterm{DataItems} with \mtterm{category} \dataitem{SAMPLE} are mapped to th
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Linear Component Stream},label={lst:linear-component-stream}]
-      <ComponentStream componentId="e373fec0" component="Linear" name="X1" nativeName="X"> |\label{line:component-stream}|
+      <ComponentStream componentId="e373fec0" component="Linear" name="X1" nativeName="X"> 
         <Samples>
-          <Position sequence="794" timestamp="2018-10-31T20:47:09.1011Z" dataItemId="dcbc0570" name="Xpos">205.23</Position> |\label{line:pos-795}|
+          <Position sequence="794" timestamp="2018-10-31T20:47:09.1011Z" dataItemId="dcbc0570" name="Xpos">205.23</Position>
           <Position sequence="809" timestamp="2018-10-31T20:47:09.6021Z" dataItemId="dcbc0570" name="Xpos">206.23</Position> |\label{line:pos-809}|
         </Samples>
       </ComponentStream>
@@ -889,7 +889,7 @@ The \uaterm{ConditionType} and \uaterm{EventType} properties will be set as foll
 
 MTConnect allows for multiple \mtterm{Condition}s to be active at the same time. This is similar to the concept of \uaterm{Branching} in OPC UA. In MTConnect the unique identifier that is used for the \uaterm{BranchId} is the attribute \mtterm{nativeCode}.
 
-MTConnect uses the \xmlattribute(nativeCode} to determine the uniqueness of each activation of the Condition. If the \mtterm{Path} component has a \mtterm{DataItem} with a \texttt{type} of \texttt{MOTION_PROGRAM} and there are four syntax errors for lines 10, 120, 320, and 500; there are five faults reported by MTConnect for the Condition. The response to a \mtterm{current} request is shown in listing~\ref{lst:path-motion-program-condition}.
+MTConnect uses the \xmlattribute{nativeCode} to determine the uniqueness of each activation of the Condition. If the \mtterm{Path} component has a \mtterm{DataItem} with a \texttt{type} of \texttt{MOTION_PROGRAM} and there are four syntax errors for lines 10, 120, 320, and 500; there are five faults reported by MTConnect for the Condition. The response to a \mtterm{current} request is shown in listing~\ref{lst:path-motion-program-condition}.
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Path Motion Program Syntax Errors},label={lst:path-motion-program-condition}]

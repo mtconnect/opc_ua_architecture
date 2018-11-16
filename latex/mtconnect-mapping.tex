@@ -6,7 +6,7 @@ This section describes a UML representation of MTConnect semantic data models fo
 
 OPC UA defines abstractions representing data, relationships, and events from devices. The abstractions do not provide the semantic meaning; they provide a structure to convey the meta-data and the values as they change. The OPC UA model has the base building blocks to represent an ontological model where the specific ontology is povided by companion specification for a specific domain.
 
-MTConnect has similar facilities but uses different structural model where the meta-data and the streaming values are in separate documents to normalize the data flow in a similar way that many publish-subscribe protocols separate the structure from the data. MTConnect also supports a store-and-forward capability like many message brokers in a Message Oriented Middleware \textit{(MOM)} architecture to enable resilience and recovery of data in the event of connectivity problems.
+MTConnect has similar capabilities but uses a different structural model where the meta-data and the streaming values are in separate documents to normalize the data flow in a similar way that many publish-subscribe protocols separate the structure from the data. MTConnect also supports a store-and-forward capability like many message brokers in a Message Oriented Middleware \textit{(MOM)} architecture to enable resilience and recovery of data in the event of connectivity problems.
 
 When translating from MTConnect to OPC UA, the MTConnect abstractions of \mtconnectterm{DataItem}s are converted using the OPC UA  \opcuaterm{DataVariable} abstractions as given in \cite{UAPart8}.  The relationships are mapped to multiple \opcuaterm{DataVariable} types where the category and the type determine the correct mapping. Conditions are mapped a sub-type of the OPC UA \opcuaterm{ConditionType} in a similar way. The behavior of the OPC UA \opcuaterm{Condition}s can be found in \cite{UAPart9}.
 
@@ -28,7 +28,7 @@ Figure \ref{fig:mtcomponent-uml} represents the same model in UML. The companion
   \item Combinining of templates and classes can be done using a UML \mtterm{Realization} with the stereotype \mtterm{<<Mixes In>>} to use common properties and relationships in a collection of otherwise unrelated types.
 \end{itemize}
 
-The \mtterm{UMLAssociations} are used to represent OPC UA R`eferences. \uaterm{UA Properties} represented using the UA \opcuaterm{HasProperty} relationships are given as UML Attributes (not be confused with the \uaterm{OPC UA Attribute}). UML allows for additional information as follows:  the multiplicity of a property, the data type of the property, are specified.
+The \mtterm{UMLAssociations} are used to represent OPC UA References. \uaterm{UA Properties} represented using the UA \opcuaterm{HasProperty} relationships are given as UML Attributes (not to be confused with the \uaterm{OPC UA Attribute}). UML allows for additional information as follows:  the multiplicity of a property, the data type of the property, are specified.
 
 \input{diagrams/mtconnect-mapping/mtcomponent-uml.tex}
 \FloatBarrier
@@ -450,7 +450,7 @@ The \mtuatype{MTConditionsType} is decendent of the \uaterm{BaseEventType} descr
 
 The \uaterm{HasNotifier} reference must be created between the \texttt{SimpleCnc:}\mtuatype{MTDeviceType} object and the \texttt{Axes} object to allow for the events to flow down to the conditions for each of the components. The relationship of the condition in Figure~\ref{fig:linear-x-component} illustrates the relationships between the \element{Component} and the related condition in the notification hierarchy.
 
-The \texttt{Linear[x]} component uses a \uaterm{HasNotifier} reference sourced from the parent \texttt{Axes} \uaterm{Object}. The condition, having a \mtuatype{MTClassType} and a \uaterm{ConditionClassId} of \mtuatype{PositionClassType}, is connected to the \texttt{Linear[X]} axis with a \uaterm{HasCondition} relationship to indicate the souorce of the events for the \uaterm{ConditonType}.
+The \texttt{Linear[x]} component uses a \uaterm{HasNotifier} reference sourced from the parent \texttt{Axes} \uaterm{Object}. The condition, having a \mtuatype{MTClassType} and a \uaterm{ConditionClassId} of \mtuatype{PositionClassType}, is connected to the \texttt{Linear[X]} axis with a \uaterm{HasCondition} relationship to indicate the source of the events for the \uaterm{ConditonType}.
 
 \FloatBarrier
 
@@ -510,7 +510,7 @@ In the case of the \texttt{ActualRotaryVelocity} object, it has an additional co
 
 UA 1.04 Ammedment 1 \cite{UAAmend1} for \uaterm{AnalogItem Types} provides the \uaterm{Type} \uaterm{AnalogUnitType} where the \uaterm{EURange} is \uaterm{Optional}. The \mtuatype{MTSampleType} will inherit from \uaterm{AnalogUnitType} instead of  \uaterm{AnalogItemType} as this matches the MTConnect unit requirements.
 
-If the \uaterm{Constraints} are given with both \mtterm{Maximum} and \mtterm{Minimum} values, then the \uaterm{EURange} will be created with \uaterm{high} set to \mtterm{Maximum} and \uaterm{low} set to the \mtterm{Minimum}, otherwise if either are not given, the \uaterm{EURange} will not be created. The \texttt{ActualRotaryVelocity} references an \uaterm{EURange} where the \uaterm{high} and \uaterm{low} are the same as the \mtterm{Maximum} and \mtterm{Minimum} of the \mtuadatatype{ConstraintDataTyp} respectively. 
+If the \uaterm{Constraints} are given with both \mtterm{Maximum} and \mtterm{Minimum} values, then the \uaterm{EURange} will be created with \uaterm{high} set to \mtterm{Maximum} and \uaterm{low} set to the \mtterm{Minimum}, otherwise if either are not given, the \uaterm{EURange} will not be created. The \texttt{ActualRotaryVelocity} references an \uaterm{EURange} where the \uaterm{high} and \uaterm{low} are the same as the \mtterm{Maximum} and \mtterm{Minimum} of the \mtuadatatype{ConstraintDataType} respectively. 
 
 \FloatBarrier
 
@@ -663,9 +663,9 @@ The following example is the \xmlelement{Electric} system of the machine. The to
 
 In the first set of \mtterm{DataItems} from Listing~\ref{lst:electric-system} as shown in Figure~\ref{fig:electric-system}, the first data item on line~\ref{line:electric-temp-60} has a period filter that is represented in the OPC UA \uaterm{Variable} Temperature as a \mtterm{PeriodFilter} \uaterm{Property} with a value of 60.0. The period filters only reports changes after the period of time has elapsed, in this case 60 seconds--the \mtterm{Temperature} will only publish changes every minute in this instance.
 
-The Temperature \uaterm{Variable} also has a \xmlelement{Source} element that references the \mtterm{Sensor} with a \xmlelement{Configuration} of type \mtterm{SensorConfigurationType}. The \mtterm{SensorConfiguration} has information about the \mtterm{FirmwareVersion} and \mtterm{CalibrationDate} of the \mtterm{Sensor}. The \mtterm{Channels} represent the multiple inputs to the \mtterm{Sensor} unit. The first \mtterm{Channel} has a \mtterm{Description} and a \mtterm{CalibrationDate} of the probe attached to the \mtterm{Channel}. For moe information on the \mtterm{Channel}, see MTConnect Devices \cite{MTCPart2}.
+The Temperature \uaterm{Variable} also has a \xmlelement{Source} element that references the \mtterm{Sensor} with a \xmlelement{Configuration} of type \mtterm{SensorConfigurationType}. The \mtterm{SensorConfiguration} has information about the \mtterm{FirmwareVersion} and \mtterm{CalibrationDate} of the \mtterm{Sensor}. The \mtterm{Channels} represent the multiple inputs to the \mtterm{Sensor} unit. The first \mtterm{Channel} has a \mtterm{Description} and a \mtterm{CalibrationDate} of the probe attached to the \mtterm{Channel}. For more information on the \mtterm{Channel}, see MTConnect Devices \cite{MTCPart2}.
 
-The following \mtterm{DataItem} on line~\ref{line:electric-voltage-10} has a \mtterm{Filter} using a \mtterm{MINIUM_DELTA} that is represened as a \mtterm{MinimumDeltaFilter} in the UA \uaterm{Variable} reprenenting the \mtterm{MTSampleType} Voltage. The \mtterm{MinimumDelta} represents the smallest amount of change before the change is reported. In this case the minimum change is 10 volts. Changes smaller than 10 volts will not be reported for this data item.
+The following \mtterm{DataItem} on line~\ref{line:electric-voltage-10} has a \mtterm{Filter} using a \mtterm{MINIMUM_DELTA} that is represened as a \mtterm{MinimumDeltaFilter} in the UA \uaterm{Variable} reprenenting the \mtterm{MTSampleType} Voltage. The \mtterm{MinimumDelta} represents the smallest amount of change before the change is reported. In this case the minimum change is 10 volts. Changes smaller than 10 volts will not be reported for this data item.
 
 The second set of \mtterm{DataItems} starting on line~\ref{line:electric-amperage} shown in Figure~\ref{fig:electric-system-2} shows the relationship between the conditions and the other \mtterm{DataItems}. As has been shown before the conditions here are both related to a \mtterm{DataItem} that is the source of the \mtterm{Condition}. The \mtterm{DataItem} therefor has a \uaterm{HasCondition} relationship to the \uaterm{Condition} and the \mtterm{Component} has a \uaterm{HasEventSource} relationship to the \mtterm{DataItem}. 
 
@@ -956,7 +956,7 @@ The \mtuatype{MTMessageType} will be instantiated as an \uaterm{Object} and each
 
 \subsection{Time Series Samples}
 
-\mtterm{DataItems} with \mtterm{TIME_SERIES} \xmlattribute{representation} provides a mechanism to pubish high frequency data by combining multiple observations into a single vector of values. The attribute \xmlattribute{sampleRate} is specified in the \mtterm{Devices} information model if it is imuttable or for each entity with the attribute \xmlattribute{sampleRate} if it is variable. 
+\mtterm{DataItems} with \mtterm{TIME_SERIES} \xmlattribute{representation} provides a mechanism to publish high frequency data by combining multiple observations into a single vector of values. The attribute \xmlattribute{sampleRate} is specified in the \mtterm{Devices} information model if it is immutable or for each entity with the attribute \xmlattribute{sampleRate} if it is variable. 
 
 In Listing~\ref{lst:electric-timeseries}, both examples are given, line~\ref{line:va-wo-sample-rate} does not specify the \xmlattribute{sampleRate} whereas line~\ref{line:va-w-sample-rate} specifies the \xmlattribute{sampleRate}. The \xmlattribute{sampleRate} is always given in hertz, if not specied in the \mtterm{Streams} document, it defaults to the value given in the \mtterm{DataItem}.
 

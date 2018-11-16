@@ -298,7 +298,7 @@ class NodesetType < Type
     Root << REXML::Comment.new(" Definition of DataType #{@name} #{node_id} ")
     refs, node = node('UADataType', node_id, @name)
     #node.add_element('Description').add_text(@documentation) if @documentation
-    node_reference(refs, 'BaseDataType', 'HasSubtype', Ids['BaseDataType'], forward: false)
+    node_reference(refs, 'BaseDataType', 'HasSubtype', Ids['Structure'], forward: false)
     
     defs = node.add_element('Definition', { 'Name' => @name })
     @relations.each do |r|

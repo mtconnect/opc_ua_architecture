@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2018-11-14T04:36:23Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2018-11-16T19:16:11Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2018-11-14T04:36:23Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2018-11-14T04:36:23Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2018-11-16T19:16:11Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2018-11-16T19:16:11Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -728,8 +728,8 @@
   <UADataType NodeId='ns=1;i=2543' BrowseName='1:AssetEventDataType'>
     <DisplayName>AssetEventDataType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - BaseDataType i=24   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>i=24</Reference>
+      <!-- HasSubtype - (Reverse) - BaseDataType Structure   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>Structure</Reference>
     </References>
     <Definition Name='AssetEventDataType'>
       <Field Name='AssetId' DataType='String'/>
@@ -2809,8 +2809,8 @@
   <UADataType NodeId='ns=1;i=2562' BrowseName='1:ThreeSpacePositionDataType'>
     <DisplayName>ThreeSpacePositionDataType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - BaseDataType i=24   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>i=24</Reference>
+      <!-- HasSubtype - (Reverse) - BaseDataType Structure   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>Structure</Reference>
     </References>
     <Definition Name='ThreeSpacePositionDataType'>
       <Field Name='X' DataType='Double'>
@@ -5309,9 +5309,9 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
-  <!-- Definition of Object MTNumberEventClassType ns=1;i=2291 -->
-  <UAObjectType NodeId='ns=1;i=2291' BrowseName='1:MTNumberEventClassType' IsAbstract='true'>
-    <DisplayName>MTNumberEventClassType</DisplayName>
+  <!-- Definition of Object MTNumericEventClassType ns=1;i=3217 -->
+  <UAObjectType NodeId='ns=1;i=3217' BrowseName='1:MTNumericEventClassType' IsAbstract='true'>
+    <DisplayName>MTNumericEventClassType</DisplayName>
     <References>
       <!-- HasSubtype - (Reverse) - MTEventClassType ns=1;i=2556   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2556</Reference>
@@ -5321,48 +5321,48 @@
   <UAObjectType NodeId='ns=1;i=2279' BrowseName='1:AxisFeedrateOverrideClassType'>
     <DisplayName>AxisFeedrateOverrideClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTNumberEventClassType ns=1;i=2291   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2291</Reference>
+      <!-- HasSubtype - (Reverse) - MTNumericEventClassType ns=1;i=3217   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3217</Reference>
     </References>
   </UAObjectType>
   <!-- Definition of Object BlockCountClassType ns=1;i=2281 -->
   <UAObjectType NodeId='ns=1;i=2281' BrowseName='1:BlockCountClassType'>
     <DisplayName>BlockCountClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTNumberEventClassType ns=1;i=2291   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2291</Reference>
+      <!-- HasSubtype - (Reverse) - MTNumericEventClassType ns=1;i=3217   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3217</Reference>
     </References>
   </UAObjectType>
   <!-- Definition of Object HardnessClassType ns=1;i=2283 -->
   <UAObjectType NodeId='ns=1;i=2283' BrowseName='1:HardnessClassType'>
     <DisplayName>HardnessClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTNumberEventClassType ns=1;i=2291   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2291</Reference>
+      <!-- HasSubtype - (Reverse) - MTNumericEventClassType ns=1;i=3217   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3217</Reference>
     </References>
   </UAObjectType>
   <!-- Definition of Object LineNumberClassType ns=1;i=2285 -->
   <UAObjectType NodeId='ns=1;i=2285' BrowseName='1:LineNumberClassType'>
     <DisplayName>LineNumberClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTNumberEventClassType ns=1;i=2291   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2291</Reference>
+      <!-- HasSubtype - (Reverse) - MTNumericEventClassType ns=1;i=3217   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3217</Reference>
     </References>
   </UAObjectType>
   <!-- Definition of Object PartCountClassType ns=1;i=2287 -->
   <UAObjectType NodeId='ns=1;i=2287' BrowseName='1:PartCountClassType'>
     <DisplayName>PartCountClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTNumberEventClassType ns=1;i=2291   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2291</Reference>
+      <!-- HasSubtype - (Reverse) - MTNumericEventClassType ns=1;i=3217   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3217</Reference>
     </References>
   </UAObjectType>
   <!-- Definition of Object RotaryVelocityOverrideClassType ns=1;i=2289 -->
   <UAObjectType NodeId='ns=1;i=2289' BrowseName='1:RotaryVelocityOverrideClassType'>
     <DisplayName>RotaryVelocityOverrideClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTNumberEventClassType ns=1;i=2291   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2291</Reference>
+      <!-- HasSubtype - (Reverse) - MTNumericEventClassType ns=1;i=3217   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3217</Reference>
     </References>
   </UAObjectType>
   <!-- Definition of Object MTStringEventClassType ns=1;i=2293 -->

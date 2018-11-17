@@ -59,32 +59,58 @@
   description = {}
 }
 
-\longnewglossaryentry{ValueRank}
+\newglossaryentry{ValueRank}
 {
   type=opc,
-  name = {ValueRank}%,
-%  description = {This Attribute indicates whether the Value Attribute of the Variable is an array and how many dimensions the array has.}
+  name = {ValueRank},
+  description = {This Attribute indicates whether the Value Attribute of the Variable is an array and how many dimensions the array has.}
 }
-{
-  This Attribute indicates whether the Value Attribute of the Variable is an array and how many dimensions the array has. It may have the following values:
-  \begin{itemize}
-    \item n > 1: the Value is an array with the specified number of dimensions.
-    
-    \item OneDimension (1): The value is an array with one dimension.
-    \item OneOrMoreDimensions (0): The value is an array with one or more dimensions.
-    \item Scalar (-1): The value is not an array.
-    \item Any (-2): The value can be a scalar or an array with any number of dimensions.
-    \item ScalarOrOneDimension (-3): The value can be a scalar or a one dimensional array.
-  \end{itemize}
-  All DataTypes are considered to be scalar, even if they have array-like semantics like ByteString and String.
-}
-
 \newglossaryentry{NodeClass}
 {
   type=opc,
   name=NodeClass,
   plural=NodeClasses,
   description = {The NodeClasses defined to represent Objects fall into three categories: those used to define instances, those used to define types for those instances and those used to define data types}
+}
+
+\newglossaryentry{BrowseName}
+{
+    type=opc,
+    name=BrowseName,
+    description={Nodes have a BrowseName Attribute that is used as a non-localised human-readable name when browsing the AddressSpace to create paths out of BrowseNames}
+}
+
+\newglossaryentry{ConditionType}
+{
+    type=opc,
+    name=ConditionType,
+    description={The ConditionType defines all general characteristics of a Condition. All other ConditionTypes derive from it}
+}
+
+\newglossaryentry{Condition}
+{
+    type=opc,
+    name=Condition,
+    description={The Condition model extends the Event model by defining the ConditionType}
+}
+
+\newglossaryentry{FolderType}
+{
+    type=opc,
+    name=FolderType,
+    description={Instances of FolderType are used to organise the AddressSpace into a hierarchy of Nodes}
+}
+
+\newglossaryentry{DataVariable}{
+    type=opc,
+    name=DataVariable,
+    description={Variables that represent values of Objects, either directly or indirectly for complex Variables, where the Variables are always the TargetNode of a HasComponent Reference}
+}
+
+\newglossaryentry{HasTypeDefinition}{
+    type=opc,
+    name=HasTypeDefinition,
+    description={The HasTypeDefinition ReferenceType is a concrete ReferenceType and can be used directly}
 }
 
 %% MTConnect Terms
@@ -151,6 +177,41 @@
   type=mtc,
   name={Lower Camel Case},
   description={the first word is lowercase and the remaining words are capitalized and all spaces between words are removed.}
+}
+
+
+\newglossaryentry{MTDevice}
+{
+  type=mtc,
+  name=Device,
+  description={The top level component in an MTConnect piece of equipment. Represented as an \mtuatype{MTDeviceType}}
+}
+
+\newglossaryentry{Configuration}
+{
+  type=mtc,
+  name=Configuration,
+  description={The specifications about a specific component in the MTConnect inforamtion model}
+}
+
+\newglossaryentry{Asset}
+{
+  type=mtc,
+  name=Asset,
+  description={A complex information model relating to an entity in the manufacturing process that does not directly supply data}
+}
+
+\newglossaryentry{Composition}
+{
+  type=mtc,
+  name=Composition,
+  description={A sub-classification of a component that represents part of the component heirarchy}
+}
+
+\newglossaryentry{MTCondition}{
+  type=mtc,
+  name=Condition,
+  description={A \gls{DataItem} category that represents the alarm state of a component relatiing to the \texttt{type}}
 }
 
 %%% Local Variables:

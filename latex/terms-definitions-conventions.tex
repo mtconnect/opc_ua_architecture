@@ -2,7 +2,7 @@
 
 \subsection{Overview}
 
-The basic concepts of OPC UA and MTConnect are pre-requisites for understanding and interpreting the content provided in this companion specification. Additionally, the terms and definitions given in OPC UA Part 1, OPC UA Part 3, OPC UA Part 4, OPC UA Part 5, OPC UA Part 7, OPC UA Part 10, and MTConnect Part 1.0, (see section \ref{normativereferences}), as well as the following, apply to this document. 
+The basic concepts of OPC UA and MTConnect are pre-requisites for understanding and interpreting the content provided in this companion specification. Additionally, the terms and definitions given in \cite{UAPart1}, \cite{UAPart2}, \cite{UAPart3}, \cite{UAPart5}, \cite{UAPart7}, \cite{UAPart10}, and \cite{MTCPart1}, (see section \ref{normativereferences}), as well as the following, apply to this document. 
 
 \subsection{Terms and Acronnyms}
 
@@ -56,11 +56,11 @@ Int32 \{ScalarOrOneDimension\} & Int32 & -3 & omitted or null & An Int32 where i
 
 \FloatBarrier
 
-If the \opcuaterm{NodeId} of a \opcuaterm{DataType} is provided, the symbolic name of the Node representing the \opcuaterm{DataType} shall be used.
+If the \opcuaterm{NodeId} of a \gls{DataType} is provided, the symbolic name of the Node representing the \gls{DataType} shall be used.
 
-Nodes of all other \glspl{NodeClass} cannot be defined in the same table; therefore only the used \opcuaterm{ReferenceType}, their \opcuaterm{NodeClass} and their \opcuaterm{BrowseName} are specified. A reference to another part of this document points to their definition.
+Nodes of all other \glspl{NodeClass} cannot be defined in the same table; therefore only the used \opcuaterm{ReferenceType}, their \gls{NodeClass} and their \gls{BrowseName} are specified. A reference to another part of this document points to their definition.
 
-Table \ref{table:TypeDefinitionTable} illustrates the table. If no components are provided, the \opcuaterm{DataType}, \opcuaterm{TypeDefinition} and \opcuaterm{ModellingRule} columns may be omitted and only a Comment column is introduced to point to the Node definition.
+Table \ref{table:TypeDefinitionTable} illustrates the table. If no components are provided, the \gls{DataType}, \gls{TypeDefinition} and \gls{ModellingRule} columns may be omitted and only a Comment column is introduced to point to the Node definition.
 
 \begin{table}[ht]
 \centering 
@@ -78,7 +78,7 @@ Attribute name & \multicolumn{5}{|l|}{Attribute value. If it is an optional Attr
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \tabucline[1.5pt]{}
 
-\opcuaterm{Reference- Type} name & \opcuaterm{NodeClass} of the target \opcuaterm{Node}. & \opcuaterm{BrowseName} of the target \opcuaterm{Node}. If the \opcuaterm{Reference} is to be instantiated by the server, then the value of the target \opcuaterm{Node}'s \opcuaterm{BrowseName} is "--". & \opcuaterm{DataType} of the referenced \opcuaterm{Node}, only applicable for \opcuaterm{Variables}. & \opcuaterm{Type- Definition} of the referenced \opcuaterm{Node}, only applicable for \opcuaterm{Variables} and \opcuaterm{Objects}. & Referenced \opcuaterm{Modeling- Rule} of the referenced \opcuaterm{Object}. \\
+\opcuaterm{Reference- Type} name & \gls{NodeClass} of the target \gls{Node}. & \gls{BrowseName} of the target \gls{Node}. If the \opcuaterm{Reference} is to be instantiated by the server, then the value of the target \gls{Node}'s \opcuaterm{BrowseName} is "--". & \gls{DataType} of the referenced \gls{Node}, only applicable for \opcuaterm{Variables}. & \gls{TypeDefinition} of the referenced \gls{Node}, only applicable for \glspl{Variable} and \opcuaterm{Objects}. & Referenced \gls{ModellingRule} of the referenced \opcuaterm{Object}. \\
 
 \multicolumn{6}{|l|}{Note: Notes referencing footnotes of the table content.} \\
 \end{tabu}
@@ -88,15 +88,15 @@ Attribute name & \multicolumn{5}{|l|}{Attribute value. If it is an optional Attr
 \FloatBarrier
 
 
-Components of \opcuaterm{Nodes} can be complex that is containing components by themselves. The \opcuaterm{TypeDefinition}, \opcuaterm{NodeClass}, \opcuaterm{DataType} and \opcuaterm{ModellingRule} can be derived from the type definitions, and the symbolic name can be created. Therefore, those containing components are not explicitly specified; they are implicitly specified by the type definitions.
+Components of \glspl{Node} can be complex that is containing components by themselves. The \gls{TypeDefinition}, \gls{NodeClass}, \gls{DataType} and \gls{ModellingRule} can be derived from the type definitions, and the symbolic name can be created. Therefore, those containing components are not explicitly specified; they are implicitly specified by the type definitions.
 
 \subsubsection{NodeIds and BrowseNames}
 
 \paragraph{NodeIds}
 
-The \opcuaterm{NodeIds} of all \opcuaterm{Nodes} described in this standard are only symbolic names. Annex A defines the actual \opcuaterm{NodeIds}.
+The \opcuaterm{NodeIds} of all \glspl{Node} described in this standard are only symbolic names. Annex A defines the actual \opcuaterm{NodeIds}.
 
-The symbolic name of each \opcuaterm{Node} defined in this specification is its \opcuaterm{BrowseName}, or, when it is part of another Node, the \opcuaterm{BrowseName} of the other \opcuaterm{Node}, a ".", and the \opcuaterm{BrowseName} of itself. In this case "part of" means that the whole has a \opcuaterm{HasProperty} or \opcuaterm{HasComponent} Reference to its part. Since all \opcuaterm{Nodes} not being part of another \opcuaterm{Node} have a unique name in this specification, the symbolic name is unique.
+The symbolic name of each \gls{Node} defined in this specification is its \gls{BrowseName}, or, when it is part of another Node, the \gls{BrowseName} of the other \opcuaterm{Node}, a ".", and the \gls{BrowseName} of itself. In this case "part of" means that the whole has a \opcuaterm{HasProperty} or \opcuaterm{HasComponent} Reference to its part. Since all \glspl{Node} not being part of another \gls{Node} have a unique name in this specification, the symbolic name is unique.
 
 The namespace for all \opcuaterm{NodeIds} defined in this specification is defined in Annex A. The namespace for this \opcuaterm{NamespaceIndex} is Server-specific and depends on the position of the namespace URI in the server namespace table.
 

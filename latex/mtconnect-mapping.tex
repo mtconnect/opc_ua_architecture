@@ -6,13 +6,13 @@ This section describes a UML representation of MTConnect semantic data models fo
 
 OPC UA defines abstractions representing data, relationships, and events from devices. The abstractions do not provide the semantic meaning; they provide a structure to convey the meta-data and the values as they change. The OPC UA model has the base building blocks to represent an ontological model where the specific ontology is povided by companion specification for a specific domain.
 
-MTConnect has similar capabilities but uses a different structural model where the meta-data and the streaming values are in separate documents to normalize the data flow in a similar way that many publish-subscribe protocols separate the structure from the data. MTConnect also supports a store-and-forward capability like many message brokers in a Message Oriented Middleware \textit{(MOM)} architecture to enable resilience and recovery of data in the event of connectivity problems.
+MTConnect has similar capabilities but uses a different structural model where the meta-data and the streaming values are in separate documents to normalize the data flow in a similar way that many publish-subscribe protocols separate the structure from the data. MTConnect also supports a store-and-forward capability like many message brokers in a \gls{mom} architecture to enable resilience and recovery of data in the event of connectivity problems.
 
-When translating from MTConnect to OPC UA, the MTConnect abstractions of \mtconnectterm{DataItem}s are converted using the OPC UA  \opcuaterm{DataVariable} abstractions as given in \cite{UAPart8}.  The relationships are mapped to multiple \opcuaterm{DataVariable} types where the category and the type determine the correct mapping. Conditions are mapped a sub-type of the OPC UA \opcuaterm{ConditionType} in a similar way. The behavior of the OPC UA \opcuaterm{Condition}s can be found in \cite{UAPart9}.
+When translating from MTConnect to OPC UA, the MTConnect abstractions of \glspl{MTDataItem} are converted using the OPC UA  \gls{DataVariable} abstractions as given in \cite{UAPart8}.  The relationships are mapped to multiple \gls{DataVariable} types where the category and the type determine the correct mapping. Conditions are mapped a sub-type of the OPC UA \gls{ConditionType} in a similar way. The behavior of the OPC UA \glspl{Condition} can be found in \cite{UAPart9}.
 
 \subsection{MTConnect UML Representation of OPC}
 
-This section provides instructions to translate from the OPC UA diagram representation given in section \ref{intro-to-opc-ua} to the UML described throughout section \ref{mtconnect-mapping}. Figure \ref{fig:mtcomponent-ua} is a partial illustration of the MTConnect \mtconnectterm{Component} abstraction in OPC UA.
+This section provides instructions to translate from the OPC UA diagram representation given in section \ref{intro-to-opc-ua} to the UML described throughout section \ref{mtconnect-mapping}. Figure \ref{fig:mtcomponent-ua} is a partial illustration of the MTConnect \glspl{MTComponent} abstraction in OPC UA.
 
 \input{diagrams/mtconnect-mapping/mtcomponent-ua.tex}
 
@@ -20,7 +20,7 @@ Figure \ref{fig:mtcomponent-uml} represents the same model in UML. The companion
 
 \begin{itemize}
   \item OPC UA Types are represented as \mtterm{UML Classes}
-  \item OPC UA Objects are represented as ``\uaterm{BrowseName}: \uaterm{Type}'' underlined as in the following example: \textbf{\underline{SimpleCnc: MTDeviceType}} where \textbf{\underline{SimpleCnc}} is the name of the device and  \textbf{\underline{MTDeviceType}} is related with a \uaterm{HasTypeDefinition} relationship.
+  \item OPC UA Objects are represented as ``\gls{BrowseName}: \uaterm{Type}'' underlined as in the following example: \textbf{\underline{SimpleCnc: MTDeviceType}} where \textbf{\underline{SimpleCnc}} is the name of the device and  \textbf{\underline{MTDeviceType}} is related with a \gls{HasTypeDefinition} relationship.
   \item Stereotypes are used to denote properties of types, relationships, and members of types. A stereotype is denoted by angle brackets (\texttt{<<..>>}) and provides additional information about the entity. For example, each reference from one \uaterm{ObjectType} to another has a stereotype denoting the reference type.
   \item OPC UA Properties are denoted as UML Attributes. UA \uaterm{Attributes} are also represented as UML Attributes with the stereotype of \mtconnectterm{<<attribute>>} to differentiate from UA \uaterm{Properties}.
   \item OPC UA \uaterm{Component} \uaterm{References} are represented as UML Unidirectional associations. The reference type is given as the association's \textit{Stereotype}, for example \textit{<<HasComponent>>}. 
@@ -33,9 +33,9 @@ The \mtterm{UMLAssociations} are used to represent OPC UA References. \uaterm{UA
 \input{diagrams/mtconnect-mapping/mtcomponent-uml.tex}
 \FloatBarrier
 
-When traversing an association between two object types, the name of the source of the association is the \uaterm{BrowseName} of the object, and the destination is the type of object that is instantiated. If the name is not given, it represents a dynamic relationship where the uaterm{BrowseName} is determined during the creation of the object model. An example is the association of the MTConnect \mtconnectterm{DataItem}s. The rules for creating the \uaterm{BrowseName} are givin below in Section~\ref{sec:mapping-rules}.
+When traversing an association between two object types, the name of the source of the association is the \gls{BrowseName} of the object, and the destination is the type of object that is instantiated. If the name is not given, it represents a dynamic relationship where the \gls{BrowseName} is determined during the creation of the object model. An example is the association of the MTConnect \glspl{MTDataItem}. The rules for creating the \gls{BrowseName} are givin below in Section~\ref{sec:mapping-rules}.
 
-A reference that has a stereotype of \textit{<<Organizes>>}, shown by the \texttt{Components} recursive relationship in the \mtconnectterm{MTComponentType}, implies an intermediate object of type \opcuaterm{FolderType} with the \uaterm{BrowseName} of the relationship point on the source side. The far side is not constrained within the \opcuaterm{FolderType} but given in the documentation as the expected contents of the folder.
+A reference that has a stereotype of \textit{<<Organizes>>}, shown by the \texttt{Components} recursive relationship in the \mtconnectterm{MTComponentType}, implies an intermediate object of type \opcuaterm{FolderType} with the \gls{BrowseName} of the relationship point on the source side. The far side is not constrained within the \opcuaterm{FolderType} but given in the documentation as the expected contents of the folder.
 
 OPC UA represents both class and instance diagrams using the same set of primitives. UML provides separate class and object models using two separate sets of diagram and representations, one for classification and the other for instances of those classes. This section separates the object instantiation from the classification and uses UML object diagrams to represent example instances of classes.
 
@@ -47,11 +47,11 @@ The models will use a UML representation that represents the members as UML Slot
 
 \input{diagrams/mtconnect-mapping/example-object.tex}
 
-Figure \ref{fig:example-object} represents an MTConnect \mtconnectterm{Device} with the associated values. The UA \opcuaterm{Browse\-Name} is given as the object name above, and the UA Type is given after the \texttt{:} in the header. Each of the UA \opcuaterm{Attributes} and \opcuaterm{Properties} are provided below. Relationships are shown as edges that have the Reference Type, such as \opcuaterm{Has\-Component}. The properties contained within will be created using the \opcuaterm{Has\-Property} reference but composed as internal members for brevity.
+Figure \ref{fig:example-object} represents an MTConnect \mtconnectterm{Device} with the associated values. The UA \gls{BrowseName} is given as the object name above, and the UA Type is given after the \texttt{:} in the header. Each of the UA \opcuaterm{Attributes} and \opcuaterm{Properties} are provided below. Relationships are shown as edges that have the Reference Type, such as \opcuaterm{Has\-Component}. The properties contained within will be created using the \opcuaterm{Has\-Property} reference but composed as internal members for brevity.
 
-For example, the with type \mtuatype{MTDeviceType} has \opcuaterm{BrowseName} of \texttt{SimpleCnc} (the name of the device). There are patterns for creating all the \uaterm{BrowseName} for each MTConnect UA Type. The rules are presented and in the example to provide the normative patterns for each type in the information model.
+For example, the with type \mtuatype{MTDeviceType} has \gls{BrowseName} of \texttt{SimpleCnc} (the name of the device). There are patterns for creating all the \gls{BrowseName} for each MTConnect UA Type. The rules are presented and in the example to provide the normative patterns for each type in the information model.
 
-Common elements, like \xmlelement{Components} or \xmlelement{Compositions}, that provide structure that are mapped to \uaterm{FolderType} objects have common browse names. These will be prefixed with the context of the parent component. For example, \texttt{Controller.Components} will refer to an \uaterm{Object} of type \uaterm{FolderType} with the \uaterm{BrowseName} \texttt{Components}. The prefix before the period (\texttt{.}) will be ignored for the \texttt{BrowseName}. {\color{red} This rule will be removed when UML Diagrams are converted to TIKz as this is a requirement of UML modeling to have unique object names--UML modeling tools require unique object names.}
+Common elements, like \xmlelement{Components} or \xmlelement{Compositions}, that provide structure that are mapped to \gls{FolderType} objects have common browse names. These will be prefixed with the context of the parent component. For example, \texttt{Controller.Components} will refer to an \uaterm{Object} of type \gls{FolderType} with the \gls{BrowseName} \texttt{Components}. The prefix before the period (\texttt{.}) will be ignored for the \gls{BrowseName}. {\color{red} This rule will be removed when UML Diagrams are converted to TIKz as this is a requirement of UML modeling to have unique object names--UML modeling tools require unique object names.}
 
 \FloatBarrier
 
@@ -60,18 +60,18 @@ Common elements, like \xmlelement{Components} or \xmlelement{Compositions}, that
 The MTConnect information model has the following abstractions:
 
 \begin{enumerate}
-  \item \mtconnectterm{Components}
-  \item \mtconnectterm{DataItems}
-  \item \mtconnectterm{Configuration}
-  \item \mtconnectterm{Compositions}
-  \item \mtconnectterm{Assets}
+  \item \glspl{MTComponent}
+  \item \glspl{MTDataItem}
+  \item \gls{Configuration}
+  \item \glspl{Composition}
+  \item \glspl{Asset}
 \end{enumerate}
 
-The first concern of the MTConnect OPC UA companion specification is the \mtterm{Device} model covered in MTConnect \cite{MTCPart2} and \cite{MTCPart3}. The top-level \mtconnectterm{Component} of any MTConnect information model is the \mtconnectterm{Device}. A \mtconnectterm{Component} represents a logical part or a collection of parts of a piece of equipment. The \mtconnectterm{DataItem}s represent information that is communicated from \mtconnectterm{Component}s, and the representation and communication of the information are covered in \cite{MTCPart3}. The \mtconnectterm{Compositions} are the lowest level of contextualization for MTConnect \mtconnectterm{Components} that do not have any structure but can be associated with \mtconnectterm{Data\-Item}s to provide additional context. 
+The first concern of the MTConnect OPC UA companion specification is the \gls{MTDevice} model covered in MTConnect \cite{MTCPart2} and \cite{MTCPart3}. The top-level \gls{MTComponent} of any MTConnect information model is the \gls{MTDevice}. A \gls{MTComponent} represents a logical part or a collection of parts of a piece of equipment. The \glspl{MTDataItem} represent information that is communicated from \glspl{MTComponent}, and the representation and communication of the information are covered in \cite{MTCPart3}. The \mtconnectterm{Compositions} are the lowest level of contextualization for MTConnect \glspl{MTComponent} that do not have any structure but can be associated with \glspl{MTDataItem} to provide additional context. 
 
-The \mtconnectterm{Configuration} is a collection of information about the component that provides more detail about its capabilities. The standard has only specified the \mtconnectterm{SensorConfiguration} at this point.
+The \\gls{Configuration} is a collection of information about the component that provides more detail about its capabilities. The standard has only specified the \mtconnectterm{SensorConfiguration} at this point.
 
-\mtconnectterm{Asset}s are complex information models that provide a point in time consistent set of information about the use of a physical or logical entity in the manufacturing process. These models, for example, may represent a cutting tool, a program, or a process. The \mtconnectterm{Asset}s will be covered in a subsequent companion specification. The only assets currently in the MTConnect standard are \asset{CuttingTool} and \asset{CuttingToolArchetype}. Refer to MTConnect Part 4.0 \cite{MTCPart40} and MTConnect Part 4.1 \cite{MTCPart41}.
+\glspl{Asset} are complex information models that provide a point in time consistent set of information about the use of a physical or logical entity in the manufacturing process. These models, for example, may represent a cutting tool, a program, or a process. The \mtconnectterm{Asset}s will be covered in a subsequent companion specification. The only assets currently in the MTConnect standard are \asset{CuttingTool} and \asset{CuttingToolArchetype}. Refer to MTConnect Part 4.0 \cite{MTCPart40} and MTConnect Part 4.1 \cite{MTCPart41}.
 
 The specification uses examples to illustrate the process of conversion from XML to OPC UA; the following sections cover the main points and concerns when converting an MTConnect Device model to a Nodeset. Following the metamodel discussion will be a section on the handling of streaming data and mapping to the correct data items. 
 
@@ -166,35 +166,35 @@ The following types representing base MTConnect types are also prefixed:
 
 The data item class types and enumeration data types do not have \texttt{MT} prepended.
 
-\subsubsection{Component and Composition \uaterm{BrowseName} and \uaterm{Type} Rules}
+\subsubsection{Component and Composition \gls{BrowseName} and \uaterm{Type} Rules}
 
-The rules for determining the \uaterm{BrowseName} for the MTConnect \mtterm{Component} are as follows:
+The rules for determining the \gls{BrowseName} for the MTConnect \mtterm{Component} are as follows:
 
 \begin{enumerate}
-  \item If the \mtterm{Component} is \xmlelement{Device}, the \uaterm{BrowseName} is the \xmlattribute{name} attribute of the \xmlelement{Device} and the UA \uaterm{TypeDefinition} is \texttt{MTDeviceType}.
+  \item If the \mtterm{Component} is \xmlelement{Device}, the \gls{BrowseName} is the \xmlattribute{name} attribute of the \xmlelement{Device} and the UA \uaterm{TypeDefinition} is \texttt{MTDeviceType}.
   \item The browse name is the \xmlelement{QName} of the XML Element of the \mtterm{Component}. \label{item:component-browse-name}
-  \item The \uaterm{HasTypeDefinition} references a type that is created by appending the word \texttt{Type} to the \xmlelement{QName} of the \mtterm{Component} element. For example, a \xmlelement{Controller} will have a \uaterm{BrowseName} of \texttt{Controller} and a \uaterm{HasTypeDefinition} referencing \texttt{ControllerType}.
+  \item The \uaterm{HasTypeDefinition} references a type that is created by appending the word \texttt{Type} to the \xmlelement{QName} of the \mtterm{Component} element. For example, a \xmlelement{Controller} will have a \gls{BrowseName} of \texttt{Controller} and a \uaterm{HasTypeDefinition} referencing \texttt{ControllerType}.
   \item The \uaterm{ObjectType} is only defined once for all \mtterm{Components} of that type. There is no \texttt{MT} prepended to the front of the \uaterm{ObjectType} \uaterm{BrowseName}.
   \item If there are two \mtterm{Components} with the same \texttt{BrowseName}s or if the \mtterm{Component} are \xmlelement{Linear} or \xmlelement{Rotary}, they must have the \xmlattribute{name} attribute appended in square brackets (\texttt{[]}) to the name as specified in item \ref{item:component-browse-name}. 
-  \item For example, if there are two \xmlelement{Path} \mtterm{Components} with names \xmlattribute{name="P1"} and \xmlattribute{name="P2"}, the \uaterm{BrowseName}s will be as follows: \texttt{Path[P1]} and \texttt{Path[P2]} where each \uaterm{HaveTypeDefinition} of \texttt{PathType}.
+  \item For example, if there are two \xmlelement{Path} \mtterm{Components} with names \xmlattribute{name="P1"} and \xmlattribute{name="P2"}, the \glspl{BrowseName} will be as follows: \texttt{Path[P1]} and \texttt{Path[P2]} where each \uaterm{HaveTypeDefinition} of \texttt{PathType}.
 \end{enumerate}
 
 The rules for \mtterm{Composition} elements are as follows:
 
 \begin{enumerate}
-  \item  \mtterm{Composition} elements in the MTConnect model will be represented instantiated with the \uaterm{BrowseName} of the \mtterm{Composition} \xmlattribute{type} converted to \textit{PascalCase}. \label{item:composition-browse-name}
+  \item  \mtterm{Composition} elements in the MTConnect model will be represented instantiated with the \gls{BrowseName} of the \mtterm{Composition} \xmlattribute{type} converted to \textit{PascalCase}. \label{item:composition-browse-name}
   \item If two \mtterm{Composition} elements of the same \mtterm{Component} have the same \xmlattribute{type}, they must have the \xmlattribute{name} attribute appended in square brackets (\texttt{[]}) to the name as specified in item \ref{item:composition-browse-name}.
-  \item For example, a component has two \xmlattribute{type="TANK"}s with the names \xmlattribute{name="top"} and \xmlattribute{name="bottom"}, the \uaterm{BrowseName}s will be \texttt{Tank[top]} and \texttt{Tank[bottom]} respectively.
+  \item For example, a component has two \xmlattribute{type="TANK"}s with the names \xmlattribute{name="top"} and \xmlattribute{name="bottom"}, the \glspl{BrowseName} will be \texttt{Tank[top]} and \texttt{Tank[bottom]} respectively.
   \item The type is placed is the \texttt{MTTypeName} \uaterm{Property}.
 \end{enumerate}
 
-\subsubsection{\mtterm{DataItem} \uaterm{HasTypeDefinition} and \uaterm{BrowseName} Conventions}
+\subsubsection{\gls{MTDataItem} \uaterm{HasTypeDefinition} and \gls{BrowseName} Conventions}
 \label{sec:data-item-conventions}
 
-The MTConnect \mtterm{DataItem} represents multiple OPC UA \uaterm{DataVariableType}s as well as UA \uaterm{ConditionType}s as described in parts \cite{UAPart8} and \cite{UAPart9} respectively. The mapping rules are as follows:
+The MTConnect \gls{MTDataItem} represents multiple OPC UA \uaterm{DataVariableType}s as well as UA \uaterm{ConditionType}s as described in parts \cite{UAPart8} and \cite{UAPart9} respectively. The mapping rules are as follows:
 
 \begin{enumerate}
-  \item Determine the \mtterm{DataItem} \uaterm{Type} for the \uaterm{HasTypeDefinition} \uaterm{Reference}:
+  \item Determine the \gls{MTDataItem} \uaterm{Type} for the \uaterm{HasTypeDefinition} \uaterm{Reference}:
   \begin{itemize}
     \item Evaluate \xmlelement{DataItem} attributes as follows:
     \begin{enumerate}
@@ -239,7 +239,7 @@ The MTConnect \mtterm{DataItem} represents multiple OPC UA \uaterm{DataVariableT
     \item Put the text name of the class in the property \mtterm{MTSubTypeName}.
   \end{enumerate}
   
-  \item Format the \uaterm{BrowseName} for the \mtterm{Sample} and \mtterm{Event} \mtterm{DataItem}s
+  \item Format the \gls{BrowseName} for the \mtterm{Sample} and \mtterm{Event} \mtterm{DataItem}s
   \begin{enumerate}[after=\vspace{\baselineskip}]
     \setlength\itemsep{1em}
     \item If the \xmlelement{DataItem} attribute \xmlattribute{compositionId} is present, do the following:
@@ -250,16 +250,16 @@ The MTConnect \mtterm{DataItem} represents multiple OPC UA \uaterm{DataVariableT
     Otherwise, set the variable \texttt{composition} to "".
     \item If the \xmlattribute{subType} is present, set the variable \texttt{subType} to the \textit{PascalCase} of the \xmlattribute{subType}. Otherwise set it the variable \texttt{subType} to "".
     \item Set the variable \texttt{type} to the \textit{PascalCase} of the \xmlelement{DataItem} attribute \xmlattribute{type}.
-    \item The \uaterm{BrowseName} is the concatination of the \texttt{composition} + \texttt{subType} + \texttt{type}. \label{item:browse-name}.
-    \item If the \xmlattribute{representation} attribute is given and it has a value other than the default \texttt{VALUE}, the \uaterm{BrowseName} will be have the \textit{PascalCase} of the \xmlattribute{representation} appended to the \uaterm{BrowseName}  as specified in \ref{item:browse-name} . For example, a \dataitem{AMPERAGE} with \xmlattribute{representation="TIME_SERIES"} will have a \uaterm{BrowseName} of \texttt{AmperageTimeSeries}. \label{item:representation}.
-    \item If the \xmlattribute{statistic} is given, the \textit{PascalCase} of the \xmlattribute{statistic} attribute will be prepended to the \uaterm{BrowseName}  as specified in \ref{item:representation}. For example, if the \xmlattribute{statistic="AVERAGE"} for a \mtterm{DataItem} of \dataitem{AMPERAGE} and a \xmlattribute{representation} of \dataitem{TIME_SERIES}, the \uaterm{BrowseName} will be  \texttt{AverageAmperageTimeSeries}. \label{item:statistic}
-    \item If two browse names are identical for the same component, the \xmlattribute{name} must be used to differentiate between the data items by placing the \xmlattribute{name} in square brackets (\texttt{[]}). For example, if there are two \dataitem{TEMPERATURE} data items with the attributes \xmlattribute{name="front"} and \xmlattribute{name="back"} the \mtterm{DataItem}s will have the \uaterm{BrowseName}s \texttt{Temperature[front]} and \texttt{Temperature[back]} respectively. \label{item:data-item-name}
+    \item The \gls{BrowseName} is the concatination of the \texttt{composition} + \texttt{subType} + \texttt{type}. \label{item:browse-name}.
+    \item If the \xmlattribute{representation} attribute is given and it has a value other than the default \texttt{VALUE}, the \gls{BrowseName} will be have the \textit{PascalCase} of the \xmlattribute{representation} appended to the \gls{BrowseName}  as specified in \ref{item:browse-name} . For example, a \dataitem{AMPERAGE} with \xmlattribute{representation="TIME_SERIES"} will have a \gls{BrowseName} of \texttt{AmperageTimeSeries}. \label{item:representation}.
+    \item If the \xmlattribute{statistic} is given, the \textit{PascalCase} of the \xmlattribute{statistic} attribute will be prepended to the \gls{BrowseName}  as specified in \ref{item:representation}. For example, if the \xmlattribute{statistic="AVERAGE"} for a \gls{MTDataItem} of \dataitem{AMPERAGE} and a \xmlattribute{representation} of \dataitem{TIME_SERIES}, the \gls{BrowseName} will be  \texttt{AverageAmperageTimeSeries}. \label{item:statistic}
+    \item If two browse names are identical for the same component, the \xmlattribute{name} must be used to differentiate between the data items by placing the \xmlattribute{name} in square brackets (\texttt{[]}). For example, if there are two \dataitem{TEMPERATURE} data items with the attributes \xmlattribute{name="front"} and \xmlattribute{name="back"} the \glspl{MTDataItem} will have the \glspl{BrowseName} \texttt{Temperature[front]} and \texttt{Temperature[back]} respectively. \label{item:data-item-name}
   \end{enumerate} 
 
-  \item Format the \uaterm{BrowseName} for the \mtterm{Condition} \mtterm{DataItem}s
+  \item Format the \gls{BrowseName} for the \mtterm{Condition} \mtterm{DataItem}s
   \begin{enumerate}
     \item Use the name derived in the previous step for \mtterm{Event}s and \mtterm{Sample}s as specified in item \ref{item:statistic} and append \texttt{Condition}. \label{item:condition-browse-name}
-    \item Apply rule specified in item \ref{item:data-item-name} if two conditions have identical \uaterm{BrowseName}s to the result of item \ref{item:condition-browse-name}.
+    \item Apply rule specified in item \ref{item:data-item-name} if two conditions have identical \glspl{BrowseName} to the result of item \ref{item:condition-browse-name}.
   \end{enumerate}
   
   \item The type is placed is the \texttt{MTTypeName} \uaterm{Property}.
@@ -267,7 +267,7 @@ The MTConnect \mtterm{DataItem} represents multiple OPC UA \uaterm{DataVariableT
 
 The examples below will provide further guidance on implementing these rules.
 
-\subsubsection{Mapping \mtterm{DataItem} \mtterm{units} to \uaterm{EngineeringUnits}}
+\subsubsection{Mapping \gls{MTDataItem} \mtterm{units} to \uaterm{EngineeringUnits}}
 
 OPC UA defines the EngineeringUnits \uaterm{DataType} in \cite{UAPart8} as having the fields show in Table~\ref{table:enineering-untis-data-type}.
 
@@ -385,9 +385,9 @@ The \texttt{Device} is mapped to an \mtuatype{MTDevice} object in the MTConnect 
 
 \input{diagrams/mtconnect-mapping/device-model.tex}
 
-Every device must have a \opcuaterm{HasNotifier} relationship with the \uaterm{Server} UA Object as the source to enable conditions and event notification. The \opcuaterm{HasNotifier} relationships are flowed down through the component hierarchy where the \opcuaterm{Component}s each have a \uaterm{HasNotifier} relationship with the parent. The MTConnect \mtterm{DataItem}s will have require a \uaterm{HasEventSource} relationship with the parent \mtterm{Component} when the \mtterm{DataItem} is associated with a \mtterm{Condition} where the \texttt{Source} element of the \mtterm{Condition} references the \mtterm{DataItem} id. 
+Every device must have a \opcuaterm{HasNotifier} relationship with the \uaterm{Server} UA Object as the source to enable conditions and event notification. The \opcuaterm{HasNotifier} relationships are flowed down through the component hierarchy where the \opcuaterm{Component}s each have a \uaterm{HasNotifier} relationship with the parent. The MTConnect \glspl{MTDataItem} will have require a \uaterm{HasEventSource} relationship with the parent \mtterm{Component} when the \gls{MTDataItem} is associated with a \mtterm{Condition} where the \texttt{Source} element of the \mtterm{Condition} references the \gls{MTDataItem} id. 
 
-The treatment of the component relationships will be covered in the \mtterm{DataItem} examples.
+The treatment of the component relationships will be covered in the \gls{MTDataItem} examples.
 
 \paragraph{\element{Device} \mtterm{DataItems}}
 
@@ -406,7 +406,7 @@ The device requires three data items as of MTConnect version 1.2. The \dataitem{
 
 Figure \ref{fig:mtdevice-data-item} demonstrates the relationship of the \texttt{Data\-Item}s with the parent \mtuatype{MTComponentType} using a \opcuaterm{Has\-Component} relationship. The browse name is constructed to uniquely identify the DataItem and also indicate its semantic meaning within the context of the MTConnect \mtuatype{MTComponentType}, in this case, an \mtuatype{MTDeviceType} since the \mtuatype{MTDeviceType} is a sub-type of the \mtuatype{MTComponentType}. These relationships are created dynamically during the instantiation of the model and are not part of the underlying MTConnect Nodeset.
 
-Every MTConnect \mtconnectterm{Data\-Item} has two references that provide the semantic meaning in the UA address space. This model is very similar to the \texttt{Condition\-Class\-Id} relationship for the OPC UA \opcuaterm{Condition\-Type}. These \texttt{Class\-Type}s are inherited from the same parent so they can be used for both the \mtterm{HasMTClassType} for all \mtterm{DataItem}s as well as the \uaterm{ConditionClassId} in \uaterm{Conditions} since MTConnect \mtterm{Conditions} are also descended from the \uaterm{ConditionType} hierarchy.
+Every MTConnect \mtconnectterm{Data\-Item} has two references that provide the semantic meaning in the UA address space. This model is very similar to the \texttt{Condition\-Class\-Id} relationship for the OPC UA \opcuaterm{Condition\-Type}. These \texttt{Class\-Type}s are inherited from the same parent so they can be used for both the \mtterm{HasMTClassType} for all \glspl{MTDataItem} as well as the \uaterm{ConditionClassId} in \uaterm{Conditions} since MTConnect \mtterm{Conditions} are also descended from the \uaterm{ConditionType} hierarchy.
 
 \input{diagrams/mtconnect-mapping/data-item-references.tex}
 
@@ -432,19 +432,19 @@ MTConnect \mtterm{subType} will be mapped in the same manner as the type using t
             </Linear>
 \end{lstlisting}
 
-The \element{Components} element in Listing \ref{lst:linear-x-component} is represented as a UA \uaterm{Folder\-Type}. Within the folder, the MTConnect components are semantically identified by the element's \element{QName} with a type with the suffix \texttt{Type} appended, in this case the \uaterm{BrowseName}  \element{Axes} has a \opcuaterm{HasTypeDefinition} relaton of \texttt{AxesType}. 
+The \element{Components} element in Listing \ref{lst:linear-x-component} is represented as a UA \uaterm{Folder\-Type}. Within the folder, the MTConnect components are semantically identified by the element's \element{QName} with a type with the suffix \texttt{Type} appended, in this case the \gls{BrowseName}  \element{Axes} has a \opcuaterm{HasTypeDefinition} relaton of \texttt{AxesType}. 
 
 \input{diagrams/mtconnect-mapping/linear-x-component.tex}
 
-Figure~\ref{fig:linear-x-component} represents the UA Object model based on  Listing~\ref{lst:linear-x-component}. The \mtterm{Linear} X \mtterm{Axis}, mapped from \element{Linear} element in Listing~\ref{lst:linear-x-component}, has a \uaterm{BrowseName} composed of the \element{QName} of the element, and the \element{name} attribute appended and enclosed in square brackets \element{[X]}, giving the browse name of \texttt{Linear[X]} and a component type of \texttt{LinearType} using a \uaterm{HasTypeDefinition} \uaterm{Reference}.
+Figure~\ref{fig:linear-x-component} represents the UA Object model based on  Listing~\ref{lst:linear-x-component}. The \mtterm{Linear} X \mtterm{Axis}, mapped from \element{Linear} element in Listing~\ref{lst:linear-x-component}, has a \gls{BrowseName} composed of the \element{QName} of the element, and the \element{name} attribute appended and enclosed in square brackets \element{[X]}, giving the browse name of \texttt{Linear[X]} and a component type of \texttt{LinearType} using a \uaterm{HasTypeDefinition} \uaterm{Reference}.
 
-The \mtterm{DataItem}s for \texttt{ActualPosition} and \texttt{Load} are both of \mtterm{category} \mtterm{SAMPLE}; they contain numeric values are always mapped to the \mtuatype{MTSampleType} which is derived from the UA \uaterm{AnalogItemType} defined in \cite{UAPart8}. The \uaterm{BrowseName} for the \mtterm{DataItem}s are composed of the related \mtterm{Composition} \mtterm{type}, \mtterm{subType}, and \mtterm{type} of the \mtterm{DataItem} represented in \textit{PascalCase}. See Section~\ref{sec:data-item-conventions} for details.
+The \glspl{MTDataItem} for \texttt{ActualPosition} and \texttt{Load} are both of \mtterm{category} \mtterm{SAMPLE}; they contain numeric values are always mapped to the \mtuatype{MTSampleType} which is derived from the UA \uaterm{AnalogItemType} defined in \cite{UAPart8}. The \gls{BrowseName} for the \glspl{MTDataItem} are composed of the related \mtterm{Composition} \mtterm{type}, \mtterm{subType}, and \mtterm{type} of the \gls{MTDataItem} represented in \textit{PascalCase}. See Section~\ref{sec:data-item-conventions} for details.
 
 The \uaterm{EngineeringUnits} of the \uaterm{AnalogUnitType} will be mapped to the \uaterm{EngineeringUnits} \uaterm{Property} of the \mtuatype{MTSampleType}. If the value is constrained, the \uaterm{EURange} will be created, otherwise it will not be specified. The remaining attributes will be represented as properties of the \mtuatype{MTSampleType} converting the \textit{lowerCamelCase} to \textit{PascalCase} by changing the first character to upper-case. The \mtterm{EVENT} category and complex cases will be specified in the following examples.
 
-MTConnect \mtterm{DataItem}s of \mtterm{category} \dataitem{CONDITION} are special types since they represent the state of an alarm or warning associated with a \mtterm{Component} of the \mtterm{Device}. For more information on the \mtterm{conditions} see \cite{MTCPart2} and \cite{MTCPart3}. The mapping of the \mtterm{CONDITION} \mtterm{category} of \mtterm{DataItem}s is to the \mtuatype{MTConditionType}.
+MTConnect \glspl{MTDataItem} of \mtterm{category} \dataitem{CONDITION} are special types since they represent the state of an alarm or warning associated with a \mtterm{Component} of the \mtterm{Device}. For more information on the \mtterm{conditions} see \cite{MTCPart2} and \cite{MTCPart3}. The mapping of the \mtterm{CONDITION} \mtterm{category} of \glspl{MTDataItem} is to the \mtuatype{MTConditionType}.
 
-The \mtuatype{MTConditionType} has a naming rule similar to the \mtterm{DataItem} referenced above. The same rule applies with \texttt{Condition} appended. In this case the condition is of \mtterm{type} \dataitem{POSITION} so the \uaterm{BrowseName} is \texttt{PositionCondition}. This is to differentiate the \mtterm{Conditions} from other \mtterm{DataItem}s.
+The \mtuatype{MTConditionType} has a naming rule similar to the \gls{MTDataItem} referenced above. The same rule applies with \texttt{Condition} appended. In this case the condition is of \mtterm{type} \dataitem{POSITION} so the \gls{BrowseName} is \texttt{PositionCondition}. This is to differentiate the \mtterm{Conditions} from other \mtterm{DataItem}s.
 
 The \mtuatype{MTConditionsType} is decendent of the \uaterm{BaseEventType} described in \cite{UAPart5} and \cite{UAPart9}, so it has two functions in the UA model. It represents the overall state of the UA \uaterm{Condition} and also it represents each event as the various MTConnect \mtterm{Condition} changes are reported as represented in the \mtterm{MTConnectStreams} described in \cite{MTCPart3}.
 
@@ -514,7 +514,7 @@ If the \uaterm{Constraints} are given with both \mtterm{Maximum} and \mtterm{Min
 
 \FloatBarrier
 
-Figure~\ref{fig:rotary-c-load} represents the \dataitem{Load} \mtterm{DataItem} for Listing~\ref{lst:rotary-c-example} Line~\ref{line:rotary-c-load} as an example of a \mtuatype{MTSampleType} with a \xmlattribute{units="PERCENT"} and mapped to the \uaterm{EngineeringUnits} for \uaterm{Percent}. There is no \mtterm{Constraints} so the \mtterm{EURange} is not provided as specified in 
+Figure~\ref{fig:rotary-c-load} represents the \dataitem{Load} \gls{MTDataItem} for Listing~\ref{lst:rotary-c-example} Line~\ref{line:rotary-c-load} as an example of a \mtuatype{MTSampleType} with a \xmlattribute{units="PERCENT"} and mapped to the \uaterm{EngineeringUnits} for \uaterm{Percent}. There is no \mtterm{Constraints} so the \mtterm{EURange} is not provided as specified in 
 
 \begin{figure}[ht]
   \centering
@@ -525,9 +525,9 @@ Figure~\ref{fig:rotary-c-load} represents the \dataitem{Load} \mtterm{DataItem} 
 
 \FloatBarrier
 
-Figure~\ref{fig:rotary-c-amperage} illustrates the \mtterm{Amperage} \mtterm{DataItem} corresponding to the Listing~\ref{lst:rotary-c-example} Lines~\ref{line:rotary-c-amperage}-\ref{line:rotary-c-amperage-condition}. Unlike the previous example of a MTConnect \mtterm{Condition} relating to the MTConnect \mtterm{Component}, the \xmlelement{Source} element under the \xmlelement{DataItem} references the \mtterm{DataItem} with \xmlattribute{type} \dataitem{AMPERAGE}. When the \mtterm{source} refers to a \mtterm{DataItem} that is part of the same MTConnect \mtterm{Component}, the UA \uaterm{Variable} is given a \uaterm{Reference} \uaterm{HasEventSource} from the \mtterm{RotaryType} (Rotary[C]) and a \uaterm{HasCondition} \uaterm{Reference} is created beteen the \uaterm{Variable} to the \mtterm{MTConditionType}.
+Figure~\ref{fig:rotary-c-amperage} illustrates the \mtterm{Amperage} \gls{MTDataItem} corresponding to the Listing~\ref{lst:rotary-c-example} Lines~\ref{line:rotary-c-amperage}-\ref{line:rotary-c-amperage-condition}. Unlike the previous example of a MTConnect \mtterm{Condition} relating to the MTConnect \mtterm{Component}, the \xmlelement{Source} element under the \xmlelement{DataItem} references the \gls{MTDataItem} with \xmlattribute{type} \dataitem{AMPERAGE}. When the \mtterm{source} refers to a \gls{MTDataItem} that is part of the same MTConnect \mtterm{Component}, the UA \uaterm{Variable} is given a \uaterm{Reference} \uaterm{HasEventSource} from the \mtterm{RotaryType} (Rotary[C]) and a \uaterm{HasCondition} \uaterm{Reference} is created beteen the \uaterm{Variable} to the \mtterm{MTConditionType}.
 
-As stated above, the \uaterm{HasNotifier} \uaterm{References} must be established between all \mtterm{Components} back to the \mtuatype{MTDeviceType} that has a reference from the \uaterm{Server}. The \texttt{MotorAmperage} and \texttt{MotorAmperageCondition} demonstrate the naming rule where the Composition type is converted to \textit{PascalCase} and then prepended to the \mtterm{DataItem} \xmlattribute{type}. 
+As stated above, the \uaterm{HasNotifier} \uaterm{References} must be established between all \mtterm{Components} back to the \mtuatype{MTDeviceType} that has a reference from the \uaterm{Server}. The \texttt{MotorAmperage} and \texttt{MotorAmperageCondition} demonstrate the naming rule where the Composition type is converted to \textit{PascalCase} and then prepended to the \gls{MTDataItem} \xmlattribute{type}. 
 
 \begin{figure}[ht]
   \centering
@@ -580,7 +580,7 @@ The \mtterm{Controller} has two \mtterm{DataItems}, \mtterm{Message} and \mtterm
   \label{fig:controller-component}
 \end{figure}
 
-Figure~\ref{fig:path-component} illustrates the \mtterm{Path} component. Many of the \mtterm{DataItems} types have been covered in prior examples, so the \mtterm{Path} will only focus on the \mtterm{DataItems} that have differentiated features. Those \mtterm{DataItem}s will be represented without additional properties or relations.
+Figure~\ref{fig:path-component} illustrates the \mtterm{Path} component. Many of the \mtterm{DataItems} types have been covered in prior examples, so the \mtterm{Path} will only focus on the \mtterm{DataItems} that have differentiated features. Those \glspl{MTDataItem} will be represented without additional properties or relations.
 
 The \dataitem{PATH_POSITION} is mapped to the \mtuatype{MTThreeSpaceSampleType} that represents a spacial coordinate in three space ($\mathbb{R}^{3}$) with each coordinate given in millimeters. The EngineeringUnits for this type will therefor always be mapped to MMT in the UNECE conventions.
 
@@ -665,11 +665,11 @@ In the first set of \mtterm{DataItems} from Listing~\ref{lst:electric-system} as
 
 The Temperature \uaterm{Variable} also has a \xmlelement{Source} element that references the \mtterm{Sensor} with a \xmlelement{Configuration} of type \mtterm{SensorConfigurationType}. The \mtterm{SensorConfiguration} has information about the \mtterm{FirmwareVersion} and \mtterm{CalibrationDate} of the \mtterm{Sensor}. The \mtterm{Channels} represent the multiple inputs to the \mtterm{Sensor} unit. The first \mtterm{Channel} has a \mtterm{Description} and a \mtterm{CalibrationDate} of the probe attached to the \mtterm{Channel}. For more information on the \mtterm{Channel}, see MTConnect Devices \cite{MTCPart2}.
 
-The following \mtterm{DataItem} on line~\ref{line:electric-voltage-10} has a \mtterm{Filter} using a \mtterm{MINIMUM_DELTA} that is represened as a \mtterm{MinimumDeltaFilter} in the UA \uaterm{Variable} reprenenting the \mtterm{MTSampleType} Voltage. The \mtterm{MinimumDelta} represents the smallest amount of change before the change is reported. In this case the minimum change is 10 volts. Changes smaller than 10 volts will not be reported for this data item.
+The following \gls{MTDataItem} on line~\ref{line:electric-voltage-10} has a \mtterm{Filter} using a \mtterm{MINIMUM_DELTA} that is represened as a \mtterm{MinimumDeltaFilter} in the UA \uaterm{Variable} reprenenting the \mtterm{MTSampleType} Voltage. The \mtterm{MinimumDelta} represents the smallest amount of change before the change is reported. In this case the minimum change is 10 volts. Changes smaller than 10 volts will not be reported for this data item.
 
-The second set of \mtterm{DataItems} starting on line~\ref{line:electric-amperage} shown in Figure~\ref{fig:electric-system-2} shows the relationship between the conditions and the other \mtterm{DataItems}. As has been shown before the conditions here are both related to a \mtterm{DataItem} that is the source of the \mtterm{Condition}. The \mtterm{DataItem} therefor has a \uaterm{HasCondition} relationship to the \uaterm{Condition} and the \mtterm{Component} has a \uaterm{HasEventSource} relationship to the \mtterm{DataItem}. 
+The second set of \mtterm{DataItems} starting on line~\ref{line:electric-amperage} shown in Figure~\ref{fig:electric-system-2} shows the relationship between the conditions and the other \mtterm{DataItems}. As has been shown before the conditions here are both related to a \gls{MTDataItem} that is the source of the \mtterm{Condition}. The \gls{MTDataItem} therefor has a \uaterm{HasCondition} relationship to the \uaterm{Condition} and the \mtterm{Component} has a \uaterm{HasEventSource} relationship to the \mtterm{DataItem}. 
 
-The \texttt{AverageAmperage} on line~\ref{line:electric-average-amperage} has a \mtterm{ResetTrigger}, specified using the \texttt{ResetTrigger} element having \texttt{CDATA} \texttt{ACTION_COMPLETE}, indicating that the \mtterm{Average} statistic is taken only when the current \mtterm{Action} has \mtterm{Completed}, as defined by the process. This \mtterm{DataItem} will only update on when the \mtterm{ResetTrigger} fires.
+The \texttt{AverageAmperage} on line~\ref{line:electric-average-amperage} has a \mtterm{ResetTrigger}, specified using the \texttt{ResetTrigger} element having \texttt{CDATA} \texttt{ACTION_COMPLETE}, indicating that the \mtterm{Average} statistic is taken only when the current \mtterm{Action} has \mtterm{Completed}, as defined by the process. This \gls{MTDataItem} will only update on when the \mtterm{ResetTrigger} fires.
 
 \begin{quote}
   {\color{red} TODO: As discussed in the WG, there will need to be status codes to represent the reset triggers as Good_... indicating that this value is due to a reset}.
@@ -716,7 +716,7 @@ Figure~\ref{fig:coolant-system} presents the two coolant systems with names \tex
 
 The \uaterm{EngineeringUnits} were not included in the figure as they have been covered before. The \mtterm{Fill Level} \mtuatype{MTSampleType} will reference a \mtterm{PERCENT} \uaterm{EUInformation} \uaterm{Property} as illustrated in the previous depiction of \mtterm{Load} in Figure~\ref{fig:rotary-c-load}.
 
-In this case the \mtterm{Composition} name is converted to \textit{PascalCase} and prepended to the \textit{PascalCase} of the \mtterm{DataItem} to create the base \uaterm{BrowseName}. Since there are two identical \uaterm{BrowseNames}, the \xmlattribute{name} is appended in square brackets (\texttt{[]}). The same is done for the \mtterm{Composition} \uaterm{BrowseName} and the \mtterm{Component} \uaterm{BrowseName} "\mtterm{Coolant}" giving \texttt{Coolant[high]} and \texttt{Coolant[low]}.
+In this case the \mtterm{Composition} name is converted to \textit{PascalCase} and prepended to the \textit{PascalCase} of the \gls{MTDataItem} to create the base \uaterm{BrowseName}. Since there are two identical \uaterm{BrowseNames}, the \xmlattribute{name} is appended in square brackets (\texttt{[]}). The same is done for the \mtterm{Composition} \gls{BrowseName} and the \mtterm{Component} \gls{BrowseName} "\mtterm{Coolant}" giving \texttt{Coolant[high]} and \texttt{Coolant[low]}.
 
 The two \mtterm{Tank} compositions have similar treatment where they are named \texttt{Tank[main]} and \texttt{Tank[reserve]} for each of the two components. The \mtterm{DataItems} then refer to each of the appropriate tanks to correctly reference the composition they are associated with. What is not show in the Figure~\ref{fig:coolant-system} is the \mtuatype{FillLevelClassType} to save space. Each of the \mtterm{DataItems} will have a \mtterm{HasMTClassType} reference to the \uaterm{ClassType}.
 
@@ -803,7 +803,7 @@ The \mtuatype{MTStringEventType} and \mtuatype{MTNumericEventType} \mtterm{DataI
       </ComponentStream>
 \end{lstlisting}
 
-In Listing~\ref{lst:path-component-stream} on Line~\ref{line:prog-430}, the string value will be assigned to the \mtterm{Program} \mtterm{DataItem} in the \mtterm{Path} component. The following Line~\ref{line:pc-603} representing the \xmlelement{PartCount} will be converted to a numeric value, in this case an \uaterm{Int32} and assigned to the \uaterm{Value}.
+In Listing~\ref{lst:path-component-stream} on Line~\ref{line:prog-430}, the string value will be assigned to the \mtterm{Program} \gls{MTDataItem} in the \mtterm{Path} component. The following Line~\ref{line:pc-603} representing the \xmlelement{PartCount} will be converted to a numeric value, in this case an \uaterm{Int32} and assigned to the \uaterm{Value}.
 
 All extended event types will be treated as \mtuatype{MTStringEventType}s since it can support any value. It will be the responsibility of the application to interpret the value based on the extended \uaterm{ClassType} associated with the \uaterm{Variable}.
 
@@ -889,7 +889,7 @@ The \uaterm{ConditionType} and \uaterm{EventType} properties will be set as foll
 
 MTConnect allows for multiple \mtterm{Condition}s to be active at the same time. This is similar to the concept of \uaterm{Branching} in OPC UA. In MTConnect the unique identifier that is used for the \uaterm{BranchId} is the attribute \mtterm{nativeCode}.
 
-MTConnect uses the \xmlattribute{nativeCode} to determine the uniqueness of each activation of the Condition. If the \mtterm{Path} component has a \mtterm{DataItem} with a \texttt{type} of \texttt{MOTION_PROGRAM} and there are four syntax errors for lines 10, 120, 320, and 500; there are five faults reported by MTConnect for the Condition. The response to a \mtterm{current} request is shown in listing~\ref{lst:path-motion-program-condition}.
+MTConnect uses the \xmlattribute{nativeCode} to determine the uniqueness of each activation of the Condition. If the \mtterm{Path} component has a \gls{MTDataItem} with a \texttt{type} of \texttt{MOTION_PROGRAM} and there are four syntax errors for lines 10, 120, 320, and 500; there are five faults reported by MTConnect for the Condition. The response to a \mtterm{current} request is shown in listing~\ref{lst:path-motion-program-condition}.
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Path Motion Program Syntax Errors},label={lst:path-motion-program-condition}]
@@ -972,7 +972,7 @@ In Listing~\ref{lst:electric-timeseries}, both examples are given, line~\ref{lin
       </ComponentStream>
 \end{lstlisting}
 
-In MTConnect, the \mtterm{DataItem} element QName in the \mtterm{Streams} document appends the \textit{PascalCase} of the \xmlattribute{representation} to the \textit{PascalCase} of the \mtterm{type}. For example, \xmlattribute{type} \xmlattribute{VOLT_AMPERE} with the \xmlattribute{representation} of \xmlattribute{TIME_SERIES} becomes \xmlelement{VoltAmpereTimeSeries}. 
+In MTConnect, the \gls{MTDataItem} element QName in the \mtterm{Streams} document appends the \textit{PascalCase} of the \xmlattribute{representation} to the \textit{PascalCase} of the \mtterm{type}. For example, \xmlattribute{type} \xmlattribute{VOLT_AMPERE} with the \xmlattribute{representation} of \xmlattribute{TIME_SERIES} becomes \xmlelement{VoltAmpereTimeSeries}. 
 
 All \mtterm{DataItems} with \xmlattribute{representation} of \xmlattribute{TIME_SERIES} when reported in the \mtterm{Streams} document require the attribute \mtterm{sampleCount} to give the number of entries in the space delimited series. MTConnect specifies in \cite{MTCPart3} that the \xmlattribute{timestamp} is reported at the time of the last observation. To compute the timestamp for each observation, use the follow procedure.
 

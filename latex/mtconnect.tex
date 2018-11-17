@@ -9,9 +9,9 @@ The MTConnect Standard is an open, royalty free standard - meaning that it is av
 The semantic data models defined in the MTConnect standard provide the information required to fully characterize data with both a clear and unambiguous meaning and a mechanism to directly relate that data to the manufacturing operation where the data originated.  Without a semantic data model, client software applications must apply an additional layer of logic to convey as much meaning.  The MTConnect modeling approach allows applications to easily interpret data from a wide variety of data sources, reducing complexity and development effort.
 Where the data dictionary and semantic data models are insufficient, MTConnect can be extended with additional data items and information models.
 
-MTConnect is designed to maximize interoperability with other standards, applications, and manufacturing equipment, and uses a variety of other standards to do so. Examples in the standard are based on HTTP for transport protocol and XML for representing semantic data models. The transport protocol and the programming language used to represent or transfer the information provided by the semantic data models are not restricted in the standard, although there is a minimum requirement to support HTTP REST protocol and XML. Other protocols and programming languages may be used to represent the semantic models and/or transport the information provided by these data models between an MTConnect Agent (server) and a client software application.
+MTConnect is designed to maximize interoperability with other standards, applications, and manufacturing equipment, and uses a variety of other standards to do so. Examples in the standard are based on \gls{http} for transport protocol and \gls{xml} for representing semantic data models. The transport protocol and the programming language used to represent or transfer the information provided by the semantic data models are not restricted in the standard, although there is a minimum requirement to support \gls{http} \gls{rest} protocol and \gls{xml}. Other protocols and programming languages may be used to represent the semantic models and/or transport the information provided by these data models between an MTConnect \gls{Agent} (server) and a client software application.
 
-The standard was initially sponsored by AMT - The Association for Manufacturing Technology in 2008.  AMT formed the MTConnect Institute in 2011 to further standard development and engage a wider community. The role of the Institute is to support the continued development of the standard and to expand the deployment of MTConnect compliant technologies throughout industry. The Institute has over 250 member companies world-wide.  
+The standard was initially sponsored by \gls{amt} in 2008. \gls{amt} formed the MTConnect Institute in 2011 to further standard development and engage a wider community. The role of the Institute is to support the continued development of the standard and to expand the deployment of MTConnect compliant technologies throughout industry. The Institute has over 250 member companies world-wide.  
 
 
 \subsubsection{Data Dictionary}
@@ -33,9 +33,9 @@ In an MTConnect compliant system, configuration management of a data collection 
 
 \subsubsection{Fundamentals of MTConnect}
 
-The MTConnect Standard is built upon other communications and software standards that are already heavily used in manufacturing facilities - HTTP, Ethernet, and XML (Extensible Mark-Up Language - the underlying language of most web sites).
+The MTConnect Standard is built upon other communications and software standards that are already heavily used in manufacturing facilities - \gls{http}, Ethernet, and \gls{xml}.
  
-Pieces of equipment publish information to an MTConnect \mtterm{Agent}.  Software applications request information relating to a piece of equipment by making an HTTP Request. The agent responds to that request by publishing a MTConnect Response Document which is a text document encoded using XML.   
+Pieces of equipment publish information to an MTConnect \gls{Agent}.  Software applications request information relating to a piece of equipment by making an \gls{http} Request. The \gls{Agent} responds to that request by publishing a MTConnect Response Document which is a text document encoded using \gls{xml}.   
  
 By leveraging already existing standards, implementers of software solutions utilizing MTConnect have immediate access to a maximum number of software tools for creating and deploying software solutions.   This also positions MTConnect for the highest level of interoperability with other standards, software applications, and equipment used throughout manufacturing operations.    
  
@@ -51,3 +51,7 @@ The central component of every MTConnect System is an MTConnect \mtterm{Agent}. 
 In an MTConnect system, the term \mtterm{"a piece of equipment"} can represent any intelligent data source that can produce data.  Traditionally, a piece of equipment is thought of as a machine. However, a piece of equipment can also be a computer, an intelligent sensor system, a data base, and any number of other sources of data. 
  
 Some pieces of equipment require an Adapter which transforms data from its native form into MTConnect specific terms, and then publish that data to an MTConnect Agent.
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:

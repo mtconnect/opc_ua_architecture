@@ -65,6 +65,9 @@
 \usepackage{amssymb}
 \usepackage{amssymb}
 \usepackage{amsmath}
+\RequirePackage[acronym,toc,numberedsection,%
+  abbreviations,automake,nonumberlist,%
+  section=subsubsection]{glossaries-extra}
 
 % *********** %
 % 	Options   %

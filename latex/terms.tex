@@ -1,0 +1,159 @@
+
+
+%% OPC UA Terms
+
+\newglossaryentry{Node}
+{
+  type=opc,
+  name = {Node},
+  description = {The elements of the UA model are represented in the AddressSpace as Nodes. Each Node is assigned to a NodeClass and each NodeClass represents a different element of the Object Model.}
+}
+
+\newglossaryentry{DataType}
+{
+  type=opc,
+  name = {DataType},
+  description = {instance of a DataType Node that is used together with the ValueRank Attribute to define the data type of a Variable}
+}
+
+\newglossaryentry{TargetNode}
+{
+  type=opc,
+  name = {TargetNode},
+  description = {a Node that is referenced by another Node}
+}
+
+\newglossaryentry{TypeDefinitionNode}
+{
+  type=opc,
+  name = {TypeDefinitionNode},
+  description = {Node that is used to define the type of another Node}
+}
+
+
+\newglossaryentry{InstanceDeclaration}
+{
+  type=opc,
+  name = {InstanceDeclaration},
+  description = {Node that is used by a complex \gls{TypeDefinitionNode} to expose its complex structure}
+}
+
+\newglossaryentry{ModellingRule}
+{
+  type=opc,
+  name = {ModellingRule},
+  description = {metadata of an InstanceDeclaration that defines how the \gls{InstanceDeclaration} will be used for instantiation and also defines subtyping rules for an \gls{InstanceDeclaration}}
+}
+
+\newglossaryentry{TypeDefinition}
+{
+  type=opc,
+  name = {TypeDefinition},
+  description = {The creation of an OPC UA Type}
+}
+
+\newglossaryentry{Variable}
+{
+  type=opc,
+  name = {Variable},
+  description = {}
+}
+
+\longnewglossaryentry{ValueRank}
+{
+  type=opc,
+  name = {ValueRank}%,
+%  description = {This Attribute indicates whether the Value Attribute of the Variable is an array and how many dimensions the array has.}
+}
+{
+  This Attribute indicates whether the Value Attribute of the Variable is an array and how many dimensions the array has. It may have the following values:
+  \begin{itemize}
+    \item n > 1: the Value is an array with the specified number of dimensions.
+    
+    \item OneDimension (1): The value is an array with one dimension.
+    \item OneOrMoreDimensions (0): The value is an array with one or more dimensions.
+    \item Scalar (-1): The value is not an array.
+    \item Any (-2): The value can be a scalar or an array with any number of dimensions.
+    \item ScalarOrOneDimension (-3): The value can be a scalar or a one dimensional array.
+  \end{itemize}
+  All DataTypes are considered to be scalar, even if they have array-like semantics like ByteString and String.
+}
+
+\newglossaryentry{NodeClass}
+{
+  type=opc,
+  name=NodeClass,
+  plural=NodeClasses,
+  description = {The NodeClasses defined to represent Objects fall into three categories: those used to define instances, those used to define types for those instances and those used to define data types}
+}
+
+%% MTConnect Terms
+
+\newglossaryentry{Agent}
+{
+  type=mtc,
+  name = {Agent},
+  description = {The Middleware Broker and Protocol Server for the MTConnect Standard using a REST HTTP Interface}
+}
+
+\newglossaryentry{MTComponent}
+{
+  type=mtc,
+  name = Component,
+  description = {A functional unit of a piece of manufacturing equipment}
+}
+
+\newglossaryentry{MTDataItem}
+{
+  type=mtc,
+  name = DataItem,
+  description = {A piece of information regarding the state, event, or continuous variable related to a \gls{MTComponent} semantically identified by the \texttt{type} and \texttt{subType}}
+}
+
+\newglossaryentry{Adaper}
+{
+  type=mtc,
+  name=Adapter,
+  description = {An application that provides data from a piece of equipment to an MTConnect Agent}
+}
+
+\newglossaryentry{ControlledVocab}
+{
+  type=mtc,
+  name={Controlled Vocabulary},
+  plural = {Controlled Vocabularies},
+  description = {A restricted set of values that may be published as the Valid Data Value for a Data Entity.}
+}
+
+\newglossaryentry{SampleRequest}
+{
+  type=mtc,
+  name={Sample Request},
+  description = {A request from the MTConnect \gls{Agent} for a stream of time series data.}
+}
+
+\newglossaryentry{DataItemType}
+{
+  type=mtc,
+  name={DataItem type},
+  description = {The top level taxonomy classification of \glspl{DataItem}}
+}
+
+\newglossaryentry{PascalCase}
+{
+  type=mtc,
+  name={Pascal Case},
+  description = {The first letter of each word is capitalized and the remaining letters are in lowercase. All space is removed between letters}
+}
+
+\newglossaryentry{LowerCamelCase}
+{
+  type=mtc,
+  name={Lower Camel Case},
+  description={the first word is lowercase and the remaining words are capitalized and all spaces between words are removed.}
+}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:

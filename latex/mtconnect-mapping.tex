@@ -84,16 +84,16 @@ The MTConnect information model is represented in the UA address space as set of
 
 MTConnect has conventions regarding the format of elements, attributes, and values of attributes or CDATA the represent controlled vocabularies or enumerations. 
 
-When the rules refer to \textit{Pascal Case}, the entity must have the following structure: The first letter of each word is capitalized and the remaining letters are in lowercase. All space is removed between letters. For example, \textit{controller mode override} becomes \texttt{Controller\-Mode\-Override}. The one exception is \texttt{PH} that remains \texttt{PH}.
+When the rules refer to \gls{PascalCase}, the entity must have the following structure: The first letter of each word is capitalized and the remaining letters are in lowercase. All space is removed between letters. For example, \textit{controller mode override} becomes \texttt{Controller\-Mode\-Override}. The one exception is \texttt{PH} that remains \texttt{PH}.
 
-The document refers to \textit{Lower Camel Case} when the first word is lowercase and the remaining words are capitalized and all spaces between words are removed. For example, \textit{controller mode override} is written as \texttt{controllerModeOverride}.
+The document refers to \gls{LowerCamelCase} when the first word is lowercase and the remaining words are capitalized and all spaces between words are removed. For example, \textit{controller mode override} is written as \texttt{controllerModeOverride}.
 
 The third form used in MTConnect is uppercase with underscores separating characters. For example, \textit{controller mode override} is \texttt{CONTROLLER_MODE_OVERRIDE}.
 
 The rules are as follows:
 \begin{itemize}
-  \item XML Elements are in \textit{Pascal Case}.
-  \item XML Attributes are in \textit{Lower Camel Case}
+  \item XML Elements are in \gls{PascalCase}.
+  \item XML Attributes are in \gls{LowerCamelCase}
   \item Controlled vocabulary, a fixed or enumerated set of values, for attribtues or the CDATA of elements are all caps with an underscore ("\_") separating words. 
 \end{itemize}
 
@@ -105,9 +105,9 @@ When the value of an attribute, such as the data item type as given in Listing \
         <DataItem category="EVENT" id="b8ce34a00" name="eob" type="END_OF_BAR"/>
 \end{lstlisting}
 
-The type names in UA will require the upper case with underscore name to be converted to \textit{Pascal Case}. XML Attributes are converted from \textit{Lower Camel Case} to \textit{Pascal Case} as well when mapping to UA Property \opcuaterm{BrowseName}s.
+The type names in UA will require the upper case with underscore name to be converted to \gls{PascalCase}. XML Attributes are converted from \gls{LowerCamelCase} to \gls{PascalCase} as well when mapping to UA Property \opcuaterm{BrowseName}s.
 
-OPC UA conventions use names in \textit{Pascal Case}, so all MTConnect entities will be represented using \textit{Pascal Case}. When the MTConnect entities are converted into UA types, they are converted to \textit{Pascal Case} and the word \texttt{Type} is appended. 
+OPC UA conventions use names in \gls{PascalCase}, so all MTConnect entities will be represented using \gls{PascalCase}. When the MTConnect entities are converted into UA types, they are converted to \gls{PascalCase} and the word \texttt{Type} is appended. 
 
 The values of the attributes and enumerations are represented in MTConnect in capitals with underscores. OPC UA has the same convention, so these types will remain unchanged when converted to OPC UA. The only caveat is that enumerated values when represented in UA \texttt{DataVariable}s are numeric. All enumerations in MTConnect are sorted alphabetically and assigned monotonically increasing numberic values. For example, the enumeration for the \texttt{Execution} MTConnect data item is in table \ref{table:execution-data-type}.
 

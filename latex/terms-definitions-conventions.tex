@@ -4,39 +4,13 @@
 
 The basic concepts of OPC UA and MTConnect are pre-requisites for understanding and interpreting the content provided in this companion specification. Additionally, the terms and definitions given in OPC UA Part 1, OPC UA Part 3, OPC UA Part 4, OPC UA Part 5, OPC UA Part 7, OPC UA Part 10, and MTConnect Part 1.0, (see section \ref{normativereferences}), as well as the following, apply to this document. 
 
-\iffalse
-\subsection{OPC UA for MTConnect terms}
+\subsection{Terms and Acronnyms}
 
-\texttt{NEEDS TO BE DISCUSSED}
-The following terms (1 and 2) are examples. They have the IEC format for term definitions.
+\printglossary[type=opc]
 
-\subsubsection{term\_1}
-<a short description - max two lines>
+\printglossary[type=mtc]
 
-\begin{quote}
-\footnotesize
-Note 1 to entry: Optional additional text if the short description is not considered sufficient.
-\end{quote}
-
-\subsubsection{term\_2}
-<a short description - max two lines>
-....
-\fi
-\subsection{Abbreviations and Symbols}
-The following abbreviation are used in this document:
-\begin{itemize}
-    \item OPC
-    \item UA - Unified Architecture
-    \item ERP - Enterprise Resource Planning
-    \item HMI - Human Machine Interface
-    \item HTTP - Hyper Text Transport Protocol
-    \item MES - Management Execution Systems
-    \item PLC - Programmable Logic Controller
-    \item PMS - Production Management Systems
-    \item SCADA - Supervisory Control And Data Acquisition
-    \item TCP/IP - Transmission Control Protocol/Internet Protocol
-    \item XML - eXtensible Mark-up Language
-\end{itemize}
+\printacronyms  
 
 \subsection{Conventions}\label{conventions}
 Following are basic conventions that shall be followed for all formal definitions used.
@@ -52,11 +26,11 @@ Following are basic conventions that shall be followed for all formal definition
 \tagname{References} are defined by providing the \tagname{ReferenceType} name, the \tagname{BrowseName} of the \tagname{TargetNode} and its \tagname{NodeClass}.
 
 \begin{itemize}
-    \item If the \opcuaterm{TargetNode} is a component of the Node being defined in the table the \opcuaterm{Attributes} of the composed Node are defined in the same row of the table. 
-    \item The \opcuaterm{DataType} is only specified for Variables; "[<number>]" indicates a single-dimensional array, for multi-dimensional arrays the expression is repeated for each dimension (e.g. [2][3] for a two-dimensional array). For all arrays the \opcuaterm{ArrayDimensions} is set as identified by <number> values. If no <number> is set, the corresponding dimension is set to 0, indicating an unknown size. If no number is provided at all the \opcuaterm{ArrayDimensions} can be omitted. If no brackets are provided, it identifies a scalar \opcuaterm{DataType} and the \opcuaterm{ValueRank} is set to the corresponding value (see \cite{UAPart3}). In addition, \opcuaterm{ArrayDimensions} is set to null or is omitted. If it can be Any or ScalarOrOneDimension, the value is put into "{<value>}", so either "{Any}" or "{ScalarOrOneDimension}" and the \opcuaterm{ValueRank} is set to the corresponding value (see \cite{UAPart3}) and the \opcuaterm{ArrayDimensions} is set to null or is omitted. Examples are given in Table \ref{table:ExamplesOfDataTypes}.
-    \item The \opcuaterm{TypeDefinition} is specified for Objects and Variables.
-    \item The \opcuaterm{TypeDefinition} column specifies a symbolic name for a \opcuaterm{NodeId}, i.e. the specified Node points with a \opcuaterm{HasTypeDefinition} Reference to the corresponding Node.
-    \item The \opcuaterm{ModellingRule} of the referenced component is provided by specifying the symbolic name of the rule in \opcuaterm{ModellingRule}. In the \opcuaterm{AddressSpace}, the Node shall use a \opcuaterm{HasModellingRule} Reference to point to the corresponding \opcuaterm{ModellingRule} Object.
+    \item If the \gls{TargetNode} is a component of the \gls{Node} being defined in the table the \opcuaterm{Attributes} of the composed Node are defined in the same row of the table. 
+    \item The \gls{DataType} is only specified for Variables; "[<number>]" indicates a single-dimensional array, for multi-dimensional arrays the expression is repeated for each dimension (e.g. [2][3] for a two-dimensional array). For all arrays the \opcuaterm{ArrayDimensions} is set as identified by <number> values. If no <number> is set, the corresponding dimension is set to 0, indicating an unknown size. If no number is provided at all the \opcuaterm{ArrayDimensions} can be omitted. If no brackets are provided, it identifies a scalar \opcuaterm{DataType} and the \gls{ValueRank} is set to the corresponding value (see \cite{UAPart3}). In addition, \opcuaterm{ArrayDimensions} is set to null or is omitted. If it can be Any or ScalarOrOneDimension, the value is put into "{<value>}", so either "{Any}" or "{ScalarOrOneDimension}" and the \gls{ValueRank} is set to the corresponding value (see \cite{UAPart3}) and the \opcuaterm{ArrayDimensions} is set to null or is omitted. Examples are given in Table \ref{table:ExamplesOfDataTypes}.
+    \item The \gls{TypeDefinition} is specified for Objects and Variables.
+    \item The \gls{TypeDefinition} column specifies a symbolic name for a \opcuaterm{NodeId}, i.e. the specified Node points with a \opcuaterm{HasTypeDefinition} Reference to the corresponding Node.
+    \item The \gls{ModellingRule} of the referenced component is provided by specifying the symbolic name of the rule in \opcuaterm{ModellingRule}. In the \opcuaterm{AddressSpace}, the Node shall use a \opcuaterm{HasModellingRule} Reference to point to the corresponding \opcuaterm{ModellingRule} Object.
 \end{itemize}
 
 \begin{table}[ht]
@@ -84,7 +58,7 @@ Int32 \{ScalarOrOneDimension\} & Int32 & -3 & omitted or null & An Int32 where i
 
 If the \opcuaterm{NodeId} of a \opcuaterm{DataType} is provided, the symbolic name of the Node representing the \opcuaterm{DataType} shall be used.
 
-Nodes of all other \opcuaterm{NodeClasses} cannot be defined in the same table; therefore only the used \opcuaterm{ReferenceType}, their \opcuaterm{NodeClass} and their \opcuaterm{BrowseName} are specified. A reference to another part of this document points to their definition.
+Nodes of all other \glspl{NodeClass} cannot be defined in the same table; therefore only the used \opcuaterm{ReferenceType}, their \opcuaterm{NodeClass} and their \opcuaterm{BrowseName} are specified. A reference to another part of this document points to their definition.
 
 Table \ref{table:TypeDefinitionTable} illustrates the table. If no components are provided, the \opcuaterm{DataType}, \opcuaterm{TypeDefinition} and \opcuaterm{ModellingRule} columns may be omitted and only a Comment column is introduced to point to the Node definition.
 
@@ -269,3 +243,7 @@ UserExecutable & The value of the UserExecutable Attribute is server-specific. I
 
 
 \FloatBarrier
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:

@@ -26,6 +26,15 @@ The benefit of providing options allows the largest number of application access
 
 \subsection{Software Vendor}
 
+An \gls{isv} has the principle concern of connecting to as many pieces of equipment as possible, as quickly as possible. There are three aspects of interoperability that address this concern, protocol, syntactic and semantic. The first concern requires that the application can communicate to the piece of equipment using a protocol that is well understood by both the sender and receiver and widely used across the industry. 
+
+Protocols like \gls{http}, \gls{modbus}, and  \gls{mqtt} provide a level of protocol connectivity and communication with well-understood request and response formats that open and widely available. These protocols do not provide an information model; they provide access to data as an undefined set of bytes that need to be interpreted by the application.
+
+The next level of interoperability is syntactic. Frameworks like \gls{opc}, \gls{uml}, and \gls{owl} provide a foundation with the ability to express an \gls{ontology}, but does not provide the \gls{ontology} itself. \gls{opc} provides a model that has been designed for the industrial domain but is generic across many verticle applications. 
+
+The last level is the semantic interoperability where they provide the meaning and structure of the data, the \gls{ontology}, and allow for the information to be understood and analyzed. From an application perspective, the ability to rapidly implement solutions requires that data be well-understood with definitions for all the information so that the solution does not need to be modified for every piece of equipment. 
+
+
 Figure \ref{fig:isvusecase} illustrates the use case for an \gls{isv} supplying products to industrial equipment users. A typical \gls{isv} offering includes gateway(s) that convert information between MTConnect and OPC UA and may also provide additional features required for MTConnect implementations; e.g. enhanced security features. The OPC Unified Architecture for MTConnect Companion Specification allows the \gls{isv} to extend the MTConnect-OPC UA information model with application specific constructs. These can be easily accessed via any standard OPC UA client product and will function in parallel to existing features provided by MTConnect. Figure \ref{fig:isvusecase} shows an ISV product that consumes data from MTConnect and OPC UA enabled devices and then makes it available via MTConnect and OPC UA.
 
 \input diagrams/ISVUseCase.tex

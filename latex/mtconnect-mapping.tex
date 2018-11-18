@@ -209,19 +209,19 @@ The MTConnect \gls{MTDataItem} represents multiple OPC UA \uamodel{DataVariableT
         \setlength\itemsep{1em}
         \item If the \gls{type} is \mtmodel{ASSET_CHANGED} or \mtmodel{ASSET_REMOVED}; the UA \gls{TypeDefinition} is \mtuatype{MTAssetEventType}
         
-        \item Convert the \gls{type} attribite to \gls{PascalCase} and add \gls{ClassType}.
+        \item Convert the \gls{type} attribute to \gls{PascalCase} and append \mtmodel{ClassType}. This name will be referred to as \textit{\mtmodel{@classType}}.
         
-        \item Find the MTConnect UA \gls{ClassType} that corresponds to the value computed in the previous step.
+        \item Find the MTConnect UA \textit{\mtmodel{@classType}} that corresponds to the value computed in the previous step.
         The types can be found in Sections \mtuamodel{ControlledVocabDataItemTypes}, \mtuamodel{NumericEventDataItemTypes}, and \mtuamodel{StringEventDataItemTypes}.
         
-        \item If the \gls{ClassType} matches one of the \mtuamodel{StringEventDataItemTypes}; the MTConnect UA \gls{TypeDefinition} is \mtuatype{MTStringEventType}.
+        \item If the \textit{\mtmodel{@classType}} matches one of the \mtuamodel{StringEventDataItemTypes}; the MTConnect UA \gls{TypeDefinition} is \mtuatype{MTStringEventType}.
         
-        \item If the \gls{ClassType} matches one of the \mtuamodel{NumericEventDataItemTypes}; the MTConnect UA \gls{TypeDefinition}  is \mtuatype{MTNumericEventType}.
+        \item If the \textit{\mtmodel{@classType}} matches one of the \mtuamodel{NumericEventDataItemTypes}; the MTConnect UA \gls{TypeDefinition}  is \mtuatype{MTNumericEventType}.
         
-        \item If the \gls{ClassType} matches one of the  \mtuamodel{ControlledVocabDataItemTypes}, the MTConnect UA \gls{TypeDefinition} is \mtuatype{MTControlledVocabEventType}. The \uamodel{EnumValues} will be assigned as follows:
+        \item If the \textit{\mtmodel{@classType}} matches one of the  \mtuamodel{ControlledVocabDataItemTypes}, the MTConnect UA \gls{TypeDefinition} is \mtuatype{MTControlledVocabEventType}. The \uamodel{EnumValues} will be assigned as follows:
         \newline
         
-        Each of the \glspl{ClassType} will have a \gls{Property} \uamodel{EnumValues}. The \uamodel{EnumValues} must reference the \mtmodel{EnumValues} \gls{Property} of the \uamodel{ClassType}.
+        Each of the \glspl{ObjectType} matching the \textit{\mtmodel{@classType}} for \mtuamodel{ControlledVocabDataItemTypes} will have a \gls{Property} \uamodel{EnumValues}. The \uamodel{EnumValues} will reference the \uamodel{Enumeration} with the values of the \gls{ControlledVocab}.
         
         \item Otherwise, the UA \gls{TypeDefinition} is \mtuatype{MTStringEventType}. This will apply to all extended types.
       \end{enumerate}

@@ -26,7 +26,7 @@ The benefit of providing options allows the largest number of application access
 
 \subsection{Software Vendor}
 
-An \gls{isv} has the principle concern of connecting to as many pieces of equipment as possible, as quickly as possible. There are three aspects of interoperability that address this concern, protocol, syntactic and semantic. The first concern requires that the application can communicate to the piece of equipment using a protocol that is well understood by both the sender and receiver and widely used across the industry. 
+An \gls{isv} has the principle concern of connecting to as many pieces of equipment as possible as quickly as possible. There are three aspects of interoperability that address this concern, protocol, syntactic and semantic. The first concern requires that the application can communicate to the piece of equipment using a protocol that is well understood by both the sender and receiver and widely used across the industry. 
 
 Protocols like \gls{http}, \gls{modbus}, and  \gls{mqtt} provide a level of protocol connectivity and communication with well-understood request and response formats that open and widely available. These protocols do not provide an information model; they provide access to data as an undefined set of bytes that need to be interpreted by the application.
 
@@ -42,12 +42,30 @@ Figure \ref{fig:isvusecase} illustrates the use case for an \gls{isv} supplying 
 
 \subsection{Data Scientist}
 
+Cloud-based analytics platforms, such as Microsoft Azure\textsuperscript{\textregistered} Cloud provide factory connectivity solutions based on OPC UA for data ingest and analysis. Data Scientists, like \glspl{isv}, need semantic data that where the acquisition and categorization of the incoming data do not dominate the project. The primary focus of a data scientist is to find interesting insights; to do so requires the information has normalized units and vocabulary so deeper correlations can be uncovered. 
+
+With a common information model and representations of other aspects of the manufacturing process that utilizes the OPC information model, such as PLC Open and ISA-95, the information can be combined with additional context to provide a better understanding of the impact on the manufacturing systems and provide more profound insights to the users.
+
 \FloatBarrier
 
 \subsection{Industrial Systems Integrator}
 
-\FloatBarrier
+\cite{MTCPart5} provides a data-centric approach to equipment integration using an observation based architecture where the devices do not instruct each other, but they observe the requests of different pieces of equipment and respond by providing the necessary services. The model uses MTConnect publishing changes to special event data items that provide a request/response framework to allow the equipment to organize activities. 
 
+MTConnect can benefit from OPC UA's discovery mechanisms to incorporate devices as they enter the interactive ecosystem.  UA will also increase the available equipment that can participate in the MTConnect Interfaces model by supplying a standard for advanced industrial automation without the need for additional \glspl{plc} and expensive centralized control systems.
+
+\begin{quote}
+  \color{red}  Need Interfaces diagram converted to tikz.
+\end{quote}
+
+\begin{figure}
+    \centering
+    \includegraphics{diagrams/device-integration.eps}
+    \caption{MTConnect OPC UA and ROS Device Integration}
+    \label{fig:mtconnect-ros-opc}
+\end{figure}
+
+\FloatBarrier
 %%% Local Variables:
 %%% mode: latex
 %%% TeX-master: "main"

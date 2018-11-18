@@ -12,6 +12,7 @@
 \newglossaryentry{DataType}
 {
   type=opc,
+  code=yes,
   name = {DataType},
   description = {instance of a DataType Node that is used together with the ValueRank Attribute to define the data type of a Variable}
 }
@@ -41,6 +42,7 @@
 \newglossaryentry{ModellingRule}
 {
   type=opc,
+  code=yes,
   name = {ModellingRule},
   description = {metadata of an InstanceDeclaration that defines how the \gls{InstanceDeclaration} will be used for instantiation and also defines subtyping rules for an \gls{InstanceDeclaration}}
 }
@@ -48,20 +50,36 @@
 \newglossaryentry{TypeDefinition}
 {
   type=opc,
-  name = {TypeDefinition},
+  name = {Type Definition},
   description = {The creation of an OPC UA Type}
+}
+
+\newglossaryentry{Server}
+{
+  type=opc,
+  name=Server,
+  description={An OPC UA Server Application}
+}
+
+\newglossaryentry{HaveTypeDefinition}
+{
+  type=opc,
+  code=yes,
+  name = {HaveTypeDefinition},
+  description = {The \gls{Reference} between the \gls{Object} and its \gls{Type}}
 }
 
 \newglossaryentry{Variable}
 {
   type=opc,
   name = {Variable},
-  description = {}
+  description = {A UA Variable abstraction}
 }
 
 \newglossaryentry{ValueRank}
 {
   type=opc,
+  code=true,
   name = {ValueRank},
   description = {This Attribute indicates whether the Value Attribute of the Variable is an array and how many dimensions the array has.}
 }
@@ -75,9 +93,10 @@
 
 \newglossaryentry{BrowseName}
 {
-    type=opc,
-    name=BrowseName,
-    description={Nodes have a BrowseName Attribute that is used as a non-localised human-readable name when browsing the AddressSpace to create paths out of BrowseNames}
+  type=opc,
+  code=yes,
+  name=BrowseName,
+  description={Nodes have a BrowseName Attribute that is used as a non-localised human-readable name when browsing the AddressSpace to create paths out of BrowseNames}
 }
 
 \newglossaryentry{ConditionType}
@@ -96,22 +115,162 @@
 
 \newglossaryentry{FolderType}
 {
-    type=opc,
-    name=FolderType,
-    description={Instances of FolderType are used to organise the AddressSpace into a hierarchy of Nodes}
+  type=opc,
+  code=yes,
+  name=FolderType,
+  description={Instances of FolderType are used to organise the AddressSpace into a hierarchy of Nodes}
 }
 
 \newglossaryentry{DataVariable}{
-    type=opc,
-    name=DataVariable,
-    description={Variables that represent values of Objects, either directly or indirectly for complex Variables, where the Variables are always the TargetNode of a HasComponent Reference}
+  type=opc,
+  code=yes,
+  name=DataVariable,
+  description={Variables that represent values of Objects, either directly or indirectly for complex Variables, where the Variables are always the TargetNode of a HasComponent Reference}
 }
 
 \newglossaryentry{HasTypeDefinition}{
-    type=opc,
-    name=HasTypeDefinition,
-    description={The HasTypeDefinition ReferenceType is a concrete ReferenceType and can be used directly}
+  type=opc,
+  code=yes,
+  name=HasTypeDefinition,
+  description={The HasTypeDefinition ReferenceType is a concrete ReferenceType and can be used directly}
 }
+
+\newglossaryentry{Attribute}
+{
+  type=opc,
+  name=Attribute,
+  description={An intrinsic part of the OPC UA Node}
+}
+
+\newglossaryentry{Reference}
+{
+  type=opc,
+  name=Reference,
+  description={An OPC UA relation between two \glspl{Node}}
+}
+
+\newglossaryentry{NodeId}
+{
+  type=opc,
+  code=yes,
+  name=NodeId,
+  description={The unique identifier for a \gls{Node}}
+}
+  
+\newglossaryentry{ArrayDimension}
+{
+  type=opc,
+  name=ArrayDimension,
+  description={The dimensions refers to the number of rows and columns of the associated array}
+}
+
+\newglossaryentry{AddressSpace}
+{
+  type=opc,
+  name=AddressSpace,
+  description={The instantiation of the all the instances of \glspl{Node} and \glspl{Reference}}
+}
+
+\newglossaryentry{HasModellingRule}
+{
+  type=opc,
+  code=yes,
+  name=HasModellingRule,
+  description={A \gls{Reference} to a specific modeling constraint that applies to the \gls{Type}}
+}
+
+\newglossaryentry{Type}
+{
+  type=opc,
+  name=Type,
+  description={A UA classification of \glspl{Object} or \glspl{Variable}}
+}
+
+\newglossaryentry{Object}
+{
+  type=opc,
+  name=Object,
+  description={An instantiation of a UA \gls{Type}}
+}
+
+\newglossaryentry{ObjectType}
+{
+  type=opc,
+  name=ObjectType,
+  description={The abstract \gls{Type} for all \glspl{Object}}
+}
+
+\newglossaryentry{ReferenceType}
+{
+  type=opc,
+  code=yes,
+  name=ReferenceType,
+  description={The \gls{Type} representing all \glspl{Reference} \glspl{Object}}
+}
+
+\newglossaryentry{ClassType}
+{
+  type=opc,
+  code=yes,
+  name=ClassType,
+  description={The \uamodel{ConditionClassId} \gls{Property} of the \uamodel{ConditionType} is used to assign a \uamodel{Condition} to a \uamodel{ConditionClass}. Clients can use this Property to filter out essential classes. OPC UA defines the base \gls{ObjectType} for all \uamodel{ConditionClasses} and a set of common classes used across many industries.}
+}
+
+\newglossaryentry{HasComponent}
+{
+  type=opc,
+  code=yes,
+  name=HasComponent,
+  description={A \gls{Reference} to an \gls{Object}}
+}
+
+\newglossaryentry{Property}
+{
+  type=opc,
+  plural=Properties,
+  name=Property,
+  description={Variables that are the TargetNode for a \gls{HasProperty} Reference. Properties describe the characteristics of a Node.}
+}
+
+\newglossaryentry{HasSubtype}
+{
+  type=opc,
+  code=yes,
+  name=Property,
+  description={The HasSubtype ReferenceType is a concrete ReferenceType that can be used directly. It is a subtype of the HasChild ReferenceType}
+}
+
+\newglossaryentry{HasProperty}
+{
+  type=opc,
+  code=yes,
+  name=HasProperty,
+  description={A relationship of an \gls{Object} to a \gls{Variable} that represents a characteristic of the \gls{Object}}
+}
+
+\newglossaryentry{HierarchicalReference}
+{
+  type=opc,
+  name={Hierarchical Reference},
+  description={Reference that is used to construct hierarchies in the \gls{AddressSpace}. All hierarchical ReferenceTypes are derived from HierarchicalReferences}
+}
+
+\newglossaryentry{Organizes}
+{
+  type=opc,
+  code=yes,
+  name=Organizes,
+  description={A \gls{HierarchicalReference} relationship between an \gls{Object} and a collection of owned \glspl{Object}. Represented in \gls{uml} as \xml{<<Organizes>>} \gls{stereotype}}
+}
+
+\newglossaryentry{Event}
+{
+  type=opc,
+  code=yes,
+  name=Event,
+  description={An OPC UA Event}
+}
+
 
 %% MTConnect Terms
 
@@ -208,10 +367,125 @@
   description={A sub-classification of a component that represents part of the component heirarchy}
 }
 
-\newglossaryentry{MTCondition}{
+\newglossaryentry{type}
+{
   type=mtc,
+  code=yes,
+  name=type,
+  description={The top level taxonomy classification used in the \glstext{xml} document}
+}
+
+\newglossaryentry{subType}
+{
+  type=mtc,
+  code=yes,
+  name=subType,
+  description={The second level taxonomy classification used in the \glstext{xml} document}
+}
+
+\newglossaryentry{UMLAssociation}
+{
+  type=mtc,
+  name=UMLAssociation,
+  description={A relationship between UML Classes}
+}
+
+\newglossaryentry{probe}
+{
+  type=mtc,
+  name={probe request},
+  description={An \glstext{http} request to the \gls{Agent} for returning metadata as an \xml{MTConnectDevices} \glstext{xml} document}
+}
+
+\newglossaryentry{current}
+{
+  type=mtc,
+  name={current request},
+  description={An \glstext{http} request to the \gls{Agent} for returning latest known values for the \glspl{MTDataItem} as an \xml{MTConnectStreams} \glstext{xml} document}
+}
+
+\newglossaryentry{sample}
+{
+  type=mtc,
+  name={sample request},
+  description={An \glstext{http} request to the \gls{Agent} for returning time series of values for the \glspl{MTDataItem} as an \xml{MTConnectStreams} \glstext{xml} document}
+}
+
+\newglossaryentry{Realization}
+{
+  type=mtc,
+  name=Realization,
+  description={Realization is a specialized abstraction relationship between two sets of model elements, one representing a specification (the supplier) and the other represents an implementation of the latter (the client). Realization can be used to model stepwise refinement, optimizations, transformations, templates, model synthesis, framework composition, etc.}
+}
+
+\newglossaryentry{mixes-in}
+{
+  type=mtc,
+  name={<<Mixes In>>},
+  description={A software architecture pattern represented as a \gls{stereotype} that combines the properties of one class with another. Similar to a sub-class, it allows for inheritance in single inheritance type systems.}
+}
+
+\newglossaryentry{stereotype}
+{
+  type=mtc,
+  name=stereotype,
+  description={A profile class which defines how an existing metaclass may be extended as part of a profile. It enables the use of a platform or domain specific terminology or notation in place of, or in addition to, the ones used for the extended metaclass. A stereotype is denoted by <<[name]>>.}
+}
+
+\newglossaryentry{Slot}
+{
+  type=mtc,
+  name=Slot,
+  description={Slot is UML element which specifies that an instance has a value or values for a specific structural feature. UML specification also says that a slot gives the value or values of a structural feature of the instance. An instance can have one slot per structural feature of its classifiers, including inherited features.}
+}
+
+\newglossaryentry{CDATA}
+{
+  type=mtc,
+  code=yes,
+  name=CDATA,
+  description={The blocks of text that are not parsed by the parser, but are otherwise recognized as markup. The predefined entities such as \&lt;, \&gt;, and \&amp; require typing and are generally difficult to read in the markup}
+}
+
+\newglossaryentry{QName}
+{
+  type=mtc,
+  code=yes,
+  name=QName,
+  description={A QName, or qualified name, is the fully qualified name of an element, attribute, or identifier in an XML document. A QName concisely associates the URI of an XML namespace with the local name of an element, attribute, or identifier in that namespace.}
+}
+
+\newglossaryentry{category}
+{
+  type=mtc,
+  code=yes,
+  name=category,
+  description={The top level classification of all MTConnect \glspl{MTDataItem}}
+}
+
+
+\newglossaryentry{MTEvent}
+{
+  type=mtc,
+  code=yes,
+  name=Event,
+  description={A category of MTConnect \gls{MTDataItem} that represents discrete or state related data from the device}
+}
+
+\newglossaryentry{Sample}
+{
+  type=mtc,
+  code=yes,
+  name=Sample,
+  description={A category of MTConnect \gls{MTDataItem} that data that represents a numeric continuous variable}
+}
+
+\newglossaryentry{MTCondition}
+{
+  type=mtc,
+  code=yes,
   name=Condition,
-  description={A \gls{DataItem} category that represents the alarm state of a component relatiing to the \texttt{type}}
+  description={A category of MTConnect \gls{MTDataItem} that data that represents the alarms and functional state of a component with respect to a \gls{type}}
 }
 
 %%% Local Variables:

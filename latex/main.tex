@@ -43,20 +43,13 @@ style=alphabetic,
 {0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
 % Initialize the glossaries and acronyms
-\setglossarystyle{altlist}
-\newglossary*{opc}{OPC UA Terms}
-\newglossary*{mtc}{MTConnect Terms}
-\makeglossaries
 \input{acronyms.tex}
 \input{terms.tex}
-
-% Sets the font based on the type of glossary entry being referenced
-\defglsentryfmt[opc]{\uaterm{\glsgenentryfmt}}
-\defglsentryfmt[mtc]{\mtterm{\glsgenentryfmt}}
 
 % For acronyms, puts the long description first and then the acronym second.
 \RestoreAcronyms
 \setacronymstyle{long-short-desc}
+
 
 \begin{document}			% Begin document here
 
@@ -67,7 +60,7 @@ style=alphabetic,
 \docnum{OPC UA}							% Document "number"
 \doctitle{OPC Unified Architecture\protect\\\quad\protect\\for\protect\\\quad\protect\\\mtconnect\protect\\\quad\protect\\Companion Specification}	% Full document title
 \doctitleshort{\mtconnect OPC UA Companion Specification}				% Shortened document title
-\versionnum{2.0 -- Release Candidate 0.0.1}						% MTConnect version
+\versionnum{2.0 -- RC 0.0.1}						% MTConnect version
 
 \preparedfor{MTConnect Institute and OPC Foundation}		% Should not change!!!
 \preparedby{MTConnect Institute, OPC Foundation}				% Author

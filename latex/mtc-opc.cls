@@ -269,9 +269,11 @@
 \newcommand{\cdata}[1]{{\fontfamily{pcr}\selectfont #1}}
 \newcommand{\asset}[1]{{\fontfamily{pcr}\selectfont #1}}
 
-\newcommand{\mtterm}[1]{\mtconnectterm{#1}}
-\newcommand{\uaterm}[1]{\opcuaterm{#1}}
-
+\newcommand{\mtterm}[1]{\textit{#1}}
+\newcommand{\uaterm}[1]{\textit{\textbf{{#1}}}}
+\newcommand{\xml}[1]{{\fontfamily{pcr}\selectfont #1}}
+\newcommand{\mtmodel}[1]{{\fontfamily{pcr}\selectfont #1}}
+\newcommand{\uamodel}[1]{\textbf{\fontfamily{pcr}\selectfont #1}}
 
 
 % ****************** %
@@ -359,3 +361,25 @@
 \newcommand*{\mtuadatatype}[1]{\hyperref[data-type:#1]{\fontfamily{pcr}\selectfont #1}}
 
 \newcommand*{\mtuamodel}[1]{\hyperref[model:#1]{\fontfamily{pcr}\selectfont #1}}
+
+% Glossary info
+
+\setglossarystyle{altlist}
+\newglossary*{opc}{OPC UA Terms}
+\newglossary*{mtc}{MTConnect Terms}
+\makeglossaries
+
+\glsaddstoragekey{code}{no}{\glsiscode}
+
+% Sets the font based on the type of glossary entry being referenced
+\defglsentryfmt[opc]{
+  \ifglsfieldeq{\glslabel}{code}{no}
+    {\uaterm{\glsgenentryfmt}}
+    {\uamodel{\glsgenentryfmt}}
+}
+\defglsentryfmt[mtc]{
+  \ifglsfieldeq{\glslabel}{code}{no}
+    {\mtterm{\glsgenentryfmt}}
+    {\xml{\glsgenentryfmt}}
+}
+

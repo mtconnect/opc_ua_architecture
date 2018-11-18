@@ -1,15 +1,20 @@
-The \mtterm{Condition} \mtterm{DataItem} \mtterm{category} in MTConnect is the mechanism for reporting alarms on the machine classified by type and subType--such as an overload of a motor or high temperature or a collection of system level warnings or faults.
+The \gls{MTCondition} \gls{MTDataItem} \gls{category} in MTConnect is the mechanism for reporting alarms on the machine classified by type and subType--such as an overload of a motor or high temperature or a collection of system level warnings or faults.
 
-The earlier \mtterm{Alarm} \mtterm{Event} facility changed to a more state-based architecture where the \mtterm{Condition} was in one of the following three states: Normal – everything is fine, Warning – something is going wrong, but may self-correct, to Fault – a failure that needs manual attention. The change was to address the semantic classification of \mtterm{Alarms} and remove ambiguity about the \mtterm{Alarm} severity.
+The earlier \mtmodel{Alarm} \gls{MTEvent} facility changed to a more state-based architecture where the \gls{MTCondition} was in one of the following three states: Normal – everything is fine, Warning – something is going wrong, but may self-correct, to Fault – a failure that needs manual attention. The change was to address the semantic classification of \mtterm{Alarms} and remove ambiguity about the \mtmodel{Alarm} severity.
 
-The Condition model is different from the Event model for a lot of the same reasons OPC has the \uaterm{ConditionType} as \uaterm{Object} and as an \uaterm{Event}. In UA, the \uaterm{Object} in the address space keeps the state of the condition, whereas the individual \uaterm{Alarms} are discrete events.
+The Condition model is different from the Event model for a lot of the same reasons OPC has the \glspl{ConditionType} as \gls{Object} and as an \gls{Event}. In UA, the \gls{Object} in the address space keeps the state of the condition, whereas the individual \uamodel{Alarms} are discrete events.
 
-In MTConnect, the \mtterm{Condition} keeps the active state as well. In streaming (\mtterm{sample}) request, the \mtterm{Conditions} like an event stream. With a \mtterm{current} request, all active conditions are reported, even if there are multiple active conditions for a given type. Usually, an \mtterm{Event} can only have one value at a time, MTConnect \mtterm{Condition} is different and can have multiple values, as in the case where there are multiple system alarms for a component or a syntax errors in a part program.
+In MTConnect, the \gls{MTCondition} keeps the active state as well. In streaming (\mtterm{sample}) request, the \glspl{MTCondition} like an event stream. With a \gls{current}, all active conditions are reported, even if there are multiple active conditions for a given type. Usually, an \gls{MTEvent} can only have one value at a time, MTConnect \gls{MTCondition} is different and can have multiple values, as in the case where there are multiple system alarms for a component or a syntax errors in a part program.
 
-The Condition uses the attribute \xmlattribute{nativeCode} as you use the BranchId in the UA Condition. Each unique \xmlattribute{nativeCode} is consider another activation of the Condition. Only when a \mtterm{Normal} with no \xmlattribute{nativeCode} cleared all active Conditions, or each are cleared separately (going back to a Normal state), does the condition report Normal when for a \mtterm{current} request.
+The Condition uses the attribute \xml{nativeCode} as you use the BranchId in the UA Condition. Each unique \xml{nativeCode} is consider another activation of the Condition. Only when a \mtmodel{Normal} with no \xml{nativeCode} cleared all active Conditions, or each are cleared separately (going back to a Normal state), does the condition report Normal when for a \mtmodel{current} request.
 
-\mtterm{Condition} provides a stateful way of managing \mtterm{Alarms} in a similar way to OPC UA, but since we are not addressing the requirements of an interactive model (we are read-only), we are only reporting on the states of the conditions. 
+\gls{MTCondition} provides a stateful way of managing \mtmodel{Alarms} in a similar way to OPC UA, but since we are not addressing the requirements of an interactive model (we are read-only), we are only reporting on the states of the conditions. 
 
 The documentation for the condition behavior in MTConnect can be found in Section 5.7 and 5.8 of \cite{MTCPart3} and an overview in \cite{MTCPart2}.
 
-The MTConnect Data Item with Category of \texttt{CONDITION} are mapped to the OPC UA \uaterm{ConditionType}s  in \cite{UAPart9} with a \uaterm{TwoStateVariableType} that represents the current state of all the active \uaterm{branches} of this \mtterm{Condition}.
+The MTConnect Data Item with Category of \mtmodel{CONDITION} are mapped to the OPC UA \glspl{ConditionType}  in \cite{UAPart9} with a \uamodel{TwoStateVariableType} that represents the current state of all the active \uaterm{branches} of this \mtmodel{Condition}.
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../main"
+%%% End:

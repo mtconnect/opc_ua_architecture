@@ -28,9 +28,9 @@ MTConnect \gls{xml} literals and code will appear in monospace \xml{MTConnectCod
 \begin{itemize}
     \item If the \gls{TargetNode} is a component of the \gls{Node} being defined in the table the \glspl{Attribute} of the composed Node are defined in the same row of the table. 
     \item The \gls{DataType} is only specified for Variables; "[<number>]" indicates a single-dimensional array, for multi-dimensional arrays the expression is repeated for each dimension (e.g. [2][3] for a two-dimensional array). For all arrays the \glspl{ArrayDimension} is set as identified by \uamodel{<number>} values. If no \uamodel{<number>} is set, the corresponding dimension is set to 0, indicating an unknown size. If no number is provided at all the \glspl{ArrayDimension} can be omitted. If no brackets are provided, it identifies a scalar \gls{DataType} and the \gls{ValueRank} is set to the corresponding value (see \cite{UAPart3}). In addition, \glspl{ArrayDimension} is set to \uamodel{null} or is omitted. If it can be \uamodel{Any} or \uamodel{ScalarOrOneDimension}, the value is put into \uamodel{"<value>"}, so either \uamodel{"Any"} or \uamodel{"ScalarOrOneDimension"} and the \gls{ValueRank} is set to the corresponding value (see \cite{UAPart3}) and the \glspl{ArrayDimension} is set to \uamodel{null} or is omitted. Examples are given in Table \ref{table:ExamplesOfDataTypes}.
-    \item The \gls{TypeDefinition} is specified for Objects and Variables.
-    \item The \gls{TypeDefinition} column specifies a symbolic name for a \gls{NodeId}, i.e. the specified \gls{Node} points with a \gls{HasTypeDefinition} \gls{Reference} to the corresponding Node.
-    \item The \gls{ModellingRule} of the referenced component is provided by specifying the symbolic name of the rule in \gls{ModellingRule}. In the \gls{AddressSpace}, the Node shall use a \gls{HasModellingRule} \gls{Reference} to point to the corresponding \gls{ModellingRule} \gls{Object}.
+    \item The \gls{TypeDefinition} is specified for \glspl{Object} and \glspl{Variable}.
+    \item The \gls{TypeDefinition} column specifies a symbolic name for a \gls{NodeId}, i.e. the specified \gls{Node} points with a \gls{HasTypeDefinition} \gls{Reference} to the corresponding \gls{Node}.
+    \item The \gls{ModellingRule} of the referenced component is provided by specifying the symbolic name of the rule in \gls{ModellingRule}. In the \gls{AddressSpace}, the \gls{Node} shall use a \gls{HasModellingRule} \gls{Reference} to point to the corresponding \gls{ModellingRule} \gls{Object}.
 \end{itemize}
 
 \begin{table}[ht]
@@ -77,8 +77,7 @@ Attribute name & \multicolumn{5}{|l|}{Attribute value. If it is an optional Attr
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
 \tabucline[1.5pt]{}
-
-\gls{ReferenceType} name & \gls{NodeClass} of the target \gls{Node}. & \gls{BrowseName} of the target \gls{Node}. If the \gls{Reference} is to be instantiated by the server, then the value of the target \gls{Node}'s \gls{BrowseName} is "--". & \gls{DataType} of the referenced \gls{Node}, only applicable for \glspl{Variable}. & \gls{TypeDefinition} of the referenced \gls{Node}, only applicable for \glspl{Variable} and \glspl{Object}. & Referenced \gls{ModellingRule} of the referenced \gls{Object}. \\
+ReferenceType name & NodeClass of the target Node. & BrowseName of the target Node. If the Reference is to be instantiated by the server, then the value of the target Node's BrowseName is "--". & DataType of the referenced Node, only applicable for Variable. & TypeDefinition of the referenced Node, only applicable for Variable and Object. & Referenced ModellingRule of the referenced Object. \\
 
 \multicolumn{6}{|l|}{Note: Notes referencing footnotes of the table content.} \\
 \end{tabu}
@@ -166,7 +165,7 @@ EventNotifier & Whether the Node can be used to subscribe to Events or not is se
 
 \paragraph{Variables}
 
-For all \texttt{Variables} specified in this specification, the \texttt{Attributes} named in Table \ref{table:CommonVariableAttributes} shall be set as specified in the table. The definitions for the \texttt{Attributes} can be found in \cite{UAPart3}.
+For all \glspl{Variable} specified in this specification, the \glspl{Attribute} named in Table \ref{table:CommonVariableAttributes} shall be set as specified in the table. The definitions for the \glspl{Attribute} can be found in \cite{UAPart3}.
 
 \begin{table}[ht]
 \centering 
@@ -178,7 +177,6 @@ For all \texttt{Variables} specified in this specification, the \texttt{Attribut
 \hline
 \rowfont \bfseries Attribute & Value \\
 \tabucline[1.5pt]{}
-
 MinimumSamplingInterval & Optionally, a server-specific minimum sampling interval is provided.\\
 AccessLevel & The access level for Variables used for type definitions is server-specific, for all other Variables defined in this specification, the access level shall allow reading; other settings are server-specific.\\
 UserAccessLevel & The value for the UserAccessLevel Attribute is server-specific. It is assumed that all Variables can be accessed by at least one user.\\
@@ -187,8 +185,6 @@ ArrayDimensions & If the ValueRank does not identify an array of a specific dime
 If the ValueRank specifies an array of a specific dimension (i.e. ValueRank > 0) then the ArrayDimensions Attribute shall be specified in the table defining the Variable.\\
 Historizing & The value for the Historizing Attribute is server-specific.\\
 AccessLevelEx & If the AccessLevelEx Attribute is provided, it shall have the bits 8, 9, and 10 set to 0, meaning that read and write operations on an individual Variable are atomic, and arrays can be partly written. \\
-
-
 \end{tabu}
 \end{table} 
 
@@ -196,7 +192,7 @@ AccessLevelEx & If the AccessLevelEx Attribute is provided, it shall have the bi
 \FloatBarrier
 
 \paragraph{VariableTypes}
-For all \texttt{VariableTypes} specified in this specification, the \texttt{Attributes} named in Table \ref{table:CommonVariableTypesAttributes} shall be set as specified in the table. The definitions for the \texttt{Attributes} can be found in \cite{UAPart3}.
+For all \uamodel{VariableType} specified in this specification, the \glspl{Attribute} named in Table \ref{table:CommonVariableTypesAttributes} shall be set as specified in the table. The definitions for the \glspl{Attribute} can be found in \cite{UAPart3}.
 
 \begin{table}[ht]
 \centering 
@@ -208,12 +204,9 @@ For all \texttt{VariableTypes} specified in this specification, the \texttt{Attr
 \hline
 \rowfont \bfseries Attribute & Value \\
 \tabucline[1.5pt]{}
-
 Value & Optionally a server-specific default value can be provided.\\
 ArrayDimensions & If the ValueRank does not identify an array of a specific dimension (i.e. ValueRank <= 0) the ArrayDimensions can either be set to null or the Attribute is missing. This behaviour is server-specific.
 If the ValueRank specifies an array of a specific dimension (i.e. ValueRank > 0) then the ArrayDimensions Attribute shall be specified in the table defining the VariableType.\\
-
-
 \end{tabu}
 \end{table} 
 
@@ -221,7 +214,7 @@ If the ValueRank specifies an array of a specific dimension (i.e. ValueRank > 0)
 \FloatBarrier
 
 \paragraph{Methods}
-For all \texttt{Methods} specified in this specification, the \texttt{Attributes} named in Table \ref{table:CommonMethodAttributes} shall be set as specified in the table. The definitions for the \texttt{Attributes} can be found in \cite{UAPart3}.
+For all \uamodel{Methods} specified in this specification, the \gls{Attribute} named in Table \ref{table:CommonMethodAttributes} shall be set as specified in the table. The definitions for the \glspl{Attribute} can be found in \cite{UAPart3}.
 
 \begin{table}[ht]
 \centering 
@@ -233,11 +226,8 @@ For all \texttt{Methods} specified in this specification, the \texttt{Attributes
 \hline
 \rowfont \bfseries Attribute & Value \\
 \tabucline[1.5pt]{}
-
 Executable & All Methods defined in this specification shall be executable (Executable Attribute set to “True”), unless it is defined differently in the Method definition.\\
 UserExecutable & The value of the UserExecutable Attribute is server-specific. It is assumed that all Methods can be executed by at least one user. \\
-
-
 \end{tabu}
 \end{table} 
 

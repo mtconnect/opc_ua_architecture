@@ -369,13 +369,13 @@
 % Sets the font based on the type of glossary entry being referenced
 \defglsentryfmt[opc]{
   \glsifcategory{\glslabel}{code}
-    {\uaterm{\glsgenentryfmt}}
-    {\uamodel{\glsgenentryfmt}}}
+    {\uamodel{\glsgenentryfmt}}
+    {\uaterm{\glsgenentryfmt}}}
   
 \defglsentryfmt[mtc]{
   \glsifcategory{\glslabel}{code}
-    {\mtterm{\glsgenentryfmt}}
-    {\xml{\glsgenentryfmt}}}
+    {\mtmodel{\glsgenentryfmt}}
+    {\mtterm{\glsgenentryfmt}}}
 
 \renewcommand{\glsnamefont}[1]{
   \ifglsfieldeq{\glscurrententrylabel}{type}{opc}{

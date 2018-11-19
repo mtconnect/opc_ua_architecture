@@ -66,7 +66,7 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \RequirePackage[acronym,toc,numberedsection,%
-  abbreviations,automake,nonumberlist,%
+  abbreviations,automake,nonumberlist,stylemods,%
   section=subsubsection]{glossaries-extra}
 
 % *********** %
@@ -362,7 +362,11 @@
 \newglossary*{mtc}{MTConnect Terms}
 \makeglossaries
 
+% For acronyms, puts the long description first and then the acronym second.
+\setabbreviationstyle[acronym]{long-short}
+
 \glsaddstoragekey{code}{no}{\glsiscode}
+\glscategory{code}
 
 % Sets the font based on the type of glossary entry being referenced
 \defglsentryfmt[opc]{

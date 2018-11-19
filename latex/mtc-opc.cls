@@ -364,19 +364,29 @@
 
 % For acronyms, puts the long description first and then the acronym second.
 \setabbreviationstyle[acronym]{long-short}
-
-\glsaddstoragekey{code}{no}{\glsiscode}
 \glscategory{code}
 
 % Sets the font based on the type of glossary entry being referenced
 \defglsentryfmt[opc]{
-  \ifglsfieldeq{\glslabel}{code}{no}
+  \glsifcategory{\glslabel}{code}
     {\uaterm{\glsgenentryfmt}}
-    {\uamodel{\glsgenentryfmt}}
-}
+    {\uamodel{\glsgenentryfmt}}}
 \defglsentryfmt[mtc]{
-  \ifglsfieldeq{\glslabel}{code}{no}
+  \glsifcategory{\glslabel}{code}
     {\mtterm{\glsgenentryfmt}}
-    {\xml{\glsgenentryfmt}}
-}
+    {\xml{\glsgenentryfmt}}}
 
+\renewcommand{\glsnamefont}[1]{
+  \ifglsfieldeq{\glscurrententrylabel}{type}{opc}{
+    \glsifcategory{\glscurrententrylabel}{code}%
+      {\uamodel{#1}}
+      {\uaterm{#1}}
+  }{
+    \ifglsfieldeq{\glscurrententrylabel}{type}{mtc}{
+      \glsifcategory{\glscurrententrylabel}{code}%
+        {\mtmodel{#1}}
+        {\mtterm{#1}}
+    }
+    {\textbf{#1}}
+  }
+}

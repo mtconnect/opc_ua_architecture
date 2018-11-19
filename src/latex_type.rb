@@ -1,4 +1,5 @@
 require 'type'
+require 'set'
 
 module Diagram
   def png_diagram_name
@@ -75,6 +76,8 @@ end
 class LatexType < Type
   include Diagram
   include Document
+
+  @@labels = Set.new
 
   ROW_FORMAT = "|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|"
 
@@ -285,7 +288,13 @@ EOT
 \\begin{table}[ht]
 \\centering 
   \\caption{\\texttt{#{escape_name}} Enumeration}
-  \\label{enum:#{@name}}
+EOT
+      unless @@labels.include?(@name)
+        f.puts "  \\label{enum:#{@name}}"
+        @@labels.add(@name)
+      end
+
+      f.puts <<EOT
 \\tabulinesep=3pt
 \\begin{tabu} to 6in {|l|r|} \\everyrow{\\hline}
 \\hline

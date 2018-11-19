@@ -252,11 +252,6 @@
 % 	Controlled Vocabulary   %
 % ************************* %
 
-\newcommand{\opcuaterm}[1]{\textbf{\textit{#1}}}
-\newcommand{\xmlelement}[1]{{\fontfamily{pcr}\selectfont #1}}
-\newcommand{\subtype}[1]{{\fontfamily{pcr}\selectfont #1}}
-\newcommand{\dataitem}[1]{{\fontfamily{pcr}\selectfont #1}}
-\newcommand{\configuration}[1]{{\fontfamily{pcr}\selectfont #1}}
 \newcommand{\deprecated}[1]{{\fontfamily{pcr}\selectfont #1}}
 \newcommand{\deprecationwarning}[1]{{\fontfamily{pcr}\selectfont #1}}
 

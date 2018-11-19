@@ -66,7 +66,7 @@
 \usepackage{amssymb}
 \usepackage{amsmath}
 \RequirePackage[acronym,toc,numberedsection,%
-  abbreviations,automake,nonumberlist,stylemods,%
+  abbreviations,automake,nonumberlist,%
   section=subsubsection]{glossaries-extra}
 
 % *********** %
@@ -371,6 +371,7 @@
   \glsifcategory{\glslabel}{code}
     {\uaterm{\glsgenentryfmt}}
     {\uamodel{\glsgenentryfmt}}}
+  
 \defglsentryfmt[mtc]{
   \glsifcategory{\glslabel}{code}
     {\mtterm{\glsgenentryfmt}}

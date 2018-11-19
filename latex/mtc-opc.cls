@@ -136,14 +136,14 @@
 \newcommand\@preparedfor{}
 \newcommand\@preparedby{}
 \newcommand\@preparedon{}
-\newcommand\@drafttext{}
+\newcommand\@versiontext{}
 \newcommand{\docnum}[1]{\gdef\@docnum{#1}}
 \newcommand{\doctitle}[1]{\gdef\@doctitle{#1}}
 \newcommand{\versionnum}[1]{\gdef\@versionnum{#1}}
 \newcommand{\preparedfor}[1]{\gdef\@preparedfor{#1}}
 \newcommand{\preparedby}[1]{\gdef\@preparedby{#1}}
 \newcommand{\preparedon}[1]{\gdef\@preparedon{#1}}
-\newcommand{\drafttext}[1]{\gdef\@drafttext{#1}}
+\newcommand{\versiontext}[1]{\gdef\@versiontext{#1}}
 
 \renewcommand{\maketitle}{%
   \begin{titlepage}%
@@ -155,7 +155,7 @@
     \quad \\ \vspace{0.1in}
     \begin{center}%
       \huge{\@doctitle} \protect\\%
-      \LARGE{\quad \protect\\\@drafttext \@versionnum \protect\\ \quad \protect\\\@preparedon} \protect\\%
+      \LARGE{\quad \protect\\\@versiontext\space\@versionnum \protect\\ \quad \protect\\\@preparedon} \protect\\%
     \end{center}%
     \vfill%
     % \hspace*{\fill}%
@@ -194,7 +194,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{\@preparedon}
-\lfoot{\@drafttext \@doctitleshort { -} Version \@versionnum}
+\lfoot{\@doctitleshort { -} \@versiontext\space\@versionnum}
 \rfoot{\thepage}
 \renewcommand{\headrulewidth}{0pt}
 

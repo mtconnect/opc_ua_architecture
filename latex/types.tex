@@ -1,4 +1,4 @@
-% Generated 2018-11-16 11:43:35 -0800
+% Generated 2018-11-18 20:12:11 -0800
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -11,7 +11,7 @@
 \FloatBarrier
 
 
-The \texttt{Components} documents the Component models and the owned objects.
+The \glspl{MTComponent} documents the Component models and the owned objects.
 
 \subsubsection{Defintion of \texttt{ MTChannelType}}
   \label{type:MTChannelType}
@@ -67,17 +67,17 @@ Has\-Property & Variable & Calibration\-Initials & String & Property\-Type & Opt
 
 The base Component Type from which all MTConnect Components are derived. The 
 component type factory is used to create the specific OPC/UA Types as subtypes of the 
-MTConnect \texttt{MTComponentType}. The component types will be created once for all Component objects 
-of that type based on the \texttt{QName} of the MTConnect XML element. 
+MTConnect \mtuatype{MTComponentType}. The component types will be created once for all Component objects 
+of that type based on the \gls{QName} of the MTConnect XML element. 
 
 The object factory will instantiate the Component Objects and insert them into the Components 
-folder with a browse name of the Component QName and the \texttt{name} element if specified surrounded 
+folder with a browse name of the Component QName and the \mtmodel{name} element if specified surrounded 
 by square brackets, \texttt{[]}. For example if the MTConnect Element is:
 
-\texttt{<Linear name='X'>...</...>}
+\xml{<Linear name='X'>...</...>}
 
-The OPC/UA Object with browse name \texttt{Linear[X]} will be created with the HasTypeDefinition 
-referencing the \texttt{Linear} OPC/UA type. 
+The OPC/UA Object with browse name \xml{Linear[X]} will be created with the HasTypeDefinition 
+referencing the \mtmodel{Linear} OPC/UA type. 
 
 The meta data for the component and its relationships are static. The dynamic data will be 
 represented using the \cite{UAPart8}.
@@ -177,12 +177,10 @@ Documentation: The name of the Device SHALL be given.
 \FloatBarrier
 
 This is a dynamic type that will be created at the time the model is created. The 
-\texttt{<Component>} placeholder will be supplied by the \texttt{ComponentTypeFactory} 
-(\ref{type:ComponentTypeFactory}) that will create the type as a sub-type of the 
-\texttt{MTComponentType}.
+\mtmodel{<Component>}.
 
-The name will be created using the \texttt{QName} of the MTConnect \texttt{Component} element.
-More information on the MTConnect Components can be found in MTConnect Part 2 \cite{MTCPart2}.
+The \gls{BrowseName} will be created using the \gls{QName} of the MTConnect \gls{MTComponent} element.
+More information on the MTConnect Components can be found in \cite{MTCPart2}.
 
 \begin{table}[ht]
 \centering 
@@ -209,15 +207,14 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-The \texttt{MTCompositionType} is the abstract supertype of the dynamically generated
-composition types based on the attribute \texttt{type} of the \texttt{Composition} element
-of the MTConnect \texttt{Component}. The \texttt{Composition} is then related to the 
-DataItems that reference the \texttt{Composition}'s id in their \texttt{compositionId} 
+The \mtuatype{MTCompositionType} is the abstract supertype of the dynamically generated
+composition types based on the attribute \gls{type} of the \gls{Composition} element
+of the MTConnect \gls{MTComponent}. The \gls{Composition} is then related to the \glspl{MTDataItem} that reference the \gls{Composition}'s mtmodel{id} in their \mtmodel{compositionId} 
 attribute. 
 
-The data items are added to the relationship where the \texttt{DataItem} to \texttt{Composition} 
-relationship is represented by the \texttt{BrowseName} Composition property of the data item.
-The data items are added to the \texttt{Composition} by their browse names.
+The data items are added to the relationship where the \gls{MTDataItem} to \gls{Composition} 
+relationship is represented by the \gls{BrowseName} Composition property of the data item.
+The data items are added to the \gls{Composition} by their \glspl{BrowseName}.
 
 \begin{table}[ht]
 \centering 
@@ -437,7 +434,7 @@ Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & 
 
 \FloatBarrier
 
-The abstract type for all data items types that are specifically for \texttt{CONDITION} category.
+The abstract type for all data items types that are specifically for \mtmodel{CONDITION} category.
 
 \begin{table}[ht]
 \centering 
@@ -473,7 +470,7 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{SystemClassType} & \multicolumn{2}{
 
 The MTConnect constraints. The Values or the Minimum, Maximum, and Nominal values should be 
 provided. Multiple Values can be provided as an array as a set of allowable values for this
-\mtterm{DataItem}.
+\gls{MTDataItem}.
 
 \begin{table}[ht]
 \centering 
@@ -504,9 +501,9 @@ Has\-Property & Variable & Nominal & Float & Property\-Type & Optional \\
 
 \FloatBarrier
 
-All Data Items with Category \texttt{EVENT} having Controlled Vocabularies (Enumerations) 
+All Data Items with Category \mtmodel{EVENT} having Controlled Vocabularies (Enumerations) 
 will be added as sub-types of this type which is mapped to the OPC/UA MultiStateValueDiscreteType. 
-Otherwise, either \texttt{MTString} or \texttt{MTNumeric} will be used. All subtypes are direct representations of the 
+Otherwise, either \mtmodel{MTString} or \mtmodel{MTNumeric} will be used. All subtypes are direct representations of the 
 MTConnect equivalent elements that can be found in the MTConnect Part 3 \cite{MTCPart3} documents.
 
 \begin{table}[ht]
@@ -600,7 +597,7 @@ Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & 
 \item \textbf{Allowable Values} for \texttt{MTCategoryType}
 \FloatBarrier
 
-Represents the \texttt{category} attribute of the MTConnect \mtterm{DataItem}.
+Represents the \mtmodel{category} attribute of the MTConnect \gls{MTDataItem}.
 
 \begin{table}[ht]
 \centering 
@@ -617,12 +614,12 @@ Represents the \texttt{category} attribute of the MTConnect \mtterm{DataItem}.
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\item \texttt{SourceData::String:} The text that is the \texttt{CDATA} of the \xmlelement{Source} element.
+\item \texttt{SourceData::String:} The text that is the \mtmodel{CDATA} of the \xmlelement{Source} element.
 
 \item \textbf{Allowable Values} for \texttt{MTRepresentationType}
 \FloatBarrier
 
-Represents the \texttt{representation} attribute of the MTConnect \mtterm{DataItem}.
+Represents the \mtmodel{representation} attribute of the MTConnect \gls{MTDataItem}.
 
 \begin{table}[ht]
 \centering 
@@ -639,12 +636,12 @@ Represents the \texttt{representation} attribute of the MTConnect \mtterm{DataIt
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\item \texttt{PeriodFilter::Float:} Represents the MTConnect \mtterm{Filter} subtype of \mtterm{PeriodFilter}.
+\item \texttt{PeriodFilter::Float:} Represents the MTConnect \mtmodel{Filter} subtype of \mtmodel{PeriodFilter}.
 
 \item \textbf{Allowable Values} for \texttt{MTRepresentationType}
 \FloatBarrier
 
-Represents the \texttt{representation} attribute of the MTConnect \mtterm{DataItem}.
+Represents the \mtmodel{representation} attribute of the MTConnect \gls{MTDataItem}.
 
 \begin{table}[ht]
 \centering 
@@ -664,7 +661,7 @@ Represents the \texttt{representation} attribute of the MTConnect \mtterm{DataIt
 \item \textbf{Allowable Values} for \texttt{MTCategoryType}
 \FloatBarrier
 
-Represents the \texttt{category} attribute of the MTConnect \mtterm{DataItem}.
+Represents the \mtmodel{category} attribute of the MTConnect \gls{MTDataItem}.
 
 \begin{table}[ht]
 \centering 
@@ -688,8 +685,8 @@ Represents the \texttt{category} attribute of the MTConnect \mtterm{DataItem}.
     Documentation: The OPC/UA status code will be created using the following process:
 
 \begin{itemize}
-  \item If the value of the data item is \texttt{UNAVAILABLE} a status code of \texttt{Uncertain_NoCommunicationLastUsable}
-  \item When a reset trigger is specified, new \texttt{Good_} status codes will be created. See \texttt{ResetTrigger} enumeration.
+  \item If the value of the data item is \mtmodel{UNAVAILABLE} a status code of \mtmodel{Uncertain_NoCommunicationLastUsable}
+  \item When a reset trigger is specified, new \mtmodel{Good_} status codes will be created. See \mtmodel{ResetTrigger} enumeration.
 \end{itemize}
 
 \end{itemize}
@@ -699,7 +696,7 @@ Represents the \texttt{category} attribute of the MTConnect \mtterm{DataItem}.
 \item \textbf{Allowable Values} for \texttt{MTRepresentationType}
 \FloatBarrier
 
-Represents the \texttt{representation} attribute of the MTConnect \mtterm{DataItem}.
+Represents the \mtmodel{representation} attribute of the MTConnect \gls{MTDataItem}.
 
 \begin{table}[ht]
 \centering 
@@ -719,7 +716,7 @@ Represents the \texttt{representation} attribute of the MTConnect \mtterm{DataIt
 \item \textbf{Allowable Values} for \texttt{MTCategoryType}
 \FloatBarrier
 
-Represents the \texttt{category} attribute of the MTConnect \mtterm{DataItem}.
+Represents the \mtmodel{category} attribute of the MTConnect \gls{MTDataItem}.
 
 \begin{table}[ht]
 \centering 
@@ -778,12 +775,12 @@ Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Opt
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
-\item \texttt{SignificantDigits::UInt16:} The significant digits is converted to a \uaterm{ValuePrecision}.
+\item \texttt{SignificantDigits::UInt16:} The significant digits is converted to a \uamodel{ValuePrecision}.
 
 \item \textbf{Allowable Values} for \texttt{CoordinateSystemType}
 \FloatBarrier
 
-Represents the \texttt{coordinateSystem} attribute of the MTConnect \mtterm{DataItem}.
+Represents the \mtmodel{coordinateSystem} attribute of the MTConnect \gls{MTDataItem}.
 
 \begin{table}[ht]
 \centering 
@@ -802,7 +799,7 @@ Represents the \texttt{coordinateSystem} attribute of the MTConnect \mtterm{Data
 \item \textbf{Allowable Values} for \texttt{DataItemResetValueType}
 \FloatBarrier
 
-These need to become \texttt{Good_} status code in OPC UA.
+These need to become \mtmodel{Good_} status code in OPC UA.
 
 \begin{table}[ht]
 \centering 
@@ -825,12 +822,12 @@ These need to become \texttt{Good_} status code in OPC UA.
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\item \texttt{MinimumDeltaFilter::Float:} Represents the MTConnect \mtterm{Filter} subtype of \mtterm{MinimumDeltaFilter}.
+\item \texttt{MinimumDeltaFilter::Float:} Represents the MTConnect \mtmodel{Filter} subtype of \mtmodel{MinimumDeltaFilter}.
 
 \item \textbf{Allowable Values} for \texttt{CoordinateSystemType}
 \FloatBarrier
 
-Represents the \texttt{coordinateSystem} attribute of the MTConnect \mtterm{DataItem}.
+Represents the \mtmodel{coordinateSystem} attribute of the MTConnect \gls{MTDataItem}.
 
 \begin{table}[ht]
 \centering 
@@ -849,7 +846,7 @@ Represents the \texttt{coordinateSystem} attribute of the MTConnect \mtterm{Data
 \item \textbf{Allowable Values} for \texttt{DataItemResetValueType}
 \FloatBarrier
 
-These need to become \texttt{Good_} status code in OPC UA.
+These need to become \mtmodel{Good_} status code in OPC UA.
 
 \begin{table}[ht]
 \centering 
@@ -879,7 +876,7 @@ These need to become \texttt{Good_} status code in OPC UA.
 \item \textbf{Allowable Values} for \texttt{CoordinateSystemType}
 \FloatBarrier
 
-Represents the \texttt{coordinateSystem} attribute of the MTConnect \mtterm{DataItem}.
+Represents the \mtmodel{coordinateSystem} attribute of the MTConnect \gls{MTDataItem}.
 
 \begin{table}[ht]
 \centering 
@@ -898,7 +895,7 @@ Represents the \texttt{coordinateSystem} attribute of the MTConnect \mtterm{Data
 \item \textbf{Allowable Values} for \texttt{DataItemResetValueType}
 \FloatBarrier
 
-These need to become \texttt{Good_} status code in OPC UA.
+These need to become \mtmodel{Good_} status code in OPC UA.
 
 \begin{table}[ht]
 \centering 
@@ -928,7 +925,7 @@ These need to become \texttt{Good_} status code in OPC UA.
 
 \FloatBarrier
 
-The base type class for all data items with a category of \texttt{EVENT}.
+The base type class for all data items with a category of \mtmodel{EVENT}.
 
 \begin{table}[ht]
 \centering 
@@ -960,10 +957,10 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{MTMessageClassType} & \multicolumn{
 \FloatBarrier
 
 The message type is a special class since it adds another property for the native code. 
-In MTConnect the \texttt{nativeCode} attribute will be mapped to this variable 
-in the message. The type is currently sub-typed from the OPC UA \texttt{SystemEventType} and 
+In MTConnect the \mtmodel{nativeCode} attribute will be mapped to this variable 
+in the message. The type is currently sub-typed from the OPC UA \mtmodel{SystemEventType} and 
 will be represented as an event. The MTConnect CDATA will be represented in the Event 
-\texttt{Message}.
+\mtmodel{Message}.
 
 
 \begin{table}[ht]
@@ -1012,9 +1009,9 @@ Has\-Property & Variable & Native\-Code & String & Property\-Type & Optional \\
 
 \FloatBarrier
 
-All data items with category \texttt{EVENT} and a numeric value. These are usually counters for 
+All data items with category \mtmodel{EVENT} and a numeric value. These are usually counters for 
 parts and lines. Currently only builtin types that are known to be integers will be
-sub-typed from this type. Extended types will be subtyped from the \texttt{MTStringEventType}.
+sub-typed from this type. Extended types will be subtyped from the \mtmodel{MTStringEventType}.
 
 \begin{table}[ht]
 \centering 
@@ -1071,12 +1068,12 @@ Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Opt
 
 \FloatBarrier
 
-Data Items with category \texttt{SAMPLE}. The simplest mapping since all these types are 
-floating point numeric data and comply with the \uaterm{AnalogUnitType} from \cite{UAPart8} Amendment 1.
-In ammendment 1, the \uaterm{EURange} is optional. \uaterm{EngineeringUnits} for all \mtuatype{MTSampleType} Data Items.
+Data Items with category \mtmodel{SAMPLE}. The simplest mapping since all these types are 
+floating point numeric data and comply with the \uamodel{AnalogUnitType} from \cite{UAPart8} Amendment 1.
+In ammendment 1, the \uamodel{EURange} is optional. \uamodel{EngineeringUnits} for all \mtuatype{MTSampleType} Data Items.
 
-The \uaterm{EURange} will becreated if the \xmlelement{Constraints} element exists and both \mtterm{Maximum} 
-and \mtterm{Minimum} values are given. 
+The \uamodel{EURange} will becreated if the \glspl{Constraint} element exists and both \mtmodel{Maximum} 
+and \mtmodel{Minimum} values are given. 
 
 
 \begin{table}[ht]
@@ -1141,11 +1138,11 @@ Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Opt
 
 \FloatBarrier
 
-All data items with category \texttt{EVENT} where the data is freeform text. The data type
+All data items with category \mtmodel{EVENT} where the data is freeform text. The data type
 will be set to String for all the sub-types. All extended type, regardless of 
 controlled vocabularies, will use this base type unless proprietary 
 enumerations are added to the nodeset as required by the builtin state
-event types inherited from \texttt{MTEnumeratedEventType} (see \ref{type:MTControlledVocabEventType}).
+event types inherited from \mtmodel{MTEnumeratedEventType} (see \ref{type:MTControlledVocabEventType}).
 
 \begin{table}[ht]
 \centering 
@@ -1301,23 +1298,23 @@ Represents a position in a three space coordinate system. The positions must be 
 
 \FloatBarrier
 
-The condition type is a derived from the UA \texttt{ContitionType}. The Normal state of 
-the condition is indicated by the ActiveState if \texttt{FALSE}. The severity 
+The condition type is a derived from the UA \gls{ConditionType}. The Normal state of 
+the condition is indicated by the ActiveState if \uamodel{False}. The severity 
 is used to represent the MTConnect condition states of Warning and Fault with the values of
 500 and 1000 respectively. 
 
-An MTConditionType instance will be created for event MTConnect \texttt{DataItem} with a 
-\texttt{category} of \texttt{CONDITION}. The \texttt{MTConditionType} instance will be instantiated 
-with the \texttt{Retain} flag set to true when the condition \texttt{ActiveState} is true. 
+An MTConditionType instance will be created for event MTConnect \gls{MTDataItem} with a 
+\mtmodel{category} of \mtmodel{CONDITION}. The \mtuatype{MTConditionType} instance will be instantiated 
+with the \uamodel{Retain} flag set to true when the condition \uamodel{ActiveState} is true. 
 
-The \texttt{BrowseName} of the condition uses the same naming convention as the  MTConnect
-\texttt{DataItem} types with \texttt{Condition} appended as a suffix. For example the 
-condition with \texttt{type} of \texttt{TEMPERATURE} will have the browse name of 
-\texttt{TemperatureCondition} as opposed to the \texttt{MTSampleType} of \texttt{Temperature}.
+The \gls{BrowseName} of the condition uses the same naming convention as the  MTConnect
+\gls{MTDataItem} types with \mtmodel{MTCondition} appended as a suffix. For example the 
+condition with \gls{type} of \mtmodel{TEMPERATURE} will have the browse name of 
+\mtmodel{TemperatureCondition} as opposed to the \mtuatype{MTSampleType} of \mtmodel{Temperature}.
 
-If a \texttt{Source} of the \texttt{DataItem} is provided, then the \texttt{HasCondition} relationship 
-will be from the source \texttt{DataItem} to the \texttt{MTConditionInstance}. Otherwise it will be 
-related to the MTConnect \texttt{Component} containing the \texttt{MTComponentType} instance.
+If a \mtmodel{Source} of the \gls{MTDataItem} is provided, then the \mtmodel{HasCondition} relationship 
+will be from the source \gls{MTDataItem} to the \mtmodel{MTConditionInstance}. Otherwise it will be 
+related to the MTConnect \gls{MTComponent} containing the \mtuatype{MTComponentType} instance.
 
 
 \begin{table}[ht]
@@ -1363,13 +1360,13 @@ Has\-Component & Variable & Active\-State & Localized\-Text & Two\-State\-Variab
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
-\item \texttt{NativeCode::String:} When instantiated in the address space this will represent the \texttt{NativeCode} of the last
-\uaterm{Event} that was received. When the ActiveState becomes False and becomes 
-inactive, then the \texttt{NativeCode} will be cleared.
+\item \texttt{NativeCode::String:} When instantiated in the address space this will represent the \uamodel{NativeCode} of the last
+\gls{Event} that was received. When the ActiveState becomes False and becomes 
+inactive, then the \uamodel{NativeCode} will be cleared.
 
-\item \texttt{NativeSeverity::String:} When instantiated in the address space this will represent the \texttt{NativeSeverity} of the last
-\uaterm{Event} that was received. When the ActiveState becomes False and becomes 
-inactive, then the \texttt{NativeSeverity} will be cleared.
+\item \texttt{NativeSeverity::String:} When instantiated in the address space this will represent the \uamodel{NativeSeverity} of the last
+\gls{Event} that was received. When the ActiveState becomes False and becomes 
+inactive, then the \uamodel{NativeSeverity} will be cleared.
 
 \item \textbf{Allowable Values} for \texttt{MTSeverityDataType}
 \FloatBarrier
@@ -1414,18 +1411,18 @@ inactive, then the \texttt{NativeSeverity} will be cleared.
 \subsection{Data Item Types} \label{model:DataItemTypes}
 
 The data item types represent the MTConnect types as defined in Section 8 of the 
-MTConnect Standard Part 2 \cite{MTCPart2} and are represented using the XML \texttt{type} 
-\texttt{attribute}. The type and sub-type relationships are given in the standard and are 
+MTConnect Standard Part 2 \cite{MTCPart2} and are represented using the XML \gls{type} 
+\mtmodel{attribute}. The type and sub-type relationships are given in the standard and are 
 not documented in the companion specifiction. 
 
 The model of the types is similar to the OPC UA condition classes as given in OPC UA Part 9
 \cite{UAPart9}. Since MTConnect conditions use the same type system as the data items, 
-the representation of the data item type will be derived from the \texttt{BaseConditionClassType}. 
-The MTConnect Types will not use the \texttt{...ClassType}, but will be the name as specified
-in the MTConnect standard with \texttt{Type} appended.
+the representation of the data item type will be derived from the \mtmodel{BaseConditionClassType}. 
+The MTConnect Types will not use the \mtmodel{...ClassType}, but will be the name as specified
+in the MTConnect standard with \mtmodel{Type} appended.
 
-For example: The \dataitem{CONTOLLER_MODE} will be given as the \mtterm{ControllerModeType}. 
-The relationship to the \mtterm{DataItem} OPC UA types are presented so that it will be
+For example: The \dataitem{CONTOLLER_MODE} will be given as the \mtmodel{ControllerModeType}. 
+The relationship to the \gls{MTDataItem} OPC UA types are presented so that it will be
 easier to map the MTConnect types to the correct super class as given in the OPC UA model.
 
 \subsubsection{Defintion of \texttt{ MTDataItemClassType}}
@@ -1434,7 +1431,7 @@ easier to map the MTConnect types to the correct super class as given in the OPC
 \FloatBarrier
 
 Abstract base class for all the data item class types. The names are created by pascal typing the names
-and then generating appending \texttt{Type}.
+and then generating appending \mtmodel{Type}.
 
 \begin{table}[ht]
 \centering 
@@ -1496,7 +1493,7 @@ but this not the definitive text for each type. For authoritative normative text
 
 \FloatBarrier
 
-The base type class for all data items with a category of \texttt{SAMPLE}.
+The base type class for all data items with a category of \mtmodel{SAMPLE}.
 
 \begin{table}[ht]
 \centering 
@@ -1925,12 +1922,12 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-The measurement of the amount of time a \texttt{SECOND} piece of equipment or a sub-part of a 
+The measurement of the amount of time a \mtmodel{SECOND} piece of equipment or a sub-part of a 
 piece of equipment has performed specific activities. 
 Often used to determine when maintenance may be required for the equipment.
  
  
-Multiple subTypes of \texttt{EQUIPMENT_TIMER} MAY be defined.
+Multiple subTypes of \mtmodel{EQUIPMENT_TIMER} MAY be defined.
 A subType MUST always be specified.
 
 $SECOND$
@@ -2131,7 +2128,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-The feedrate for the axes, or a single axis, associated with a \texttt{Path} component 
+The feedrate for the axes, or a single axis, associated with a \mtmodel{Path} component 
 a vector. $\frac{MILLIMETER}{SECOND}$
 
 \begin{table}[ht]
@@ -2159,12 +2156,12 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-A measured or calculated position of a control point associated with a \texttt{Controller} element, 
+A measured or calculated position of a control point associated with a \mtmodel{Controller} element, 
 or PATH element if provided, of a piece of equipment.
 
 The control point MUST be reported as a set of space-delimited floating-point 
 numbers representing a point in 3-D space. The position of the control point MUST 
-be reported in units of \texttt{MILLIMETER} and listed in order of X, Y, and Z 
+be reported in units of \mtmodel{MILLIMETER} and listed in order of X, Y, and Z 
 referenced to the coordinate system of the piece of equipment.
 
 $MILLIMETER (\mathbb{R}^{3})$
@@ -2223,9 +2220,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 A calculated or measured position related to a Component element.
 
-\texttt{POSITION} SHOULD be further defined withacoordinateSytemattribute. 
+\mtmodel{POSITION} SHOULD be further defined withacoordinateSytemattribute. 
 If a coordinateSystem attribute is not specified, the position of the control point 
-MUST be reported in \texttt{MACHINE} coordinates. 
+MUST be reported in \mtmodel{MACHINE} coordinates. 
 
 $MILLIMETER$
 
@@ -2311,11 +2308,11 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The measurement of the amount of time a piece of equipment has performed different types 
 of activities associated with the process being performed at that piece of equipment.
-Multiple subtypes of \texttt{PROCESS_TIMER} may be defined.
+Multiple subtypes of \mtmodel{PROCESS_TIMER} may be defined.
 
-Typically, \texttt{PROCESS_TIMER} SHOULD be modeled as a data item for the Device element, 
+Typically, \mtmodel{PROCESS_TIMER} SHOULD be modeled as a data item for the Device element, 
 but MAY be modeled for either a Controller or Path Structural Element in the XML document.
-A \texttt{subType} MUST always be specified.
+A \gls{subType} MUST always be specified.
 
 $SECOND$
 
@@ -2736,8 +2733,8 @@ but this not the definitive text for each type. For authoritative normative text
 
 The abstract base type for controlled events that represent states that are provided
 in related enumerations. These data items will be represented in an object of
-type \texttt{MTEnumeratedEventType} derived from the OPC UA type
-\texttt{MultiStateValueDiscreteType}
+type \uamodel{MTEnumeratedEventType} derived from the OPC UA type
+\uamodel{MultiStateValueDiscreteType}
 
 \begin{table}[ht]
 \centering 
@@ -2906,10 +2903,10 @@ Has\-Property & Variable & Enum\-Values & Availability\-Data\-Type & Availabilit
 \FloatBarrier
 
 Describes the way the axes will be associated to each other.
-This is used in conjunction with \texttt{COUPLED_AXES} to indicate the way they are interacting.
+This is used in conjunction with \mtmodel{COUPLED_AXES} to indicate the way they are interacting.
 
-The coupling MUST be viewed from the perspective of a specific axis. Therefore, a MASTER coupling 
-indicates that this axis is the master for the \texttt{COUPLED_AXES}.
+The coupling MUST be viewed from the perspective of a specific axis. Therefore, a \mtmodel{MASTER} coupling 
+indicates that this axis is the master for the \mtmodel{COUPLED_AXES}.
 
 \begin{table}[ht]
 \centering 
@@ -3010,7 +3007,7 @@ Has\-Property & Variable & Enum\-Values & Active\-State\-Data\-Type & Active\-St
 
 \FloatBarrier
 
-An indicator of the controlled state of a \texttt{LINEAR} or \texttt{ROTARY} component representing an axis.
+An indicator of the controlled state of a \mtmodel{LINEAR} or \mtmodel{ROTARY} component representing an axis.
 
 \begin{table}[ht]
 \centering 
@@ -3062,7 +3059,7 @@ Has\-Property & Variable & Enum\-Values & Axis\-State\-Data\-Type & Axis\-State\
 \FloatBarrier
 
 An indication of the state of an interlock function or control logic state intended to prevent the 
-associated \texttt{Chuck} composition or function from being operated.
+associated \mtmodel{Chuck} composition or function from being operated.
 
 \begin{table}[ht]
 \centering 
@@ -3163,7 +3160,7 @@ Has\-Property & Variable & Enum\-Values & Open\-State\-Data\-Type & Open\-State\
 
 \FloatBarrier
 
-The current mode of the \texttt{Controller} component.
+The current mode of the \mtmodel{MTController} component.
 
 \begin{table}[ht]
 \centering 
@@ -3215,7 +3212,7 @@ Has\-Property & Variable & Enum\-Values & Controller\-Mode\-Data\-Type & Control
 
 \FloatBarrier
 
-The execution status of the \texttt{Controller} or \texttt{Path}.
+The execution status of the \mtmodel{Controller} or \mtmodel{Path}.
 
 \begin{table}[ht]
 \centering 
@@ -3270,11 +3267,11 @@ Has\-Property & Variable & Enum\-Values & Execution\-Data\-Type & Execution\-Dat
 
 \FloatBarrier
 
-An indication of the operating condition of a mechanism represented by a \texttt{Composition} type element.
+An indication of the operating condition of a mechanism represented by a \gls{Composition} type element.
 
-A \texttt{subType} MUST always be specified.
+A \gls{subType} MUST always be specified.
 
-A \texttt{compositionId} MUST always be specified.
+A \mtmodel{compositionId} MUST always be specified.
 
 \begin{table}[ht]
 \centering 
@@ -3382,7 +3379,7 @@ Has\-Property & Variable & Enum\-Values & On\-Off\-Data\-Type & On\-Off\-Data\-T
 
 \FloatBarrier
 
-The direction of motion. A \texttt{subType} MUST always be specified.
+The direction of motion. A \gls{subType} MUST always be specified.
 
 \begin{table}[ht]
 \centering 
@@ -3584,7 +3581,7 @@ Has\-Property & Variable & Enum\-Values & Yes\-No\-Data\-Type & Yes\-No\-Data\-T
 An indication that a piece of equipment, or a sub-part of a piece of
 equipment, is performing specific types of activities.
 
-A \texttt{subType} MUST always be specified.
+A \gls{subType} MUST always be specified.
 
 \begin{table}[ht]
 \centering 
@@ -3635,7 +3632,7 @@ Has\-Property & Variable & Enum\-Values & On\-Off\-Data\-Type & On\-Off\-Data\-T
 
 The current intended production status of the device or component.
 
-Typically, the \texttt{FUNCTIONAL_MODE} SHOULD be modeled as a data item for the Device element, but 
+Typically, the \mtmodel{FUNCTIONAL_MODE} SHOULD be modeled as a data item for the Device element, but 
 MAY be modeled for any Structural Element in the XML document.
 
 \begin{table}[ht]
@@ -3737,7 +3734,7 @@ Has\-Property & Variable & Enum\-Values & Active\-State\-Data\-Type & Active\-St
 
 \FloatBarrier
 
-Describes the operational relationship between a \texttt{PATH} \textit{Structural Element} and another \texttt{PATH} \textit{Structural Element} for pieces of equipment comprised of multiple logical groupings of controlled axes or other logical operations. 
+Describes the operational relationship between a \mtmodel{PATH} \textit{Structural Element} and another \mtmodel{PATH} \textit{Structural Element} for pieces of equipment comprised of multiple logical groupings of controlled axes or other logical operations. 
 
 \begin{table}[ht]
 \centering 
@@ -3791,7 +3788,7 @@ Has\-Property & Variable & Enum\-Values & Path\-Mode\-Data\-Type & Path\-Mode\-D
 The indication of the status of the source of energy for a \textit{Structural Element} to allow it to perform its intended function or the state of an enabling signal providing permission for the \textit{Structural Element} to
 perform its functions.
 
-	DEPRECATION WARNING: \texttt{PowerState} may be deprecated in the future.
+	DEPRECATION WARNING: \mtmodel{PowerState} may be deprecated in the future.
 
 \begin{table}[ht]
 \centering 
@@ -3840,7 +3837,7 @@ Has\-Property & Variable & Enum\-Values & On\-Off\-Data\-Type & On\-Off\-Data\-T
 
 \FloatBarrier
 
-An indication of the status of the \texttt{Controller} component’s program editing mode.
+An indication of the status of the \mtmodel{Controller} component’s program editing mode.
 
 On many controls, a program can be edited while another program is currently being executed.
 
@@ -3892,7 +3889,7 @@ Has\-Property & Variable & Enum\-Values & Program\-Edit\-Data\-Type & Program\-E
 
 \FloatBarrier
 
-The current operating mode for a \texttt{Rotary} type axis. 
+The current operating mode for a \mtmodel{Rotary} type axis. 
 
 \begin{table}[ht]
 \centering 
@@ -4555,14 +4552,14 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{RotaryVelocityOverrideClassType} & 
 
 The value of a signal or calculation issued to adjust the feedrate of an individual linear type axis.
 
-The value provided for \texttt{AXIS_FEEDRATE_OVERRIDE} is expressed as a percentage of the designated feedrate for the axis.
+The value provided for \mtmodel{AXIS_FEEDRATE_OVERRIDE} is expressed as a percentage of the designated feedrate for the axis.
 
-When \texttt{AXIS_FEEDRATE_OVERRIDE} is applied, the resulting commanded feedrate for the axis is limited to the 
-value of the original feedrate multiplied by the value of the \texttt{AXIS_FEEDRATE_OVERRIDE}.
+When \mtmodel{AXIS_FEEDRATE_OVERRIDE} is applied, the resulting commanded feedrate for the axis is limited to the 
+value of the original feedrate multiplied by the value of the \mtmodel{AXIS_FEEDRATE_OVERRIDE}.
 
-There MAY be different subtypes of \texttt{AXIS_FEEDRATE_OVERRIDE}; each representing an override value for a 
+There MAY be different subtypes of \mtmodel{AXIS_FEEDRATE_OVERRIDE}; each representing an override value for a 
 designated subtype of feedrate depending on the state of operation of the axis. The subtypes of operation 
-of an axis are currently defined as \texttt{PROGRAMMED}, \texttt{JOG}, and \texttt{RAPID}.
+of an axis are currently defined as \mtmodel{PROGRAMMED}, \mtmodel{JOG}, and \mtmodel{RAPID}.
 
 \begin{table}[ht]
 \centering 
@@ -4591,10 +4588,10 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The total count of the number of blocks of program code that have been executed since execution started.
 
-\texttt{BLOCK_COUNT} counts blocks of program code executed regardless of program structure 
+\mtmodel{BLOCK_COUNT} counts blocks of program code executed regardless of program structure 
 (e.g., looping or branching within the program).
 
-The starting value for \texttt{BLOCK_COUNT} MAY be established by an initial value provided in 
+The starting value for \mtmodel{BLOCK_COUNT} MAY be established by an initial value provided in 
 the Constraint element defined for the data item.
 
 \begin{table}[ht]
@@ -4626,7 +4623,7 @@ The measurement of the hardness of a material.
 
 The measurement does not provide a unit.
 
-A \texttt{subType} MUST always be specified to designate the hardness scale associated with the measurement.
+A \gls{subType} MUST always be specified to designate the hardness scale associated with the measurement.
 
 \begin{table}[ht]
 \centering 
@@ -4655,10 +4652,10 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 A reference to the position of a block of program code within a control program. 
 The line number MAY represent either an absolute position starting with the first line of 
-the program or an incremental position relative to the occurrence of the last \texttt{LINE_LABEL}.
-\texttt{LINE_NUMBER} does not change subject to any looping or branching in a control program.
+the program or an incremental position relative to the occurrence of the last \mtmodel{LINE_LABEL}.
+\mtmodel{LINE_NUMBER} does not change subject to any looping or branching in a control program.
 
-A \texttt{subType} MUST be defined.
+A \gls{subType} MUST be defined.
 
 \begin{table}[ht]
 \centering 
@@ -4716,7 +4713,7 @@ A command issued to adjust the programmed velocity for a Rotary type axis.
 
 This command represents a percentage change to the velocity calculated by a logic or
 motion program or set by a switch for a Rotary type axis.
-\texttt{ROTARY_VELOCITY_OVERRIDE} is expressed as a percentage of the programmed \texttt{ROTARY_VELOCITY}.
+\mtmodel{ROTARY_VELOCITY_OVERRIDE} is expressed as a percentage of the programmed \mtmodel{ROTARY_VELOCITY}.
 
 \begin{table}[ht]
 \centering 
@@ -4799,9 +4796,9 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{WorkOffsetClassType} & \multicolumn
 
 \FloatBarrier
 
-The line of code or command being executed by a \texttt{Controller} \textit{Structural Element}.
+The line of code or command being executed by a \mtmodel{Controller} \textit{Structural Element}.
 
-The value reported for \texttt{Block} MUST include the entire expression for a line of program code, including all parameters.
+The value reported for \mtmodel{Block} MUST include the entire expression for a line of program code, including all parameters.
 
 \begin{table}[ht]
 \centering 
@@ -4837,7 +4834,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 Refers to the set of associated axes.
 
-The valid data value for \texttt{COUPLED_AXES} SHOULD be a space-delimited set of 
+The valid data value for \mtmodel{COUPLED_AXES} SHOULD be a space-delimited set of 
 axes reported as the value of the name attribute for each axis. If name is not available,
 the piece of equipment MUST report the value of the nativeName attribute for each axis.
 
@@ -4866,7 +4863,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-An optional identifier for a \texttt{BLOCK} of code in a \texttt{PROGRAM}.
+An optional identifier for a \mtmodel{BLOCK} of code in a \mtmodel{PROGRAM}.
 
 \begin{table}[ht]
 \centering 
@@ -4922,7 +4919,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The identifier of the person currently responsible for operating the piece of equipment.
 
-DEPRECATION WARNING: May be deprecated in the future. See \texttt{USER} below.
+DEPRECATION WARNING: May be deprecated in the future. See \mtmodel{USER} below.
 
 \begin{table}[ht]
 \centering 
@@ -5030,7 +5027,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-The name of the logic or motion program being executed by the \texttt{Controller} or \texttt{Path} component.
+The name of the logic or motion program being executed by the \mtmodel{Controller} or \mtmodel{Path} component.
 
 
 \begin{table}[ht]
@@ -5058,7 +5055,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-The name of the program being edited. This is used in conjunction with \texttt{PROGRAM_EDIT} when in \texttt{ACTIVE} state.
+The name of the program being edited. This is used in conjunction with \mtmodel{PROGRAM_EDIT} when in \mtmodel{ACTIVE} state.
 
 \begin{table}[ht]
 \centering 
@@ -5139,7 +5136,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-The serial number associated with a \texttt{Component}, \texttt{Asset}, or \texttt{Device}.
+The serial number associated with a \mtmodel{Component}, \mtmodel{Asset}, or \mtmodel{Device}.
 
 \begin{table}[ht]
 \centering 
@@ -5224,10 +5221,10 @@ A reference to the tool offset variables applied to the active cutting tool asso
 
 The valid data value MUST be a text string.
 
-The reported value returned for \texttt{TOOL_OFFSET} identifies the location in
+The reported value returned for \mtmodel{TOOL_OFFSET} identifies the location in
 a table or list where the actual tool offset values are stored. 
 
-A \texttt{subType} MUST always be specified.
+A \gls{subType} MUST always be specified.
 
 \begin{table}[ht]
 \centering 
@@ -5256,7 +5253,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The identifier of the person currently responsible for operating the piece of equipment.
 
-A \texttt{subType} MUST always be specified.
+A \gls{subType} MUST always be specified.
 
 \begin{table}[ht]
 \centering 
@@ -5342,7 +5339,7 @@ A reference to the offset variables for a work piece or part associated with a P
 
 The valid data value MUST be a text string.
 
-The reported value returned for \texttt{WORK_OFFSET} identifies the location in a table or list 
+The reported value returned for \mtmodel{WORK_OFFSET} identifies the location in a table or list 
 where the actual tool offset values are stored.
 
 \begin{table}[ht]
@@ -5536,9 +5533,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 \subsection{Data Item Sub Types} \label{model:DataItemSubTypes}
 
-The sub-types are related to the various \uaterm{Variables} using the \mtterm{HasMTSubClassType}. 
-These provide the the second level type classifiaction of the MTConnect \mtterm{DataItems} and 
-also the ConditionSubClassId for the \uaterm{Conditions}.
+The sub-types are related to the various \glspl{Variable} using the \mtuatype{HasMTSubClassType}. 
+These provide the the second level type classifiaction of the MTConnect \glspl{MTDataItem} and 
+also the \uamodel{ConditionSubClassId} for the \glspl{Condition}.
 
 \subsubsection{Defintion of \texttt{ MTDataItemSubClassType}}
   \label{type:MTDataItemSubClassType}
@@ -5825,7 +5822,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-	Example: When multiple locations on a piece of bar stock are referenced as the indication for the \texttt{END_OF_BAR}, the additional location(s) MUST be designated as \texttt{AUXILIARY} indication(s) for the \texttt{END_OF_BAR}. 
+	Example: When multiple locations on a piece of bar stock are referenced as the indication for the \mtmodel{END_OF_BAR}, the additional location(s) MUST be designated as \mtmodel{AUXILIARY} indication(s) for the \mtmodel{END_OF_BAR}. 
 
 \begin{table}[ht]
 \centering 
@@ -6179,7 +6176,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 A small change which could be either positive or negative in a Type's value or function.
 
-	Example: The position of a block of program code relative to the occurrence of the last \texttt{LINE_LABEL} encountered in the control program.
+	Example: The position of a block of program code relative to the occurrence of the last \mtmodel{LINE_LABEL} encountered in the control program.
 
 \begin{table}[ht]
 \centering 
@@ -6259,7 +6256,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-An indication of the position of a mechanism that may move in a lateral direction. The mechanism is represented by a \texttt{Composition} type component.
+An indication of the position of a mechanism that may move in a lateral direction. The mechanism is represented by a \mtmodel{Composition} type component.
 
 
 \begin{table}[ht]
@@ -6608,7 +6605,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-An indication of the open or closed state of a mechanism. The mechanism is represented by a \texttt{Composition} type component.
+An indication of the open or closed state of a mechanism. The mechanism is represented by a \mtmodel{Composition} type component.
 
 \begin{table}[ht]
 \centering 
@@ -6664,7 +6661,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 An indication that the major sub-parts of a piece of equipment are powered or performing any activity whether producing a part or product or not. 
 
-	Example: For traditional machine tools, this includes when the piece of equipment is \texttt{WORKING} or it is idle.
+	Example: For traditional machine tools, this includes when the piece of equipment is \mtmodel{WORKING} or it is idle.
 
 \begin{table}[ht]
 \centering 
@@ -6772,7 +6769,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-Specific applications MAY reference one or more locations on a piece of bar stock as the indication for the \texttt{END_OF_BAR}. The main or most important location MUST be designated as the \texttt{PRIMARY} indication for the \texttt{END_OF_BAR}. 
+Specific applications MAY reference one or more locations on a piece of bar stock as the indication for the \mtmodel{END_OF_BAR}. The main or most important location MUST be designated as the \mtmodel{PRIMARY} indication for the \mtmodel{END_OF_BAR}. 
 
 \begin{table}[ht]
 \centering 
@@ -6881,7 +6878,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-The value of a signal or calculation issued to adjust the feedrate of the axes associated with a \texttt{Path} component when the axes, or a single axis, are operating as specified by a logic or motion program or set by a switch.
+The value of a signal or calculation issued to adjust the feedrate of the axes associated with a \mtmodel{Path} component when the axes, or a single axis, are operating as specified by a logic or motion program or set by a switch.
 
 
 \begin{table}[ht]
@@ -6936,7 +6933,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-The value of a signal or calculation issued to adjust the feedrate of the axes associated with a \texttt{Path} component when the axes, or a single axis, are being operated in a rapid positioning mode or method (rapid). 
+The value of a signal or calculation issued to adjust the feedrate of the axes associated with a \mtmodel{Path} component when the axes, or a single axis, are being operated in a rapid positioning mode or method (rapid). 
 
 \begin{table}[ht]
 \centering 
@@ -7014,7 +7011,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-\texttt{Request} subtype identifies if the data item defined for MTConnect Interaction Model \cite{MTCPart5} represents a request.
+\mtmodel{Request} subtype identifies if the data item defined for MTConnect Interaction Model \cite{MTCPart5} represents a request.
 
 \begin{table}[ht]
 \centering 
@@ -7041,7 +7038,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-\texttt{Response} subtype identifies if the data item defined for MTConnect Interaction Model \cite{MTCPart5} represents a response.
+\mtmodel{Response} subtype identifies if the data item defined for MTConnect Interaction Model \cite{MTCPart5} represents a response.
 
 \begin{table}[ht]
 \centering 
@@ -7204,9 +7201,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-An indication of the activation state of a mechanism represented by a \texttt{Composition} type component.
+An indication of the activation state of a mechanism represented by a \mtmodel{Composition} type component.
 
-The activation state indicates whether the \texttt{Composition} element is activated or not.
+The activation state indicates whether the \mtmodel{Composition} element is activated or not.
 
 
 \begin{table}[ht]
@@ -7584,7 +7581,7 @@ An MTConnect deprecated entity that is kept for backward compatibility.
 \FloatBarrier
 
 A dynamic type indicates that the class browse name and type will be 
-determined at configuration time based on the MTConnect \texttt{Device}
+determined at configuration time based on the MTConnect \gls{MTDevice}
 elements.
 
 \FloatBarrier
@@ -7593,8 +7590,8 @@ elements.
 
 \FloatBarrier
 
-A \texttt{DataItem} is representated in OPC UA as a sub-type of the most appropriate \texttt{BaseDataVariableType}. 
-The type is derived from the MTConnect \texttt{type} attribute and references the corect \texttt{..ClassType}.
+A \gls{MTDataItem} is representated in OPC UA as a sub-type of the most appropriate \uamodel{BaseDataVariableType}. 
+The type is derived from the MTConnect \gls{type} attribute and references the corect \mtmodel{..ClassType}.
 
 \begin{table}[ht]
 \centering 
@@ -7650,7 +7647,7 @@ Symmetric & \multicolumn{5}{|l|}{true} \\
 
 \FloatBarrier
 
-A reference from one component to either a \texttt{DataItem} or a \texttt{Component}.
+A reference from one component to either a \gls{MTDataItem} or a \gls{MTComponent}.
 
 \begin{table}[ht]
 \centering 
@@ -7678,7 +7675,7 @@ Symmetric & \multicolumn{5}{|l|}{true} \\
 
 \FloatBarrier
 
-The \texttt{Source} relation to a \mtterm{Component} or \mtterm{DataItem}.
+The \mtmodel{Source} relation to a \gls{MTComponent} or \gls{MTDataItem}.
 
 \begin{table}[ht]
 \centering 
@@ -7706,8 +7703,8 @@ Symmetric & \multicolumn{5}{|l|}{true} \\
 
 \FloatBarrier
 
-A \texttt{DataItem} is representated in OPC UA as a sub-type of the most appropriate \texttt{BaseDataVariableType}. 
-The sub-type is derived from the MTConnect \texttt{subType} attribute and references the corect \texttt{..ClassType}.
+A \gls{MTDataItem} is representated in OPC UA as a sub-type of the most appropriate \mtmodel{BaseDataVariableType}. 
+The sub-type is derived from the MTConnect \gls{subType} attribute and references the corect \mtmodel{..ClassType}.
 
 \begin{table}[ht]
 \centering 
@@ -7754,7 +7751,7 @@ description of the mixin.
 \FloatBarrier
 
 When a dynamic type (See Section \ref{type:Dynamic Type}) creates an instance where the super-type
-can be associated based on the data item category and type, the \texttt{Type Factory} will 
+can be associated based on the data item category and type, the \mtmodel{Type Factory} will 
 specify which supertype is to be referenced.
 
 The \texttt{bind} stereotype indicates the relationship between the dynamic sub-type and the 
@@ -7767,7 +7764,7 @@ parent type are resolved based on the MTConnect DataItem meta data.
 \FloatBarrier
 
 The mixin pattern injects the properties and operations into the types 
-that are related to the using the \texttt{Mixes In} dependency. Mixins allow for
+that are related to the using the \gls{mixes-in} dependency. Mixins allow for
 lightweight multiple inheritance. Since OPC/UA does not allow for multiple inheritance 
 and the MTConnect  types require the same set of properties when they are sub-typed
 from existing OPC/UA types, this mechanism allows for this relationship to be expressed.

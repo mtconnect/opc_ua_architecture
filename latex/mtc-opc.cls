@@ -252,7 +252,6 @@
 % 	Controlled Vocabulary   %
 % ************************* %
 
-\newcommand{\mtconnectterm}[1]{\textit{#1}}
 \newcommand{\opcuaterm}[1]{\textbf{\textit{#1}}}
 \newcommand{\xmlelement}[1]{{\fontfamily{pcr}\selectfont #1}}
 \newcommand{\subtype}[1]{{\fontfamily{pcr}\selectfont #1}}

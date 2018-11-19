@@ -10,7 +10,7 @@ MTConnect has similar capabilities but uses a different structural model where t
 
 When translating from MTConnect to \gls{opc} \gls{ua}, the MTConnect abstractions of \glspl{MTDataItem} are converted using the OPC UA  \gls{DataVariable} abstractions as given in \cite{UAPart8}.  The relationships are mapped to multiple \gls{DataVariable} types where the category and the type determine the correct mapping. Conditions are mapped a sub-type of the OPC UA \gls{ConditionType} in a similar way. The behavior of the OPC UA \glspl{Condition} can be found in \cite{UAPart9}.
 
-\subsection{MTConnect \gls{uml} Representation of OPC}
+\subsection{MTConnect UML Representation of OPC}
 
 This section provides instructions to translate from the OPC UA diagram representation given in section \ref{intro-to-opc-ua} to the \gls{uml} described throughout section \ref{mtconnect-mapping}. Figure \ref{fig:mtcomponent-ua} is a partial illustration of the MTConnect \glspl{MTComponent} abstraction in OPC UA.
 
@@ -41,7 +41,7 @@ OPC UA represents both class and instance diagrams using the same set of primiti
 
 \FloatBarrier
 
-\subsubsection{MTConnect \gls{uml} Model}
+\subsubsection{MTConnect UML Model}
 
 The models will use a \gls{uml} representation that represents the members as \gls{uml} \glspl{Slot}. There is no distinction between an attribute and a property; consult the type model for the proper associations.
 
@@ -144,7 +144,7 @@ MTConnect base types have been prefixed with the letters ``\texttt{MT}'' to avoi
   \item \mtmodel{Description} $\rightarrow$ \mtuatype{MTDescriptionType}
   \item \mtmodel{Device} $\rightarrow$ \mtuatype{MTDeviceType}
   \item \mtmodel{Message} $\rightarrow$ \mtuatype{MTMessageType}
-  \item \mtmodel{SensorConfiguration} $\rightarrow$ \mtuatype{MTSensorConfiguration}
+  \item \mtmodel{SensorConfiguration} $\rightarrow$ \mtuatype{MTSensorConfigurationType}
 \end{itemize}
 
 The following types representing base MTConnect types are also prefixed:
@@ -163,7 +163,7 @@ The following types representing base MTConnect types are also prefixed:
 
 The data item class types and enumeration data types do not have ``\texttt{MT}'' prepended.
 
-\subsubsection{Component and Composition \gls{BrowseName} and \uaterm{Type} Rules}
+\subsubsection{Component and Composition \uamodel{BrowseName} and \uaterm{Type} Rules}
 
 The rules for determining the \gls{BrowseName} for the MTConnect \gls{MTComponent} are as follows:
 
@@ -185,7 +185,7 @@ The rules for \gls{Composition} elements are as follows:
   \item The type is placed is the \mtmodel{MTTypeName} \gls{Property}.
 \end{enumerate}
 
-\subsubsection{\gls{MTDataItem} \uaterm{HasTypeDefinition} and \gls{BrowseName} Conventions}
+\subsubsection{\mtmodel{DataItem} \uamodel{HasTypeDefinition} and \gls{BrowseName} Conventions}
 \label{sec:data-item-conventions}
 
 The MTConnect \gls{MTDataItem} represents multiple OPC UA \uamodel{DataVariableType}s as well as UA \uamodel{ConditionType}s as described in parts \cite{UAPart8} and \cite{UAPart9} respectively. The mapping rules are as follows:
@@ -264,7 +264,7 @@ The MTConnect \gls{MTDataItem} represents multiple OPC UA \uamodel{DataVariableT
 
 The examples below will provide further guidance on implementing these rules.
 
-\subsubsection{Mapping \gls{MTDataItem} \mtterm{units} to \uaterm{EngineeringUnits}}
+\subsubsection{Mapping \mtmodel{MTDataItem} \mtmodel{units} to \uamodel{EngineeringUnits}}
 
 OPC UA defines the \uamodel{EngineeringUnits} \gls{DataType} in \cite{UAPart8} as having the fields show in Table~\ref{table:enineering-untis-data-type}.
 
@@ -443,11 +443,11 @@ MTConnect \glspl{MTDataItem} of \gls{category} \mtmodel{CONDITION} are special t
 
 The \mtuatype{MTConditionType} has a naming rule similar to the \gls{MTDataItem} referenced above. The same rule applies with \mtmodel{Condition} appended. In this case the condition is of \gls{type} \mtmodel{POSITION} so the \gls{BrowseName} is \mtmodel{PositionCondition}. This is to differentiate the \glspl{MTCondition} from other \glspl{MTDataItem}.
 
-The \mtuatype{MTConditionsType} is decendent of the \uamodel{BaseEventType} described in \cite{UAPart5} and \cite{UAPart9}, so it has two functions in the UA model. It represents the overall state of the UA \gls{Condition} and also it represents each event as the various MTConnect \gls{MTCondition} changes are reported as represented in the \xml{MTConnectStreams} described in \cite{MTCPart3}.
+The \mtuatype{MTConditionType} is decendent of the \uamodel{BaseEventType} described in \cite{UAPart5} and \cite{UAPart9}, so it has two functions in the UA model. It represents the overall state of the UA \gls{Condition} and also it represents each event as the various MTConnect \gls{MTCondition} changes are reported as represented in the \xml{MTConnectStreams} described in \cite{MTCPart3}.
 
 The \uamodel{HasNotifier} reference must be created between the \xml{SimpleCnc:}\mtuatype{MTDeviceType} object and the \mtmodel{Axes} object to allow for the events to flow down to the conditions for each of the components. The relationship of the condition in Figure~\ref{fig:linear-x-component} illustrates the relationships between the \mtmodel{Component} and the related condition in the notification hierarchy.
 
-The \xml{Linear[x]} component uses a \uamodel{HasNotifier} reference sourced from the parent \uamodel{Axes} \gls{Object}. The condition, having a \mtuatype{MTClassType} and a \uamodel{ConditionClassId} of \mtuatype{PositionClassType}, is connected to the \xml{Linear[X]} axis with a \uamodel{HasCondition} relationship to indicate the source of the events for the \gls{ConditionType}.
+The \xml{Linear[x]} component uses a \uamodel{HasNotifier} reference sourced from the parent \uamodel{Axes} \gls{Object}. The condition, having a \mtmodel{MTClassType} and a \uamodel{ConditionClassId} of \mtuatype{PositionClassType}, is connected to the \xml{Linear[X]} axis with a \uamodel{HasCondition} relationship to indicate the source of the events for the \gls{ConditionType}.
 
 \FloatBarrier
 
@@ -481,7 +481,7 @@ The \xml{Linear[x]} component uses a \uamodel{HasNotifier} reference sourced fro
             </Rotary>
 \end{lstlisting}
 
-The data item on Line~\ref{line:rotary-mode} of Listing~\ref{lst:rotary-c-example} with \gls{type} of \mtmodel{ROTARY_MODE} is illustrated in Figure~\ref{fig:rotary-c-rotary-mode}. MTConnect allows for a \mtmodel{Rotary} axis to provide the function of the axis, Spindle, Contour, or Index. In Many cases the Rotary Mode is a singular values, as in this case when it can only work as a spindle. This is expressed by creating a \gls{HasComponent} reference to a \mtuadatatype{ConstraintType} \gls{Object} and specifying the \uamodel{Values} \gls{Property}  with the singular value of\xml{["SPINDLE"]} indicating it can only function as a spindle. 
+The data item on Line~\ref{line:rotary-mode} of Listing~\ref{lst:rotary-c-example} with \gls{type} of \mtmodel{ROTARY_MODE} is illustrated in Figure~\ref{fig:rotary-c-rotary-mode}. MTConnect allows for a \mtmodel{Rotary} axis to provide the function of the axis, Spindle, Contour, or Index. In Many cases the Rotary Mode is a singular values, as in this case when it can only work as a spindle. This is expressed by creating a \gls{HasComponent} reference to a \mtuatype{MTConstraintType} \gls{Object} and specifying the \uamodel{Values} \gls{Property}  with the singular value of\xml{["SPINDLE"]} indicating it can only function as a spindle. 
 
 In MTConnect, the value of this data item will never be \mtmodel{UNAVAILABLE} since it is bound to a single value, it will always be present and have that value regardless of the connectivity state to the data source. Since the value is static and never changes, the \uamodel{Quality} will be \uamodel{Uncertain_SubstituteValue} if it is never provided. In the case of constraints on a controlled vocabulary, the \uamodel{Values} must always be one of the related \uamodel{EnumValues}. See \cite{MTCPart2} for details on the constraints and the relationship to the \glspl{MTDataItem}.
 
@@ -503,11 +503,11 @@ In MTConnect, the value of this data item will never be \mtmodel{UNAVAILABLE} si
 
 Figure~\ref{fig:rotary-c-rotary-velocity} corresponds to Lines~\ref{line:programmed-rotary-velocity}-\ref{line:actual-rotary-velocity} of Figure~\ref{fig:rotary-c-rotary-velocity}--the two rotary velocity data items differentiated by their \glspl{subType} of \mtmodel{ACTUAL} and \mtmodel{PROGRAMMED}. In this case they share many of the same property values. The \mtmodel{HasMTSubClassType} references the \mtuatype{ActualSubClassType} and the \mtuatype{ProgrammedSubClassType} respectively.
 
-In the case of the \mtmodel{ActualRotaryVelocity} object, it has an additional constraint that specifies that the maximum spindle speed is 7000 RPM. This is given with the \mtuadatatype{ConstraintDataType}. 
+In the case of the \mtmodel{ActualRotaryVelocity} object, it has an additional constraint that specifies that the maximum spindle speed is 7000 RPM. This is given with the \mtuatype{MTConstraintType}. 
 
 UA 1.04 Ammedment 1 \cite{UAAmend1} for \uamodel{AnalogItem} \glspl{Type} provides the \gls{Type} \uamodel{AnalogUnitType} where the \uamodel{EURange} is \uamodel{Optional}. The \mtuatype{MTSampleType} will inherit from \uamodel{AnalogUnitType} instead of  \uamodel{AnalogItemType} as this matches the MTConnect unit requirements.
 
-If the \uaterm{Constraints} are given with both \mtterm{Maximum} and \mtmodel{Minimum} values, then the \uamodel{EURange} will be created with \uamodel{high} set to \mtmodel{Maximum} and \uamodel{low} set to the \mtmodel{Minimum}, otherwise if either are not given, the \uaterm{EURange} will not be created. The \mtmodel{ActualRotaryVelocity} references an \uamodel{EURange} where the \uaterm{high} and \uamodel{low} are the same as the \mtmodel{Maximum} and \mtmodel{Minimum} of the \mtuadatatype{ConstraintDataType} respectively. 
+If the \uaterm{Constraints} are given with both \mtterm{Maximum} and \mtmodel{Minimum} values, then the \uamodel{EURange} will be created with \uamodel{high} set to \mtmodel{Maximum} and \uamodel{low} set to the \mtmodel{Minimum}, otherwise if either are not given, the \uaterm{EURange} will not be created. The \mtmodel{ActualRotaryVelocity} references an \uamodel{EURange} where the \uaterm{high} and \uamodel{low} are the same as the \mtmodel{Maximum} and \mtmodel{Minimum} of the \mtuatype{MTConstraintType} respectively. 
 
 \FloatBarrier
 
@@ -660,7 +660,7 @@ The following example is the \mtmodel{Electric} system of the machine. The top l
 
 In the first set of \glspl{MTDataItem} from Listing~\ref{lst:electric-system} as shown in Figure~\ref{fig:electric-system}, the first data item on line~\ref{line:electric-temp-60} has a period filter that is represented in the OPC UA \uaterm{Variable} Temperature as a \mtmodel{PeriodFilter} \gls{Property} with a value of 60.0. The period filters only reports changes after the period of time has elapsed, in this case 60 seconds--the \mtmodel{Temperature} will only publish changes every minute in this instance.
 
-The \mtmodel{Temperature} \gls{Variable} also has a \mtmodel{Source} element that references the \mtmodel{Sensor} with a \mtmodel{Configuration} of type \mtuatype{SensorConfigurationType}. The \mtmodel{SensorConfiguration} has information about the \mtmodel{FirmwareVersion} and \mtmodel{CalibrationDate} of the \mtmodel{Sensor}. The \mtmodel{Channels} represent the multiple inputs to the \mtmodel{Sensor} unit. The first \mtmodel{Channel} has a \mtmodel{Description} and a \mtmodel{CalibrationDate} of the probe attached to the \mtmodel{Channel}. For more information on the \mtmodel{Channel}, see MTConnect Devices \cite{MTCPart2}.
+The \mtmodel{Temperature} \gls{Variable} also has a \mtmodel{Source} element that references the \mtmodel{Sensor} with a \mtmodel{Configuration} of type \mtuatype{MTSensorConfigurationType}. The \mtmodel{SensorConfiguration} has information about the \mtmodel{FirmwareVersion} and \mtmodel{CalibrationDate} of the \mtmodel{Sensor}. The \mtmodel{Channels} represent the multiple inputs to the \mtmodel{Sensor} unit. The first \mtmodel{Channel} has a \mtmodel{Description} and a \mtmodel{CalibrationDate} of the probe attached to the \mtmodel{Channel}. For more information on the \mtmodel{Channel}, see MTConnect Devices \cite{MTCPart2}.
 
 The following \gls{MTDataItem} on line~\ref{line:electric-voltage-10} has a \mtmodel{Filter} using a \mtmodel{MINIMUM_DELTA} that is represened as a \mtmodel{MinimumDeltaFilter} in the UA \gls{Variable} reprenenting the \mtuatype{MTSampleType} Voltage. The \mtmodel{MinimumDelta} represents the smallest amount of change before the change is reported. In this case the minimum change is 10 volts. Changes smaller than 10 volts will not be reported for this data item.
 
@@ -951,7 +951,7 @@ The \mtuatype{MTMessageType} will be instantiated as an \gls{Object} and each ti
   \item[\ldots] The remaining \gls{Property} will be set from the XML attributes of the same name.
 \end{description}
 
-\subsection{\gls{TimeSeries} Samples}
+\subsection{Time Series Samples}
 
 \glspl{MTDataItem} with \mtmodel{TIME_SERIES} \mtmodel{representation} provides a mechanism to publish high frequency data by combining multiple observations into a single vector of values. The attribute \mtmodel{sampleRate} is specified in the \glspl{MTDevice} information model if it is immutable or for each entity with the attribute \mtmodel{sampleRate} if it is variable. 
 

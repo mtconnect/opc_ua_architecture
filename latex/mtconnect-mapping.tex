@@ -364,7 +364,7 @@ The first lines shown in Listing \ref{lst:device-header} of the MTConnect \gls{x
   <Devices>
 \end{lstlisting}
 
-The MTConnect \gls{Agent} is capable of supporting multiple \glspl{MTDevice}; a \mtmodel{Device} element is the only allowed member of the \mtmodel{Devices} element. The \gls{MTDevice} element is the top level \gls{MTComponent} of the MTConnect \gls{MTComponent} hierarchy. The \gls{MTDevice} is a sub-type of the \gls{MTComponent} and inherits all the structure of an MTConnect \gls{MTComponent}. The \mtmodel{Device} has three required attributes, an \mtmodel{id}, a \mtmodel{uuid} and a \mtmodel{name} attribute. Only the \mtmodel{id} is mandatory in all other components. 
+The MTConnect \gls{Agent} is capable of supporting multiple \glspl{MTDevice}; a \mtmodel{Device} element is the only allowed child element of the \mtmodel{Devices} element. The \gls{MTDevice} element is the top level \gls{MTComponent} of the MTConnect \gls{MTComponent} hierarchy. The \gls{MTDevice} is a sub-type of the \gls{MTComponent} and inherits all the structure of an MTConnect \gls{MTComponent}. The \mtmodel{Device} has three required attributes, an \mtmodel{id}, a \mtmodel{uuid} and a \mtmodel{name} attribute. Only the \mtmodel{id} is mandatory in all other components. 
 
 \paragraph{\mtmodel{Device} Element}
 
@@ -397,19 +397,19 @@ The treatment of the component relationships will be covered in the \gls{MTDataI
       </DataItems>
 \end{lstlisting}
 
-The device requires three data items as of MTConnect version 1.2. The \dataitem{AVAILABILITY} data item indicates if data is available from the device and the \dataitem{ASSET_CHANGED} and \dataitem{ASSET_REMOVED} data items represent the last asset inserted or updated and removed respectively. The Component adds Data items with a \uaterm{Has\-Component} relationship, and the BrowseName is constructed using the \mtmodel{type}, \mtmodel{sub\-Type}, and related \texttt{Composition} from \mtmodel{compositionId} if given. A complete example is given later in this section.
+The device requires three data items as of MTConnect version 1.2. The \mtmodel{AVAILABILITY} data item indicates if data is available from the device and the \mtmodel{ASSET_CHANGED} and \mtmodel{ASSET_REMOVED} data items represent the last asset inserted or updated and removed respectively. The Component adds Data items with a \uaterm{Has\-Component} relationship, and the BrowseName is constructed using the \mtmodel{type}, \mtmodel{sub\-Type}, and related \gls{Composition} from \mtmodel{compositionId} if given. A complete example is given later in this section.
 
 \input{diagrams/mtconnect-mapping/mtdevice-data-item.tex}
 
-Figure \ref{fig:mtdevice-data-item} demonstrates the relationship of the \texttt{Data\-Item}s with the parent \mtuatype{MTComponentType} using a \opcuaterm{Has\-Component} relationship. The browse name is constructed to uniquely identify the DataItem and also indicate its semantic meaning within the context of the MTConnect \mtuatype{MTComponentType}, in this case, an \mtuatype{MTDeviceType} since the \mtuatype{MTDeviceType} is a sub-type of the \mtuatype{MTComponentType}. These relationships are created dynamically during the instantiation of the model and are not part of the underlying MTConnect Nodeset.
+Figure \ref{fig:mtdevice-data-item} demonstrates the relationship of the \glspl{MTDataItem} with the parent \mtuatype{MTComponentType} using a \uamodel{HasComponent} relationship. The browse name is constructed to uniquely identify the DataItem and also indicate its semantic meaning within the context of the MTConnect \mtuatype{MTComponentType}, in this case, an \mtuatype{MTDeviceType} since the \mtuatype{MTDeviceType} is a sub-type of the \mtuatype{MTComponentType}. These relationships are created dynamically during the instantiation of the model and are not part of the underlying MTConnect Nodeset.
 
-Every MTConnect \mtconnectterm{Data\-Item} has two references that provide the semantic meaning in the UA address space. This model is very similar to the \texttt{Condition\-Class\-Id} relationship for the OPC UA \opcuaterm{Condition\-Type}. These \texttt{Class\-Type}s are inherited from the same parent so they can be used for both the \mtuatype{HasMTClassType} for all \glspl{MTDataItem} as well as the \uaterm{ConditionClassId} in \uaterm{Conditions} since MTConnect \mtterm{Conditions} are also descended from the \uaterm{ConditionType} hierarchy.
+Every MTConnect \gls{MTDataItem} has two references that provide the semantic meaning in the UA address space. This model is very similar to the \uamodel{ConditionClassId} relationship for the OPC UA \gls{ConditionType}. These \glspl{ClassType} are inherited from the same parent so they can be used for both the \mtuatype{HasMTClassType} for all \glspl{MTDataItem} as well as the \uamodel{ConditionClassId} in \glspl{Condition} since MTConnect \glspl{MTCondition} are also descended from the \gls{ConditionType} hierarchy.
 
 \input{diagrams/mtconnect-mapping/data-item-references.tex}
 
-In Figure \ref{fig:data-item-references}, the \mtuatype{HasMTClassType} reference indicates the semantic meaning of the data item. For enumerated or controlled vocabulary data items, they are represented using a sub-type of the UA \uaterm{Multi\-State\-Value\-Discrete\-Type}, the \mtuatype{MTControlledVocabEventType}, where the \uaterm{Enum\-Values} attribute is related to the NodeId of the associated enumeration data type, in this case the \texttt{Availability\-Data\-Type}. The \mtuatype{AvailabilityClassType} also has \uaterm{HasComponent} relationship with the \mtuaenum{AvailabilityDataType} \uaterm{enumeration}.
+In Figure \ref{fig:data-item-references}, the \mtuatype{HasMTClassType} reference indicates the semantic meaning of the data item. For enumerated or controlled vocabulary data items, they are represented using a sub-type of the UA \uamodel{MultiStateValueDiscreteType}, the \mtuatype{MTControlledVocabEventType}, where the \uamodel{EnumValues} attribute is related to the NodeId of the associated enumeration data type, in this case the \mtuaenum{AvailabilityDataType}. The \mtuatype{AvailabilityClassType} also has \uamodel{HasComponent} relationship with the \mtuaenum{AvailabilityDataType} \uamodel{Enumeration}.
 
-MTConnect \mtterm{subType} will be mapped in the same manner as the type using the \mtuatype{HasMTSubClassType} relationship. This will be covered subsequent examples.
+MTConnect \gls{subType} will be mapped in the same manner as the type using the \mtuatype{HasMTSubClassType} relationship. This will be covered subsequent examples.
 
 \FloatBarrier
 
@@ -429,25 +429,25 @@ MTConnect \mtterm{subType} will be mapped in the same manner as the type using t
             </Linear>
 \end{lstlisting}
 
-The \mtmodel{Components} element in Listing \ref{lst:linear-x-component} is represented as a UA \uaterm{Folder\-Type}. Within the folder, the MTConnect components are semantically identified by the element's \mtmodel{QName} with a type with the suffix \texttt{Type} appended, in this case the \gls{BrowseName}  \mtmodel{Axes} has a \opcuaterm{HasTypeDefinition} relaton of \texttt{AxesType}. 
+The \glspl{MTComponent} element in Listing \ref{lst:linear-x-component} is represented as a UA \gls{FolderType}. Within the folder, the MTConnect components are semantically identified by the element's \gls{QName} with a type with the suffix \mtmodel{Type} appended, in this case the \gls{BrowseName}  \mtmodel{Axes} has a \gls{HasTypeDefinition} relaton of \mtmodel{AxesType}. 
 
 \input{diagrams/mtconnect-mapping/linear-x-component.tex}
 
-Figure~\ref{fig:linear-x-component} represents the UA Object model based on  Listing~\ref{lst:linear-x-component}. The \mtterm{Linear} X \mtterm{Axis}, mapped from \mtmodel{Linear} element in Listing~\ref{lst:linear-x-component}, has a \gls{BrowseName} composed of the \mtmodel{QName} of the element, and the \mtmodel{name} attribute appended and enclosed in square brackets \mtmodel{[X]}, giving the browse name of \texttt{Linear[X]} and a component type of \texttt{LinearType} using a \uaterm{HasTypeDefinition} \uaterm{Reference}.
+Figure~\ref{fig:linear-x-component} represents the UA Object model based on  Listing~\ref{lst:linear-x-component}. The \mtmodel{Linear} X \mtmodel{Axis}, mapped from \mtmodel{Linear} element in Listing~\ref{lst:linear-x-component}, has a \gls{BrowseName} composed of the \gls{QName} of the element, and the \mtmodel{name} attribute appended and enclosed in square brackets \xml{[X]}, giving the browse name of \xml{Linear[X]} and a component type of \mtmodel{LinearType} using a \gls{HasTypeDefinition} \gls{Reference}.
 
-The \glspl{MTDataItem} for \texttt{ActualPosition} and \texttt{Load} are both of \mtterm{category} \mtterm{SAMPLE}; they contain numeric values are always mapped to the \mtuatype{MTSampleType} which is derived from the UA \uaterm{AnalogItemType} defined in \cite{UAPart8}. The \gls{BrowseName} for the \glspl{MTDataItem} are composed of the related \gls{Composition} \mtterm{type}, \mtterm{subType}, and \mtterm{type} of the \gls{MTDataItem} represented in \textit{PascalCase}. See Section~\ref{sec:data-item-conventions} for details.
+The \glspl{MTDataItem} for \mtmodel{ActualPosition} and \mtmodel{Load} are both of \gls{category} \mtmodel{SAMPLE}; they contain numeric values are always mapped to the \mtuatype{MTSampleType} which is derived from the UA \uamodel{AnalogItemType} defined in \cite{UAPart8}. The \gls{BrowseName} for the \glspl{MTDataItem} are composed of the related \gls{Composition}, \gls{subType}, and \gls{type} of the \gls{MTDataItem} represented in \gls{PascalCase}. See Section~\ref{sec:data-item-conventions} for details.
 
-The \uaterm{EngineeringUnits} of the \uaterm{AnalogUnitType} will be mapped to the \uaterm{EngineeringUnits} \uaterm{Property} of the \mtuatype{MTSampleType}. If the value is constrained, the \uaterm{EURange} will be created, otherwise it will not be specified. The remaining attributes will be represented as properties of the \mtuatype{MTSampleType} converting the \textit{lowerCamelCase} to \textit{PascalCase} by changing the first character to upper-case. The \mtterm{EVENT} category and complex cases will be specified in the following examples.
+The \uaterm{EngineeringUnits} of the \uaterm{AnalogUnitType} will be mapped to the \uaterm{EngineeringUnits} \uaterm{Property} of the \mtuatype{MTSampleType}. If the value is constrained, the \uaterm{EURange} will be created, otherwise it will not be specified. The remaining attributes will be represented as properties of the \mtuatype{MTSampleType} converting the \gls{LowerCamelCase} to \gls{PascalCase} by changing the first character to upper-case. The \mtterm{EVENT} category and complex cases will be specified in the following examples.
 
-MTConnect \glspl{MTDataItem} of \mtterm{category} \dataitem{CONDITION} are special types since they represent the state of an alarm or warning associated with a \gls{MTComponent} of the \mtterm{Device}. For more information on the \mtterm{conditions} see \cite{MTCPart2} and \cite{MTCPart3}. The mapping of the \mtterm{CONDITION} \mtterm{category} of \glspl{MTDataItem} is to the \mtuatype{MTConditionType}.
+MTConnect \glspl{MTDataItem} of \gls{category} \mtmodel{CONDITION} are special types since they represent the state of an alarm or warning associated with a \gls{MTComponent} of the \gls{MTDevice}. For more information on the \mtterm{conditions} see \cite{MTCPart2} and \cite{MTCPart3}. The mapping of the \mtmodel{CONDITION} \mtmodel{category} of \glspl{MTDataItem} is to the \mtuatype{MTConditionType}.
 
-The \mtuatype{MTConditionType} has a naming rule similar to the \gls{MTDataItem} referenced above. The same rule applies with \texttt{Condition} appended. In this case the condition is of \mtterm{type} \dataitem{POSITION} so the \gls{BrowseName} is \texttt{PositionCondition}. This is to differentiate the \mtterm{Conditions} from other \mtterm{DataItem}s.
+The \mtuatype{MTConditionType} has a naming rule similar to the \gls{MTDataItem} referenced above. The same rule applies with \mtmodel{Condition} appended. In this case the condition is of \gls{type} \mtmodel{POSITION} so the \gls{BrowseName} is \mtmodel{PositionCondition}. This is to differentiate the \glspl{MTCondition} from other \glspl{MTDataItem}.
 
-The \mtuatype{MTConditionsType} is decendent of the \uaterm{BaseEventType} described in \cite{UAPart5} and \cite{UAPart9}, so it has two functions in the UA model. It represents the overall state of the UA \uaterm{Condition} and also it represents each event as the various MTConnect \gls{MTCondition} changes are reported as represented in the \mtterm{MTConnectStreams} described in \cite{MTCPart3}.
+The \mtuatype{MTConditionsType} is decendent of the \uamodel{BaseEventType} described in \cite{UAPart5} and \cite{UAPart9}, so it has two functions in the UA model. It represents the overall state of the UA \gls{Condition} and also it represents each event as the various MTConnect \gls{MTCondition} changes are reported as represented in the \xml{MTConnectStreams} described in \cite{MTCPart3}.
 
-The \uaterm{HasNotifier} reference must be created between the \texttt{SimpleCnc:}\mtuatype{MTDeviceType} object and the \texttt{Axes} object to allow for the events to flow down to the conditions for each of the components. The relationship of the condition in Figure~\ref{fig:linear-x-component} illustrates the relationships between the \mtmodel{Component} and the related condition in the notification hierarchy.
+The \uamodel{HasNotifier} reference must be created between the \xml{SimpleCnc:}\mtuatype{MTDeviceType} object and the \mtmodel{Axes} object to allow for the events to flow down to the conditions for each of the components. The relationship of the condition in Figure~\ref{fig:linear-x-component} illustrates the relationships between the \mtmodel{Component} and the related condition in the notification hierarchy.
 
-The \texttt{Linear[x]} component uses a \uaterm{HasNotifier} reference sourced from the parent \texttt{Axes} \uaterm{Object}. The condition, having a \mtuatype{MTClassType} and a \uaterm{ConditionClassId} of \mtuatype{PositionClassType}, is connected to the \texttt{Linear[X]} axis with a \uaterm{HasCondition} relationship to indicate the source of the events for the \uaterm{ConditonType}.
+The \xml{Linear[x]} component uses a \uamodel{HasNotifier} reference sourced from the parent \uamodel{Axes} \gls{Object}. The condition, having a \mtuatype{MTClassType} and a \uamodel{ConditionClassId} of \mtuatype{PositionClassType}, is connected to the \xml{Linear[X]} axis with a \uamodel{HasCondition} relationship to indicate the source of the events for the \gls{ConditionType}.
 
 \FloatBarrier
 
@@ -481,9 +481,9 @@ The \texttt{Linear[x]} component uses a \uaterm{HasNotifier} reference sourced f
             </Rotary>
 \end{lstlisting}
 
-The data item on Line~\ref{line:rotary-mode} of Listing~\ref{lst:rotary-c-example} with \gls{type} of \dataitem{ROTARY_MODE} is illustrated in Figure~\ref{fig:rotary-c-rotary-mode}. MTConnect allows for a \mtterm{Rotary} axis to provide the function of the axis, Spindle, Contour, or Index. In Many cases the Rotary Mode is a singular values, as in this case when it can only work as a spindle. This is expressed by creating a \uaterm{HasComponent} reference to a \mtuadatatype{ConstraintType} \uaterm{Object} and specifying the \texttt{Values} \uaterm{Property}  with the singular value of\texttt{["SPINDLE"]} indicating it can only function as a spindle. 
+The data item on Line~\ref{line:rotary-mode} of Listing~\ref{lst:rotary-c-example} with \gls{type} of \mtmodel{ROTARY_MODE} is illustrated in Figure~\ref{fig:rotary-c-rotary-mode}. MTConnect allows for a \mtmodel{Rotary} axis to provide the function of the axis, Spindle, Contour, or Index. In Many cases the Rotary Mode is a singular values, as in this case when it can only work as a spindle. This is expressed by creating a \gls{HasComponent} reference to a \mtuadatatype{ConstraintType} \gls{Object} and specifying the \uamodel{Values} \gls{Property}  with the singular value of\xml{["SPINDLE"]} indicating it can only function as a spindle. 
 
-In MTConnect, the value of this data item will never be \mtterm{UNAVAILABLE} since it is bound to a single value, it will always be present and have that value regardless of the connectivity state to the data source. Since the value is static and never changes, the \uaterm{Quality} will be \uaterm{Uncertain_SubstituteValue} if it is never provided. In the case of constraints on a controlled vocabulary, the \texttt{Values} must always be one of the related EnumValues. See \cite{MTCPart2} for details on the constraints and the relationship to the \mtterm{DataItem}s.
+In MTConnect, the value of this data item will never be \mtmodel{UNAVAILABLE} since it is bound to a single value, it will always be present and have that value regardless of the connectivity state to the data source. Since the value is static and never changes, the \uamodel{Quality} will be \uamodel{Uncertain_SubstituteValue} if it is never provided. In the case of constraints on a controlled vocabulary, the \uamodel{Values} must always be one of the related \uamodel{EnumValues}. See \cite{MTCPart2} for details on the constraints and the relationship to the \glspl{MTDataItem}.
 
 \begin{figure}[ht]
   \centering
@@ -501,17 +501,17 @@ In MTConnect, the value of this data item will never be \mtterm{UNAVAILABLE} sin
   \label{fig:rotary-c-rotary-velocity}
 \end{figure}
 
-Figure~\ref{fig:rotary-c-rotary-velocity} corresponds to Lines~\ref{line:programmed-rotary-velocity}-\ref{line:actual-rotary-velocity} of Figure~\ref{fig:rotary-c-rotary-velocity}--the two rotary velocity data items differentiated by their \glspl{subType} of \mtmodel{ACTUAL} and \mtmodel{PROGRAMMED}. In this case they share many of the same property values. The \mtterm{HasMTSubClassType} references the \mtuatype{ActualSubClassType} and the \mtuatype{ProgrammedSubClassType} respectively.
+Figure~\ref{fig:rotary-c-rotary-velocity} corresponds to Lines~\ref{line:programmed-rotary-velocity}-\ref{line:actual-rotary-velocity} of Figure~\ref{fig:rotary-c-rotary-velocity}--the two rotary velocity data items differentiated by their \glspl{subType} of \mtmodel{ACTUAL} and \mtmodel{PROGRAMMED}. In this case they share many of the same property values. The \mtmodel{HasMTSubClassType} references the \mtuatype{ActualSubClassType} and the \mtuatype{ProgrammedSubClassType} respectively.
 
-In the case of the \texttt{ActualRotaryVelocity} object, it has an additional constraint that specifies that the maximum spindle speed is 7000 RPM. This is given with the \mtuadatatype{ConstraintDataType}. 
+In the case of the \mtmodel{ActualRotaryVelocity} object, it has an additional constraint that specifies that the maximum spindle speed is 7000 RPM. This is given with the \mtuadatatype{ConstraintDataType}. 
 
 UA 1.04 Ammedment 1 \cite{UAAmend1} for \uamodel{AnalogItem} \glspl{Type} provides the \gls{Type} \uamodel{AnalogUnitType} where the \uamodel{EURange} is \uamodel{Optional}. The \mtuatype{MTSampleType} will inherit from \uamodel{AnalogUnitType} instead of  \uamodel{AnalogItemType} as this matches the MTConnect unit requirements.
 
-If the \uaterm{Constraints} are given with both \mtterm{Maximum} and \mtterm{Minimum} values, then the \uaterm{EURange} will be created with \uaterm{high} set to \mtterm{Maximum} and \uaterm{low} set to the \mtterm{Minimum}, otherwise if either are not given, the \uaterm{EURange} will not be created. The \texttt{ActualRotaryVelocity} references an \uaterm{EURange} where the \uaterm{high} and \uaterm{low} are the same as the \mtterm{Maximum} and \mtterm{Minimum} of the \mtuadatatype{ConstraintDataType} respectively. 
+If the \uaterm{Constraints} are given with both \mtterm{Maximum} and \mtmodel{Minimum} values, then the \uamodel{EURange} will be created with \uamodel{high} set to \mtmodel{Maximum} and \uamodel{low} set to the \mtmodel{Minimum}, otherwise if either are not given, the \uaterm{EURange} will not be created. The \mtmodel{ActualRotaryVelocity} references an \uamodel{EURange} where the \uaterm{high} and \uamodel{low} are the same as the \mtmodel{Maximum} and \mtmodel{Minimum} of the \mtuadatatype{ConstraintDataType} respectively. 
 
 \FloatBarrier
 
-Figure~\ref{fig:rotary-c-load} represents the \dataitem{Load} \gls{MTDataItem} for Listing~\ref{lst:rotary-c-example} Line~\ref{line:rotary-c-load} as an example of a \mtuatype{MTSampleType} with a \mtmodel{units="PERCENT"} and mapped to the \uaterm{EngineeringUnits} for \uaterm{Percent}. There is no \mtterm{Constraints} so the \mtterm{EURange} is not provided as specified in 
+Figure~\ref{fig:rotary-c-load} represents the \mtmodel{Load} \gls{MTDataItem} for Listing~\ref{lst:rotary-c-example} Line~\ref{line:rotary-c-load} as an example of a \mtuatype{MTSampleType} with a \mtmodel{units="PERCENT"} and mapped to the \uaterm{EngineeringUnits} for \uamodel{Percent}. There is no \glspl{Constraint} so the \mtmodel{EURange} is not provided as specified in \cite{UAPart8}.
 
 \begin{figure}[ht]
   \centering
@@ -522,9 +522,9 @@ Figure~\ref{fig:rotary-c-load} represents the \dataitem{Load} \gls{MTDataItem} f
 
 \FloatBarrier
 
-Figure~\ref{fig:rotary-c-amperage} illustrates the \mtterm{Amperage} \gls{MTDataItem} corresponding to the Listing~\ref{lst:rotary-c-example} Lines~\ref{line:rotary-c-amperage}-\ref{line:rotary-c-amperage-condition}. Unlike the previous example of a MTConnect \gls{MTCondition} relating to the MTConnect \gls{MTComponent}, the \mtmodel{Source} element under the \gls{MTDataItem} references the \gls{MTDataItem} with \gls{type} \mtmodel{AMPERAGE}. When the \mtmodel{Source} refers to a \gls{MTDataItem} that is part of the same MTConnect \gls{MTComponent}, the UA \uamodel{Variable} is given a \gls{Reference} \uamodel{HasEventSource} from the \mtmodel{RotaryType} (\xml{Rotary[C]}) and a \uamodel{HasCondition} \gls{Reference} is created beteen the \gls{Variable} to the \mtuatype{MTConditionType}.
+Figure~\ref{fig:rotary-c-amperage} illustrates the \mtmodel{Amperage} \gls{MTDataItem} corresponding to the Listing~\ref{lst:rotary-c-example} Lines~\ref{line:rotary-c-amperage}-\ref{line:rotary-c-amperage-condition}. Unlike the previous example of a MTConnect \gls{MTCondition} relating to the MTConnect \gls{MTComponent}, the \mtmodel{Source} element under the \gls{MTDataItem} references the \gls{MTDataItem} with \gls{type} \mtmodel{AMPERAGE}. When the \mtmodel{Source} refers to a \gls{MTDataItem} that is part of the same MTConnect \gls{MTComponent}, the UA \uamodel{Variable} is given a \gls{Reference} \uamodel{HasEventSource} from the \mtmodel{RotaryType} (\xml{Rotary[C]}) and a \uamodel{HasCondition} \gls{Reference} is created between the \gls{Variable} to the \mtuatype{MTConditionType}.
 
-As stated above, the \uaterm{HasNotifier} \uaterm{References} must be established between all \mtterm{Components} back to the \mtuatype{MTDeviceType} that has a reference from the \uamodel{Server}. The \mtmodel{MotorAmperage} and \mtmodel{MotorAmperageCondition} demonstrate the naming rule where the Composition type is converted to \gls{PascalCase} and then prepended to the \gls{MTDataItem} \gls{type}. 
+As stated above, the \uamodel{HasNotifier} \glspl{Reference} must be established between all \glspl{MTComponent} back to the \mtuatype{MTDeviceType} that has a reference from the \gls{Server}. The \mtmodel{MotorAmperage} and \mtmodel{MotorAmperageCondition} demonstrate the naming rule where the \gls{Composition} \gls{type} is converted to \gls{PascalCase} and then prepended to the \gls{MTDataItem} \gls{type}. 
 
 \begin{figure}[ht]
   \centering
@@ -537,9 +537,9 @@ As stated above, the \uaterm{HasNotifier} \uaterm{References} must be establishe
 
 \paragraph{\mtmodel{Controller} and \mtmodel{Path} \gls{MTComponent}s}
 
-In MTConnect, the \mtterm{Controller} component represents the control system of the machine. This includes both the PLC (Programmable Logic Controller) and the CNC (Computerized Numerical Controller) of the machine. In a CNC machine tool, the CNC and PLC are often thought of as a single component of the machine since they both control the operation of the machine.
+In MTConnect, the \mtmodel{Controller} component represents the control system of the machine. This includes both the \gls{plc} and the \gls{cnc} of the machine. In a \gls{cnc} machine tool, the \gls{cnc} and \gls{plc} are often thought of as a single component of the machine since they both control the operation of the machine.
 
-The MTConnect information model does not differentiate between the two controllers, but represents them as a common controller category with data items that apply to both. Within a controller, there can be multiple \mtterm{Path}s, each representing a set of coordinated motion. The \mtterm{Path} is optional if the \mtterm{Controller} is representing a simple machine with a PLC and no motion, such as a boiler or oven. This is covered in MTConnect Part 2 \cite{MTCPart2}.
+The MTConnect information model does not differentiate between the two controllers, but represents them as a common controller category with data items that apply to both. Within a controller, there can be multiple \mtmodel{Path}s, each representing a set of coordinated motion. The \mtmodel{Path} is optional if the \mtmodel{Controller} is representing a simple machine with a \gls{plc} and no motion, such as a boiler or oven. This is covered in MTConnect Part 2 \cite{MTCPart2}.
 
 \begin{lstlisting}[firstnumber=last,%
     caption={Controller and Path Components and Their Data Items},label={lst:controller-component}]
@@ -568,7 +568,7 @@ The MTConnect information model does not differentiate between the two controlle
         </Controller>
 \end{lstlisting}
 
-The \mtterm{Controller} has two \mtterm{DataItems}, \mtterm{Message} and \mtterm{EmergencyStop} as shown in Figure~\ref{fig:controller-component}. The \mtuatype{MTMessageType} is of special note since it is not a \uaterm{VariableType}, but it is an \uaterm{EventType} and decended from the \uaterm{SystemEventType} class described in \cite{UAPart5}.
+The \mtmodel{Controller} has two \mtmodel{DataItems}, \mtmodel{Message} and \mtmodel{EmergencyStop} as shown in Figure~\ref{fig:controller-component}. The \mtuatype{MTMessageType} is of special note since it is not a \uamodel{VariableType}, but it is an \uamodel{EventType} and decended from the \uamodel{SystemEventType} class described in \cite{UAPart5}.
 
 \begin{figure}[ht]
   \centering
@@ -577,13 +577,13 @@ The \mtterm{Controller} has two \mtterm{DataItems}, \mtterm{Message} and \mtterm
   \label{fig:controller-component}
 \end{figure}
 
-Figure~\ref{fig:path-component} illustrates the \mtterm{Path} component. Many of the \mtterm{DataItems} types have been covered in prior examples, so the \mtterm{Path} will only focus on the \mtterm{DataItems} that have differentiated features. Those \glspl{MTDataItem} will be represented without additional properties or relations.
+Figure~\ref{fig:path-component} illustrates the \mtmodel{Path} component. Many of the \glspl{MTDataItem} types have been covered in prior examples, so the \mtmodel{Path} will only focus on the \glspl{MTDataItem} that have differentiated features. Those \glspl{MTDataItem} will be represented without additional properties or relations.
 
-The \dataitem{PATH_POSITION} is mapped to the \mtuatype{MTThreeSpaceSampleType} that represents a spacial coordinate in three space ($\mathbb{R}^{3}$) with each coordinate given in millimeters. The EngineeringUnits for this type will therefor always be mapped to MMT in the UNECE conventions.
+The \mtmodel{PATH_POSITION} is mapped to the \mtuatype{MTThreeSpaceSampleType} that represents a spacial coordinate in three space ($\mathbb{R}^{3}$) with each coordinate given in millimeters. The \uamodel{EngineeringUnits} for this type will therefor always be mapped to \uamodel{MMT} in the \uamodel{UNECE} conventions.
 
-The \mtuatype{MTThreeSpaceSampleType} uses the \mtuatype{ThreeSpacePositionDataType} that contains an \mtterm{X, Y, and Z} \uaterm{Field}. If one of the dimensions cannot be provided, it must be set to \uaterm{NaN}.
+The \mtuatype{MTThreeSpaceSampleType} uses the \mtuatype{ThreeSpacePositionDataType} that contains an \mtterm{X, Y, and Z} \uamodel{Field}. If one of the dimensions cannot be provided, it must be set to \uamodel{NaN}.
 
-The two \mtterm{Conditions} in this component capable of branching. The model will use the \uaterm{BranchId} in this case. This occurs when there are multiple simultaneous problems with either the logic or motion program in the controller. These cases will be discussed in the section on the streaming data.
+The two \mtmodel{Conditions} in this component capable of branching. The model will use the \uamodel{BranchId} in this case. This occurs when there are multiple simultaneous problems with either the logic or motion program in the controller. These cases will be discussed in the section on the streaming data.
 
 \begin{figure}[ht]
   \centering
@@ -596,7 +596,7 @@ The two \mtterm{Conditions} in this component capable of branching. The model wi
 
 \paragraph{\mtmodel{Electric} \mtterm{System} of the \mtmodel{Device}}
 
-The following example is the \mtmodel{Electric} system of the machine. The top level \mtmodel{Systems} component is an organizational component, similar to an \uaterm{Folder} that collects \mtterm{Components} that are central to a function in the device. The \uaterm{Electric} component represents sensor data with some of the more advanced capabilities of the MTConnect standard. The \mtmodel{Electric} component demonstrate the use of a \mtmodel{Sensor} and \mtmodel{Configuration}.
+The following example is the \mtmodel{Electric} system of the machine. The top level \mtmodel{Systems} component is an organizational component, similar to a \uamodel{Folder} that collects \glspl{MTComponent} that are central to a function in the device. The \mtmodel{Electric} component represents sensor data with some of the more advanced capabilities of the MTConnect standard. The \mtmodel{Electric} component demonstrate the use of a \mtmodel{Sensor} and \gls{Configuration}.
 
 \begin{lstlisting}[firstnumber=last,,escapechar=|,%
     caption={Electrical System and Sensor Configuration},label={lst:electric-system}]
@@ -658,15 +658,15 @@ The following example is the \mtmodel{Electric} system of the machine. The top l
   \label{fig:electric-system}
 \end{figure}
 
-In the first set of \mtterm{DataItems} from Listing~\ref{lst:electric-system} as shown in Figure~\ref{fig:electric-system}, the first data item on line~\ref{line:electric-temp-60} has a period filter that is represented in the OPC UA \uaterm{Variable} Temperature as a \mtterm{PeriodFilter} \uaterm{Property} with a value of 60.0. The period filters only reports changes after the period of time has elapsed, in this case 60 seconds--the \mtterm{Temperature} will only publish changes every minute in this instance.
+In the first set of \glspl{MTDataItem} from Listing~\ref{lst:electric-system} as shown in Figure~\ref{fig:electric-system}, the first data item on line~\ref{line:electric-temp-60} has a period filter that is represented in the OPC UA \uaterm{Variable} Temperature as a \mtmodel{PeriodFilter} \gls{Property} with a value of 60.0. The period filters only reports changes after the period of time has elapsed, in this case 60 seconds--the \mtmodel{Temperature} will only publish changes every minute in this instance.
 
-The Temperature \uaterm{Variable} also has a \mtmodel{Source} element that references the \mtterm{Sensor} with a \mtmodel{Configuration} of type \mtterm{SensorConfigurationType}. The \mtterm{SensorConfiguration} has information about the \mtterm{FirmwareVersion} and \mtterm{CalibrationDate} of the \mtterm{Sensor}. The \mtterm{Channels} represent the multiple inputs to the \mtterm{Sensor} unit. The first \mtterm{Channel} has a \mtterm{Description} and a \mtterm{CalibrationDate} of the probe attached to the \mtterm{Channel}. For more information on the \mtterm{Channel}, see MTConnect Devices \cite{MTCPart2}.
+The \mtmodel{Temperature} \gls{Variable} also has a \mtmodel{Source} element that references the \mtmodel{Sensor} with a \mtmodel{Configuration} of type \mtuatype{SensorConfigurationType}. The \mtmodel{SensorConfiguration} has information about the \mtmodel{FirmwareVersion} and \mtmodel{CalibrationDate} of the \mtmodel{Sensor}. The \mtmodel{Channels} represent the multiple inputs to the \mtmodel{Sensor} unit. The first \mtmodel{Channel} has a \mtmodel{Description} and a \mtmodel{CalibrationDate} of the probe attached to the \mtmodel{Channel}. For more information on the \mtmodel{Channel}, see MTConnect Devices \cite{MTCPart2}.
 
-The following \gls{MTDataItem} on line~\ref{line:electric-voltage-10} has a \mtterm{Filter} using a \mtterm{MINIMUM_DELTA} that is represened as a \mtterm{MinimumDeltaFilter} in the UA \uaterm{Variable} reprenenting the \mtterm{MTSampleType} Voltage. The \mtterm{MinimumDelta} represents the smallest amount of change before the change is reported. In this case the minimum change is 10 volts. Changes smaller than 10 volts will not be reported for this data item.
+The following \gls{MTDataItem} on line~\ref{line:electric-voltage-10} has a \mtmodel{Filter} using a \mtmodel{MINIMUM_DELTA} that is represened as a \mtmodel{MinimumDeltaFilter} in the UA \gls{Variable} reprenenting the \mtuatype{MTSampleType} Voltage. The \mtmodel{MinimumDelta} represents the smallest amount of change before the change is reported. In this case the minimum change is 10 volts. Changes smaller than 10 volts will not be reported for this data item.
 
-The second set of \mtterm{DataItems} starting on line~\ref{line:electric-amperage} shown in Figure~\ref{fig:electric-system-2} shows the relationship between the conditions and the other \mtterm{DataItems}. As has been shown before the conditions here are both related to a \gls{MTDataItem} that is the source of the \gls{MTCondition}. The \gls{MTDataItem} therefor has a \uaterm{HasCondition} relationship to the \uaterm{Condition} and the \gls{MTComponent} has a \uaterm{HasEventSource} relationship to the \mtterm{DataItem}. 
+The second set of \glspl{MTDataItem} starting on line~\ref{line:electric-amperage} shown in Figure~\ref{fig:electric-system-2} shows the relationship between the conditions and the other \glspl{MTDataItem}. As has been shown before the \glspl{MTCondition} here are both related to a \gls{MTDataItem} that is the source of the \gls{MTCondition}. The \gls{MTDataItem} therefor has a \uamodel{HasCondition} relationship to the \gls{Condition} and the \gls{MTComponent} has a \uamodel{HasEventSource} \gls{Reference} to the \gls{MTDataItem}. 
 
-The \texttt{AverageAmperage} on line~\ref{line:electric-average-amperage} has a \mtterm{ResetTrigger}, specified using the \texttt{ResetTrigger} element having \texttt{CDATA} \texttt{ACTION_COMPLETE}, indicating that the \mtterm{Average} statistic is taken only when the current \mtterm{Action} has \mtterm{Completed}, as defined by the process. This \gls{MTDataItem} will only update on when the \mtterm{ResetTrigger} fires.
+The \mtmodel{AverageAmperage} on line~\ref{line:electric-average-amperage} has a \mtmodel{ResetTrigger}, specified using the \mtmodel{ResetTrigger} element having \gls{CDATA} \mtmodel{ACTION_COMPLETE}, indicating that the \mtmodel{Average} statistic is taken only when the current \mtmodel{Action} has \mtmodel{Completed}, as defined by the process. This \gls{MTDataItem} will only update on when the \mtmodel{ResetTrigger} fires.
 
 \begin{quote}
   {\color{red} TODO: As discussed in the WG, there will need to be status codes to represent the reset triggers as Good_... indicating that this value is due to a reset}.
@@ -683,7 +683,7 @@ The \texttt{AverageAmperage} on line~\ref{line:electric-average-amperage} has a 
 
 \paragraph{\mtmodel{Coolant} \mtterm{System} with multiple \mtterm{Tanks}}
 
-The following example in Listing~\ref{lst:coolant-system} demonstrates the situation where there are multiple components and data items of the same semantic type differentiated only by name. The machine has two coolant systems, one high pressure and one low pressure. Each of the two coolant systems has two tanks, a main and a reserve tank that are represented by compositions. 
+The following example in Listing~\ref{lst:coolant-system} demonstrates the situation where there are multiple components and data items of the same semantic type differentiated only by \mtmodel{name}. The machine has two \mtmodel{Coolant} \mtmodel{Systems}, one high pressure and one low pressure. Each of the two \mtmodel{Coolant} \mtmodel{Systems} has two tanks, a main and a reserve tank that are represented by \glspl{Composition}. 
 
 \begin{lstlisting}[firstnumber=last,,escapechar=|,%
     caption={Coolant System and Sensor Configuration},label={lst:coolant-system}]
@@ -728,13 +728,13 @@ The two \mtterm{Tank} compositions have similar treatment where they are named \
 
 \subsection{MTConnect Streaming Data}
 
-MTConnect separates streaming updates of data from the meta-data describing the semantic meaning of the data. \cite{MTCPart3} covers the streaming information model and the \textit{HTTP REST Protocol}\cite{Fielding2000ArchitecturalArchitectures} is covered in \cite{MTCPart1}. The protocol data in the \mtterm{Header,} of the XML document, is ignored representing the data in OPC UA. 
+MTConnect separates streaming updates of data from the meta-data describing the semantic meaning of the data. \cite{MTCPart3} covers the streaming information model and the \gls{rest}\cite{Fielding2000ArchitecturalArchitectures} is covered in \cite{MTCPart1}. The protocol data in the \mtmodel{Header}, of the XML document, is ignored representing the data in OPC UA. 
 
-The \mtterm{HTTP REST Protocol}  provides two capabilities with respect to the collection of data that are common to most \textit{publish/subscribe} technologies. They are as follows: first, a snapshot of the most recent know value for each \mtterm{DataItem}, referred to as a \mtterm{current} request, and second, a time-series of changes that occurred going back to the beginning of the store-and-forward \mtterm{buffer}, referred to as a \mtterm{sample} request.
+The \gls{http} \gls{rest} Protocol provides two capabilities with respect to the collection of data that are common to most \textit{publish/subscribe} technologies. They are as follows: first, a snapshot of the most recent know value for each \gls{MTDataItem}, referred to as a \gls{current}, and second, a time-series of changes that occurred going back to the beginning of the store-and-forward \mtmodel{buffer}, referred to as a \gls{sample}.
 
-Each entry in the \mtterm{buffer} is time-stamped and assigned a sequence number that indicates the arrival order unique across all devices represented in the \mtterm{MTConnect Agent}. The sequence number is monotonically increasing and is unique concerning the instance (execution) of the agent. When the agent is restarted, the sequence may be reset to one indicating history has been expunged. 
+Each entry in the \gls{buffer} is time-stamped and assigned a sequence number that indicates the arrival order unique across all devices represented in the \gls{Agent}. The sequence number is monotonically increasing and is unique concerning the instance (execution) of the \gls{Agent}. When the \gls{Agent} is restarted, the \mtmodel{sequence} may be reset to one indicating history has been expunged. 
 
-The following section provides the rules for taking data from the \mtterm{MTConnectStream} XML Document and represent as a series of updates to the \uaterm{Variables} and generate \uaterm{Events} for the \mtterm{MTConditionType} and \mtterm{MTMessageType} \uaterm{Objects}.
+The following section provides the rules for taking data from the \mtterm{MTConnectStream} XML Document and represent as a series of updates to the \gls{Variable} and generate \glspl{Event} for the \mtuatype{MTConditionType} and \mtuatype{MTMessageType} \glspl{Object}.
 
 \subsubsection{MTConnectStreams Document Header}
 
@@ -746,7 +746,7 @@ The following section provides the rules for taking data from the \mtterm{MTConn
 	<Streams>
 \end{lstlisting}
 
-Listing~\ref{lst:streams-header} is an example of the \textit{XML Root Element} of the \mtmodel{MTConnectStreams} Document and contains the standard namespace declarations for MTConnect and XMLSchema. If additional namespaces are present, they must be added as additional namespaces in the OPC UA \uaterm{Namespace} as well. The streams document begins with a Header containing protocol information that represents the version of the standard referenced and the store-and-forward buffer sequence numbers. \cite{MTCPart1} provides information on the interaction with the \mtterm{Agent} and the proper sequence of requests to receive a contiguous stream of data from any point in the sequence of data.
+Listing~\ref{lst:streams-header} is an example of the \gls{xml} \textit{Root Element} of the \mtmodel{MTConnectStreams} Document and contains the standard namespace declarations for MTConnect and XMLSchema. If additional namespaces are present, they must be added as additional \uamodel{namespaces} in the OPC UA \uamodel{Namespace} as well. The \mtmodel{MTConnectStreams} document begins with a \mtmodel{Header} containing protocol information that represents the version of the standard referenced and the store-and-forward \gls{buffer} \mtmodel{sequence} numbers. \cite{MTCPart1} provides information on the interaction with the \gls{Agent} and the proper sequence of requests to receive a contiguous stream of data from any point in the sequence of data.
 
 \subsubsection{MTConnectStreams Device and Component Stream}
 
@@ -761,17 +761,17 @@ Listing~\ref{lst:streams-header} is an example of the \textit{XML Root Element} 
       </ComponentStream>
 \end{lstlisting}
 
-MTConnect flattens the structure when reporting data and organizes it by \mtterm{Device}, \gls{MTComponent} and \mtterm{Category}; this is shown in  Listing~\ref{lst:linear-component-stream} Line~\ref{line:component-stream-1} with the \mtmodel{DeviceStream}, \mtmodel{ComponentStream}, and \mtmodel{Samples} elements (not shown are the \mtmodel{Events} and \mtmodel{Condition} elements that will be address later). When the data stream is initialized or when it disconnects, the MTConnect \mtterm{DataItem Value} is set to \texttt{UNAVAILABLE} as shown on Line~\ref{line:pos-unavilable}.
+MTConnect flattens the structure when reporting data and organizes it by \gls{MTDevice}, \gls{MTComponent} and \gls{category}; this is shown in  Listing~\ref{lst:linear-component-stream} Line~\ref{line:component-stream-1} with the \mtmodel{DeviceStream}, \mtmodel{ComponentStream}, and \mtmodel{Samples} elements (not shown are the \mtmodel{Events} and \mtmodel{Condition} elements that will be address later). When the data stream is initialized or when it disconnects, the MTConnect \gls{MTDataItem} \mtmodel{Value} is set to \mtmodel{UNAVAILABLE} as shown on Line~\ref{line:pos-unavilable}.
 
-MTConnect only reports data when it changes, and each change is assigned a monotonically increasing \mtterm{sequence} number when it arrives at the \textit{MTConnect Agent}. In addition to the \mtterm{sequence} number; the XML attribute \mtmodel{timestamp} indicates the time the observation was made. The \mtmodel{timestamp} is used when setting the \uaterm{Variable} \uaterm{Time} along with the data and status. The data is only reported when it changes except for \mtterm{DataItems} with the \mtterm{representation} of \texttt{DISCRETE} indicating that each value has a discrete meaning, such as a \mtterm{PartCount} where each count indicates an accrual of that many parts. {\color{red} It is unclear how to achieve this in OPC UA, possible with events as is being done with \mtuatype{MTMessageType}}.
+MTConnect only reports data when it changes, and each change is assigned a monotonically increasing \mtmodel{sequence} number when it arrives at the MTConnect \gls{Agent}. In addition to the \mtmodel{sequence} number; the XML attribute \mtmodel{timestamp} indicates the time the observation was made. The \mtmodel{timestamp} is used when setting the \uamodel{Variable} \uamodel{Time} along with the data and status. The data is only reported when it changes except for \glspl{MTDataItem} with the \mtmodel{representation} of \mtmodel{DISCRETE} indicating that each value has a discrete meaning, such as a \mtmodel{PartCount} where each count indicates an accrual of that many parts. {\color{red} It is unclear how to achieve this in OPC UA, possible with events as is being done with \mtuatype{MTMessageType}}.
 
-The value of \texttt{UNAVAILABLE} will be translated to the OPC UA \uaterm{DataVariable} \uaterm{StatusCode} of \texttt{Bad_NotConnected} to indicate that the value of the data is currently unknown from the data source. 
+The value of \mtmodel{UNAVAILABLE} will be translated to the OPC UA \gls{DataVariable} \uamodel{StatusCode} of \uamodel{Bad_NotConnected} to indicate that the value of the data is currently unknown from the data source. 
 
-The following examples provide the steps to translate from the \mtterm{MTConnectStreams} document to the OPC UA information model presented above.
+The following examples provide the steps to translate from the \mtmodel{MTConnectStreams} document to the OPC UA information model presented above.
 
 \subsubsection{Samples}
 
-The \mtterm{DataItems} with \mtterm{category} \dataitem{SAMPLE} are mapped to the \mtuatype{MTSampleType} which is a subtype of the \uaterm{AnalogItemType} \uaterm{DataVariable}. The numeric value of the sample sets the \uaterm{Value} in the \uaterm{AnalogItemType} \uaterm{Variable} instance.
+The \glspl{MTDataItem} with \gls{category} \mtmodel{SAMPLE} are mapped to the \mtuatype{MTSampleType} which is a subtype of the \uamodel{AnalogItemType} \gls{DataVariable}. The numeric value of the sample sets the \uamodel{Value} in the \uamodel{AnalogItemType} \gls{Variable} instance.
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Linear Component Stream},label={lst:linear-component-stream}]
@@ -783,7 +783,7 @@ The \mtterm{DataItems} with \mtterm{category} \dataitem{SAMPLE} are mapped to th
       </ComponentStream>
 \end{lstlisting}
 
-The OPC UA \uaterm{DataVariableType}s are monitored items and have three attribtues that are updated when the value changes. They are the \uamodel{Value} in the instance of the \gls{DataVariable}, the \uamodel{Time}, and the \uamodel{Quality}. When the value is given, not \texttt{UNAVAILABLE}, the \uaterm{Quality} will be set to the Status Code of \uaterm{Good}, the \uaterm{Time} will be set to the \xml{timestamp} attribute and the \uamodel{Value} set to the contents of the \gls{CDATA} converted to a \xml{Double} precision value.
+The OPC UA \uamodel{DataVariableType}s are monitored items and have three attribtues that are updated when the value changes. They are the \uamodel{Value} in the instance of the \gls{DataVariable}, the \uamodel{Time}, and the \uamodel{Quality}. When the value is given, not \mtmodel{UNAVAILABLE}, the \uamodel{Quality} will be set to the Status Code of \uamodel{Good}, the \uamodel{Time} will be set to the \xml{timestamp} attribute and the \uamodel{Value} set to the contents of the \gls{CDATA} converted to a \uamodel{Double} precision value.
 
 \subsubsection{String and Numeric Events}\label{sec:sting-numeric-events}
 
@@ -808,7 +808,7 @@ All extended event types will be treated as \mtuatype{MTStringEventType}s since 
 
 \glspl{ControlledVocab} are represented as \mtuatype{MTControlledVocabEventType} which is a subtype of the \uamodel{MultiStateValueDiscreteType}. The \uamodel{MultiStateValueDiscreteType} requires an integer index to be used for the \uamodel{Value}, so the text given in MTConnect must be looked up in the \uamodel{Ennumerations} in the \uamodel{EnumValues} \gls{Property} of the \gls{ClassType} referenced by the \mtterm{HasMTTypeClass} association. The index can be found by matching the \gls{CDATA} to the \uamodel{Fields} in the \uamodel{Enumeration}.
 
-Referring to Listing~\ref{lst:path-component-stream} Line~\ref{line:cmode-255}, the values of the \gls{CDATA} represent the allowed enumerations in the \mtuaenum{ControllerModeDataType} as shown in Table~\ref{table:example-ControllerModeDataType}. In this case the value from mtconnect is \mtmodel{AUTOMATIC} and is looked up in the associated \uamodel{EnumerationDataType} and the integer value is assigned to the \uamodel{Value} of the \mtuatype{MTControlledVocabEventType} instance, in this example the value will be \texttt{0} for \mtmodel{AUTOMATIC}.
+Referring to Listing~\ref{lst:path-component-stream} Line~\ref{line:cmode-255}, the values of the \gls{CDATA} represent the allowed enumerations in the \mtuaenum{ControllerModeDataType} as shown in Table~\ref{table:example-ControllerModeDataType}. In this case the value from mtconnect is \mtmodel{AUTOMATIC} and is looked up in the associated \uamodel{EnumerationDataType} and the integer value is assigned to the \uamodel{Value} of the \mtuatype{MTControlledVocabEventType} instance, in this example the value will be \xml{0} for \mtmodel{AUTOMATIC}.
 
 \begin{table}[ht]
   \centering 
@@ -833,7 +833,7 @@ The \uamodel{SourceTimestamp} and \uamodel{Quality} will be handled as described
 
 \subsubsection{Conditions}
 
-\glspl{MTCondition} are represented by the \mtuatype{MTConditionType} that is a subtype of the \uamodel{ConditonType}. The MTConnect \glspl{MTCondition} are a representation of the  state of various alarms and health of a \gls{MTComponent} of the machine. There are three states for a condition in MTConnect, they are \mtmodel{Normal}, \mtterm{Warning}, and \mtterm{Fault} and have the semantic meaning \textit{operating normally}, \textit{a situation has been observed, but may self-correct}, and \textit{a failure has occured and needs manual intervention}. More information can be found in MTConnect \cite{MTCPart2} and \cite{MTCPart3} of the MTConnect Standard for Condition modeling and behavior.
+\glspl{MTCondition} are represented by the \mtuatype{MTConditionType} that is a subtype of the \uamodel{ConditonType}. The MTConnect \glspl{MTCondition} are a representation of the  state of various alarms and health of a \gls{MTComponent} of the machine. There are three states for a condition in MTConnect, they are \mtmodel{Normal}, \mtmodel{Warning}, and \mtmodel{Fault} and have the semantic meaning \textit{operating normally}, \textit{a situation has been observed, but may self-correct}, and \textit{a failure has occured and needs manual intervention}. More information can be found in MTConnect \cite{MTCPart2} and \cite{MTCPart3} of the MTConnect Standard for Condition modeling and behavior.
 
 The \mtuatype{MTConditionType} has a \gls{Property} called \uamodel{ActiveState} that represents if there are any \mtmodel{Warnings} or \mtmodel{Faults} currently active. The \uamodel{ActiveState} is an OPC UA \uamodel{TwoStateVariableType} \uamodel{Variable} defined in \cite{UAPart8}. When a Condition is \mtmodel{Normal}, the \uamodel{ActiveState} is \uamodel{False}, otherwise when either a \mtmodel{Warning} or \mtmodel{Fault} is present, the \uamodel{ActiveState} is \uamodel{True}.
 
@@ -847,13 +847,13 @@ The \mtuatype{MTConditionType} has a \gls{Property} called \uamodel{ActiveState}
         </Condition>
 \end{lstlisting}
 
-The instance of the \mtuatype{MTConditionType} will contain the last state of the \gls{Condition} as most recently observed. Each time an MTConnect \gls{MTCondition} activates or deactivates, an \uaterm{Condition} \uaterm{Event} will be created associated with the instance if the \mtuatype{MTConditionType} \gls{NodeId}. 
+The instance of the \mtuatype{MTConditionType} will contain the last state of the \gls{Condition} as most recently observed. Each time an MTConnect \gls{MTCondition} activates or deactivates, an \gls{Condition} \gls{Event} will be created associated with the instance if the \mtuatype{MTConditionType} \gls{NodeId}. 
 
 \mtuatype{MTConditionType} is a subtype of the \gls{Event} and therefor is instantiated in the address space as an \gls{Object} to maintain the \uamodel{ActiveState} as well as each occurance of the \gls{MTCondition} results in a instance of the \uamodel{Event} being published as specified in \cite{UAPart3} and \cite{UAPart9}.
 
 \paragraph{Mapping Conditions}
 
-The \uaterm{ConditionType} and \uaterm{EventType} properties will be set as follows:
+The \gls{ConditionType} and \uamodel{EventType} properties will be set as follows:
 
 \begin{description}[font=\it\bfseries,labelindent=4em,labelwidth=6em,leftmargin=!]    
   \item[EnableState]
@@ -886,7 +886,7 @@ The \uaterm{ConditionType} and \uaterm{EventType} properties will be set as foll
 
 MTConnect allows for multiple \glspl{MTCondition} to be active at the same time. This is similar to the concept of \uaterm{Branching} in OPC UA. In MTConnect the unique identifier that is used for the \uamodel{BranchId} is the attribute \mtmodel{nativeCode}.
 
-MTConnect uses the \mtmodel{nativeCode} to determine the uniqueness of each activation of the Condition. If the \mtterm{Path} component has a \gls{MTDataItem} with a \gls{type} of \mtmodel{MOTION_PROGRAM} and there are four syntax errors for lines 10, 120, 320, and 500; there are five faults reported by MTConnect for the \gls{MTCondition}. The response to a \gls{current} is shown in listing~\ref{lst:path-motion-program-condition}.
+MTConnect uses the \mtmodel{nativeCode} to determine the uniqueness of each activation of the Condition. If the \mtterm{Path} component has a \gls{MTDataItem} with a \gls{type} of \mtmodel{MOTION_PROGRAM} and there are four syntax errors for lines 10, 120, 320, and 500; there are five \mtmodel{Faults} reported by MTConnect for the \gls{MTCondition}. The response to a \gls{current} is shown in listing~\ref{lst:path-motion-program-condition}.
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Path Motion Program Syntax Errors},label={lst:path-motion-program-condition}]
@@ -913,7 +913,7 @@ When the syntax error is fixed on line 120, there will be a \gls{MTCondition} st
   </ComponentStream>
 \end{lstlisting}
 
-The streaming data event is as shown in listing~\ref{lst:path-motion-program-condition-2.1} in response to a \mtterm{sample} request.
+The streaming data event is as shown in listing~\ref{lst:path-motion-program-condition-2.1} in response to a \gls{sample}.
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Path Motion Program Syntax Error on Line 120 Normal},label={lst:path-motion-program-condition-2.1}]
@@ -925,7 +925,7 @@ The streaming data event is as shown in listing~\ref{lst:path-motion-program-con
 \end{lstlisting}
 
 
-When all the syntax errors are fixed a condition will be streamed with a state of \mtterm{Normal} with no \texttt{nativeCode}. The condition will reset to \mtterm{Normal} as shown in listing~\ref{lst:path-motion-program-condition-3} as the result of a \mtterm{current} request.
+When all the syntax errors are fixed a condition will be streamed with a state of \mtmodel{Normal} with no \mtmodel{nativeCode}. The condition will reset to \mtmodel{Normal} as shown in listing~\ref{lst:path-motion-program-condition-3} as the result of a \gls{current}.
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Path Motion Program Normal},label={lst:path-motion-program-condition-3}]
@@ -940,22 +940,22 @@ The streaming data will be identical to listing~\ref{lst:path-motion-program-con
 
 \subsubsection{Messages}
 
-The \mtuatype{MTMessageType} will be instantiated as an \uaterm{Object} and each time a \mtterm{Message} occurs. The values from the last event will be recorded in the \uaterm{Object} and the \uaterm{Event} \uaterm{Properties} and \uaterm{Attributes} will be set as follows: 
+The \mtuatype{MTMessageType} will be instantiated as an \gls{Object} and each time a \mtmodel{Message} occurs. The values from the last event will be recorded in the \gls{Object} and the \gls{Event} \glspl{Property} and \glspl{Attribute} will be set as follows: 
 
 \begin{description}[font=\it\bfseries,labelindent=4em,labelwidth=6em,leftmargin=!]    
-  \item[Severity] Fixed at 1 as the lowest severity of an \uaterm{Event}
-  \item[Message] Set from the \mtmodel{CDATA}
+  \item[Severity] Fixed at 1 as the lowest severity of an \gls{Event}
+  \item[Message] Set from the \gls{CDATA}
   \item[Time] \mtmodel{timestamp}
-  \item[NodeId] The \uaterm{NodeId} of the \uaterm{Event} is set to the \uaterm{NodeId} of the \mtuatype{MTMessageType} \uaterm{Object} instance.
-  \item[Message] The \mtmodel{CDATA} of the \gls{MTCondition} when \mtmodel{Normal} or \mtmodel{Warning}.
-  \item[\ldots] The remaining \uaterm{Properties} will be set from the XML attributes of the same name.
+  \item[NodeId] The \gls{NodeId} of the \gls{Event} is set to the \gls{NodeId} of the \mtuatype{MTMessageType} \gls{Object} instance.
+  \item[Message] The \gls{CDATA} of the \gls{MTCondition} when \mtmodel{Normal} or \mtmodel{Warning}.
+  \item[\ldots] The remaining \gls{Property} will be set from the XML attributes of the same name.
 \end{description}
 
-\subsection{Time Series Samples}
+\subsection{\gls{TimeSeries} Samples}
 
-\mtterm{DataItems} with \mtterm{TIME_SERIES} \mtmodel{representation} provides a mechanism to publish high frequency data by combining multiple observations into a single vector of values. The attribute \mtmodel{sampleRate} is specified in the \mtterm{Devices} information model if it is immutable or for each entity with the attribute \mtmodel{sampleRate} if it is variable. 
+\glspl{MTDataItem} with \mtmodel{TIME_SERIES} \mtmodel{representation} provides a mechanism to publish high frequency data by combining multiple observations into a single vector of values. The attribute \mtmodel{sampleRate} is specified in the \glspl{MTDevice} information model if it is immutable or for each entity with the attribute \mtmodel{sampleRate} if it is variable. 
 
-In Listing~\ref{lst:electric-timeseries}, both examples are given, line~\ref{line:va-wo-sample-rate} does not specify the \mtmodel{sampleRate} whereas line~\ref{line:va-w-sample-rate} specifies the \mtmodel{sampleRate}. The \mtmodel{sampleRate} is always given in hertz, if not specied in the \mtterm{Streams} document, it defaults to the value given in the \mtterm{DataItem}.
+In Listing~\ref{lst:electric-timeseries}, both examples are given, line~\ref{line:va-wo-sample-rate} does not specify the \mtmodel{sampleRate} whereas line~\ref{line:va-w-sample-rate} specifies the \mtmodel{sampleRate}. The \mtmodel{sampleRate} is always given in hertz, if not specied in the \mtmodel{MTConnectStreams} document, it defaults to the value given in the \gls{MTDataItem}.
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Electric Component Time Series Example},label={lst:electric-timeseries}]
@@ -969,9 +969,9 @@ In Listing~\ref{lst:electric-timeseries}, both examples are given, line~\ref{lin
       </ComponentStream>
 \end{lstlisting}
 
-In MTConnect, the \gls{MTDataItem} element QName in the \mtterm{Streams} document appends the \textit{PascalCase} of the \mtmodel{representation} to the \textit{PascalCase} of the \mtterm{type}. For example, \mtmodel{type} \mtmodel{VOLT_AMPERE} with the \mtmodel{representation} of \mtmodel{TIME_SERIES} becomes \mtmodel{VoltAmpereTimeSeries}. 
+In MTConnect, the \gls{MTDataItem} element \gls{QName} in the \mtmodel{MTConnectStreams} document appends the \gls{PascalCase} of the \mtmodel{representation} to the \gls{PascalCase} of the \gls{type}. For example, \gls{type} \mtmodel{VOLT_AMPERE} with the \mtmodel{representation} of \mtmodel{TIME_SERIES} becomes \mtmodel{VoltAmpereTimeSeries}. 
 
-All \mtterm{DataItems} with \mtmodel{representation} of \mtmodel{TIME_SERIES} when reported in the \mtterm{Streams} document require the attribute \mtterm{sampleCount} to give the number of entries in the space delimited series. MTConnect specifies in \cite{MTCPart3} that the \mtmodel{timestamp} is reported at the time of the last observation. To compute the timestamp for each observation, use the follow procedure.
+All \glspl{MTDataItem} with \mtmodel{representation} of \mtmodel{TIME_SERIES} when reported in the \mtmodel{MTConnectStreams} document require the attribute \mtmodel{sampleCount} to give the number of entries in the space delimited series. MTConnect specifies in \cite{MTCPart3} that the \mtmodel{timestamp} is reported at the time of the last observation. To compute the \mtmodel{timestamp} for each observation, use the follow procedure.
 
 \begin{align}
   \delta =& \frac{1}{sampleRate}\ s \label{eqn:ts-delta} \\
@@ -983,7 +983,7 @@ All \mtterm{DataItems} with \mtmodel{representation} of \mtmodel{TIME_SERIES} wh
   Where $timestamp_a$ is the \mtmodel{timestamp} given as the XML Attribute.
 \end{quote}
 
-When mapping \mtterm{Time Series} to OPC UA, for each value in the series, compute the observation time as specified above and then update the UA \uaterm{Value} with the \uaterm{Time} set to the $timestamp_n$ for the $n^{th}$ entry in the series. Do this once for every entry in the series causing \mtmodel{sampleCount} updates per MTConnet \mtterm{Time Series} mtterm{Element}.
+When mapping \gls{TimeSeries} to OPC UA, for each value in the series, compute the observation time as specified above and then update the UA \uamodel{Value} with the \uamodel{Time} set to the $timestamp_n$ for the $n^{th}$ entry in the series. Do this once for every entry in the series causing \mtmodel{sampleCount} updates per MTConnect \gls{TimeSeries} \mtmodel{Element}.
 
 The $\delta$ in Equation~\ref{eqn:ts-delta} is the time interval for each sample and by subtracting the $\delta \times sampleCount$ seconds, the given in Equation~\ref{eqn:ts-first} is the first timestamp in the series. Every other timestamp can be derived by adding the $\delta \times n$ as showin in Equation~\ref{eqn:ts-n} to the first timestamp. One can also arrive at the same result by taking the \mtmodel{timestamp} and counting backward from the last, where $r$ is the reverse index starting at 0, $r \times \delta$ seconds from $timestamp_a$.
 
@@ -991,7 +991,7 @@ The $\delta$ in Equation~\ref{eqn:ts-delta} is the time interval for each sample
   \color{red} Can OPC UA handle 100 or 1khz update rates?
 \end{quote}
 
-Time series timestamps will often be contiguous when giving a stream of values for audio displacement or other series that must be reassembled. In Listing~\ref{lst:electric-timeseries}, each set of ten values are separated by 0.10 seconds which will allow for a 100hz sample frequence and continuous values from the sensor. The format is more efficient and allows for communication of waveform and high frequency data.
+\gls{TimeSeries} \mtmodel{timestamps} will often be contiguous when giving a stream of values for audio displacement or other series that must be reassembled. In Listing~\ref{lst:electric-timeseries}, each set of ten values are separated by 0.10 seconds which will allow for a 100hz sample frequence and continuous values from the sensor. The format is more efficient and allows for communication of waveform and high frequency data.
 
 %%% Local Variables:
 %%% mode: latex

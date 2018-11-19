@@ -4,6 +4,11 @@
 
 The basic concepts of OPC UA and MTConnect are pre-requisites for understanding and interpreting the content provided in this companion specification. Additionally, the terms and definitions given in \cite{UAPart1}, \cite{UAPart2}, \cite{UAPart3}, \cite{UAPart5}, \cite{UAPart7}, \cite{UAPart10}, and \cite{MTCPart1}, (see section \ref{normativereferences}), as well as the following, apply to this document. 
 
+\subsection{Conventions}\label{conventions}
+Following are basic conventions that shall be followed for all formal definitions used: MTConnect Terms will be displayed as follows using italic font (\mtterm{MTConnect Term}). OPC UA Terms will use bold italic fonts (\uaterm{OPC UA Term}). Terms will be linked to the associated glossary entry if available.
+
+MTConnect \gls{xml} literals and code will appear in monospace \xml{MTConnectCode} and OPC UA literals and UA Model will appear as bold monospace \uamodel{UAObjectsAndTypes}.
+
 \subsection{Terms and Acronnyms}
 
 \printglossary[type=opc]
@@ -11,11 +16,6 @@ The basic concepts of OPC UA and MTConnect are pre-requisites for understanding 
 \printglossary[type=mtc]
 
 \printacronyms  
-
-\subsection{Conventions}\label{conventions}
-Following are basic conventions that shall be followed for all formal definitions used: MTConnect Terms will be displayed as follows using italic font (\mtterm{MTConnect Term}). OPC UA Terms will use bold italic fonts (\uaterm{OPC UA Term}). Terms will be linked to the associated glossary entry if available.
-
-MTConnect \gls{xml} literals and code will appear in monospace \xml{MTConnectCode} and OPC UA literals and UA Model will appear as bold monospace \uamodel{UAObjectsAndTypes}.
 
 \subsubsection{Conventions for Node descriptions}
 
@@ -27,10 +27,10 @@ MTConnect \gls{xml} literals and code will appear in monospace \xml{MTConnectCod
 
 \begin{itemize}
     \item If the \gls{TargetNode} is a component of the \gls{Node} being defined in the table the \glspl{Attribute} of the composed Node are defined in the same row of the table. 
-    \item The \gls{DataType} is only specified for Variables; "[<number>]" indicates a single-dimensional array, for multi-dimensional arrays the expression is repeated for each dimension (e.g. [2][3] for a two-dimensional array). For all arrays the \glspl{ArrayDimension} is set as identified by <number> values. If no <number> is set, the corresponding dimension is set to 0, indicating an unknown size. If no number is provided at all the \glspl{ArrayDimension} can be omitted. If no brackets are provided, it identifies a scalar \gls{DataType} and the \gls{ValueRank} is set to the corresponding value (see \cite{UAPart3}). In addition, \glspl{ArrayDimension} is set to null or is omitted. If it can be Any or ScalarOrOneDimension, the value is put into "{<value>}", so either "{Any}" or "{ScalarOrOneDimension}" and the \gls{ValueRank} is set to the corresponding value (see \cite{UAPart3}) and the \glspl{ArrayDimension} is set to null or is omitted. Examples are given in Table \ref{table:ExamplesOfDataTypes}.
+    \item The \gls{DataType} is only specified for Variables; "[<number>]" indicates a single-dimensional array, for multi-dimensional arrays the expression is repeated for each dimension (e.g. [2][3] for a two-dimensional array). For all arrays the \glspl{ArrayDimension} is set as identified by \uamodel{<number>} values. If no \uamodel{<number>} is set, the corresponding dimension is set to 0, indicating an unknown size. If no number is provided at all the \glspl{ArrayDimension} can be omitted. If no brackets are provided, it identifies a scalar \gls{DataType} and the \gls{ValueRank} is set to the corresponding value (see \cite{UAPart3}). In addition, \glspl{ArrayDimension} is set to \uamodel{null} or is omitted. If it can be \uamodel{Any} or \uamodel{ScalarOrOneDimension}, the value is put into \uamodel{"<value>"}, so either \uamodel{"Any"} or \uamodel{"ScalarOrOneDimension"} and the \gls{ValueRank} is set to the corresponding value (see \cite{UAPart3}) and the \glspl{ArrayDimension} is set to \uamodel{null} or is omitted. Examples are given in Table \ref{table:ExamplesOfDataTypes}.
     \item The \gls{TypeDefinition} is specified for Objects and Variables.
-    \item The \gls{TypeDefinition} column specifies a symbolic name for a \gls{NodeId}, i.e. the specified Node points with a \gls{HasTypeDefinition} Reference to the corresponding Node.
-    \item The \gls{ModellingRule} of the referenced component is provided by specifying the symbolic name of the rule in \gls{ModellingRule}. In the \gls{AddressSpace}, the Node shall use a \gls{HasModellingRule} Reference to point to the corresponding \gls{ModellingRule} Object.
+    \item The \gls{TypeDefinition} column specifies a symbolic name for a \gls{NodeId}, i.e. the specified \gls{Node} points with a \gls{HasTypeDefinition} \gls{Reference} to the corresponding Node.
+    \item The \gls{ModellingRule} of the referenced component is provided by specifying the symbolic name of the rule in \gls{ModellingRule}. In the \gls{AddressSpace}, the Node shall use a \gls{HasModellingRule} \gls{Reference} to point to the corresponding \gls{ModellingRule} \gls{Object}.
 \end{itemize}
 
 \begin{table}[ht]
@@ -56,11 +56,11 @@ Int32 \{ScalarOrOneDimension\} & Int32 & -3 & omitted or null & An Int32 where i
 
 \FloatBarrier
 
-If the \gls{NodeId} of a \gls{DataType} is provided, the symbolic name of the Node representing the \gls{DataType} shall be used.
+If the \gls{NodeId} of a \gls{DataType} is provided, the symbolic name of the \gls{Node} representing the \gls{DataType} shall be used.
 
 Nodes of all other \glspl{NodeClass} cannot be defined in the same table; therefore only the used \gls{ReferenceType}, their \gls{NodeClass} and their \gls{BrowseName} are specified. A reference to another part of this document points to their definition.
 
-Table \ref{table:TypeDefinitionTable} illustrates the table. If no components are provided, the \gls{DataType}, \gls{TypeDefinition} and \gls{ModellingRule} columns may be omitted and only a Comment column is introduced to point to the Node definition.
+Table \ref{table:TypeDefinitionTable} illustrates the table. If no components are provided, the \gls{DataType}, \gls{TypeDefinition} and \gls{ModellingRule} columns may be omitted and only a Comment column is introduced to point to the \gls{Node} definition.
 
 \begin{table}[ht]
 \centering 

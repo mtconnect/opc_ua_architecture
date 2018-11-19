@@ -367,27 +367,27 @@
 \glscategory{code}
 
 % Sets the font based on the type of glossary entry being referenced
-\defglsentryfmt[opc]{
-  \glsifcategory{\glslabel}{code}
-    {\uamodel{\glsgenentryfmt}}
+\defglsentryfmt[opc]{%
+  \glsifcategory{\glslabel}{code}%
+    {\uamodel{\glsgenentryfmt}}%
     {\uaterm{\glsgenentryfmt}}}
   
-\defglsentryfmt[mtc]{
-  \glsifcategory{\glslabel}{code}
-    {\mtmodel{\glsgenentryfmt}}
+\defglsentryfmt[mtc]{%
+  \glsifcategory{\glslabel}{code}%
+    {\mtmodel{\glsgenentryfmt}}%
     {\mtterm{\glsgenentryfmt}}}
 
-\renewcommand{\glsnamefont}[1]{
-  \ifglsfieldeq{\glscurrententrylabel}{type}{opc}{
+\renewcommand{\glsnamefont}[1]{%
+  \ifglsfieldeq{\glscurrententrylabel}{type}{opc}{%
     \glsifcategory{\glscurrententrylabel}{code}%
-      {\uamodel{#1}}
-      {\uaterm{#1}}
-  }{
-    \ifglsfieldeq{\glscurrententrylabel}{type}{mtc}{
+      {\uamodel{#1}}%
+      {\uaterm{#1}}%
+  }{%
+    \ifglsfieldeq{\glscurrententrylabel}{type}{mtc}{%
       \glsifcategory{\glscurrententrylabel}{code}%
-        {\mtmodel{#1}}
-        {\mtterm{#1}}
-    }
-    {\textbf{#1}}
+        {\mtmodel{#1}}%
+        {\mtterm{#1}}%
+    }%
+    {\textbf{#1}}%
   }
 }

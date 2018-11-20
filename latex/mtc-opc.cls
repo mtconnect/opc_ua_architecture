@@ -68,7 +68,8 @@
 \RequirePackage[acronym,toc,numberedsection,%
   abbreviations,automake,nonumberlist,%
   section=subsubsection]{glossaries-extra}
-
+\usepackage{mdframed}
+  
 % *********** %
 % 	Options   %
 % *********** %

@@ -72,20 +72,19 @@ style=alphabetic,
 
 \pagenumbering{roman}
 
-\begin{table}[ht]
-  \centering 
+\begin{mdframed}[innerleftmargin=0pt,innerrightmargin=0pt,%
+  backgroundcolor=light-gray]%
+  \fontsize{9pt}{11pt}\selectfont
   \tabulinesep=8pt
   \taburowcolors[1]{light-gray .. light-gray}
   \taburulecolor |light-gray|{black}
-  \begin{tabu} to 6in {||X[0.45] X X[0.4] X||}
-  \hline \hline
-   Specification Type: & Industry Standard Specification & Comments: & \\ \tabucline[1pt]{2-2} \tabucline[1pt]{4-4}
-  Title: & OPC Unified Architecture for MTConnect & Date: & \today \\  \tabucline[1pt]{2-2} \tabucline[1pt]{4-4}
-  Version: & \getversionnum & Software Source: & LaTeX \newline OPC\_UA\_MTConnect\_XXX.pdf \\   \tabucline[1pt]{2-2} \tabucline[1pt]{4-4}
-  Author: & MTConnect Institute & Status: &  \getversiontext \\
-  \hline \hline
+  \begin{tabu} to 5.75in {X[0.6] X X[0.4] X}
+    Specification Type: & Industry Standard Specification & Comments: & \\ \tabucline[1pt]{2-2} \tabucline[1pt]{4-4}
+    Title: & OPC Unified Architecture for MTConnect & Date: & \today \\  \tabucline[1pt]{2-2} \tabucline[1pt]{4-4}
+    Version: & \getversionnum & Software: Source: & LaTeX \newline OPC\_UA\_MTConnect\_XXX.pdf \\   \tabucline[1pt]{2-2} \tabucline[1pt]{4-4}
+    Author: & MTConnect Institute & Status: &  \getversiontext \\
   \end{tabu}
-\end{table}
+\end{mdframed}
 
 \clearpage
 

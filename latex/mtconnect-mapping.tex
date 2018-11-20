@@ -109,7 +109,7 @@ The type names in UA will require the upper case with underscore name to be conv
 
 OPC UA conventions use names in \gls{PascalCase}, so all MTConnect entities will be represented using \gls{PascalCase}. When the MTConnect entities are converted into UA types, they are converted to \gls{PascalCase} and the word \xml{Type} is appended. 
 
-The values of the attributes and enumerations are represented in MTConnect in capitals with underscores. OPC UA has the same convention, so these types will remain unchanged when converted to OPC UA. The only caveat is that enumerated values when represented in UA \gls{DataVariable}s are numeric. All enumerations in MTConnect are sorted alphabetically and assigned monotonically increasing numberic values. For example, the enumeration for the \xml{Execution} MTConnect data item is in table \ref{table:execution-data-type}.
+The values of the attributes and enumerations are represented in MTConnect in capitals with underscores. OPC UA has the same convention, so these types will remain unchanged when converted to OPC UA. The only caveat is that enumerated values when represented in UA \gls{DataVariable}s are numeric. All enumerations in MTConnect are sorted alphabetically and assigned monotonically increasing numeric values. For example, the enumeration for the \xml{Execution} MTConnect data item is in table \ref{table:execution-data-type}.
 
 \begin{table}[ht]
   \centering 
@@ -985,7 +985,7 @@ All \glspl{MTDataItem} with \mtmodel{representation} of \mtmodel{TIME_SERIES} wh
 
 When mapping \gls{TimeSeries} to OPC UA, for each value in the series, compute the observation time as specified above and then update the UA \uamodel{Value} with the \uamodel{Time} set to the $timestamp_n$ for the $n^{th}$ entry in the series. Do this once for every entry in the series causing \mtmodel{sampleCount} updates per MTConnect \gls{TimeSeries} \mtmodel{Element}.
 
-The $\delta$ in Equation~\ref{eqn:ts-delta} is the time interval for each sample and by subtracting the $\delta \times sampleCount$ seconds, the given in Equation~\ref{eqn:ts-first} is the first timestamp in the series. Every other timestamp can be derived by adding the $\delta \times n$ as showin in Equation~\ref{eqn:ts-n} to the first timestamp. One can also arrive at the same result by taking the \mtmodel{timestamp} and counting backward from the last, where $r$ is the reverse index starting at 0, $r \times \delta$ seconds from $timestamp_a$.
+The $\delta$ in Equation~(\ref{eqn:ts-delta}) is the time interval for each sample and by subtracting the $\delta \times sampleCount$ seconds, the given in Equation~(\ref{eqn:ts-first}) is the first timestamp in the series. Every other timestamp can be derived by adding the $\delta \times n$ as showin in Equation~(\ref{eqn:ts-n}) to the first timestamp. One can also arrive at the same result by taking the \mtmodel{timestamp} and counting backward from the last, where $r$ is the reverse index starting at 0, $r \times \delta$ seconds from $timestamp_a$.
 
 \begin{quote}
   \color{red} Can OPC UA handle 100 or 1khz update rates?

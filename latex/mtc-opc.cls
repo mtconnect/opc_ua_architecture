@@ -137,6 +137,10 @@
 \newcommand\@preparedby{}
 \newcommand\@preparedon{}
 \newcommand\@versiontext{}
+
+\newcommand\getversionnum{\@versionnum}
+\newcommand\getversiontext{\@versiontext}
+
 \newcommand{\docnum}[1]{\gdef\@docnum{#1}}
 \newcommand{\doctitle}[1]{\gdef\@doctitle{#1}}
 \newcommand{\versionnum}[1]{\gdef\@versionnum{#1}}

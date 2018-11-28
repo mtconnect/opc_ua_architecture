@@ -1,4 +1,4 @@
-% Generated 2018-11-19 17:25:35 -0800
+% Generated 2018-11-27 20:06:15 -0800
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -205,11 +205,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-The \mtmodel{MTCompositionType} is the abstract supertype of the dynamically generated
-composition types based on the attribute \mtmodel{type} of the \gls{Composition} element
-of the MTConnect \gls{MTComponent}. The \gls{Composition} is then related to the 
-DataItems that reference the \gls{Composition}'s id in their \mtmodel{compositionId} 
-attribute. 
+The \mtmodel{MTCompositionType} represents all composition entities. The specification of how
+to form the \gls{BrowseName} is specified in Section~\ref{sec:browse-name-rules}.
 
 The data items are added to the relationship where the \gls{MTDataItem} to \gls{Composition} 
 relationship is represented by the \gls{BrowseName} Composition property of the data item.

@@ -163,7 +163,7 @@ The following types representing base MTConnect types are also prefixed:
 
 The data item class types and enumeration data types do not have ``\texttt{MT}'' prepended.
 
-\subsubsection{Component and Composition \uamodel{BrowseName} and \uaterm{Type} Rules}
+\subsubsection{Component and Composition \uamodel{BrowseName} and \uaterm{Type} Rules} \label{sec:browse-name-rules}
 
 The rules for determining the \gls{BrowseName} for the MTConnect \gls{MTComponent} are as follows:
 
@@ -176,7 +176,7 @@ The rules for determining the \gls{BrowseName} for the MTConnect \gls{MTComponen
   \item For example, if there are two \mtmodel{Path} \glspl{MTComponent} with names \xml{name="P1"} and \xml{name="P2"}, the \glspl{BrowseName} will be as follows: \xml{Path[P1]} and \xml{Path[P2]} where each \gls{HaveTypeDefinition} of \mtmodel{PathType}.
 \end{enumerate}
 
-The rules for \gls{Composition} elements are as follows:
+The rules for \gls{Composition} elements are as follows: 
 
 \begin{enumerate}
   \item  \gls{Composition} elements in the MTConnect model will be represented instantiated with the \gls{BrowseName} of the \gls{Composition} \gls{type} converted to \gls{PascalCase}. \label{item:composition-browse-name}

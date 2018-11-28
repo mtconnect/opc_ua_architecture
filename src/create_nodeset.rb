@@ -88,6 +88,7 @@ NodesetType.check_ids
 
 NodesetModel.generate_nodeset('Namespace Metadata')
 NodesetModel.generate_nodeset('Components')
+NodesetModel.generate_nodeset('Component Types')
 NodesetModel.generate_nodeset('Data Items')
 NodesetModel.generate_nodeset('Conditions')
 NodesetModel.generate_nodeset('Data Item Types')

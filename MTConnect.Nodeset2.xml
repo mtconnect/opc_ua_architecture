@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2018-11-19T05:06:21Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2018-11-28T05:37:39Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2018-11-19T05:06:21Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2018-11-19T05:06:21Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2018-11-28T05:37:39Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2018-11-28T05:37:39Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -724,6 +724,286 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2053</Reference>
     </References>
   </UAVariable>
+  <!-- Definition of Object ActuatorType ns=1;i=3220 -->
+  <UAObjectType NodeId='ns=1;i=3220' BrowseName='1:ActuatorType'>
+    <DisplayName>ActuatorType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - MTComponentType ns=1;i=2021   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2021</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object AuxiliariesType ns=1;i=3222 -->
+  <UAObjectType NodeId='ns=1;i=3222' BrowseName='1:AuxiliariesType'>
+    <DisplayName>AuxiliariesType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - MTComponentType ns=1;i=2021   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2021</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object BarFeederType ns=1;i=3226 -->
+  <UAObjectType NodeId='ns=1;i=3226' BrowseName='1:BarFeederType'>
+    <DisplayName>BarFeederType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - AuxiliariesType ns=1;i=3222   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3222</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object EnvironmentalType ns=1;i=3240 -->
+  <UAObjectType NodeId='ns=1;i=3240' BrowseName='1:EnvironmentalType'>
+    <DisplayName>EnvironmentalType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - AuxiliariesType ns=1;i=3222   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3222</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object LoaderType ns=1;i=3248 -->
+  <UAObjectType NodeId='ns=1;i=3248' BrowseName='1:LoaderType'>
+    <DisplayName>LoaderType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - AuxiliariesType ns=1;i=3222   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3222</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object SensorType ns=1;i=3266 -->
+  <UAObjectType NodeId='ns=1;i=3266' BrowseName='1:SensorType'>
+    <DisplayName>SensorType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - AuxiliariesType ns=1;i=3222   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3222</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object ToolingDeliveryType ns=1;i=3270 -->
+  <UAObjectType NodeId='ns=1;i=3270' BrowseName='1:ToolingDeliveryType'>
+    <DisplayName>ToolingDeliveryType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - AuxiliariesType ns=1;i=3222   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3222</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object WasteDisposalType ns=1;i=3272 -->
+  <UAObjectType NodeId='ns=1;i=3272' BrowseName='1:WasteDisposalType'>
+    <DisplayName>WasteDisposalType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - AuxiliariesType ns=1;i=3222   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3222</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object AxesType ns=1;i=2740 -->
+  <UAObjectType NodeId='ns=1;i=2740' BrowseName='1:AxesType'>
+    <DisplayName>AxesType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - MTComponentType ns=1;i=2021   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2021</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object LinearType ns=1;i=2750 -->
+  <UAObjectType NodeId='ns=1;i=2750' BrowseName='1:LinearType'>
+    <DisplayName>LinearType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - AxesType ns=1;i=2740   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2740</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object RotaryType ns=1;i=2742 -->
+  <UAObjectType NodeId='ns=1;i=2742' BrowseName='1:RotaryType'>
+    <DisplayName>RotaryType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - AxesType ns=1;i=2740   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2740</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object ChuckType ns=1;i=3230 -->
+  <UAObjectType NodeId='ns=1;i=3230' BrowseName='1:ChuckType'>
+    <DisplayName>ChuckType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - RotaryType ns=1;i=2742   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2742</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object ControllerType ns=1;i=2738 -->
+  <UAObjectType NodeId='ns=1;i=2738' BrowseName='1:ControllerType'>
+    <DisplayName>ControllerType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - MTComponentType ns=1;i=2021   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2021</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object PathType ns=1;i=2744 -->
+  <UAObjectType NodeId='ns=1;i=2744' BrowseName='1:PathType'>
+    <DisplayName>PathType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - ControllerType ns=1;i=2738   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2738</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object DoorType ns=1;i=3236 -->
+  <UAObjectType NodeId='ns=1;i=3236' BrowseName='1:DoorType'>
+    <DisplayName>DoorType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - MTComponentType ns=1;i=2021   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2021</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object InterfacesType ns=1;i=3246 -->
+  <UAObjectType NodeId='ns=1;i=3246' BrowseName='1:InterfacesType'>
+    <DisplayName>InterfacesType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - MTComponentType ns=1;i=2021   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2021</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object BarFeederInterfaceType ns=1;i=3224 -->
+  <UAObjectType NodeId='ns=1;i=3224' BrowseName='1:BarFeederInterfaceType'>
+    <DisplayName>BarFeederInterfaceType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - InterfacesType ns=1;i=3246   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3246</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object ChuckInterfaceType ns=1;i=3228 -->
+  <UAObjectType NodeId='ns=1;i=3228' BrowseName='1:ChuckInterfaceType'>
+    <DisplayName>ChuckInterfaceType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - InterfacesType ns=1;i=3246   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3246</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object DoorInterfaceType ns=1;i=3234 -->
+  <UAObjectType NodeId='ns=1;i=3234' BrowseName='1:DoorInterfaceType'>
+    <DisplayName>DoorInterfaceType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - InterfacesType ns=1;i=3246   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3246</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object MaterialHandlerInterfaceType ns=1;i=3252 -->
+  <UAObjectType NodeId='ns=1;i=3252' BrowseName='1:MaterialHandlerInterfaceType'>
+    <DisplayName>MaterialHandlerInterfaceType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - InterfacesType ns=1;i=3246   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3246</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object ResourcesType ns=1;i=3264 -->
+  <UAObjectType NodeId='ns=1;i=3264' BrowseName='1:ResourcesType'>
+    <DisplayName>ResourcesType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - MTComponentType ns=1;i=2021   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2021</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object MaterialsType ns=1;i=3254 -->
+  <UAObjectType NodeId='ns=1;i=3254' BrowseName='1:MaterialsType'>
+    <DisplayName>MaterialsType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - ResourcesType ns=1;i=3264   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3264</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object StockType ns=1;i=3268 -->
+  <UAObjectType NodeId='ns=1;i=3268' BrowseName='1:StockType'>
+    <DisplayName>StockType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - MaterialsType ns=1;i=3254   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3254</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object PersonnelType ns=1;i=3256 -->
+  <UAObjectType NodeId='ns=1;i=3256' BrowseName='1:PersonnelType'>
+    <DisplayName>PersonnelType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - ResourcesType ns=1;i=3264   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=3264</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object SystemsType ns=1;i=2746 -->
+  <UAObjectType NodeId='ns=1;i=2746' BrowseName='1:SystemsType'>
+    <DisplayName>SystemsType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - MTComponentType ns=1;i=2021   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2021</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object CoolantType ns=1;i=2925 -->
+  <UAObjectType NodeId='ns=1;i=2925' BrowseName='1:CoolantType'>
+    <DisplayName>CoolantType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - SystemsType ns=1;i=2746   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2746</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object DielectricType ns=1;i=3232 -->
+  <UAObjectType NodeId='ns=1;i=3232' BrowseName='1:DielectricType'>
+    <DisplayName>DielectricType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - SystemsType ns=1;i=2746   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2746</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object ElectricType ns=1;i=2748 -->
+  <UAObjectType NodeId='ns=1;i=2748' BrowseName='1:ElectricType'>
+    <DisplayName>ElectricType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - SystemsType ns=1;i=2746   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2746</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object EnclosureType ns=1;i=3238 -->
+  <UAObjectType NodeId='ns=1;i=3238' BrowseName='1:EnclosureType'>
+    <DisplayName>EnclosureType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - SystemsType ns=1;i=2746   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2746</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object FeederType ns=1;i=3242 -->
+  <UAObjectType NodeId='ns=1;i=3242' BrowseName='1:FeederType'>
+    <DisplayName>FeederType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - SystemsType ns=1;i=2746   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2746</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object HydraulicType ns=1;i=3244 -->
+  <UAObjectType NodeId='ns=1;i=3244' BrowseName='1:HydraulicType'>
+    <DisplayName>HydraulicType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - SystemsType ns=1;i=2746   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2746</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object LubricationType ns=1;i=3250 -->
+  <UAObjectType NodeId='ns=1;i=3250' BrowseName='1:LubricationType'>
+    <DisplayName>LubricationType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - SystemsType ns=1;i=2746   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2746</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object PneumaticType ns=1;i=3258 -->
+  <UAObjectType NodeId='ns=1;i=3258' BrowseName='1:PneumaticType'>
+    <DisplayName>PneumaticType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - SystemsType ns=1;i=2746   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2746</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object ProcessPowerType ns=1;i=3260 -->
+  <UAObjectType NodeId='ns=1;i=3260' BrowseName='1:ProcessPowerType'>
+    <DisplayName>ProcessPowerType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - SystemsType ns=1;i=2746   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2746</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object ProtectiveType ns=1;i=3262 -->
+  <UAObjectType NodeId='ns=1;i=3262' BrowseName='1:ProtectiveType'>
+    <DisplayName>ProtectiveType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - SystemsType ns=1;i=2746   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2746</Reference>
+    </References>
+  </UAObjectType>
   <!-- Definition of DataType AssetEventDataType ns=1;i=2543 -->
   <UADataType NodeId='ns=1;i=2543' BrowseName='1:AssetEventDataType'>
     <DisplayName>AssetEventDataType</DisplayName>

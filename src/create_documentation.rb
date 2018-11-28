@@ -22,6 +22,7 @@ File.open('./latex/types.tex', 'w') do |f|
   f.puts "% Generated #{Time.now}"
   
   LatexModel.generate_latex(f, 'Components')
+  LatexModel.generate_latex(f, 'Component Types')
   LatexModel.generate_latex(f, 'Data Items')
   LatexModel.generate_latex(f, 'Conditions')
   LatexModel.generate_latex(f, 'Data Item Types')

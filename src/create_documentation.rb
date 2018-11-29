@@ -7,6 +7,7 @@ require 'latex_model'
 uml = File.open('MTConnect OPC-UA Devices.mdj').read
 doc = JSON.parse(uml)
 models = doc['ownedElements'].select { |e| e['name'] != 'UMLStandardProfile' }
+SkipModels = Set.new
 
 models.each do |e|
   LatexModel.find_definitions(e)

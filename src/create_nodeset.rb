@@ -10,7 +10,11 @@ require 'id_manager'
 
 uml = File.open('MTConnect OPC-UA Devices.mdj').read
 doc = JSON.parse(uml)
-models = doc['ownedElements'].select { |e| e['name'] != 'UMLStandardProfile' }
+models = doc['ownedElements'].dup
+
+SkipModels = Set.new
+SkipModels.add('UMLStandardProfile')
+SkipModels.add('Device Example')
 
 models.each do |e|
   NodesetModel.find_definitions(e)

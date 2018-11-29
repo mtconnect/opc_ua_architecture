@@ -42,6 +42,8 @@ class Model
   end
 
   def self.recurse(e, depth, model)
+    return if SkipModels.include?(e['name'])
+    
     if e.include?('ownedElements')
       e['ownedElements'].each do |f|      
         find_definitions(f, depth, model)

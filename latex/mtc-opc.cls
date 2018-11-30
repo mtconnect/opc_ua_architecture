@@ -69,7 +69,11 @@
   abbreviations,automake,nonumberlist,%
   section=subsubsection]{glossaries-extra}
 \usepackage{mdframed}
-  
+\usepackage[titletoc,title]{appendix}
+\renewcommand{\appendixname}{Annex}
+
+\usepackage{titlesec}
+
 % *********** %
 % 	Options   %
 % *********** %
@@ -216,10 +220,10 @@
 	\@minus .2ex}{-1em}{\normalfont \normalsize \bfseries }}%
 \makeatother
 
-\sectionfont{\bfseries\color{black}\fontsize{20}{22}\selectfont}
-\subsectionfont{\bfseries\color{black}\fontsize{18}{20}\selectfont}
-\subsubsectionfont{\bfseries\color{black}\fontsize{16}{18}\selectfont}
-\paragraphfont{\bfseries\color{black}\fontsize{14}{16}\selectfont}
+\sectionfont{\bfseries\color{black}\fontsize{18}{20}\selectfont}
+\subsectionfont{\bfseries\color{black}\fontsize{16}{18}\selectfont}
+\subsubsectionfont{\bfseries\color{black}\fontsize{14}{16}\selectfont}
+\paragraphfont{\bfseries\color{black}\fontsize{13}{14}\selectfont}
 \subparagraphfont{\bfseries\color{black}\normalsize\selectfont}
 
 \newcommand{\onesection}[1]{\section{#1}}

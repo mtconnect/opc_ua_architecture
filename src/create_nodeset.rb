@@ -140,7 +140,7 @@ if error
   exit 1
 end
 
-File.open('./MTConnect.Nodeset2.xml', 'w') do |f|
+File.open('./Opc.Ua.MTConnect.Nodeset2.xml', 'w') do |f|
   document << Root
   formatter = REXML::Formatters::Pretty.new(2)
   formatter.compact = true

@@ -320,6 +320,10 @@ module Relation
       @value
     end
 
+    def is_array?
+      @value and @value[0] == '['
+    end
+
     def is_property?
       true
     end

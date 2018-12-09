@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2018-12-07T21:29:34Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2018-12-08T06:38:57Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2018-12-07T21:29:34Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2018-12-07T21:29:34Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2018-12-08T06:38:57Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2018-12-08T06:38:57Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -510,8 +510,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2070</Reference>
       <!-- HasProperty -  - Name ns=1;i=2071 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2071</Reference>
-      <!-- HasProperty -  - MTDescription ns=1;i=2072 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2072</Reference>
+      <!-- HasComponent -  - Description ns=1;i=2887 MTDescriptionType  -->
+      <Reference ReferenceType='HasComponent'>ns=1;i=2887</Reference>
     </References>
   </UAObjectType>
   <!-- MTCompositionType::XmlId : String[1] -->
@@ -562,16 +562,72 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2067</Reference>
     </References>
   </UAVariable>
-  <!-- MTCompositionType::MTDescription : String[0..1] -->
-  <UAVariable NodeId='ns=1;i=2072' BrowseName='1:MTDescription' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2067'>
-    <DisplayName>MTDescription</DisplayName>
+  <!-- MTCompositionType::Description : MTDescriptionType[0..1] -->
+  <UAObject NodeId='ns=1;i=2887' BrowseName='1:Description' ParentNodeId='ns=1;i=2067'>
+    <DisplayName>Description</DisplayName>
+    <References>
+      <!-- HasProperty -  - Station ns=1;i=2888 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2888</Reference>
+      <!-- HasProperty -  - SerialNumber ns=1;i=2889 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2889</Reference>
+      <!-- HasProperty -  - Manufacturer ns=1;i=2890 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2890</Reference>
+      <!-- HasProperty -  - Data ns=1;i=2891 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=2891</Reference>
+      <!-- HasTypeDefinition -  - MTDescriptionType ns=1;i=2053   -->
+      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2053</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasComponent - (Reverse) - MTCompositionType ns=1;i=2067   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2067</Reference>
+    </References>
+  </UAObject>
+  <!-- Description::Station : String[0..1] -->
+  <UAVariable NodeId='ns=1;i=2888' BrowseName='1:Station' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2887'>
+    <DisplayName>Station</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTCompositionType ns=1;i=2067   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2067</Reference>
+      <!-- HasProperty - (Reverse) - Description ns=1;i=2887   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2887</Reference>
+    </References>
+  </UAVariable>
+  <!-- Description::SerialNumber : String[0..1] -->
+  <UAVariable NodeId='ns=1;i=2889' BrowseName='1:SerialNumber' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2887'>
+    <DisplayName>SerialNumber</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - Description ns=1;i=2887   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2887</Reference>
+    </References>
+  </UAVariable>
+  <!-- Description::Manufacturer : String[0..1] -->
+  <UAVariable NodeId='ns=1;i=2890' BrowseName='1:Manufacturer' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2887'>
+    <DisplayName>Manufacturer</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - Description ns=1;i=2887   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2887</Reference>
+    </References>
+  </UAVariable>
+  <!-- Description::Data : String[0..1] -->
+  <UAVariable NodeId='ns=1;i=2891' BrowseName='1:Data' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2887'>
+    <DisplayName>Data</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - Description ns=1;i=2887   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2887</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Object MTConfigurationType ns=1;i=2044 -->

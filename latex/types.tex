@@ -1,4 +1,4 @@
-% Generated 2018-12-08 21:55:55 -0800
+% Generated 2018-12-13 21:11:04 -0800
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -1897,7 +1897,7 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTDataItemClassType (See Data Item Types Documentation)} \\
-HasSubtype & ObjectType & \multicolumn{2}{l}{MTControlledVocabClassType} & \multicolumn{2}{|l|}{See section \ref{type:MTControlledVocabClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{MTControlledVocabEventClassType} & \multicolumn{2}{|l|}{See section \ref{type:MTControlledVocabEventClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{MTNumericEventClassType} & \multicolumn{2}{|l|}{See section \ref{type:MTNumericEventClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{MTStringEventClassType} & \multicolumn{2}{|l|}{See section \ref{type:MTStringEventClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{MTMessageClassType} & \multicolumn{2}{|l|}{See section \ref{type:MTMessageClassType}} \\
@@ -3685,8 +3685,8 @@ but this not the definitive text for each type. For authoritative normative text
 please refer to the sources \cite{MTCPart2} and \cite{MTCPart3}.
 
 
-\subsubsection{Defintion of \texttt{ MTControlledVocabClassType}}
-  \label{type:MTControlledVocabClassType}
+\subsubsection{Defintion of \texttt{ MTControlledVocabEventClassType}}
+  \label{type:MTControlledVocabEventClassType}
 
 \FloatBarrier
 
@@ -3697,15 +3697,15 @@ type \mtuatype{MTControlledVocabEventType} derived from the OPC UA type
 
 \begin{table}[ht]
 \centering 
-  \caption{\texttt{MTControlledVocabClassType} Definition}
-  \label{table:MTControlledVocabClassType}
+  \caption{\texttt{MTControlledVocabEventClassType} Definition}
+  \label{table:MTControlledVocabEventClassType}
 \fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
 \begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{MTControlledVocabClassType} \\
+BrowseName & \multicolumn{5}{|l|}{MTControlledVocabEventClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
@@ -3778,7 +3778,7 @@ BrowseName & \multicolumn{5}{|l|}{ActuatorStateClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Active\-State\-Data\-Type & Active\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -3828,7 +3828,7 @@ BrowseName & \multicolumn{5}{|l|}{AvailabilityClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Availability\-Data\-Type & Availability\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -3849,7 +3849,7 @@ Has\-Property & Variable & Enum\-Values & Availability\-Data\-Type & Availabilit
 \hline
 \rowfont\bfseries {Name} & {Index} \\
 \tabucline[1.5pt]{}
-\texttt{AVAILABILE} & \texttt{0} \\
+\texttt{AVAILABLE} & \texttt{0} \\
 \texttt{UNAVAILABLE} & \texttt{1} \\
 \end{tabu}
 \end{table} 
@@ -3881,7 +3881,7 @@ BrowseName & \multicolumn{5}{|l|}{AxisCouplingClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Axis\-Coupling\-Data\-Type & Axis\-Coupling\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -3933,7 +3933,7 @@ BrowseName & \multicolumn{5}{|l|}{AxisInterlockClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Active\-State\-Data\-Type & Active\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -3981,7 +3981,7 @@ BrowseName & \multicolumn{5}{|l|}{AxisStateClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Axis\-State\-Data\-Type & Axis\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -4033,7 +4033,7 @@ BrowseName & \multicolumn{5}{|l|}{ChuckInterlockClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Active\-State\-Data\-Type & Active\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -4083,7 +4083,7 @@ BrowseName & \multicolumn{5}{|l|}{ChuckStateClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Open\-State\-Data\-Type & Open\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -4133,7 +4133,7 @@ BrowseName & \multicolumn{5}{|l|}{ControllerModeClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Controller\-Mode\-Data\-Type & Controller\-Mode\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -4185,7 +4185,7 @@ BrowseName & \multicolumn{5}{|l|}{ExecutionClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Execution\-Data\-Type & Execution\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -4244,7 +4244,7 @@ BrowseName & \multicolumn{5}{|l|}{CompositionStateClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Composition\-State\-Data\-Type & Composition\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -4303,7 +4303,7 @@ BrowseName & \multicolumn{5}{|l|}{ControllerModeOverrideClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & On\-Off\-Data\-Type & On\-Off\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -4352,7 +4352,7 @@ BrowseName & \multicolumn{5}{|l|}{DirectionClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Direction\-Data\-Type & Direction\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -4403,7 +4403,7 @@ BrowseName & \multicolumn{5}{|l|}{DoorStateClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Open\-State\-Data\-Type & Open\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -4452,7 +4452,7 @@ BrowseName & \multicolumn{5}{|l|}{EmergencyStopClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Emergency\-Stop\-Data\-Type & Emergency\-Stop\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -4501,7 +4501,7 @@ BrowseName & \multicolumn{5}{|l|}{EndOfBarClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Yes\-No\-Data\-Type & Yes\-No\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -4553,7 +4553,7 @@ BrowseName & \multicolumn{5}{|l|}{EquipmentModeClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & On\-Off\-Data\-Type & On\-Off\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -4604,7 +4604,7 @@ BrowseName & \multicolumn{5}{|l|}{FunctionalModeClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Functional\-Mode\-Data\-Type & Functional\-Mode\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -4656,7 +4656,7 @@ BrowseName & \multicolumn{5}{|l|}{SpindleInterlockClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Active\-State\-Data\-Type & Active\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -4705,7 +4705,7 @@ BrowseName & \multicolumn{5}{|l|}{PathModeClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Path\-Mode\-Data\-Type & Path\-Mode\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -4760,7 +4760,7 @@ BrowseName & \multicolumn{5}{|l|}{PowerStateClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & On\-Off\-Data\-Type & On\-Off\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -4810,7 +4810,7 @@ BrowseName & \multicolumn{5}{|l|}{ProgramEditClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Program\-Edit\-Data\-Type & Program\-Edit\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -4860,7 +4860,7 @@ BrowseName & \multicolumn{5}{|l|}{RotaryModeClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Rotary\-Mode\-Data\-Type & Rotary\-Mode\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -4910,7 +4910,7 @@ BrowseName & \multicolumn{5}{|l|}{InterfaceStateClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Interface\-Status\-Data\-Type & Interface\-Status\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -4959,7 +4959,7 @@ BrowseName & \multicolumn{5}{|l|}{MaterialFeedClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -5011,7 +5011,7 @@ BrowseName & \multicolumn{5}{|l|}{MaterialChangeClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -5062,7 +5062,7 @@ BrowseName & \multicolumn{5}{|l|}{MaterialRetractClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -5113,7 +5113,7 @@ BrowseName & \multicolumn{5}{|l|}{MaterialLoadClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -5164,7 +5164,7 @@ BrowseName & \multicolumn{5}{|l|}{MaterialUnloadClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -5215,7 +5215,7 @@ BrowseName & \multicolumn{5}{|l|}{OpenDoorClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -5266,7 +5266,7 @@ BrowseName & \multicolumn{5}{|l|}{CloseDoorClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -5317,7 +5317,7 @@ BrowseName & \multicolumn{5}{|l|}{OpenChuckClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -5368,7 +5368,7 @@ BrowseName & \multicolumn{5}{|l|}{CloseChuckClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -5419,7 +5419,7 @@ BrowseName & \multicolumn{5}{|l|}{PartChangeClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTControlledVocabClassType (See section \ref{type:MTControlledVocabClassType})} \\
+\multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
 Has\-Property & Variable & Enum\-Values & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -5716,8 +5716,6 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTEventClassType (See Data Items Documentation)} \\
-HasSubtype & ObjectType & \multicolumn{2}{l}{BlockClassType} & \multicolumn{2}{|l|}{See section \ref{type:BlockClassType}} \\
-HasSubtype & ObjectType & \multicolumn{2}{l}{CoupledAxesClassType} & \multicolumn{2}{|l|}{See section \ref{type:CoupledAxesClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{LineLabelClassType} & \multicolumn{2}{|l|}{See section \ref{type:LineLabelClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{MaterialClassType} & \multicolumn{2}{|l|}{See section \ref{type:MaterialClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{OperatorIdClassType} & \multicolumn{2}{|l|}{See section \ref{type:OperatorIdClassType}} \\
@@ -5736,6 +5734,21 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{UserClassType} & \multicolumn{2}{|l
 HasSubtype & ObjectType & \multicolumn{2}{l}{WireClassType} & \multicolumn{2}{|l|}{See section \ref{type:WireClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{WorkholdingClassType} & \multicolumn{2}{|l|}{See section \ref{type:WorkholdingClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{WorkOffsetClassType} & \multicolumn{2}{|l|}{See section \ref{type:WorkOffsetClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{MessageClassType} & \multicolumn{2}{|l|}{See section \ref{type:MessageClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{AssetChangedClassType} & \multicolumn{2}{|l|}{See section \ref{type:AssetChangedClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{AssetRemovedClassType} & \multicolumn{2}{|l|}{See section \ref{type:AssetRemovedClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{LineClassType} & \multicolumn{2}{|l|}{See section \ref{type:LineClassType}} \\
+\multicolumn{6}{|l|}{Continued...} \\
+\end{tabu}
+\end{table}
+\begin{table}[ht]
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{BlockClassType} & \multicolumn{2}{|l|}{See section \ref{type:BlockClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{CoupledAxesClassType} & \multicolumn{2}{|l|}{See section \ref{type:CoupledAxesClassType}} \\
 \end{tabu}
 \end{table} 
 
@@ -6303,6 +6316,102 @@ where the actual tool offset values are stored.
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{WorkOffsetClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MessageClassType}}
+  \label{type:MessageClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MessageClassType} Definition}
+  \label{table:MessageClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MessageClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ AssetChangedClassType}}
+  \label{type:AssetChangedClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{AssetChangedClassType} Definition}
+  \label{table:AssetChangedClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{AssetChangedClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ AssetRemovedClassType}}
+  \label{type:AssetRemovedClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{AssetRemovedClassType} Definition}
+  \label{table:AssetRemovedClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{AssetRemovedClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTStringEventClassType (See section \ref{type:MTStringEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ LineClassType}}
+  \label{type:LineClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{LineClassType} Definition}
+  \label{table:LineClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{LineClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\

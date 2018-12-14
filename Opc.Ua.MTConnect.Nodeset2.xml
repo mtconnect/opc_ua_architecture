@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2018-12-08T06:38:57Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2018-12-14T05:10:55Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2018-12-08T06:38:57Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2018-12-08T06:38:57Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2018-12-14T05:10:55Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2018-12-14T05:10:55Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -4095,7 +4095,7 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2870</Reference>
     </References>
     <Definition Name='AvailabilityDataType'>
-      <Field Name='AVAILABILE' Value='0'/>
+      <Field Name='AVAILABLE' Value='0'/>
       <Field Name='UNAVAILABLE' Value='1'/>
     </Definition>
   </UADataType>
@@ -4114,7 +4114,7 @@
       <ListOfLocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
         <LocalizedText>
           <Locale>en</Locale>
-          <Text>AVAILABILE</Text>
+          <Text>AVAILABLE</Text>
         </LocalizedText>
         <LocalizedText>
           <Locale>en</Locale>
@@ -4658,9 +4658,9 @@
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
-  <!-- Definition of Object MTControlledVocabClassType ns=1;i=2144 -->
-  <UAObjectType NodeId='ns=1;i=2144' BrowseName='1:MTControlledVocabClassType' IsAbstract='true'>
-    <DisplayName>MTControlledVocabClassType</DisplayName>
+  <!-- Definition of Object MTControlledVocabEventClassType ns=1;i=2900 -->
+  <UAObjectType NodeId='ns=1;i=2900' BrowseName='1:MTControlledVocabEventClassType' IsAbstract='true'>
+    <DisplayName>MTControlledVocabEventClassType</DisplayName>
     <References>
       <!-- HasSubtype - (Reverse) - MTEventClassType ns=1;i=2624   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2624</Reference>
@@ -4670,8 +4670,8 @@
   <UAObjectType NodeId='ns=1;i=2146' BrowseName='1:ActuatorStateClassType'>
     <DisplayName>ActuatorStateClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2148 ActiveStateDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2148</Reference>
     </References>
@@ -4692,8 +4692,8 @@
   <UAObjectType NodeId='ns=1;i=2149' BrowseName='1:AvailabilityClassType'>
     <DisplayName>AvailabilityClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2151 AvailabilityDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2151</Reference>
     </References>
@@ -4714,8 +4714,8 @@
   <UAObjectType NodeId='ns=1;i=2152' BrowseName='1:AxisCouplingClassType'>
     <DisplayName>AxisCouplingClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2154 AxisCouplingDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2154</Reference>
     </References>
@@ -4736,8 +4736,8 @@
   <UAObjectType NodeId='ns=1;i=2155' BrowseName='1:AxisInterlockClassType'>
     <DisplayName>AxisInterlockClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2157 ActiveStateDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2157</Reference>
     </References>
@@ -4758,8 +4758,8 @@
   <UAObjectType NodeId='ns=1;i=2158' BrowseName='1:AxisStateClassType'>
     <DisplayName>AxisStateClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2160 AxisStateDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2160</Reference>
     </References>
@@ -4780,8 +4780,8 @@
   <UAObjectType NodeId='ns=1;i=2161' BrowseName='1:ChuckInterlockClassType'>
     <DisplayName>ChuckInterlockClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2163 ActiveStateDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2163</Reference>
     </References>
@@ -4802,8 +4802,8 @@
   <UAObjectType NodeId='ns=1;i=2164' BrowseName='1:ChuckStateClassType'>
     <DisplayName>ChuckStateClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2166 OpenStateDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2166</Reference>
     </References>
@@ -4824,8 +4824,8 @@
   <UAObjectType NodeId='ns=1;i=2167' BrowseName='1:ControllerModeClassType'>
     <DisplayName>ControllerModeClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2169 ControllerModeDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2169</Reference>
     </References>
@@ -4846,8 +4846,8 @@
   <UAObjectType NodeId='ns=1;i=2170' BrowseName='1:ExecutionClassType'>
     <DisplayName>ExecutionClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2172 ExecutionDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2172</Reference>
     </References>
@@ -4868,8 +4868,8 @@
   <UAObjectType NodeId='ns=1;i=2173' BrowseName='1:CompositionStateClassType'>
     <DisplayName>CompositionStateClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2175 CompositionStateDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2175</Reference>
     </References>
@@ -4890,8 +4890,8 @@
   <UAObjectType NodeId='ns=1;i=2176' BrowseName='1:ControllerModeOverrideClassType'>
     <DisplayName>ControllerModeOverrideClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2178 OnOffDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2178</Reference>
     </References>
@@ -4912,8 +4912,8 @@
   <UAObjectType NodeId='ns=1;i=2179' BrowseName='1:DirectionClassType'>
     <DisplayName>DirectionClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2181 DirectionDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2181</Reference>
     </References>
@@ -4934,8 +4934,8 @@
   <UAObjectType NodeId='ns=1;i=2182' BrowseName='1:DoorStateClassType'>
     <DisplayName>DoorStateClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2184 OpenStateDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2184</Reference>
     </References>
@@ -4956,8 +4956,8 @@
   <UAObjectType NodeId='ns=1;i=2185' BrowseName='1:EmergencyStopClassType'>
     <DisplayName>EmergencyStopClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2187 EmergencyStopDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2187</Reference>
     </References>
@@ -4978,8 +4978,8 @@
   <UAObjectType NodeId='ns=1;i=2188' BrowseName='1:EndOfBarClassType'>
     <DisplayName>EndOfBarClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2190 YesNoDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2190</Reference>
     </References>
@@ -5000,8 +5000,8 @@
   <UAObjectType NodeId='ns=1;i=2191' BrowseName='1:EquipmentModeClassType'>
     <DisplayName>EquipmentModeClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2193 OnOffDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2193</Reference>
     </References>
@@ -5022,8 +5022,8 @@
   <UAObjectType NodeId='ns=1;i=2194' BrowseName='1:FunctionalModeClassType'>
     <DisplayName>FunctionalModeClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2196 FunctionalModeDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2196</Reference>
     </References>
@@ -5044,8 +5044,8 @@
   <UAObjectType NodeId='ns=1;i=2212' BrowseName='1:SpindleInterlockClassType'>
     <DisplayName>SpindleInterlockClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2214 ActiveStateDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2214</Reference>
     </References>
@@ -5066,8 +5066,8 @@
   <UAObjectType NodeId='ns=1;i=2215' BrowseName='1:PathModeClassType'>
     <DisplayName>PathModeClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2217 PathModeDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2217</Reference>
     </References>
@@ -5088,8 +5088,8 @@
   <UAObjectType NodeId='ns=1;i=2218' BrowseName='1:PowerStateClassType'>
     <DisplayName>PowerStateClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2220 OnOffDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2220</Reference>
     </References>
@@ -5110,8 +5110,8 @@
   <UAObjectType NodeId='ns=1;i=2221' BrowseName='1:ProgramEditClassType'>
     <DisplayName>ProgramEditClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2223 ProgramEditDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2223</Reference>
     </References>
@@ -5132,8 +5132,8 @@
   <UAObjectType NodeId='ns=1;i=2224' BrowseName='1:RotaryModeClassType'>
     <DisplayName>RotaryModeClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2226 RotaryModeDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2226</Reference>
     </References>
@@ -5154,8 +5154,8 @@
   <UAObjectType NodeId='ns=1;i=2227' BrowseName='1:InterfaceStateClassType'>
     <DisplayName>InterfaceStateClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2229 InterfaceStatusDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2229</Reference>
     </References>
@@ -5176,8 +5176,8 @@
   <UAObjectType NodeId='ns=1;i=2231' BrowseName='1:MaterialFeedClassType'>
     <DisplayName>MaterialFeedClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2233 InterfaceStateDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2233</Reference>
     </References>
@@ -5198,8 +5198,8 @@
   <UAObjectType NodeId='ns=1;i=2235' BrowseName='1:MaterialChangeClassType'>
     <DisplayName>MaterialChangeClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2237 InterfaceStateDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2237</Reference>
     </References>
@@ -5220,8 +5220,8 @@
   <UAObjectType NodeId='ns=1;i=2238' BrowseName='1:MaterialRetractClassType'>
     <DisplayName>MaterialRetractClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2240 InterfaceStateDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2240</Reference>
     </References>
@@ -5242,8 +5242,8 @@
   <UAObjectType NodeId='ns=1;i=2241' BrowseName='1:MaterialLoadClassType'>
     <DisplayName>MaterialLoadClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2243 InterfaceStateDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2243</Reference>
     </References>
@@ -5264,8 +5264,8 @@
   <UAObjectType NodeId='ns=1;i=2244' BrowseName='1:MaterialUnloadClassType'>
     <DisplayName>MaterialUnloadClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2246 InterfaceStateDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2246</Reference>
     </References>
@@ -5286,8 +5286,8 @@
   <UAObjectType NodeId='ns=1;i=2247' BrowseName='1:OpenDoorClassType'>
     <DisplayName>OpenDoorClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2249 InterfaceStateDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2249</Reference>
     </References>
@@ -5308,8 +5308,8 @@
   <UAObjectType NodeId='ns=1;i=2250' BrowseName='1:CloseDoorClassType'>
     <DisplayName>CloseDoorClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2252 InterfaceStateDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2252</Reference>
     </References>
@@ -5330,8 +5330,8 @@
   <UAObjectType NodeId='ns=1;i=2253' BrowseName='1:OpenChuckClassType'>
     <DisplayName>OpenChuckClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2255 InterfaceStateDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2255</Reference>
     </References>
@@ -5352,8 +5352,8 @@
   <UAObjectType NodeId='ns=1;i=2256' BrowseName='1:CloseChuckClassType'>
     <DisplayName>CloseChuckClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2258 InterfaceStateDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2258</Reference>
     </References>
@@ -5374,8 +5374,8 @@
   <UAObjectType NodeId='ns=1;i=2259' BrowseName='1:PartChangeClassType'>
     <DisplayName>PartChangeClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTControlledVocabClassType ns=1;i=2144   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
+      <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2900   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2900</Reference>
       <!-- HasProperty -  - EnumValues ns=1;i=2261 InterfaceStateDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2261</Reference>
     </References>
@@ -5864,6 +5864,38 @@
   <!-- Definition of Object WorkOffsetClassType ns=1;i=2401 -->
   <UAObjectType NodeId='ns=1;i=2401' BrowseName='1:WorkOffsetClassType'>
     <DisplayName>WorkOffsetClassType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - MTStringEventClassType ns=1;i=2361   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2361</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object MessageClassType ns=1;i=2894 -->
+  <UAObjectType NodeId='ns=1;i=2894' BrowseName='1:MessageClassType'>
+    <DisplayName>MessageClassType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - MTStringEventClassType ns=1;i=2361   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2361</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object AssetChangedClassType ns=1;i=2896 -->
+  <UAObjectType NodeId='ns=1;i=2896' BrowseName='1:AssetChangedClassType'>
+    <DisplayName>AssetChangedClassType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - MTStringEventClassType ns=1;i=2361   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2361</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object AssetRemovedClassType ns=1;i=2898 -->
+  <UAObjectType NodeId='ns=1;i=2898' BrowseName='1:AssetRemovedClassType'>
+    <DisplayName>AssetRemovedClassType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - MTStringEventClassType ns=1;i=2361   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2361</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object LineClassType ns=1;i=2892 -->
+  <UAObjectType NodeId='ns=1;i=2892' BrowseName='1:LineClassType'>
+    <DisplayName>LineClassType</DisplayName>
     <References>
       <!-- HasSubtype - (Reverse) - MTStringEventClassType ns=1;i=2361   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2361</Reference>

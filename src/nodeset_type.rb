@@ -291,6 +291,14 @@ class NodesetType < Type
       end
       field.add_element('Description').add_text(r.documentation) if r.documentation
     end
+
+    # Generate Default encoding
+    eid = Ids.id_for("#{@name}/Default Binary")
+    Root << REXML::Comment.new("Default binary encoding of the data type")
+    erefs, enode = node('UAObject', eid, "Default Binary")
+    node_reference(erefs, @name, 'HasEncoding',  node_id, forward: false)
+    node_reference(erefs, 'DataTypeEncodingType', 'HasTypeDefinition', Ids['DataTypeEncodingType'])
+    # Skip  <Reference ReferenceType="HasDescription">i=8241</Reference>
   end
 
   def generate_instance

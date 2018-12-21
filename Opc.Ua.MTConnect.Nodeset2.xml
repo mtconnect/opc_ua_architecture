@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2018-12-14T05:10:55Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2018-12-21T20:11:03Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2018-12-14T05:10:55Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2018-12-14T05:10:55Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2018-12-21T20:11:03Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2018-12-21T20:11:03Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -1072,6 +1072,16 @@
       <Field Name='AssetType' DataType='String'/>
     </Definition>
   </UADataType>
+  <!--Default binary encoding of the data type-->
+  <UAObject NodeId='ns=1;i=2902' BrowseName='1:Default Binary'>
+    <DisplayName>Default Binary</DisplayName>
+    <References>
+      <!-- HasEncoding - (Reverse) - AssetEventDataType ns=1;i=2611   -->
+      <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2611</Reference>
+      <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
+      <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
+    </References>
+  </UAObject>
   <!-- Definition of Enumeration CoordinateSystemType ns=1;i=2628 -->
   <UADataType NodeId='ns=1;i=2628' BrowseName='1:CoordinateSystemType'>
     <DisplayName>CoordinateSystemType</DisplayName>
@@ -3160,6 +3170,16 @@
       </Field>
     </Definition>
   </UADataType>
+  <!--Default binary encoding of the data type-->
+  <UAObject NodeId='ns=1;i=2903' BrowseName='1:Default Binary'>
+    <DisplayName>Default Binary</DisplayName>
+    <References>
+      <!-- HasEncoding - (Reverse) - ThreeSpacePositionDataType ns=1;i=2630   -->
+      <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2630</Reference>
+      <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
+      <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
+    </References>
+  </UAObject>
   <!-- Definition of Object MTConditionType ns=1;i=2646 -->
   <UAObjectType NodeId='ns=1;i=2646' BrowseName='1:MTConditionType'>
     <DisplayName>MTConditionType</DisplayName>

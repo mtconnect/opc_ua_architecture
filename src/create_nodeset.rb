@@ -33,7 +33,7 @@ NamespaceUri = 'http://opcfoundation.org/UA/MTConnect/v2/'
 document = REXML::Document.new
 document << REXML::XMLDecl.new("1.0", "UTF-8")
 
-Root = REXML::Element.new('UANodeSet')
+Root = document.add_element('UANodeSet')
 Root.add_namespace('xsd', "http://www.w3.org/2001/XMLSchema")
 Root.add_namespace('xsi', "http://www.w3.org/2001/XMLSchema-instance")
 Root.add_namespace("http://opcfoundation.org/UA/2011/03/UANodeSet.xsd")
@@ -72,7 +72,8 @@ if Ids.empty?
           e.attribute('SymbolicName')
 
         if name and id and (e.name =~ /Type$/o or
-                (sym and sym.value =~ /ModellingRule/o))
+                            (sym and (sym.value =~ /ModellingRule/o or
+                                      sym.value =~ /BinarySchema/o)))
           Ids[name.value] = id.value 
         end
       end
@@ -87,8 +88,22 @@ Ids.each_alias do |a|
   als.add_element('Alias', { 'Alias' => a }).add_text(Ids.raw_id(a))
 end
 
+TypeDict = REXML::Document.new
+TypeDict << REXML::XMLDecl.new("1.0", "UTF-8")
+
+TypeDictRoot = TypeDict.add_element('opc:TypeDictionary', {'DefaultByteOrder' => "LittleEndian",
+                                                           'TargetNamespace' => NamespaceUri })
+TypeDictRoot.add_namespace('opc', "http://opcfoundation.org/BinarySchema/")
+TypeDictRoot.add_namespace('xsi', "http://www.w3.org/2001/XMLSchema-instance")
+TypeDictRoot.add_namespace('ua', "http://opcfoundation.org/UA/")
+TypeDictRoot.add_namespace('tns', "http://opcfoundation.org/UA/")
+
+TypeDictRoot.add_element('opc:Import', {'Namespace' => 'http://opcfoundation.org/BinarySchema/'})
+
 NodesetType.resolve_node_ids
 NodesetType.check_ids
+
+TypeDictId = Ids.id_for('Opc.Ua.MTConnect')
 
 NodesetModel.generate_nodeset('Namespace Metadata')
 NodesetModel.generate_nodeset('Components')
@@ -137,15 +152,27 @@ end
 
 if error
   puts "XML is not valid"
-  exit 1
+#  exit 1
 end
 
+formatter = REXML::Formatters::Pretty.new(2)
+formatter.compact = true
+
+
+text = ""
+formatter.write(TypeDict, text)
+type = Type.type_for_name('Opc.Ua.MTConnect')
+type.add_base64_value(text)
+
+File.open('./MTConnect.TypeDictionary.xml', 'w') do |f|
+  f << text
+end  
+
+
 File.open('./Opc.Ua.MTConnect.Nodeset2.xml', 'w') do |f|
-  document << Root
-  formatter = REXML::Formatters::Pretty.new(2)
-  formatter.compact = true
   formatter.write(document, f)  
 end
+
 
 Ids.save
 

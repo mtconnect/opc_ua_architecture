@@ -180,10 +180,10 @@ class Type
 
   def get_attribute_like(pattern, stereo = nil)
     @relations.each do |a|
-      # puts "---- Checking #{a.name} #{pattern.inspect} #{stereo.inspect}"
+      #puts "---- Checking #{a.name} #{pattern.inspect} #{stereo.inspect}"
       if a.name =~ pattern and
         (stereo.nil? or (a.stereotype and a.stereotype.name =~ stereo))
-        # puts "----  >> Found #{a.name}"
+        #puts "----  >> Found #{a.name}"
         return a
       end
     end

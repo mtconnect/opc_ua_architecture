@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<opc:TypeDictionary DefaultByteOrder='LittleEndian' TargetNamespace='http://opcfoundation.org/UA/MTConnect/v2/' xmlns:opc='http://opcfoundation.org/BinarySchema/' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:ua='http://opcfoundation.org/UA/' xmlns:tns='http://opcfoundation.org/UA/'>
+  <opc:Import Namespace='http://opcfoundation.org/BinarySchema/'/>
+  <opc:StructureType Name='1:AssetEventDataType'>
+    <Documentation>The encoding for AssetEventDataType</Documentation>
+    <opc:Field Name='AssetId' TypeName='opc:String'/>
+    <opc:Field Name='AssetType' TypeName='opc:String'/>
+  </opc:StructureType>
+  <opc:StructureType Name='1:ThreeSpacePositionDataType'>
+    <Documentation>The encoding for ThreeSpacePositionDataType</Documentation>
+    <opc:Field Name='X' TypeName='opc:Double'/>
+    <opc:Field Name='Y' TypeName='opc:Double'/>
+    <opc:Field Name='Z' TypeName='opc:Double'/>
+  </opc:StructureType>
+</opc:TypeDictionary>

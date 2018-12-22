@@ -151,10 +151,12 @@ class NodesetType < Type
   end
 
   def create_relationship(refs, a, owner, path)
+    #puts "    Creating relationship"
     if a.is_property?
       reference(refs, a, path)
       variable_property(a, owner, path)
     elsif a.is_a? Relation::Association
+      #puts "      Checking OPC object ref"
       if @type == 'UMLObject' && a.target.type.is_opc?
         create_opc_object_reference(refs, a)
       else
@@ -294,22 +296,56 @@ class NodesetType < Type
 
     # Generate Default encoding
     eid = Ids.id_for("#{@name}/Default Binary")
+    did = Ids.id_for("#{@name}/Default Binary/Description")
+
     Root << REXML::Comment.new("Default binary encoding of the data type")
     erefs, enode = node('UAObject', eid, "Default Binary")
     node_reference(erefs, @name, 'HasEncoding',  node_id, forward: false)
     node_reference(erefs, 'DataTypeEncodingType', 'HasTypeDefinition', Ids['DataTypeEncodingType'])
-    # Skip  <Reference ReferenceType="HasDescription">i=8241</Reference>
+    node_reference(erefs, 'HasDescription', 'HasDescription', did)
+
+    schema = Ids["#{Namespace}:Opc.Ua.MTConnect"]
+    Root << REXML::Comment.new("Data type encoding description")
+    drefs, dnode = node('UAVariable', did, @name, data_type: 'String', parent: schema)
+    node_reference(drefs, 'DataTypeDescriptionType', 'HasTypeDefinition', Ids['DataTypeDescriptionType'])
+    node_reference(drefs, 'Opc.Ua', 'HasComponent', schema, forward: false)
+
+    value = dnode.add_element('Value').add_element('String',
+                          {'xmlns' => 'http://opcfoundation.org/UA/2008/02/Types.xsd'}).
+              add_text(browse_name)
+
+    # Create entry in TypeDictionary
+    struct = TypeDictRoot.add_element('opc:StructureType', {'Name' => browse_name })
+    struct.add_element('Documentation').add_text("The encoding for #{@name}")
+    @relations.each do |r|
+      field = struct.add_element('opc:Field', { 'Name' => r.name, 'TypeName' =>  "opc:#{r.target.type.name}" })
+    end
   end
 
-  def generate_instance
-    puts "  => Object Instance #{@name}"
+  def generate_instance    
+    puts "  => #{@classifier.base_type} #{@name}"
     Root << REXML::Comment.new(" Instantiation of Object #{@name} #{node_id} ")
-    refs, node = node('UAObject', node_id, @name)
-    
+    if (@classifier.base_type == 'Variable')
+      puts "    - #{@classifier.variable_data_type.name}"
+      refs, @node = node('UAVariable', node_id, @name, data_type: @classifier.variable_data_type.node_alias)
+    else
+      refs, @node = node('UAObject', node_id, @name)
+    end
     node_reference(refs, @classifier.name, 'HasTypeDefinition', @classifier.node_id)
 
     path = []
     relationships(refs, self, path)
+  end
+
+  def add_base64_value(text)
+    if @node
+      e = @node.add_element('Value').
+        add_element('ByteString', { 'xmlns' => "http://opcfoundation.org/UA/2008/02/Types.xsd"})
+      e << REXML::Text.new([text].pack('m'), true, nil, true)
+    else
+      puts "!!!! Cannot add text to node"
+      raise "Error generating text"
+    end
   end
 
 

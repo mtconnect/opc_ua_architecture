@@ -1,4 +1,4 @@
-% Generated 2018-12-13 21:11:04 -0800
+% Generated 2018-12-22 19:57:06 -0800
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -123,7 +123,7 @@ Has\-Component & Event & <MT\-Message> & \multicolumn{2}{l|}{MTMessageType[]} & 
 Has\-Component & Variable & <MT\-Asset\-Event> & Asset\-Event\-Data\-Type[] & MT\-Asset\-Event\-Type & Optional \\
 Has\-Component & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType[]} & Optional \\
 Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType[]} & Optional \\
-Has\-Component & Variable & <MT\-Three\-Space\-Sample> & Three\-Space\-Position\-Data\-Type[] & MT\-Three\-Space\-Sample\-Type & Optional \\
+Has\-Component & Variable & <MT\-Three\-Space\-Sample> & Three\-Space\-Sample\-Data\-Type[] & MT\-Three\-Space\-Sample\-Type & Optional \\
 Organizes & Object & Components & MT\-Component\-Type[] & Folder\-Type & Optional \\
 Organizes & Object & Compositions & MT\-Composition\-Type[] & Folder\-Type & Optional \\
 \end{tabu}
@@ -2162,7 +2162,7 @@ the coordinates are given in millimeters. The EngineeringUnits will always be se
 BrowseName & \multicolumn{5}{|l|}{MTThreeSpaceSampleType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 ValueRank & \multicolumn{5}{|l|}{-1} \\
-DataType & \multicolumn{5}{|l|}{ThreeSpacePositionDataType} \\
+DataType & \multicolumn{5}{|l|}{ThreeSpaceSampleDataType} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of BaseDataVariableType (See \cite{UAPart8} Documentation)} \\
@@ -2200,8 +2200,8 @@ Has\-Property & Variable & Engineering\-Units & EUInformation & Property\-Type &
 \item Mixes in \texttt{MTNumericDataItemType}, see See section \ref{type:MTNumericDataItemType}
 \end{itemize}
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ ThreeSpacePositionDataType}}
-  \label{type:ThreeSpacePositionDataType}
+\subsubsection{Defintion of \texttt{ ThreeSpaceSampleDataType}}
+  \label{type:ThreeSpaceSampleDataType}
 
 \FloatBarrier
 
@@ -2209,8 +2209,8 @@ Represents a position in a three space coordinate system. The positions must be 
 
 \begin{table}[ht]
 \centering 
-  \caption{\texttt{ThreeSpacePositionDataType} DataType}
-  \label{data-type:ThreeSpacePositionDataType}
+  \caption{\texttt{ThreeSpaceSampleDataType} DataType}
+  \label{data-type:ThreeSpaceSampleDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|l|} \everyrow{\hline}
 \hline

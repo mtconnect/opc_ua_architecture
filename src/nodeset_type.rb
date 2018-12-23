@@ -254,7 +254,10 @@ class NodesetType < Type
 
     value_ele = REXML::Element.new('Value')
     values = value_ele.add_element('ListOfLocalizedText',
-                               { 'xmlns' => 'http://opcfoundation.org/UA/2008/02/Types.xsd'})
+                                   { 'xmlns' => 'http://opcfoundation.org/UA/2008/02/Types.xsd'})
+
+    # Create type dict entry
+    struct = TypeDictRoot.add_element('opc:EnumeratedType', {'Name' => browse_name, 'LengthInBits' => '32' })
     
     defs = node.add_element('Definition', { 'Name' => @name })
     @literals.each do |l|
@@ -264,7 +267,10 @@ class NodesetType < Type
 
       text = values.add_element('LocalizedText')
       text.add_element('Locale').add_text('en')
-      text.add_element('Text').add_text(name)      
+      text.add_element('Text').add_text(name)
+
+      # For type dict
+      struct.add_element('opc:EnumeratedValue', { 'Name' => name, 'Value' =>  value})      
     end
     
     # now create the enum strings property
@@ -276,24 +282,11 @@ class NodesetType < Type
     node_reference(refs, 'Owner', 'HasProperty', node_id, forward: false)
 
     node << value_ele
+
+    create_default_encoding
   end
 
-  def generate_data_type
-    puts "  => DataType #{@name}"
-    Root << REXML::Comment.new(" Definition of DataType #{@name} #{node_id} ")
-    refs, node = node('UADataType', node_id, @name)
-    #node.add_element('Description').add_text(@documentation) if @documentation
-    node_reference(refs, 'BaseDataType', 'HasSubtype', Ids['Structure'], forward: false)
-    
-    defs = node.add_element('Definition', { 'Name' => @name })
-    @relations.each do |r|
-      field = defs.add_element('Field', { 'Name' => r.name, 'DataType' =>  r.target.type.node_alias })
-      if r.multiplicity =~ /..\*$/
-        field.add_attribute("ValueRank", "1")
-      end
-      field.add_element('Description').add_text(r.documentation) if r.documentation
-    end
-
+  def create_default_encoding
     # Generate Default encoding
     eid = Ids.id_for("#{@name}/Default Binary")
     did = Ids.id_for("#{@name}/Default Binary/Description")
@@ -313,6 +306,25 @@ class NodesetType < Type
     value = dnode.add_element('Value').add_element('String',
                           {'xmlns' => 'http://opcfoundation.org/UA/2008/02/Types.xsd'}).
               add_text(browse_name)
+  end
+
+  def generate_data_type
+    puts "  => DataType #{@name}"
+    Root << REXML::Comment.new(" Definition of DataType #{@name} #{node_id} ")
+    refs, node = node('UADataType', node_id, @name)
+    #node.add_element('Description').add_text(@documentation) if @documentation
+    node_reference(refs, 'BaseDataType', 'HasSubtype', Ids['Structure'], forward: false)
+    
+    defs = node.add_element('Definition', { 'Name' => @name })
+    @relations.each do |r|
+      field = defs.add_element('Field', { 'Name' => r.name, 'DataType' =>  r.target.type.node_alias })
+      if r.multiplicity =~ /..\*$/
+        field.add_attribute("ValueRank", "1")
+      end
+      field.add_element('Description').add_text(r.documentation) if r.documentation
+    end
+
+    create_default_encoding
 
     # Create entry in TypeDictionary
     struct = TypeDictRoot.add_element('opc:StructureType', {'Name' => browse_name })
@@ -341,7 +353,7 @@ class NodesetType < Type
     if @node
       e = @node.add_element('Value').
         add_element('ByteString', { 'xmlns' => "http://opcfoundation.org/UA/2008/02/Types.xsd"})
-      e << REXML::Text.new([text].pack('m'), true, nil, true)
+      e << REXML::CData.new([text].pack('m'), true)
     else
       puts "!!!! Cannot add text to node"
       raise "Error generating text"

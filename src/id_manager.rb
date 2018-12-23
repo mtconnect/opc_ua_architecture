@@ -2,23 +2,28 @@ require 'csv'
 require 'set'
 
 class IdManager
-  def initialize(file, start = 2000)
+  def initialize(file, clean = false, start = 2000)
     @file = file
     @ids = Hash.new
     @aliases = Set.new
     @next_id = start
+    @referenced = Set.new
+    pat = /#{Namespace}:/o
 
     CSV.foreach(@file) do |key, id, als|
-      @ids[key] = id
-      if id =~ /ns=1;i=([0-9]+)$/o
-        v = $1.to_i
-        @next_id = v + 1 if v >= @next_id
+      if !clean or key =~ pat
+        @ids[key] = id
+        if id =~ /ns=1;i=([0-9]+)$/o
+          v = $1.to_i
+          @next_id = v + 1 if v >= @next_id
+        end
+        @aliases << key if eval(als)
       end
-      @aliases << key if eval(als)
     end
     puts "Next is #{@next_id}"
     
   rescue
+    p $!
     puts "File #{@file} cannot be found, starting ids from #{start}"
   end
 
@@ -31,10 +36,12 @@ class IdManager
   end
 
   def add(key, id)
+    @referenced << key
     @ids[key] = id
   end
 
   def alias_or_id(key)
+    @referenced << key
     if @aliases.member?(key)
       key
     else
@@ -47,6 +54,7 @@ class IdManager
   end
 
   def raw_id(key)
+    @referenced << key
     @ids[key]
   end
 
@@ -56,11 +64,14 @@ class IdManager
 
   def []=(key, id)
     # puts "Key #{key} with #{id} already defined" if @ids.include?(key)
+    @referenced << key
     @ids[key] = id unless @ids.include?(key)
   end
 
   def id_for(key)
+    @referenced << key    
     return @ids[key] if @ids.include?(key)
+    
     id = "ns=#{Namespace};i=#{@next_id}"
     @ids[key] = id
     @next_id += 1
@@ -76,9 +87,12 @@ class IdManager
   end
 
   def save
+    pat = /#{Namespace}:/o
     CSV.open(@file, 'wb') do |csv|
       @ids.keys.sort.each do |key|
-        csv << [key, @ids[key], @aliases.include?(key)]
+        if key !~ pat or @referenced.include?(key)
+          csv << [key, @ids[key], @aliases.include?(key)]
+        end
       end
     end
   end

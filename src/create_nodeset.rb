@@ -8,6 +8,9 @@ require 'nokogiri'
 require 'time'
 require 'id_manager'
 
+Namespace = '1'
+NamespaceUri = 'http://opcfoundation.org/UA/MTConnect/v2/'
+
 uml = File.open('MTConnect OPC-UA Devices.mdj').read
 doc = JSON.parse(uml)
 models = doc['ownedElements'].dup
@@ -25,10 +28,10 @@ Type.connect_children
 
 puts "\nGenerating Nodeset"
 
-Ids = IdManager.new('MTConnectNodeIds.csv')
-Namespace = '1'
-NamespaceUri = 'http://opcfoundation.org/UA/MTConnect/v2/'
+clean = (ARGV.first and ARGV.first == '-r')
+p clean
 
+Ids = IdManager.new('MTConnectNodeIds.csv', clean)
 
 document = REXML::Document.new
 document << REXML::XMLDecl.new("1.0", "UTF-8")
@@ -56,7 +59,7 @@ Root.add_element('Models').
 
 
 # Parse Reference Documents.
-if Ids.empty?
+if Ids.empty? or clean
   ['OPC_UA_Nodesets/Opc.Ua.NodeSet2.xml'].each do |f|
     puts "Parsing OPC UA Nodeset: #{f}"
     File.open(f) do |x|

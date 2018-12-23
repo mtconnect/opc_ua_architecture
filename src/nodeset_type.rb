@@ -288,8 +288,8 @@ class NodesetType < Type
 
   def create_default_encoding
     # Generate Default encoding
-    eid = Ids.id_for("#{@name}/Default Binary")
-    did = Ids.id_for("#{@name}/Default Binary/Description")
+    eid = Ids.id_for("#{browse_name}/Default Binary")
+    did = Ids.id_for("#{browse_name}/Default Binary/Description")
 
     Root << REXML::Comment.new("Default binary encoding of the data type")
     erefs, enode = node('UAObject', eid, "Default Binary")

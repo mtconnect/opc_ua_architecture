@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2018-12-23T03:56:56Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2018-12-23T05:05:13Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2018-12-23T03:56:56Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2018-12-23T03:56:56Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2018-12-23T05:05:13Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2018-12-23T05:05:13Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -1363,19 +1363,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2910' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=2964' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - CoordinateSystemType ns=1;i=2636   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2636</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2911   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2911</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=2965   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=2965</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2911' BrowseName='1:CoordinateSystemType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=2965' BrowseName='1:CoordinateSystemType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>CoordinateSystemType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -1461,19 +1461,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2912' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=2966' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - DataItemResetValueType ns=1;i=2637   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2637</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2913   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2913</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=2967   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=2967</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2913' BrowseName='1:DataItemResetValueType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=2967' BrowseName='1:DataItemResetValueType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>DataItemResetValueType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -1733,19 +1733,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2914' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=2968' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - MTCategoryType ns=1;i=2635   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2635</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2915   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2915</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=2969   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=2969</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2915' BrowseName='1:MTCategoryType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=2969' BrowseName='1:MTCategoryType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>MTCategoryType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -2619,19 +2619,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2916' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=2970' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - MTRepresentationType ns=1;i=2634   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2634</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2917   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2917</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=2971   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=2971</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2917' BrowseName='1:MTRepresentationType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=2971' BrowseName='1:MTRepresentationType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>MTRepresentationType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -3979,19 +3979,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2918' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=2972' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - MTSeverityDataType ns=1;i=2663   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2663</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2919   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2919</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=2973   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=2973</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2919' BrowseName='1:MTSeverityDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=2973' BrowseName='1:MTSeverityDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>MTSeverityDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -4042,19 +4042,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2920' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=2974' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - QualifierDataType ns=1;i=2662   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2662</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2921   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2921</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=2975   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=2975</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2921' BrowseName='1:QualifierDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=2975' BrowseName='1:QualifierDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>QualifierDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -4513,19 +4513,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2922' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=2976' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - ActiveStateDataType ns=1;i=2197   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2197</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2923   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2923</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=2977   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=2977</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2923' BrowseName='1:ActiveStateDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=2977' BrowseName='1:ActiveStateDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>ActiveStateDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -4576,19 +4576,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2924' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=2978' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - AvailabilityDataType ns=1;i=2198   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2198</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2925   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2925</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=2979   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=2979</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2925' BrowseName='1:AvailabilityDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=2979' BrowseName='1:AvailabilityDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>AvailabilityDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -4649,19 +4649,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2926' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=2980' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - AxisCouplingDataType ns=1;i=2199   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2199</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2927   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2927</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=2981   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=2981</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2927' BrowseName='1:AxisCouplingDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=2981' BrowseName='1:AxisCouplingDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>AxisCouplingDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -4722,19 +4722,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2928' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=2982' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - AxisStateDataType ns=1;i=2200   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2200</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2929   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2929</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=2983   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=2983</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2929' BrowseName='1:AxisStateDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=2983' BrowseName='1:AxisStateDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>AxisStateDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -4835,19 +4835,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2930' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=2984' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - CompositionStateDataType ns=1;i=2202   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2202</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2931   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2931</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=2985   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=2985</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2931' BrowseName='1:CompositionStateDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=2985' BrowseName='1:CompositionStateDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>CompositionStateDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -4913,19 +4913,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2932' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=2986' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - ControllerModeDataType ns=1;i=2203   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2203</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2933   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2933</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=2987   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=2987</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2933' BrowseName='1:ControllerModeDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=2987' BrowseName='1:ControllerModeDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>ControllerModeDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -4986,19 +4986,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2934' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=2988' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - DirectionDataType ns=1;i=2205   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2205</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2935   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2935</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=2989   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=2989</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2935' BrowseName='1:DirectionDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=2989' BrowseName='1:DirectionDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>DirectionDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -5049,19 +5049,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2936' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=2990' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - EmergencyStopDataType ns=1;i=2207   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2207</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2937   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2937</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=2991   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=2991</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2937' BrowseName='1:EmergencyStopDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=2991' BrowseName='1:EmergencyStopDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>EmergencyStopDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -5142,19 +5142,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2938' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=2992' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - ExecutionDataType ns=1;i=2262   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2262</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2939   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2939</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=2993   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=2993</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2939' BrowseName='1:ExecutionDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=2993' BrowseName='1:ExecutionDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>ExecutionDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -5220,19 +5220,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2940' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=2994' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - FunctionalModeDataType ns=1;i=2208   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2208</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2941   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2941</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=2995   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=2995</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2941' BrowseName='1:FunctionalModeDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=2995' BrowseName='1:FunctionalModeDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>FunctionalModeDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -5298,19 +5298,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2942' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=2996' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - InterfaceStateDataType ns=1;i=2234   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2234</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2943   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2943</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=2997   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=2997</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2943' BrowseName='1:InterfaceStateDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=2997' BrowseName='1:InterfaceStateDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>InterfaceStateDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -5361,19 +5361,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2944' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=2998' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - InterfaceStatusDataType ns=1;i=2230   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2230</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2945   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2945</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=2999   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=2999</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2945' BrowseName='1:InterfaceStatusDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=2999' BrowseName='1:InterfaceStatusDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>InterfaceStatusDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -6158,19 +6158,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2946' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=3000' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - OnOffDataType ns=1;i=2204   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2204</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2947   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2947</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=3001   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=3001</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2947' BrowseName='1:OnOffDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=3001' BrowseName='1:OnOffDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>OnOffDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -6226,19 +6226,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2948' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=3002' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - OpenStateDataType ns=1;i=2201   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2201</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2949   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2949</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=3003   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=3003</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2949' BrowseName='1:OpenStateDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=3003' BrowseName='1:OpenStateDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>OpenStateDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -6299,19 +6299,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2950' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=3004' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - PathModeDataType ns=1;i=2209   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2209</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2951   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2951</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=3005   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=3005</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2951' BrowseName='1:PathModeDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=3005' BrowseName='1:PathModeDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>PathModeDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -6367,19 +6367,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2952' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=3006' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - ProgramEditDataType ns=1;i=2210   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2210</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2953   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2953</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=3007   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=3007</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2953' BrowseName='1:ProgramEditDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=3007' BrowseName='1:ProgramEditDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>ProgramEditDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -6435,19 +6435,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2954' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=3008' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - RotaryModeDataType ns=1;i=2211   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2211</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2955   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2955</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=3009   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=3009</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2955' BrowseName='1:RotaryModeDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=3009' BrowseName='1:RotaryModeDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>RotaryModeDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -6498,19 +6498,19 @@ cnk+
     </Value>
   </UAVariable>
   <!--Default binary encoding of the data type-->
-  <UAObject NodeId='ns=1;i=2956' BrowseName='1:Default Binary'>
+  <UAObject NodeId='ns=1;i=3010' BrowseName='1:Default Binary'>
     <DisplayName>Default Binary</DisplayName>
     <References>
       <!-- HasEncoding - (Reverse) - YesNoDataType ns=1;i=2206   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2206</Reference>
       <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=2957   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=2957</Reference>
+      <!-- HasDescription -  - HasDescription ns=1;i=3011   -->
+      <Reference ReferenceType='HasDescription'>ns=1;i=3011</Reference>
     </References>
   </UAObject>
   <!--Data type encoding description-->
-  <UAVariable NodeId='ns=1;i=2957' BrowseName='1:YesNoDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
+  <UAVariable NodeId='ns=1;i=3011' BrowseName='1:YesNoDataType' DataType='String' ParentNodeId='ns=1;i=2903'>
     <DisplayName>YesNoDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->

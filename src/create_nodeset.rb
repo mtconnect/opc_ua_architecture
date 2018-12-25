@@ -101,7 +101,21 @@ TypeDictRoot.add_namespace('xsi', "http://www.w3.org/2001/XMLSchema-instance")
 TypeDictRoot.add_namespace('ua', "http://opcfoundation.org/UA/")
 TypeDictRoot.add_namespace('tns', "http://opcfoundation.org/UA/")
 
-TypeDictRoot.add_element('opc:Import', {'Namespace' => 'http://opcfoundation.org/BinarySchema/'})
+TypeDictRoot.add_element('opc:Import', {
+                           'Namespace' => "http://opcfoundation.org/UA/",
+                           'Location' => "Opc.Ua.BinarySchema.bsd" })
+
+XmlTypeDict = REXML::Document.new
+XmlTypeDict << REXML::XMLDecl.new("1.0", "UTF-8")
+
+XmlTypeDictRoot = XmlTypeDict.add_element('xs:schema',
+                   { 'xmlns:xs' => "http://www.w3.org/2001/XMLSchema",
+                     'xmlns:ua' => "http://opcfoundation.org/UA/2008/02/Types.xsd",
+                     'xmlns:mtc' => ="http://opcfoundation.org/UA/MTConnect/Types.xsd",
+                     'targetNamespace' => "http://opcfoundation.org/UA/MTConnect/v2/Types.xsd",
+                     'elementFormDefault' => "qualified" })
+
+XmlTypeDictRoot.add_ement('xs:import', { 'namespace' => "http://opcfoundation.org/UA/2008/02/Types.xsd" })
 
 NodesetType.resolve_node_ids
 NodesetType.check_ids
@@ -160,7 +174,6 @@ end
 
 formatter = REXML::Formatters::Pretty.new(2)
 formatter.compact = true
-
 
 text = ""
 formatter.write(TypeDict, text)

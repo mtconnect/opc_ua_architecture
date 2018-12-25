@@ -257,7 +257,7 @@ class NodesetType < Type
                                    { 'xmlns' => 'http://opcfoundation.org/UA/2008/02/Types.xsd'})
 
     # Create type dict entry
-    struct = TypeDictRoot.add_element('opc:EnumeratedType', {'Name' => browse_name, 'LengthInBits' => '32' })
+    struct = TypeDictRoot.add_element('opc:EnumeratedType', {'Name' => @name, 'LengthInBits' => '32', 'BaseType' => "ua:ExtensionObject" })
     
     defs = node.add_element('Definition', { 'Name' => @name })
     @literals.each do |l|
@@ -283,29 +283,63 @@ class NodesetType < Type
 
     node << value_ele
 
-    create_default_encoding
+    create_default_encoding(struct)
   end
 
-  def create_default_encoding
+  def create_binary_encoding(frag)
+  end
+
+  def create_xml_encoding
+  end
+
+  def create_default_encoding(frag, encoding)
     # Generate Default encoding
     eid = Ids.id_for("#{browse_name}/Default Binary")
     did = Ids.id_for("#{browse_name}/Default Binary/Description")
+    fid = Ids.id_for("#{browse_name}/Default Binary/Description/DictionaryFragment")
 
     Root << REXML::Comment.new("Default binary encoding of the data type")
-    erefs, enode = node('UAObject', eid, "Default Binary")
+    erefs, enode = node('UAObject', eid, "Default Binary", prefix: false)
     node_reference(erefs, @name, 'HasEncoding',  node_id, forward: false)
     node_reference(erefs, 'DataTypeEncodingType', 'HasTypeDefinition', Ids['DataTypeEncodingType'])
     node_reference(erefs, 'HasDescription', 'HasDescription', did)
 
     schema = Ids["#{Namespace}:Opc.Ua.MTConnect"]
-    Root << REXML::Comment.new("Data type encoding description")
+    Root << REXML::Comment.new("DataTypeDescription for #{@name}")
     drefs, dnode = node('UAVariable', did, @name, data_type: 'String', parent: schema)
     node_reference(drefs, 'DataTypeDescriptionType', 'HasTypeDefinition', Ids['DataTypeDescriptionType'])
-    node_reference(drefs, 'Opc.Ua', 'HasComponent', schema, forward: false)
+    node_reference(drefs, 'DictionaryFragment', 'HasProperty', fid)
+    node_reference(drefs, 'Opc.Ua.MTConnect', 'HasComponent', schema, forward: false)
+   
+    dnode.add_element('Value').add_element('String',
+         {'xmlns' => 'http://opcfoundation.org/UA/2008/02/Types.xsd'}).
+      add_text(@name)
 
-    value = dnode.add_element('Value').add_element('String',
-                          {'xmlns' => 'http://opcfoundation.org/UA/2008/02/Types.xsd'}).
-              add_text(browse_name)
+    # add a reference
+    obj = Type.type_for_name('Opc.Ua.MTConnect')
+    obj.add_component_ref(@name, did)    
+
+    if frag
+      Root << REXML::Comment.new("DictionaryFragment for #{@name}")
+      frefs, fnode = node('UAVariable', fid, "DictionaryFragment", data_type: 'ByteString', parent: did)
+      node_reference(frefs, 'Owner', 'HasProperty', did, forward: false)
+      node_reference(frefs, 'PropertyType', 'HasTypeDefinition', Ids['PropertyType'])
+
+      formatter = REXML::Formatters::Pretty.new(2)
+      formatter.compact = true
+      text = ""
+      formatter.write(frag, text)
+      puts "******* #{@name} Fragment"
+      puts text
+      
+      value = fnode.add_element('Value').add_element('ByteString',
+             {'xmlns' => 'http://opcfoundation.org/UA/2008/02/Types.xsd'})
+      value << REXML::CData.new([text].pack('m'), true)      
+    end
+  end
+
+  def add_component_ref(name, id)
+    node_reference(@refs, name, 'HasComponent', id)
   end
 
   def generate_data_type
@@ -324,14 +358,14 @@ class NodesetType < Type
       field.add_element('Description').add_text(r.documentation) if r.documentation
     end
 
-    create_default_encoding
-
     # Create entry in TypeDictionary
-    struct = TypeDictRoot.add_element('opc:StructureType', {'Name' => browse_name })
+    struct = TypeDictRoot.add_element('opc:StructuredType', {'Name' => @name, 'BaseType' => "ua:ExtensionObject" })
     struct.add_element('Documentation').add_text("The encoding for #{@name}")
     @relations.each do |r|
       field = struct.add_element('opc:Field', { 'Name' => r.name, 'TypeName' =>  "opc:#{r.target.type.name}" })
     end
+
+    create_default_encoding(struct)
   end
 
   def generate_instance    
@@ -339,14 +373,14 @@ class NodesetType < Type
     Root << REXML::Comment.new(" Instantiation of Object #{@name} #{node_id} ")
     if (@classifier.base_type == 'Variable')
       puts "    - #{@classifier.variable_data_type.name}"
-      refs, @node = node('UAVariable', node_id, @name, data_type: @classifier.variable_data_type.node_alias)
+      @refs, @node = node('UAVariable', node_id, @name, data_type: @classifier.variable_data_type.node_alias)
     else
-      refs, @node = node('UAObject', node_id, @name)
+      @refs, @node = node('UAObject', node_id, @name)
     end
-    node_reference(refs, @classifier.name, 'HasTypeDefinition', @classifier.node_id)
+    node_reference(@refs, @classifier.name, 'HasTypeDefinition', @classifier.node_id)
 
     path = []
-    relationships(refs, self, path)
+    relationships(@refs, self, path)
   end
 
   def add_base64_value(text)

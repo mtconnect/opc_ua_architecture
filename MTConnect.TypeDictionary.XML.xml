@@ -1,0 +1,233 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:ua='http://opcfoundation.org/UA/2008/02/Types.xsd' xmlns:mtc='http://opcfoundation.org/UA/MTConnect/v2//Types.xsd' targetNamespace='http://opcfoundation.org/UA/MTConnect/v2//Types.xsd' elementFormDefault='qualified'>
+  <xs:import namespace='http://opcfoundation.org/UA/2008/02/Types.xsd'/>
+  <xs:complexType name='AssetEventDataType'>
+    <xs:sequence>
+      <xs:element name='AssetId' type='xs:string' minOccurs='1' maxOccurs='1'/>
+      <xs:element name='AssetType' type='xs:string' minOccurs='1' maxOccurs='1'/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name='AssetEventDataType' type='mtc:AssetEventDataType'/>
+  <xs:simpleType name='CoordinateSystemType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='MACHINE'/>
+      <xs:enumeration value='WORK'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='CoordinateSystemType' type='mtc:CoordinateSystemType'/>
+  <xs:simpleType name='DataItemResetValueType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='ACTION_COMPLETE'/>
+      <xs:enumeration value='ANNUAL'/>
+      <xs:enumeration value='DAY'/>
+      <xs:enumeration value='MAINTENANCE'/>
+      <xs:enumeration value='MANUAL'/>
+      <xs:enumeration value='MONTH'/>
+      <xs:enumeration value='POWER_ON'/>
+      <xs:enumeration value='SHIFT'/>
+      <xs:enumeration value='WEEK'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='DataItemResetValueType' type='mtc:DataItemResetValueType'/>
+  <xs:simpleType name='MTCategoryType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='EVENT'/>
+      <xs:enumeration value='CONDITION'/>
+      <xs:enumeration value='SAMPLE'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='MTCategoryType' type='mtc:MTCategoryType'/>
+  <xs:simpleType name='MTRepresentationType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='DISCRETE'/>
+      <xs:enumeration value='TIME_SERIES'/>
+      <xs:enumeration value='VALUE'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='MTRepresentationType' type='mtc:MTRepresentationType'/>
+  <xs:complexType name='ThreeSpaceSampleDataType'>
+    <xs:sequence>
+      <xs:element name='X' type='xs:float' minOccurs='1' maxOccurs='1'/>
+      <xs:element name='Y' type='xs:float' minOccurs='1' maxOccurs='1'/>
+      <xs:element name='Z' type='xs:float' minOccurs='1' maxOccurs='1'/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name='ThreeSpaceSampleDataType' type='mtc:ThreeSpaceSampleDataType'/>
+  <xs:simpleType name='MTSeverityDataType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='FAULT'/>
+      <xs:enumeration value='NORMAL'/>
+      <xs:enumeration value='WARNING'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='MTSeverityDataType' type='mtc:MTSeverityDataType'/>
+  <xs:simpleType name='QualifierDataType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='HIGH'/>
+      <xs:enumeration value='LOW'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='QualifierDataType' type='mtc:QualifierDataType'/>
+  <xs:simpleType name='ActiveStateDataType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='ACTIVE'/>
+      <xs:enumeration value='INACTIVE'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='ActiveStateDataType' type='mtc:ActiveStateDataType'/>
+  <xs:simpleType name='AvailabilityDataType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='AVAILABLE'/>
+      <xs:enumeration value='UNAVAILABLE'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='AvailabilityDataType' type='mtc:AvailabilityDataType'/>
+  <xs:simpleType name='AxisCouplingDataType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='MASTER'/>
+      <xs:enumeration value='SLAVE'/>
+      <xs:enumeration value='SYNCHRONOUS'/>
+      <xs:enumeration value='TANDEM'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='AxisCouplingDataType' type='mtc:AxisCouplingDataType'/>
+  <xs:simpleType name='AxisStateDataType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='HOME'/>
+      <xs:enumeration value='PARKED'/>
+      <xs:enumeration value='STOPPED'/>
+      <xs:enumeration value='TRAVEL'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='AxisStateDataType' type='mtc:AxisStateDataType'/>
+  <xs:simpleType name='CompositionStateDataType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='ACTIVE'/>
+      <xs:enumeration value='CLOSED'/>
+      <xs:enumeration value='DOWN'/>
+      <xs:enumeration value='INACTIVE'/>
+      <xs:enumeration value='LEFT'/>
+      <xs:enumeration value='OFF'/>
+      <xs:enumeration value='ON'/>
+      <xs:enumeration value='OPEN'/>
+      <xs:enumeration value='RIGHT'/>
+      <xs:enumeration value='TRANSITIONING'/>
+      <xs:enumeration value='UNLATCHED'/>
+      <xs:enumeration value='UP'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='CompositionStateDataType' type='mtc:CompositionStateDataType'/>
+  <xs:simpleType name='ControllerModeDataType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='AUTOMATIC'/>
+      <xs:enumeration value='EDIT'/>
+      <xs:enumeration value='MANUAL'/>
+      <xs:enumeration value='MANUAL_DATA_INPUT'/>
+      <xs:enumeration value='SEMI_AUTOMATIC'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='ControllerModeDataType' type='mtc:ControllerModeDataType'/>
+  <xs:simpleType name='DirectionDataType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='CLOCKWISE'/>
+      <xs:enumeration value='COUNTER_CLOCKWISE'/>
+      <xs:enumeration value='NEGATIVE'/>
+      <xs:enumeration value='POSITIVE'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='DirectionDataType' type='mtc:DirectionDataType'/>
+  <xs:simpleType name='EmergencyStopDataType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='ARMED'/>
+      <xs:enumeration value='TRIGGERED'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='EmergencyStopDataType' type='mtc:EmergencyStopDataType'/>
+  <xs:simpleType name='ExecutionDataType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='ACTIVE'/>
+      <xs:enumeration value='FEED_HOLD'/>
+      <xs:enumeration value='INTERRUPTED'/>
+      <xs:enumeration value='OPTIONAL_STOP'/>
+      <xs:enumeration value='READY'/>
+      <xs:enumeration value='PROGRAM_COMPLETED'/>
+      <xs:enumeration value='PROGRAM_STOPPED'/>
+      <xs:enumeration value='STOPPED'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='ExecutionDataType' type='mtc:ExecutionDataType'/>
+  <xs:simpleType name='FunctionalModeDataType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='MAINTENANCE'/>
+      <xs:enumeration value='PRODUCTION'/>
+      <xs:enumeration value='PROCESS_DEVELOPMENT'/>
+      <xs:enumeration value='SETUP'/>
+      <xs:enumeration value='TEARDOWN'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='FunctionalModeDataType' type='mtc:FunctionalModeDataType'/>
+  <xs:simpleType name='InterfaceStateDataType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='ACTIVE'/>
+      <xs:enumeration value='COMPLETE'/>
+      <xs:enumeration value='FAIL'/>
+      <xs:enumeration value='NOT_READY'/>
+      <xs:enumeration value='READY'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='InterfaceStateDataType' type='mtc:InterfaceStateDataType'/>
+  <xs:simpleType name='InterfaceStatusDataType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='DISABLED'/>
+      <xs:enumeration value='ENABLED'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='InterfaceStatusDataType' type='mtc:InterfaceStatusDataType'/>
+  <xs:simpleType name='OnOffDataType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='OFF'/>
+      <xs:enumeration value='ON'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='OnOffDataType' type='mtc:OnOffDataType'/>
+  <xs:simpleType name='OpenStateDataType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='CLOSED'/>
+      <xs:enumeration value='OPEN'/>
+      <xs:enumeration value='UNLATCHED'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='OpenStateDataType' type='mtc:OpenStateDataType'/>
+  <xs:simpleType name='PathModeDataType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='INDEPENDENT'/>
+      <xs:enumeration value='MASTER'/>
+      <xs:enumeration value='MIRROR'/>
+      <xs:enumeration value='SYNCHRONOUS'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='PathModeDataType' type='mtc:PathModeDataType'/>
+  <xs:simpleType name='ProgramEditDataType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='ACTIVE'/>
+      <xs:enumeration value='NOT_READY'/>
+      <xs:enumeration value='READY'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='ProgramEditDataType' type='mtc:ProgramEditDataType'/>
+  <xs:simpleType name='RotaryModeDataType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='CONTOUR'/>
+      <xs:enumeration value='INDEX'/>
+      <xs:enumeration value='SPINDLE'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='RotaryModeDataType' type='mtc:RotaryModeDataType'/>
+  <xs:simpleType name='YesNoDataType'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='NO'/>
+      <xs:enumeration value='YES'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='YesNoDataType' type='mtc:YesNoDataType'/>
+</xs:schema>

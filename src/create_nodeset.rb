@@ -76,7 +76,8 @@ if Ids.empty? or clean
 
         if name and id and (e.name =~ /Type$/o or
                             (sym and (sym.value =~ /ModellingRule/o or
-                                      sym.value =~ /BinarySchema/o)))
+                                      sym.value =~ /BinarySchema/o or
+                                      sym.value =~ /XmlSchema/o)))
           Ids[name.value] = id.value 
         end
       end
@@ -111,11 +112,11 @@ XmlTypeDict << REXML::XMLDecl.new("1.0", "UTF-8")
 XmlTypeDictRoot = XmlTypeDict.add_element('xs:schema',
                    { 'xmlns:xs' => "http://www.w3.org/2001/XMLSchema",
                      'xmlns:ua' => "http://opcfoundation.org/UA/2008/02/Types.xsd",
-                     'xmlns:mtc' => ="http://opcfoundation.org/UA/MTConnect/Types.xsd",
-                     'targetNamespace' => "http://opcfoundation.org/UA/MTConnect/v2/Types.xsd",
+                     'xmlns:mtc' => "#{NamespaceUri}/Types.xsd",
+                     'targetNamespace' => "#{NamespaceUri}/Types.xsd",
                      'elementFormDefault' => "qualified" })
 
-XmlTypeDictRoot.add_ement('xs:import', { 'namespace' => "http://opcfoundation.org/UA/2008/02/Types.xsd" })
+XmlTypeDictRoot.add_element('xs:import', { 'namespace' => "http://opcfoundation.org/UA/2008/02/Types.xsd" })
 
 NodesetType.resolve_node_ids
 NodesetType.check_ids
@@ -177,10 +178,19 @@ formatter.compact = true
 
 text = ""
 formatter.write(TypeDict, text)
-type = Type.type_for_name('Opc.Ua.MTConnect')
+type = Type.type_for_name('Opc.Ua.MTConnect.Binary')
 type.add_base64_value(text)
 
-File.open('./MTConnect.TypeDictionary.xml', 'w') do |f|
+File.open('./MTConnect.TypeDictionary.Binary.xml', 'w') do |f|
+  f << text
+end  
+
+text = ""
+formatter.write(XmlTypeDict, text)
+type = Type.type_for_name('Opc.Ua.MTConnect.XML')
+type.add_base64_value(text)
+
+File.open('./MTConnect.TypeDictionary.XML.xml', 'w') do |f|
   f << text
 end  
 

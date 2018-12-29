@@ -1,0 +1,157 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<opc:TypeDictionary DefaultByteOrder='LittleEndian' TargetNamespace='http://opcfoundation.org/UA/MTConnect/v2/' xmlns:opc='http://opcfoundation.org/BinarySchema/' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:ua='http://opcfoundation.org/UA/' xmlns:tns='http://opcfoundation.org/UA/'>
+  <opc:Import Namespace='http://opcfoundation.org/UA/' Location='Opc.Ua.BinarySchema.bsd'/>
+  <opc:StructuredType Name='AssetEventDataType' BaseType='ua:ExtensionObject'>
+    <Documentation>The encoding for AssetEventDataType</Documentation>
+    <opc:Field Name='AssetId' TypeName='opc:String'/>
+    <opc:Field Name='AssetType' TypeName='opc:String'/>
+  </opc:StructuredType>
+  <opc:EnumeratedType Name='CoordinateSystemType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='MACHINE' Value='0'/>
+    <opc:EnumeratedValue Name='WORK' Value='1'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='DataItemResetValueType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='ACTION_COMPLETE' Value='0'/>
+    <opc:EnumeratedValue Name='ANNUAL' Value='1'/>
+    <opc:EnumeratedValue Name='DAY' Value='2'/>
+    <opc:EnumeratedValue Name='MAINTENANCE' Value='3'/>
+    <opc:EnumeratedValue Name='MANUAL' Value='4'/>
+    <opc:EnumeratedValue Name='MONTH' Value='5'/>
+    <opc:EnumeratedValue Name='POWER_ON' Value='6'/>
+    <opc:EnumeratedValue Name='SHIFT' Value='7'/>
+    <opc:EnumeratedValue Name='WEEK' Value='8'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='MTCategoryType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='EVENT' Value='0'/>
+    <opc:EnumeratedValue Name='CONDITION' Value='1'/>
+    <opc:EnumeratedValue Name='SAMPLE' Value='2'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='MTRepresentationType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='DISCRETE' Value='0'/>
+    <opc:EnumeratedValue Name='TIME_SERIES' Value='1'/>
+    <opc:EnumeratedValue Name='VALUE' Value='2'/>
+  </opc:EnumeratedType>
+  <opc:StructuredType Name='ThreeSpaceSampleDataType' BaseType='ua:ExtensionObject'>
+    <Documentation>The encoding for ThreeSpaceSampleDataType</Documentation>
+    <opc:Field Name='X' TypeName='opc:Double'/>
+    <opc:Field Name='Y' TypeName='opc:Double'/>
+    <opc:Field Name='Z' TypeName='opc:Double'/>
+  </opc:StructuredType>
+  <opc:EnumeratedType Name='MTSeverityDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='FAULT' Value='0'/>
+    <opc:EnumeratedValue Name='NORMAL' Value='1'/>
+    <opc:EnumeratedValue Name='WARNING' Value='2'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='QualifierDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='HIGH' Value='0'/>
+    <opc:EnumeratedValue Name='LOW' Value='1'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='ActiveStateDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='ACTIVE' Value='0'/>
+    <opc:EnumeratedValue Name='INACTIVE' Value='1'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='AvailabilityDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='AVAILABLE' Value='0'/>
+    <opc:EnumeratedValue Name='UNAVAILABLE' Value='1'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='AxisCouplingDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='MASTER' Value='0'/>
+    <opc:EnumeratedValue Name='SLAVE' Value='1'/>
+    <opc:EnumeratedValue Name='SYNCHRONOUS' Value='2'/>
+    <opc:EnumeratedValue Name='TANDEM' Value='3'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='AxisStateDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='HOME' Value='0'/>
+    <opc:EnumeratedValue Name='PARKED' Value='1'/>
+    <opc:EnumeratedValue Name='STOPPED' Value='2'/>
+    <opc:EnumeratedValue Name='TRAVEL' Value='3'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='CompositionStateDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='ACTIVE' Value='0'/>
+    <opc:EnumeratedValue Name='CLOSED' Value='1'/>
+    <opc:EnumeratedValue Name='DOWN' Value='2'/>
+    <opc:EnumeratedValue Name='INACTIVE' Value='3'/>
+    <opc:EnumeratedValue Name='LEFT' Value='4'/>
+    <opc:EnumeratedValue Name='OFF' Value='5'/>
+    <opc:EnumeratedValue Name='ON' Value='6'/>
+    <opc:EnumeratedValue Name='OPEN' Value='7'/>
+    <opc:EnumeratedValue Name='RIGHT' Value='8'/>
+    <opc:EnumeratedValue Name='TRANSITIONING' Value='9'/>
+    <opc:EnumeratedValue Name='UNLATCHED' Value='10'/>
+    <opc:EnumeratedValue Name='UP' Value='11'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='ControllerModeDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='AUTOMATIC' Value='0'/>
+    <opc:EnumeratedValue Name='EDIT' Value='1'/>
+    <opc:EnumeratedValue Name='MANUAL' Value='2'/>
+    <opc:EnumeratedValue Name='MANUAL_DATA_INPUT' Value='3'/>
+    <opc:EnumeratedValue Name='SEMI_AUTOMATIC' Value='4'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='DirectionDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='CLOCKWISE' Value='0'/>
+    <opc:EnumeratedValue Name='COUNTER_CLOCKWISE' Value='1'/>
+    <opc:EnumeratedValue Name='NEGATIVE' Value='2'/>
+    <opc:EnumeratedValue Name='POSITIVE' Value='3'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='EmergencyStopDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='ARMED' Value='0'/>
+    <opc:EnumeratedValue Name='TRIGGERED' Value='1'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='ExecutionDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='ACTIVE' Value='0'/>
+    <opc:EnumeratedValue Name='FEED_HOLD' Value='1'/>
+    <opc:EnumeratedValue Name='INTERRUPTED' Value='2'/>
+    <opc:EnumeratedValue Name='OPTIONAL_STOP' Value='3'/>
+    <opc:EnumeratedValue Name='READY' Value='4'/>
+    <opc:EnumeratedValue Name='PROGRAM_COMPLETED' Value='5'/>
+    <opc:EnumeratedValue Name='PROGRAM_STOPPED' Value='6'/>
+    <opc:EnumeratedValue Name='STOPPED' Value='7'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='FunctionalModeDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='MAINTENANCE' Value='0'/>
+    <opc:EnumeratedValue Name='PRODUCTION' Value='1'/>
+    <opc:EnumeratedValue Name='PROCESS_DEVELOPMENT' Value='2'/>
+    <opc:EnumeratedValue Name='SETUP' Value='3'/>
+    <opc:EnumeratedValue Name='TEARDOWN' Value='4'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='InterfaceStateDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='ACTIVE' Value='0'/>
+    <opc:EnumeratedValue Name='COMPLETE' Value='1'/>
+    <opc:EnumeratedValue Name='FAIL' Value='2'/>
+    <opc:EnumeratedValue Name='NOT_READY' Value='4'/>
+    <opc:EnumeratedValue Name='READY' Value='5'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='InterfaceStatusDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='DISABLED' Value='0'/>
+    <opc:EnumeratedValue Name='ENABLED' Value='1'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='OnOffDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='OFF' Value='0'/>
+    <opc:EnumeratedValue Name='ON' Value='1'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='OpenStateDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='CLOSED' Value='0'/>
+    <opc:EnumeratedValue Name='OPEN' Value='1'/>
+    <opc:EnumeratedValue Name='UNLATCHED' Value='2'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='PathModeDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='INDEPENDENT' Value='0'/>
+    <opc:EnumeratedValue Name='MASTER' Value='1'/>
+    <opc:EnumeratedValue Name='MIRROR' Value='2'/>
+    <opc:EnumeratedValue Name='SYNCHRONOUS' Value='3'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='ProgramEditDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='ACTIVE' Value='0'/>
+    <opc:EnumeratedValue Name='NOT_READY' Value='1'/>
+    <opc:EnumeratedValue Name='READY' Value='2'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='RotaryModeDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='CONTOUR' Value='0'/>
+    <opc:EnumeratedValue Name='INDEX' Value='1'/>
+    <opc:EnumeratedValue Name='SPINDLE' Value='2'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='YesNoDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='NO' Value='0'/>
+    <opc:EnumeratedValue Name='YES' Value='1'/>
+  </opc:EnumeratedType>
+</opc:TypeDictionary>

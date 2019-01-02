@@ -268,7 +268,7 @@ class NodesetType < Type
 
     # Create type dict entry
     struct = TypeDictRoot.add_element('opc:EnumeratedType', {'Name' => @name, 'LengthInBits' => '32', 'BaseType' => "ua:ExtensionObject" })
-    res = XmlTypeDictRoot.add_element('xs:simpleType', {'name' => @name }).
+    res = XmlTypeDictRoot.add_element('xs:simpleType', {'name' => "#{@name}Enum" }).
             add_element('xs:restriction', { 'base' => 'xs:string' })
     
     defs = node.add_element('Definition', { 'Name' => @name })
@@ -285,7 +285,7 @@ class NodesetType < Type
       struct.add_element('opc:EnumeratedValue', { 'Name' => name, 'Value' =>  value})
       res.add_element('xs:enumeration', { 'value' => name })
     end
-    XmlTypeDictRoot.add_element('xs:element', { 'name' => @name, 'type' => "mtc:#{@name}" })
+    XmlTypeDictRoot.add_element('xs:element', { 'name' => @name, 'type' => "mtc:#{@name}Enum" })
     
     # now create the enum strings property
     Root << REXML::Comment.new(" #{@name}::EnumStrings #{enum_nid} ")

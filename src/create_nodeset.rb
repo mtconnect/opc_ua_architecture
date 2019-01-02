@@ -123,8 +123,8 @@ NodesetType.resolve_node_ids
 NodesetType.check_ids
 
 NodesetModel.generate_nodeset('Namespace Metadata')
-NodesetModel.generate_nodeset('OPC Binary')
-NodesetModel.generate_nodeset('XML Schema')
+NodesetModel.generate_nodeset('MTConnect Binary')
+NodesetModel.generate_nodeset('MTConnect XML Schema')
 NodesetModel.generate_nodeset('Components')
 NodesetModel.generate_nodeset('Component Types')
 NodesetModel.generate_nodeset('Data Items')
@@ -164,6 +164,9 @@ Root.each_element('*') do |e|
   e.each_element("./References/Reference") do |r|
     if r.text =~ /^ns=1;/ and !node_ids.include?(r.text)
       puts "!!!! Reference #{r.text} is a broken relationship #{r.inspect} of #{e.inspect}"
+      error = true
+    elsif r.text.nil?
+      puts "!!!! Null reference #{r.text} for  #{r.inspect} of #{e.inspect}"
       error = true
     end
   end

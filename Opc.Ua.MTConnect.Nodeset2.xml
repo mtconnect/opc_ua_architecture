@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-01-02T21:27:31Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-01-02T21:57:42Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-01-02T21:27:31Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-01-02T21:27:31Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-01-02T21:57:42Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-01-02T21:57:42Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -172,10 +172,10 @@
       <Reference ReferenceType='HasTypeDefinition'>i=72</Reference>
       <!-- HasComponent - (Reverse) - OPC Binary i=93 OPC Binary  -->
       <Reference ReferenceType='HasComponent' IsForward='false'>i=93</Reference>
-      <!-- HasProperty -  - NamespaceUri ns=1;i=3045 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=3045</Reference>
-      <!-- HasProperty -  - Deprecated ns=1;i=3046 Boolean  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=3046</Reference>
+      <!-- HasProperty -  - NamespaceUri ns=1;i=3042 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3042</Reference>
+      <!-- HasProperty -  - Deprecated ns=1;i=3043 Boolean  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3043</Reference>
       <!-- HasComponent -  - AssetEventDataType ns=1;i=2741   -->
       <Reference ReferenceType='HasComponent'>ns=1;i=2741</Reference>
       <!-- HasComponent -  - CoordinateSystemType ns=1;i=2747   -->
@@ -434,7 +434,7 @@ cGM6RW51bWVyYXRlZFR5cGU+Cjwvb3BjOlR5cGVEaWN0aW9uYXJ5Pg==
     </Value>
   </UAVariable>
   <!-- Opc.Ua.MTConnect(Binary)::NamespaceUri : String[1] -->
-  <UAVariable NodeId='ns=1;i=3045' BrowseName='NamespaceUri' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=3040'>
+  <UAVariable NodeId='ns=1;i=3042' BrowseName='NamespaceUri' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>NamespaceUri</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
@@ -447,7 +447,7 @@ cGM6RW51bWVyYXRlZFR5cGU+Cjwvb3BjOlR5cGVEaWN0aW9uYXJ5Pg==
     </Value>
   </UAVariable>
   <!-- Opc.Ua.MTConnect(Binary)::Deprecated : Boolean[1] -->
-  <UAVariable NodeId='ns=1;i=3046' BrowseName='Deprecated' ValueRank='-1' DataType='Boolean' ParentNodeId='ns=1;i=3040'>
+  <UAVariable NodeId='ns=1;i=3043' BrowseName='Deprecated' ValueRank='-1' DataType='Boolean' ParentNodeId='ns=1;i=3040'>
     <DisplayName>Deprecated</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - Boolean i=68 PropertyType  -->
@@ -459,18 +459,18 @@ cGM6RW51bWVyYXRlZFR5cGU+Cjwvb3BjOlR5cGVEaWN0aW9uYXJ5Pg==
       <Boolean xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>true</Boolean>
     </Value>
   </UAVariable>
-  <!-- Instantiation of Object Opc.Ua.MTConnect(XML) ns=1;i=3041 -->
-  <UAVariable NodeId='ns=1;i=3041' BrowseName='1:Opc.Ua.MTConnect' DataType='ByteString'>
+  <!-- Instantiation of Object Opc.Ua.MTConnect(XML) ns=1;i=3044 -->
+  <UAVariable NodeId='ns=1;i=3044' BrowseName='1:Opc.Ua.MTConnect' DataType='ByteString'>
     <DisplayName>Opc.Ua.MTConnect</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDictionaryType i=72   -->
       <Reference ReferenceType='HasTypeDefinition'>i=72</Reference>
       <!-- HasComponent - (Reverse) - XML Schema i=92 XML Schema  -->
       <Reference ReferenceType='HasComponent' IsForward='false'>i=92</Reference>
-      <!-- HasProperty -  - NamespaceUri ns=1;i=3043 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=3043</Reference>
-      <!-- HasProperty -  - Deprecated ns=1;i=3044 Boolean  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=3044</Reference>
+      <!-- HasProperty -  - NamespaceUri ns=1;i=3046 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3046</Reference>
+      <!-- HasProperty -  - Deprecated ns=1;i=3047 Boolean  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3047</Reference>
       <!-- HasComponent -  - AssetEventDataType ns=1;i=2744   -->
       <Reference ReferenceType='HasComponent'>ns=1;i=2744</Reference>
       <!-- HasComponent -  - CoordinateSystemType ns=1;i=2750   -->
@@ -746,26 +746,26 @@ cGUnIHR5cGU9J210YzpZZXNOb0RhdGFUeXBlJy8+CjwveHM6c2NoZW1hPg==
     </Value>
   </UAVariable>
   <!-- Opc.Ua.MTConnect(XML)::NamespaceUri : String[1] -->
-  <UAVariable NodeId='ns=1;i=3043' BrowseName='NamespaceUri' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=3041'>
+  <UAVariable NodeId='ns=1;i=3046' BrowseName='NamespaceUri' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>NamespaceUri</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasProperty - (Reverse) - Opc.Ua.MTConnect(XML) ns=1;i=3041   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3041</Reference>
+      <!-- HasProperty - (Reverse) - Opc.Ua.MTConnect(XML) ns=1;i=3044   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>http://opcfoundation.org/UA/MTConnect/v2/Types.xsd</String>
     </Value>
   </UAVariable>
   <!-- Opc.Ua.MTConnect(XML)::Deprecated : Boolean[1] -->
-  <UAVariable NodeId='ns=1;i=3044' BrowseName='Deprecated' ValueRank='-1' DataType='Boolean' ParentNodeId='ns=1;i=3041'>
+  <UAVariable NodeId='ns=1;i=3047' BrowseName='Deprecated' ValueRank='-1' DataType='Boolean' ParentNodeId='ns=1;i=3044'>
     <DisplayName>Deprecated</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - Boolean i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasProperty - (Reverse) - Opc.Ua.MTConnect(XML) ns=1;i=3041   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3041</Reference>
+      <!-- HasProperty - (Reverse) - Opc.Ua.MTConnect(XML) ns=1;i=3044   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <Boolean xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>true</Boolean>
@@ -1692,15 +1692,15 @@ cGUnIHR5cGU9J210YzpZZXNOb0RhdGFUeXBlJy8+CjwveHM6c2NoZW1hPg==
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for AssetEventDataType -->
-  <UAVariable NodeId='ns=1;i=2741' BrowseName='1:AssetEventDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2741' BrowseName='1:AssetEventDataType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>AssetEventDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=2742   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2742</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>AssetEventDataType</String>
@@ -1741,13 +1741,13 @@ cGU+
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for AssetEventDataType -->
-  <UAVariable NodeId='ns=1;i=2744' BrowseName='1:AssetEventDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2744' BrowseName='1:AssetEventDataType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>AssetEventDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;AssetEventDataType&apos;]</String>
@@ -1814,15 +1814,15 @@ cGU+
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for CoordinateSystemType -->
-  <UAVariable NodeId='ns=1;i=2747' BrowseName='1:CoordinateSystemType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2747' BrowseName='1:CoordinateSystemType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>CoordinateSystemType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=2748   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2748</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>CoordinateSystemType</String>
@@ -1861,13 +1861,13 @@ JyBWYWx1ZT0nMScvPgo8L29wYzpFbnVtZXJhdGVkVHlwZT4=
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for CoordinateSystemType -->
-  <UAVariable NodeId='ns=1;i=2750' BrowseName='1:CoordinateSystemType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2750' BrowseName='1:CoordinateSystemType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>CoordinateSystemType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;CoordinateSystemType&apos;]</String>
@@ -1959,15 +1959,15 @@ JyBWYWx1ZT0nMScvPgo8L29wYzpFbnVtZXJhdGVkVHlwZT4=
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for DataItemResetValueType -->
-  <UAVariable NodeId='ns=1;i=2753' BrowseName='1:DataItemResetValueType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2753' BrowseName='1:DataItemResetValueType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>DataItemResetValueType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=2754   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2754</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>DataItemResetValueType</String>
@@ -2014,13 +2014,13 @@ dWU9JzgnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for DataItemResetValueType -->
-  <UAVariable NodeId='ns=1;i=2756' BrowseName='1:DataItemResetValueType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2756' BrowseName='1:DataItemResetValueType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>DataItemResetValueType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;DataItemResetValueType&apos;]</String>
@@ -2286,15 +2286,15 @@ dWU9JzgnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for MTCategoryType -->
-  <UAVariable NodeId='ns=1;i=2773' BrowseName='1:MTCategoryType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2773' BrowseName='1:MTCategoryType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>MTCategoryType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=2774   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2774</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>MTCategoryType</String>
@@ -2334,13 +2334,13 @@ RScgVmFsdWU9JzInLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for MTCategoryType -->
-  <UAVariable NodeId='ns=1;i=2776' BrowseName='1:MTCategoryType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2776' BrowseName='1:MTCategoryType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>MTCategoryType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;MTCategoryType&apos;]</String>
@@ -3220,15 +3220,15 @@ RScgVmFsdWU9JzInLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for MTRepresentationType -->
-  <UAVariable NodeId='ns=1;i=2829' BrowseName='1:MTRepresentationType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2829' BrowseName='1:MTRepresentationType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>MTRepresentationType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=2830   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2830</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>MTRepresentationType</String>
@@ -3269,13 +3269,13 @@ Pg==
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for MTRepresentationType -->
-  <UAVariable NodeId='ns=1;i=2832' BrowseName='1:MTRepresentationType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2832' BrowseName='1:MTRepresentationType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>MTRepresentationType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;MTRepresentationType&apos;]</String>
@@ -4163,15 +4163,15 @@ Pg==
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for ThreeSpaceSampleDataType -->
-  <UAVariable NodeId='ns=1;i=2892' BrowseName='1:ThreeSpaceSampleDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2892' BrowseName='1:ThreeSpaceSampleDataType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>ThreeSpaceSampleDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=2893   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2893</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>ThreeSpaceSampleDataType</String>
@@ -4213,13 +4213,13 @@ ZT4=
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for ThreeSpaceSampleDataType -->
-  <UAVariable NodeId='ns=1;i=2895' BrowseName='1:ThreeSpaceSampleDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2895' BrowseName='1:ThreeSpaceSampleDataType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>ThreeSpaceSampleDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;ThreeSpaceSampleDataType&apos;]</String>
@@ -4689,15 +4689,15 @@ ZT4=
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for MTSeverityDataType -->
-  <UAVariable NodeId='ns=1;i=2920' BrowseName='1:MTSeverityDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2920' BrowseName='1:MTSeverityDataType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>MTSeverityDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=2921   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2921</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>MTSeverityDataType</String>
@@ -4737,13 +4737,13 @@ SU5HJyBWYWx1ZT0nMicvPgo8L29wYzpFbnVtZXJhdGVkVHlwZT4=
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for MTSeverityDataType -->
-  <UAVariable NodeId='ns=1;i=2923' BrowseName='1:MTSeverityDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2923' BrowseName='1:MTSeverityDataType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>MTSeverityDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;MTSeverityDataType&apos;]</String>
@@ -4800,15 +4800,15 @@ SU5HJyBWYWx1ZT0nMicvPgo8L29wYzpFbnVtZXJhdGVkVHlwZT4=
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for QualifierDataType -->
-  <UAVariable NodeId='ns=1;i=2926' BrowseName='1:QualifierDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2926' BrowseName='1:QualifierDataType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>QualifierDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=2927   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2927</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>QualifierDataType</String>
@@ -4847,13 +4847,13 @@ PScxJy8+Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for QualifierDataType -->
-  <UAVariable NodeId='ns=1;i=2929' BrowseName='1:QualifierDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2929' BrowseName='1:QualifierDataType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>QualifierDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;QualifierDataType&apos;]</String>
@@ -5318,15 +5318,15 @@ PScxJy8+Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for ActiveStateDataType -->
-  <UAVariable NodeId='ns=1;i=2932' BrowseName='1:ActiveStateDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2932' BrowseName='1:ActiveStateDataType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>ActiveStateDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=2933   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2933</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>ActiveStateDataType</String>
@@ -5365,13 +5365,13 @@ VkUnIFZhbHVlPScxJy8+Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for ActiveStateDataType -->
-  <UAVariable NodeId='ns=1;i=2935' BrowseName='1:ActiveStateDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2935' BrowseName='1:ActiveStateDataType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>ActiveStateDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;ActiveStateDataType&apos;]</String>
@@ -5428,15 +5428,15 @@ VkUnIFZhbHVlPScxJy8+Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for AvailabilityDataType -->
-  <UAVariable NodeId='ns=1;i=2938' BrowseName='1:AvailabilityDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2938' BrowseName='1:AvailabilityDataType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>AvailabilityDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=2939   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2939</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>AvailabilityDataType</String>
@@ -5475,13 +5475,13 @@ QVZBSUxBQkxFJyBWYWx1ZT0nMScvPgo8L29wYzpFbnVtZXJhdGVkVHlwZT4=
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for AvailabilityDataType -->
-  <UAVariable NodeId='ns=1;i=2941' BrowseName='1:AvailabilityDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2941' BrowseName='1:AvailabilityDataType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>AvailabilityDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;AvailabilityDataType&apos;]</String>
@@ -5548,15 +5548,15 @@ QVZBSUxBQkxFJyBWYWx1ZT0nMScvPgo8L29wYzpFbnVtZXJhdGVkVHlwZT4=
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for AxisCouplingDataType -->
-  <UAVariable NodeId='ns=1;i=2944' BrowseName='1:AxisCouplingDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2944' BrowseName='1:AxisCouplingDataType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>AxisCouplingDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=2945   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2945</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>AxisCouplingDataType</String>
@@ -5598,13 +5598,13 @@ cGU+
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for AxisCouplingDataType -->
-  <UAVariable NodeId='ns=1;i=2947' BrowseName='1:AxisCouplingDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2947' BrowseName='1:AxisCouplingDataType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>AxisCouplingDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;AxisCouplingDataType&apos;]</String>
@@ -5671,15 +5671,15 @@ cGU+
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for AxisStateDataType -->
-  <UAVariable NodeId='ns=1;i=2950' BrowseName='1:AxisStateDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2950' BrowseName='1:AxisStateDataType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>AxisStateDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=2951   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2951</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>AxisStateDataType</String>
@@ -5720,13 +5720,13 @@ UkFWRUwnIFZhbHVlPSczJy8+Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for AxisStateDataType -->
-  <UAVariable NodeId='ns=1;i=2953' BrowseName='1:AxisStateDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2953' BrowseName='1:AxisStateDataType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>AxisStateDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;AxisStateDataType&apos;]</String>
@@ -5833,15 +5833,15 @@ UkFWRUwnIFZhbHVlPSczJy8+Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for CompositionStateDataType -->
-  <UAVariable NodeId='ns=1;i=2956' BrowseName='1:CompositionStateDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2956' BrowseName='1:CompositionStateDataType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>CompositionStateDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=2957   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2957</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>CompositionStateDataType</String>
@@ -5891,13 +5891,13 @@ dWU9JzExJy8+Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for CompositionStateDataType -->
-  <UAVariable NodeId='ns=1;i=2959' BrowseName='1:CompositionStateDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2959' BrowseName='1:CompositionStateDataType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>CompositionStateDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;CompositionStateDataType&apos;]</String>
@@ -5969,15 +5969,15 @@ dWU9JzExJy8+Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for ControllerModeDataType -->
-  <UAVariable NodeId='ns=1;i=2962' BrowseName='1:ControllerModeDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2962' BrowseName='1:ControllerModeDataType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>ControllerModeDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=2963   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2963</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>ControllerModeDataType</String>
@@ -6020,13 +6020,13 @@ Jy8+Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for ControllerModeDataType -->
-  <UAVariable NodeId='ns=1;i=2965' BrowseName='1:ControllerModeDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2965' BrowseName='1:ControllerModeDataType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>ControllerModeDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;ControllerModeDataType&apos;]</String>
@@ -6093,15 +6093,15 @@ Jy8+Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for DirectionDataType -->
-  <UAVariable NodeId='ns=1;i=2968' BrowseName='1:DirectionDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2968' BrowseName='1:DirectionDataType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>DirectionDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=2969   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2969</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>DirectionDataType</String>
@@ -6143,13 +6143,13 @@ bnVtZXJhdGVkVHlwZT4=
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for DirectionDataType -->
-  <UAVariable NodeId='ns=1;i=2971' BrowseName='1:DirectionDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2971' BrowseName='1:DirectionDataType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>DirectionDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;DirectionDataType&apos;]</String>
@@ -6206,15 +6206,15 @@ bnVtZXJhdGVkVHlwZT4=
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for EmergencyStopDataType -->
-  <UAVariable NodeId='ns=1;i=2974' BrowseName='1:EmergencyStopDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2974' BrowseName='1:EmergencyStopDataType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>EmergencyStopDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=2975   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2975</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>EmergencyStopDataType</String>
@@ -6253,13 +6253,13 @@ RVJFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for EmergencyStopDataType -->
-  <UAVariable NodeId='ns=1;i=2977' BrowseName='1:EmergencyStopDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2977' BrowseName='1:EmergencyStopDataType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>EmergencyStopDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;EmergencyStopDataType&apos;]</String>
@@ -6346,15 +6346,15 @@ RVJFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for ExecutionDataType -->
-  <UAVariable NodeId='ns=1;i=2980' BrowseName='1:ExecutionDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2980' BrowseName='1:ExecutionDataType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>ExecutionDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=2981   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2981</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>ExecutionDataType</String>
@@ -6401,13 +6401,13 @@ ZT4=
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for ExecutionDataType -->
-  <UAVariable NodeId='ns=1;i=2983' BrowseName='1:ExecutionDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2983' BrowseName='1:ExecutionDataType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>ExecutionDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;ExecutionDataType&apos;]</String>
@@ -6479,15 +6479,15 @@ ZT4=
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for FunctionalModeDataType -->
-  <UAVariable NodeId='ns=1;i=2986' BrowseName='1:FunctionalModeDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2986' BrowseName='1:FunctionalModeDataType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>FunctionalModeDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=2987   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2987</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>FunctionalModeDataType</String>
@@ -6530,13 +6530,13 @@ PSc0Jy8+Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for FunctionalModeDataType -->
-  <UAVariable NodeId='ns=1;i=2989' BrowseName='1:FunctionalModeDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2989' BrowseName='1:FunctionalModeDataType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>FunctionalModeDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;FunctionalModeDataType&apos;]</String>
@@ -6608,15 +6608,15 @@ PSc0Jy8+Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for InterfaceStateDataType -->
-  <UAVariable NodeId='ns=1;i=2992' BrowseName='1:InterfaceStateDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2992' BrowseName='1:InterfaceStateDataType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>InterfaceStateDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=2993   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2993</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>InterfaceStateDataType</String>
@@ -6659,13 +6659,13 @@ ZWRUeXBlPg==
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for InterfaceStateDataType -->
-  <UAVariable NodeId='ns=1;i=2995' BrowseName='1:InterfaceStateDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2995' BrowseName='1:InterfaceStateDataType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>InterfaceStateDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;InterfaceStateDataType&apos;]</String>
@@ -6722,15 +6722,15 @@ ZWRUeXBlPg==
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for InterfaceStatusDataType -->
-  <UAVariable NodeId='ns=1;i=2998' BrowseName='1:InterfaceStatusDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=2998' BrowseName='1:InterfaceStatusDataType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>InterfaceStatusDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=2999   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2999</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>InterfaceStatusDataType</String>
@@ -6769,13 +6769,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for InterfaceStatusDataType -->
-  <UAVariable NodeId='ns=1;i=3001' BrowseName='1:InterfaceStatusDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=3001' BrowseName='1:InterfaceStatusDataType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>InterfaceStatusDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;InterfaceStatusDataType&apos;]</String>
@@ -7566,15 +7566,15 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for OnOffDataType -->
-  <UAVariable NodeId='ns=1;i=3004' BrowseName='1:OnOffDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=3004' BrowseName='1:OnOffDataType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>OnOffDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=3005   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3005</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>OnOffDataType</String>
@@ -7613,13 +7613,13 @@ Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for OnOffDataType -->
-  <UAVariable NodeId='ns=1;i=3007' BrowseName='1:OnOffDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=3007' BrowseName='1:OnOffDataType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>OnOffDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;OnOffDataType&apos;]</String>
@@ -7681,15 +7681,15 @@ Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for OpenStateDataType -->
-  <UAVariable NodeId='ns=1;i=3010' BrowseName='1:OpenStateDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=3010' BrowseName='1:OpenStateDataType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>OpenStateDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=3011   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3011</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>OpenStateDataType</String>
@@ -7729,13 +7729,13 @@ SEVEJyBWYWx1ZT0nMicvPgo8L29wYzpFbnVtZXJhdGVkVHlwZT4=
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for OpenStateDataType -->
-  <UAVariable NodeId='ns=1;i=3013' BrowseName='1:OpenStateDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=3013' BrowseName='1:OpenStateDataType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>OpenStateDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;OpenStateDataType&apos;]</String>
@@ -7802,15 +7802,15 @@ SEVEJyBWYWx1ZT0nMicvPgo8L29wYzpFbnVtZXJhdGVkVHlwZT4=
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for PathModeDataType -->
-  <UAVariable NodeId='ns=1;i=3016' BrowseName='1:PathModeDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=3016' BrowseName='1:PathModeDataType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>PathModeDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=3017   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3017</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>PathModeDataType</String>
@@ -7852,13 +7852,13 @@ VHlwZT4=
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for PathModeDataType -->
-  <UAVariable NodeId='ns=1;i=3019' BrowseName='1:PathModeDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=3019' BrowseName='1:PathModeDataType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>PathModeDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;PathModeDataType&apos;]</String>
@@ -7920,15 +7920,15 @@ VHlwZT4=
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for ProgramEditDataType -->
-  <UAVariable NodeId='ns=1;i=3022' BrowseName='1:ProgramEditDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=3022' BrowseName='1:ProgramEditDataType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>ProgramEditDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=3023   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3023</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>ProgramEditDataType</String>
@@ -7968,13 +7968,13 @@ J1JFQURZJyBWYWx1ZT0nMicvPgo8L29wYzpFbnVtZXJhdGVkVHlwZT4=
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for ProgramEditDataType -->
-  <UAVariable NodeId='ns=1;i=3025' BrowseName='1:ProgramEditDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=3025' BrowseName='1:ProgramEditDataType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>ProgramEditDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;ProgramEditDataType&apos;]</String>
@@ -8036,15 +8036,15 @@ J1JFQURZJyBWYWx1ZT0nMicvPgo8L29wYzpFbnVtZXJhdGVkVHlwZT4=
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for RotaryModeDataType -->
-  <UAVariable NodeId='ns=1;i=3028' BrowseName='1:RotaryModeDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=3028' BrowseName='1:RotaryModeDataType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>RotaryModeDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=3029   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3029</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>RotaryModeDataType</String>
@@ -8084,13 +8084,13 @@ TkRMRScgVmFsdWU9JzInLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for RotaryModeDataType -->
-  <UAVariable NodeId='ns=1;i=3031' BrowseName='1:RotaryModeDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=3031' BrowseName='1:RotaryModeDataType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>RotaryModeDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;RotaryModeDataType&apos;]</String>
@@ -8147,15 +8147,15 @@ TkRMRScgVmFsdWU9JzInLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     </References>
   </UAObject>
   <!-- Binary DataTypeDescription for YesNoDataType -->
-  <UAVariable NodeId='ns=1;i=3034' BrowseName='1:YesNoDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=3034' BrowseName='1:YesNoDataType' DataType='String' ParentNodeId='ns=1;i=3040'>
     <DisplayName>YesNoDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
       <!-- HasProperty -  - DictionaryFragment ns=1;i=3035   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3035</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3040   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3040</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>YesNoDataType</String>
@@ -8194,13 +8194,13 @@ Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
     </References>
   </UAObject>
   <!-- XML DataTypeDescription for YesNoDataType -->
-  <UAVariable NodeId='ns=1;i=3037' BrowseName='1:YesNoDataType' DataType='String'>
+  <UAVariable NodeId='ns=1;i=3037' BrowseName='1:YesNoDataType' DataType='String' ParentNodeId='ns=1;i=3044'>
     <DisplayName>YesNoDataType</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect    -->
-      <Reference ReferenceType='HasComponent' IsForward='false'/>
+      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=3044   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3044</Reference>
     </References>
     <Value>
       <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>//xs:element[@name=&apos;YesNoDataType&apos;]</String>

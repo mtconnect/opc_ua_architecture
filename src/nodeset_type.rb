@@ -325,7 +325,7 @@ class NodesetType < Type
     if sel
       node_reference(erefs, 'HasDescription', 'HasDescription', did)
 
-      schema = Ids["#{Namespace}:Opc.Ua.MTConnect.#{encoding}"]
+      schema = Ids["#{Namespace}:Opc.Ua.MTConnect(#{encoding})"]
 
       Root << REXML::Comment.new(" #{encoding} DataTypeDescription for #{@name} ")
       drefs, dnode = node('UAVariable', did, @name, data_type: 'String', parent: schema)

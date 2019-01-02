@@ -60,7 +60,9 @@ class NodesetType < Type
     node = REXML::Element.new(type)
     Root << node
 
-    browse = prefix ? "#{Namespace}:#{name}" : name
+    clean_name = name.sub(/\(.+$/, '')
+    
+    browse = prefix ? "#{Namespace}:#{clean_name}" : clean_name
     node.add_attributes({ 'NodeId' => id,
                           'BrowseName' => browse })
     node.add_attribute('IsAbstract', 'true') if abstract
@@ -69,7 +71,7 @@ class NodesetType < Type
     node.add_attribute('Symmetric', symmetric) unless symmetric.nil?
     node.add_attribute('ParentNodeId', parent) if parent
 
-    node.add_element('DisplayName').add_text(display_name || name)
+    node.add_element('DisplayName').add_text(display_name || clean_name)
     refs = node.add_element('References')
     
     [refs, node]
@@ -336,7 +338,7 @@ class NodesetType < Type
         add_text(sel)
       
       # add a reference
-      obj = Type.type_for_name("Opc.Ua.MTConnect.#{encoding}")
+      obj = Type.type_for_name("Opc.Ua.MTConnect(#{encoding})")
       obj.add_component_ref(@name, did)    
     
       if frag

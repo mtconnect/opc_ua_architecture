@@ -29,7 +29,8 @@ Type.connect_children
 puts "\nGenerating Nodeset"
 
 clean = (ARGV.first and ARGV.first == '-r')
-p clean
+puts "Regenerating based Nodeset Ids" if clean
+
 
 Ids = IdManager.new('MTConnectNodeIds.csv', clean)
 
@@ -121,9 +122,9 @@ XmlTypeDictRoot.add_element('xs:import', { 'namespace' => "http://opcfoundation.
 NodesetType.resolve_node_ids
 NodesetType.check_ids
 
-TypeDictId = Ids.id_for('Opc.Ua.MTConnect')
-
 NodesetModel.generate_nodeset('Namespace Metadata')
+NodesetModel.generate_nodeset('OPC Binary')
+NodesetModel.generate_nodeset('XML Schema')
 NodesetModel.generate_nodeset('Components')
 NodesetModel.generate_nodeset('Component Types')
 NodesetModel.generate_nodeset('Data Items')
@@ -178,7 +179,7 @@ formatter.compact = true
 
 text = ""
 formatter.write(TypeDict, text)
-type = Type.type_for_name('Opc.Ua.MTConnect.Binary')
+type = Type.type_for_name('Opc.Ua.MTConnect(Binary)')
 type.add_base64_value(text)
 
 File.open('./MTConnect.TypeDictionary.Binary.xml', 'w') do |f|
@@ -187,7 +188,7 @@ end
 
 text = ""
 formatter.write(XmlTypeDict, text)
-type = Type.type_for_name('Opc.Ua.MTConnect.XML')
+type = Type.type_for_name('Opc.Ua.MTConnect(XML)')
 type.add_base64_value(text)
 
 File.open('./MTConnect.TypeDictionary.XML.xml', 'w') do |f|

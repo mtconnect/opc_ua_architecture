@@ -235,9 +235,9 @@ class NodesetType < Type
       is_symmetric = symmetric.default
       refs, = node('UAReferenceType', node_id, @name, abstract: @abstract, symmetric: is_symmetric)
     elsif  @stereotype and @stereotype.name == 'mixin'
-      puts "** Skipping mixin #{@name}"
+      puts "-- Skipping mixin #{@name}"
     elsif @type == 'UMLStereotype'
-      puts "** Skipping stereotype #{@name}"      
+      puts "-- Skipping stereotype #{@name}"      
     else
       puts "!! Do not know how to generate #{@name} #{@type} check Generalization Relationship"
     end
@@ -405,7 +405,7 @@ class NodesetType < Type
   end
 
   def generate_instance    
-    print "** Generating #{@classifier.base_type} #{@name}"
+    print "++ Generating #{@classifier.base_type} #{@name}"
     Root << REXML::Comment.new(" Instantiation of Object #{@name} #{node_id} ")
     if (@classifier.base_type == 'Variable')
       puts "::#{@classifier.name} - #{@classifier.variable_data_type.name}"

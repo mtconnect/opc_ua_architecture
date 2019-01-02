@@ -220,27 +220,30 @@ class NodesetType < Type
   def generate_object_or_variable
     if is_a_type?('BaseObjectType') or is_a_type?('BaseEventType')
       Root << REXML::Comment.new(" Definition of Object #{@name} #{node_id} ")
-      puts "      ** Generating ObjectType"
+      print "** Generating ObjectType"
       refs, = node('UAObjectType', node_id, @name, abstract: @abstract)
     elsif is_a_type?('BaseVariableType')
       v = get_attribute_like(/ValueRank$/)
       Root << REXML::Comment.new(" Definition of Variable #{@name} #{node_id} ")
-      puts "      ** Generating VariableType"
+      print "** Generating VariableType"
       refs, = node('UAVariableType', node_id, @name, abstract: @abstract, value_rank: v.default,
                         data_type: variable_data_type.node_alias)
     elsif is_a_type?('References')
       Root << REXML::Comment.new(" Definition of Reference #{@name} #{node_id} ")
+      print "** Generating ReferenceType"
       symmetric = get_attribute_like(/Symmetric$/, /Attribute/)
       is_symmetric = symmetric.default
       refs, = node('UAReferenceType', node_id, @name, abstract: @abstract, symmetric: is_symmetric)
     elsif  @stereotype and @stereotype.name == 'mixin'
       puts "** Skipping mixin #{@name}"
+    elsif @type == 'UMLStereotype'
+      puts "** Skipping stereotype #{@name}"      
     else
       puts "!! Do not know how to generate #{@name} #{@type} check Generalization Relationship"
     end
     
     if refs
-      puts "  -> Generating nodeset for #{@name}"      
+      puts " for #{@name}"      
     
       node_reference(refs, @parent.name, 'HasSubtype', @parent.node_id, forward: false)
       
@@ -250,7 +253,7 @@ class NodesetType < Type
   end
 
   def generate_enumeration
-    puts "  => Enumeration #{@name} #{@id}"
+    puts "** Generating Enumeration for #{@name}"
     Root << REXML::Comment.new(" Definition of Enumeration #{@name} #{node_id} ")
     refs, node = node('UADataType', node_id, @name)
     enum_nid = Ids.id_for("#{browse_name}/EnumStrings")
@@ -351,8 +354,8 @@ class NodesetType < Type
         formatter.compact = true
         text = ""
         formatter.write(frag, text)
-        puts "******* #{@name} Fragment"
-        puts text
+        # puts "******* #{@name} Fragment"
+        # puts text
         
         value = fnode.add_element('Value').add_element('ByteString',
                                                        {'xmlns' => 'http://opcfoundation.org/UA/2008/02/Types.xsd'})
@@ -366,7 +369,7 @@ class NodesetType < Type
   end
 
   def generate_data_type
-    puts "  => DataType #{@name}"
+    puts "** Generating DataType for #{@name}"
     Root << REXML::Comment.new(" Definition of DataType #{@name} #{node_id} ")
     refs, node = node('UADataType', node_id, @name)
     #node.add_element('Description').add_text(@documentation) if @documentation
@@ -402,12 +405,13 @@ class NodesetType < Type
   end
 
   def generate_instance    
-    puts "  => #{@classifier.base_type} #{@name}"
+    print "** Generating #{@classifier.base_type} #{@name}"
     Root << REXML::Comment.new(" Instantiation of Object #{@name} #{node_id} ")
     if (@classifier.base_type == 'Variable')
-      puts "    - #{@classifier.variable_data_type.name}"
+      puts "::#{@classifier.name} - #{@classifier.variable_data_type.name}"
       @refs, @node = node('UAVariable', node_id, @name, data_type: @classifier.variable_data_type.node_alias)
     else
+      puts "::#{@classifier.name}"
       @refs, @node = node('UAObject', node_id, @name)
     end
     node_reference(@refs, @classifier.name, 'HasTypeDefinition', @classifier.node_id)

@@ -166,7 +166,7 @@ Root.each_element('*') do |e|
       puts "!!!! Reference #{r.text} is a broken relationship #{r.inspect} of #{e.inspect}"
       error = true
     elsif r.text.nil?
-      puts "!!!! Null reference #{r.text} for  #{r.inspect} of #{e.inspect}"
+      puts "!!!! Null reference for #{r.inspect} of #{e.inspect}"
       error = true
     end
   end

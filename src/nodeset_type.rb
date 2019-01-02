@@ -388,7 +388,7 @@ class NodesetType < Type
     struct = TypeDictRoot.add_element('opc:StructuredType', {'Name' => @name, 'BaseType' => "ua:ExtensionObject" })
     struct.add_element('Documentation').add_text("The encoding for #{@name}")
 
-    seq = XmlTypeDictRoot.add_element('xs:complexType', {'name' => @name }).
+    seq = XmlTypeDictRoot.add_element('xs:complexType', {'name' => "#{@name}DataType" }).
             add_element('xs:sequence')
     
     @relations.each do |r|
@@ -397,7 +397,7 @@ class NodesetType < Type
                                       'type' => XMLTypes[r.target.type.name],
                                       'minOccurs' => '1', 'maxOccurs' => '1' })
     end
-    XmlTypeDictRoot.add_element('xs:element', { 'name' => @name, 'type' => "mtc:#{@name}"})
+    XmlTypeDictRoot.add_element('xs:element', { 'name' => @name, 'type' => "mtc:#{@name}DataType"})
 
     create_binary_encoding(struct)
     create_xml_encoding

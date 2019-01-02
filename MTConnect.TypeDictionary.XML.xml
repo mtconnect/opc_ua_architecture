@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:ua='http://opcfoundation.org/UA/2008/02/Types.xsd' xmlns:mtc='http://opcfoundation.org/UA/MTConnect/v2//Types.xsd' targetNamespace='http://opcfoundation.org/UA/MTConnect/v2//Types.xsd' elementFormDefault='qualified'>
   <xs:import namespace='http://opcfoundation.org/UA/2008/02/Types.xsd'/>
-  <xs:complexType name='AssetEventDataType'>
+  <xs:complexType name='AssetEventDataTypeDataType'>
     <xs:sequence>
       <xs:element name='AssetId' type='xs:string' minOccurs='1' maxOccurs='1'/>
       <xs:element name='AssetType' type='xs:string' minOccurs='1' maxOccurs='1'/>
     </xs:sequence>
   </xs:complexType>
-  <xs:element name='AssetEventDataType' type='mtc:AssetEventDataType'/>
+  <xs:element name='AssetEventDataType' type='mtc:AssetEventDataTypeDataType'/>
   <xs:simpleType name='CoordinateSystemTypeEnum'>
     <xs:restriction base='xs:string'>
       <xs:enumeration value='MACHINE'/>
@@ -45,14 +45,14 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name='MTRepresentationType' type='mtc:MTRepresentationTypeEnum'/>
-  <xs:complexType name='ThreeSpaceSampleDataType'>
+  <xs:complexType name='ThreeSpaceSampleDataTypeDataType'>
     <xs:sequence>
       <xs:element name='X' type='xs:float' minOccurs='1' maxOccurs='1'/>
       <xs:element name='Y' type='xs:float' minOccurs='1' maxOccurs='1'/>
       <xs:element name='Z' type='xs:float' minOccurs='1' maxOccurs='1'/>
     </xs:sequence>
   </xs:complexType>
-  <xs:element name='ThreeSpaceSampleDataType' type='mtc:ThreeSpaceSampleDataType'/>
+  <xs:element name='ThreeSpaceSampleDataType' type='mtc:ThreeSpaceSampleDataTypeDataType'/>
   <xs:simpleType name='MTSeverityDataTypeEnum'>
     <xs:restriction base='xs:string'>
       <xs:enumeration value='FAULT'/>

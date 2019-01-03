@@ -386,7 +386,7 @@ class NodesetType < Type
 
     # Create entry in TypeDictionary
     struct = TypeDictRoot.add_element('opc:StructuredType', {'Name' => @name, 'BaseType' => "ua:ExtensionObject" })
-    struct.add_element('Documentation').add_text("The encoding for #{@name}")
+    struct.add_element('opc:Documentation').add_text("The encoding for #{@name}")
 
     seq = XmlTypeDictRoot.add_element('xs:complexType', {'name' => "#{@name}DataType" }).
             add_element('xs:sequence')

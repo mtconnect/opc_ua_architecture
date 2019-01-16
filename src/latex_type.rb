@@ -247,12 +247,12 @@ BrowseName & \\multicolumn{5}{|l|}{#{@name}} \\\\
 IsAbstract & \\multicolumn{5}{|l|}{#{@abstract.to_s.capitalize}} \\\\
 EOT
 
-    if is_a_type?('BaseVariableType')
+    if is_variable?
       v = get_attribute_like(/ValueRank$/)
       f.puts "ValueRank & \\multicolumn{5}{|l|}{#{v.default}} \\\\"
       a = get_attribute_like(/DataType$/) || 'BaseVariableType'
       f.puts "DataType & \\multicolumn{5}{|l|}{#{a.target.type.name}} \\\\"
-    elsif is_a_type?('References')
+    elsif is_reference?
       a = get_attribute_like(/Symmetric/)
       t = a.json['defaultValue'] || 'false'
       f.puts "Symmetric & \\multicolumn{5}{|l|}{#{t}} \\\\"

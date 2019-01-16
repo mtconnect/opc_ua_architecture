@@ -221,6 +221,10 @@ class Type
   def is_event?
     is_a_type?('BaseEventType')
   end
+
+  def is_reference?
+    is_a_type?('References')
+  end
   
   def base_type
     if is_variable?

@@ -355,15 +355,16 @@ EOT
   \\caption{\\texttt{#{escape_name}} DataType}
   \\label{data-type:#{@name}}
 \\tabulinesep=3pt
-\\begin{tabu} to 6in {|l|l|} \\everyrow{\\hline}
+\\begin{tabu} to 6in {|l|l|l|} \\everyrow{\\hline}
 \\hline
-\\rowfont\\bfseries {Field} & {Type}  \\\\
+\\rowfont\\bfseries {Field} & {Type} & {Optional} \\\\
 \\tabucline[1.5pt]{}
 EOT
 
       @relations.each do |r|
-        array = '[]' if r.multiplicity =~ /..\*$/
-        f.puts "\\texttt{#{r.name}} & \\texttt{#{r.target.type.name}#{array}} \\\\"
+        array = '[]' if r.is_array?
+        optional = r.is_optional? ? 'Optional' : 'Mandatory'
+        f.puts "\\texttt{#{r.name}} & \\texttt{#{r.target.type.name}#{array}} & \\texttt{#{optional}} \\\\"
       end
         
       f.puts <<EOT

@@ -1,4 +1,4 @@
-% Generated 2019-01-16 10:03:14 -0800
+% Generated 2019-01-20 22:19:24 -0800
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -119,7 +119,7 @@ Has\-Component & Variable & <MT\-Controlled\-Vocab\-Event> & UInteger[] & MT\-Co
 Has\-Component & Variable & <MT\-Numeric\-Event> & Number[] & MT\-Numeric\-Event\-Type & Optional \\
 Has\-Component & Variable & <MT\-String\-Event> & String[] & MT\-String\-Event\-Type & Optional \\
 Has\-Component & Variable & <MT\-Sample> & Number[] & MT\-Sample\-Type & Optional \\
-Has\-Component & Event & <MT\-Message> & \multicolumn{2}{l|}{MTMessageType[]} & Optional \\
+Has\-Component & Variable & <MT\-Message> & Message\-Event\-Data\-Type[] & MT\-Message\-Type & Optional \\
 Has\-Component & Variable & <MT\-Asset\-Event> & Asset\-Event\-Data\-Type[] & MT\-Asset\-Event\-Type & Optional \\
 Has\-Component & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType[]} & Optional \\
 Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType[]} & Optional \\
@@ -1331,12 +1331,12 @@ A special \gls{Variable} data type for asset change with a \mtmodel{AssetType} a
   \caption{\texttt{AssetEventDataType} DataType}
   \label{data-type:AssetEventDataType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|l|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Field} & {Type}  \\
+\rowfont\bfseries {Field} & {Type} & {Optional} \\
 \tabucline[1.5pt]{}
-\texttt{AssetId} & \texttt{String} \\
-\texttt{AssetType} & \texttt{String} \\
+\texttt{AssetId} & \texttt{String} & \texttt{Mandatory} \\
+\texttt{AssetType} & \texttt{String} & \texttt{Mandatory} \\
 \end{tabu}
 \end{table} 
 
@@ -1930,9 +1930,11 @@ will be represented as an event. The MTConnect \gls{CDATA} will be represented i
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{MTMessageType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{MessageEventDataType} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of SystemEventType (See \cite{UAPart5} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of BaseDataVariableType (See \cite{UAPart8} Documentation)} \\
 Has\-Property & Variable & Xml\-Id & String & Property\-Type & Mandatory \\
 Has\-Property & Variable & Name & String & Property\-Type & Optional \\
 Has\-Property & Variable & Category & MT\-Category\-Type & Property\-Type & Mandatory \\
@@ -1948,7 +1950,6 @@ Has\-MT\-Composition & Object & <MT\-Composition> & \multicolumn{2}{l|}{MTCompos
 Has\-MT\-Source & Object & <Base\-Object> & \multicolumn{2}{l|}{BaseObjectType} & Optional \\
 Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
 Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & Optional \\
-Has\-Property & Variable & Native\-Code & String & Property\-Type & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -2200,6 +2201,25 @@ Has\-Property & Variable & Engineering\-Units & EUInformation & Property\-Type &
 \item Mixes in \texttt{MTNumericDataItemType}, see See section \ref{type:MTNumericDataItemType}
 \end{itemize}
 \FloatBarrier
+\subsubsection{Defintion of \texttt{ MessageEventDataType}}
+  \label{type:MessageEventDataType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MessageEventDataType} DataType}
+  \label{data-type:MessageEventDataType}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Field} & {Type} & {Optional} \\
+\tabucline[1.5pt]{}
+\texttt{NativeCode} & \texttt{String} & \texttt{Optional} \\
+\texttt{Message} & \texttt{String} & \texttt{Mandatory} \\
+\end{tabu}
+\end{table} 
+
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ ThreeSpaceSampleDataType}}
   \label{type:ThreeSpaceSampleDataType}
 
@@ -2212,13 +2232,13 @@ Represents a position in a three space coordinate system. The positions must be 
   \caption{\texttt{ThreeSpaceSampleDataType} DataType}
   \label{data-type:ThreeSpaceSampleDataType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|l|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|l|l|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Field} & {Type}  \\
+\rowfont\bfseries {Field} & {Type} & {Optional} \\
 \tabucline[1.5pt]{}
-\texttt{X} & \texttt{Double} \\
-\texttt{Y} & \texttt{Double} \\
-\texttt{Z} & \texttt{Double} \\
+\texttt{X} & \texttt{Double} & \texttt{Mandatory} \\
+\texttt{Y} & \texttt{Double} & \texttt{Mandatory} \\
+\texttt{Z} & \texttt{Double} & \texttt{Mandatory} \\
 \end{tabu}
 \end{table} 
 

@@ -31,6 +31,11 @@
     <opc:EnumeratedValue Name='TIME_SERIES' Value='1'/>
     <opc:EnumeratedValue Name='VALUE' Value='2'/>
   </opc:EnumeratedType>
+  <opc:StructuredType Name='MessageEventDataType' BaseType='ua:ExtensionObject'>
+    <opc:Documentation>The encoding for MessageEventDataType</opc:Documentation>
+    <opc:Field Name='NativeCode' TypeName='opc:String'/>
+    <opc:Field Name='Message' TypeName='opc:String'/>
+  </opc:StructuredType>
   <opc:StructuredType Name='ThreeSpaceSampleDataType' BaseType='ua:ExtensionObject'>
     <opc:Documentation>The encoding for ThreeSpaceSampleDataType</opc:Documentation>
     <opc:Field Name='X' TypeName='opc:Double'/>

@@ -378,8 +378,11 @@ class NodesetType < Type
     defs = node.add_element('Definition', { 'Name' => @name })
     @relations.each do |r|
       field = defs.add_element('Field', { 'Name' => r.name, 'DataType' =>  r.target.type.node_alias })
-      if r.multiplicity =~ /..\*$/
+      if r.is_array?
         field.add_attribute("ValueRank", "1")
+      end
+      if r.is_optional?
+        field.add_attribute("IsOptional", "true")
       end
       field.add_element('Description').add_text(r.documentation) if r.documentation
     end

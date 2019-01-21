@@ -45,6 +45,13 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name='MTRepresentationType' type='mtc:MTRepresentationTypeEnum'/>
+  <xs:complexType name='MessageEventDataTypeDataType'>
+    <xs:sequence>
+      <xs:element name='NativeCode' type='xs:string' minOccurs='1' maxOccurs='1'/>
+      <xs:element name='Message' type='xs:string' minOccurs='1' maxOccurs='1'/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name='MessageEventDataType' type='mtc:MessageEventDataTypeDataType'/>
   <xs:complexType name='ThreeSpaceSampleDataTypeDataType'>
     <xs:sequence>
       <xs:element name='X' type='xs:float' minOccurs='1' maxOccurs='1'/>

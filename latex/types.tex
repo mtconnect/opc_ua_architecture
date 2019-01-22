@@ -1,4 +1,4 @@
-% Generated 2019-01-20 22:19:24 -0800
+% Generated 2019-01-22 10:06:56 -0800
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -1783,96 +1783,6 @@ These need to become \uamodel{Good_} status code in OPC UA.
 \FloatBarrier
 \item \texttt{MinimumDeltaFilter::Float:} Represents the MTConnect \mtmodel{Filter} subtype of \mtmodel{MinimumDeltaFilter}.
 
-\item \textbf{Allowable Values} for \texttt{CoordinateSystemType}
-\FloatBarrier
-
-Represents the \mtmodel{coordinateSystem} attribute of the MTConnect \gls{MTDataItem}.
-
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{CoordinateSystemType} Enumeration}
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Name} & {Index} \\
-\tabucline[1.5pt]{}
-\texttt{MACHINE} & \texttt{0} \\
-\texttt{WORK} & \texttt{1} \\
-\end{tabu}
-\end{table} 
-\FloatBarrier
-\item \textbf{Allowable Values} for \texttt{DataItemResetValueType}
-\FloatBarrier
-
-These need to become \uamodel{Good_} status code in OPC UA.
-
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{DataItemResetValueType} Enumeration}
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Name} & {Index} \\
-\tabucline[1.5pt]{}
-\texttt{ACTION_COMPLETE} & \texttt{0} \\
-\texttt{ANNUAL} & \texttt{1} \\
-\texttt{DAY} & \texttt{2} \\
-\texttt{MAINTENANCE} & \texttt{3} \\
-\texttt{MANUAL} & \texttt{4} \\
-\texttt{MONTH} & \texttt{5} \\
-\texttt{POWER_ON} & \texttt{6} \\
-\texttt{SHIFT} & \texttt{7} \\
-\texttt{WEEK} & \texttt{8} \\
-\end{tabu}
-\end{table} 
-\FloatBarrier
-\end{itemize}
-\paragraph{Dependencies and Relationships}
-
-\begin{itemize}
-\item \textbf{Allowable Values} for \texttt{CoordinateSystemType}
-\FloatBarrier
-
-Represents the \mtmodel{coordinateSystem} attribute of the MTConnect \gls{MTDataItem}.
-
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{CoordinateSystemType} Enumeration}
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Name} & {Index} \\
-\tabucline[1.5pt]{}
-\texttt{MACHINE} & \texttt{0} \\
-\texttt{WORK} & \texttt{1} \\
-\end{tabu}
-\end{table} 
-\FloatBarrier
-\item \textbf{Allowable Values} for \texttt{DataItemResetValueType}
-\FloatBarrier
-
-These need to become \uamodel{Good_} status code in OPC UA.
-
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{DataItemResetValueType} Enumeration}
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Name} & {Index} \\
-\tabucline[1.5pt]{}
-\texttt{ACTION_COMPLETE} & \texttt{0} \\
-\texttt{ANNUAL} & \texttt{1} \\
-\texttt{DAY} & \texttt{2} \\
-\texttt{MAINTENANCE} & \texttt{3} \\
-\texttt{MANUAL} & \texttt{4} \\
-\texttt{MONTH} & \texttt{5} \\
-\texttt{POWER_ON} & \texttt{6} \\
-\texttt{SHIFT} & \texttt{7} \\
-\texttt{WEEK} & \texttt{8} \\
-\end{tabu}
-\end{table} 
-\FloatBarrier
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTEventClassType}}
@@ -1911,11 +1821,9 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{MTMessageClassType} & \multicolumn{
 
 \FloatBarrier
 
-The message type is a special class since it adds another property for the \mtmodel{nativeCode}. 
-In MTConnect the \mtmodel{nativeCode} attribute will be mapped to this variable 
-in the message. The type is currently sub-typed from the OPC UA \uamodel{SystemEventType} and 
-will be represented as an event. The MTConnect \gls{CDATA} will be represented in the \gls{MTEvent}
-\mtmodel{Message}.
+The message is a sub-type of the \uaterm{DataVariableType} using the \mtuatype{MessageEventDataType} to 
+represent the values for \mtterm{NativeCode} and \mtterm{Text} of the message from the \gls{CDATA} of the 
+MTConnect Streams message.
 
 
 \begin{table}[ht]
@@ -2215,7 +2123,7 @@ Has\-Property & Variable & Engineering\-Units & EUInformation & Property\-Type &
 \rowfont\bfseries {Field} & {Type} & {Optional} \\
 \tabucline[1.5pt]{}
 \texttt{NativeCode} & \texttt{String} & \texttt{Optional} \\
-\texttt{Message} & \texttt{String} & \texttt{Mandatory} \\
+\texttt{Text} & \texttt{String} & \texttt{Mandatory} \\
 \end{tabu}
 \end{table} 
 

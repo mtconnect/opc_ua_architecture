@@ -568,7 +568,7 @@ The MTConnect information model does not differentiate between the two controlle
         </Controller>
 \end{lstlisting}
 
-The \mtmodel{Controller} has two \mtmodel{DataItems}, \mtmodel{Message} and \mtmodel{EmergencyStop} as shown in Figure~\ref{fig:controller-component}. The \mtuatype{MTMessageType} is of special note since it is not a \uamodel{VariableType}, but it is an \uamodel{EventType} and decended from the \uamodel{SystemEventType} class described in \cite{UAPart5}.
+The \mtmodel{Controller} has two \mtmodel{DataItems}, \mtmodel{Message} and \mtmodel{EmergencyStop} as shown in Figure~\ref{fig:controller-component}. The \mtuatype{MTMessageType} is an \uamodel{Variable} where the data type is a \mtuatype{MessageEventDataType}.
 
 \begin{figure}[ht]
   \centering
@@ -734,7 +734,7 @@ The \gls{http} \gls{rest} Protocol provides two capabilities with respect to the
 
 Each entry in the \gls{buffer} is time-stamped and assigned a sequence number that indicates the arrival order unique across all devices represented in the \gls{Agent}. The sequence number is monotonically increasing and is unique concerning the instance (execution) of the \gls{Agent}. When the \gls{Agent} is restarted, the \mtmodel{sequence} may be reset to one indicating history has been expunged. 
 
-The following section provides the rules for taking data from the \mtterm{MTConnectStream} XML Document and represent as a series of updates to the \gls{Variable} and generate \glspl{Event} for the \mtuatype{MTConditionType} and \mtuatype{MTMessageType} \glspl{Object}.
+The following section provides the rules for taking data from the \mtterm{MTConnectStream} XML Document and represent as a series of updates to the \gls{Variable} and generate \glspl{Event} for the \mtuatype{MTConditionType} and \mtuatype{MTMessageType} \uaterm{DataItem}.
 
 \subsubsection{MTConnectStreams Document Header}
 
@@ -763,7 +763,7 @@ Listing~\ref{lst:streams-header} is an example of the \gls{xml} \textit{Root Ele
 
 MTConnect flattens the structure when reporting data and organizes it by \gls{MTDevice}, \gls{MTComponent} and \gls{category}; this is shown in  Listing~\ref{lst:linear-component-stream} Line~\ref{line:component-stream-1} with the \mtmodel{DeviceStream}, \mtmodel{ComponentStream}, and \mtmodel{Samples} elements (not shown are the \mtmodel{Events} and \mtmodel{Condition} elements that will be address later). When the data stream is initialized or when it disconnects, the MTConnect \gls{MTDataItem} \mtmodel{Value} is set to \mtmodel{UNAVAILABLE} as shown on Line~\ref{line:pos-unavilable}.
 
-MTConnect only reports data when it changes, and each change is assigned a monotonically increasing \mtmodel{sequence} number when it arrives at the MTConnect \gls{Agent}. In addition to the \mtmodel{sequence} number; the XML attribute \mtmodel{timestamp} indicates the time the observation was made. The \mtmodel{timestamp} is used when setting the \uamodel{Variable} \uamodel{Time} along with the data and status. The data is only reported when it changes except for \glspl{MTDataItem} with the \mtmodel{representation} of \mtmodel{DISCRETE} indicating that each value has a discrete meaning, such as a \mtmodel{PartCount} where each count indicates an accrual of that many parts. {\color{red} It is unclear how to achieve this in OPC UA, possible with events as is being done with \mtuatype{MTMessageType}}.
+MTConnect only reports data when it changes, and each change is assigned a monotonically increasing \mtmodel{sequence} number when it arrives at the MTConnect \gls{Agent}. In addition to the \mtmodel{sequence} number; the XML attribute \mtmodel{timestamp} indicates the time the observation was made. The \mtmodel{timestamp} is used when setting the \uamodel{Variable} \uamodel{Time} along with the data and status. The data is only reported when it changes except for \glspl{MTDataItem} with the \mtmodel{representation} of \mtmodel{DISCRETE} indicating that each value has a discrete meaning, such as a \mtmodel{PartCount} where each count indicates an accrual of that many parts.
 
 The value of \mtmodel{UNAVAILABLE} will be translated to the OPC UA \gls{DataVariable} \uamodel{StatusCode} of \uamodel{Bad_NotConnected} to indicate that the value of the data is currently unknown from the data source. 
 
@@ -940,16 +940,9 @@ The streaming data will be identical to listing~\ref{lst:path-motion-program-con
 
 \subsubsection{Messages}
 
-The \mtuatype{MTMessageType} will be instantiated as an \gls{Object} and each time a \mtmodel{Message} occurs. The values from the last event will be recorded in the \gls{Object} and the \gls{Event} \glspl{Property} and \glspl{Attribute} will be set as follows: 
+The \mtuatype{MTMessageType} is a data item with an extended type that uses the \mtuatype{MessageEventDataType} to provide the \mtterm{NativeCode} and the \mtterm{Text} of the message. The \gls{CDATA} will be mapped to the \mtterm{Text} field and the \mtterm{NativeCode} will be mapped if present.
 
-\begin{description}[font=\it\bfseries,labelindent=4em,labelwidth=6em,leftmargin=!]    
-  \item[Severity] Fixed at 1 as the lowest severity of an \gls{Event}
-  \item[Message] Set from the \gls{CDATA}
-  \item[Time] \mtmodel{timestamp}
-  \item[NodeId] The \gls{NodeId} of the \gls{Event} is set to the \gls{NodeId} of the \mtuatype{MTMessageType} \gls{Object} instance.
-  \item[Message] The \gls{CDATA} of the \gls{MTCondition} when \mtmodel{Normal} or \mtmodel{Warning}.
-  \item[\ldots] The remaining \gls{Property} will be set from the XML attributes of the same name.
-\end{description}
+{\color{red} The alternative architecture is to have the message as an \gls{Event} subtype, but the dual instantiation of the \mtuatype{MTMessageType} as an \gls{Object} and an \gls{Event} proved to be very complicated to implement. This can be reconsidered.}
 
 \subsection{Time Series Samples}
 

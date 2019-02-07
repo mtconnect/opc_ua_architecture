@@ -1,4 +1,4 @@
-% Generated 2019-01-22 10:06:56 -0800
+% Generated 2019-01-30 19:09:19 -0800
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -119,7 +119,7 @@ Has\-Component & Variable & <MT\-Controlled\-Vocab\-Event> & UInteger[] & MT\-Co
 Has\-Component & Variable & <MT\-Numeric\-Event> & Number[] & MT\-Numeric\-Event\-Type & Optional \\
 Has\-Component & Variable & <MT\-String\-Event> & String[] & MT\-String\-Event\-Type & Optional \\
 Has\-Component & Variable & <MT\-Sample> & Number[] & MT\-Sample\-Type & Optional \\
-Has\-Component & Variable & <MT\-Message> & Message\-Event\-Data\-Type[] & MT\-Message\-Type & Optional \\
+Has\-Component & Variable & <MT\-Message> & Message\-Data\-Type[] & MT\-Message\-Type & Optional \\
 Has\-Component & Variable & <MT\-Asset\-Event> & Asset\-Event\-Data\-Type[] & MT\-Asset\-Event\-Type & Optional \\
 Has\-Component & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType[]} & Optional \\
 Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType[]} & Optional \\
@@ -1719,11 +1719,11 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTDataItemType (See section \ref{type:MTDataItemType})} \\
 Has\-Property & Variable & Significant\-Digits & UInt16 & Property\-Type & Optional \\
-Has\-Property & Variable & Statistic & String & Property\-Type & Optional \\
+Has\-Property & Variable & Statistic & MT\-Statistic\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Native\-Units & String & Property\-Type & Optional \\
-Has\-Property & Variable & Coordinate\-System & Coordinate\-System\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Coordinate\-System & MT\-Coordinate\-System\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Initial\-Value & Double & Property\-Type & Optional \\
-Has\-Property & Variable & Reset\-Trigger & Data\-Item\-Reset\-Value\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Reset\-Trigger & MT\-Reset\-Trigger\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Units & String & Property\-Type & Optional \\
 Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
 \end{tabu}
@@ -1736,15 +1736,37 @@ Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Opt
 \begin{itemize}
 \item \texttt{SignificantDigits::UInt16:} The significant digits is converted to a \uaterm{ValuePrecision}.
 
-\item \textbf{Allowable Values} for \texttt{CoordinateSystemType}
+\item \textbf{Allowable Values} for \texttt{MTStatisticType}
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTStatisticType} Enumeration}
+  \label{enum:MTStatisticType}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{AVERAGE} & \texttt{0} \\
+\texttt{MAXIMUM} & \texttt{1} \\
+\texttt{MEDIAN} & \texttt{2} \\
+\texttt{MINIMUM} & \texttt{3} \\
+\texttt{MODE} & \texttt{4} \\
+\texttt{RANGE} & \texttt{5} \\
+\texttt{ROOT_MEAN_SQUARE} & \texttt{6} \\
+\texttt{STANDARD_DEVIATION} & \texttt{7} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\item \textbf{Allowable Values} for \texttt{MTCoordinateSystemType}
 \FloatBarrier
 
 Represents the \mtmodel{coordinateSystem} attribute of the MTConnect \gls{MTDataItem}.
 
 \begin{table}[ht]
 \centering 
-  \caption{\texttt{CoordinateSystemType} Enumeration}
-  \label{enum:CoordinateSystemType}
+  \caption{\texttt{MTCoordinateSystemType} Enumeration}
+  \label{enum:MTCoordinateSystemType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -1755,15 +1777,15 @@ Represents the \mtmodel{coordinateSystem} attribute of the MTConnect \gls{MTData
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\item \textbf{Allowable Values} for \texttt{DataItemResetValueType}
+\item \textbf{Allowable Values} for \texttt{MTResetTriggerType}
 \FloatBarrier
 
 These need to become \uamodel{Good_} status code in OPC UA.
 
 \begin{table}[ht]
 \centering 
-  \caption{\texttt{DataItemResetValueType} Enumeration}
-  \label{enum:DataItemResetValueType}
+  \caption{\texttt{MTResetTriggerType} Enumeration}
+  \label{enum:MTResetTriggerType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -1816,6 +1838,31 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{MTMessageClassType} & \multicolumn{
 
 
 \FloatBarrier
+\subsubsection{Defintion of \texttt{ MTMessageEventType}}
+  \label{type:MTMessageEventType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTMessageEventType} Definition}
+  \label{table:MTMessageEventType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTMessageEventType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of BaseEventType (See \cite{UAPart5} Documentation)} \\
+Has\-Property & Variable & Native\-Code & String & Property\-Type & Optional \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ MTMessageType}}
   \label{type:MTMessageType}
 
@@ -1839,7 +1886,7 @@ MTConnect Streams message.
 BrowseName & \multicolumn{5}{|l|}{MTMessageType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 ValueRank & \multicolumn{5}{|l|}{-1} \\
-DataType & \multicolumn{5}{|l|}{MessageEventDataType} \\
+DataType & \multicolumn{5}{|l|}{MessageDataType} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of BaseDataVariableType (See \cite{UAPart8} Documentation)} \\
@@ -1910,11 +1957,11 @@ Has\-MT\-Source & Object & <Base\-Object> & \multicolumn{2}{l|}{BaseObjectType} 
 Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
 Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & Optional \\
 Has\-Property & Variable & Significant\-Digits & UInt16 & Property\-Type & Optional \\
-Has\-Property & Variable & Statistic & String & Property\-Type & Optional \\
+Has\-Property & Variable & Statistic & MT\-Statistic\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Native\-Units & String & Property\-Type & Optional \\
-Has\-Property & Variable & Coordinate\-System & Coordinate\-System\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Coordinate\-System & MT\-Coordinate\-System\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Initial\-Value & Double & Property\-Type & Optional \\
-Has\-Property & Variable & Reset\-Trigger & Data\-Item\-Reset\-Value\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Reset\-Trigger & MT\-Reset\-Trigger\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Units & String & Property\-Type & Optional \\
 Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
 \end{tabu}
@@ -1973,11 +2020,11 @@ Has\-MT\-Source & Object & <Base\-Object> & \multicolumn{2}{l|}{BaseObjectType} 
 Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
 Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & Optional \\
 Has\-Property & Variable & Significant\-Digits & UInt16 & Property\-Type & Optional \\
-Has\-Property & Variable & Statistic & String & Property\-Type & Optional \\
+Has\-Property & Variable & Statistic & MT\-Statistic\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Native\-Units & String & Property\-Type & Optional \\
-Has\-Property & Variable & Coordinate\-System & Coordinate\-System\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Coordinate\-System & MT\-Coordinate\-System\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Initial\-Value & Double & Property\-Type & Optional \\
-Has\-Property & Variable & Reset\-Trigger & Data\-Item\-Reset\-Value\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Reset\-Trigger & MT\-Reset\-Trigger\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Units & String & Property\-Type & Optional \\
 Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
 \end{tabu}
@@ -2091,11 +2138,11 @@ Has\-MT\-Source & Object & <Base\-Object> & \multicolumn{2}{l|}{BaseObjectType} 
 Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
 Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & Optional \\
 Has\-Property & Variable & Significant\-Digits & UInt16 & Property\-Type & Optional \\
-Has\-Property & Variable & Statistic & String & Property\-Type & Optional \\
+Has\-Property & Variable & Statistic & MT\-Statistic\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Native\-Units & String & Property\-Type & Optional \\
-Has\-Property & Variable & Coordinate\-System & Coordinate\-System\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Coordinate\-System & MT\-Coordinate\-System\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Initial\-Value & Double & Property\-Type & Optional \\
-Has\-Property & Variable & Reset\-Trigger & Data\-Item\-Reset\-Value\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Reset\-Trigger & MT\-Reset\-Trigger\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Units & String & Property\-Type & Optional \\
 Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
 Has\-Property & Variable & Engineering\-Units & EUInformation & Property\-Type & Mandatory \\
@@ -2109,14 +2156,14 @@ Has\-Property & Variable & Engineering\-Units & EUInformation & Property\-Type &
 \item Mixes in \texttt{MTNumericDataItemType}, see See section \ref{type:MTNumericDataItemType}
 \end{itemize}
 \FloatBarrier
-\subsubsection{Defintion of \texttt{ MessageEventDataType}}
-  \label{type:MessageEventDataType}
+\subsubsection{Defintion of \texttt{ MessageDataType}}
+  \label{type:MessageDataType}
 
 \FloatBarrier
 \begin{table}[ht]
 \centering 
-  \caption{\texttt{MessageEventDataType} DataType}
-  \label{data-type:MessageEventDataType}
+  \caption{\texttt{MessageDataType} DataType}
+  \label{data-type:MessageDataType}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|l|l|} \everyrow{\hline}
 \hline

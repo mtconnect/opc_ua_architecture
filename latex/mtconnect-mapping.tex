@@ -875,7 +875,6 @@ The \gls{ConditionType} and \uamodel{EventType} properties will be set as follow
     \item When \mtmodel{Warning} or \mtmodel{Fault}, \uamodel{True}
   \end{itemize}
   \vspace{1em}
-  \item[Message] Set from the \gls{CDATA}
   \item[Time] \mtmodel{timestamp}
   \item[NodeId] The \gls{NodeId} of the \gls{Event} is set to the \gls{NodeId} of the \mtuatype{MTConditionType} \gls{Object} instance.
   \item[Message] The \gls{CDATA} of the \gls{MTCondition} when \mtmodel{Normal} or \mtmodel{Warning}.
@@ -942,7 +941,7 @@ The streaming data will be identical to listing~\ref{lst:path-motion-program-con
 
 The \mtuatype{MTMessageType} is a data item with an extended type that uses the \mtuatype{MessageEventDataType} to provide the \mtterm{NativeCode} and the \mtterm{Text} of the message. The \gls{CDATA} will be mapped to the \mtterm{Text} field and the \mtterm{NativeCode} will be mapped if present.
 
-{\color{red} The alternative architecture is to have the message as an \gls{Event} subtype, but the dual instantiation of the \mtuatype{MTMessageType} as an \gls{Object} and an \gls{Event} proved to be very complicated to implement. This can be reconsidered.}
+{\color{red} The alternative architecture is to have the message as an \gls{Event} subtype, but the dual instantiation of the \mtuatype{MTMessageType} as an \gls{Object} and an \gls{Event} proved to be very complicated to implement. This can be reconsidered. One option to consider is firing an event, similar to state transitions, every time the value changes. Will look into the process of creating an event for this purpose. May also be able to use an existing event. In that case the MTMessage instance will become an event source.}
 
 \subsection{Time Series Samples}
 

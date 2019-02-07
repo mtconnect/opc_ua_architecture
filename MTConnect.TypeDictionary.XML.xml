@@ -8,14 +8,30 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name='AssetEventDataType' type='mtc:AssetEventDataTypeDataType'/>
-  <xs:simpleType name='CoordinateSystemTypeEnum'>
+  <xs:simpleType name='MTCategoryTypeEnum'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='EVENT'/>
+      <xs:enumeration value='CONDITION'/>
+      <xs:enumeration value='SAMPLE'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='MTCategoryType' type='mtc:MTCategoryTypeEnum'/>
+  <xs:simpleType name='MTCoordinateSystemTypeEnum'>
     <xs:restriction base='xs:string'>
       <xs:enumeration value='MACHINE'/>
       <xs:enumeration value='WORK'/>
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name='CoordinateSystemType' type='mtc:CoordinateSystemTypeEnum'/>
-  <xs:simpleType name='DataItemResetValueTypeEnum'>
+  <xs:element name='MTCoordinateSystemType' type='mtc:MTCoordinateSystemTypeEnum'/>
+  <xs:simpleType name='MTRepresentationTypeEnum'>
+    <xs:restriction base='xs:string'>
+      <xs:enumeration value='DISCRETE'/>
+      <xs:enumeration value='TIME_SERIES'/>
+      <xs:enumeration value='VALUE'/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name='MTRepresentationType' type='mtc:MTRepresentationTypeEnum'/>
+  <xs:simpleType name='MTResetTriggerTypeEnum'>
     <xs:restriction base='xs:string'>
       <xs:enumeration value='ACTION_COMPLETE'/>
       <xs:enumeration value='ANNUAL'/>
@@ -28,30 +44,27 @@
       <xs:enumeration value='WEEK'/>
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name='DataItemResetValueType' type='mtc:DataItemResetValueTypeEnum'/>
-  <xs:simpleType name='MTCategoryTypeEnum'>
+  <xs:element name='MTResetTriggerType' type='mtc:MTResetTriggerTypeEnum'/>
+  <xs:simpleType name='MTStatisticTypeEnum'>
     <xs:restriction base='xs:string'>
-      <xs:enumeration value='EVENT'/>
-      <xs:enumeration value='CONDITION'/>
-      <xs:enumeration value='SAMPLE'/>
+      <xs:enumeration value='AVERAGE'/>
+      <xs:enumeration value='MAXIMUM'/>
+      <xs:enumeration value='MEDIAN'/>
+      <xs:enumeration value='MINIMUM'/>
+      <xs:enumeration value='MODE'/>
+      <xs:enumeration value='RANGE'/>
+      <xs:enumeration value='ROOT_MEAN_SQUARE'/>
+      <xs:enumeration value='STANDARD_DEVIATION'/>
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name='MTCategoryType' type='mtc:MTCategoryTypeEnum'/>
-  <xs:simpleType name='MTRepresentationTypeEnum'>
-    <xs:restriction base='xs:string'>
-      <xs:enumeration value='DISCRETE'/>
-      <xs:enumeration value='TIME_SERIES'/>
-      <xs:enumeration value='VALUE'/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name='MTRepresentationType' type='mtc:MTRepresentationTypeEnum'/>
-  <xs:complexType name='MessageEventDataTypeDataType'>
+  <xs:element name='MTStatisticType' type='mtc:MTStatisticTypeEnum'/>
+  <xs:complexType name='MessageDataTypeDataType'>
     <xs:sequence>
       <xs:element name='NativeCode' type='xs:string' minOccurs='1' maxOccurs='1'/>
       <xs:element name='Text' type='xs:string' minOccurs='1' maxOccurs='1'/>
     </xs:sequence>
   </xs:complexType>
-  <xs:element name='MessageEventDataType' type='mtc:MessageEventDataTypeDataType'/>
+  <xs:element name='MessageDataType' type='mtc:MessageDataTypeDataType'/>
   <xs:complexType name='ThreeSpaceSampleDataTypeDataType'>
     <xs:sequence>
       <xs:element name='X' type='xs:float' minOccurs='1' maxOccurs='1'/>

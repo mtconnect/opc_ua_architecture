@@ -6,11 +6,21 @@
     <opc:Field Name='AssetId' TypeName='opc:String'/>
     <opc:Field Name='AssetType' TypeName='opc:String'/>
   </opc:StructuredType>
-  <opc:EnumeratedType Name='CoordinateSystemType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+  <opc:EnumeratedType Name='MTCategoryType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='EVENT' Value='0'/>
+    <opc:EnumeratedValue Name='CONDITION' Value='1'/>
+    <opc:EnumeratedValue Name='SAMPLE' Value='2'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='MTCoordinateSystemType' LengthInBits='32' BaseType='ua:ExtensionObject'>
     <opc:EnumeratedValue Name='MACHINE' Value='0'/>
     <opc:EnumeratedValue Name='WORK' Value='1'/>
   </opc:EnumeratedType>
-  <opc:EnumeratedType Name='DataItemResetValueType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+  <opc:EnumeratedType Name='MTRepresentationType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='DISCRETE' Value='0'/>
+    <opc:EnumeratedValue Name='TIME_SERIES' Value='1'/>
+    <opc:EnumeratedValue Name='VALUE' Value='2'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='MTResetTriggerType' LengthInBits='32' BaseType='ua:ExtensionObject'>
     <opc:EnumeratedValue Name='ACTION_COMPLETE' Value='0'/>
     <opc:EnumeratedValue Name='ANNUAL' Value='1'/>
     <opc:EnumeratedValue Name='DAY' Value='2'/>
@@ -21,18 +31,18 @@
     <opc:EnumeratedValue Name='SHIFT' Value='7'/>
     <opc:EnumeratedValue Name='WEEK' Value='8'/>
   </opc:EnumeratedType>
-  <opc:EnumeratedType Name='MTCategoryType' LengthInBits='32' BaseType='ua:ExtensionObject'>
-    <opc:EnumeratedValue Name='EVENT' Value='0'/>
-    <opc:EnumeratedValue Name='CONDITION' Value='1'/>
-    <opc:EnumeratedValue Name='SAMPLE' Value='2'/>
+  <opc:EnumeratedType Name='MTStatisticType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='AVERAGE' Value='0'/>
+    <opc:EnumeratedValue Name='MAXIMUM' Value='1'/>
+    <opc:EnumeratedValue Name='MEDIAN' Value='2'/>
+    <opc:EnumeratedValue Name='MINIMUM' Value='3'/>
+    <opc:EnumeratedValue Name='MODE' Value='4'/>
+    <opc:EnumeratedValue Name='RANGE' Value='5'/>
+    <opc:EnumeratedValue Name='ROOT_MEAN_SQUARE' Value='6'/>
+    <opc:EnumeratedValue Name='STANDARD_DEVIATION' Value='7'/>
   </opc:EnumeratedType>
-  <opc:EnumeratedType Name='MTRepresentationType' LengthInBits='32' BaseType='ua:ExtensionObject'>
-    <opc:EnumeratedValue Name='DISCRETE' Value='0'/>
-    <opc:EnumeratedValue Name='TIME_SERIES' Value='1'/>
-    <opc:EnumeratedValue Name='VALUE' Value='2'/>
-  </opc:EnumeratedType>
-  <opc:StructuredType Name='MessageEventDataType' BaseType='ua:ExtensionObject'>
-    <opc:Documentation>The encoding for MessageEventDataType</opc:Documentation>
+  <opc:StructuredType Name='MessageDataType' BaseType='ua:ExtensionObject'>
+    <opc:Documentation>The encoding for MessageDataType</opc:Documentation>
     <opc:Field Name='NativeCode' TypeName='opc:String'/>
     <opc:Field Name='Text' TypeName='opc:String'/>
   </opc:StructuredType>

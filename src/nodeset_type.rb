@@ -325,7 +325,7 @@ class NodesetType < Type
     
     # now create the enum strings property
     Root << REXML::Comment.new(" #{@name}::EnumStrings #{enum_nid} ")
-    Ids.add_node_class(node_id, 'EnumStrings', 'DataType', [@name])
+    Ids.add_node_class(node_id, 'EnumStrings', 'Variable', [@name])
     refs, node = node('UAVariable', enum_nid, 'EnumStrings', data_type: 'LocalizedText',
                       value_rank: 1, parent: node_id)
     node_reference(refs, 'PropertyType', 'HasTypeDefinition', Ids['PropertyType'])

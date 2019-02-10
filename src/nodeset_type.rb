@@ -325,6 +325,7 @@ class NodesetType < Type
     
     # now create the enum strings property
     Root << REXML::Comment.new(" #{@name}::EnumStrings #{enum_nid} ")
+    Ids.add_node_class(node_id, 'EnumStrings', 'DataType', [@name])
     refs, node = node('UAVariable', enum_nid, 'EnumStrings', data_type: 'LocalizedText',
                       value_rank: 1, parent: node_id)
     node_reference(refs, 'PropertyType', 'HasTypeDefinition', Ids['PropertyType'])
@@ -446,13 +447,14 @@ class NodesetType < Type
 
   def generate_instance    
     print "++ Generating #{@classifier.base_type} #{@name}"
-    Ids.add_node_class(node_id, @name, 'DataType')
     Root << REXML::Comment.new(" Instantiation of Object #{@name} #{node_id} ")
     if (@classifier.base_type == 'Variable')
       puts "::#{@classifier.name} - #{@classifier.variable_data_type.name}"
+      Ids.add_node_class(node_id, @name, 'Variable')
       @refs, @node = node('UAVariable', node_id, @name, data_type: @classifier.variable_data_type.node_alias)
     else
       puts "::#{@classifier.name}"
+      Ids.add_node_class(node_id, @name, 'Object')
       @refs, @node = node('UAObject', node_id, @name)
     end
     node_reference(@refs, @classifier.name, 'HasTypeDefinition', @classifier.node_id)

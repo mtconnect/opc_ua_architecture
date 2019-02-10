@@ -70,7 +70,7 @@ module Relation
 
   class Generalization
     def target_node_id
-      NodeIds['ObjectType']
+      Ids['ObjectType']
     end    
   end
 

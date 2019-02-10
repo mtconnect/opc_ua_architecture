@@ -7,6 +7,7 @@ class IdManager
     @ids = Hash.new
     @aliases = Set.new
     @next_id = start
+    @klasses = Array.new
     @referenced = Set.new
     pat = /#{Namespace}:/o
 
@@ -29,6 +30,11 @@ class IdManager
 
   def add_alias(key)
     @aliases << key
+  end
+
+  def add_node_class(node_id, name, klass, path = nil)
+    pth = (Array(path).dup << name).join('_').gsub(/#{Namespace}:/, '')
+    @klasses << [pth, node_id.sub(/.+?i=(\d+)/, '\1'), klass]
   end
 
   def each_alias(&block)
@@ -93,6 +99,12 @@ class IdManager
         if key !~ pat or @referenced.include?(key)
           csv << [key, @ids[key], @aliases.include?(key)]
         end
+      end
+    end
+
+    CSV.open('MTConnectModel.csv', 'wb') do |csv|
+      @klasses.sort.each do |row|
+        csv << row
       end
     end
   end

@@ -111,6 +111,10 @@ module Relation
       false
     end
 
+    def node_class
+      raise "Unknown ndoe class #{self.class.name} for #{@owner.name} '#{@name}'"
+    end
+
     def reference_type
       raise "Unknown reference #{self.class.name} for #{@owner.name} '#{@name}'"
     end
@@ -223,6 +227,16 @@ module Relation
       stereotype and stereotype.name == 'Organizes'
     end
 
+    def node_class
+      if is_folder?
+        'Object'
+      elsif stereotype
+        'Stereotype'
+      else
+        'Object'
+      end
+    end
+
     def reference_type
       if stereotype
         stereotype.name
@@ -263,6 +277,10 @@ module Relation
       'HasProperty'
     end
 
+    def node_class
+      'Variable'
+    end
+
     def target_node_name
       'PropertyType'
     end
@@ -287,6 +305,10 @@ module Relation
     def reference_type
       'HasSubtype'
     end
+
+    def node_class
+      'ObjectType'
+    end    
     
     def target_node_name
       "ObjectType"
@@ -327,6 +349,10 @@ module Relation
     def is_property?
       true
     end
+
+    def node_class
+      'Variable'
+    end        
 
     def reference_type
       'HasProperty'

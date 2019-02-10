@@ -109,8 +109,11 @@ class NodesetType < Type
   end
 
   def variable_property(ref, owner, path = [])
+    nid = ref.node_id(path)
+    Ids.add_node_class(nid, ref.name, 'Variable', path)
+    
     Root << REXML::Comment.new(" #{owner.name}::#{ref.name} : #{ref.target.type.name}[#{ref.multiplicity}] ")
-    refs, ele = node('UAVariable', ref.node_id(path), ref.name, data_type: ref.target.type.node_alias,
+    refs, ele = node('UAVariable', nid, ref.name, data_type: ref.target.type.node_alias,
                      value_rank: ref.value_rank, prefix: !is_opc_instance?, parent: owner.node_id)
     node_reference(refs, ref.target.type.name, 'HasTypeDefinition', ref.target_node_id, ref.target_node_name)
     node_reference(refs, ref.rule, 'HasModellingRule', Ids[ref.rule]) unless ref.type == 'UMLSlot'
@@ -181,18 +184,22 @@ class NodesetType < Type
   end
 
   def component(ref, owner, path)
-    nid = ref.node_id(path)
+    nid = ref.node_id(path)    
     Root << REXML::Comment.new(" #{owner.name}::#{ref.name} : #{ref.target.type.name}[#{ref.multiplicity}] ")
+
     if ref.target.type.is_variable?
+      Ids.add_node_class(nid, ref.name, 'Variable', path)
       refs, ele = node('UAVariable', nid, ref.name,
                        data_type: ref.target.type.variable_data_type.node_alias,
                        parent: owner.node_id)
     else
+      Ids.add_node_class(nid, ref.name, 'Object', path)
       refs, ele = node('UAObject', nid, ref.name, parent: owner.node_id)
     end
 
     pnt = OwnerReference.new(ref.name, nid, ref.tags)
-    path = (path.dup << browse_name)
+    path = (path.dup << ref.name)
+    p path
     ref.target.type.instantiate_relations(refs, pnt, path)
 
     node_reference(refs, ref.target.type.name, 'HasTypeDefinition', ref.target.type.node_id)
@@ -217,29 +224,57 @@ class NodesetType < Type
     relationships(refs, owner, path)
   end
 
-  def generate_object_or_variable
-    if is_a_type?('BaseObjectType') or is_a_type?('BaseEventType')
+  def node_class
+    return '<DynamicType>' if stereotype_name == '<<Dynamic Type>>'
+
+    if @type == 'UMLEnumeration'
+      'Enumeration'
+    elsif @type == 'UMLDataType'
+      'DataType'
+    elsif @type == 'UMLObject'
+      'Object'
+    elsif is_a_type?('BaseObjectType') or is_a_type?('BaseEventType')
+      'ObjectType'
+    elsif is_a_type?('BaseVariableType')
+      'VariableType'
+    elsif is_a_type?('References')
+      'ReferenceType'
+    elsif  @stereotype and @stereotype.name == 'mixin'
+      'Mixin'
+    elsif @type == 'UMLStereotype'
+      'Stereotype'
+    else
+      puts "!! Do not know how to generate #{@name} #{@type} check Generalization Relationship"
+      'Unknown'
+    end
+  end
+  
+  def generate_object_or_variable(nt)
+    case nt
+    when 'ObjectType'
       Root << REXML::Comment.new(" Definition of Object #{@name} #{node_id} ")
       print "** Generating ObjectType"
+      Ids.add_node_class(node_id, @name, 'ObjectType')
       refs, = node('UAObjectType', node_id, @name, abstract: @abstract)
-    elsif is_a_type?('BaseVariableType')
+
+    when 'VariableType'
       v = get_attribute_like(/ValueRank$/)
       Root << REXML::Comment.new(" Definition of Variable #{@name} #{node_id} ")
       print "** Generating VariableType"
+      Ids.add_node_class(node_id, @name, 'VariableType')
       refs, = node('UAVariableType', node_id, @name, abstract: @abstract, value_rank: v.default,
-                        data_type: variable_data_type.node_alias)
-    elsif is_a_type?('References')
+                   data_type: variable_data_type.node_alias)
+
+    when 'ReferenceType'
       Root << REXML::Comment.new(" Definition of Reference #{@name} #{node_id} ")
       print "** Generating ReferenceType"
       symmetric = get_attribute_like(/Symmetric$/, /Attribute/)
       is_symmetric = symmetric.default
+      Ids.add_node_class(node_id, @name, 'ReferenceType')
       refs, = node('UAReferenceType', node_id, @name, abstract: @abstract, symmetric: is_symmetric)
-    elsif  @stereotype and @stereotype.name == 'mixin'
-      puts "-- Skipping mixin #{@name}"
-    elsif @type == 'UMLStereotype'
-      puts "-- Skipping stereotype #{@name}"      
+      
     else
-      puts "!! Do not know how to generate #{@name} #{@type} check Generalization Relationship"
+      puts "-- Skipping #{nt} #{@name}"
     end
     
     if refs
@@ -248,7 +283,7 @@ class NodesetType < Type
       node_reference(refs, @parent.name, 'HasSubtype', @parent.node_id, forward: false)
       
       @mixin.add_mixin_relations(refs, self, [browse_name]) if @mixin
-      relationships(refs, self)
+      relationships(refs, self, [browse_name])
     end
   end
 
@@ -370,6 +405,7 @@ class NodesetType < Type
 
   def generate_data_type
     puts "** Generating DataType for #{@name}"
+    Ids.add_node_class(node_id, @name, 'DataType')
     Root << REXML::Comment.new(" Definition of DataType #{@name} #{node_id} ")
     refs, node = node('UADataType', node_id, @name)
     #node.add_element('Description').add_text(@documentation) if @documentation
@@ -409,6 +445,7 @@ class NodesetType < Type
 
   def generate_instance    
     print "++ Generating #{@classifier.base_type} #{@name}"
+    Ids.add_node_class(node_id, @name, 'DataType')
     Root << REXML::Comment.new(" Instantiation of Object #{@name} #{node_id} ")
     if (@classifier.base_type == 'Variable')
       puts "::#{@classifier.name} - #{@classifier.variable_data_type.name}"
@@ -419,8 +456,7 @@ class NodesetType < Type
     end
     node_reference(@refs, @classifier.name, 'HasTypeDefinition', @classifier.node_id)
 
-    path = []
-    relationships(@refs, self, path)
+    relationships(@refs, self, [browse_name])
   end
 
   def add_base64_value(text)
@@ -438,14 +474,16 @@ class NodesetType < Type
   def generate_nodeset
     return if stereotype_name == '<<Dynamic Type>>'
 
-    if @type == 'UMLEnumeration'
+    nt = node_class
+    case nt
+    when 'Enumeration'
       generate_enumeration
-    elsif @type == 'UMLDataType'
+    when 'DataType'
       generate_data_type
-    elsif @type == 'UMLObject'
+    when 'Object'
       generate_instance
     else
-      generate_object_or_variable
+      generate_object_or_variable(nt)
     end
   end
 end

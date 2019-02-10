@@ -19,7 +19,7 @@ LatexType.connect_children
 
 puts "\nGenerating LaTex"
 
-File.open('./latex/types.tex', 'w') do |f|
+File.open('./latex/09-types.tex', 'w') do |f|
   f.puts "% Generated #{Time.now}"
   
   LatexModel.generate_latex(f, 'Components')

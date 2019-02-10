@@ -199,7 +199,6 @@ class NodesetType < Type
 
     pnt = OwnerReference.new(ref.name, nid, ref.tags)
     path = (path.dup << ref.name)
-    p path
     ref.target.type.instantiate_relations(refs, pnt, path)
 
     node_reference(refs, ref.target.type.name, 'HasTypeDefinition', ref.target.type.node_id)

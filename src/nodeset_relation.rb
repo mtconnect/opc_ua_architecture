@@ -20,7 +20,7 @@ module Relation
     end
 
     def expand_name(path)
-      np = (path.dup << @node_name)
+      np = (path.dup << browse_name)
       np.join('/')
     end
 

@@ -290,6 +290,7 @@ class NodesetType < Type
   def generate_enumeration
     puts "** Generating Enumeration for #{@name}"
     Root << REXML::Comment.new(" Definition of Enumeration #{@name} #{node_id} ")
+    Ids.add_node_class(node_id, @name, 'DataType')
     refs, node = node('UADataType', node_id, @name)
     enum_nid = Ids.id_for("#{browse_name}/EnumStrings")
     

@@ -102,7 +102,7 @@ class IdManager
       end
     end
 
-    CSV.open('MTConnectModel.csv', 'wb') do |csv|
+    CSV.open('MTConnect.NodeIds.csv', 'wb') do |csv|
       @klasses.sort.each do |row|
         csv << row
       end

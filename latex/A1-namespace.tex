@@ -1,0 +1,48 @@
+
+\section{MTConnect Namespace and  Mappings \newline (normative)}
+
+\subsection{Namespace and identifiers for MTConnect Information Model}
+
+This appendix defines the numeric identifiers for all of the numeric NodeIds defined in this specification. The identifiers are specified in a CSV file with the following syntax:
+
+\texttt{<SymbolName>, <Identifier>, <NodeClass>}
+
+Where the \uaterm{SymbolName} is either the \gls{BrowseName} of a Type \gls{Node} or the \uaterm{BrowsePath} for an \uaterm{Instance} \uaterm{Node} that appears in the specification and the Identifier is the numeric value for the \gls{NodeId}.
+
+The \uaterm{BrowsePath} for an Instance \gls{Node} is constructed by appending the \gls{BrowseName} of the instance \gls{Node} to the \gls{BrowseName} for the containing instance or type. An underscore character is used to separate each \gls{BrowseName} in the path. Let’s take for example, the \mtmodel{MTComponentType} \uamodel{ObjectType} Node which has the \mtmodel{NativeName} \gls{Property}. The \uamodel{Name} for the \mtmodel{NativeName} \uaterm{InstanceDeclaration} within the \mtmodel{MTComponentType} declaration is as follows: \mtmodel{MTComponentType_NativeName}.
+
+The CSV associated with this version of the standard can be found here:%
+\begin{quote}
+    \footnotesize{\url{http://www.opcfoundation.org/UA/schemas/MTConnect/v2/2.00/MTConnect.NodeIds.csv}}
+\end{quote}
+
+NOTE The latest CSV that is compatible with this version of the standard can be found here:%
+\begin{quote}
+    \footnotesize{\url{http://www.opcfoundation.org/UA/schemas/MTConnect/v2/MTConnect.NodeIds.csv}}
+\end{quote}
+
+A computer processible version of the complete \uaterm{Information Model} defined in this specification is also provided. It follows the \gls{xml} \uaterm{Information Model} schema syntax defined in OPC \cite{UAPart6}.
+
+The information schema for this version of the standard, including all errata, can be found at the following URL:%
+\begin{quote}
+  \footnotesize{\url{http://opcfoundation.org/UA/schemas/MTConnect/v2/2.00/Opc.Ua.MTConnect.NodeSet2.xml}}
+\end{quote}
+
+NOTE:  The latest information schema for this version of the standard, including all errata, can be found at the following URL:%
+\begin{quote}
+  \footnotesize{\url{http://opcfoundation.org/UA/schemas/MTConnect/v2/Opc.Ua.MTConnect.NodeSet2.xml}}
+\end{quote}
+
+%\subsection{\uaterm{Profile} URIs for MTConnect Information Model}
+
+%Table defines the Profile URIs for the MTConnect Information Model companion specification.
+
+%Table 18 – Profile URIs
+%Profile	Profile URI
+%First facet	http://opcfoundation.org/UA-Profile/External/<short name>/<first facet name>
+%Second facet	http://opcfoundation.org/UA-Profile/External/<short name>/<second facet name>
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:

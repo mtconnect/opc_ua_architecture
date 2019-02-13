@@ -394,3 +394,5 @@
     {\textbf{#1}}%
   }%
 }
+
+\newcommand{\mantis}[1]{\href{https://apps.opcfoundation.org/mantis/view.php?id=#1}{#1}}

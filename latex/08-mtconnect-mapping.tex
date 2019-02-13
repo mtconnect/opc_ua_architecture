@@ -892,6 +892,27 @@ MTConnect allows for multiple \glspl{MTCondition}s to be active at the same time
   \label{fig:condition-branching}
 \end{figure}
 
+\begin{table}[ht]
+\centering 
+  \caption{\mtuamodel{LogicProgramCondition} States}
+  \label{table:condition-states}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X|X|X|X|X[3]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Branch Id} & {Active} & {Retain} & {Native Code} & {Message} \\
+\tabucline[1.5pt]{}
+NULL & false & false & NULL & NULL \\
+0 & true & true & PLC--154 & PIN SENSOR MALF \\
+1 & true & true & PLC--155 & WORK NO. ERROR(0 OR >9999) \\
+2 & true & true & PLC--157 & WARMING UP!!! \\
+0 & false & false & PLC--154 & PIN SENSOR MALF \\
+2 & false & false & PLC--157 & WARMING UP!!! \\
+1 & false & false & PLC--155 & WORK NO. ERROR(0 OR >9999) \\
+NULL & false & false & NULL & NULL \\
+\end{tabu}
+\end{table}
+
 MTConnect uses the \mtmodel{nativeCode} to determine the uniqueness of each activation of the Condition. If the \mtterm{Path} component has a \gls{MTDataItem} with a \gls{type} of \mtmodel{LOGIC_PROGRAM} and there  listing~\ref{lst:path-logic-program-condition-1}. The first fault occurred on \mtmodel{PLC-154} native code and creates the first branch. If there is only one branch, then the branch ID will not be required and may remain \uamodel{NULL}.
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%

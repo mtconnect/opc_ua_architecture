@@ -51,7 +51,7 @@ Figure \ref{fig:example-object} represents an MTConnect \gls{MTDevice} with the 
 
 For example, the with type \mtuatype{MTDeviceType} has \gls{BrowseName} of \texttt{SimpleCnc} (the name of the device). There are patterns for creating all the \gls{BrowseName} for each MTConnect UA Type. The rules are presented and in the example to provide the normative patterns for each type in the information model.
 
-Common elements, like \glspl{MTComponent} or \glspl{Composition}, that provide structure are mapped to \gls{FolderType} objects have common gls{BrowseNames}. These will be prefixed with the context of the parent component. For example, \xml{Controller.Components} will refer to an \uaterm{Object} of type \gls{FolderType} with the \gls{BrowseName} \glspl{MTComponent}. The prefix before the period (\texttt{.}) will be ignored for the \gls{BrowseName}. {\color{red} This rule will be removed when \gls{uml} Diagrams are converted to TIKz as this is a requirement of \gls{uml} modeling to have unique object names--\gls{uml} modeling tools require unique object names.}
+Common elements, like \glspl{MTComponent} or \glspl{Composition}, that provide structure are mapped to \gls{FolderType} objects have common gls{BrowseNames}. These will be prefixed with the context of the parent component. For example, \xml{Controller.Components} will refer to an \uaterm{Object} of type \gls{FolderType} with the \gls{BrowseName} \glspl{MTComponent}. The prefix before the period (\texttt{.}) will be ignored for the \gls{BrowseName}. 
 
 \FloatBarrier
 
@@ -668,9 +668,29 @@ The second set of \glspl{MTDataItem} starting on line~\ref{line:electric-amperag
 
 The \mtmodel{AverageAmperage} on line~\ref{line:electric-average-amperage} has a \mtmodel{ResetTrigger}, specified using the \mtmodel{ResetTrigger} element having \gls{CDATA} \mtmodel{ACTION_COMPLETE}, indicating that the \mtmodel{Average} statistic is taken only when the current \mtmodel{Action} has \mtmodel{Completed}, as defined by the process. This \gls{MTDataItem} will only update on when the \mtmodel{ResetTrigger} fires.
 
-\begin{quote}
-  {\color{red} TODO: As discussed in the WG, there will need to be status codes to represent the reset triggers as Good_... indicating that this value is due to a reset}.
-\end{quote}
+Table~\ref{table:reset-trigger-to-status-code} provides the OPC UA \uamodel{StatusCode}s suggested values that need to be added in the working group to represent the MTConnect \mtmodel{ResetTrigger} model. The OPC Foundation TAC is asked to consider the addition of these additional status codes to support this capability in the MTConnect standard.
+
+\begin{table}[ht]
+  \centering
+  \caption{MTConnect \mtmodel{ResetTrigger} to OPC UA \uamodel{StatusCode} mapping}
+  \label{table:reset-trigger-to-status-code}
+  \tabulinesep=3pt
+  \fontsize{9pt}{11pt}\selectfont
+  \begin{tabu} to 6in {|X|X|X[2]|} \everyrow{\hline}
+    \hline
+    \rowfont\bfseries {\mtmodel{ResetTrigger}} & {\uamodel{StatusCode}} & {Description} \\
+    \tabucline[1.5pt]{}
+    \mtmodel{ACTION_COMPLETE} & \uamodel{Good_ActionCompleteReset} & The value of the Data Entity that is measuring an action or operation was reset upon completion of that action or operation. \\
+    \mtmodel{ANNUAL} & \uamodel{Good_AnnualReset} & The value of the Data Entity was reset at the end of a 12-month period. \\
+    \mtmodel{DAY} & \uamodel{Good_DayReset} & The value of the Data Entity was reset at the end of a 24-hour period. \\
+    \mtmodel{MAINTENANCE} & \uamodel{Good_MaintenanceReset} & The value of the Data Entity was reset upon completion of a maintenance event. \\
+    \mtmodel{MANUAL} &  \uamodel{Good_ManualReset} & The value of the Data Entity was reset based on a physical reset action. \\
+    \mtmodel{MONTH} & \uamodel{Good_MonthReset} & The value of the Data Entity was reset at the end of a monthly period. \\
+    \mtmodel{POWER_ON} & \uamodel{Good_PowerOnReset} & The value of the Data Entity was reset when power was applied to the piece of equipment after a planned or unplanned interruption of power has occurred. \\
+    \mtmodel{SHIFT} & \uamodel{Good_ShiftReset} & The value of the Data Entity was reset at the end of a work shift. \\
+    \mtmodel{WEEK} & \uamodel{Good_WeekReset} & The value of the Data Entity was reset at the end of a 7-day period. \\
+  \end{tabu}
+\end{table}
 
 \begin{figure}[ht]
   \centering
@@ -1051,10 +1071,6 @@ All \glspl{MTDataItem} with \mtmodel{representation} of \mtmodel{TIME_SERIES} wh
 When mapping \gls{TimeSeries} to OPC UA, for each value in the series, compute the observation time as specified above and then update the UA \uamodel{Value} with the \uamodel{Time} set to the $timestamp_n$ for the $n^{th}$ entry in the series. Do this once for every entry in the series causing \mtmodel{sampleCount} updates per MTConnect \gls{TimeSeries} \mtmodel{Element}.
 
 The $\delta$ in Equation~(\ref{eqn:ts-delta}) is the time interval for each sample and by subtracting the $\delta \times sampleCount$ seconds, the given in Equation~(\ref{eqn:ts-first}) is the first timestamp in the series. Every other timestamp can be derived by adding the $\delta \times n$ as showin in Equation~(\ref{eqn:ts-n}) to the first timestamp. One can also arrive at the same result by taking the \mtmodel{timestamp} and counting backward from the last, where $r$ is the reverse index starting at 0, $r \times \delta$ seconds from $timestamp_a$.
-
-\begin{quote}
-  \color{red} Can OPC UA handle 100 or 1khz update rates?
-\end{quote}
 
 \gls{TimeSeries} \mtmodel{timestamps} will often be contiguous when giving a stream of values for audio displacement or other series that must be reassembled. In Listing~\ref{lst:electric-timeseries}, each set of ten values are separated by 0.10 seconds which will allow for a 100hz sample frequence and continuous values from the sensor. The format is more efficient and allows for communication of waveform and high frequency data.
 

@@ -28,6 +28,7 @@
 \usepackage[letterpaper,top=1in,%
             bottom=1in,footskip=0.5in]{geometry}
 
+\RequirePackage{morewrites}
 \RequirePackage[htt]{hyphenat}				% Allow hyphenation of fixed space fonts
 \RequirePackage{fancyvrb}
 \RequirePackage{placeins}
@@ -183,15 +184,24 @@
 % 	Table of Contents/Figures/Tables   %
 % ************************************ %
 
-\renewcommand\contentsname{\color{mtc1} Table of Contents}
-\renewcommand\listfigurename{\color{mtc1} List of Figures}
-\renewcommand\listtablename{\color{mtc1} List of Tables}
+\renewcommand\contentsname{Table of Contents}
+\renewcommand\listfigurename{List of Figures}
+\renewcommand\listtablename{List of Tables}
+
+\renewcommand{\cftsubsecindent}{1.25em}
+\renewcommand{\cftsubsubsecindent}{2.5em}
 
 \renewcommand{\cftfigfont}{\normalsize\bfseries}
 \renewcommand{\cftfigindent}{0pt}
-\renewcommand{\cftfignumwidth}{4.25em}
+\renewcommand{\cftfignumwidth}{4.8em}
 \renewcommand{\cftfigpresnum}{Figure }
 \renewcommand{\cftfigaftersnum}{:}
+
+\renewcommand{\cfttabfont}{\normalsize\bfseries}
+\renewcommand{\cfttabindent}{0pt}
+\renewcommand{\cfttabnumwidth}{5em}
+\renewcommand{\cfttabpresnum}{Table }
+\renewcommand{\cfttabaftersnum}{:}
 
 % ********************************* %
 % 	Header and Footer Definitions   %

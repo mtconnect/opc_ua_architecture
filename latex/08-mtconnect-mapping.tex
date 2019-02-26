@@ -132,7 +132,7 @@ The values of the attributes and enumerations are represented in MTConnect in ca
   \end{tabu}
 \end{table} 
 
-Extensions to the MTConnect standard with enumerations will represent the data as strings since the values are not included in the address space. An extension nodeset can be created by a vendor if the \mtuatype{MTControlledVocabEventType} is desired. The \uamodel{EnumValues} needs to reference the \uamodel{EnumValues}  \gls{Attribute} of the UA \uamodel{MultiStateValueDiscreteType} and the associated indexes with the translation to the text values for mapping.
+Extensions to the MTConnect standard with enumerations will represent the data as strings since the values are not included in the address space. An extension nodeset can be created by a vendor if the \mtuatype{MTControlledVocabEventType} is desired. The \uamodel{EnumStrings} needs to reference the \uamodel{EnumStrings}  \gls{Attribute} of the UA \uamodel{MultiStateValueDiscreteType} and the associated indexes with the translation to the text values for mapping.
 
 MTConnect base types have been prefixed with the letters ``\texttt{MT}'' to avoid confusion with OPC UA vocabulary. The following component types and relationships have been annotated:
 
@@ -218,10 +218,10 @@ The MTConnect \gls{MTDataItem} represents multiple OPC UA \uamodel{DataVariableT
         
         \item If the \var{classType} matches one of the \mtuamodel{NumericEventDataItemTypes}; the MTConnect UA \gls{TypeDefinition}  is \mtuatype{MTNumericEventType}.
         
-        \item If the \var{classType} matches one of the  \mtuamodel{ControlledVocabDataItemTypes}, the MTConnect UA \gls{TypeDefinition} is \mtuatype{MTControlledVocabEventType}. The \uamodel{EnumValues} will be assigned as follows:
+        \item If the \var{classType} matches one of the  \mtuamodel{ControlledVocabDataItemTypes}, the MTConnect UA \gls{TypeDefinition} is \mtuatype{MTControlledVocabEventType}. The \uamodel{EnumStrings} will be assigned as follows:
         \newline
         
-        Each of the \glspl{ObjectType} matching the \var{classType} for \mtuamodel{ControlledVocabDataItemTypes} will have a \gls{Property} \uamodel{EnumValues}. The \uamodel{EnumValues} will reference the \uamodel{Enumeration} with the values of the \gls{ControlledVocab}.
+        Each of the \glspl{ObjectType} matching the \var{classType} for \mtuamodel{ControlledVocabDataItemTypes} will have a \gls{Property} \uamodel{EnumStrings}. The \uamodel{EnumStrings} will reference the \uamodel{Enumeration} with the values of the \gls{ControlledVocab}.
         
         \item Otherwise, the UA \gls{TypeDefinition} is \mtuatype{MTStringEventType}. This will apply to all extended types.
       \end{enumerate}
@@ -407,7 +407,7 @@ Every MTConnect \gls{MTDataItem} has two references that provide the semantic me
 
 \input{diagrams/mtconnect-mapping/data-item-references.tex}
 
-In Figure \ref{fig:data-item-references}, the \mtuatype{HasMTClassType} reference indicates the semantic meaning of the data item. For enumerated or controlled vocabulary data items, they are represented using a sub-type of the UA \uamodel{MultiStateValueDiscreteType}, the \mtuatype{MTControlledVocabEventType}, where the \uamodel{EnumValues} attribute is related to the NodeId of the associated enumeration data type, in this case the \mtuaenum{AvailabilityDataType}. The \mtuatype{AvailabilityClassType} also has \uamodel{HasComponent} relationship with the \mtuaenum{AvailabilityDataType} \uamodel{Enumeration}.
+In Figure \ref{fig:data-item-references}, the \mtuatype{HasMTClassType} reference indicates the semantic meaning of the data item. For enumerated or controlled vocabulary data items, they are represented using a sub-type of the UA \uamodel{MultiStateValueDiscreteType}, the \mtuatype{MTControlledVocabEventType}, where the \uamodel{EnumStrings} attribute is related to the NodeId of the associated enumeration data type, in this case the \mtuaenum{AvailabilityDataType}. The \mtuatype{AvailabilityClassType} also has \uamodel{HasComponent} relationship with the \mtuaenum{AvailabilityDataType} \uamodel{Enumeration}.
 
 MTConnect \gls{subType} will be mapped in the same manner as the type using the \mtuatype{HasMTSubClassType} relationship. This will be covered subsequent examples.
 
@@ -483,7 +483,7 @@ The \xml{Linear[x]} component uses a \uamodel{HasNotifier} reference sourced fro
 
 The data item on Line~\ref{line:rotary-mode} of Listing~\ref{lst:rotary-c-example} with \gls{type} of \mtmodel{ROTARY_MODE} is illustrated in Figure~\ref{fig:rotary-c-rotary-mode}. MTConnect allows for a \mtmodel{Rotary} axis to provide the function of the axis, Spindle, Contour, or Index. In Many cases the Rotary Mode is a singular values, as in this case when it can only work as a spindle. This is expressed by creating a \gls{HasComponent} reference to a \mtuatype{MTConstraintType} \gls{Object} and specifying the \uamodel{Values} \gls{Property}  with the singular value of\xml{["SPINDLE"]} indicating it can only function as a spindle. 
 
-In MTConnect, the value of this data item will never be \mtmodel{UNAVAILABLE} since it is bound to a single value, it will always be present and have that value regardless of the connectivity state to the data source. Since the value is static and never changes, the \uamodel{Quality} will be \uamodel{Uncertain_SubstituteValue} if it is never provided. In the case of constraints on a controlled vocabulary, the \uamodel{Values} must always be one of the related \uamodel{EnumValues}. See \cite{MTCPart2} for details on the constraints and the relationship to the \glspl{MTDataItem}.
+In MTConnect, the value of this data item will never be \mtmodel{UNAVAILABLE} since it is bound to a single value, it will always be present and have that value regardless of the connectivity state to the data source. Since the value is static and never changes, the \uamodel{Quality} will be \uamodel{Uncertain_SubstituteValue} if it is never provided. In the case of constraints on a controlled vocabulary, the \uamodel{Values} must always be one of the related \uamodel{EnumStrings}. See \cite{MTCPart2} for details on the constraints and the relationship to the \glspl{MTDataItem}.
 
 \begin{figure}[ht]
   \centering
@@ -826,7 +826,7 @@ All extended event types will be treated as \mtuatype{MTStringEventType}s since 
 
 \subsubsection{Controlled Vocabulary Events}
 
-\glspl{ControlledVocab} are represented as \mtuatype{MTControlledVocabEventType} which is a subtype of the \uamodel{MultiStateValueDiscreteType}. The \uamodel{MultiStateValueDiscreteType} requires an integer index to be used for the \uamodel{Value}, so the text given in MTConnect must be looked up in the \uamodel{Ennumerations} in the \uamodel{EnumValues} \gls{Property} of the \gls{ClassType} referenced by the \mtterm{HasMTTypeClass} association. The index can be found by matching the \gls{CDATA} to the \uamodel{Fields} in the \uamodel{Enumeration}.
+\glspl{ControlledVocab} are represented as \mtuatype{MTControlledVocabEventType} which is a subtype of the \uamodel{MultiStateValueDiscreteType}. The \uamodel{MultiStateValueDiscreteType} requires an integer index to be used for the \uamodel{Value}, so the text given in MTConnect must be looked up in the \uamodel{Ennumerations} in the \uamodel{EnumStrings} \gls{Property} of the \gls{ClassType} referenced by the \mtterm{HasMTTypeClass} association. The index can be found by matching the \gls{CDATA} to the \uamodel{Fields} in the \uamodel{Enumeration}.
 
 Referring to Listing~\ref{lst:path-component-stream} Line~\ref{line:cmode-255}, the values of the \gls{CDATA} represent the allowed enumerations in the \mtuaenum{ControllerModeDataType} as shown in Table~\ref{table:example-ControllerModeDataType}. In this case the value from mtconnect is \mtmodel{AUTOMATIC} and is looked up in the associated \uamodel{EnumerationDataType} and the integer value is assigned to the \uamodel{Value} of the \mtuatype{MTControlledVocabEventType} instance, in this example the value will be \xml{0} for \mtmodel{AUTOMATIC}.
 

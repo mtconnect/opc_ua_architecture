@@ -48,7 +48,7 @@ File.open('./latex/09-types.tex', 'w') do |f|
 
   if options[:assets]
     LatexModel.generate_latex(f, 'Assets')
-    LatexModel.generate_latex(f, 'CuttingTool')
-    LatexModel.generate_latex(f, 'AssetsProfile')
+    LatexModel.generate_latex(f, 'Cutting Tool')
+    LatexModel.generate_latex(f, 'Assets Profile')
   end
 end

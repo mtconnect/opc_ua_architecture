@@ -1,4 +1,4 @@
-% Generated 2019-02-26 10:54:01 -0800
+% Generated 2019-02-26 11:51:23 -0800
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -155,6 +155,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \multicolumn{6}{|l|}{Subtype of MTComponentType (See section \ref{type:MTComponentType})} \\
 Has\-Property & Variable & Version & String & Property\-Type & Optional \\
 Has\-Property & Variable & Iso841Class & String & Property\-Type & Optional \\
+Organizes & Object & Assets & MT\-Asset\-Type[] & Folder\-Type & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -8859,27 +8860,49 @@ Has\-Property & Variable & Timestamp & Date\-Time & Property\-Type & Mandatory \
 Has\-Property & Variable & Device\-Uuid & String & Property\-Type & Mandatory \\
 Has\-Property & Variable & Removed & Boolean & Property\-Type & Optional \\
 Has\-Property & Variable & MT\-Description & String & Property\-Type & Optional \\
-Organizes & Object & Assets & MT\-Device\-Type & Folder\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
 
 \FloatBarrier
-\subsection{CuttingTool} \label{model:CuttingTool}
+\subsection{Cutting Tool} \label{model:CuttingTool}
 
 \begin{figure}[ht]
   \centering
     \includegraphics[width=1.0\textwidth]{./diagrams/types/CuttingTool.png}
-  \caption{CuttingTool Diagram}
+  \caption{Cutting Tool Diagram}
   \label{fig:CuttingTool}
 \end{figure}
 
 \FloatBarrier
 
+
+There are two Information Models used to represent a Cutting Tool, an \mtuatype{MTCuttingToolArchetypeType} and a \mtuatype{MTCuttingToolType}. 
+The \mtuatype{MTCuttingToolArchetypeType} represent the static Cutting Tool geometries and nominal values as one would 
+expect from a tool catalog and the \mtuatype{MTCuttingToolType} represents the use or application of the tool on the shop 
+floor with actual measured values and process data. In this way, a generic definition of the Cutting Tool can coexist with a specific 
+assembly information model with minimal redundancy of data.
+
 \subsubsection{Defintion of \texttt{ MTCutterStatusType}}
   \label{type:MTCutterStatusType}
 
 \FloatBarrier
+
+The values CutterStatus element can be a combined set of Status elements.  The MTConnect Standard allows 
+any set of statuses to be combined, but only certain combinations make sense.  A Cutting Tool \shouldnot be 
+both \mtmodel{NEW} and \mtmodel{USED} at the same time.  There are no rules in the schema to enforce this, but this 
+is left to the implementer. The following combinations \mustnot occur: 
+
+\begin{itemize}
+  \item \mtmodel{NEW} \mustnot be used with \mtmodel{USED}, \mtmodel{RECONDITIONED}, or \mtmodel{EXPIRED}. 
+  \item \mtmodel{UNKNOWN} \mustnot be used with any other status. 
+  \item \mtmodel{ALLOCATED} and \mtmodel{UNALLOCATED} \mustnot be used together.
+  \item \mtmodel{AVAILABLE} and \mtmodel{UNAVAILABLE} \mustnot be used together.
+  \item If the tool is \mtmodel{EXPIRED}, \mtmodel{BROKEN}, or \mtmodel{NOT_REGISTERED} it \mustnot be \mtmodel{AVAILABLE}.
+  \item All other combinations are allowed.
+\end{itemize}
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTCutterStatusType} Definition}
@@ -8990,6 +9013,21 @@ Has\-Component & Variable & Part\-Count\-Item\-Life & Double & MT\-Tool\-Life\-T
   \label{type:MTCuttingToolArchetypeType}
 
 \FloatBarrier
+
+The \mtuatype{MTCuttingToolArchetypeType} \mtterm{Information Model} represents the information about
+a of cutting tool that is common to all cutting toos of that kind. It contains only the constraints
+on the measurements and the limits of use, but as it deos not represent a physical cutting tool, there
+can be not measured values.
+ 
+
+MTConnect Standard will adopt the ISO 13399 structure when formulating the vocabulary 
+for Cutting Tool geometries and structure to be represented in the CuttingToolArchetype.  
+The nominal values provided in the \mtuatype{MTCuttingToolLifeCycleType} section are only concerned with two 
+aspects of the Cutting Tool, the Cutting Tool and the Cutting Item.  The Tool Item, Adaptive 
+Item, and Assembly Item will only be covered in the \mtuatype{MTCuttingToolDefinitionType} section of this 
+document since this section contains the full ISO 13399 information about a Cutting Tool.
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTCuttingToolArchetypeType} Definition}
@@ -9049,6 +9087,14 @@ Has\-Property & Variable & Nominal & Double & Property\-Type & Optional \\
   \label{type:MTCuttingToolMeasurementType}
 
 \FloatBarrier
+
+The \mtmodel{MTCuttingToolMeasurementsType} is used for all measurements where the \gls{BrowseName} provides
+the semantic information regarding the measurement type along with the \mtmodel{Code} \gls{Property} which 
+refers to the ISO 13399 term. 
+
+The measurements \gls{BrowseName} will be taken from the \mtterm{Element} name of the measurement. 
+The reset of the information will be included per the MTConnect standard.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTCuttingToolMeasurementType} Definition}
@@ -9075,6 +9121,13 @@ Has\-Property & Variable & Enginering\-Units & EUInformation & Property\-Type & 
 \end{table} 
 
 
+\FloatBarrier
+\paragraph{Referenced Properties and Objects}
+
+\begin{itemize}
+\item \texttt{Code::String:} Refers to the ISO 13399 constraints {\color{red} (TODO: Need reference to the ISO specification for the codes)}.
+
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTCuttingToolDefinitionType}}
   \label{type:MTCuttingToolDefinitionType}
@@ -9139,6 +9192,17 @@ May want to use file type or some other large text format.
   \label{type:MTCuttingToolLifeCycleType}
 
 \FloatBarrier
+
+The life cycle refers to the data pertaining to the application or the use of the tool.  This data is 
+provided by various pieces of equipment (i.e. machine tool, presetter) and statistical 
+process control applications.  Life cycle data will not remain static, but will change 
+periodically when a tool is used or measured.  The life cycle has three conceptual parts; tool 
+and Cutting Item identity, properties, and measurements.
+
+The CuttingToolLifeCycle contains data for the entire tool assembly.  The specific Cutting Items 
+that are part of the CuttingToolLifeCycle are contained in the CuttingItems element.  Each 
+\mtuatype{MTCuttingItem} has similar properties as the assembly; identity, properties, and measurements. 
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTCuttingToolLifeCycleType} Definition}
@@ -9175,13 +9239,15 @@ Organizes & Object & Cutting\-Items & MT\-Cutting\-Item\-Type & Folder\-Type & M
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
-\item \texttt{ProcessFeedRate::MTCuttingToolConstraintType:} The ProcessSpindleSpeed MUST be specified in revolutions/minute (RPM). The \gls{CDATA}
-MAY contain the nominal process target spindle speed if available. The maximum and
-minimum speeds MAY be provided as attributes. If ProcessSpindleSpeed is provided, at
-least one value of \mtterm{maximum}, \mtterm{nominal}, or \mtterm{minimum} MUST be specified.
+\item \texttt{ProcessSpindleSpeed::MTCuttingToolConstraintType:} The \mtmodel{ProcessSpindleSpeed} \must be specified in revolutions/minute (RPM). The \gls{CDATA}
+\may contain the nominal process target spindle speed if available. The \mtmodel{maximum} and
+\mtmodel{minimum} speeds \may be provided as attributes. If ProcessSpindleSpeed is provided, at
+least one value of \mtmodel{maximum}, \mtmodel{nominal}, or \mtmodel{minimum} \must be specified.
 
-\item \texttt{Measurements::MTCuttingToolMeasurementType:} The measurements \uaterm{BrowseName} will be taken from the \mtterm{Element} name of the measurement. 
-The reset of the information will be included per the MTConnect standard.
+\item \texttt{ProcessFeedRate::MTCuttingToolConstraintType:} The \mtmodel{ProcessFeedRate} \must be specified in millimeter/second. The \gls{CDATA}
+\may contain the nominal process target spindle speed if available. The \mtmodel{maximum} and
+\mtmodel{minimum} speeds \may be provided as attributes. If ProcessSpindleSpeed is provided, at
+least one value of \mtmodel{maximum}, \mtmodel{nominal}, or \mtmodel{minimum} \must be specified.
 
 \end{itemize}
 \FloatBarrier
@@ -9344,7 +9410,7 @@ Has\-Property & Variable & Initial & Double & Property\-Type & Optional \\
 \FloatBarrier
 \end{itemize}
 \FloatBarrier
-\subsection{AssetsProfile} \label{model:AssetsProfile}
+\subsection{Assets Profile} \label{model:AssetsProfile}
 \subsubsection{Defintion of \texttt{ <<HasCuttingToolArchetype>>}}
   \label{type:HasCuttingToolArchetype}
 

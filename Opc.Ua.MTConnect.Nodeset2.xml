@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-02-26T18:55:09Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-02-26T19:51:46Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-02-26T18:55:09Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-02-26T18:55:09Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-02-26T19:51:46Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-02-26T19:51:46Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -1129,6 +1129,8 @@ aGVtYT4=
       <Reference ReferenceType='HasProperty'>ns=1;i=2016</Reference>
       <!-- HasProperty -  - Iso841Class ns=1;i=2017 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2017</Reference>
+      <!-- Organizes -  - Assets ns=1;i=3413 FolderType  -->
+      <Reference ReferenceType='Organizes'>ns=1;i=3413</Reference>
     </References>
   </UAObjectType>
   <!-- MTDeviceType::Version : String[0..1] -->
@@ -1155,6 +1157,18 @@ aGVtYT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2015</Reference>
     </References>
   </UAVariable>
+  <!-- MTDeviceType::Assets : FolderType[0..*] -->
+  <UAObject NodeId='ns=1;i=3413' BrowseName='1:Assets' ParentNodeId='ns=1;i=2015'>
+    <DisplayName>Assets</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - FolderType i=61   -->
+      <Reference ReferenceType='HasTypeDefinition'>i=61</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- Organizes - (Reverse) - MTDeviceType ns=1;i=2015   -->
+      <Reference ReferenceType='Organizes' IsForward='false'>ns=1;i=2015</Reference>
+    </References>
+  </UAObject>
   <!-- Definition of Object MTCompositionType ns=1;i=2067 -->
   <UAObjectType NodeId='ns=1;i=2067' BrowseName='1:MTCompositionType'>
     <DisplayName>MTCompositionType</DisplayName>

@@ -151,8 +151,8 @@ NodesetModel.generate_nodeset('MTConnect Device Profile')
 
 if options[:assets]
   NodesetModel.generate_nodeset('Assets')
-  NodesetModel.generate_nodeset('CuttingTool')
-  NodesetModel.generate_nodeset('AssetsProfile')
+  NodesetModel.generate_nodeset('Cutting Tool')
+  NodesetModel.generate_nodeset('Assets Profile')
 end
 
 error = false

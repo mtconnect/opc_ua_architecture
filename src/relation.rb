@@ -202,9 +202,9 @@ module Relation
       @target = End.new(r['end2'])
       @final_target = @target
         
-      @name = @source.name || @name
-      @multiplicity = @source.multiplicity
-      @optional = @source.optional
+      @name = @target.name || @name || @source.name
+      @multiplicity = @target.multiplicity
+      @optional = @target.optional
     end
 
     def final_target

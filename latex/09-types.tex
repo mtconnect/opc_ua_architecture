@@ -1,4 +1,4 @@
-% Generated 2019-02-13 15:02:36 -0500
+% Generated 2019-02-25 16:36:46 -0800
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -123,7 +123,7 @@ Has\-Component & Variable & <MT\-Message> & Message\-Data\-Type[] & MT\-Message\
 Has\-Component & Variable & <MT\-Asset\-Event> & Asset\-Event\-Data\-Type[] & MT\-Asset\-Event\-Type & Optional \\
 Has\-Component & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType[]} & Optional \\
 Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType[]} & Optional \\
-Has\-Component & Variable & <MT\-Three\-Space\-Sample> & Three\-Space\-Sample\-Data\-Type[] & MT\-Three\-Space\-Sample\-Type & Optional \\
+Has\-Component & Variable & <MT\-Three\-Space\-Sample> & Three\-Space\-Sample\-Data\-Type & MT\-Three\-Space\-Sample\-Type & Mandatory \\
 Organizes & Object & Components & MT\-Component\-Type[] & Folder\-Type & Optional \\
 Organizes & Object & Compositions & MT\-Composition\-Type[] & Folder\-Type & Optional \\
 \end{tabu}
@@ -1501,6 +1501,7 @@ Has\-MT\-Composition & Object & <MT\-Composition> & \multicolumn{2}{l|}{MTCompos
 Has\-MT\-Source & Object & <Base\-Object> & \multicolumn{2}{l|}{BaseObjectType} & Optional \\
 Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
 Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & Optional \\
+Has\-Property & Variable & Value\-As\-Text & String & Property\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3754,7 +3755,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Active\-State\-Data\-Type & Active\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Active\-State\-Data\-Type & Active\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3804,7 +3805,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Availability\-Data\-Type & Availability\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Availability\-Data\-Type & Availability\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3857,7 +3858,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Axis\-Coupling\-Data\-Type & Axis\-Coupling\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Axis\-Coupling\-Data\-Type & Axis\-Coupling\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3909,7 +3910,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Active\-State\-Data\-Type & Active\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Active\-State\-Data\-Type & Active\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3957,7 +3958,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Axis\-State\-Data\-Type & Axis\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Axis\-State\-Data\-Type & Axis\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4009,7 +4010,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Active\-State\-Data\-Type & Active\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Active\-State\-Data\-Type & Active\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4059,7 +4060,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Open\-State\-Data\-Type & Open\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Open\-State\-Data\-Type & Open\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4109,7 +4110,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Controller\-Mode\-Data\-Type & Controller\-Mode\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Controller\-Mode\-Data\-Type & Controller\-Mode\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4161,7 +4162,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Execution\-Data\-Type & Execution\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Execution\-Data\-Type & Execution\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4220,7 +4221,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Composition\-State\-Data\-Type & Composition\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Composition\-State\-Data\-Type & Composition\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4279,7 +4280,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & On\-Off\-Data\-Type & On\-Off\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & On\-Off\-Data\-Type & On\-Off\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4328,7 +4329,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Direction\-Data\-Type & Direction\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Direction\-Data\-Type & Direction\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4379,7 +4380,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Open\-State\-Data\-Type & Open\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Open\-State\-Data\-Type & Open\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4428,7 +4429,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Emergency\-Stop\-Data\-Type & Emergency\-Stop\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Emergency\-Stop\-Data\-Type & Emergency\-Stop\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4477,7 +4478,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Yes\-No\-Data\-Type & Yes\-No\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Yes\-No\-Data\-Type & Yes\-No\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4529,7 +4530,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & On\-Off\-Data\-Type & On\-Off\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & On\-Off\-Data\-Type & On\-Off\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4580,7 +4581,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Functional\-Mode\-Data\-Type & Functional\-Mode\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Functional\-Mode\-Data\-Type & Functional\-Mode\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4632,7 +4633,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Active\-State\-Data\-Type & Active\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Active\-State\-Data\-Type & Active\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4681,7 +4682,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Path\-Mode\-Data\-Type & Path\-Mode\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Path\-Mode\-Data\-Type & Path\-Mode\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4736,7 +4737,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & On\-Off\-Data\-Type & On\-Off\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & On\-Off\-Data\-Type & On\-Off\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4786,7 +4787,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Program\-Edit\-Data\-Type & Program\-Edit\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Program\-Edit\-Data\-Type & Program\-Edit\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4836,7 +4837,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Rotary\-Mode\-Data\-Type & Rotary\-Mode\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Rotary\-Mode\-Data\-Type & Rotary\-Mode\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4886,7 +4887,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Interface\-Status\-Data\-Type & Interface\-Status\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Interface\-Status\-Data\-Type & Interface\-Status\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4935,7 +4936,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4987,7 +4988,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -5038,7 +5039,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -5089,7 +5090,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -5140,7 +5141,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -5191,7 +5192,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -5242,7 +5243,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -5293,7 +5294,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -5344,7 +5345,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -5395,7 +5396,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Property & Variable & Enum\-Values & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 

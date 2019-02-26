@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-02-13T02:42:14Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-02-26T00:34:57Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-02-13T02:42:14Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-02-13T02:42:14Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-02-26T00:34:57Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-02-26T00:34:57Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -2233,6 +2233,8 @@ RScgVmFsdWU9JzInLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
       <Reference ReferenceType='HasProperty'>ns=1;i=2779</Reference>
       <!-- HasComponent -  - Constraints ns=1;i=2780 MTConstraintType  -->
       <Reference ReferenceType='HasComponent'>ns=1;i=2780</Reference>
+      <!-- HasProperty -  - ValueAsText ns=1;i=3090 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3090</Reference>
     </References>
   </UAVariableType>
   <!-- MTControlledVocabEventType::XmlId : String[1] -->
@@ -2409,6 +2411,18 @@ RScgVmFsdWU9JzInLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
       <!-- HasProperty - (Reverse) - Constraints ns=1;i=2780   -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2780</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTControlledVocabEventType::ValueAsText : String[1] -->
+  <UAVariable NodeId='ns=1;i=3090' BrowseName='1:ValueAsText' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2626'>
+    <DisplayName>ValueAsText</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - MTControlledVocabEventType ns=1;i=2626   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2626</Reference>
     </References>
   </UAVariable>
   <!-- Definition of Enumeration MTCoordinateSystemType ns=1;i=2635 -->
@@ -7098,13 +7112,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2148 ActiveStateDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2148</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3057 ActiveStateDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3057</Reference>
     </References>
   </UAObjectType>
-  <!-- ActuatorStateClassType::EnumValues : ActiveStateDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2148' BrowseName='1:EnumValues' DataType='ns=1;i=2197' ParentNodeId='ns=1;i=2146'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- ActuatorStateClassType::EnumStrings : ActiveStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3057' BrowseName='1:EnumStrings' DataType='ns=1;i=2197' ParentNodeId='ns=1;i=2146'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - ActiveStateDataType ns=1;i=2197   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2197</Reference>
@@ -7120,13 +7134,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2151 AvailabilityDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2151</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3058 AvailabilityDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3058</Reference>
     </References>
   </UAObjectType>
-  <!-- AvailabilityClassType::EnumValues : AvailabilityDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2151' BrowseName='1:EnumValues' DataType='ns=1;i=2198' ParentNodeId='ns=1;i=2149'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- AvailabilityClassType::EnumStrings : AvailabilityDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3058' BrowseName='1:EnumStrings' DataType='ns=1;i=2198' ParentNodeId='ns=1;i=2149'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - AvailabilityDataType ns=1;i=2198   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2198</Reference>
@@ -7142,13 +7156,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2154 AxisCouplingDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2154</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3059 AxisCouplingDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3059</Reference>
     </References>
   </UAObjectType>
-  <!-- AxisCouplingClassType::EnumValues : AxisCouplingDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2154' BrowseName='1:EnumValues' DataType='ns=1;i=2199' ParentNodeId='ns=1;i=2152'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- AxisCouplingClassType::EnumStrings : AxisCouplingDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3059' BrowseName='1:EnumStrings' DataType='ns=1;i=2199' ParentNodeId='ns=1;i=2152'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - AxisCouplingDataType ns=1;i=2199   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2199</Reference>
@@ -7164,13 +7178,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2157 ActiveStateDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2157</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3060 ActiveStateDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3060</Reference>
     </References>
   </UAObjectType>
-  <!-- AxisInterlockClassType::EnumValues : ActiveStateDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2157' BrowseName='1:EnumValues' DataType='ns=1;i=2197' ParentNodeId='ns=1;i=2155'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- AxisInterlockClassType::EnumStrings : ActiveStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3060' BrowseName='1:EnumStrings' DataType='ns=1;i=2197' ParentNodeId='ns=1;i=2155'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - ActiveStateDataType ns=1;i=2197   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2197</Reference>
@@ -7186,13 +7200,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2160 AxisStateDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2160</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3061 AxisStateDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3061</Reference>
     </References>
   </UAObjectType>
-  <!-- AxisStateClassType::EnumValues : AxisStateDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2160' BrowseName='1:EnumValues' DataType='ns=1;i=2200' ParentNodeId='ns=1;i=2158'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- AxisStateClassType::EnumStrings : AxisStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3061' BrowseName='1:EnumStrings' DataType='ns=1;i=2200' ParentNodeId='ns=1;i=2158'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - AxisStateDataType ns=1;i=2200   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2200</Reference>
@@ -7208,13 +7222,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2163 ActiveStateDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2163</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3062 ActiveStateDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3062</Reference>
     </References>
   </UAObjectType>
-  <!-- ChuckInterlockClassType::EnumValues : ActiveStateDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2163' BrowseName='1:EnumValues' DataType='ns=1;i=2197' ParentNodeId='ns=1;i=2161'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- ChuckInterlockClassType::EnumStrings : ActiveStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3062' BrowseName='1:EnumStrings' DataType='ns=1;i=2197' ParentNodeId='ns=1;i=2161'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - ActiveStateDataType ns=1;i=2197   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2197</Reference>
@@ -7230,13 +7244,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2166 OpenStateDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2166</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3063 OpenStateDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3063</Reference>
     </References>
   </UAObjectType>
-  <!-- ChuckStateClassType::EnumValues : OpenStateDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2166' BrowseName='1:EnumValues' DataType='ns=1;i=2201' ParentNodeId='ns=1;i=2164'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- ChuckStateClassType::EnumStrings : OpenStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3063' BrowseName='1:EnumStrings' DataType='ns=1;i=2201' ParentNodeId='ns=1;i=2164'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - OpenStateDataType ns=1;i=2201   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2201</Reference>
@@ -7252,13 +7266,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2169 ControllerModeDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2169</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3064 ControllerModeDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3064</Reference>
     </References>
   </UAObjectType>
-  <!-- ControllerModeClassType::EnumValues : ControllerModeDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2169' BrowseName='1:EnumValues' DataType='ns=1;i=2203' ParentNodeId='ns=1;i=2167'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- ControllerModeClassType::EnumStrings : ControllerModeDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3064' BrowseName='1:EnumStrings' DataType='ns=1;i=2203' ParentNodeId='ns=1;i=2167'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - ControllerModeDataType ns=1;i=2203   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2203</Reference>
@@ -7274,13 +7288,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2172 ExecutionDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2172</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3065 ExecutionDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3065</Reference>
     </References>
   </UAObjectType>
-  <!-- ExecutionClassType::EnumValues : ExecutionDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2172' BrowseName='1:EnumValues' DataType='ns=1;i=2262' ParentNodeId='ns=1;i=2170'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- ExecutionClassType::EnumStrings : ExecutionDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3065' BrowseName='1:EnumStrings' DataType='ns=1;i=2262' ParentNodeId='ns=1;i=2170'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - ExecutionDataType ns=1;i=2262   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2262</Reference>
@@ -7296,13 +7310,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2175 CompositionStateDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2175</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3066 CompositionStateDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3066</Reference>
     </References>
   </UAObjectType>
-  <!-- CompositionStateClassType::EnumValues : CompositionStateDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2175' BrowseName='1:EnumValues' DataType='ns=1;i=2202' ParentNodeId='ns=1;i=2173'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- CompositionStateClassType::EnumStrings : CompositionStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3066' BrowseName='1:EnumStrings' DataType='ns=1;i=2202' ParentNodeId='ns=1;i=2173'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - CompositionStateDataType ns=1;i=2202   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2202</Reference>
@@ -7318,13 +7332,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2178 OnOffDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2178</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3067 OnOffDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3067</Reference>
     </References>
   </UAObjectType>
-  <!-- ControllerModeOverrideClassType::EnumValues : OnOffDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2178' BrowseName='1:EnumValues' DataType='ns=1;i=2204' ParentNodeId='ns=1;i=2176'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- ControllerModeOverrideClassType::EnumStrings : OnOffDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3067' BrowseName='1:EnumStrings' DataType='ns=1;i=2204' ParentNodeId='ns=1;i=2176'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - OnOffDataType ns=1;i=2204   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2204</Reference>
@@ -7340,13 +7354,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2181 DirectionDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2181</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3068 DirectionDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3068</Reference>
     </References>
   </UAObjectType>
-  <!-- DirectionClassType::EnumValues : DirectionDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2181' BrowseName='1:EnumValues' DataType='ns=1;i=2205' ParentNodeId='ns=1;i=2179'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- DirectionClassType::EnumStrings : DirectionDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3068' BrowseName='1:EnumStrings' DataType='ns=1;i=2205' ParentNodeId='ns=1;i=2179'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - DirectionDataType ns=1;i=2205   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2205</Reference>
@@ -7362,13 +7376,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2184 OpenStateDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2184</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3069 OpenStateDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3069</Reference>
     </References>
   </UAObjectType>
-  <!-- DoorStateClassType::EnumValues : OpenStateDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2184' BrowseName='1:EnumValues' DataType='ns=1;i=2201' ParentNodeId='ns=1;i=2182'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- DoorStateClassType::EnumStrings : OpenStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3069' BrowseName='1:EnumStrings' DataType='ns=1;i=2201' ParentNodeId='ns=1;i=2182'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - OpenStateDataType ns=1;i=2201   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2201</Reference>
@@ -7384,13 +7398,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2187 EmergencyStopDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2187</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3070 EmergencyStopDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3070</Reference>
     </References>
   </UAObjectType>
-  <!-- EmergencyStopClassType::EnumValues : EmergencyStopDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2187' BrowseName='1:EnumValues' DataType='ns=1;i=2207' ParentNodeId='ns=1;i=2185'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- EmergencyStopClassType::EnumStrings : EmergencyStopDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3070' BrowseName='1:EnumStrings' DataType='ns=1;i=2207' ParentNodeId='ns=1;i=2185'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - EmergencyStopDataType ns=1;i=2207   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2207</Reference>
@@ -7406,13 +7420,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2190 YesNoDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2190</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3071 YesNoDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3071</Reference>
     </References>
   </UAObjectType>
-  <!-- EndOfBarClassType::EnumValues : YesNoDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2190' BrowseName='1:EnumValues' DataType='ns=1;i=2206' ParentNodeId='ns=1;i=2188'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- EndOfBarClassType::EnumStrings : YesNoDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3071' BrowseName='1:EnumStrings' DataType='ns=1;i=2206' ParentNodeId='ns=1;i=2188'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - YesNoDataType ns=1;i=2206   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2206</Reference>
@@ -7428,13 +7442,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2193 OnOffDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2193</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3072 OnOffDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3072</Reference>
     </References>
   </UAObjectType>
-  <!-- EquipmentModeClassType::EnumValues : OnOffDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2193' BrowseName='1:EnumValues' DataType='ns=1;i=2204' ParentNodeId='ns=1;i=2191'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- EquipmentModeClassType::EnumStrings : OnOffDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3072' BrowseName='1:EnumStrings' DataType='ns=1;i=2204' ParentNodeId='ns=1;i=2191'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - OnOffDataType ns=1;i=2204   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2204</Reference>
@@ -7450,13 +7464,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2196 FunctionalModeDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2196</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3073 FunctionalModeDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3073</Reference>
     </References>
   </UAObjectType>
-  <!-- FunctionalModeClassType::EnumValues : FunctionalModeDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2196' BrowseName='1:EnumValues' DataType='ns=1;i=2208' ParentNodeId='ns=1;i=2194'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- FunctionalModeClassType::EnumStrings : FunctionalModeDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3073' BrowseName='1:EnumStrings' DataType='ns=1;i=2208' ParentNodeId='ns=1;i=2194'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - FunctionalModeDataType ns=1;i=2208   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2208</Reference>
@@ -7472,13 +7486,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2214 ActiveStateDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2214</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3074 ActiveStateDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3074</Reference>
     </References>
   </UAObjectType>
-  <!-- SpindleInterlockClassType::EnumValues : ActiveStateDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2214' BrowseName='1:EnumValues' DataType='ns=1;i=2197' ParentNodeId='ns=1;i=2212'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- SpindleInterlockClassType::EnumStrings : ActiveStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3074' BrowseName='1:EnumStrings' DataType='ns=1;i=2197' ParentNodeId='ns=1;i=2212'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - ActiveStateDataType ns=1;i=2197   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2197</Reference>
@@ -7494,13 +7508,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2217 PathModeDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2217</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3075 PathModeDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3075</Reference>
     </References>
   </UAObjectType>
-  <!-- PathModeClassType::EnumValues : PathModeDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2217' BrowseName='1:EnumValues' DataType='ns=1;i=2209' ParentNodeId='ns=1;i=2215'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- PathModeClassType::EnumStrings : PathModeDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3075' BrowseName='1:EnumStrings' DataType='ns=1;i=2209' ParentNodeId='ns=1;i=2215'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - PathModeDataType ns=1;i=2209   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2209</Reference>
@@ -7516,13 +7530,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2220 OnOffDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2220</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3076 OnOffDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3076</Reference>
     </References>
   </UAObjectType>
-  <!-- PowerStateClassType::EnumValues : OnOffDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2220' BrowseName='1:EnumValues' DataType='ns=1;i=2204' ParentNodeId='ns=1;i=2218'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- PowerStateClassType::EnumStrings : OnOffDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3076' BrowseName='1:EnumStrings' DataType='ns=1;i=2204' ParentNodeId='ns=1;i=2218'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - OnOffDataType ns=1;i=2204   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2204</Reference>
@@ -7538,13 +7552,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2223 ProgramEditDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2223</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3077 ProgramEditDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3077</Reference>
     </References>
   </UAObjectType>
-  <!-- ProgramEditClassType::EnumValues : ProgramEditDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2223' BrowseName='1:EnumValues' DataType='ns=1;i=2210' ParentNodeId='ns=1;i=2221'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- ProgramEditClassType::EnumStrings : ProgramEditDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3077' BrowseName='1:EnumStrings' DataType='ns=1;i=2210' ParentNodeId='ns=1;i=2221'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - ProgramEditDataType ns=1;i=2210   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2210</Reference>
@@ -7560,13 +7574,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2226 RotaryModeDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2226</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3078 RotaryModeDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3078</Reference>
     </References>
   </UAObjectType>
-  <!-- RotaryModeClassType::EnumValues : RotaryModeDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2226' BrowseName='1:EnumValues' DataType='ns=1;i=2211' ParentNodeId='ns=1;i=2224'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- RotaryModeClassType::EnumStrings : RotaryModeDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3078' BrowseName='1:EnumStrings' DataType='ns=1;i=2211' ParentNodeId='ns=1;i=2224'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - RotaryModeDataType ns=1;i=2211   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2211</Reference>
@@ -7582,13 +7596,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2229 InterfaceStatusDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2229</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3079 InterfaceStatusDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3079</Reference>
     </References>
   </UAObjectType>
-  <!-- InterfaceStateClassType::EnumValues : InterfaceStatusDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2229' BrowseName='1:EnumValues' DataType='ns=1;i=2230' ParentNodeId='ns=1;i=2227'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- InterfaceStateClassType::EnumStrings : InterfaceStatusDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3079' BrowseName='1:EnumStrings' DataType='ns=1;i=2230' ParentNodeId='ns=1;i=2227'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - InterfaceStatusDataType ns=1;i=2230   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2230</Reference>
@@ -7604,13 +7618,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2233 InterfaceStateDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2233</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3080 InterfaceStateDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3080</Reference>
     </References>
   </UAObjectType>
-  <!-- MaterialFeedClassType::EnumValues : InterfaceStateDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2233' BrowseName='1:EnumValues' DataType='ns=1;i=2234' ParentNodeId='ns=1;i=2231'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- MaterialFeedClassType::EnumStrings : InterfaceStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3080' BrowseName='1:EnumStrings' DataType='ns=1;i=2234' ParentNodeId='ns=1;i=2231'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - InterfaceStateDataType ns=1;i=2234   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2234</Reference>
@@ -7626,13 +7640,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2237 InterfaceStateDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2237</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3081 InterfaceStateDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3081</Reference>
     </References>
   </UAObjectType>
-  <!-- MaterialChangeClassType::EnumValues : InterfaceStateDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2237' BrowseName='1:EnumValues' DataType='ns=1;i=2234' ParentNodeId='ns=1;i=2235'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- MaterialChangeClassType::EnumStrings : InterfaceStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3081' BrowseName='1:EnumStrings' DataType='ns=1;i=2234' ParentNodeId='ns=1;i=2235'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - InterfaceStateDataType ns=1;i=2234   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2234</Reference>
@@ -7648,13 +7662,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2240 InterfaceStateDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2240</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3082 InterfaceStateDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3082</Reference>
     </References>
   </UAObjectType>
-  <!-- MaterialRetractClassType::EnumValues : InterfaceStateDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2240' BrowseName='1:EnumValues' DataType='ns=1;i=2234' ParentNodeId='ns=1;i=2238'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- MaterialRetractClassType::EnumStrings : InterfaceStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3082' BrowseName='1:EnumStrings' DataType='ns=1;i=2234' ParentNodeId='ns=1;i=2238'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - InterfaceStateDataType ns=1;i=2234   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2234</Reference>
@@ -7670,13 +7684,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2243 InterfaceStateDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2243</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3083 InterfaceStateDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3083</Reference>
     </References>
   </UAObjectType>
-  <!-- MaterialLoadClassType::EnumValues : InterfaceStateDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2243' BrowseName='1:EnumValues' DataType='ns=1;i=2234' ParentNodeId='ns=1;i=2241'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- MaterialLoadClassType::EnumStrings : InterfaceStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3083' BrowseName='1:EnumStrings' DataType='ns=1;i=2234' ParentNodeId='ns=1;i=2241'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - InterfaceStateDataType ns=1;i=2234   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2234</Reference>
@@ -7692,13 +7706,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2246 InterfaceStateDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2246</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3084 InterfaceStateDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3084</Reference>
     </References>
   </UAObjectType>
-  <!-- MaterialUnloadClassType::EnumValues : InterfaceStateDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2246' BrowseName='1:EnumValues' DataType='ns=1;i=2234' ParentNodeId='ns=1;i=2244'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- MaterialUnloadClassType::EnumStrings : InterfaceStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3084' BrowseName='1:EnumStrings' DataType='ns=1;i=2234' ParentNodeId='ns=1;i=2244'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - InterfaceStateDataType ns=1;i=2234   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2234</Reference>
@@ -7714,13 +7728,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2249 InterfaceStateDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2249</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3085 InterfaceStateDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3085</Reference>
     </References>
   </UAObjectType>
-  <!-- OpenDoorClassType::EnumValues : InterfaceStateDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2249' BrowseName='1:EnumValues' DataType='ns=1;i=2234' ParentNodeId='ns=1;i=2247'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- OpenDoorClassType::EnumStrings : InterfaceStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3085' BrowseName='1:EnumStrings' DataType='ns=1;i=2234' ParentNodeId='ns=1;i=2247'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - InterfaceStateDataType ns=1;i=2234   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2234</Reference>
@@ -7736,13 +7750,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2252 InterfaceStateDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2252</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3086 InterfaceStateDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3086</Reference>
     </References>
   </UAObjectType>
-  <!-- CloseDoorClassType::EnumValues : InterfaceStateDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2252' BrowseName='1:EnumValues' DataType='ns=1;i=2234' ParentNodeId='ns=1;i=2250'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- CloseDoorClassType::EnumStrings : InterfaceStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3086' BrowseName='1:EnumStrings' DataType='ns=1;i=2234' ParentNodeId='ns=1;i=2250'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - InterfaceStateDataType ns=1;i=2234   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2234</Reference>
@@ -7758,13 +7772,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2255 InterfaceStateDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2255</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3087 InterfaceStateDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3087</Reference>
     </References>
   </UAObjectType>
-  <!-- OpenChuckClassType::EnumValues : InterfaceStateDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2255' BrowseName='1:EnumValues' DataType='ns=1;i=2234' ParentNodeId='ns=1;i=2253'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- OpenChuckClassType::EnumStrings : InterfaceStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3087' BrowseName='1:EnumStrings' DataType='ns=1;i=2234' ParentNodeId='ns=1;i=2253'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - InterfaceStateDataType ns=1;i=2234   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2234</Reference>
@@ -7780,13 +7794,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2258 InterfaceStateDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2258</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3088 InterfaceStateDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3088</Reference>
     </References>
   </UAObjectType>
-  <!-- CloseChuckClassType::EnumValues : InterfaceStateDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2258' BrowseName='1:EnumValues' DataType='ns=1;i=2234' ParentNodeId='ns=1;i=2256'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- CloseChuckClassType::EnumStrings : InterfaceStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3088' BrowseName='1:EnumStrings' DataType='ns=1;i=2234' ParentNodeId='ns=1;i=2256'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - InterfaceStateDataType ns=1;i=2234   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2234</Reference>
@@ -7802,13 +7816,13 @@ RU5BQkxFRCcgVmFsdWU9JzEnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
     <References>
       <!-- HasSubtype - (Reverse) - MTControlledVocabEventClassType ns=1;i=2144   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2144</Reference>
-      <!-- HasProperty -  - EnumValues ns=1;i=2261 InterfaceStateDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2261</Reference>
+      <!-- HasProperty -  - EnumStrings ns=1;i=3089 InterfaceStateDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3089</Reference>
     </References>
   </UAObjectType>
-  <!-- PartChangeClassType::EnumValues : InterfaceStateDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2261' BrowseName='1:EnumValues' DataType='ns=1;i=2234' ParentNodeId='ns=1;i=2259'>
-    <DisplayName>EnumValues</DisplayName>
+  <!-- PartChangeClassType::EnumStrings : InterfaceStateDataType[1] -->
+  <UAVariable NodeId='ns=1;i=3089' BrowseName='1:EnumStrings' DataType='ns=1;i=2234' ParentNodeId='ns=1;i=2259'>
+    <DisplayName>EnumStrings</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - InterfaceStateDataType ns=1;i=2234   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=2234</Reference>

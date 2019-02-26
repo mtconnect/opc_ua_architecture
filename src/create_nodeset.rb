@@ -138,6 +138,10 @@ NodesetModel.generate_nodeset('String Event Data Item Types')
 NodesetModel.generate_nodeset('Data Item Sub Types')
 NodesetModel.generate_nodeset('MTConnect Device Profile')
 
+NodesetModel.generate_nodeset('Assets')
+NodesetModel.generate_nodeset('CuttingTool')
+NodesetModel.generate_nodeset('AssetsProfile')
+
 error = false
 
 puts "Validating all references are resolved"

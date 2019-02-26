@@ -35,5 +35,8 @@ File.open('./latex/09-types.tex', 'w') do |f|
   LatexModel.generate_latex(f, 'Data Item Sub Types')
 #  Model.generate_latex(f, 'Factories')
   LatexModel.generate_latex(f, 'MTConnect Device Profile')
-  
+
+  LatexModel.generate_latex(f, 'Assets')
+  LatexModel.generate_latex(f, 'CuttingTool')
+  LatexModel.generate_latex(f, 'AssetsProfile')
 end

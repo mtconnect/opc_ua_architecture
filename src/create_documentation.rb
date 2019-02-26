@@ -3,6 +3,16 @@ $: << File.dirname(__FILE__)
 
 require 'json'
 require 'latex_model'
+require 'optparse'
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: create_documentation.rb [options]"
+
+  opts.on("-a", "--[no-]assets", "Include assets") do |v|
+    options[:assets] = v
+  end
+end.parse!         
 
 uml = File.open('MTConnect OPC-UA Devices.mdj').read
 doc = JSON.parse(uml)
@@ -36,7 +46,9 @@ File.open('./latex/09-types.tex', 'w') do |f|
 #  Model.generate_latex(f, 'Factories')
   LatexModel.generate_latex(f, 'MTConnect Device Profile')
 
-  LatexModel.generate_latex(f, 'Assets')
-  LatexModel.generate_latex(f, 'CuttingTool')
-  LatexModel.generate_latex(f, 'AssetsProfile')
+  if options[:assets]
+    LatexModel.generate_latex(f, 'Assets')
+    LatexModel.generate_latex(f, 'CuttingTool')
+    LatexModel.generate_latex(f, 'AssetsProfile')
+  end
 end

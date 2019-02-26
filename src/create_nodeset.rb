@@ -7,6 +7,17 @@ require 'rexml/document'
 require 'nokogiri'
 require 'time'
 require 'id_manager'
+require 'optparse'
+
+options = {}
+OptionParser.new do |opts|
+  opts.banner = "Usage: create_documentation.rb [options]"
+
+  opts.on("-a", "--[no-]assets", "Include assets") do |v|
+    options[:assets] = v
+  end
+end.parse!
+         
 
 Namespace = '1'
 NamespaceUri = 'http://opcfoundation.org/UA/MTConnect/v2/'
@@ -138,9 +149,11 @@ NodesetModel.generate_nodeset('String Event Data Item Types')
 NodesetModel.generate_nodeset('Data Item Sub Types')
 NodesetModel.generate_nodeset('MTConnect Device Profile')
 
-NodesetModel.generate_nodeset('Assets')
-NodesetModel.generate_nodeset('CuttingTool')
-NodesetModel.generate_nodeset('AssetsProfile')
+if options[:assets]
+  NodesetModel.generate_nodeset('Assets')
+  NodesetModel.generate_nodeset('CuttingTool')
+  NodesetModel.generate_nodeset('AssetsProfile')
+end
 
 error = false
 

@@ -3,7 +3,8 @@ require 'relation'
 class Type
   attr_reader :name, :id, :type, :model, :json, :parent, :children, :relations, :stereotype,
               :tags
-
+  attr_accessor :class_link
+  
   @@types_by_id = {}
   @@types_by_name = {}
 
@@ -41,6 +42,7 @@ class Type
     @literals = Array(e['literals'])
 
     @aliased = false
+    @class_link = nil
     
     if e['tags']
       e['tags'].each do |t|
@@ -69,6 +71,10 @@ class Type
 
   def is_opc?
     @model.is_opc?
+  end
+
+  def is_class_link?
+    @class_link
   end
 
   def check_mixin

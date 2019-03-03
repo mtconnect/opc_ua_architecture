@@ -8,6 +8,11 @@ class Type
   @@types_by_id = {}
   @@types_by_name = {}
 
+  def self.clear
+    @@types_by_id.clear
+    @@types_by_name.clear
+  end
+
   def self.type_for_id(id)
     @@types_by_id[id]
   end

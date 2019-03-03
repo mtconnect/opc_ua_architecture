@@ -13,6 +13,10 @@ class Model
     @@models
   end
 
+  def self.clear
+    @@models.clear
+  end
+
   def initialize(e)
     @name = e['name']
     @documentation = e['documentation']

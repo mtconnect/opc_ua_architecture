@@ -4,6 +4,8 @@ $: << File.dirname(__FILE__)
 require 'optparse'
 require 'json'
 require 'set'
+require 'type'
+require 'model'
 
 Options = {}
 parser = OptionParser.new do |opts|
@@ -40,10 +42,27 @@ SkipModels = Set.new
 SkipModels.add('UMLStandardProfile')
 SkipModels.add('Device Example')
 
-if ARGV[0] == 'docs'
-  load 'create_documentation.rb'
-elsif ARGV[0] == 'nodeset'
-  load 'create_nodeset.rb'
-else
+unless ARGV.first
+  puts "At least one directve docs or nodeset must be given"
   puts parser.help
+  exit
+end
+
+operations = Set.new(ARGV)
+
+operations.each do |op|
+  Type.clear
+  Model.clear
+
+  case op
+  when 'docs'
+    load 'create_documentation.rb'
+    
+  when 'nodeset'
+    load 'create_nodeset.rb'
+    
+  else
+    puts "Invalid option #{op}"
+    puts parser.help
+  end
 end

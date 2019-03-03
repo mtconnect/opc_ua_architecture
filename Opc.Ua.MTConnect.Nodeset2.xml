@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-02-26T19:51:46Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-03-03T02:17:38Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-02-26T19:51:46Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-02-26T19:51:46Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-03-03T02:17:38Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-03-03T02:17:38Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -5542,62 +5542,6 @@ PScxJy8+Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2345</Reference>
     </References>
   </UAObjectType>
-  <!-- Definition of Object ActuatorClassType ns=1;i=2411 -->
-  <UAObjectType NodeId='ns=1;i=2411' BrowseName='1:ActuatorClassType'>
-    <DisplayName>ActuatorClassType</DisplayName>
-    <References>
-      <!-- HasSubtype - (Reverse) - MTConditionClassType ns=1;i=2629   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2629</Reference>
-    </References>
-  </UAObjectType>
-  <!-- Definition of Object CommunicationsClassType ns=1;i=2413 -->
-  <UAObjectType NodeId='ns=1;i=2413' BrowseName='1:CommunicationsClassType'>
-    <DisplayName>CommunicationsClassType</DisplayName>
-    <References>
-      <!-- HasSubtype - (Reverse) - MTConditionClassType ns=1;i=2629   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2629</Reference>
-    </References>
-  </UAObjectType>
-  <!-- Definition of Object DataRangeClassType ns=1;i=2415 -->
-  <UAObjectType NodeId='ns=1;i=2415' BrowseName='1:DataRangeClassType'>
-    <DisplayName>DataRangeClassType</DisplayName>
-    <References>
-      <!-- HasSubtype - (Reverse) - MTConditionClassType ns=1;i=2629   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2629</Reference>
-    </References>
-  </UAObjectType>
-  <!-- Definition of Object HardwareClassType ns=1;i=2419 -->
-  <UAObjectType NodeId='ns=1;i=2419' BrowseName='1:HardwareClassType'>
-    <DisplayName>HardwareClassType</DisplayName>
-    <References>
-      <!-- HasSubtype - (Reverse) - MTConditionClassType ns=1;i=2629   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2629</Reference>
-    </References>
-  </UAObjectType>
-  <!-- Definition of Object LogicProgramClassType ns=1;i=2417 -->
-  <UAObjectType NodeId='ns=1;i=2417' BrowseName='1:LogicProgramClassType'>
-    <DisplayName>LogicProgramClassType</DisplayName>
-    <References>
-      <!-- HasSubtype - (Reverse) - MTConditionClassType ns=1;i=2629   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2629</Reference>
-    </References>
-  </UAObjectType>
-  <!-- Definition of Object MotionProgramClassType ns=1;i=2421 -->
-  <UAObjectType NodeId='ns=1;i=2421' BrowseName='1:MotionProgramClassType'>
-    <DisplayName>MotionProgramClassType</DisplayName>
-    <References>
-      <!-- HasSubtype - (Reverse) - MTConditionClassType ns=1;i=2629   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2629</Reference>
-    </References>
-  </UAObjectType>
-  <!-- Definition of Object SystemClassType ns=1;i=2423 -->
-  <UAObjectType NodeId='ns=1;i=2423' BrowseName='1:SystemClassType'>
-    <DisplayName>SystemClassType</DisplayName>
-    <References>
-      <!-- HasSubtype - (Reverse) - MTConditionClassType ns=1;i=2629   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2629</Reference>
-    </References>
-  </UAObjectType>
   <!-- Definition of Enumeration ActiveStateDataType ns=1;i=2197 -->
   <UADataType NodeId='ns=1;i=2197' BrowseName='1:ActiveStateDataType'>
     <DisplayName>ActiveStateDataType</DisplayName>
@@ -8791,6 +8735,62 @@ Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
     <References>
       <!-- HasSubtype - (Reverse) - MTStringEventClassType ns=1;i=2361   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2361</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object ActuatorClassType ns=1;i=2411 -->
+  <UAObjectType NodeId='ns=1;i=2411' BrowseName='1:ActuatorClassType'>
+    <DisplayName>ActuatorClassType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - MTConditionClassType ns=1;i=2629   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2629</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object CommunicationsClassType ns=1;i=2413 -->
+  <UAObjectType NodeId='ns=1;i=2413' BrowseName='1:CommunicationsClassType'>
+    <DisplayName>CommunicationsClassType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - MTConditionClassType ns=1;i=2629   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2629</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object DataRangeClassType ns=1;i=2415 -->
+  <UAObjectType NodeId='ns=1;i=2415' BrowseName='1:DataRangeClassType'>
+    <DisplayName>DataRangeClassType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - MTConditionClassType ns=1;i=2629   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2629</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object HardwareClassType ns=1;i=2419 -->
+  <UAObjectType NodeId='ns=1;i=2419' BrowseName='1:HardwareClassType'>
+    <DisplayName>HardwareClassType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - MTConditionClassType ns=1;i=2629   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2629</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object LogicProgramClassType ns=1;i=2417 -->
+  <UAObjectType NodeId='ns=1;i=2417' BrowseName='1:LogicProgramClassType'>
+    <DisplayName>LogicProgramClassType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - MTConditionClassType ns=1;i=2629   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2629</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object MotionProgramClassType ns=1;i=2421 -->
+  <UAObjectType NodeId='ns=1;i=2421' BrowseName='1:MotionProgramClassType'>
+    <DisplayName>MotionProgramClassType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - MTConditionClassType ns=1;i=2629   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2629</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object SystemClassType ns=1;i=2423 -->
+  <UAObjectType NodeId='ns=1;i=2423' BrowseName='1:SystemClassType'>
+    <DisplayName>SystemClassType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - MTConditionClassType ns=1;i=2629   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2629</Reference>
     </References>
   </UAObjectType>
   <!-- Definition of Object MTDataItemSubClassType ns=1;i=2476 -->

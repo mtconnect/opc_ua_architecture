@@ -3,9 +3,15 @@ require 'relation'
 class Type
   attr_reader :name, :id, :type, :model, :json, :parent, :children, :relations, :stereotype,
               :tags
-
+  attr_accessor :class_link
+  
   @@types_by_id = {}
   @@types_by_name = {}
+
+  def self.clear
+    @@types_by_id.clear
+    @@types_by_name.clear
+  end
 
   def self.type_for_id(id)
     @@types_by_id[id]
@@ -14,11 +20,17 @@ class Type
   def self.type_for_name(name)
     @@types_by_name[name]
   end
+
+  def self.connect_model
+    resolve_types
+    connect_children
+  end
   
   def self.connect_children
     @@types_by_id.each do |id, type|
       parent = type.get_parent
       parent.add_child(type) if parent
+      type.connect_class_links
     end
   end
 
@@ -41,6 +53,7 @@ class Type
     @literals = Array(e['literals'])
 
     @aliased = false
+    @class_link = nil
     
     if e['tags']
       e['tags'].each do |t|
@@ -71,6 +84,10 @@ class Type
     @model.is_opc?
   end
 
+  def is_class_link?
+    @class_link
+  end
+
   def check_mixin
     @mixin = nil
     @relations.each do |r|
@@ -78,6 +95,18 @@ class Type
         @mixin = r.target.type
         # puts "==>  Found Mixin #{r.target.name} for #{@name}"
         return
+      end
+    end
+  end
+
+  def connect_class_links
+    if is_class_link?
+      # Find the association to the other near and far side
+      association = nil
+      @relations.delete_if { |a| association = a if a.type == 'UMLAssociation'; association }
+      if association
+        association.link_target('OrganizedBy', self)
+        association.source.type.relations << association
       end
     end
   end
@@ -138,22 +167,6 @@ class Type
 
   def to_s
     "#{@model}::#{@name} -> #{stereotype_name} #{@type} #{@id}"
-  end
-
-  def connect_links
-    @relations.each do |r|
-      if r.type == 'UMLAssociationClassLink'
-        # puts "********* Connecting relation for #{@name}"
-        @relations.each do |r|
-          if r.type == 'UMLAssociation'            
-            source = r.source
-            # puts "********* -> Connecting to #{source.name}"
-            source.relations << r if source
-            return
-          end
-        end
-      end
-    end
   end
 
   def self.resolve_type(ref)

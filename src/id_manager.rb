@@ -2,6 +2,38 @@ require 'csv'
 require 'set'
 
 class IdManager
+  def load_reference_documents(clean)
+    # Parse Reference Documents.
+    if empty? or clean
+      ['OPC_UA_Nodesets/Opc.Ua.NodeSet2.xml'].each do |f|
+        puts "Parsing OPC UA Nodeset: #{f}"
+        File.open(f) do |x|
+          doc = REXML::Document.new(x)
+          
+          # Copy aliases
+          doc.root.each_element('//Aliases/Alias') do |e|
+            add_alias(e.attribute('Alias').value)
+          end
+          
+          doc.root.elements.each do |e|
+            parent, name, id, sym = e.attribute('ParentNodeId'), e.attribute('BrowseName'), e.attribute('NodeId'),
+            e.attribute('SymbolicName')
+            
+            if name and id and (e.name =~ /Type$/o or
+                                (sym and (sym.value =~ /ModellingRule/o or
+                                          sym.value =~ /BinarySchema/o or
+                                          sym.value =~ /XmlSchema/o)))
+              self[name.value] = id.value 
+            end
+          end
+        end
+      end
+      
+      save
+    end
+  end
+    
+  
   def initialize(file, clean = false, start = 2000)
     @file = file
     @ids = Hash.new

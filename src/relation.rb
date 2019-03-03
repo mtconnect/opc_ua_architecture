@@ -21,6 +21,9 @@ module Relation
 
     when 'UMLSlot'
       Slot.new(owner, r)
+
+    when 'UMLAssociationClassLink'
+      Folder.new(owner, r)
       
     else
       puts "Unknown relation type: #{r['_type']}"
@@ -216,11 +219,7 @@ module Relation
     end
 
     def target_node_name
-      if is_folder?
-        'FolderType'
-      else
-        @target.type.name
-      end
+      @target.type.name
     end
 
     def is_folder?
@@ -245,11 +244,28 @@ module Relation
       end
     end
 
+    def link_target(reference, type)
+      @target = Connection.new(reference, nil, type)
+    end
+
     def resolve_types
       super
       if is_folder?
         @target = Connection.new('OrganizedBy', nil, Type.type_for_name('FolderType'))
       end
+    end
+  end
+
+  class Folder < Relation
+    def initialize(owner, a)
+      super(owner, a)
+      @owner = owner
+      @klass = a['classSide']
+      @association = a['associationSide']
+      @owner.class_link = self
+    end
+
+    def resolve_types
     end
   end
 
@@ -259,9 +275,7 @@ module Relation
     def initialize(owner, a)
       super(owner, a)
       @name = a['name']
-      @owner = owner
       @default = a['defaultValue']
-      @json = a
       @target = Connection.new('type', a['type'])
     end
     
@@ -332,8 +346,6 @@ module Relation
     def initialize(owner, a)
       super(owner, a)
       @name = a['name']
-      @owner = owner
-      @json = a
       @target = Connection.new('type', a['type'])
       @value = a['value']
     end

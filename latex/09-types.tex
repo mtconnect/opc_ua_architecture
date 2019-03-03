@@ -1,4 +1,4 @@
-% Generated 2019-02-26 11:51:23 -0800
+% Generated 2019-03-02 16:55:12 -0800
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -8989,7 +8989,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 Has\-Property & Variable & Indices & String & Property\-Type & Mandatory \\
 Has\-Property & Variable & Item\-Id & String & Property\-Type & Optional \\
 Has\-Property & Variable & Grade & String & Property\-Type & Optional \\
-Has\-Property & Variable & Manufactures & String & Property\-Type & Optional \\
+Has\-Property & Variable & Manufactures & String[] & Property\-Type & Optional \\
 Has\-Property & Variable & MT\-Description & String & Property\-Type & Optional \\
 Has\-Property & Variable & Locus & String & Property\-Type & Optional \\
 Has\-Component & Variable & Cutter\-Status & UInt32 & MT\-Cutter\-Status\-Type & Optional \\
@@ -9008,6 +9008,31 @@ Has\-Component & Variable & Part\-Count\-Item\-Life & Double & MT\-Tool\-Life\-T
 \item \texttt{Indices::String:} TODO: We may want to create a special type for the indices.
 
 \end{itemize}
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MTCuttingItemsFolderType}}
+  \label{type:MTCuttingItemsFolderType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTCuttingItemsFolderType} Definition}
+  \label{table:MTCuttingItemsFolderType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTCuttingItemsFolderType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of FolderType (See \cite{UAPart5} Documentation)} \\
+Has\-Property & Variable & Count & Int32 & Property\-Type & Mandatory \\
+\end{tabu}
+\end{table} 
+
+
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTCuttingToolArchetypeType}}
   \label{type:MTCuttingToolArchetypeType}
@@ -9044,7 +9069,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTAssetType (See Assets Documentation)} \\
 Has\-Property & Variable & Serial\-Number & String & Property\-Type & Mandatory \\
-Has\-Property & Variable & Manufacturers & String & Property\-Type & Optional \\
+Has\-Property & Variable & Manufacturers & String[] & Property\-Type & Optional \\
 Has\-Property & Variable & Tool\-Id & String & Property\-Type & Mandatory \\
 Has\-Component & Object & Cutting\-Tool\-Lifecycle & \multicolumn{2}{l|}{MTCuttingToolLifeCycleType} & Optional \\
 Has\-Component & Object & Cutting\-Tool\-Definition & \multicolumn{2}{l|}{MTCuttingToolDefinitionType} & Optional \\
@@ -9230,7 +9255,7 @@ Has\-Component & Variable & Recondition\-Count & Int32 & MT\-Recondition\-Count\
 Has\-Component & Variable & Process\-Spindle\-Speed & Double & MT\-Cutting\-Tool\-Constraint\-Type & Optional \\
 Has\-Component & Variable & Process\-Feed\-Rate & Double & MT\-Cutting\-Tool\-Constraint\-Type & Optional \\
 Organizes & Object & Measurements & MT\-Cutting\-Tool\-Measurement\-Type[] & Folder\-Type & Optional \\
-Organizes & Object & Cutting\-Items & MT\-Cutting\-Item\-Type & Folder\-Type & Mandatory \\
+Organizes & Object & Cutting\-Items & MT\-Cutting\-Item\-Type[] & MT\-Cutting\-Items\-Folder\-Type & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -9271,7 +9296,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTAssetType (See Assets Documentation)} \\
 Has\-Property & Variable & Serial\-Number & String & Property\-Type & Mandatory \\
-Has\-Property & Variable & Manufacturers & String & Property\-Type & Optional \\
+Has\-Property & Variable & Manufacturers & String[] & Property\-Type & Optional \\
 Has\-Property & Variable & Tool\-Id & String & Property\-Type & Mandatory \\
 Has\-Component & Object & Cutting\-Tool\-Lifecycle & \multicolumn{2}{l|}{MTCuttingToolLifeCycleType} & Mandatory \\
 Has\-Cutting\-Tool\-Archetype & Object & <MT\-Cutting\-Tool\-Archetype> & \multicolumn{2}{l|}{MTCuttingToolArchetypeType} & Optional \\

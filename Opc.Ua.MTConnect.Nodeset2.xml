@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-03-01T02:29:39Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-03-03T00:55:48Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-03-01T02:29:39Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-03-01T02:29:39Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-03-03T00:55:48Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-03-03T00:55:48Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -9657,8 +9657,8 @@ Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3400</Reference>
     </References>
   </UAVariable>
-  <!-- MTCuttingItemType::Manufactures : String[0..1] -->
-  <UAVariable NodeId='ns=1;i=3404' BrowseName='1:Manufactures' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=3400'>
+  <!-- MTCuttingItemType::Manufactures : String[0..*] -->
+  <UAVariable NodeId='ns=1;i=3404' BrowseName='1:Manufactures' ValueRank='1' DataType='String' ParentNodeId='ns=1;i=3400'>
     <DisplayName>Manufactures</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
@@ -10111,8 +10111,6 @@ Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=61</Reference>
       <!-- HasProperty -  - Count ns=1;i=3415 Int32  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3415</Reference>
-      <!-- Organizes -  - CuttingItems ns=1;i=3416 FolderType  -->
-      <Reference ReferenceType='Organizes'>ns=1;i=3416</Reference>
     </References>
   </UAObjectType>
   <!-- MTCuttingItemsFolderType::Count : Int32[1] -->
@@ -10127,18 +10125,6 @@ Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3414</Reference>
     </References>
   </UAVariable>
-  <!-- MTCuttingItemsFolderType::CuttingItems : FolderType[0..*] -->
-  <UAObject NodeId='ns=1;i=3416' BrowseName='1:CuttingItems' ParentNodeId='ns=1;i=3414'>
-    <DisplayName>CuttingItems</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - FolderType i=61   -->
-      <Reference ReferenceType='HasTypeDefinition'>i=61</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- Organizes - (Reverse) - MTCuttingItemsFolderType ns=1;i=3414   -->
-      <Reference ReferenceType='Organizes' IsForward='false'>ns=1;i=3414</Reference>
-    </References>
-  </UAObject>
   <!-- Definition of Object MTCuttingToolArchetypeType ns=1;i=3115 -->
   <UAObjectType NodeId='ns=1;i=3115' BrowseName='1:MTCuttingToolArchetypeType'>
     <DisplayName>MTCuttingToolArchetypeType</DisplayName>
@@ -10169,8 +10155,8 @@ Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3115</Reference>
     </References>
   </UAVariable>
-  <!-- MTCuttingToolArchetypeType::Manufacturers : String[0..1] -->
-  <UAVariable NodeId='ns=1;i=3117' BrowseName='1:Manufacturers' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=3115'>
+  <!-- MTCuttingToolArchetypeType::Manufacturers : String[0..*] -->
+  <UAVariable NodeId='ns=1;i=3117' BrowseName='1:Manufacturers' ValueRank='1' DataType='String' ParentNodeId='ns=1;i=3115'>
     <DisplayName>Manufacturers</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
@@ -10221,6 +10207,8 @@ Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
       <Reference ReferenceType='HasComponent'>ns=1;i=3491</Reference>
       <!-- Organizes -  - Measurements ns=1;i=3497 FolderType  -->
       <Reference ReferenceType='Organizes'>ns=1;i=3497</Reference>
+      <!-- Organizes -  - CuttingItems ns=1;i=3623 MTCuttingItemsFolderType  -->
+      <Reference ReferenceType='Organizes'>ns=1;i=3623</Reference>
       <!-- HasTypeDefinition -  - MTCuttingToolLifeCycleType ns=1;i=3108   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3108</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
@@ -10975,6 +10963,32 @@ Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
       <Reference ReferenceType='Organizes' IsForward='false'>ns=1;i=3120</Reference>
     </References>
   </UAObject>
+  <!-- CuttingToolLifecycle::CuttingItems : MTCuttingItemsFolderType[0..*] -->
+  <UAObject NodeId='ns=1;i=3623' BrowseName='1:CuttingItems' ParentNodeId='ns=1;i=3120'>
+    <DisplayName>CuttingItems</DisplayName>
+    <References>
+      <!-- HasProperty -  - Count ns=1;i=3624 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3624</Reference>
+      <!-- HasTypeDefinition -  - MTCuttingItemsFolderType ns=1;i=3414   -->
+      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3414</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- Organizes - (Reverse) - CuttingToolLifecycle ns=1;i=3120   -->
+      <Reference ReferenceType='Organizes' IsForward='false'>ns=1;i=3120</Reference>
+    </References>
+  </UAObject>
+  <!-- CuttingItems::Count : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=3624' BrowseName='1:Count' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3623'>
+    <DisplayName>Count</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - CuttingItems ns=1;i=3623   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3623</Reference>
+    </References>
+  </UAVariable>
   <!-- MTCuttingToolArchetypeType::CuttingToolDefinition : MTCuttingToolDefinitionType[0..1] -->
   <UAObject NodeId='ns=1;i=3121' BrowseName='1:CuttingToolDefinition' ParentNodeId='ns=1;i=3115'>
     <DisplayName>CuttingToolDefinition</DisplayName>
@@ -11209,6 +11223,8 @@ Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
       <Reference ReferenceType='HasComponent'>ns=1;i=3139</Reference>
       <!-- Organizes -  - Measurements ns=1;i=3140 FolderType  -->
       <Reference ReferenceType='Organizes'>ns=1;i=3140</Reference>
+      <!-- Organizes -  - CuttingItems ns=1;i=3622 MTCuttingItemsFolderType  -->
+      <Reference ReferenceType='Organizes'>ns=1;i=3622</Reference>
     </References>
   </UAObjectType>
   <!-- MTCuttingToolLifeCycleType::ProgramToolGroup : String[0..1] -->
@@ -11957,6 +11973,32 @@ Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
       <Reference ReferenceType='Organizes' IsForward='false'>ns=1;i=3108</Reference>
     </References>
   </UAObject>
+  <!-- MTCuttingToolLifeCycleType::CuttingItems : MTCuttingItemsFolderType[0..*] -->
+  <UAObject NodeId='ns=1;i=3622' BrowseName='1:CuttingItems' ParentNodeId='ns=1;i=3108'>
+    <DisplayName>CuttingItems</DisplayName>
+    <References>
+      <!-- HasProperty -  - Count ns=1;i=3625 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3625</Reference>
+      <!-- HasTypeDefinition -  - MTCuttingItemsFolderType ns=1;i=3414   -->
+      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3414</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- Organizes - (Reverse) - MTCuttingToolLifeCycleType ns=1;i=3108   -->
+      <Reference ReferenceType='Organizes' IsForward='false'>ns=1;i=3108</Reference>
+    </References>
+  </UAObject>
+  <!-- CuttingItems::Count : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=3625' BrowseName='1:Count' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3622'>
+    <DisplayName>Count</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - CuttingItems ns=1;i=3622   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3622</Reference>
+    </References>
+  </UAVariable>
   <!-- Definition of Object MTCuttingToolType ns=1;i=3101 -->
   <UAObjectType NodeId='ns=1;i=3101' BrowseName='1:MTCuttingToolType'>
     <DisplayName>MTCuttingToolType</DisplayName>
@@ -11985,8 +12027,8 @@ Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3101</Reference>
     </References>
   </UAVariable>
-  <!-- MTCuttingToolType::Manufacturers : String[0..1] -->
-  <UAVariable NodeId='ns=1;i=3103' BrowseName='1:Manufacturers' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=3101'>
+  <!-- MTCuttingToolType::Manufacturers : String[0..*] -->
+  <UAVariable NodeId='ns=1;i=3103' BrowseName='1:Manufacturers' ValueRank='1' DataType='String' ParentNodeId='ns=1;i=3101'>
     <DisplayName>Manufacturers</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
@@ -12037,6 +12079,8 @@ Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
       <Reference ReferenceType='HasComponent'>ns=1;i=3591</Reference>
       <!-- Organizes -  - Measurements ns=1;i=3597 FolderType  -->
       <Reference ReferenceType='Organizes'>ns=1;i=3597</Reference>
+      <!-- Organizes -  - CuttingItems ns=1;i=3626 MTCuttingItemsFolderType  -->
+      <Reference ReferenceType='Organizes'>ns=1;i=3626</Reference>
       <!-- HasTypeDefinition -  - MTCuttingToolLifeCycleType ns=1;i=3108   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3108</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
@@ -12791,6 +12835,32 @@ Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
       <Reference ReferenceType='Organizes' IsForward='false'>ns=1;i=3106</Reference>
     </References>
   </UAObject>
+  <!-- CuttingToolLifecycle::CuttingItems : MTCuttingItemsFolderType[0..*] -->
+  <UAObject NodeId='ns=1;i=3626' BrowseName='1:CuttingItems' ParentNodeId='ns=1;i=3106'>
+    <DisplayName>CuttingItems</DisplayName>
+    <References>
+      <!-- HasProperty -  - Count ns=1;i=3627 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3627</Reference>
+      <!-- HasTypeDefinition -  - MTCuttingItemsFolderType ns=1;i=3414   -->
+      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3414</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- Organizes - (Reverse) - CuttingToolLifecycle ns=1;i=3106   -->
+      <Reference ReferenceType='Organizes' IsForward='false'>ns=1;i=3106</Reference>
+    </References>
+  </UAObject>
+  <!-- CuttingItems::Count : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=3627' BrowseName='1:Count' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3626'>
+    <DisplayName>Count</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - CuttingItems ns=1;i=3626   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3626</Reference>
+    </References>
+  </UAVariable>
   <!-- Definition of Variable MTLocationType ns=1;i=3153 -->
   <UAVariableType NodeId='ns=1;i=3153' BrowseName='1:MTLocationType' ValueRank='-1' DataType='Int32'>
     <DisplayName>MTLocationType</DisplayName>

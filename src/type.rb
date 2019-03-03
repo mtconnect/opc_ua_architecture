@@ -15,11 +15,17 @@ class Type
   def self.type_for_name(name)
     @@types_by_name[name]
   end
+
+  def self.connect_model
+    resolve_types
+    connect_children
+  end
   
   def self.connect_children
     @@types_by_id.each do |id, type|
       parent = type.get_parent
       parent.add_child(type) if parent
+      type.connect_class_links
     end
   end
 
@@ -88,6 +94,18 @@ class Type
     end
   end
 
+  def connect_class_links
+    if is_class_link?
+      # Find the association to the other near and far side
+      association = nil
+      @relations.delete_if { |a| association = a if a.type == 'UMLAssociation'; association }
+      if association
+        association.link_target('OrganizedBy', self)
+        association.source.type.relations << association
+      end
+    end
+  end
+
   def is_aliased?
     @aliased
   end
@@ -144,22 +162,6 @@ class Type
 
   def to_s
     "#{@model}::#{@name} -> #{stereotype_name} #{@type} #{@id}"
-  end
-
-  def connect_links
-    @relations.each do |r|
-      if r.type == 'UMLAssociationClassLink'
-        # puts "********* Connecting relation for #{@name}"
-        @relations.each do |r|
-          if r.type == 'UMLAssociation'            
-            source = r.source
-            # puts "********* -> Connecting to #{source.name}"
-            source.relations << r if source
-            return
-          end
-        end
-      end
-    end
   end
 
   def self.resolve_type(ref)

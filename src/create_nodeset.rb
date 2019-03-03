@@ -34,8 +34,7 @@ models.each do |e|
   NodesetModel.find_definitions(e)
 end
 
-Type.resolve_types
-Type.connect_children
+Type.connect_model
 
 puts "\nGenerating Nodeset"
 

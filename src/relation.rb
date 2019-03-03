@@ -219,11 +219,7 @@ module Relation
     end
 
     def target_node_name
-      if is_folder?
-        'FolderType'
-      else
-        @target.type.name
-      end
+      @target.type.name
     end
 
     def is_folder?
@@ -248,6 +244,10 @@ module Relation
       end
     end
 
+    def link_target(reference, type)
+      @target = Connection.new(reference, nil, type)
+    end
+
     def resolve_types
       super
       if is_folder?
@@ -258,15 +258,14 @@ module Relation
 
   class Folder < Relation
     def initialize(owner, a)
+      super(owner, a)
       @owner = owner
       @klass = a['classSide']
       @association = a['associationSide']
-      @owner.class_link = true
+      @owner.class_link = self
     end
 
     def resolve_types
-      super
-      @type = Type.resolve_type(@klass)
     end
   end
 
@@ -276,9 +275,7 @@ module Relation
     def initialize(owner, a)
       super(owner, a)
       @name = a['name']
-      @owner = owner
       @default = a['defaultValue']
-      @json = a
       @target = Connection.new('type', a['type'])
     end
     
@@ -349,8 +346,6 @@ module Relation
     def initialize(owner, a)
       super(owner, a)
       @name = a['name']
-      @owner = owner
-      @json = a
       @target = Connection.new('type', a['type'])
       @value = a['value']
     end

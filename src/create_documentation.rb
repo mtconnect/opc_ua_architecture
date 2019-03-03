@@ -23,9 +23,7 @@ models.each do |e|
   LatexModel.find_definitions(e)
 end
 
-LatexType.resolve_types
-LatexType.connect_children
-
+LatexType.connect_model
 
 puts "\nGenerating LaTex"
 

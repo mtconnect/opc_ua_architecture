@@ -17,7 +17,7 @@ class IdManager
           
           doc.root.elements.each do |e|
             parent, name, id, sym = e.attribute('ParentNodeId'), e.attribute('BrowseName'), e.attribute('NodeId'),
-            e.attribute('SymbolicName')
+                                    e.attribute('SymbolicName')
             
             if name and id and (e.name =~ /Type$/o or
                                 (sym and (sym.value =~ /ModellingRule/o or

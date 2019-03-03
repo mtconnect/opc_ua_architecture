@@ -12,12 +12,10 @@ NamespaceUri = 'http://opcfoundation.org/UA/MTConnect/v2/'
 
 puts "\nGenerating Nodeset"
 
-clean = Options[:clean]
+puts "Regenerating based Nodeset Ids" if Options[:clean]
+Ids = IdManager.new('MTConnectNodeIds.csv', Options[:clean])
 
-puts "Regenerating based Nodeset Ids" if clean
-Ids = IdManager.new('MTConnectNodeIds.csv', clean)
-
-Ids.load_reference_documents(clean)
+Ids.load_reference_documents(Options[:clean])
 
 UmlModels.each do |e|
   NodesetModel.find_definitions(e)

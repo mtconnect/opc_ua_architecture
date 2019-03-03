@@ -1,157 +1,49 @@
 # Add directory to path
 $: << File.dirname(__FILE__)
 
-require 'json'
 require 'nodeset_model'
 require 'rexml/document'
 require 'nokogiri'
 require 'time'
 require 'id_manager'
-require 'optparse'
-
-options = {}
-OptionParser.new do |opts|
-  opts.banner = "Usage: create_documentation.rb [options]"
-
-  opts.on("-a", "--[no-]assets", "Include assets") do |v|
-    options[:assets] = v
-  end
-end.parse!
-         
 
 Namespace = '1'
 NamespaceUri = 'http://opcfoundation.org/UA/MTConnect/v2/'
 
-uml = File.open('MTConnect OPC-UA Devices.mdj').read
-doc = JSON.parse(uml)
-models = doc['ownedElements'].dup
+puts "\nGenerating Nodeset"
 
-SkipModels = Set.new
-SkipModels.add('UMLStandardProfile')
-SkipModels.add('Device Example')
+clean = Options[:clean]
 
-models.each do |e|
+puts "Regenerating based Nodeset Ids" if clean
+Ids = IdManager.new('MTConnectNodeIds.csv', clean)
+
+Ids.load_reference_documents(clean)
+
+UmlModels.each do |e|
   NodesetModel.find_definitions(e)
 end
 
 Type.connect_model
 
-puts "\nGenerating Nodeset"
+NodesetDocument = NodesetModel.nodeset_document
+Root = NodesetDocument.root
 
-clean = (ARGV.first and ARGV.first == '-r')
-puts "Regenerating based Nodeset Ids" if clean
-
-
-Ids = IdManager.new('MTConnectNodeIds.csv', clean)
-
-document = REXML::Document.new
-document << REXML::XMLDecl.new("1.0", "UTF-8")
-
-Root = document.add_element('UANodeSet')
-Root.add_namespace('xsd', "http://www.w3.org/2001/XMLSchema")
-Root.add_namespace('xsi', "http://www.w3.org/2001/XMLSchema-instance")
-Root.add_namespace("http://opcfoundation.org/UA/2011/03/UANodeSet.xsd")
-
-Root.add_attribute("xsi:schemaLocation",
-                   "http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd")
-                                                                                                                          
-Root.add_attribute('LastModified', Time.now.utc.xmlschema)
-Root.add_element('NamespaceUris').
-  add_element('Uri').
-  add_text(NamespaceUri)
-
-Root.add_element('Models').
-  add_element('Model',  { 'ModelUri' => NamespaceUri,
-                          "Version" => "2.00",
-                          "PublicationDate" => Time.now.utc.xmlschema }).
-  add_element('RequiredModel', { "ModelUri" => "http://opcfoundation.org/UA/",
-                                 "Version" => "1.04",
-                                 "PublicationDate" => Time.now.utc.xmlschema } )
+TypeDict = NodesetModel.type_dict_document
+TypeDictRoot = TypeDict.root
 
 
-# Parse Reference Documents.
-if Ids.empty? or clean
-  ['OPC_UA_Nodesets/Opc.Ua.NodeSet2.xml'].each do |f|
-    puts "Parsing OPC UA Nodeset: #{f}"
-    File.open(f) do |x|
-      doc = REXML::Document.new(x)
-      
-      # Copy aliases
-      doc.root.each_element('//Aliases/Alias') do |e|
-        Ids.add_alias(e.attribute('Alias').value)
-      end
-      
-      doc.root.elements.each do |e|
-        parent, name, id, sym = e.attribute('ParentNodeId'), e.attribute('BrowseName'), e.attribute('NodeId'),
-          e.attribute('SymbolicName')
-
-        if name and id and (e.name =~ /Type$/o or
-                            (sym and (sym.value =~ /ModellingRule/o or
-                                      sym.value =~ /BinarySchema/o or
-                                      sym.value =~ /XmlSchema/o)))
-          Ids[name.value] = id.value 
-        end
-      end
-    end
-  end
-  
-  Ids.save
-end
-
-als = Root.add_element('Aliases')
-Ids.each_alias do |a|
-  als.add_element('Alias', { 'Alias' => a }).add_text(Ids.raw_id(a))
-end
-
-TypeDict = REXML::Document.new
-TypeDict << REXML::XMLDecl.new("1.0", "UTF-8")
-
-TypeDictRoot = TypeDict.add_element('opc:TypeDictionary', {'DefaultByteOrder' => "LittleEndian",
-                                                           'TargetNamespace' => NamespaceUri })
-TypeDictRoot.add_namespace('opc', "http://opcfoundation.org/BinarySchema/")
-TypeDictRoot.add_namespace('xsi', "http://www.w3.org/2001/XMLSchema-instance")
-TypeDictRoot.add_namespace('ua', "http://opcfoundation.org/UA/")
-TypeDictRoot.add_namespace('tns', "http://opcfoundation.org/UA/")
-
-TypeDictRoot.add_element('opc:Import', {
-                           'Namespace' => "http://opcfoundation.org/UA/",
-                           'Location' => "Opc.Ua.BinarySchema.bsd" })
-
-XmlTypeDict = REXML::Document.new
-XmlTypeDict << REXML::XMLDecl.new("1.0", "UTF-8")
-
-XmlTypeDictRoot = XmlTypeDict.add_element('xs:schema',
-                   { 'xmlns:xs' => "http://www.w3.org/2001/XMLSchema",
-                     'xmlns:ua' => "http://opcfoundation.org/UA/2008/02/Types.xsd",
-                     'xmlns:mtc' => "#{NamespaceUri}/Types.xsd",
-                     'targetNamespace' => "#{NamespaceUri}/Types.xsd",
-                     'elementFormDefault' => "qualified" })
-
-XmlTypeDictRoot.add_element('xs:import', { 'namespace' => "http://opcfoundation.org/UA/2008/02/Types.xsd" })
+XmlTypeDict = NodesetModel.xml_type_dict_document
+XmlTypeDictRoot = XmlTypeDict.root
 
 NodesetType.resolve_node_ids
-NodesetType.check_ids
 
+puts "Generating nodesets"
 NodesetModel.generate_nodeset('Namespace Metadata')
 NodesetModel.generate_nodeset('MTConnect Binary')
 NodesetModel.generate_nodeset('MTConnect XML Schema')
-NodesetModel.generate_nodeset('Components')
-NodesetModel.generate_nodeset('Component Types')
-NodesetModel.generate_nodeset('Data Items')
-NodesetModel.generate_nodeset('Conditions')
-NodesetModel.generate_nodeset('Data Item Types')
-NodesetModel.generate_nodeset('Sample Data Item Types')
-NodesetModel.generate_nodeset('Condition Data Item Types')
-NodesetModel.generate_nodeset('Controlled Vocab Data Item Types')
-NodesetModel.generate_nodeset('Numeric Event Data Item Types')
-NodesetModel.generate_nodeset('String Event Data Item Types')
-NodesetModel.generate_nodeset('Data Item Sub Types')
-NodesetModel.generate_nodeset('MTConnect Device Profile')
 
-if options[:assets]
-  NodesetModel.generate_nodeset('Assets')
-  NodesetModel.generate_nodeset('Cutting Tool')
-  NodesetModel.generate_nodeset('Assets Profile')
+Models.each do |model|
+  NodesetModel.generate_nodeset(model)
 end
 
 error = false
@@ -216,9 +108,8 @@ end
 
 
 File.open('./Opc.Ua.MTConnect.Nodeset2.xml', 'w') do |f|
-  formatter.write(document, f)  
+  formatter.write(NodesetDocument, f)  
 end
-
 
 Ids.save
 

@@ -33,6 +33,7 @@ class NodesetType < Type
     @@types_by_id.each do |id, t|
       t.resolve_node_ids
     end
+    check_ids
   end
 
   def browse_name

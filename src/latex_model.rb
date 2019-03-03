@@ -10,7 +10,12 @@ class LatexModel < Model
   end
 
   def self.generate_latex(f, model)
-    @@models[model].generate_latex(f)
+    if @@models[model]
+      @@models[model].generate_latex(f)
+    else
+      puts "Cannot find model: #{model}"
+      exit
+    end
   end
 
   def generate_latex(f)

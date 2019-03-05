@@ -1,4 +1,4 @@
-% Generated 2019-03-02 18:09:29 -0800
+% Generated 2019-03-04 18:21:54 -0800
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -5465,6 +5465,7 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{HardnessClassType} & \multicolumn{2
 HasSubtype & ObjectType & \multicolumn{2}{l}{LineNumberClassType} & \multicolumn{2}{|l|}{See section \ref{type:LineNumberClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{PartCountClassType} & \multicolumn{2}{|l|}{See section \ref{type:PartCountClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{RotaryVelocityOverrideClassType} & \multicolumn{2}{|l|}{See section \ref{type:RotaryVelocityOverrideClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{PathFeedrateOverrideClassType} & \multicolumn{2}{|l|}{See section \ref{type:PathFeedrateOverrideClassType}} \\
 \end{tabu}
 \end{table} 
 
@@ -5651,6 +5652,30 @@ motion program or set by a switch for a Rotary type axis.
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{RotaryVelocityOverrideClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTNumericEventClassType (See section \ref{type:MTNumericEventClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ PathFeedrateOverrideClassType}}
+  \label{type:PathFeedrateOverrideClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{PathFeedrateOverrideClassType} Definition}
+  \label{table:PathFeedrateOverrideClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{PathFeedrateOverrideClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\

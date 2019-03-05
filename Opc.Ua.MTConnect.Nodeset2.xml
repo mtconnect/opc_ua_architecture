@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-03-03T02:09:29Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-03-05T02:21:54Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-03-03T02:09:29Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-03-03T02:09:29Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-03-05T02:21:54Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-03-05T02:21:54Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -8622,6 +8622,14 @@ Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
   <!-- Definition of Object RotaryVelocityOverrideClassType ns=1;i=2357 -->
   <UAObjectType NodeId='ns=1;i=2357' BrowseName='1:RotaryVelocityOverrideClassType'>
     <DisplayName>RotaryVelocityOverrideClassType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - MTNumericEventClassType ns=1;i=2359   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2359</Reference>
+    </References>
+  </UAObjectType>
+  <!-- Definition of Object PathFeedrateOverrideClassType ns=1;i=3628 -->
+  <UAObjectType NodeId='ns=1;i=3628' BrowseName='1:PathFeedrateOverrideClassType'>
+    <DisplayName>PathFeedrateOverrideClassType</DisplayName>
     <References>
       <!-- HasSubtype - (Reverse) - MTNumericEventClassType ns=1;i=2359   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2359</Reference>

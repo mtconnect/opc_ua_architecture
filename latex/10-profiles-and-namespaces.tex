@@ -17,10 +17,10 @@ The version information is also provided as part of the \uamodel{ModelTableEntry
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{3}{|l|}{Value} \\
 \tabucline[1.5pt]{}
-BrowseName & \multicolumn{3}{|l|}{http://opcfoundation.org/UA/MTConnect/v2/} \\
+BrowseName & \multicolumn{3}{|l|}{http://www.opcfoundation.org/UA/MTConnect/2.0/} \\
 \rowfont \bfseries References & BrowseName & DataType & Value \\
 \tabucline[1.5pt]{}
-HasProperty & NamespaceUri & String & http://opcfoundation.org/UA/MTConnect/v2/ \\
+HasProperty & NamespaceUri & String & http://www.opcfoundation.org/UA/MTConnect/2.0/ \\
 HasProperty & NamespaceVersion & String & 2.0 \\
 HasProperty & NamespacePublicationDate & DateTime & 2018-10-31T00:00:00 \\
 HasProperty & IsNamespaceSubset & Boolean &  False \\
@@ -98,9 +98,9 @@ Table~\ref{table:server-namespaces} provides a list of mandatory and optional na
 \begin{tabu} to 6in {|X[-0.85]|X|X[-0.2]|} \everyrow{\hline}
 \hline
 \rowfont\bfseries NamespaceURI & Description & Use \\
-http://opcfoundation.org/UA/ & \uaterm{Namespace} for \glspl{NodeId} and \glspl{BrowseName} defined in the OPC UA specification. This \uaterm{namespace} shall have \uaterm{namespace} index 0. & Mandatory \\
+http://www.opcfoundation.org/UA/ & \uaterm{Namespace} for \glspl{NodeId} and \glspl{BrowseName} defined in the OPC UA specification. This \uaterm{namespace} shall have \uaterm{namespace} index 0. & Mandatory \\
 Local Server URI & \uaterm{Namespace} for nodes defined in the local server. This may include types and instances used in an \uaterm{AutoID} Device represented by the \gls{Server}. This \uaterm{namespace} shall have \uaterm{namespace} index 1. & Mandatory \\
-http://opcfoundation.org/UA/MTConnect/v2/ & \uaterm{Namespace} for \glspl{NodeId} and \glspl{BrowseName} defined in this specification. The \uaterm{namespace} index is \gls{Server} specific. & Mandatory \\
+http://www.opcfoundation.org/UA/MTConnect/2.0/ & \uaterm{Namespace} for \glspl{NodeId} and \glspl{BrowseName} defined in this specification. The \uaterm{namespace} index is \gls{Server} specific. & Mandatory \\
 Vendor specific types & A \gls{Server} may provide vendor-specific types like types derived from \uaterm{ObjectTypes} defined in this specification in a vendor-specific \uaterm{namespace}. & Optional \\
 Vendor specific instances & A \gls{Server} provides vendor-specific instances of the standard types or vendor-specific instances of vendor-specific types in a vendor-specific \uaterm{namespace}. It is recommended to separate vendor specific types and vendor specific instances into two or more \uaterm{namespaces}. & Mandatory \\
 \end{tabu}
@@ -117,8 +117,8 @@ Table~\ref{table:namespaces} provides a list of \uaterm{namespaces} and their in
 \begin{tabu} to 6in {|X[1.2]|X|X|} \everyrow{\hline}
 \hline
 \rowfont\bfseries NamespaceURI & Namespace Index & Example \\
-http://opcfoundation.org/UA/ & 0 &0:EngineeringUnits \\
-http://opcfoundation.org/UA/MTConnect/v2/ & 1 & 1:MTDevice \\
+http://www.opcfoundation.org/UA/ & 0 &0:EngineeringUnits \\
+http://www.opcfoundation.org/UA/MTConnect/2.0/ & 1 & 1:MTDevice \\
 \end{tabu}
 \end{table}
 

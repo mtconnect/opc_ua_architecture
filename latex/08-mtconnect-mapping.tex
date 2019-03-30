@@ -165,7 +165,7 @@ The data item class types and enumeration data types do not have ``\texttt{MT}''
 
 \subsubsection{Component and Composition \uamodel{BrowseName} and \uaterm{Type} Rules} \label{sec:browse-name-rules}
 
-The rules for determining the \gls{BrowseName} for the MTConnect \gls{MTComponent} are as follows:
+The rules for determining the \gls{BrowseName} for the MTConnect \gls{MTComponent} MUST be applied in strict sequence and are as follows:
 
 \begin{enumerate}
   \item If the \gls{MTComponent} is \gls{MTDevice}, the \gls{BrowseName} is the \mtmodel{name} attribute of the \mtmodel{Device} and the UA \gls{TypeDefinition} is \mtuatype{MTDeviceType}.
@@ -176,7 +176,7 @@ The rules for determining the \gls{BrowseName} for the MTConnect \gls{MTComponen
   \item For example, if there are two \mtmodel{Path} \glspl{MTComponent} with names \xml{name="P1"} and \xml{name="P2"}, the \glspl{BrowseName} will be as follows: \xml{Path[P1]} and \xml{Path[P2]} where each \gls{HaveTypeDefinition} of \mtmodel{PathType}.
 \end{enumerate}
 
-The rules for \gls{Composition} elements are as follows: 
+The rules for \gls{Composition} elements MUST be applied in strict sequence as follows: 
 
 \begin{enumerate}
   \item  \gls{Composition} elements in the MTConnect model will be represented instantiated with the \gls{BrowseName} of the \gls{Composition} \gls{type} converted to \gls{PascalCase}. \label{item:composition-browse-name}
@@ -188,12 +188,12 @@ The rules for \gls{Composition} elements are as follows:
 \subsubsection{\mtmodel{DataItem} \uamodel{HasTypeDefinition} and \gls{BrowseName} Conventions}
 \label{sec:data-item-conventions}
 
-The MTConnect \gls{MTDataItem} represents multiple OPC UA \uamodel{DataVariableType}s as well as UA \uamodel{ConditionType}s as described in parts \cite{UAPart8} and \cite{UAPart9} respectively. The mapping rules are as follows:
+The MTConnect \gls{MTDataItem} represents multiple OPC UA \uamodel{DataVariableType}s as well as UA \uamodel{ConditionType}s as described in parts \cite{UAPart8} and \cite{UAPart9} respectively. The mapping rules MUST be applied in strict sequence as follows:
 
 \begin{enumerate}
   \item Determine the \gls{MTDataItem} \gls{TypeDefinition} for the \gls{HasTypeDefinition} \gls{Reference}:
   \begin{itemize}
-    \item Evaluate \gls{MTDataItem} attributes as follows:
+    \item Evaluate \gls{MTDataItem} attributes in sequence as follows:
     \begin{enumerate}
       \setlength\itemsep{1em}
       \item If the \gls{category} is \mtmodel{CONDITION}, the \gls{TypeDefinition} is \mtuatype{MTConditionType}.
@@ -204,7 +204,7 @@ The MTConnect \gls{MTDataItem} represents multiple OPC UA \uamodel{DataVariableT
         \item Otherwise, the UA type is \mtuatype{MTSampleType}.
       \end{enumerate}
       
-      \item If the \gls{category} is \mtmodel{EVENT}; apply the following rules:
+      \item If the \gls{category} is \mtmodel{EVENT}; apply the rules strictly in sequence as follows:
       \begin{enumerate}
         \setlength\itemsep{1em}
         \item If the \gls{type} is \mtmodel{ASSET_CHANGED} or \mtmodel{ASSET_REMOVED}; the UA \gls{TypeDefinition} is \mtuatype{MTAssetEventType}
@@ -228,7 +228,7 @@ The MTConnect \gls{MTDataItem} represents multiple OPC UA \uamodel{DataVariableT
     \end{enumerate}
   \end{itemize}
   
-  \item Assign the \mtuatype{HasMTClassType} and \mtuatype{HasMTSubClassType} \glspl{Reference}
+  \item Assign the \mtuatype{HasMTClassType} and \mtuatype{HasMTSubClassType} \glspl{Reference} using the rules in sequence as follows:
   \begin{enumerate}
     \item Convert the \gls{MTDataItem} \gls{type} attribute to \gls{PascalCase} and append \gls{ClassType}. Assign the target of the \mtuatype{HasMTClassType} to the \gls{ObjectType}.
     \item Put the text name of the class in the property \mtmodel{MTTypeName}.
@@ -236,7 +236,7 @@ The MTConnect \gls{MTDataItem} represents multiple OPC UA \uamodel{DataVariableT
     \item Put the text name of the class in the property \mtmodel{MTSubTypeName}.
   \end{enumerate}
   
-  \item Format the \gls{BrowseName} for the \gls{Sample} and \gls{MTEvent} \glspl{MTDataItem}
+  \item Format the \gls{BrowseName} for the \gls{Sample} and \gls{MTEvent} \glspl{MTDataItem}. The rules MUST be followed strictly in the following sequence:
   \begin{enumerate}[after=\vspace{\baselineskip}]
     \setlength\itemsep{1em}
     \item If the \gls{MTDataItem} attribute \mtmodel{compositionId} is present, do the following:
@@ -253,7 +253,7 @@ The MTConnect \gls{MTDataItem} represents multiple OPC UA \uamodel{DataVariableT
     \item If two \glspl{BrowseName} are identical for the same \gls{MTComponent}, the \mtmodel{name} must be used to differentiate between the \glspl{MTDataItem} by placing the \mtmodel{name} in square brackets (\texttt{[]}). For example, if there are two \mtmodel{TEMPERATURE} \glspl{MTDataItem} with the attributes \xml{name="front"} and \xml{name="back"} the \glspl{MTDataItem} will have the \glspl{BrowseName} \xml{Temperature[front]} and \xml{Temperature[back]} respectively. \label{item:data-item-name}
   \end{enumerate} 
 
-  \item Format the \gls{BrowseName} for the \gls{Condition} \glspl{MTDataItem}
+  \item Format the \gls{BrowseName} for the \gls{Condition} \glspl{MTDataItem} strictly in sequence as follows:
   \begin{enumerate}
     \item Use the name derived in the previous step for \glspl{Event} and \glspl{Sample} as specified in item \ref{item:statistic} and append \xml{Condition}. \label{item:condition-browse-name}
     \item Apply rule specified in item \ref{item:data-item-name} if two conditions have identical \glspl{BrowseName} to the result of item \ref{item:condition-browse-name}.

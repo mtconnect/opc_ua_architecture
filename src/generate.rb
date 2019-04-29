@@ -6,6 +6,8 @@ require 'json'
 require 'set'
 require 'type'
 require 'model'
+require 'rexml/document'
+require 'rexml/xpath'
 
 Options = {}
 parser = OptionParser.new do |opts|
@@ -34,8 +36,21 @@ if (Options[:assets])
   Models << 'Assets Profile'
 end
 
+xmi = File.open('MTConnect Device EA.xml')
+xmiDoc = REXML::Document.new(xmi)
+
+root = REXML::XPath.each(xmiDoc.root, '//packagedElement[@type="uml:Package" and @name="RootModel"]')
+p root.first
+
+REXML::XPath.each(xmiDoc.root, '/xmi:XMI/uml:Model/packagedElement/packagedElement/packagedElement[@type="uml:Package"]') do |e|
+  puts "#{e.attributes['name']} #{e.attributes['type']}"
+end
+
+
+=begin
 uml = File.open('MTConnect OPC-UA Devices.mdj').read
 umlDoc = JSON.parse(uml)
+
 UmlModels = umlDoc['ownedElements'].dup
 
 SkipModels = Set.new
@@ -66,3 +81,4 @@ operations.each do |op|
     puts parser.help
   end
 end
+=end

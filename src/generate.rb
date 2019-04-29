@@ -39,13 +39,16 @@ end
 xmi = File.open('MTConnect Device EA.xml')
 xmiDoc = REXML::Document.new(xmi)
 
-root = REXML::XPath.each(xmiDoc.root, '//packagedElement[@type="uml:Package" and @name="RootModel"]')
-p root.first
+rootModel = REXML::XPath.each(xmiDoc.root, '//packagedElement[@type="uml:Package" and @name="RootModel"]').first
 
-REXML::XPath.each(xmiDoc.root, '/xmi:XMI/uml:Model/packagedElement/packagedElement/packagedElement[@type="uml:Package"]') do |e|
-  puts "#{e.attributes['name']} #{e.attributes['type']}"
-end
+UmlModels = modelRoot.match('//packagedElement[@type="uml:Package"]')
 
+
+SkipModels = Set.new
+SkipModels.add('UMLStandardProfile')
+SkipModels.add('Device Example')
+
+load 'create_documentation.rb'
 
 =begin
 uml = File.open('MTConnect OPC-UA Devices.mdj').read

@@ -1,12 +1,22 @@
 require 'type'
 
 class Model
-  attr_reader :name, :documentation
+  attr_reader :name, :documentation, :types
 
+  @@skip_models = {}
   @@models = {}
 
+  def self.clear
+    @@models.clear
+    @@skip_models.clear
+  end
+  
   def self.type_class
     raise "Must use subtype"
+  end
+
+  def self.skip_models=(models)
+    @@skip_models = models
   end
 
   def self.models
@@ -20,10 +30,10 @@ class Model
   def initialize(e)
     @name = e['name']
     @documentation = e['documentation']
-    @type = e['_type']
+    @type = e['type']
     @json = e
     @types = []
-    @is_opc = @name =~ /OPC/
+    @is_opc = !((@name =~ /OPC/).nil?)
     
     @@models[@name] = self
   end
@@ -46,37 +56,39 @@ class Model
   end
 
   def self.recurse(e, depth, model)
-    return if SkipModels.include?(e['name'])
-    
-    if e.include?('ownedElements')
-      e['ownedElements'].each do |f|      
-        find_definitions(f, depth, model)
-      end
+    return if @@skip_models.include?(e['name'])
+
+    e.each_element('./packagedElement') do |e|
+      find_definitions(e, depth, model)
     end
   end
   
   def self.find_definitions(e, depth = 0, model = nil)
-    # puts "#{'  ' * depth}#{model}::#{e['name']} #{e['_type']}"
+     # puts "#{'  ' * depth}#{model}::#{e['name']} #{e['type']}"
     
-    case e['_type']
-    when 'UMLClass'
+    case e['type']
+    when 'uml:Class'
       type_class.new(model, e)
 
-    when 'UMLObject'
+    when 'uml:Object'
       type_class.new(model, e)
       
-    when 'UMLStereotype'
+    when 'uml:Stereotype'
       type_class.new(model, e)
       
-    when 'UMLDataType', 'UMLEnumeration', 'UMLPrimitiveType'
+    when 'uml:DataType', 'uml:Enumeration', 'uml:PrimitiveType'
       #   puts "#{'  ' * depth}  Adding data type: #{e['name']}  id: #{e['_id']}"
       type_class.new(model, e)
       
-    when 'UMLModel', 'UMLProfile'
+    when 'uml:Package', 'uml:Profile'
       model = self.new(e)
       recurse(e, depth + 1, model)
 
+    when 'uml:Association'
+      # assoc = Association.new(nil, e)
+      
     else
+      puts "Unknown type #{e['type']}, recursing}"
       recurse(e, depth + 1, model)
     end
   end

@@ -39,10 +39,8 @@ end
 xmi = File.open('MTConnect Device EA.xml')
 xmiDoc = REXML::Document.new(xmi)
 
-rootModel = REXML::XPath.each(xmiDoc.root, '//packagedElement[@type="uml:Package" and @name="RootModel"]').first
-
-UmlModels = modelRoot.match('//packagedElement[@type="uml:Package"]')
-
+rootModel = REXML::XPath.match(xmiDoc.root, '//packagedElement[@type="uml:Package" and @name="RootModel"]').first
+UmlModels = REXML::XPath.match(rootModel, './packagedElement[@type="uml:Package"]')
 
 SkipModels = Set.new
 SkipModels.add('UMLStandardProfile')

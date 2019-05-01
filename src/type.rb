@@ -43,8 +43,8 @@ class Type
 
   def initialize(model, e)
     @name = e['name']
-    @id = e['_id']
-    @type = e['_type']
+    @id = e['id']
+    @type = e['type']
     @documentation = e['documentation']
     @operations = e['operations'] || []
     @abstract = e['isAbstract'] || false
@@ -64,15 +64,16 @@ class Type
       end
     end
 
-    associations = Array(e['attributes']).dup.concat(Array(e['ownedElements'])).
-                     concat(Array(e['slots'])).map do |r|
-      Relation.create_association(self, r)
-    end.compact
+    associations = []
+    e.each_element do |r|
+      associations << Relation.create_association(self, r)
+    end
+    associations.compact!
 
     @relations, @constraints = associations.partition { |e| e.class != Relation::Constraint }
     
     @children = []
-    @json = e
+    @xmi = e
 
     @@types_by_id[@id] = self
     @@types_by_name[@name] = self
@@ -119,13 +120,13 @@ class Type
     @relations.each do |r|
       r.resolve_types
     end
-    if @json.include?('classifier')
-      @classifier = resolve_type(@json['classifier'])
+    if @xmi.include?('classifier')
+      @classifier = resolve_type(@xmi['classifier'])
     else
       @classifier = nil
     end
-    if @json.include?('stereotype')
-      @stereotype = resolve_type(@json['stereotype'])
+    if @xmi.include?('stereotype')
+      @stereotype = resolve_type(@xmi['stereotype'])
     else
       @stereotype = nil
     end         

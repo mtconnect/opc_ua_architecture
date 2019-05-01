@@ -1,32 +1,36 @@
 module Relation
   def self.create_association(owner, r)
-    case r['_type']
-    when 'UMLGeneralization'
+    case r['type']
+    when 'uml:Generalization'
       Generalization.new(owner, r)
 
-    when 'UMLRealization'
+    when 'uml:Realization'
       Realization.new(owner, r)
 
-    when 'UMLDependency'
+    when 'uml:Dependency'
       Dependency.new(owner, r)
 
-    when 'UMLAttribute'
-      Attribute.new(owner, r)
+    when 'uml:Property'
+      if r['association']
+        Association.new(owner, r)
+      else
+        Attribute.new(owner, r)
+      end
 
-    when 'UMLAssociation', 'UMLLink'
+    when 'uml:Association', 'uml:Link'
       Association.new(owner, r)
 
-    when 'UMLConstraint'
+    when 'uml:Constraint'
       Constraint.new(owner, r)
 
-    when 'UMLSlot'
+    when 'uml:Slot'
       Slot.new(owner, r)
 
-    when 'UMLAssociationClassLink'
+    when 'uml:AssociationClassLink'
       Folder.new(owner, r)
       
     else
-      puts "Unknown relation type: #{r['_type']}"
+      puts "Unknown relation type: #{r['type']} for #{owner.name}"
     end
   end
 
@@ -41,7 +45,7 @@ module Relation
   end
 
   class Relation
-    attr_reader :id, :name, :type, :json, :multiplicity,
+    attr_reader :id, :name, :type, :xmi, :multiplicity,
                 :source, :target, :owner, :documentation,
                 :stereotype, :tags
 
@@ -52,11 +56,7 @@ module Relation
         @multiplicity = nil
         @name = name
         @type = type
-        if type_id.is_a? Hash
-          @type_id = type_id['$ref']
-        else
-          @type_id = type_id
-        end
+        @type_id = type_id
       end
 
       def resolve_type
@@ -64,7 +64,7 @@ module Relation
           @type = Type.type_for_id(@type_id)
         end
         if @type.nil?
-          puts "    Cannot resolve type: '#{@type_id}' for #{@name}"
+          puts "    Connection: Cannot resolve type: '#{@type_id}' for #{@name}"
         end
         !@type.nil?
       end
@@ -73,16 +73,22 @@ module Relation
     def initialize(owner, r)
       @owner = owner
       @source = owner
-      @id = r['_id']
+      @id = r['id']
       @name = r['name']
       @documentation = r['documentation']
-      @type = r['_type']
+      @type = r['type']
       @tags = r['tags']
-      @json = r
-      @multiplicity = r['multiplicity'] || '1'
-      @optional = (@multiplicity and @multiplicity =~ /^0\.\./) != nil
+      @xmi = r
 
-      @source = Connection.new('Parent', nil, owner)
+      upper = lower = '1'
+      upper = r.elements['upperValue']['value'] if r.elements['upperValue']
+      lower = r.elements['lowerValue']['value'] if r.elements['lowerValue']
+
+      @multiplicity = lower == upper ? upper : "#{lower}..#{upper}"
+      @optional = lower == '0'
+
+      @source = Connection.new('Source', nil, owner)
+      @source.multiplicity = @multiplicity
       @stereotype = @target = nil
     end
 
@@ -95,7 +101,7 @@ module Relation
     end
     
     def is_attribute?
-      stereotype and stereotype.name =~ /Attribute/
+      @stereotype and @stereotype =~ /Attribute/
     end
 
     def is_folder?
@@ -135,24 +141,16 @@ module Relation
     end
 
     def resolve_types
-      if @json['stereotype'] and !@json['stereotype'].empty?
-        @stereotype = Type.resolve_type(@json['stereotype'])
-        puts "Cannot resolve #{@json['stereotype'].inspect} for #{@owner.name}::#{@name}" unless @stereotype
-      end
       if @target.nil?
         puts "    !!!! cannot resolve type for #{@owner.name}::#{@name} no target"
       else
-        unless @target.resolve_type
+        unless @target.resolve_type or @target.type_id =~ /^EA/
           raise "    !!!! cannot resolve target for #{@owner.name}::#{@name} #{self.class.name}"
         end
       end
 
       unless @source.resolve_type
         raise "    !!!! cannot resolve source for #{@owner.name}::#{@name} #{self.class.name}"
-      end
-
-      if @stereotype and @stereotype.name =~ /Override/
-        @name = @name.sub(/^./, '')
       end
     end
 
@@ -173,21 +171,20 @@ module Relation
     attr_reader :final_target
     
     class End < Connection
-      attr_accessor :name, :optional, :navigable, :json
+      attr_accessor :name, :optional, :navigable, :xmi
       
-      def initialize(e)
-        if e['reference']
-          super(e['name'], e['reference'])
-        else
-          super(e['name'], nil)
-          puts "!!!!!!! Missing type reference for #{@name} #{e.inspect}"
-        end
+      def initialize(e, tid)
+        super(e['name'], tid)
 
-        @multiplicity = e['multiplicity'] || '1'
-        @optional = (@multiplicity and @multiplicity =~ /0\.\./) != nil
+        upper = lower = '1'
+        upper = e.elements['upperValue']['value'] if e.elements['upperValue']
+        lower = e.elements['lowerValue']['value'] if e.elements['lowerValue']
+        
+        @multiplicity = lower == upper ? upper : "#{lower}..#{upper}"
+        @optional = lower == '0'
 
-        @navigable = e['navigable'].nil? || e['navigable']
-        @json = e
+        @navigable = false
+        @xmi = e
       end
 
       def is_navigable?
@@ -201,10 +198,25 @@ module Relation
     
     def initialize(owner, r)
       super(owner, r)
-      @source = End.new(r['end1'])
-      @target = End.new(r['end2'])
+
+      sid = r.elements['type']['idref']
+      @source = End.new(r, sid)
+      
+      aid = r['association']
+      assoc = r.document.elements["//packagedElement[@id='#{aid}']"]
+      tid = assoc.elements['ownedEnd/type']['idref']
+
+      connector = r.document.elements["//connector[@idref='#{aid}']"]
+      props = connector.elements['properties']
+      @stereotype = props['stereotype']
+
+      @target = End.new(assoc, tid)
+
+      if props['direction'] and props['direction'] =~ /^Destination/
+        @source, @target = @target, @source
+      end
       @final_target = @target
-        
+      
       @name = @target.name || @name || @source.name
       @multiplicity = @target.multiplicity
       @optional = @target.optional
@@ -223,13 +235,13 @@ module Relation
     end
 
     def is_folder?
-      stereotype and stereotype.name == 'Organizes'
+      @stereotype and @stereotype == 'Organizes'
     end
 
     def node_class
       if is_folder?
         'Object'
-      elsif stereotype
+      elsif @stereotype
         'Stereotype'
       else
         'Object'
@@ -237,8 +249,8 @@ module Relation
     end
 
     def reference_type
-      if stereotype
-        stereotype.name
+      if @stereotype
+        @stereotype
       else
         'HasComponent'
       end
@@ -276,7 +288,9 @@ module Relation
       super(owner, a)
       @name = a['name']
       @default = a['defaultValue']
-      @target = Connection.new('type', a['type'])
+
+      type = a.elements['type']['idref']
+      @target = Connection.new('type', type)
     end
     
     def is_property?
@@ -303,10 +317,8 @@ module Relation
   class Dependency < Relation
     def initialize(owner, r)
       super(owner, r)
-      @name = (stereotype && stereotype.name) unless @name      
-
-      @source = Connection.new('Source', r['source'])
-      @target = Connection.new('Target', r['target'])
+      @name = (@stereotype && @stereotype) unless @name
+      @target = Connection.new('Target', r['general'])
     end
   end
 
@@ -336,7 +348,7 @@ module Relation
     end
 
     def is_mixin?
-      stereotype and stereotype.name == 'Mixes In'
+      @stereotype and @stereotype == 'Mixes In'
     end
   end
 

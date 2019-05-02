@@ -55,16 +55,29 @@ class Model
     @name
   end
 
+  def self.find_elements(doc)
+    doc.xpath('//elements/element').each do |e|
+      Type.add_element(e)
+    end
+    doc.xpath('//connectors/connector').each do |e|
+      Relation.add_connection(e)
+    end
+  end
+
   def self.recurse(e, depth, model)
     return if @@skip_models.include?(e['name'])
 
-    e.each_element('./packagedElement') do |e|
+    e.packagedElement.each do |e|
       find_definitions(e, depth, model)
     end
   end
-  
+
   def self.find_definitions(e, depth = 0, model = nil)
-     # puts "#{'  ' * depth}#{model}::#{e['name']} #{e['type']}"
+#    e.each_element('./packagedElement[@type="uml:Class" or @type="uml:Object" or @type="uml:Stereotype"') do |e|
+#      type_class.new(model, e)
+#    end    
+    
+    # puts "#{'  ' * depth}#{model}::#{e['name']} #{e['type']}"
     
     case e['type']
     when 'uml:Class'
@@ -85,11 +98,14 @@ class Model
       recurse(e, depth + 1, model)
 
     when 'uml:Association'
-      # assoc = Association.new(nil, e)
+    # assoc = Association.new(nil, e)
+
+    when 'uml:Realization'
+      
+    when 'uml:Dependency'
       
     else
-      puts "Unknown type #{e['type']}, recursing}"
-      recurse(e, depth + 1, model)
+      puts "Unknown type #{e['type']}}"
     end
   end
   

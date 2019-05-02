@@ -112,7 +112,7 @@ class LatexType < Type
   def generate_relations(f)
     @relations.each do |r|
       if r.is_reference?
-        next if r.stereotype and r.stereotype.name =~ /Attribute/
+        next if r.stereotype and r.stereotype =~ /Attribute/
 
         array = '[]' if r.is_array?
         
@@ -317,7 +317,7 @@ EOT
   def generate_dependencies(f)
 
     deps = dependencies.select { |d|
-      d.target.type.stereotype.nil? or d.target.type.stereotype.name !~ /Factory/
+      d.target.type.stereotype.nil? or d.target.type.stereotype !~ /Factory/
     }
 
     if !deps.empty? or @mixin
@@ -328,7 +328,7 @@ EOT
       deps.each do |dep|
         target = dep.target
         
-        if dep.stereotype and dep.stereotype.name == 'values' and
+        if dep.stereotype and dep.stereotype == 'values' and
             target.type.type == 'UMLEnumeration'
           
           f.puts "\\item \\textbf{Allowable Values} for \\texttt{#{target.type.name}}"
@@ -337,7 +337,7 @@ EOT
           f.puts "\\FloatBarrier"
         else
           f.puts "\\item Dependency on #{target.type.name}\n\n"
-          rel = dep.stereotype && dep.stereotype.name
+          rel = dep.stereotype && dep.stereotype
           puts "Cannot find stereo for #{@name}::#{dep.name} to #{target.type.name}" unless rel
           f.puts "This class relates to \\texttt{#{target.type.name}} (#{target.type.reference}) for a(n) \\texttt{#{rel}} relationship.\n\n"
         end
@@ -387,7 +387,7 @@ EOT
       @relations.each do |r|
         if r.is_property?
           if r.stereotype
-            stereo = "<<#{r.stereotype.name}>> "
+            stereo = "<<#{r.stereotype}>> "
           end
           f.puts "#{stereo}+ #{r.name}: #{r.target.type.name}#{r.is_optional? ? '[0..1]' : ''} \\\\"
         end
@@ -399,7 +399,7 @@ EOT
       @relations.each do |r|
         if !r.is_property?
           if r.stereotype
-            stereo = "stereo=#{r.stereotype.name},"
+            stereo = "stereo=#{r.stereotype},"
           end
           case r
           when Relation::Generalization

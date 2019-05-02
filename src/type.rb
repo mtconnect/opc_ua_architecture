@@ -1,16 +1,21 @@
 require 'relation'
+require 'extensions'
 
 class Type
-  attr_reader :name, :id, :type, :model, :json, :parent, :children, :relations, :stereotype,
-              :tags
-  attr_accessor :class_link
+  include Extensions
   
+  attr_reader :name, :id, :type, :model, :json, :parent, :children, :relations, :stereotype,
+              :tags, :extended, :documentation
+  attr_accessor :class_link
+
   @@types_by_id = {}
   @@types_by_name = {}
+  @@elements = {}
 
   def self.clear
     @@types_by_id.clear
     @@types_by_name.clear
+    @@elements.clear
   end
 
   def self.type_for_id(id)
@@ -21,11 +26,16 @@ class Type
     @@types_by_name[name]
   end
 
+  def self.add_element(ele)
+    id = ele['idref']
+    @@elements[id] = ele
+  end
+
   def self.connect_model
     resolve_types
     connect_children
   end
-  
+
   def self.connect_children
     @@types_by_id.each do |id, type|
       parent = type.get_parent
@@ -42,10 +52,16 @@ class Type
   end
 
   def initialize(model, e)
-    @name = e['name']
+    @xmi = e
     @id = e['id']
+
+    @extended = @@elements[@id]
+
+    @name = e['name']
     @type = e['type']
-    @documentation = e['documentation']
+
+    unpack_extended_properties(@extended)
+
     @operations = e['operations'] || []
     @abstract = e['isAbstract'] || false
     @tags = e['tags']
@@ -54,7 +70,7 @@ class Type
 
     @aliased = false
     @class_link = nil
-    
+
     if e['tags']
       e['tags'].each do |t|
         if t['name'] == 'Alias'
@@ -65,15 +81,16 @@ class Type
     end
 
     associations = []
-    e.each_element do |r|
-      associations << Relation.create_association(self, r)
+    if !is_variable?
+      e.element_children.each do |r|
+        associations << Relation.create_association(self, r)
+      end
+      associations.compact!
     end
-    associations.compact!
 
     @relations, @constraints = associations.partition { |e| e.class != Relation::Constraint }
-    
+
     @children = []
-    @xmi = e
 
     @@types_by_id[@id] = self
     @@types_by_name[@name] = self
@@ -125,18 +142,13 @@ class Type
     else
       @classifier = nil
     end
-    if @xmi.include?('stereotype')
-      @stereotype = resolve_type(@xmi['stereotype'])
-    else
-      @stereotype = nil
-    end         
   end
 
   def variable_data_type
     data_type = get_attribute_like(/DataType$/, /Attribute/)
     if data_type
       data_type.target.type
-    elsif @type == 'UMLDataType' or @type == 'UMLEnumeration'
+    elsif @type == 'uml:DataType' or @type == 'uml:Enumeration'
       self
     else
       raise "Could not find data type for #{@name}"
@@ -204,7 +216,7 @@ class Type
     return @parent.get_attribute_like(pattern, stereo) if @parent
     nil
   end
-    
+
   def get_parent
     if !defined?(@parent)
       @parent = nil
@@ -228,8 +240,8 @@ class Type
   end
 
   def is_variable?
-    @type == 'UMLDataType' or @type == 'UMLPrimitiveType' or
-      @type == 'UMLEnumeration' or is_a_type?('BaseVariableType')
+    @type == 'uml:DataType' or @type == 'uml:PrimitiveType' or
+      @type == 'uml:Enumeration' or is_a_type?('BaseVariableType')
   end
 
   def is_event?
@@ -239,7 +251,7 @@ class Type
   def is_reference?
     is_a_type?('References')
   end
-  
+
   def base_type
     if is_variable?
       "Variable"
@@ -249,7 +261,7 @@ class Type
       "Object"
     end
   end
-    
+
   def dependencies
     @relations.select { |r| r.class == Relation::Dependency }
   end
@@ -257,5 +269,5 @@ class Type
   def realizations
     @relations.select { |r| r.class == Relation::Realization }
   end
-    
+
 end

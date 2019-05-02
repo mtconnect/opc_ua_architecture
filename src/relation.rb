@@ -1,4 +1,21 @@
+require 'extensions'
+
 module Relation
+  @@connections = {}
+  
+  def self.clear
+    @@connections.clear
+  end
+  
+  def self.add_connection(e)
+    id = e['idref']
+    @@connections[id] = e
+  end
+
+  def self.connections
+    @@connections
+  end
+  
   def self.create_association(owner, r)
     case r['type']
     when 'uml:Generalization'
@@ -35,19 +52,25 @@ module Relation
   end
 
   class Constraint
+    include Extensions
+    
     attr_reader :owner, :name, :specification, :documentation
                 
     def initialize(owner, r)
       @name = r['name']
       @specification = r['specification']
-      @documentation = r['documentation']
+
+      @extended = ::Relation.connections[@id]
+      unpack_extended_properties(@extended)
     end
   end
 
   class Relation
+    include Extensions
+    
     attr_reader :id, :name, :type, :xmi, :multiplicity,
                 :source, :target, :owner, :documentation,
-                :stereotype, :tags
+                :stereotype
 
     class Connection
       attr_accessor :name, :type, :type_id, :multiplicity
@@ -75,14 +98,12 @@ module Relation
       @source = owner
       @id = r['id']
       @name = r['name']
-      @documentation = r['documentation']
       @type = r['type']
-      @tags = r['tags']
       @xmi = r
 
-      upper = lower = '1'
-      upper = r.elements['upperValue']['value'] if r.elements['upperValue']
-      lower = r.elements['lowerValue']['value'] if r.elements['lowerValue']
+      @extended = ::Relation.connections[@id]
+      unpack_extended_properties(@extended)
+      lower, upper = get_multiplicity(r)
 
       @multiplicity = lower == upper ? upper : "#{lower}..#{upper}"
       @optional = lower == '0'
@@ -168,18 +189,17 @@ module Relation
   end
   
   class Association < Relation
-    attr_reader :final_target
+    attr_reader :final_target, :association
     
     class End < Connection
+      include Extensions
+      
       attr_accessor :name, :optional, :navigable, :xmi
       
       def initialize(e, tid)
         super(e['name'], tid)
 
-        upper = lower = '1'
-        upper = e.elements['upperValue']['value'] if e.elements['upperValue']
-        lower = e.elements['lowerValue']['value'] if e.elements['lowerValue']
-        
+        lower, upper = get_multiplicity(e)
         @multiplicity = lower == upper ? upper : "#{lower}..#{upper}"
         @optional = lower == '0'
 
@@ -199,20 +219,19 @@ module Relation
     def initialize(owner, r)
       super(owner, r)
 
-      sid = r.elements['type']['idref']
+      sid = (r > 'type').first['idref']
       @source = End.new(r, sid)
       
       aid = r['association']
-      assoc = r.document.elements["//packagedElement[@id='#{aid}']"]
-      tid = assoc.elements['ownedEnd/type']['idref']
+      assoc, = r.document.xpath("//packagedElement[@id='#{aid}']")
+      tid = assoc.xpath('ownedEnd/type').first['idref']
 
-      connector = r.document.elements["//connector[@idref='#{aid}']"]
-      props = connector.elements['properties']
-      @stereotype = props['stereotype']
+      @association = ::Relation.connections[aid]
+      unpack_extended_properties(@association)
 
       @target = End.new(assoc, tid)
 
-      if props['direction'] and props['direction'] =~ /^Destination/
+      if @props['direction'] and @props['direction'] =~ /^Destination/
         @source, @target = @target, @source
       end
       @final_target = @target
@@ -289,7 +308,7 @@ module Relation
       @name = a['name']
       @default = a['defaultValue']
 
-      type = a.elements['type']['idref']
+      type = (a > 'type').first['idref']
       @target = Connection.new('type', type)
     end
     

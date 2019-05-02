@@ -1,0 +1,70 @@
+\subsection{SimpleType} \label{model:SimpleType}
+\subsubsection{Defintion of \texttt{ ComponentType}}
+  \label{type:ComponentType}
+
+\FloatBarrier
+
+The base \gls{MTComponent} Type from which all MTConnect Components are derived.
+The component types will be created once for all \gls{MTComponent} \glspl{Object}
+of that type based on the \gls{QName} of the MTConnect XML element. 
+
+The Component Objects will be created and inserted into the \mtmodel{Components} 
+folder with a \gls{BrowseName} of the Component \gls{QName} and the \mtmodel{name} element if specified surrounded 
+by square brackets, \texttt{[]}. For example if the MTConnect Element is:
+
+\xml{<Linear name='X'>...</...>}
+
+The OPC UA Object with \gls{BrowseName} \xml{Linear[X]} will be created with the \uamodel{HasTypeDefinition}
+referencing the \mtmodel{Linear} OPC UA \gls{Type}. 
+
+The meta data for the component and its relationships are static. The dynamic data will be 
+represented using the \cite{UAPart8}.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ComponentType} Definition}
+  \label{table:ComponentType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ComponentType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart05} Documentation)} \\
+Has\-Property & Variable & id & Id\-Type & Property\-Type & Mandatory \\
+Has\-Property & Variable & name & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & uuid & String & Property\-Type & Mandatory \\
+Organizes & Object & Compositions & Composition\-Type[] & Folder\-Type & Optional \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ CompositionType}}
+  \label{type:CompositionType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{CompositionType} Definition}
+  \label{table:CompositionType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{CompositionType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart05} Documentation)} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier

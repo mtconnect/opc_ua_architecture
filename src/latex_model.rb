@@ -41,9 +41,9 @@ class LatexModel < Model
   end
 
   def recurse_types(f, type)
-    if type.type == 'UMLClass' or
-        type.type == 'UMLStereotype' or
-        type.type == 'UMLDataType'
+    if type.type == 'uml:Class' or
+        type.type == 'uml:Stereotype' or
+        type.type == 'uml:DataType'
       type.generate_latex(f) 
     end
 

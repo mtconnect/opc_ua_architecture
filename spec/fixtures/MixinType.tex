@@ -1,0 +1,122 @@
+\subsection{MixinType} \label{model:MixinType}
+\subsubsection{Defintion of \texttt{ ComponentType}}
+  \label{type:ComponentType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ComponentType} Definition}
+  \label{table:ComponentType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ComponentType} \\
+IsAbstract & \multicolumn{5}{|l|}{True} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart05} Documentation)} \\
+Has\-Property & Variable & id & Id\-Type & Property\-Type & Mandatory \\
+Has\-Property & Variable & name & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & uuid & String & Property\-Type & Mandatory \\
+Has\-Notifier & Object & <Component> & \multicolumn{2}{l|}{ComponentType} & Mandatory \\
+Organizes & Object & Compositions & Composition\-Type[] & Folder\-Type & Optional \\
+Has\-Component & Variable & <Integer\-Event> & Int32[] & Integer\-Event\-Type & Optional \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ CompositionType}}
+  \label{type:CompositionType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{CompositionType} Definition}
+  \label{table:CompositionType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{CompositionType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart05} Documentation)} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{<<mixin>> DataItemMixin}}
+  \label{type:DataItemMixin}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{DataItemMixin} Definition}
+  \label{table:DataItemMixin}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{DataItemMixin} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+Has\-Property & Variable & Category & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & Name & String & Property\-Type & Optional \\
+Has\-Property & Variable & Native\-Name & String & Property\-Type & Optional \\
+Has\-Property & Variable & Sub\-Type & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & Type & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & Xml\-Id & String & Property\-Type & Mandatory \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ IntegerEventType}}
+  \label{type:IntegerEventType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{IntegerEventType} Definition}
+  \label{table:IntegerEventType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{IntegerEventType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{} \\
+DataType & \multicolumn{5}{|l|}{Int32} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of DataItemType (See \cite{UAPart08} Documentation)} \\
+Has\-Property & Variable & Category & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & Name & String & Property\-Type & Optional \\
+Has\-Property & Variable & Native\-Name & String & Property\-Type & Optional \\
+Has\-Property & Variable & Sub\-Type & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & Type & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & Xml\-Id & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & EUInformation & EUInformation & Property\-Type & Optional \\
+\end{tabu}
+\end{table} 
+
+
+\paragraph{Dependencies and Relationships}
+
+\begin{itemize}
+\item Mixes in \texttt{DataItemMixin}, see See section \ref{type:DataItemMixin}
+\end{itemize}
+\FloatBarrier

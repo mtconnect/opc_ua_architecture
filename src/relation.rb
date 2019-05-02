@@ -216,8 +216,8 @@ module Relation
       @source = End.new(r, sid)
       
       aid = r['association']
-      assoc, = r.document.xpath("//packagedElement[@id='#{aid}']")
-      tid = assoc.xpath('ownedEnd/type').first['idref']
+      assoc = r.document.at("//packagedElement[@id='#{aid}']")
+      tid = assoc.at('ownedEnd/type')['idref']
 
       @association = ::Relation.connections[aid]
       unpack_extended_properties(@association)
@@ -301,6 +301,12 @@ module Relation
       @name = a['name']
       @default = a['defaultValue']
 
+      element = Type.elements[owner.id]
+      if element
+        attr = element.at("./attributes/attribute[@idref='#{@id}']")
+        @stereotype = attr.stereotype['stereotype'] if attr.at('./stereotype')
+      end
+
       type = a.at('type')['idref']
       @target = Connection.new('type', type)
     end
@@ -327,16 +333,19 @@ module Relation
   end
 
   class Dependency < Relation
-    def initialize(owner, r)
+    def initialize(owner, r, attr)
       super(owner, r)
+      @dependency = ::Relation.connections[@id]
+      unpack_extended_properties(@dependency)
+
       @name = (@stereotype && @stereotype) unless @name
-      @target = Connection.new('Target', r['general'])
+      @target = Connection.new('Target', r[attr])
     end
   end
 
   class Generalization < Dependency
     def initialize(owner, r)
-      super(owner, r)
+      super(owner, r, 'general')
       @name = 'Supertype' unless @name
     end
 
@@ -355,7 +364,7 @@ module Relation
   
   class Realization < Dependency
     def initialize(owner, r)
-      super(owner, r)
+      super(owner, r, 'supplier')
       @name = 'Realization' unless @name      
     end
 

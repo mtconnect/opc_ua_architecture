@@ -13,28 +13,21 @@ RSpec.describe LatexModel, 'SimpleType definitions' do
     File.open(File.join(File.dirname(__FILE__), 'fixtures', 'SimpleType.xmi')) do |xmi|
       @xmiDoc = Nokogiri::XML(xmi).slop!
       @xmiDoc.remove_namespaces!
-      @rootModel = @xmiDoc.xpath('//packagedElement[@type="uml:Package" and @name="Model"]').first
-      @umlModels = @rootModel.xpath('./packagedElement[@type="uml:Package"]')
+      @rootModel = @xmiDoc.at('//packagedElement[@type="uml:Package" and @name="Model"]')
     end
-    LatexModel.find_elements(@xmiDoc)
-    @umlModels.each do |e|
-      LatexModel.find_definitions(e)
-    end
-    Type.connect_model
+
+    LatexModel.new(@rootModel).find_definitions
   end
   
   context 'with xml loaded' do
     it 'should load package root' do
       expect(@rootModel['name']).to eq('Model')
       expect(@rootModel['id']).to eq('EAPK_1AE52DA8_3C11_4343_BE30_25D038866667')
-                                   
-      expect(@umlModels.length).to eq(2)
-      expect(@umlModels[1]['name']).to eq('SimpleType')
     end
 
     it 'should create models for the packages' do
       # Do some simple model level checks
-      expect(Model.models.length).to eq(8)
+      expect(Model.models.length).to eq(9)
       expect(Model.models['SimpleType']).to_not be_nil
       expect(Model.models['OPC UA Part 05']).to_not be_nil
       expect(Model.models['SimpleType'].is_opc?).to be false
@@ -126,18 +119,10 @@ RSpec.describe LatexModel, 'MixinType definitions' do
     File.open(File.join(File.dirname(__FILE__), 'fixtures', 'MixinType.xmi')) do |xmi|
       @xmiDoc = Nokogiri::XML(xmi).slop!
       @xmiDoc.remove_namespaces!
-      @rootModel = @xmiDoc.xpath('//packagedElement[@type="uml:Package" and @name="Model"]').first
-      @umlModels = @rootModel.xpath('packagedElement[@type="uml:Package"]')
+      @rootModel = @xmiDoc.at('//packagedElement[@type="uml:Package" and @name="Model"]')
     end
-    LatexModel.find_elements(@xmiDoc)
-    @umlModels.each do |e|
-      LatexModel.find_definitions(e)
-    end
-    Type.connect_model
-  end
 
-  it "should load the mixin model" do
-    expect(@umlModels.length).to eq(2)
+    LatexModel.new(@rootModel).find_definitions
   end
 
   context 'when models are loaded' do
@@ -148,5 +133,35 @@ RSpec.describe LatexModel, 'MixinType definitions' do
     it 'should be have the mixin package' do
       expect(@package).to_not be_nil
     end
+
+    it 'should have an IntegerEventType' do
+      expect(Type.type_for_name('IntegerEventType')).to_not be_nil
+    end
+
+    context 'with IntegerEventType' do
+      before(:example) do
+        @type = Type.type_for_name('IntegerEventType')
+      end
+
+      it 'should have a realization that is a mixin' do
+        expect(@type.realizations.length).to eq(1)
+        real = @type.realizations.first
+        expect(real.is_mixin?).to be true
+        expect(real.name).to eq('Mixes In')
+        expect(real.target.type.name).to eq('DataItemMixin')
+      end
+    end
+    
   end  
+
+  it 'should generate latex' do
+    output = StringIO.new
+    LatexModel.generate_latex(output, 'MixinType')
+    fname = File.join(File.dirname(__FILE__), 'fixtures', 'MixinType.tex')
+    #File.open(fname, 'w') do |f|
+    #  f.write output.string
+    #end
+    
+    expect(output.string).to eq(File.read(fname))
+  end
 end

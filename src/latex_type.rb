@@ -110,8 +110,10 @@ class LatexType < Type
   
 
   def generate_relations(f)
+    # puts "Generating relations for #{@name}"
     @relations.each do |r|
       if r.is_reference?
+        #puts "Ref: '#{r.name}' '#{r.stereotype}' '#{r.final_target.name.class}' #{r.target_node_name}"
         next if r.stereotype and r.stereotype =~ /Attribute/
 
         array = '[]' if r.is_array?
@@ -248,12 +250,12 @@ IsAbstract & \\multicolumn{5}{|l|}{#{@abstract.to_s.capitalize}} \\\\
 EOT
 
     if is_variable?
-      v = get_attribute_like(/ValueRank$/)
+      v = get_attribute_like('ValueRank')
       f.puts "ValueRank & \\multicolumn{5}{|l|}{#{v.default}} \\\\"
-      a = get_attribute_like(/DataType$/) || 'BaseVariableType'
+      a = get_attribute_like('DataType') || 'BaseVariableType'
       f.puts "DataType & \\multicolumn{5}{|l|}{#{a.target.type.name}} \\\\"
     elsif is_reference?
-      a = get_attribute_like(/Symmetric/)
+      a = get_attribute_like('Symmetric')
       t = a.json['defaultValue'] || 'false'
       f.puts "Symmetric & \\multicolumn{5}{|l|}{#{t}} \\\\"
     end
@@ -431,7 +433,7 @@ EOT
      
   def generate_latex(f = STDOUT)
     return if @name =~ /Factory/
-    
+
     f.puts <<EOT
 \\subsubsection{Defintion of \\texttt{#{stereotype_name} #{escape_name}}}
   \\label{type:#{@name}}
@@ -442,7 +444,7 @@ EOT
     generate_diagram(f)
     generate_documentation(f)
 
-    if @type == 'UMLDataType' or @type == 'UMLPrimitiveType'
+    if @type == 'uml:DataType' or @type == 'uml:PrimitiveType'
       generate_data_type(f)
     else
       generate_class(f)

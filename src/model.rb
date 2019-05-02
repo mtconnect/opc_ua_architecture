@@ -31,7 +31,7 @@ class Model
     @name = e['name']
     @documentation = e['documentation']
     @type = e['type']
-    @json = e
+    @xmi = e
     @types = []
     @is_opc = !((@name =~ /OPC/).nil?)
     
@@ -55,7 +55,7 @@ class Model
     @name
   end
 
-  def self.find_elements(doc)
+  def find_elements(doc)
     doc.xpath('//elements/element').each do |e|
       Type.add_element(e)
     end
@@ -64,49 +64,38 @@ class Model
     end
   end
 
-  def self.recurse(e, depth, model)
-    return if @@skip_models.include?(e['name'])
-
-    e.packagedElement.each do |e|
-      find_definitions(e, depth, model)
+  def find_definitions(depth = 0)
+    if depth == 0
+      find_elements(@xmi.document)
     end
-  end
 
-  def self.find_definitions(e, depth = 0, model = nil)
-#    e.each_element('./packagedElement[@type="uml:Class" or @type="uml:Object" or @type="uml:Stereotype"') do |e|
-#      type_class.new(model, e)
-#    end    
-    
-    # puts "#{'  ' * depth}#{model}::#{e['name']} #{e['type']}"
-    
-    case e['type']
-    when 'uml:Class'
-      type_class.new(model, e)
+    #puts "#{'  ' * depth}Finding classes for '#{@name}'"
+    @xmi.xpath('./packagedElement[@type="uml:DataType" or @type="uml:Enumeration" or @type="uml:PrimitiveType"]').each do |e|
+      #puts "#{'  ' * depth}#{@name}::#{e['name']} #{e['type']}"
+      self.class.type_class.new(self, e)
+    end    
 
-    when 'uml:Object'
-      type_class.new(model, e)
-      
-    when 'uml:Stereotype'
-      type_class.new(model, e)
-      
-    when 'uml:DataType', 'uml:Enumeration', 'uml:PrimitiveType'
-      #   puts "#{'  ' * depth}  Adding data type: #{e['name']}  id: #{e['_id']}"
-      type_class.new(model, e)
-      
-    when 'uml:Package', 'uml:Profile'
-      model = self.new(e)
-      recurse(e, depth + 1, model)
-
-    when 'uml:Association'
-    # assoc = Association.new(nil, e)
-
-    when 'uml:Realization'
-      
-    when 'uml:Dependency'
-      
-    else
-      puts "Unknown type #{e['type']}}"
+    @xmi.xpath('./packagedElement[@type="uml:Class" or @type="uml:Object" or @type="uml:Stereotype"]').each do |e|
+      #puts "#{'  ' * depth}#{@name}::#{e['name']} #{e['type']}"
+      self.class.type_class.new(self, e)
     end
+
+    @xmi.xpath('./packagedElement[@type="uml:Package" or @type="uml:Profile"]').each do |e|
+      unless @@skip_models.include?(e['name'])
+        model = self.class.new(e)
+        model.find_definitions(depth + 1)
+      end
+    end
+
+    if (depth == 0)
+      # Grab free associations
+      @xmi.xpath('//packagedElement[@type="uml:Association" or @type="uml:Realization"]').each do |e|
+        self.class.type_class.add_free_association(e)
+      end
+      
+      Type.connect_model
+    end
+
   end
   
 end

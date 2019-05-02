@@ -31,6 +31,36 @@ class Type
     @@elements[id] = ele
   end
 
+  def self.elements
+    @@elements
+  end
+
+  def self.add_free_association(assoc)
+    case assoc['type']
+    when 'uml:Association'
+      if assoc.xpath('./ownedEnd').length == 2
+        raise "!!! Adding free association -- need to fix"
+        r = Relation::Association.new(owner, assoc)
+        owner.add_relation(r)
+      end
+    when 'uml:Realization'
+      oid = assoc['client']
+
+      owner = @@types_by_id[oid]
+      unless owner.nil?
+        r = Relation::Realization.new(owner, assoc)
+        # puts "+ Adding relation #{r.stereotype} for #{owner.name}"
+        owner.add_relation(r)
+      else
+        puts "!!! Cannot resolve Realization: #{oid} -> #{sid}"
+      end
+
+    else
+      puts "!!! unknown association type: #{assoc['type']}"
+    end
+      
+  end
+
   def self.connect_model
     resolve_types
     connect_children
@@ -98,6 +128,10 @@ class Type
     @model.add_type(self)
   end
 
+  def add_relation(rel)
+    @relations << rel
+  end
+
   def is_opc?
     @model.is_opc?
   end
@@ -145,7 +179,7 @@ class Type
   end
 
   def variable_data_type
-    data_type = get_attribute_like(/DataType$/, /Attribute/)
+    data_type = get_attribute_like('DataType', /Attribute/)
     if data_type
       data_type.target.type
     elsif @type == 'uml:DataType' or @type == 'uml:Enumeration'
@@ -168,7 +202,7 @@ class Type
 
   def stereotype_name
     if @stereotype
-      "<<#{@stereotype.name}>>"
+      "<<#{@stereotype}>>"
     else
       ''
     end
@@ -204,16 +238,18 @@ class Type
     end
   end
 
-  def get_attribute_like(pattern, stereo = nil)
+  def get_attribute_like(name, stereo = nil)
+    # puts "getting attribtue '#{name}' #{stereo.inspect} #{@relations.length}"
     @relations.each do |a|
-      #puts "---- Checking #{a.name} #{pattern.inspect} #{stereo.inspect}"
-      if a.name =~ pattern and
-        (stereo.nil? or (a.stereotype and a.stereotype.name =~ stereo))
-        #puts "----  >> Found #{a.name}"
+      # puts "---- Checking '#{a.name}' '#{a.stereotype}'"
+      if a.name == name and
+        (stereo.nil? or (a.stereotype and a.stereotype =~ stereo))
+        # puts "----  >> Found #{a.name}"
         return a
       end
     end
-    return @parent.get_attribute_like(pattern, stereo) if @parent
+    puts "Recursing"
+    return @parent.get_attribute_like(name, stereo) if @parent
     nil
   end
 

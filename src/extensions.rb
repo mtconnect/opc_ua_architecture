@@ -11,8 +11,10 @@ module Extensions
 
   def get_multiplicity(r)
     upper = lower = '1'
-    upper = r.upperValue['value'] unless (r > 'upperValue').empty?
-    lower = r.lowerValue['value'] unless (r > 'lowerValue').empty?
-    [lower, upper]
+    upper = r.upperValue['value'] if r.at('upperValue')
+    lower = r.lowerValue['value'] if r.at('lowerValue')
+
+    [lower == upper ? upper : "#{lower}..#{upper}",
+     optional = lower == '0']
   end
 end

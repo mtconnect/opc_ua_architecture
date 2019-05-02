@@ -102,11 +102,7 @@ module Relation
       @xmi = r
 
       @extended = ::Relation.connections[@id]
-      unpack_extended_properties(@extended)
-      lower, upper = get_multiplicity(r)
-
-      @multiplicity = lower == upper ? upper : "#{lower}..#{upper}"
-      @optional = lower == '0'
+      @multiplicity, @optional = get_multiplicity(r)
 
       @source = Connection.new('Source', nil, owner)
       @source.multiplicity = @multiplicity
@@ -199,10 +195,7 @@ module Relation
       def initialize(e, tid)
         super(e['name'], tid)
 
-        lower, upper = get_multiplicity(e)
-        @multiplicity = lower == upper ? upper : "#{lower}..#{upper}"
-        @optional = lower == '0'
-
+        @multiplicity, @optional = get_multiplicity(e)
         @navigable = false
         @xmi = e
       end
@@ -219,7 +212,7 @@ module Relation
     def initialize(owner, r)
       super(owner, r)
 
-      sid = (r > 'type').first['idref']
+      sid = r.at('type')['idref']
       @source = End.new(r, sid)
       
       aid = r['association']
@@ -308,7 +301,7 @@ module Relation
       @name = a['name']
       @default = a['defaultValue']
 
-      type = (a > 'type').first['idref']
+      type = a.at('type')['idref']
       @target = Connection.new('type', type)
     end
     

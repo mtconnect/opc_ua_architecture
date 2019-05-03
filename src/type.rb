@@ -96,7 +96,12 @@ class Type
     @abstract = e['isAbstract'] || false
     @tags = e['tags']
     @model = model
-    @literals = Array(e['literals'])
+    @literals = []
+    if @type == 'uml:Enumeration'
+      e.ownedLiteral.each do |lit|
+        @literals << lit['name'].split('=')
+      end
+    end
 
     @aliased = false
     @class_link = nil
@@ -111,7 +116,7 @@ class Type
     end
 
     associations = []
-    if !is_variable?
+    unless @type == 'uml:PrimitiveType' or @type == 'uml:Enumeration'
       e.element_children.each do |r|
         associations << Relation.create_association(self, r)
       end
@@ -155,7 +160,7 @@ class Type
     if is_class_link?
       # Find the association to the other near and far side
       association = nil
-      @relations.delete_if { |a| association = a if a.type == 'UMLAssociation'; association }
+      @relations.delete_if { |a| association = a if a.type == 'uml:Association'; association }
       if association
         association.link_target('OrganizedBy', self)
         association.source.type.relations << association
@@ -185,7 +190,7 @@ class Type
     elsif @type == 'uml:DataType' or @type == 'uml:Enumeration'
       self
     else
-      raise "Could not find data type for #{@name}"
+      raise "Could not find data type for #{@type} #{@name} #{@stereotype} "
       nil
     end
   end
@@ -239,12 +244,12 @@ class Type
   end
 
   def get_attribute_like(name, stereo = nil)
-    # puts "getting attribtue '#{name}' #{stereo.inspect} #{@relations.length}"
+    #puts "getting attribtue '#{@name}::#{name}' #{stereo.inspect} #{@relations.length}"
     @relations.each do |a|
-      # puts "---- Checking '#{a.name}' '#{a.stereotype}'"
+      #puts "---- Checking '#{a.name}' '#{a.stereotype}'"
       if a.name == name and
         (stereo.nil? or (a.stereotype and a.stereotype =~ stereo))
-        # puts "----  >> Found #{a.name}"
+        #puts "----  >> Found #{a.name}"
         return a
       end
     end

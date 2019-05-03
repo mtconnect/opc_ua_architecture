@@ -47,7 +47,7 @@ module Relation
       Folder.new(owner, r)
       
     else
-      puts "Unknown relation type: #{r['type']} for #{owner.name}"
+      puts "!! Unknown relation type: #{r['id']} - #{r['type']} for #{owner.name}"
     end
   end
 

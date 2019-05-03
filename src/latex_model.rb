@@ -19,6 +19,7 @@ class LatexModel < Model
   end
 
   def generate_latex(f)
+    puts "Generating model #{@name}"
     f.puts "\\subsection{#{@name}} \\label{model:#{short_name}}"
 
     generate_diagram(f)

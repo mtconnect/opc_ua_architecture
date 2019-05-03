@@ -110,10 +110,10 @@ class LatexType < Type
   
 
   def generate_relations(f)
-    # puts "Generating relations for #{@name}"
+    puts "Generating relations for #{@name}"
     @relations.each do |r|
       if r.is_reference?
-        #puts "Ref: '#{r.name}' '#{r.stereotype}' '#{r.final_target.name.class}' #{r.target_node_name}"
+        puts "  Ref: '#{r.name}' '#{r.stereotype}' '#{r.final_target.type.name}' #{r.target_node_name}"
         next if r.stereotype and r.stereotype =~ /Attribute/
 
         array = '[]' if r.is_array?
@@ -178,10 +178,17 @@ EOT
   end
 
   def generate_attribute_docs(f, header)
+    puts "Generating docs for #{@name}"
     relations_with_documentation =
-      @relations.select { |r| r.documentation or r.target.type.type == 'UMLEnumeration' }
+      @relations.select { |r|
+      puts "  Looking for docs for #{r.target.inspect}" if r.target.type.nil?
+      r.documentation or r.target.type.type == 'uml:Enumeration'
+    }
 
     unless relations_with_documentation.empty?
+      p relations_with_documentation.length
+
+      
       f.puts "\\FloatBarrier"
       f.puts "\\paragraph{#{header}}\n\n"
       f.puts "\\begin{itemize}"
@@ -190,7 +197,7 @@ EOT
           f.puts "\\item \\texttt{#{r.name}::#{r.final_target.type.name}:} #{r.documentation}\n\n"
         end
         
-        if r.target.type.type == 'UMLEnumeration'
+        if r.target.type.type == 'uml:Enumeration'
           f.puts "\\item \\textbf{Allowable Values} for \\texttt{#{r.target.type.name}}"
           f.puts "\\FloatBarrier"
           r.target.type.generate_enumerations(f)
@@ -281,7 +288,7 @@ EOT
   end
 
   def generate_enumerations(f)
-    if @type == 'UMLEnumeration'
+    if @type == 'uml:Enumeration'
       puts "***** =====> Generating Enumerations for #{@name}"
       
       generate_documentation(f)
@@ -304,8 +311,7 @@ EOT
 \\tabucline[1.5pt]{}
 EOT
       
-      @json['literals'].each do |lit|
-        name, value = lit['name'].split('=')
+      @literals.each do |name, value|
         f.puts "\\texttt{#{name}} & \\texttt{#{value}} \\\\"
       end
         
@@ -432,7 +438,8 @@ EOT
   end
      
   def generate_latex(f = STDOUT)
-    return if @name =~ /Factory/
+    puts "--- Generating #{@name} #{@stereotype}"
+    return if @name =~ /Factory/ or @stereotype =~ /metaclass/
 
     f.puts <<EOT
 \\subsubsection{Defintion of \\texttt{#{stereotype_name} #{escape_name}}}

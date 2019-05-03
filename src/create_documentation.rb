@@ -1,12 +1,8 @@
 require 'json'
 require 'latex_model'
 
-UmlModels.each do |e|
-  LatexModel.find_definitions(e)
-end
-
-=begin
-Type.connect_model
+LatexModel.skip_models = SkipModels
+LatexModel.new(RootModel).find_definitions
 
 puts "\nGenerating LaTex"
 File.open('./latex/09-types.tex', 'w') do |f|
@@ -16,4 +12,3 @@ File.open('./latex/09-types.tex', 'w') do |f|
     LatexModel.generate_latex(f, m)
   end
 end
-=end

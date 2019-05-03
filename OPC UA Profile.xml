@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<UMLProfile profiletype="uml2">
+	<Documentation id="F57BADCF-9" name="OPC UA Profile" version="" notes="OPC UA Profile"/>
+	<Content>
+		<Stereotypes>
+			<Stereotype name="Property" notes="" cx="90" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0">
+				<AppliesTo>
+					<Apply type="Attribute"/>
+				</AppliesTo>
+			</Stereotype>
+			<Stereotype name="Aggregates" notes="" cx="90" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0" isAbstract="true" generalizes="HasChild" baseStereotypes="HasChild"/>
+			<Stereotype name="Attribute" notes="" cx="90" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0">
+				<AppliesTo>
+					<Apply type="Attribute"/>
+				</AppliesTo>
+			</Stereotype>
+			<Stereotype name="FromState" notes="" cx="130" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0" generalizes="NonHierarchicalReferences" baseStereotypes="NonHierarchicalReferences"/>
+			<Stereotype name="GeneratesEvent" notes="" cx="130" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0" generalizes="NonHierarchicalReferences" baseStereotypes="NonHierarchicalReferences"/>
+			<Stereotype name="HasChild" notes="" cx="106" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0" isAbstract="true" generalizes="HierarchialReferences" baseStereotypes="HierarchialReferences"/>
+			<Stereotype name="HasComponent" notes="" cx="99" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0" generalizes="Aggregates" baseStereotypes="Aggregates"/>
+			<Stereotype name="HasCondition" notes="" cx="130" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0" generalizes="NonHierarchicalReferences" baseStereotypes="NonHierarchicalReferences"/>
+			<Stereotype name="HasEncoding" notes="" cx="130" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0" generalizes="NonHierarchicalReferences" baseStereotypes="NonHierarchicalReferences"/>
+			<Stereotype name="HasEventSource" notes="" cx="106" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0" generalizes="HierarchialReferences" baseStereotypes="HierarchialReferences"/>
+			<Stereotype name="HasModelingRule" notes="" cx="130" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0" generalizes="NonHierarchicalReferences" baseStereotypes="NonHierarchicalReferences"/>
+			<Stereotype name="HasNotifier" notes="" cx="90" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0" generalizes="HasEventSource" baseStereotypes="HasEventSource"/>
+			<Stereotype name="HasProperty" notes="" cx="90" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0" generalizes="Aggregates" baseStereotypes="Aggregates"/>
+			<Stereotype name="HasSubtype" notes="" cx="90" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0" generalizes="HasChild" baseStereotypes="HasChild"/>
+			<Stereotype name="HasTypeDefinition" notes="" cx="113" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0" generalizes="NonHierarchicalReferences" baseStereotypes="NonHierarchicalReferences"/>
+			<Stereotype name="HierarchialReferences" notes="" cx="153" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0" isAbstract="true" generalizes="References" baseStereotypes="References">
+				<TaggedValues>
+					<Tag name="Symmetric" type="Boolean" description="" unit="" values="True,False" default="false"/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="Instantiates" notes="" cx="90" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0"/>
+			<Stereotype name="Namespace" notes="" cx="90" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0"/>
+			<Stereotype name="NonHierarchicalReferences" notes="" cx="152" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0" isAbstract="true" generalizes="References" baseStereotypes="References">
+				<TaggedValues>
+					<Tag name="Symmetric" type="Boolean" description="" unit="" values="True,False" default="true"/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="Organizes" notes="" cx="90" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0" generalizes="HierarchialReferences" baseStereotypes="HierarchialReferences"/>
+			<Stereotype name="References" notes="" cx="90" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0" isAbstract="true">
+				<AppliesTo>
+					<Apply type="Association">
+						<Property name="compositionKind" value="none"/>
+						<Property name="direction" value="Source -&gt; Destination"/>
+					</Apply>
+				</AppliesTo>
+			</Stereotype>
+			<Stereotype name="ToState" notes="" cx="90" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0" generalizes="NonHierarchicalReferences" baseStereotypes="NonHierarchicalReferences"/>
+			<Stereotype name="HasMTReference" notes="" cx="107" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0" generalizes="HierarchialReferences" baseStereotypes="HierarchialReferences"/>
+			<Stereotype name="HasMTClassType" notes="" cx="258" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0" generalizes="HierarchialReferences" baseStereotypes="HierarchialReferences">
+				<TaggedValues>
+					<Tag name="Symmetric" type="Boolean" description="" unit="" values="True,False" default="false"/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="HasMTComposition" notes="" cx="118" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0" generalizes="HierarchialReferences" baseStereotypes="HierarchialReferences"/>
+			<Stereotype name="HasMTSubClassType" notes="" cx="258" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0" generalizes="HierarchialReferences" baseStereotypes="HierarchialReferences">
+				<TaggedValues>
+					<Tag name="Symmetric" type="Boolean" description="" unit="" values="True,False" default="false"/>
+				</TaggedValues>
+			</Stereotype>
+			<Stereotype name="HasMTSource" notes="" cx="90" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0" generalizes="HierarchialReferences" baseStereotypes="HierarchialReferences"/>
+		</Stereotypes>
+		<TaggedValueTypes/>
+		<ViewDefinitions/>
+		<Metamodel/>
+	</Content>
+</UMLProfile>

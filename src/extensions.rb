@@ -11,8 +11,8 @@ module Extensions
 
   def get_multiplicity(r)
     upper = lower = '1'
-    upper = r.upperValue['value'] if r.at('upperValue')
-    lower = r.lowerValue['value'] if r.at('lowerValue')
+    upper = r.at('upperValue')['value'] if r.at('upperValue')
+    lower = r.at('lowerValue')['value'] if r.at('lowerValue')
 
     [lower == upper ? upper : "#{lower}..#{upper}",
      optional = lower == '0']

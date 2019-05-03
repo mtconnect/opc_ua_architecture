@@ -8,6 +8,7 @@ require 'type'
 require 'model'
 require 'rexml/document'
 require 'rexml/xpath'
+require 'nokogiri'
 
 Options = {}
 parser = OptionParser.new do |opts|
@@ -36,15 +37,17 @@ if (Options[:assets])
   Models << 'Assets Profile'
 end
 
-xmi = File.open('MTConnect Device EA.xml')
-xmiDoc = REXML::Document.new(xmi)
-
-rootModel = REXML::XPath.match(xmiDoc.root, '//packagedElement[@type="uml:Package" and @name="RootModel"]').first
-UmlModels = REXML::XPath.match(rootModel, './packagedElement[@type="uml:Package"]')
+xmiDoc = nil
+File.open(File.join(File.dirname(__FILE__), '..', 'MTConnect Devices EA.xmi')) do |xmi|
+  xmiDoc = Nokogiri::XML(xmi).slop!
+  xmiDoc.remove_namespaces!
+  RootModel = xmiDoc.at('//packagedElement[@type="uml:Package" and @name="Model"]')
+end
 
 SkipModels = Set.new
 SkipModels.add('UMLStandardProfile')
 SkipModels.add('Device Example')
+SkipModels.add('MTConnectAssets')
 
 load 'create_documentation.rb'
 
@@ -69,7 +72,8 @@ operations = Set.new(ARGV)
 operations.each do |op|
   Type.clear
   Model.clear
-
+  Relation.clear
+  
   case op
   when 'docs'
     load 'create_documentation.rb'

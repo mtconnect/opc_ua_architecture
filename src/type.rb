@@ -39,7 +39,7 @@ class Type
     case assoc['type']
     when 'uml:Association'
       if assoc.xpath('./ownedEnd').length == 2
-        raise "!!! Adding free association -- need to fix"
+        raise "!!! Adding free association -- need to fix: #{assoc.inspect}"
         r = Relation::Association.new(owner, assoc)
         owner.add_relation(r)
       end

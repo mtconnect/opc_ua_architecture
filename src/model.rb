@@ -1,7 +1,7 @@
 require 'type'
 
 class Model
-  attr_reader :name, :documentation, :types
+  attr_reader :name, :documentation, :types, :xmi
 
   @@skip_models = {}
   @@models = {}
@@ -82,17 +82,22 @@ class Model
 
     @xmi.xpath('./packagedElement[@type="uml:Package" or @type="uml:Profile"]').each do |e|
       unless @@skip_models.include?(e['name'])
+        puts "Recursing model: #{e['name']}"
         model = self.class.new(e)
         model.find_definitions(depth + 1)
+      else
+        puts "Skipping model #{e['name']}"
       end
     end
 
     if (depth == 0)
       # Grab free associations
-      @xmi.xpath('//packagedElement[@type="uml:Association" or @type="uml:Realization"]').each do |e|
-        self.class.type_class.add_free_association(e)
+      self.class.models.each do |k, v|
+        puts "Getting associations for #{v}"
+        v.xmi.xpath('./packagedElement[@type="uml:Association" or @type="uml:Realization"]').each do |e|
+          self.class.type_class.add_free_association(e)
+        end
       end
-      
       Type.connect_model
     end
 

@@ -28,11 +28,11 @@ module Diagram
   
   def generate_diagram(f)
     if tex_diagram_exists?
-      puts "** Generating png diagrams #{tex_diagram_file_name}"
+      # puts "** Generating png diagrams #{tex_diagram_file_name}"
 
       f.puts "\n\\input #{tex_diagram_name}\n\n"
     elsif png_diagram_exists?
-      puts "** Generating png diagrams #{png_diagram_file_name}"
+      # puts "** Generating png diagrams #{png_diagram_file_name}"
       
       f.puts <<EOT
 
@@ -110,10 +110,10 @@ class LatexType < Type
   
 
   def generate_relations(f)
-    puts "Generating relations for #{@name}"
+    # puts "Generating relations for #{@name}"
     @relations.each do |r|
       if r.is_reference?
-        puts "  Ref: '#{r.name}' '#{r.stereotype}' '#{r.final_target.type.name}' #{r.target_node_name}"
+        # puts "  Ref: '#{r.name}' '#{r.stereotype}' '#{r.final_target.type.name}' #{r.target_node_name}"
         next if r.stereotype and r.stereotype =~ /Attribute/
 
         array = '[]' if r.is_array?
@@ -186,9 +186,6 @@ EOT
     }
 
     unless relations_with_documentation.empty?
-      p relations_with_documentation.length
-
-      
       f.puts "\\FloatBarrier"
       f.puts "\\paragraph{#{header}}\n\n"
       f.puts "\\begin{itemize}"
@@ -337,7 +334,7 @@ EOT
         target = dep.target
         
         if dep.stereotype and dep.stereotype == 'values' and
-            target.type.type == 'UMLEnumeration'
+            target.type.type == 'uml:Enumeration'
           
           f.puts "\\item \\textbf{Allowable Values} for \\texttt{#{target.type.name}}"
           f.puts "\\FloatBarrier"
@@ -438,7 +435,7 @@ EOT
   end
      
   def generate_latex(f = STDOUT)
-    puts "--- Generating #{@name} #{@stereotype}"
+    # puts "--- Generating #{@name} #{@stereotype}"
     return if @name =~ /Factory/ or @stereotype =~ /metaclass/
 
     f.puts <<EOT

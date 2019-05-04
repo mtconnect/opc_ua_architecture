@@ -3,6 +3,9 @@
   \label{type:ComponentType}
 
 \FloatBarrier
+
+ComponentType Docs
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ComponentType} Definition}
@@ -29,6 +32,31 @@ Has\-Component & Variable & <Integer\-Event> & Int32[] & Integer\-Event\-Type & 
 
 
 \FloatBarrier
+\paragraph{Referenced Properties and Objects}
+
+\begin{itemize}
+\item \texttt{name::String:} Optional name
+
+\item \texttt{uuid::String:} Only required with Device
+
+\end{itemize}
+\paragraph{Dependencies and Relationships}
+
+\begin{itemize}
+\item Dependency on ComponentType
+
+This class relates to \texttt{ComponentType} (See section \ref{type:ComponentType}) for a(n) \texttt{HasNotifier} relationship.
+
+\item Dependency on FolderType
+
+This class relates to \texttt{FolderType} (See section \ref{type:FolderType}) for a(n) \texttt{Organizes} relationship.
+
+\item Dependency on IntegerEventType
+
+This class relates to \texttt{IntegerEventType} (See section \ref{type:IntegerEventType}) for a(n) \texttt{HasComponent} relationship.
+
+\end{itemize}
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ CompositionType}}
   \label{type:CompositionType}
 
@@ -48,10 +76,54 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart05} Documentation)} \\
+Has\-Property & Variable & type & String & Property\-Type & Mandatory \\
+values & Variable & Enum\-Values & Vocab & Vocab & Mandatory \\
 \end{tabu}
 \end{table} 
 
 
+\FloatBarrier
+\paragraph{Referenced Properties and Objects}
+
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{Vocab}
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{Vocab} Enumeration}
+  \label{enum:Vocab}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{CAT} & \texttt{0} \\
+\texttt{DOG} & \texttt{1} \\
+\texttt{HORSE} & \texttt{2} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\end{itemize}
+\paragraph{Dependencies and Relationships}
+
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{Vocab}
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{Vocab} Enumeration}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{CAT} & \texttt{0} \\
+\texttt{DOG} & \texttt{1} \\
+\texttt{HORSE} & \texttt{2} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<mixin>> DataItemMixin}}
   \label{type:DataItemMixin}
@@ -98,7 +170,7 @@ Has\-Property & Variable & Xml\-Id & String & Property\-Type & Mandatory \\
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{IntegerEventType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
-ValueRank & \multicolumn{5}{|l|}{} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
 DataType & \multicolumn{5}{|l|}{Int32} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
@@ -110,6 +182,81 @@ Has\-Property & Variable & Sub\-Type & String & Property\-Type & Mandatory \\
 Has\-Property & Variable & Type & String & Property\-Type & Mandatory \\
 Has\-Property & Variable & Xml\-Id & String & Property\-Type & Mandatory \\
 Has\-Property & Variable & EUInformation & EUInformation & Property\-Type & Optional \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\paragraph{Referenced Properties and Objects}
+
+\begin{itemize}
+\item \texttt{Supertype::DataItemType:} For EVENT with Integer
+
+\end{itemize}
+\paragraph{Dependencies and Relationships}
+
+\begin{itemize}
+\item Mixes in \texttt{DataItemMixin}, see See section \ref{type:DataItemMixin}
+\end{itemize}
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ThreeSpace}}
+  \label{type:ThreeSpace}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ThreeSpace} DataType}
+  \label{data-type:ThreeSpace}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Field} & {Type} & {Optional} \\
+\tabucline[1.5pt]{}
+\texttt{X} & \texttt{Double} & \texttt{Mandatory} \\
+\texttt{Y} & \texttt{Double} & \texttt{Mandatory} \\
+\texttt{Z} & \texttt{Double} & \texttt{Mandatory} \\
+\end{tabu}
+\end{table} 
+
+\FloatBarrier
+\paragraph{Data Type Fields}
+
+\begin{itemize}
+\item \texttt{X::Double:} Inf if null
+
+\item \texttt{Y::Double:} Inf if null
+
+\item \texttt{Z::Double:} Inf if null
+
+\end{itemize}
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ThreeSpaceSampleType}}
+  \label{type:ThreeSpaceSampleType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ThreeSpaceSampleType} Definition}
+  \label{table:ThreeSpaceSampleType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ThreeSpaceSampleType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{ThreeSpace} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of DataItemType (See \cite{UAPart08} Documentation)} \\
+Has\-Property & Variable & Category & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & Name & String & Property\-Type & Optional \\
+Has\-Property & Variable & Native\-Name & String & Property\-Type & Optional \\
+Has\-Property & Variable & Sub\-Type & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & Type & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & Xml\-Id & String & Property\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 

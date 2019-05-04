@@ -150,6 +150,51 @@ RSpec.describe LatexModel, 'MixinType definitions' do
         expect(real.name).to eq('Mixes In')
         expect(real.target.type.name).to eq('DataItemMixin')
       end
+
+      it 'should have a value rank of -1' do
+        expect(@type.relation('ValueRank').default).to eq('-1')
+      end
+
+      it 'should have documentation associated with the Generalization' do
+        expect(@type.relation('Supertype').documentation).to eq('For EVENT with Integer')
+      end
+    end
+
+    context 'with a ThreeSpaceSampleType' do
+      before(:example) do
+        @type = Type.type_for_name('ThreeSpaceSampleType')
+      end
+
+      it 'should have a ThreeSpace data type' do
+        @type.relations.map { |e| e.name }
+        attr = @type.relation('DataType')
+        expect(attr).to_not be_nil
+        expect(attr.target.type.name).to eq('ThreeSpace')
+      end
+    end
+
+    context 'with CompositionType' do
+      before(:example) do
+        @type = Type.type_for_name('CompositionType')
+      end
+
+      it 'should have values EnumValues linked to Vocab enumeration' do
+        s, = @type.dependencies.find { |e| e.stereotype == 'values' }
+        expect(s).to_not be_nil
+        expect(s.name).to eq('EnumValues')
+        expect(s.target.type.name).to eq('Vocab')
+        expect(s.target.type.literals).to eq([["CAT", "0"], ["DOG", "1"], ["HORSE", "2"]])
+      end
+    end
+
+    context 'with ComponentType' do
+      before(:example) do
+        @type = Type.type_for_name('ComponentType')
+      end
+
+      it 'should have a property uuid with documentation' do
+        expect(@type.relation('uuid').documentation).to eq('Only required with Device')
+      end
     end
     
   end  

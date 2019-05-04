@@ -5,7 +5,7 @@ class Type
   include Extensions
   
   attr_reader :name, :id, :type, :model, :json, :parent, :children, :relations, :stereotype,
-              :tags, :extended, :documentation
+              :tags, :extended, :documentation, :literals
   attr_accessor :class_link
 
   @@types_by_id = {}
@@ -135,6 +135,11 @@ class Type
 
   def add_relation(rel)
     @relations << rel
+  end
+
+  def relation(name)
+    rel, = @relations.find { |a| a.name == name }
+    rel
   end
 
   def is_opc?
@@ -304,7 +309,7 @@ class Type
   end
 
   def dependencies
-    @relations.select { |r| r.class == Relation::Dependency }
+    @relations.select { |r| r.class == Relation::Dependency or r.class == Relation::Association }
   end
 
   def realizations

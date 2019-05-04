@@ -76,24 +76,24 @@ class Model
     end    
 
     @xmi.xpath('./packagedElement[@type="uml:Class" or @type="uml:Object" or @type="uml:Stereotype"]').each do |e|
-      puts "#{'  ' * depth}#{@name}::#{e['name']} #{e['type']}"
+      # puts "#{'  ' * depth}#{@name}::#{e['name']} #{e['type']}"
       self.class.type_class.new(self, e)
     end
 
     @xmi.xpath('./packagedElement[@type="uml:Package" or @type="uml:Profile"]').each do |e|
       unless @@skip_models.include?(e['name'])
-        puts "Recursing model: #{e['name']}"
+        # puts "Recursing model: #{e['name']}"
         model = self.class.new(e)
         model.find_definitions(depth + 1)
       else
-        puts "Skipping model #{e['name']}"
+        # puts "Skipping model #{e['name']}"
       end
     end
 
     if (depth == 0)
       # Grab free associations
       self.class.models.each do |k, v|
-        puts "Getting associations for #{v}"
+        # puts "Getting associations for #{v}"
         v.xmi.xpath('./packagedElement[@type="uml:Association" or @type="uml:Realization"]').each do |e|
           self.class.type_class.add_free_association(e)
         end

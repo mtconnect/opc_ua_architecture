@@ -1,11 +1,13 @@
 module Extensions
   def unpack_extended_properties(ele)
     if ele
-      @props, = ele.xpath('./properties')
+      @props = ele.at('./properties')
       if @props
         @documentation = REXML::Text::unnormalize(@props['documentation']) if @props['documentation']
         @stereotype = @props['stereotype']
       end
+      d = ele.at('./documentation')
+      @documentation = d['value'] if d
     end
   end
 

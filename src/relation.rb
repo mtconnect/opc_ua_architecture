@@ -299,12 +299,14 @@ module Relation
     def initialize(owner, a)
       super(owner, a)
       @name = a['name']
-      @default = a['defaultValue']
+      dv = a.at('defaultValue')
+      @default =  dv['value'] if dv
 
       element = Type.elements[owner.id]
       if element
         attr = element.at("./attributes/attribute[@idref='#{@id}']")
         @stereotype = attr.stereotype['stereotype'] if attr.at('./stereotype')
+        @documentation = attr.documentation['value'] if attr.at('./documentation')
       end
 
       type = a.at('type')['idref']

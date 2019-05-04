@@ -1,29 +1,165 @@
-<?xml version="1.0" encoding="windows-1252"?>
-<UMLProfile profiletype="uml2">
-	<Documentation id="12BE2F29-A" name="MixinProfile" version="" notes="MixinProfile"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<UMLProfile>
+	<Documentation id="44BC242C-B" name="MixinProfile" version="" notes="MixinProfile"/>
+	<!-- The profile content -->
 	<Content>
+		<!-- List of stereotypes used in this profile-->
 		<Stereotypes>
-			<Stereotype name="mixin" notes="" cx="90" cy="56" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0">
-				<AppliesTo>
-					<Apply type="Class">
-						<Property name="isActive" value=""/>
-					</Apply>
-				</AppliesTo>
+			<Stereotype name="BaseObjectType" notes="" cx="" cy="" metafile="" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0">
+				<AppliesTo/>
+				<TaggedValues>
+					<Tag name="BrowseName" description="" values="" default=""/>
+					<Tag name="Description" description="" values="" default=""/>
+					<Tag name="DisplayName" description="" values="" default=""/>
+					<Tag name="NodeClass" description="" values="" default=""/>
+					<Tag name="NodeId" description="" values="" default=""/>
+					<Tag name="UserWriteMask" description="" values="" default=""/>
+					<Tag name="WriteMask" description="" values="" default=""/>
+				</TaggedValues>
+				<Constraints/>
 			</Stereotype>
-			<Stereotype name="Mixes In" notes="" cx="90" cy="70" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0">
-				<AppliesTo>
-					<Apply type="Association">
-						<Property name="compositionKind" value="none"/>
-						<Property name="direction" value="Source -&gt; Destination"/>
-					</Apply>
-					<Apply type="Realisation">
-						<Property name="direction" value="Source -&gt; Destination"/>
-					</Apply>
-				</AppliesTo>
+			<Stereotype name="Node" notes="" cx="" cy="" metafile="" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0">
+				<AppliesTo/>
+				<TaggedValues>
+					<Tag name="BrowseName" description="" values="" default=""/>
+					<Tag name="Description" description="" values="" default=""/>
+					<Tag name="DisplayName" description="" values="" default=""/>
+					<Tag name="NodeClass" description="" values="" default=""/>
+					<Tag name="NodeId" description="" values="" default=""/>
+					<Tag name="UserWriteMask" description="" values="" default=""/>
+					<Tag name="WriteMask" description="" values="" default=""/>
+				</TaggedValues>
+				<Constraints/>
+			</Stereotype>
+			<Stereotype name="ComponentType" notes="ComponentType Docs" cx="" cy="" metafile="" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0">
+				<AppliesTo/>
+				<TaggedValues>
+					<Tag name="id" description="" values="" default=""/>
+					<Tag name="name" description="" values="" default=""/>
+					<Tag name="uuid" description="" values="" default=""/>
+					<Tag name="BrowseName" description="" values="" default=""/>
+					<Tag name="Description" description="" values="" default=""/>
+					<Tag name="DisplayName" description="" values="" default=""/>
+					<Tag name="NodeClass" description="" values="" default=""/>
+					<Tag name="NodeId" description="" values="" default=""/>
+					<Tag name="UserWriteMask" description="" values="" default=""/>
+					<Tag name="WriteMask" description="" values="" default=""/>
+				</TaggedValues>
+				<Constraints/>
+			</Stereotype>
+			<Stereotype name="CompositionType" notes="" cx="" cy="" metafile="" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0">
+				<AppliesTo/>
+				<TaggedValues>
+					<Tag name="type" description="" values="" default=""/>
+					<Tag name="BrowseName" description="" values="" default=""/>
+					<Tag name="Description" description="" values="" default=""/>
+					<Tag name="DisplayName" description="" values="" default=""/>
+					<Tag name="NodeClass" description="" values="" default=""/>
+					<Tag name="NodeId" description="" values="" default=""/>
+					<Tag name="UserWriteMask" description="" values="" default=""/>
+					<Tag name="WriteMask" description="" values="" default=""/>
+				</TaggedValues>
+				<Constraints/>
+			</Stereotype>
+			<Stereotype name="BaseDataVariableType" notes="" cx="" cy="" metafile="" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0">
+				<AppliesTo/>
+				<TaggedValues>
+					<Tag name="DataType" description="" values="" default=""/>
+					<Tag name="ValueRank" description="" values="" default=""/>
+					<Tag name="BrowseName" description="" values="" default=""/>
+					<Tag name="Description" description="" values="" default=""/>
+					<Tag name="DisplayName" description="" values="" default=""/>
+					<Tag name="NodeClass" description="" values="" default=""/>
+					<Tag name="NodeId" description="" values="" default=""/>
+					<Tag name="UserWriteMask" description="" values="" default=""/>
+					<Tag name="WriteMask" description="" values="" default=""/>
+				</TaggedValues>
+				<Constraints/>
+			</Stereotype>
+			<Stereotype name="DataItemType" notes="" cx="" cy="" metafile="" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0">
+				<AppliesTo/>
+				<TaggedValues>
+					<Tag name="Definition" description="" values="" default=""/>
+					<Tag name="ValuePrecision" description="" values="" default=""/>
+					<Tag name="DataType" description="" values="" default=""/>
+					<Tag name="ValueRank" description="" values="" default=""/>
+					<Tag name="BrowseName" description="" values="" default=""/>
+					<Tag name="Description" description="" values="" default=""/>
+					<Tag name="DisplayName" description="" values="" default=""/>
+					<Tag name="NodeClass" description="" values="" default=""/>
+					<Tag name="NodeId" description="" values="" default=""/>
+					<Tag name="UserWriteMask" description="" values="" default=""/>
+					<Tag name="WriteMask" description="" values="" default=""/>
+				</TaggedValues>
+				<Constraints/>
+			</Stereotype>
+			<Stereotype name="BaseVariableType" notes="" cx="" cy="" metafile="" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0">
+				<AppliesTo/>
+				<TaggedValues>
+					<Tag name="DataType" description="" values="" default=""/>
+					<Tag name="ValueRank" description="" values="" default=""/>
+					<Tag name="BrowseName" description="" values="" default=""/>
+					<Tag name="Description" description="" values="" default=""/>
+					<Tag name="DisplayName" description="" values="" default=""/>
+					<Tag name="NodeClass" description="" values="" default=""/>
+					<Tag name="NodeId" description="" values="" default=""/>
+					<Tag name="UserWriteMask" description="" values="" default=""/>
+					<Tag name="WriteMask" description="" values="" default=""/>
+				</TaggedValues>
+				<Constraints/>
+			</Stereotype>
+			<Stereotype name="DataItemMixin" notes="" cx="" cy="" metafile="" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0">
+				<AppliesTo/>
+				<TaggedValues>
+					<Tag name="Category" description="" values="" default=""/>
+					<Tag name="Name" description="" values="" default=""/>
+					<Tag name="NativeName" description="" values="" default=""/>
+					<Tag name="SubType" description="" values="" default=""/>
+					<Tag name="Type" description="" values="" default=""/>
+					<Tag name="XmlId" description="" values="" default=""/>
+				</TaggedValues>
+				<Constraints/>
+			</Stereotype>
+			<Stereotype name="IntegerEventType" notes="" cx="" cy="" metafile="" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0">
+				<AppliesTo/>
+				<TaggedValues>
+					<Tag name="DataType" description="" values="" default=""/>
+					<Tag name="EUInformation" description="" values="" default=""/>
+					<Tag name="ValueRank" description="" values="" default=""/>
+					<Tag name="Definition" description="" values="" default=""/>
+					<Tag name="ValuePrecision" description="" values="" default=""/>
+					<Tag name="DataType" description="" values="" default=""/>
+					<Tag name="ValueRank" description="" values="" default=""/>
+					<Tag name="BrowseName" description="" values="" default=""/>
+					<Tag name="Description" description="" values="" default=""/>
+					<Tag name="DisplayName" description="" values="" default=""/>
+					<Tag name="NodeClass" description="" values="" default=""/>
+					<Tag name="NodeId" description="" values="" default=""/>
+					<Tag name="UserWriteMask" description="" values="" default=""/>
+					<Tag name="WriteMask" description="" values="" default=""/>
+				</TaggedValues>
+				<Constraints/>
+			</Stereotype>
+			<Stereotype name="ThreeSpaceSampleType" notes="" cx="" cy="" metafile="" bgcolor="-1" fontcolor="-1" bordercolor="-1" borderwidth="-1" hideicon="0">
+				<AppliesTo/>
+				<TaggedValues>
+					<Tag name="DataValue" description="" values="" default=""/>
+					<Tag name="ValueRank" description="" values="" default=""/>
+					<Tag name="Definition" description="" values="" default=""/>
+					<Tag name="ValuePrecision" description="" values="" default=""/>
+					<Tag name="DataType" description="" values="" default=""/>
+					<Tag name="ValueRank" description="" values="" default=""/>
+					<Tag name="BrowseName" description="" values="" default=""/>
+					<Tag name="Description" description="" values="" default=""/>
+					<Tag name="DisplayName" description="" values="" default=""/>
+					<Tag name="NodeClass" description="" values="" default=""/>
+					<Tag name="NodeId" description="" values="" default=""/>
+					<Tag name="UserWriteMask" description="" values="" default=""/>
+					<Tag name="WriteMask" description="" values="" default=""/>
+				</TaggedValues>
+				<Constraints/>
 			</Stereotype>
 		</Stereotypes>
 		<TaggedValueTypes/>
-		<ViewDefinitions/>
-		<Metamodel/>
 	</Content>
 </UMLProfile>

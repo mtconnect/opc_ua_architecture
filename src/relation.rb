@@ -25,6 +25,7 @@ module Relation
       Realization.new(owner, r)
 
     when 'uml:Dependency'
+      puts "!!! Creating a dependency..."
       Dependency.new(owner, r)
 
     when 'uml:Property'
@@ -335,7 +336,7 @@ module Relation
   end
 
   class Dependency < Relation
-    def initialize(owner, r, attr)
+    def initialize(owner, r, attr = 'supplier')
       super(owner, r)
       @dependency = ::Relation.connections[@id]
       unpack_extended_properties(@dependency)

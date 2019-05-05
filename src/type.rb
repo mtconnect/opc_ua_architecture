@@ -49,10 +49,22 @@ class Type
       owner = @@types_by_id[oid]
       unless owner.nil?
         r = Relation::Realization.new(owner, assoc)
-        # puts "+ Adding relation #{r.stereotype} for #{owner.name}"
+        # puts "+ Adding realization #{r.stereotype} for #{owner.name}"
         owner.add_relation(r)
       else
-        puts "!!! Cannot resolve Realization: #{oid} -> #{sid}"
+        puts "!!! Cannot resolve Realization: #{oid}}"
+      end
+
+    when 'uml:Dependency'
+      oid = assoc['client']
+      
+      owner = @@types_by_id[oid]
+      unless owner.nil?
+        r = Relation::Dependency.new(owner, assoc)
+        puts "+ Adding dependency #{r.stereotype} for #{owner.name}"
+        owner.add_relation(r)
+      else
+        puts "!!! Cannot resolve Dependency: #{oid}"
       end
 
     else
@@ -309,7 +321,7 @@ class Type
   end
 
   def dependencies
-    @relations.select { |r| r.class == Relation::Dependency or r.class == Relation::Association }
+    @relations.select { |r| r.class == Relation::Dependency }
   end
 
   def realizations

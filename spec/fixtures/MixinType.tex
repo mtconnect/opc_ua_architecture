@@ -40,22 +40,6 @@ Has\-Component & Variable & <Integer\-Event> & Int32[] & Integer\-Event\-Type & 
 \item \texttt{uuid::String:} Only required with Device
 
 \end{itemize}
-\paragraph{Dependencies and Relationships}
-
-\begin{itemize}
-\item Dependency on ComponentType
-
-This class relates to \texttt{ComponentType} (See section \ref{type:ComponentType}) for a(n) \texttt{HasNotifier} relationship.
-
-\item Dependency on FolderType
-
-This class relates to \texttt{FolderType} (See section \ref{type:FolderType}) for a(n) \texttt{Organizes} relationship.
-
-\item Dependency on IntegerEventType
-
-This class relates to \texttt{IntegerEventType} (See section \ref{type:IntegerEventType}) for a(n) \texttt{HasComponent} relationship.
-
-\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ CompositionType}}
   \label{type:CompositionType}
@@ -77,7 +61,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart05} Documentation)} \\
 Has\-Property & Variable & type & String & Property\-Type & Mandatory \\
-values & Variable & Enum\-Values & Vocab & Vocab & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Vocab & Vocab & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -92,26 +76,6 @@ values & Variable & Enum\-Values & Vocab & Vocab & Mandatory \\
 \centering 
   \caption{\texttt{Vocab} Enumeration}
   \label{enum:Vocab}
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Name} & {Index} \\
-\tabucline[1.5pt]{}
-\texttt{CAT} & \texttt{0} \\
-\texttt{DOG} & \texttt{1} \\
-\texttt{HORSE} & \texttt{2} \\
-\end{tabu}
-\end{table} 
-\FloatBarrier
-\end{itemize}
-\paragraph{Dependencies and Relationships}
-
-\begin{itemize}
-\item \textbf{Allowable Values} for \texttt{Vocab}
-\FloatBarrier
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{Vocab} Enumeration}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline

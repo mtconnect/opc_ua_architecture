@@ -1,6 +1,8 @@
 require 'type'
 
 class Model
+  include Extensions
+  
   attr_reader :name, :documentation, :types, :xmi
 
   @@skip_models = {}
@@ -28,12 +30,15 @@ class Model
   end
 
   def initialize(e)
+    @id = e['id']
     @name = e['name']
-    @documentation = e['documentation']
     @type = e['type']
     @xmi = e
     @types = []
     @is_opc = !((@name =~ /OPC/).nil?)
+
+    @extended = Type.elements[@id]
+    unpack_extended_properties(@extended)
     
     @@models[@name] = self
   end
@@ -94,7 +99,7 @@ class Model
       # Grab free associations
       self.class.models.each do |k, v|
         # puts "Getting associations for #{v}"
-        v.xmi.xpath('./packagedElement[@type="uml:Association" or @type="uml:Realization"]').each do |e|
+        v.xmi.xpath('./packagedElement[@type="uml:Association" or @type="uml:Realization" or @type="uml:Dependency"]').each do |e|
           self.class.type_class.add_free_association(e)
         end
       end

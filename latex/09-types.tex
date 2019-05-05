@@ -1,4 +1,4 @@
-% Generated 2019-05-03 19:45:48 -0700
+% Generated 2019-05-04 21:28:32 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -9,6 +9,9 @@
 \end{figure}
 
 \FloatBarrier
+
+
+The \glspl{MTComponent} documents the Component models and the owned objects.
 
 \subsubsection{Defintion of \texttt{ MTChannelType}}
   \label{type:MTChannelType}
@@ -33,7 +36,7 @@ BrowseName & \multicolumn{5}{|l|}{MTChannelType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart05} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart5} Documentation)} \\
 Has\-Property & Variable & Calibration\-Date & Utc\-Time & Property\-Type & Optional \\
 Has\-Property & Variable & Calibration\-Initials & String & Property\-Type & Optional \\
 Has\-Property & Variable & MT\-Description & String & Property\-Type & Optional \\
@@ -90,7 +93,7 @@ BrowseName & \multicolumn{5}{|l|}{MTComponentType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart05} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart5} Documentation)} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{MTDeviceType} & \multicolumn{2}{|l|}{See section \ref{type:MTDeviceType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{ActuatorType} & \multicolumn{2}{|l|}{See section \ref{type:ActuatorType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{AuxiliariesType} & \multicolumn{2}{|l|}{See section \ref{type:AuxiliariesType}} \\
@@ -179,7 +182,7 @@ BrowseName & \multicolumn{5}{|l|}{MTCompositionType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart05} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart5} Documentation)} \\
 Has\-Property & Variable & MT\-Type\-Name & String & Property\-Type & Mandatory \\
 Has\-Property & Variable & Name & String & Property\-Type & Optional \\
 Has\-Property & Variable & Uuid & String & Property\-Type & Optional \\
@@ -212,7 +215,7 @@ BrowseName & \multicolumn{5}{|l|}{MTConfigurationType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart05} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart5} Documentation)} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{MTSensorConfigurationType} & \multicolumn{2}{|l|}{See section \ref{type:MTSensorConfigurationType}} \\
 \end{tabu}
 \end{table} 
@@ -276,7 +279,7 @@ BrowseName & \multicolumn{5}{|l|}{MTDescriptionType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart05} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart5} Documentation)} \\
 Has\-Property & Variable & Data & String & Property\-Type & Optional \\
 Has\-Property & Variable & Manufacturer & String & Property\-Type & Optional \\
 Has\-Property & Variable & Serial\-Number & String & Property\-Type & Optional \\
@@ -285,6 +288,13 @@ Has\-Property & Variable & Station & String & Property\-Type & Optional \\
 \end{table} 
 
 
+\FloatBarrier
+\paragraph{Referenced Properties and Objects}
+
+\begin{itemize}
+\item \texttt{Data::String:} From the CDATA of the Description Element in MTConnect.
+
+\end{itemize}
 \FloatBarrier
 \subsection{Component Types} \label{model:ComponentTypes}
 
@@ -296,6 +306,9 @@ Has\-Property & Variable & Station & String & Property\-Type & Optional \\
 \end{figure}
 
 \FloatBarrier
+
+
+All the sub types of components organized into top level organizational types.
 
 \subsubsection{Defintion of \texttt{ ActuatorType}}
   \label{type:ActuatorType}
@@ -1325,11 +1338,11 @@ and the type of asset that is being reported.
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{MTAssetEventType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
-ValueRank & \multicolumn{5}{|l|}{} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
 DataType & \multicolumn{5}{|l|}{AssetEventDataType} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of BaseDataVariableType (See \cite{UAPart08} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of BaseDataVariableType (See \cite{UAPart8} Documentation)} \\
 Has\-Property & Variable & Category & MT\-Category\-Type & Property\-Type & Mandatory \\
 Has\-Property & Variable & MT\-Sub\-Type\-Name & String & Property\-Type & Optional \\
 Has\-Property & Variable & MT\-Type\-Name & String & Property\-Type & Mandatory \\
@@ -1412,6 +1425,7 @@ BrowseName & \multicolumn{5}{|l|}{MTConstraintType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart5} Documentation)} \\
 Has\-Property & Variable & Maximum & Float & Property\-Type & Optional \\
 Has\-Property & Variable & Minimum & Float & Property\-Type & Optional \\
 Has\-Property & Variable & Nominal & Float & Property\-Type & Optional \\
@@ -1443,11 +1457,11 @@ MTConnect equivalent elements that can be found in the MTConnect Part 3 \cite{MT
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{MTControlledVocabEventType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
-ValueRank & \multicolumn{5}{|l|}{} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
 DataType & \multicolumn{5}{|l|}{UInteger} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MultiStateDiscreteType (See \cite{UAPart08} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of MultiStateDiscreteType (See \cite{UAPart8} Documentation)} \\
 Has\-Property & Variable & Category & MT\-Category\-Type & Property\-Type & Mandatory \\
 Has\-Property & Variable & MT\-Sub\-Type\-Name & String & Property\-Type & Optional \\
 Has\-Property & Variable & MT\-Type\-Name & String & Property\-Type & Mandatory \\
@@ -1540,6 +1554,8 @@ Represents the \gls{category} attribute of the MTConnect \gls{MTDataItem}.
 \end{tabu}
 \end{table} 
 \FloatBarrier
+\item \texttt{PeriodFilter::Float:} Represents the MTConnect \mtmodel{Filter} subtype of \mtmodel{PeriodFilter}.
+
 \item \textbf{Allowable Values} for \texttt{MTRepresentationType}
 \FloatBarrier
 
@@ -1560,6 +1576,58 @@ Represents the \mtmodel{representation} attribute of the MTConnect \gls{MTDataIt
 \end{tabu}
 \end{table} 
 \FloatBarrier
+\item \texttt{SourceData::String:} The text that is the \gls{CDATA} of the \mtmodel{Source} element.
+
+\item \textbf{Allowable Values} for \texttt{MTCategoryType}
+\FloatBarrier
+
+Represents the \gls{category} attribute of the MTConnect \gls{MTDataItem}.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTCategoryType} Enumeration}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{EVENT} & \texttt{0} \\
+\texttt{CONDITION} & \texttt{1} \\
+\texttt{SAMPLE} & \texttt{2} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\item \textbf{Allowable Values} for \texttt{MTRepresentationType}
+\FloatBarrier
+
+Represents the \mtmodel{representation} attribute of the MTConnect \gls{MTDataItem}.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTRepresentationType} Enumeration}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{DISCRETE} & \texttt{0} \\
+\texttt{TIME_SERIES} & \texttt{1} \\
+\texttt{VALUE} & \texttt{2} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\end{itemize}
+\paragraph{Dependencies and Relationships}
+
+\begin{itemize}
+\item Dependency on MTCategoryType
+
+This class relates to \texttt{MTCategoryType} (See section \ref{type:MTCategoryType}) for a(n) \texttt{} relationship.
+
+\item Dependency on MTRepresentationType
+
+This class relates to \texttt{MTRepresentationType} (See section \ref{type:MTRepresentationType}) for a(n) \texttt{} relationship.
+
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<mixin>> MTNumericDataItemType}}
@@ -1621,6 +1689,8 @@ Represents the \mtmodel{coordinateSystem} attribute of the MTConnect \gls{MTData
 \end{tabu}
 \end{table} 
 \FloatBarrier
+\item \texttt{MinimumDeltaFilter::Float:} Represents the MTConnect \mtmodel{Filter} subtype of \mtmodel{MinimumDeltaFilter}.
+
 \item \textbf{Allowable Values} for \texttt{MTResetTriggerType}
 \FloatBarrier
 
@@ -1647,6 +1717,8 @@ These need to become \uamodel{Good_} status code in OPC UA.
 \end{tabu}
 \end{table} 
 \FloatBarrier
+\item \texttt{SignificantDigits::Int16:} The significant digits is converted to a \uaterm{ValuePrecision}.
+
 \item \textbf{Allowable Values} for \texttt{MTStatisticType}
 \FloatBarrier
 \begin{table}[ht]
@@ -1720,7 +1792,7 @@ BrowseName & \multicolumn{5}{|l|}{MTMessageEventType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of BaseEventType (See \cite{UAPart05} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of BaseEventType (See \cite{UAPart5} Documentation)} \\
 Has\-Property & Variable & Native\-Code & String & Property\-Type & Optional \\
 \end{tabu}
 \end{table} 
@@ -1748,11 +1820,11 @@ MTConnect Streams message.
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{MTMessageType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
-ValueRank & \multicolumn{5}{|l|}{} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
 DataType & \multicolumn{5}{|l|}{MessageDataType} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of BaseDataVariableType (See \cite{UAPart08} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of BaseDataVariableType (See \cite{UAPart8} Documentation)} \\
 Has\-Property & Variable & Category & MT\-Category\-Type & Property\-Type & Mandatory \\
 Has\-Property & Variable & MT\-Sub\-Type\-Name & String & Property\-Type & Optional \\
 Has\-Property & Variable & MT\-Type\-Name & String & Property\-Type & Mandatory \\
@@ -1799,11 +1871,11 @@ sub-typed from this type. Extended types will be subtyped from the \mtuatype{MTS
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{MTNumericEventType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
-ValueRank & \multicolumn{5}{|l|}{} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
 DataType & \multicolumn{5}{|l|}{Number} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of DataItemType (See \cite{UAPart08} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of DataItemType (See \cite{UAPart8} Documentation)} \\
 Has\-Property & Variable & Category & MT\-Category\-Type & Property\-Type & Mandatory \\
 Has\-Property & Variable & MT\-Sub\-Type\-Name & String & Property\-Type & Optional \\
 Has\-Property & Variable & MT\-Type\-Name & String & Property\-Type & Mandatory \\
@@ -1861,11 +1933,11 @@ and \mtmodel{Minimum} values are given.
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{MTSampleType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
-ValueRank & \multicolumn{5}{|l|}{} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
 DataType & \multicolumn{5}{|l|}{Number} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of AnalogUnitType (See \cite{UAAmend01} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of AnalogUnitType (See \cite{UAAmend1} Documentation)} \\
 Has\-Property & Variable & Category & MT\-Category\-Type & Property\-Type & Mandatory \\
 Has\-Property & Variable & MT\-Sub\-Type\-Name & String & Property\-Type & Optional \\
 Has\-Property & Variable & MT\-Type\-Name & String & Property\-Type & Mandatory \\
@@ -1893,6 +1965,13 @@ Has\-Property & Variable & Units & String & Property\-Type & Optional \\
 \end{table} 
 
 
+\FloatBarrier
+\paragraph{Referenced Properties and Objects}
+
+\begin{itemize}
+\item \texttt{Supertype::AnalogUnitType:} \item \texttt{Supertype::AnalogUnitType:} All DataItems with category SAMPLE
+
+\end{itemize}
 \paragraph{Dependencies and Relationships}
 
 \begin{itemize}
@@ -1922,11 +2001,11 @@ event types inherited from \mtmodel{MTControlledVocabEventType} (see \ref{type:M
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{MTStringEventType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
-ValueRank & \multicolumn{5}{|l|}{} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
 DataType & \multicolumn{5}{|l|}{String} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of BaseDataVariableType (See \cite{UAPart08} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of BaseDataVariableType (See \cite{UAPart8} Documentation)} \\
 Has\-Property & Variable & Category & MT\-Category\-Type & Property\-Type & Mandatory \\
 Has\-Property & Variable & MT\-Sub\-Type\-Name & String & Property\-Type & Optional \\
 Has\-Property & Variable & MT\-Type\-Name & String & Property\-Type & Mandatory \\
@@ -1972,11 +2051,11 @@ the coordinates are given in millimeters. The EngineeringUnits will always be se
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{MTThreeSpaceSampleType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
-ValueRank & \multicolumn{5}{|l|}{} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
 DataType & \multicolumn{5}{|l|}{ThreeSpaceSampleDataType} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of DataItemType (See \cite{UAPart08} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of DataItemType (See \cite{UAPart8} Documentation)} \\
 Has\-Property & Variable & Category & MT\-Category\-Type & Property\-Type & Mandatory \\
 Has\-Property & Variable & MT\-Sub\-Type\-Name & String & Property\-Type & Optional \\
 Has\-Property & Variable & MT\-Type\-Name & String & Property\-Type & Mandatory \\
@@ -2053,6 +2132,17 @@ Represents a position in a three space coordinate system. The positions must be 
 \end{table} 
 
 \FloatBarrier
+\paragraph{Data Type Fields}
+
+\begin{itemize}
+\item \texttt{X::Double:} If not present, must be set to NaN.
+
+\item \texttt{Y::Double:} If not present, must be set to NaN.
+
+\item \texttt{Z::Double:} If not present, must be set to NaN.
+
+\end{itemize}
+\FloatBarrier
 \subsection{Conditions} \label{model:Conditions}
 
 \begin{figure}[ht]
@@ -2104,7 +2194,7 @@ BrowseName & \multicolumn{5}{|l|}{MTConditionType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of ConditionType (See \cite{UAPart09} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of ConditionType (See \cite{UAPart9} Documentation)} \\
 Has\-Property & Variable & Category & MT\-Category\-Type & Property\-Type & Mandatory \\
 Has\-Property & Variable & MT\-Sub\-Type\-Name & String & Property\-Type & Optional \\
 Has\-Property & Variable & MT\-Type\-Name & String & Property\-Type & Mandatory \\
@@ -2150,6 +2240,14 @@ Has\-Component & Variable & Active\-State & Localized\-Text & Two\-State\-Variab
 \end{tabu}
 \end{table} 
 \FloatBarrier
+\item \texttt{NativeCode::String:} When instantiated in the address space this will represent the \mtmodel{NativeCode} of the last
+\uaterm{Event} that was received. When the ActiveState becomes False and becomes 
+inactive, then the \mtmodel{NativeCode} will be cleared.
+
+\item \texttt{NativeSeverity::String:} When instantiated in the address space this will represent the \mtmodel{NativeSeverity} of the last
+\uaterm{Event} that was received. When the ActiveState becomes False and becomes 
+inactive, then the \mtmodel{NativeSeverity} will be cleared.
+
 \item \textbf{Allowable Values} for \texttt{QualifierDataType}
 \FloatBarrier
 \begin{table}[ht]
@@ -2174,6 +2272,24 @@ Has\-Component & Variable & Active\-State & Localized\-Text & Two\-State\-Variab
 \end{itemize}
 \FloatBarrier
 \subsection{Data Item Types} \label{model:DataItemTypes}
+
+The data item types represent the MTConnect types as defined in Section 8 of the 
+MTConnect Standard Part 2 \cite{MTCPart2} and are represented using the XML \gls{type} 
+\mtmodel{attribute}. The type and sub-type relationships are given in the standard and are 
+not documented in the companion specifiction. 
+
+The model of the types is similar to the OPC UA condition classes as given in OPC UA Part 9
+\cite{UAPart9}. Since MTConnect conditions use the same type system as the data items, 
+the representation of the data item type will be derived from the \texttt{BaseConditionClassType}. 
+The MTConnect Types will not use the \mtmodel{...ClassType}, but will be the name as specified
+in the MTConnect standard with \mtmodel{Type} appended.
+
+For example: The \mtmodel{CONTOLLER_MODE} will be given as the \mtmodel{ControllerModeType}. 
+The relationship to the \gls{MTDataItem} OPC UA types are presented so that it will be
+easier to map the MTConnect types to the correct super class as given in the OPC UA model.
+
+
+
 \subsubsection{Defintion of \texttt{ MTDataItemClassType}}
   \label{type:MTDataItemClassType}
 
@@ -2196,7 +2312,7 @@ BrowseName & \multicolumn{5}{|l|}{MTDataItemClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of BaseConditionClassType (See \cite{UAPart09} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of BaseConditionClassType (See \cite{UAPart9} Documentation)} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{MTConditionClassType} & \multicolumn{2}{|l|}{See section \ref{type:MTConditionClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{MTEventClassType} & \multicolumn{2}{|l|}{See section \ref{type:MTEventClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{MTSampleClassType} & \multicolumn{2}{|l|}{See section \ref{type:MTSampleClassType}} \\
@@ -3451,6 +3567,15 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 \subsection{Controlled Vocab Data Item Types} \label{model:ControlledVocabDataItemTypes}
+
+The MTConnect Standard has the definitions of \glspl{MTEvent} in 
+Section 8.2 of the MTConnect Standard Part 2 \cite{MTCPart2} and the definition of the 
+values can be found in Section 5.5 of MTConnect Standard Part 3 \cite{MTCPart3}. 
+
+The description of each type was copied from the MTConnect Standard,
+but this not the definitive text for each type. For authoritative normative text, 
+please refer to the sources \cite{MTCPart2} and \cite{MTCPart3}.
+
 \subsubsection{Defintion of \texttt{ MTControlledVocabEventClassType}}
   \label{type:MTControlledVocabEventClassType}
 
@@ -3545,7 +3670,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Active\-State\-Data\-Type & Active\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Active\-State\-Data\-Type & Active\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3595,7 +3720,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Availability\-Data\-Type & Availability\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Availability\-Data\-Type & Availability\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3648,7 +3773,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Axis\-Coupling\-Data\-Type & Axis\-Coupling\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Axis\-Coupling\-Data\-Type & Axis\-Coupling\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3699,7 +3824,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Active\-State\-Data\-Type & Active\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Active\-State\-Data\-Type & Active\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3747,7 +3872,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Axis\-State\-Data\-Type & Axis\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Axis\-State\-Data\-Type & Axis\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3799,7 +3924,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Active\-State\-Data\-Type & Active\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Active\-State\-Data\-Type & Active\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3849,7 +3974,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Open\-State\-Data\-Type & Open\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Open\-State\-Data\-Type & Open\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3899,7 +4024,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -3951,7 +4076,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4006,7 +4131,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Composition\-State\-Data\-Type & Composition\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Composition\-State\-Data\-Type & Composition\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4065,7 +4190,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Controller\-Mode\-Data\-Type & Controller\-Mode\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Controller\-Mode\-Data\-Type & Controller\-Mode\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4117,7 +4242,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & On\-Off\-Data\-Type & On\-Off\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & On\-Off\-Data\-Type & On\-Off\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4166,7 +4291,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Direction\-Data\-Type & Direction\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Direction\-Data\-Type & Direction\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4217,7 +4342,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Open\-State\-Data\-Type & Open\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Open\-State\-Data\-Type & Open\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4266,7 +4391,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Emergency\-Stop\-Data\-Type & Emergency\-Stop\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Emergency\-Stop\-Data\-Type & Emergency\-Stop\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4315,7 +4440,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Yes\-No\-Data\-Type & Yes\-No\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Yes\-No\-Data\-Type & Yes\-No\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4367,7 +4492,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & On\-Off\-Data\-Type & On\-Off\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & On\-Off\-Data\-Type & On\-Off\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4415,7 +4540,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Execution\-Data\-Type & Execution\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Execution\-Data\-Type & Execution\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4473,7 +4598,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Functional\-Mode\-Data\-Type & Functional\-Mode\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Functional\-Mode\-Data\-Type & Functional\-Mode\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4525,7 +4650,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-Has\-Component & Variable & Enum\-Strings & Interface\-Status\-Data\-Type & Interface\-Status\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Interface\-Status\-Data\-Type & Interface\-Status\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4574,7 +4699,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4625,7 +4750,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4676,7 +4801,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4727,7 +4852,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4778,7 +4903,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4829,7 +4954,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4880,7 +5005,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4931,7 +5056,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interface\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -4983,7 +5108,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Path\-Mode\-Data\-Type & Path\-Mode\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Path\-Mode\-Data\-Type & Path\-Mode\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -5038,7 +5163,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & On\-Off\-Data\-Type & On\-Off\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & On\-Off\-Data\-Type & On\-Off\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -5088,7 +5213,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Program\-Edit\-Data\-Type & Program\-Edit\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Program\-Edit\-Data\-Type & Program\-Edit\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -5138,7 +5263,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Rotary\-Mode\-Data\-Type & Rotary\-Mode\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Rotary\-Mode\-Data\-Type & Rotary\-Mode\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -5188,7 +5313,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTControlledVocabEventClassType (See section \ref{type:MTControlledVocabEventClassType})} \\
-values & Variable & Enum\-Strings & Active\-State\-Data\-Type & Active\-State\-Data\-Type & Mandatory \\
+Has\-Property & Variable & Enum\-Strings & Active\-State\-Data\-Type & Active\-State\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -6370,7 +6495,7 @@ BrowseName & \multicolumn{5}{|l|}{MTDataItemSubClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of BaseConditionClassType (See \cite{UAPart09} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of BaseConditionClassType (See \cite{UAPart9} Documentation)} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{RelativeSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:RelativeSubClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{RemainingSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:RemainingSubClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{RequestSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:RequestSubClassType}} \\
@@ -8399,11 +8524,27 @@ elements.
 This stereotype is associated with the dependency between a type and a mixin. See Section \ref{type:mixin} for a complete 
 description of the mixin.
 
+\paragraph{Dependencies and Relationships}
+
+\begin{itemize}
+\item Dependency on Realization
+
+This class relates to \texttt{Realization} (See section \ref{type:Realization}) for a(n) \texttt{} relationship.
+
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<stereotype>> Mixes In}}
   \label{type:Mixes In}
 
 \FloatBarrier
+\paragraph{Dependencies and Relationships}
+
+\begin{itemize}
+\item Dependency on Realization
+
+This class relates to \texttt{Realization} (See section \ref{type:Realization}) for a(n) \texttt{} relationship.
+
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<stereotype>> bind}}
   \label{type:bind}
@@ -8429,6 +8570,14 @@ lightweight multiple inheritance. Since OPC/UA does not allow for multiple inher
 and the MTConnect  types require the same set of properties when they are sub-typed
 from existing OPC/UA types, this mechanism allows for this relationship to be expressed.
 
+\paragraph{Dependencies and Relationships}
+
+\begin{itemize}
+\item Dependency on Class
+
+This class relates to \texttt{Class} (See section \ref{type:Class}) for a(n) \texttt{} relationship.
+
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<stereotype>> use}}
   \label{type:use}
@@ -8449,4 +8598,12 @@ properties or relationships.
 For controlled vocabularies of enumerated types, specifies the relationship to the allowable 
 values for the type.
 
+\paragraph{Dependencies and Relationships}
+
+\begin{itemize}
+\item Dependency on Association
+
+This class relates to \texttt{Association} (See section \ref{type:Association}) for a(n) \texttt{} relationship.
+
+\end{itemize}
 \FloatBarrier

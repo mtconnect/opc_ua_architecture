@@ -178,10 +178,10 @@ RSpec.describe LatexModel, 'MixinType definitions' do
         @type = Type.type_for_name('CompositionType')
       end
 
-      it 'should have values EnumValues linked to Vocab enumeration' do
-        s, = @type.dependencies.find { |e| e.stereotype == 'values' }
+      it 'should have values EnumStrings linked to Vocab enumeration' do
+        s, = @type.relation('EnumStrings')
         expect(s).to_not be_nil
-        expect(s.name).to eq('EnumValues')
+        expect(s.name).to eq('EnumStrings')
         expect(s.target.type.name).to eq('Vocab')
         expect(s.target.type.literals).to eq([["CAT", "0"], ["DOG", "1"], ["HORSE", "2"]])
       end

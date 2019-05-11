@@ -15,8 +15,8 @@ RSpec.describe NodesetModel, 'SimpleType definitions' do
     Model.clear
     Relation.clear
 
-    id_file = File.join(File.dirname(__FILE__), 'fixtures', 'SimpleType.csv')
-    opc_file = File.join(File.dirname(__FILE__), 'fixtures', 'SimpleType.NodeIds.csv')
+    id_file = File.join(File.dirname(__FILE__), 'scratch', 'SimpleType.csv')
+    opc_file = File.join(File.dirname(__FILE__), 'scratch', 'SimpleType.NodeIds.csv')
     NodesetModel.create_id_manager(id_file, opc_file, true)
     
     @xmiDoc = @rootModel = nil

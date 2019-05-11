@@ -49,18 +49,6 @@ SkipModels.add('UMLStandardProfile')
 SkipModels.add('Device Example')
 SkipModels.add('MTConnectAssets')
 
-load 'create_documentation.rb'
-
-=begin
-uml = File.open('MTConnect OPC-UA Devices.mdj').read
-umlDoc = JSON.parse(uml)
-
-UmlModels = umlDoc['ownedElements'].dup
-
-SkipModels = Set.new
-SkipModels.add('UMLStandardProfile')
-SkipModels.add('Device Example')
-
 unless ARGV.first
   puts "At least one directve docs or nodeset must be given"
   puts parser.help
@@ -86,4 +74,3 @@ operations.each do |op|
     puts parser.help
   end
 end
-=end

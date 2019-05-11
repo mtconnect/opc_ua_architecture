@@ -13,25 +13,14 @@ NamespaceUri = 'http://opcfoundation.org/UA/MTConnect/v2/'
 puts "\nGenerating Nodeset"
 
 puts "Regenerating based Nodeset Ids" if Options[:clean]
-Ids = IdManager.new('MTConnectNodeIds.csv', Options[:clean])
+NodesetModel.create_id_manager('MTConnectNodeIds.csv', 'MTConnect.NodeIds.csv', Options[:clean])
 
-Ids.load_reference_documents(Options[:clean])
-
-UmlModels.each do |e|
-  NodesetModel.find_definitions(e)
-end
-
-Type.connect_model
+NodesetModel.skip_models = SkipModels
+NodesetModel.new(RootModel).find_definitions
 
 NodesetDocument = NodesetModel.nodeset_document
-Root = NodesetDocument.root
-
 TypeDict = NodesetModel.type_dict_document
-TypeDictRoot = TypeDict.root
-
-
 XmlTypeDict = NodesetModel.xml_type_dict_document
-XmlTypeDictRoot = XmlTypeDict.root
 
 NodesetType.resolve_node_ids
 
@@ -41,6 +30,7 @@ NodesetModel.generate_nodeset('MTConnect Binary')
 NodesetModel.generate_nodeset('MTConnect XML Schema')
 
 Models.each do |model|
+  puts "Generating #{model}"
   NodesetModel.generate_nodeset(model)
 end
 
@@ -49,7 +39,7 @@ error = false
 puts "Validating all references are resolved"
 puts "  Collecting all defined node ids"
 node_ids = Set.new
-Root.each_element('*') do |e|
+NodesetModel.root.each_element('*') do |e|
   nid = e.attribute('NodeId')
   if nid
     if node_ids.include?(nid.value)
@@ -61,7 +51,7 @@ Root.each_element('*') do |e|
 end
 
 puts "  Checking all references"
-Root.each_element('*') do |e|
+NodesetModel.root.each_element('*') do |e|
   nid = e.attribute('DataType')
   if nid and nid.value =~ /^ns=1;/ and !node_ids.include?(nid.value)
     puts "!!!! Data Type NodeId #{nid} is a broken relationship #{e.inspect}"
@@ -85,7 +75,7 @@ end
 
 formatter = REXML::Formatters::Pretty.new(2)
 formatter.compact = true
-
+=begin
 text = ""
 formatter.write(TypeDict, text)
 type = Type.type_for_name('Opc.Ua.MTConnect(Binary)')
@@ -103,10 +93,10 @@ type.add_base64_value(text)
 File.open('./MTConnect.TypeDictionary.XML.xml', 'w') do |f|
   f << text
 end  
-
+=end
 
 File.open('./Opc.Ua.MTConnect.Nodeset2.xml', 'w') do |f|
-  formatter.write(NodesetDocument, f)  
+  formatter.write(NodesetModel.document, f)  
 end
 
 Ids.save

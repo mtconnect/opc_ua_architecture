@@ -71,7 +71,7 @@ module Relation
     
     attr_reader :id, :name, :type, :xmi, :multiplicity,
                 :source, :target, :owner, :documentation,
-                :stereotype
+                :stereotype, :tags
 
     class Connection
       attr_accessor :name, :type, :type_id, :multiplicity

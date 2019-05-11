@@ -1,30 +1,31 @@
 require 'csv'
 require 'set'
+require 'nokogiri'
 
 class IdManager
   def load_reference_documents(clean)
     # Parse Reference Documents.
     if empty? or clean
-      ['OPC_UA_Nodesets/Opc.Ua.NodeSet2.xml'].each do |f|
-        puts "Parsing OPC UA Nodeset: #{f}"
-        File.open(f) do |x|
-          doc = REXML::Document.new(x)
+      f = File.join(File.dirname(__FILE__), '..', 'OPC_UA_Nodesets', 'Opc.Ua.NodeSet2.xml')
+      puts "Parsing OPC UA Nodeset: #{f}"
+      File.open(f) do |x|
+        doc = Nokogiri::XML(x).slop!
+        doc.remove_namespaces!
+        
+        # Copy aliases
+        doc.xpath('//Aliases/Alias').each do |e|
+          add_alias(e['Alias'])
+        end
+        
+        doc.UANodeSet.element_children.each do |e|
+          parent, name, id, sym = e['ParentNodeId'], e['BrowseName'], e['NodeId'],
+                                  e['SymbolicName']
           
-          # Copy aliases
-          doc.root.each_element('//Aliases/Alias') do |e|
-            add_alias(e.attribute('Alias').value)
-          end
-          
-          doc.root.elements.each do |e|
-            parent, name, id, sym = e.attribute('ParentNodeId'), e.attribute('BrowseName'), e.attribute('NodeId'),
-                                    e.attribute('SymbolicName')
-            
-            if name and id and (e.name =~ /Type$/o or
-                                (sym and (sym.value =~ /ModellingRule/o or
-                                          sym.value =~ /BinarySchema/o or
-                                          sym.value =~ /XmlSchema/o)))
-              self[name.value] = id.value 
-            end
+          if name and id and (e.name =~ /Type$/o or
+                              (sym and (sym =~ /ModellingRule/o or
+                                        sym =~ /BinarySchema/o or
+                                        sym =~ /XmlSchema/o)))
+            self[name] = id 
           end
         end
       end
@@ -34,8 +35,9 @@ class IdManager
   end
     
   
-  def initialize(file, clean = false, start = 2000)
+  def initialize(file, opc_file, clean = false, start = 2000)
     @file = file
+    @opc_file = opc_file
     @ids = Hash.new
     @aliases = Set.new
     @next_id = start
@@ -134,7 +136,7 @@ class IdManager
       end
     end
 
-    CSV.open('MTConnect.NodeIds.csv', 'wb') do |csv|
+    CSV.open(@opc_file, 'wb') do |csv|
       @klasses.sort.each do |row|
         csv << row
       end

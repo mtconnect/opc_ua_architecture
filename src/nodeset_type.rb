@@ -42,8 +42,8 @@ class NodesetType < Type
   
   def resolve_node_ids
     name = browse_name
-    @node_id = Ids.id_for(name)
-    @node_alias = @name if Ids.has_alias?(@name)
+    @node_id = NodesetModel.ids.id_for(name)
+    @node_alias = @name if NodesetModel.ids.has_alias?(@name)
 
     unless is_opc?
       @relations.each { |r| r.resolve_node_ids(name) }
@@ -59,7 +59,7 @@ class NodesetType < Type
   def node(type, id, name, display_name: nil, abstract: false, value_rank: nil, data_type: nil, symmetric: nil,
            prefix: true, parent: nil)
     node = REXML::Element.new(type)
-    Root << node
+    NodesetModel.root << node
 
     clean_name = name.sub(/\(.+$/, '')
     
@@ -111,17 +111,17 @@ class NodesetType < Type
 
   def variable_property(ref, owner, path = [])
     nid = ref.node_id(path)
-    Ids.add_node_class(nid, ref.name, 'Variable', path)
+    NodesetModel.ids.add_node_class(nid, ref.name, 'Variable', path)
     
-    Root << REXML::Comment.new(" #{owner.name}::#{ref.name} : #{ref.target.type.name}[#{ref.multiplicity}] ")
+    NodesetModel.root << REXML::Comment.new(" #{owner.name}::#{ref.name} : #{ref.target.type.name}[#{ref.multiplicity}] ")
     refs, ele = node('UAVariable', nid, ref.name, data_type: ref.target.type.node_alias,
                      value_rank: ref.value_rank, prefix: !is_opc_instance?, parent: owner.node_id)
     node_reference(refs, ref.target.type.name, 'HasTypeDefinition', ref.target_node_id, ref.target_node_name)
-    node_reference(refs, ref.rule, 'HasModellingRule', Ids[ref.rule]) unless ref.type == 'UMLSlot'
+    node_reference(refs, ref.rule, 'HasModellingRule', NodesetModel.ids[ref.rule]) unless ref.type == 'uml:Slot'
     node_reference(refs, owner.name, 'HasProperty', owner.node_id, forward: false)
 
     # Add values for slots
-    add_value(ele, ref) if ref.type == 'UMLSlot'
+    add_value(ele, ref) if ref.type == 'uml:Slot'
 
     if owner.tags
       tag, = owner.tags.select { |t| t['name'] == ref.name }
@@ -168,7 +168,7 @@ class NodesetType < Type
       variable_property(a, owner, path)
     elsif a.is_a? Relation::Association
       #puts "      Checking OPC object ref"
-      if @type == 'UMLObject' && a.target.type.is_opc?
+      if @type == 'uml:Object' && a.target.type.is_opc? 
         create_opc_object_reference(refs, a)
       else
         reference(refs, a, path)
@@ -186,15 +186,15 @@ class NodesetType < Type
 
   def component(ref, owner, path)
     nid = ref.node_id(path)    
-    Root << REXML::Comment.new(" #{owner.name}::#{ref.name} : #{ref.target.type.name}[#{ref.multiplicity}] ")
+    NodesetModel.root << REXML::Comment.new(" #{owner.name}::#{ref.name} : #{ref.target.type.name}[#{ref.multiplicity}] ")
 
     if ref.target.type.is_variable?
-      Ids.add_node_class(nid, ref.name, 'Variable', path)
+      NodesetModel.ids.add_node_class(nid, ref.name, 'Variable', path)
       refs, ele = node('UAVariable', nid, ref.name,
                        data_type: ref.target.type.variable_data_type.node_alias,
                        parent: owner.node_id)
     else
-      Ids.add_node_class(nid, ref.name, 'Object', path)
+      NodesetModel.ids.add_node_class(nid, ref.name, 'Object', path)
       refs, ele = node('UAObject', nid, ref.name, parent: owner.node_id)
     end
 
@@ -203,12 +203,12 @@ class NodesetType < Type
     ref.target.type.instantiate_relations(refs, pnt, path)
 
     node_reference(refs, ref.target.type.name, 'HasTypeDefinition', ref.target.type.node_id)
-    node_reference(refs, ref.rule, 'HasModellingRule', Ids[ref.rule])
+    node_reference(refs, ref.rule, 'HasModellingRule', NodesetModel.ids[ref.rule])
     node_reference(refs, owner.name, ref.reference_type, owner.node_id, forward: false)
   end
 
   def is_opc_instance?
-    @type == 'UMLObject' and @classifier.is_opc?
+    @type == 'uml:Object' and @classifier.is_opc?
   end
   
   def relationships(refs, owner, path = [])
@@ -227,11 +227,11 @@ class NodesetType < Type
   def node_class
     return '<DynamicType>' if stereotype_name == '<<Dynamic Type>>'
 
-    if @type == 'UMLEnumeration'
+    if @type == 'uml:Enumeration'
       'Enumeration'
-    elsif @type == 'UMLDataType'
+    elsif @type == 'uml:DataType'
       'DataType'
-    elsif @type == 'UMLObject'
+    elsif @type == 'uml:Object'
       'Object'
     elsif is_a_type?('BaseObjectType') or is_a_type?('BaseEventType')
       'ObjectType'
@@ -241,7 +241,7 @@ class NodesetType < Type
       'ReferenceType'
     elsif  @stereotype and @stereotype.name == 'mixin'
       'Mixin'
-    elsif @type == 'UMLStereotype'
+    elsif @type == 'uml:Stereotype'
       'Stereotype'
     else
       puts "!! Do not know how to generate #{@name} #{@type} check Generalization Relationship"
@@ -252,25 +252,25 @@ class NodesetType < Type
   def generate_object_or_variable(nt)
     case nt
     when 'ObjectType'
-      Root << REXML::Comment.new(" Definition of Object #{@name} #{node_id} ")
-      print "** Generating ObjectType"
-      Ids.add_node_class(node_id, @name, 'ObjectType')
+      NodesetModel.root << REXML::Comment.new(" Definition of Object #{@name} #{node_id} ")
+      print "** Generating ObjectType #{@name} '#{node_id}'"
+      NodesetModel.ids.add_node_class(node_id, @name, 'ObjectType')
       refs, = node('UAObjectType', node_id, @name, abstract: @abstract)
 
     when 'VariableType'
       v = get_attribute_like(/ValueRank$/)
-      Root << REXML::Comment.new(" Definition of Variable #{@name} #{node_id} ")
+      NodesetModel.root << REXML::Comment.new(" Definition of Variable #{@name} #{node_id} ")
       print "** Generating VariableType"
-      Ids.add_node_class(node_id, @name, 'VariableType')
+      NodesetModel.ids.add_node_class(node_id, @name, 'VariableType')
       refs, = node('UAVariableType', node_id, @name, abstract: @abstract, value_rank: v.default,
                    data_type: variable_data_type.node_alias)
 
     when 'ReferenceType'
-      Root << REXML::Comment.new(" Definition of Reference #{@name} #{node_id} ")
+      NodesetModel.root << REXML::Comment.new(" Definition of Reference #{@name} #{node_id} ")
       print "** Generating ReferenceType"
       symmetric = get_attribute_like(/Symmetric$/, /Attribute/)
       is_symmetric = symmetric.default
-      Ids.add_node_class(node_id, @name, 'ReferenceType')
+      NodesetModel.ids.add_node_class(node_id, @name, 'ReferenceType')
       refs, = node('UAReferenceType', node_id, @name, abstract: @abstract, symmetric: is_symmetric)
       
     else
@@ -289,13 +289,13 @@ class NodesetType < Type
 
   def generate_enumeration
     puts "** Generating Enumeration for #{@name}"
-    Root << REXML::Comment.new(" Definition of Enumeration #{@name} #{node_id} ")
-    Ids.add_node_class(node_id, @name, 'DataType')
+    NodesetModel.root << REXML::Comment.new(" Definition of Enumeration #{@name} #{node_id} ")
+    NodesetModel.ids.add_node_class(node_id, @name, 'DataType')
     refs, node = node('UADataType', node_id, @name)
-    enum_nid = Ids.id_for("#{browse_name}/EnumStrings")
+    enum_nid = NodesetModel.ids.id_for("#{browse_name}/EnumStrings")
     
     # node.add_element('Description').add_text(@documentation) if @documentation
-    node_reference(refs, 'Enumeration', 'HasSubtype', Ids['Enumeration'], forward: false)
+    node_reference(refs, 'Enumeration', 'HasSubtype', NodesetModel.ids['Enumeration'], forward: false)
     node_reference(refs, 'EnumStrings', 'HasProperty', enum_nid)
 
     value_ele = REXML::Element.new('Value')
@@ -303,8 +303,8 @@ class NodesetType < Type
                                    { 'xmlns' => 'http://opcfoundation.org/UA/2008/02/Types.xsd'})
 
     # Create type dict entry
-    struct = TypeDictRoot.add_element('opc:EnumeratedType', {'Name' => @name, 'LengthInBits' => '32', 'BaseType' => "ua:ExtensionObject" })
-    res = XmlTypeDictRoot.add_element('xs:simpleType', {'name' => "#{@name}Enum" }).
+    struct = NodesetModel.type_dict_root.add_element('opc:EnumeratedType', {'Name' => @name, 'LengthInBits' => '32', 'BaseType' => "ua:ExtensionObject" })
+    res = NodesetModel.xml_type_dict_root.add_element('xs:simpleType', {'name' => "#{@name}Enum" }).
             add_element('xs:restriction', { 'base' => 'xs:string' })
     
     defs = node.add_element('Definition', { 'Name' => @name })
@@ -321,15 +321,15 @@ class NodesetType < Type
       struct.add_element('opc:EnumeratedValue', { 'Name' => name, 'Value' =>  value})
       res.add_element('xs:enumeration', { 'value' => name })
     end
-    XmlTypeDictRoot.add_element('xs:element', { 'name' => @name, 'type' => "mtc:#{@name}Enum" })
+    NodesetModel.xml_type_dict_root.add_element('xs:element', { 'name' => @name, 'type' => "mtc:#{@name}Enum" })
     
     # now create the enum strings property
-    Root << REXML::Comment.new(" #{@name}::EnumStrings #{enum_nid} ")
-    Ids.add_node_class(node_id, 'EnumStrings', 'Variable', [@name])
+    NodesetModel.root << REXML::Comment.new(" #{@name}::EnumStrings #{enum_nid} ")
+    NodesetModel.ids.add_node_class(node_id, 'EnumStrings', 'Variable', [@name])
     refs, node = node('UAVariable', enum_nid, 'EnumStrings', data_type: 'LocalizedText',
                       value_rank: 1, parent: node_id)
-    node_reference(refs, 'PropertyType', 'HasTypeDefinition', Ids['PropertyType'])
-    node_reference(refs, 'Mandatory', 'HasModellingRule', Ids['Mandatory'])
+    node_reference(refs, 'PropertyType', 'HasTypeDefinition', NodesetModel.ids['PropertyType'])
+    node_reference(refs, 'Mandatory', 'HasModellingRule', NodesetModel.ids['Mandatory'])
     node_reference(refs, 'Owner', 'HasProperty', node_id, forward: false)
 
     node << value_ele
@@ -353,23 +353,23 @@ class NodesetType < Type
   
   def create_default_encoding(encoding, sel = nil, frag = nil)
     # Generate Default encoding
-    eid = Ids.id_for("#{browse_name}/Default #{encoding}")
-    did = Ids.id_for("#{browse_name}/Default #{encoding}/Description") if sel
-    fid = Ids.id_for("#{browse_name}/Default #{encoding}/Description/DictionaryFragment") if frag
+    eid = NodesetModel.ids.id_for("#{browse_name}/Default #{encoding}")
+    did = NodesetModel.ids.id_for("#{browse_name}/Default #{encoding}/Description") if sel
+    fid = NodesetModel.ids.id_for("#{browse_name}/Default #{encoding}/Description/DictionaryFragment") if frag
     
-    Root << REXML::Comment.new(" Default #{encoding} encoding of #{@name} ")
+    NodesetModel.root << REXML::Comment.new(" Default #{encoding} encoding of #{@name} ")
     erefs, enode = node('UAObject', eid, "Default #{encoding}", prefix: false)
     node_reference(erefs, @name, 'HasEncoding',  node_id, forward: false)
-    node_reference(erefs, 'DataTypeEncodingType', 'HasTypeDefinition', Ids['DataTypeEncodingType'])
+    node_reference(erefs, 'DataTypeEncodingType', 'HasTypeDefinition', NodesetModel.ids['DataTypeEncodingType'])
     
     if sel
       node_reference(erefs, 'HasDescription', 'HasDescription', did)
 
-      schema = Ids["#{Namespace}:Opc.Ua.MTConnect(#{encoding})"]
+      schema = NodesetModel.ids["#{Namespace}:Opc.Ua.MTConnect(#{encoding})"]
 
-      Root << REXML::Comment.new(" #{encoding} DataTypeDescription for #{@name} ")
+      NodesetModel.root << REXML::Comment.new(" #{encoding} DataTypeDescription for #{@name} ")
       drefs, dnode = node('UAVariable', did, @name, data_type: 'String', parent: schema)
-      node_reference(drefs, 'DataTypeDescriptionType', 'HasTypeDefinition', Ids['DataTypeDescriptionType'])
+      node_reference(drefs, 'DataTypeDescriptionType', 'HasTypeDefinition', NodesetModel.ids['DataTypeDescriptionType'])
       node_reference(drefs, 'DictionaryFragment', 'HasProperty', fid) if frag
       node_reference(drefs, 'Opc.Ua.MTConnect', 'HasComponent', schema, forward: false)
       
@@ -382,10 +382,10 @@ class NodesetType < Type
       obj.add_component_ref(@name, did)    
     
       if frag
-        Root << REXML::Comment.new(" DictionaryFragment for #{@name} ")
+        NodesetModel.root << REXML::Comment.new(" DictionaryFragment for #{@name} ")
         frefs, fnode = node('UAVariable', fid, "DictionaryFragment", data_type: 'ByteString', parent: did)
         node_reference(frefs, 'Owner', 'HasProperty', did, forward: false)
-        node_reference(frefs, 'PropertyType', 'HasTypeDefinition', Ids['PropertyType'])
+        node_reference(frefs, 'PropertyType', 'HasTypeDefinition', NodesetModel.ids['PropertyType'])
         
         formatter = REXML::Formatters::Pretty.new(2)
         formatter.compact = true
@@ -407,11 +407,11 @@ class NodesetType < Type
 
   def generate_data_type
     puts "** Generating DataType for #{@name}"
-    Ids.add_node_class(node_id, @name, 'DataType')
-    Root << REXML::Comment.new(" Definition of DataType #{@name} #{node_id} ")
+    NodesetModel.ids.add_node_class(node_id, @name, 'DataType')
+    NodesetModel.root << REXML::Comment.new(" Definition of DataType #{@name} #{node_id} ")
     refs, node = node('UADataType', node_id, @name)
     #node.add_element('Description').add_text(@documentation) if @documentation
-    node_reference(refs, 'BaseDataType', 'HasSubtype', Ids['Structure'], forward: false)
+    node_reference(refs, 'BaseDataType', 'HasSubtype', NodesetModel.ids['Structure'], forward: false)
     
     defs = node.add_element('Definition', { 'Name' => @name })
     @relations.each do |r|
@@ -426,10 +426,10 @@ class NodesetType < Type
     end
 
     # Create entry in TypeDictionary
-    struct = TypeDictRoot.add_element('opc:StructuredType', {'Name' => @name, 'BaseType' => "ua:ExtensionObject" })
+    struct = NodesetModel.type_dict_root.add_element('opc:StructuredType', {'Name' => @name, 'BaseType' => "ua:ExtensionObject" })
     struct.add_element('opc:Documentation').add_text("The encoding for #{@name}")
 
-    seq = XmlTypeDictRoot.add_element('xs:complexType', {'name' => "#{@name}DataType" }).
+    seq = NodesetModel.xml_type_dict_root.add_element('xs:complexType', {'name' => "#{@name}DataType" }).
             add_element('xs:sequence')
     
     @relations.each do |r|
@@ -438,7 +438,7 @@ class NodesetType < Type
                                       'type' => XMLTypes[r.target.type.name],
                                       'minOccurs' => '1', 'maxOccurs' => '1' })
     end
-    XmlTypeDictRoot.add_element('xs:element', { 'name' => @name, 'type' => "mtc:#{@name}DataType"})
+    NodesetModel.xml_type_dict_root.add_element('xs:element', { 'name' => @name, 'type' => "mtc:#{@name}DataType"})
 
     create_binary_encoding(struct)
     create_xml_encoding
@@ -447,14 +447,14 @@ class NodesetType < Type
 
   def generate_instance    
     print "++ Generating #{@classifier.base_type} #{@name}"
-    Root << REXML::Comment.new(" Instantiation of Object #{@name} #{node_id} ")
+    NodesetModel.root << REXML::Comment.new(" Instantiation of Object #{@name} #{node_id} ")
     if (@classifier.base_type == 'Variable')
       puts "::#{@classifier.name} - #{@classifier.variable_data_type.name}"
-      Ids.add_node_class(node_id, @name, 'Variable')
+      NodesetModel.ids.add_node_class(node_id, @name, 'Variable')
       @refs, @node = node('UAVariable', node_id, @name, data_type: @classifier.variable_data_type.node_alias)
     else
       puts "::#{@classifier.name}"
-      Ids.add_node_class(node_id, @name, 'Object')
+      NodesetModel.ids.add_node_class(node_id, @name, 'Object')
       @refs, @node = node('UAObject', node_id, @name)
     end
     node_reference(@refs, @classifier.name, 'HasTypeDefinition', @classifier.node_id)

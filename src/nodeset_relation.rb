@@ -8,12 +8,12 @@ module Relation
     
     def resolve_node_ids(parent)
       create_name(parent)
-      @node_id = Ids.id_for(@node_name)
+      @node_id = NodesetModel.ids.id_for(@node_name)
     end
 
     def node_id(path)
       if path
-        @node_id = Ids.id_for(expand_name(path))
+        @node_id = NodesetModel.ids.id_for(expand_name(path))
       else
         @node_id
       end
@@ -26,8 +26,8 @@ module Relation
 
     def reference_type_alias
       ref = reference_type
-      if Ids.has_id?(ref)
-        Ids.alias_or_id(ref)
+      if NodesetModel.ids.has_id?(ref)
+        NodesetModel.ids.alias_or_id(ref)
       elsif stereotype
         stereotype.node_id
       else
@@ -47,7 +47,7 @@ module Relation
   class Association
     def target_node_id
       if is_folder?
-        Ids['FolderType']
+        NodesetModel.ids['FolderType']
       else
         @target.type.node_id
       end
@@ -55,7 +55,7 @@ module Relation
     
     def target_node_id
       if is_folder?
-        Ids['FolderType']
+        NodesetModel.ids['FolderType']
       else
         @target.type.node_id
       end
@@ -64,19 +64,19 @@ module Relation
 
   class Attribute
     def target_node_id
-      Ids['PropertyType']
+      NodesetModel.ids['PropertyType']
     end
   end
 
   class Generalization
     def target_node_id
-      Ids['ObjectType']
+      NodesetModel.ids['ObjectType']
     end    
   end
 
   class Slot
     def target_node_id
-      Ids['PropertyType']
+      NodesetModel.ids['PropertyType']
     end
   end
 end

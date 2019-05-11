@@ -12,9 +12,10 @@ class NodesetType < Type
   attr_reader :node_id
 
   class OwnerReference
-    attr_reader :name, :node_id, :tags
-    def initialize(name, node_id, tags)
-      @name, @node_id, @tags = name, node_id, tags
+    attr_reader :name, :node_id, :constraints
+    def initialize(name, node_id, constraints)
+      puts "Creating Owner ref #{name} #{constraints.inspect}"
+      @name, @node_id, @constraints = name, node_id, constraints
     end
   end
   
@@ -112,10 +113,12 @@ class NodesetType < Type
   def variable_property(ref, owner, path = [])
     nid = ref.node_id(path)
     NodesetModel.ids.add_node_class(nid, ref.name, 'Variable', path)
-    
+
+    #puts " #{owner.name}::#{ref.name} : #{ref.target.type.name}[#{ref.multiplicity}] #{owner.class}"
     NodesetModel.root << REXML::Comment.new(" #{owner.name}::#{ref.name} : #{ref.target.type.name}[#{ref.multiplicity}] ")
     refs, ele = node('UAVariable', nid, ref.name, data_type: ref.target.type.node_alias,
                      value_rank: ref.value_rank, prefix: !is_opc_instance?, parent: owner.node_id)
+
     node_reference(refs, ref.target.type.name, 'HasTypeDefinition', ref.target_node_id, ref.target_node_name)
     node_reference(refs, ref.rule, 'HasModellingRule', NodesetModel.ids[ref.rule]) unless ref.type == 'uml:Slot'
     node_reference(refs, owner.name, 'HasProperty', owner.node_id, forward: false)
@@ -123,17 +126,15 @@ class NodesetType < Type
     # Add values for slots
     add_value(ele, ref) if ref.type == 'uml:Slot'
 
-    if owner.tags
-      tag, = owner.tags.select { |t| t['name'] == ref.name }
-      if tag
-        if ref.target.type.name == 'LocalizedText'
-          value = ele.add_element('Value').
-                    add_element('LocalizedText', { 'xmlns' => 'http://opcfoundation.org/UA/2008/02/Types.xsd' })
-          value.add_element('Locale').add_text('en')
-          value.add_element('Text').add_text(tag['value'])
-        else
-          raise "Do not know how to assign value for #{ref.target.type.name}"
-        end
+    # puts "#{ref.name}: #{owner.constraints.inspect} #{ref.target.type.name}"
+    if owner.constraints and owner.constraints[ref.name]
+      if ref.target.type.name == 'LocalizedText'
+        value = ele.add_element('Value').
+                  add_element('LocalizedText', { 'xmlns' => 'http://opcfoundation.org/UA/2008/02/Types.xsd' })
+        value.add_element('Locale').add_text('en')
+        value.add_element('Text').add_text(owner.constraints[ref.name])
+      else
+        raise "Do not know how to assign value for #{ref.target.type.name}"
       end
     end
   end
@@ -198,7 +199,7 @@ class NodesetType < Type
       refs, ele = node('UAObject', nid, ref.name, parent: owner.node_id)
     end
 
-    pnt = OwnerReference.new(ref.name, nid, ref.tags)
+    pnt = OwnerReference.new(ref.name, nid, ref.constraints)
     path = (path.dup << ref.name)
     ref.target.type.instantiate_relations(refs, pnt, path)
 

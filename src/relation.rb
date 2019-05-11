@@ -71,7 +71,7 @@ module Relation
     
     attr_reader :id, :name, :type, :xmi, :multiplicity,
                 :source, :target, :owner, :documentation,
-                :stereotype, :tags
+                :stereotype, :constraints
 
     class Connection
       attr_accessor :name, :type, :type_id, :multiplicity
@@ -101,7 +101,8 @@ module Relation
       @name = r['name']
       @type = r['type']
       @xmi = r
-
+      @constraints = nil
+      
       @extended = ::Relation.connections[@id]
       @multiplicity, @optional = get_multiplicity(r)
 
@@ -233,6 +234,13 @@ module Relation
       @name = @target.name || @name || @source.name
       @multiplicity = @target.multiplicity
       @optional = @target.optional
+      @constraints = nil
+
+      assoc.xpath('./ownedRule[@type="uml:Constraint"]').each do |c|
+        name = c['name']
+        spec = c.at('./specification')
+        (@constraints ||= {})[name] = spec['body'] if spec
+      end
     end
 
     def final_target

@@ -5,7 +5,7 @@ class Type
   include Extensions
   
   attr_reader :name, :id, :type, :model, :json, :parent, :children, :relations, :stereotype,
-              :tags, :extended, :documentation, :literals
+              :constraints, :extended, :documentation, :literals
   attr_accessor :class_link
 
   @@types_by_id = {}
@@ -106,7 +106,6 @@ class Type
 
     @operations = e['operations'] || []
     @abstract = e['isAbstract'] || false
-    @tags = e['tags']
     @model = model
     @literals = []
     if @type == 'uml:Enumeration'
@@ -118,15 +117,6 @@ class Type
     @aliased = false
     @class_link = nil
 
-    if e['tags']
-      e['tags'].each do |t|
-        if t['name'] == 'Alias'
-          puts "#{@name} #{t['checked']}" unless t['checked']
-          @aliased = t['checked']
-        end
-      end
-    end
-
     associations = []
     unless @type == 'uml:PrimitiveType' or @type == 'uml:Enumeration'
       e.element_children.each do |r|
@@ -135,7 +125,8 @@ class Type
       associations.compact!
     end
 
-    @relations, @constraints = associations.partition { |e| e.class != Relation::Constraint }
+    #@relations, @constraints = associations.partition { |e| e.class != Relation::Constraint }
+    @relations = associations
 
     @children = []
 

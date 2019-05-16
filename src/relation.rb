@@ -214,17 +214,18 @@ module Relation
       super(owner, r)
 
       tid = r.at('type')['idref']
-      @source = End.new(r, nil, owner)
       
       aid = r['association']
       assoc = r.document.at("//packagedElement[@id='#{aid}']")
-      sid = assoc.at('ownedEnd/type')['idref']
+      src = assoc.at('./ownedEnd')
       @assoc_type = assoc['type']
 
+      @source = End.new(src, nil, owner)
+      
       @association = ::Relation.connections[aid]
       unpack_extended_properties(@association)
 
-      @final_target = @target = End.new(assoc, tid)
+      @final_target = @target = End.new(r, tid)
 
       if @assoc_type == 'uml:AssociationClass'
         @target = End.new(r, aid)
@@ -284,6 +285,13 @@ module Relation
 
     def resolve_types
       super
+
+      if !@target.equal?(@final_target)
+        unless @final_target.resolve_type or @final_target.type_id =~ /^EA/
+          raise "    !!!! cannot resolve target for #{@owner.name}::#{@name} #{self.class.name}"
+        end
+      end
+      
       if is_folder?
         @target = Connection.new('OrganizedBy', nil, Type.type_for_name('FolderType'))
       end

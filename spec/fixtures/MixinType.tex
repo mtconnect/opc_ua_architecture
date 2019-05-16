@@ -22,9 +22,10 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart05} Documentation)} \\
 Has\-Property & Variable & id & Id\-Type & Property\-Type & Mandatory \\
-Has\-Property & Variable & name & String & Property\-Type & Mandatory \\
-Has\-Property & Variable & uuid & String & Property\-Type & Mandatory \\
-Has\-Notifier & Object & <Component> & \multicolumn{2}{l|}{ComponentType} & Mandatory \\
+Has\-Property & Variable & name & String & Property\-Type & Optional \\
+Has\-Property & Variable & uuid & String & Property\-Type & Optional \\
+Has\-Notifier & Object & <Base\-Object> & \multicolumn{2}{l|}{BaseObjectType} & Optional \\
+Has\-Component & Variable & Active\-State & Base\-Data\-Type & Two\-State\-Variable\-Type & Mandatory \\
 Organizes & Object & Compositions & Composition\-Type[] & Folder\-Type & Optional \\
 Has\-Component & Variable & <Integer\-Event> & Int32[] & Integer\-Event\-Type & Optional \\
 \end{tabu}
@@ -40,6 +41,58 @@ Has\-Component & Variable & <Integer\-Event> & Int32[] & Integer\-Event\-Type & 
 \item \texttt{uuid::String:} Only required with Device
 
 \end{itemize}
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ CompositionFolder}}
+  \label{type:CompositionFolder}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{CompositionFolder} Definition}
+  \label{table:CompositionFolder}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{CompositionFolder} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of FolderType (See \cite{UAPart05} Documentation)} \\
+Has\-Property & Variable & Count & Integer & Property\-Type & Mandatory \\
+Organizes & Object & <Folder> & Composition\-Type & Folder\-Type & Mandatory \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ CompositionItem}}
+  \label{type:CompositionItem}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{CompositionItem} Definition}
+  \label{table:CompositionItem}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{CompositionItem} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart05} Documentation)} \\
+Has\-Property & Variable & id & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & name & String & Property\-Type & Mandatory \\
+\end{tabu}
+\end{table} 
+
+
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ CompositionType}}
   \label{type:CompositionType}
@@ -62,6 +115,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart05} Documentation)} \\
 Has\-Property & Variable & type & String & Property\-Type & Mandatory \\
 Has\-Property & Variable & Enum\-Strings & Vocab & Vocab & Mandatory \\
+Organizes & Object & Items & Composition\-Item[] & Folder\-Type & Optional \\
 \end{tabu}
 \end{table} 
 

@@ -1005,6 +1005,8 @@
 					<memberEnd xmi:idref="EAID_srcD76BDC_6469_4c1b_8D9E_C0F9D669C14C"/>
 					<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dstD76BDC_6469_4c1b_8D9E_C0F9D669C14C" association="EAID_B3D76BDC_6469_4c1b_8D9E_C0F9D669C14C">
 						<type xmi:idref="EAID_7607130B_07BB_44fd_8ECA_1A16A2E28B37"/>
+						<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000241__6469_4c1b_8D9E_C0F9D669C14C" value="0"/>
+						<upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="EAID_LI000242__6469_4c1b_8D9E_C0F9D669C14C" value="1"/>
 					</ownedEnd>
 				</packagedElement>
 				<packagedElement xmi:type="uml:Class" xmi:id="EAID_1C357CEE_BFD9_438d_A649_1A0DDDF0E5D5" name="CompositionType">
@@ -7306,7 +7308,7 @@
 				<target xmi:idref="EAID_7607130B_07BB_44fd_8ECA_1A16A2E28B37">
 					<model ea_localid="125" type="Class" name="ComponentType"/>
 					<role visibility="Public" targetScope="instance"/>
-					<type aggregation="composite" containment="Unspecified"/>
+					<type multiplicity="0..1" aggregation="composite" containment="Unspecified"/>
 					<constraints/>
 					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
 					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;"/>
@@ -7320,7 +7322,7 @@
 				<parameterSubstitutions/>
 				<documentation/>
 				<appearance linemode="2" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
-				<labels lb="0..*" lt="+Compositions" mb=" &#xA;«Organizes»"/>
+				<labels lb="0..*" lt="+Compositions" mb=" &#xA;«Organizes»" rb="0..1"/>
 				<extendedProperties conditional=" &#xA;«Organizes»" virtualInheritance="0"/>
 				<style/>
 				<xrefs value="$XREFPROP=$XID={79E3752F-E21B-4a72-AF97-18622D657234}$XID;$NAM=Stereotypes$NAM;$TYP=connector property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=Organizes;GUID={D6CE07DE-A7A6-4fd8-83C2-A9A9D5727748};FQName=OPC UA Profile::Organizes;@ENDSTEREO;$DES;$CLT={B3D76BDC-6469-4c1b-8D9E-C0F9D669C14C}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>

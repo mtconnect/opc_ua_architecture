@@ -126,6 +126,7 @@ class Type
     end
 
     #@relations, @constraints = associations.partition { |e| e.class != Relation::Constraint }
+    @constraints = []
     @relations = associations
 
     @children = []
@@ -261,7 +262,6 @@ class Type
         return a
       end
     end
-    puts "Recursing"
     return @parent.get_attribute_like(name, stereo) if @parent
     nil
   end

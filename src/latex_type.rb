@@ -113,20 +113,25 @@ class LatexType < Type
     # puts "Generating relations for #{@name}"
     @relations.each do |r|
       if r.is_reference?
-        # puts "  Ref: '#{r.name}' '#{r.stereotype}' '#{r.final_target.type.name}' #{r.target_node_name}"
-        next if r.stereotype and r.stereotype =~ /Attribute/
+        begin
+          # puts "  Ref: '#{r.name}' '#{r.stereotype}' '#{r.final_target.type.name}' #{r.target_node_name}"
+          next if r.stereotype and r.stereotype =~ /Attribute/
+          
+          array = '[]' if r.is_array?
+          
+          if r.is_property? or r.is_folder?
+            type_info = "#{hyphenate(r.final_target.type.name)}#{array} & #{hyphenate(r.target_node_name)}"
+          elsif r.target.type.is_variable?
+            type_info = "#{hyphenate(r.target.type.variable_data_type.name)}#{array} & #{hyphenate(r.target_node_name)}"
+          else
+            type_info = "\\multicolumn{2}{l|}{#{r.target_node_name}#{array}}"
+          end
 
-        array = '[]' if r.is_array?
-        
-        if r.is_property? or r.is_folder?
-          type_info = "#{hyphenate(r.final_target.type.name)}#{array} & #{hyphenate(r.target_node_name)}"
-        elsif r.target.type.is_variable?
-          type_info = "#{hyphenate(r.target.type.variable_data_type.name)}#{array} & #{hyphenate(r.target_node_name)}"
-        else
-          type_info = "\\multicolumn{2}{l|}{#{r.target_node_name}#{array}}"
+          f.puts "#{hyphenate(r.reference_type)} & #{r.target.type.base_type} & #{hyphenate(r.browse_name)} & #{type_info} & #{r.rule} \\\\"
+        rescue
+          puts "#{$!}: #{@name}::#{r.name} #{r.final_target.name} #{r.final_target.type_id} #{r.final_target.type}"
+          raise 
         end
-
-        f.puts "#{hyphenate(r.reference_type)} & #{r.target.type.base_type} & #{hyphenate(r.browse_name)} & #{type_info} & #{r.rule} \\\\"          
       end
     end
   end

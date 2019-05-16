@@ -91,6 +91,10 @@ class NodesetType < Type
     node_reference(refs, rel.name, rel.reference_type_alias,
                    rel.node_id(path), rel.target.type.name,
                    forward: forward)
+
+  rescue
+    puts "#{$!}: #{rel.name}"
+    raise $!
   end
 
   def add_value(ele, ref)

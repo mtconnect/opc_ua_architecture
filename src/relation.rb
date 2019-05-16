@@ -17,6 +17,8 @@ module Relation
   end
   
   def self.create_association(owner, r)
+    return if r.name == 'memberEnd'
+    
     case r['type']
     when 'uml:Generalization'
       Generalization.new(owner, r)
@@ -44,11 +46,8 @@ module Relation
     when 'uml:Slot'
       Slot.new(owner, r)
 
-    when 'uml:AssociationClassLink'
-      Folder.new(owner, r)
-      
     else
-      puts "!! Unknown relation type: #{r['id']} - #{r['type']} for #{owner.name}"
+      puts "!! Unknown relation type: #{r.name} :: #{r['id']} - #{r['type']} for #{owner.name}"
     end
   end
 
@@ -187,15 +186,15 @@ module Relation
   end
   
   class Association < Relation
-    attr_reader :final_target, :association
+    attr_reader :final_target, :association, :assoc_type
     
     class End < Connection
       include Extensions
       
       attr_accessor :name, :optional, :navigable, :xmi
       
-      def initialize(e, tid)
-        super(e['name'], tid)
+      def initialize(e, tid, type = nil)
+        super(e['name'], tid, type)
 
         @multiplicity, @optional = get_multiplicity(e)
         @navigable = false
@@ -214,23 +213,25 @@ module Relation
     def initialize(owner, r)
       super(owner, r)
 
-      sid = r.at('type')['idref']
-      @source = End.new(r, sid)
+      tid = r.at('type')['idref']
+      @source = End.new(r, nil, owner)
       
       aid = r['association']
       assoc = r.document.at("//packagedElement[@id='#{aid}']")
-      tid = assoc.at('ownedEnd/type')['idref']
+      sid = assoc.at('ownedEnd/type')['idref']
+      @assoc_type = assoc['type']
 
       @association = ::Relation.connections[aid]
       unpack_extended_properties(@association)
 
-      @target = End.new(assoc, tid)
+      @final_target = @target = End.new(assoc, tid)
 
-      if @props['direction'] and @props['direction'] =~ /^Destination/
-        @source, @target = @target, @source
+      if @assoc_type == 'uml:AssociationClass'
+        @target = End.new(r, aid)
+        # Always a folder
+        @stereotype = "Organizes"
       end
-      @final_target = @target
-      
+
       @name = @target.name || @name || @source.name
       @multiplicity = @target.multiplicity
       @optional = @target.optional
@@ -286,19 +287,6 @@ module Relation
       if is_folder?
         @target = Connection.new('OrganizedBy', nil, Type.type_for_name('FolderType'))
       end
-    end
-  end
-
-  class Folder < Relation
-    def initialize(owner, a)
-      super(owner, a)
-      @owner = owner
-      @klass = a['classSide']
-      @association = a['associationSide']
-      @owner.class_link = self
-    end
-
-    def resolve_types
     end
   end
 

@@ -121,5 +121,34 @@ RSpec.describe NodesetModel, 'MixinType Nodeset definitions' do
     end
   end
 
+  context 'with Compositions' do
+    before(:each) do
+      @type = NodesetType.type_for_name('CompositionType')
+    end
+
+    it 'should have a CompositionType' do
+      expect(@type).to_not be_nil
+    end
+
+    it 'should generate xml' do
+      @type.generate_nodeset
+      formatter.write(NodesetModel.document, STDOUT)
+    end
+  end
+
+  context 'with CompositionFolder' do
+    before(:each) do
+      @type = NodesetType.type_for_name('CompositionFolder')
+    end
+
+    it 'should have a CompositionFolder' do
+      expect(@type).to_not be_nil
+    end
+
+    it 'should generate xml' do
+      @type.generate_nodeset
+      formatter.write(NodesetModel.document, STDOUT)
+    end
+  end
 end
 

@@ -4,16 +4,6 @@ module Relation
   @@connections = {}
   
   def self.clear
-    @@connections.clear
-  end
-  
-  def self.add_connection(e)
-    id = e['idref']
-    @@connections[id] = e
-  end
-
-  def self.connections
-    @@connections
   end
   
   def self.create_association(owner, r)
@@ -60,7 +50,7 @@ module Relation
       @name = r['name']
       @specification = r['specification']
 
-      @extended = ::Relation.connections[@id]
+      @extended = r.at("//connector[@idref='#{@id}']")
       unpack_extended_properties(@extended)
     end
   end
@@ -101,8 +91,8 @@ module Relation
       @type = r['type']
       @xmi = r
       @constraints = nil
-      
-      @extended = ::Relation.connections[@id]
+       
+      @extended = r.at("//connector[@idref='#{@id}']")
       @multiplicity, @optional = get_multiplicity(r)
 
       @source = Connection.new('Source', nil, owner)
@@ -214,18 +204,16 @@ module Relation
       super(owner, r)
 
       tid = r.at('type')['idref']
+      @final_target = @target = End.new(r, tid)
       
       aid = r['association']
       assoc = r.document.at("//packagedElement[@id='#{aid}']")
       src = assoc.at('./ownedEnd')
       @assoc_type = assoc['type']
-
       @source = End.new(src, nil, owner)
       
-      @association = ::Relation.connections[aid]
+      @association = r.at("//connector[@idref='#{aid}']")
       unpack_extended_properties(@association)
-
-      @final_target = @target = End.new(r, tid)
 
       if @assoc_type == 'uml:AssociationClass'
         @target = End.new(r, aid)
@@ -307,7 +295,7 @@ module Relation
       dv = a.at('defaultValue')
       @default =  dv['value'] if dv
 
-      element = Type.elements[owner.id]
+      element = a.at("//element[@idref='#{owner.id}']")
       if element
         attr = element.at("./attributes/attribute[@idref='#{@id}']")
         @stereotype = attr.stereotype['stereotype'] if attr.at('./stereotype')
@@ -342,7 +330,7 @@ module Relation
   class Dependency < Relation
     def initialize(owner, r, attr = 'supplier')
       super(owner, r)
-      @dependency = ::Relation.connections[@id]
+      @dependency = r.at("//connector[@idref='#{@id}']")
       unpack_extended_properties(@dependency)
 
       @name = (@stereotype && @stereotype) unless @name

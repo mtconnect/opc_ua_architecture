@@ -10,12 +10,10 @@ class Type
 
   @@types_by_id = {}
   @@types_by_name = {}
-  @@elements = {}
 
   def self.clear
     @@types_by_id.clear
     @@types_by_name.clear
-    @@elements.clear
   end
 
   def self.type_for_id(id)
@@ -24,15 +22,6 @@ class Type
 
   def self.type_for_name(name)
     @@types_by_name[name]
-  end
-
-  def self.add_element(ele)
-    id = ele['idref']
-    @@elements[id] = ele
-  end
-
-  def self.elements
-    @@elements
   end
 
   def self.add_free_association(assoc)
@@ -97,7 +86,7 @@ class Type
     @xmi = e
     @id = e['id']
 
-    @extended = @@elements[@id]
+    @extended = e.at("//element[@idref='#{@id}']")
 
     @name = e['name']
     @type = e['type']
@@ -126,7 +115,7 @@ class Type
     end
 
     #@relations, @constraints = associations.partition { |e| e.class != Relation::Constraint }
-    @constraints = []
+    @constraints = {}
     @relations = associations
 
     @children = []

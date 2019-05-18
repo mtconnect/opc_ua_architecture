@@ -37,7 +37,7 @@ class Model
     @types = []
     @is_opc = !((@name =~ /OPC/).nil?)
 
-    @extended = Type.elements[@id]
+    @extended = e.at("//element[@idref='#{@id}']")
     unpack_extended_properties(@extended)
     
     @@models[@name] = self
@@ -60,20 +60,7 @@ class Model
     @name
   end
 
-  def find_elements(doc)
-    doc.xpath('//elements/element').each do |e|
-      Type.add_element(e)
-    end
-    doc.xpath('//connectors/connector').each do |e|
-      Relation.add_connection(e)
-    end
-  end
-
   def find_definitions(depth = 0)
-    if depth == 0
-      find_elements(@xmi.document)
-    end
-
     #puts "#{'  ' * depth}Finding classes for '#{@name}'"
     @xmi.xpath('./packagedElement[@type="uml:DataType" or @type="uml:Enumeration" or @type="uml:PrimitiveType"]').each do |e|
       #puts "#{'  ' * depth}#{@name}::#{e['name']} #{e['type']}"

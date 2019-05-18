@@ -67,7 +67,7 @@ class Model
       self.class.type_class.new(self, e)
     end    
 
-    @xmi.xpath('./packagedElement[@type="uml:Class" or @type="uml:Object" or @type="uml:Stereotype" or @type="uml:AssociationClass"]').each do |e|
+    @xmi.xpath('./packagedElement[@type="uml:Class" or @type="uml:Object" or @type="uml:Stereotype" or @type="uml:AssociationClass" or @type="uml:InstanceSpecification"]').each do |e|
       # puts "#{'  ' * depth}#{@name}::#{e['name']} #{e['type']}"
       self.class.type_class.new(self, e)
     end

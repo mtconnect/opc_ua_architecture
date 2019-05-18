@@ -150,5 +150,25 @@ RSpec.describe NodesetModel, 'MixinType Nodeset definitions' do
       formatter.write(NodesetModel.document, STDOUT)
     end
   end
+
+  context 'with NamespaceMetadata Object' do
+    before(:each) do
+      @object = Type.type_for_name('http://opcfoundation.org/UA/MTConnect/2.0/')
+    end
+
+    it 'should have a metadata object' do
+      expect(@object).to_not be_nil
+      expect(@object.relations.count).to eq(7)
+      nodeIdTypes = @object.relation('StaticNodeIdTypes')
+      expect(nodeIdTypes.is_array?).to be true
+      expect(nodeIdTypes.value).to eq('[0]')
+      expect(@object.relation('StaticNumericNodeIdRange').value).to eq('[1:1073741824]')
+    end
+
+    it 'should generate xml' do
+      @object.generate_nodeset
+      formatter.write(NodesetModel.document, STDOUT)
+    end
+  end
 end
 

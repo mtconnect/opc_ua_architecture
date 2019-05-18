@@ -8,36 +8,40 @@ module Relation
   
   def self.create_association(owner, r)
     return if r.name == 'memberEnd'
-    
-    case r['type']
-    when 'uml:Generalization'
-      Generalization.new(owner, r)
 
-    when 'uml:Realization'
-      Realization.new(owner, r)
-
-    when 'uml:Dependency'
-      puts "!!! Creating a dependency..."
-      Dependency.new(owner, r)
-
-    when 'uml:Property'
-      if r['association']
-        Association.new(owner, r)
-      else
-        Attribute.new(owner, r)
-      end
-
-    when 'uml:Association', 'uml:Link'
-      Association.new(owner, r)
-
-    when 'uml:Constraint'
-      Constraint.new(owner, r)
-
-    when 'uml:Slot'
-      Slot.new(owner, r)
-
+    if r.name == 'attribute'
+        Slot.new(owner, r)      
     else
-      puts "!! Unknown relation type: #{r.name} :: #{r['id']} - #{r['type']} for #{owner.name}"
+      case r['type']
+      when 'uml:Generalization'
+        Generalization.new(owner, r)
+
+      when 'uml:Realization'
+        Realization.new(owner, r)
+
+      when 'uml:Dependency'
+        puts "!!! Creating a dependency..."
+        Dependency.new(owner, r)
+
+      when 'uml:Property'
+        if r['association']
+          Association.new(owner, r)
+        else
+          Attribute.new(owner, r)
+        end
+
+      when 'uml:Association', 'uml:Link'
+        Association.new(owner, r)
+
+      when 'uml:Constraint'
+        Constraint.new(owner, r)
+
+      when 'uml:Slot'
+        Slot.new(owner, r)
+
+      else
+        puts "!! Unknown relation type: #{r.name} :: #{r['id']} - #{r['type']} for #{owner.name}"
+      end
     end
   end
 
@@ -60,7 +64,7 @@ module Relation
     
     attr_reader :id, :name, :type, :xmi, :multiplicity,
                 :source, :target, :owner, :documentation,
-                :stereotype, :constraints
+                :stereotype, :constraints, :invariants
 
     class Connection
       attr_accessor :name, :type, :type_id, :multiplicity
@@ -90,7 +94,8 @@ module Relation
       @name = r['name']
       @type = r['type']
       @xmi = r
-      @constraints = nil
+      @constraints = {}
+      @invariants = {}
        
       @extended = r.at("//connector[@idref='#{@id}']")
       @multiplicity, @optional = get_multiplicity(r)
@@ -224,12 +229,17 @@ module Relation
       @name = @target.name || @name || @source.name
       @multiplicity = @target.multiplicity
       @optional = @target.optional
-      @constraints = nil
 
       assoc.xpath('./ownedRule[@type="uml:Constraint"]').each do |c|
+        
         name = c['name']
         spec = c.at('./specification')
-        (@constraints ||= {})[name] = spec['body'] if spec
+        props =  @association.at("./constraints/constraint[@name='#{name}']")
+        if props['type'] == 'Invariant'
+          (@invariants ||= {})[name] = spec['body'] if spec
+        else
+          (@constraints ||= {})[name] = spec['body'] if spec
+        end
       end
     end
 
@@ -374,8 +384,11 @@ module Relation
     def initialize(owner, a)
       super(owner, a)
       @name = a['name']
-      @target = Connection.new('type', a['type'])
-      @value = a['value']
+      props = a.at('./properties')
+      t = Type.type_for_name(props['type'])
+      @target = Connection.new('type', nil, t)
+      init = a.at('./initial')
+      @value = init['body'] if init
     end
 
     def value

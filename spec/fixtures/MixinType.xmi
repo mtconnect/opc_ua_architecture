@@ -297,7 +297,18 @@
 						</ownedAttribute>
 						<generalization xmi:type="uml:Generalization" xmi:id="EAID_039600F4_0850_40e5_924F_6B6BAFBF7F9D" general="EAID_9887318C_1DEF_47ad_A805_12D4FE773371"/>
 					</packagedElement>
-					<packagedElement xmi:type="uml:InstanceSpecification" xmi:id="EAID_5B25E76A_BC58_4d9a_A192_BCF618E53C91" name="Namespaces" classifier="EAID_9B8AEA96_2048_4771_A6D9_B3AF9537BCEF"/>
+					<packagedElement xmi:type="uml:InstanceSpecification" xmi:id="EAID_5B25E76A_BC58_4d9a_A192_BCF618E53C91" name="Namespaces" classifier="EAID_9B8AEA96_2048_4771_A6D9_B3AF9537BCEF">
+						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_srcA55439_F569_4933_B769_75C80513FB11" name="Namespaces" association="EAID_22A55439_F569_4933_B769_75C80513FB11">
+							<type xmi:idref="EAID_A3749DBE_81F3_4618_91B5_2C1CD9BD0C95"/>
+						</ownedAttribute>
+					</packagedElement>
+					<packagedElement xmi:type="uml:Association" xmi:id="EAID_22A55439_F569_4933_B769_75C80513FB11">
+						<memberEnd xmi:idref="EAID_dstA55439_F569_4933_B769_75C80513FB11"/>
+						<memberEnd xmi:idref="EAID_srcA55439_F569_4933_B769_75C80513FB11"/>
+						<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dstA55439_F569_4933_B769_75C80513FB11" association="EAID_22A55439_F569_4933_B769_75C80513FB11">
+							<type xmi:idref="EAID_5B25E76A_BC58_4d9a_A192_BCF618E53C91"/>
+						</ownedEnd>
+					</packagedElement>
 					<packagedElement xmi:type="uml:Class" xmi:id="EAID_9B8AEA96_2048_4771_A6D9_B3AF9537BCEF" name="NamespacesType">
 						<generalization xmi:type="uml:Generalization" xmi:id="EAID_FF9E3EC6_AD49_478b_AA8A_6F0E7F5419D3" general="EAID_9887318C_1DEF_47ad_A805_12D4FE773371"/>
 					</packagedElement>
@@ -1237,6 +1248,9 @@
 					<packagedElement xmi:type="uml:Stereotype" xmi:id="EAID_A8A5395A_29A2_46d1_87CF_D0E227078118" name="values"/>
 					<packagedElement xmi:type="uml:Dependency" xmi:id="EAID_EF0281E9_2FBE_4a88_89A4_DE391DBC9D99" supplier="EAID_66DF6EE3_98E9_4245_8FBB_9F1FD594182F" client="EAID_A8A5395A_29A2_46d1_87CF_D0E227078118"/>
 					<packagedElement xmi:type="uml:Dependency" xmi:id="EAID_EFF75AA0_B9F7_4b81_8323_94022A5B2DA2" supplier="EAID_F91C3A31_2E39_4fd6_AF6B_F85E2F0D39E4" client="EAID_A8A5395A_29A2_46d1_87CF_D0E227078118"/>
+				</packagedElement>
+				<packagedElement xmi:type="uml:Package" xmi:id="EAPK_B5894D76_4981_4983_BA8D_F4532ABEA556" name="Objects">
+					<packagedElement xmi:type="uml:InstanceSpecification" xmi:id="EAID_A3749DBE_81F3_4618_91B5_2C1CD9BD0C95" name="http://opcfoundation.org/UA/MTConnect/2.0/" classifier="EAID_4B4FF7CF_D547_4793_9077_D7CBA4B11FD0"/>
 				</packagedElement>
 			</packagedElement>
 		</packagedElement>
@@ -2328,7 +2342,7 @@
 						<style/>
 						<styleex value="IsLiteral=0;"/>
 						<tags/>
-						<xrefs value="$XREFPROP=$XID={E9986394-E4F5-4d7d-A0D8-9C3314751649}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=Attribute;GUID={8B50A861-2D66-4ca0-ACC6-4906F926FEF6};FQName=OPC UA Profile::Attribute;@ENDSTEREO;$DES;$CLT={62635656-93F1-49e7-89A4-CA7AD8E9D853}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={9392F1EE-3877-4d9c-8C37-78FA971D1F5F}$XID;$NAM=MOFProps$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$BEH=redefinedProperty$BEH;$PAR=0$PAR;$DES={7F8BCA74-6735-4378-A542-F3D326058C2A}$DES;$CLT={62635656-93F1-49e7-89A4-CA7AD8E9D853}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+						<xrefs value="$XREFPROP=$XID={9392F1EE-3877-4d9c-8C37-78FA971D1F5F}$XID;$NAM=MOFProps$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$BEH=redefinedProperty$BEH;$PAR=0$PAR;$DES={7F8BCA74-6735-4378-A542-F3D326058C2A}$DES;$CLT={62635656-93F1-49e7-89A4-CA7AD8E9D853}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={E9986394-E4F5-4d7d-A0D8-9C3314751649}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=Attribute;GUID={8B50A861-2D66-4ca0-ACC6-4906F926FEF6};FQName=OPC UA Profile::Attribute;@ENDSTEREO;$DES;$CLT={62635656-93F1-49e7-89A4-CA7AD8E9D853}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
 					</attribute>
 					<attribute xmi:idref="EAID_006C36A4_E314_4d32_AFCC_CAE4EB485EBC" name="DataTypeVersion" scope="Public">
 						<initial/>
@@ -2579,6 +2593,26 @@
 				<tags/>
 				<xrefs/>
 				<extendedProperties tagged="0" package_name="OPC UA Part 05"/>
+				<attributes>
+					<attribute xmi:idref="EAID_00A90424_1859_4491_BA9E_F8E618220F86" name="NodeId" scope="Public">
+						<initial body="i=11715"/>
+						<documentation/>
+						<model ea_localid="157" ea_guid="{00A90424-1859-4491-BA9E-F8E618220F86}"/>
+						<properties type="NodeId" collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="0"/>
+						<stereotype stereotype="Attribute"/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags/>
+						<xrefs value="$XREFPROP=$XID={02CCBCB7-1238-4b0a-93F8-50EFE3C8C5EA}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=Attribute;GUID={8B50A861-2D66-4ca0-ACC6-4906F926FEF6};FQName=OPC UA Profile::Attribute;@ENDSTEREO;$DES;$CLT={00A90424-1859-4491-BA9E-F8E618220F86}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+					</attribute>
+				</attributes>
+				<links>
+					<Association xmi:id="EAID_22A55439_F569_4933_B769_75C80513FB11" start="EAID_A3749DBE_81F3_4618_91B5_2C1CD9BD0C95" end="EAID_5B25E76A_BC58_4d9a_A192_BCF618E53C91"/>
+				</links>
 			</element>
 			<element xmi:idref="EAID_9B8AEA96_2048_4771_A6D9_B3AF9537BCEF" xmi:type="uml:Class" name="NamespacesType" scope="public">
 				<model package="EAPK_6E083C2E_5358_41ee_B4BC_837119A6A6D5" tpos="0" ea_localid="55" ea_eleType="element"/>
@@ -5085,7 +5119,7 @@
 						<style/>
 						<styleex value="volatile=0;"/>
 						<tags/>
-						<xrefs value="$XREFPROP=$XID={9C1D9334-CB05-4253-BF05-2BB63D77A79B}$XID;$NAM=MOFProps$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$BEH=redefinedProperty$BEH;$PAR=0$PAR;$DES={9F69988E-B1A9-4009-ADA2-6B71F78331ED}$DES;$CLT={0660C08A-2F1F-4acb-8594-249EBEF4598B}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={0E1718CA-65BB-458e-8A71-1C1D070F5E6E}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=Attribute;GUID={8B50A861-2D66-4ca0-ACC6-4906F926FEF6};FQName=OPC UA Profile::Attribute;@ENDSTEREO;$DES;$CLT={0660C08A-2F1F-4acb-8594-249EBEF4598B}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+						<xrefs value="$XREFPROP=$XID={0E1718CA-65BB-458e-8A71-1C1D070F5E6E}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=Attribute;GUID={8B50A861-2D66-4ca0-ACC6-4906F926FEF6};FQName=OPC UA Profile::Attribute;@ENDSTEREO;$DES;$CLT={0660C08A-2F1F-4acb-8594-249EBEF4598B}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={9C1D9334-CB05-4253-BF05-2BB63D77A79B}$XID;$NAM=MOFProps$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$BEH=redefinedProperty$BEH;$PAR=0$PAR;$DES={9F69988E-B1A9-4009-ADA2-6B71F78331ED}$DES;$CLT={0660C08A-2F1F-4acb-8594-249EBEF4598B}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
 					</attribute>
 				</attributes>
 				<links>
@@ -5174,7 +5208,7 @@
 						<style/>
 						<styleex value="volatile=0;"/>
 						<tags/>
-						<xrefs value="$XREFPROP=$XID={CD68C471-A863-460a-BB32-B97CCE9EF011}$XID;$NAM=MOFProps$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$BEH=redefinedProperty$BEH;$PAR=0$PAR;$DES={7F8BCA74-6735-4378-A542-F3D326058C2A}$DES;$CLT={3A67A527-BB77-42c3-82C6-2A99D14E7E37}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={A9F339F1-BB63-4898-ACE7-E7E235F9FA93}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=Attribute;GUID={8B50A861-2D66-4ca0-ACC6-4906F926FEF6};FQName=OPC UA Profile::Attribute;@ENDSTEREO;$DES;$CLT={3A67A527-BB77-42c3-82C6-2A99D14E7E37}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+						<xrefs value="$XREFPROP=$XID={A9F339F1-BB63-4898-ACE7-E7E235F9FA93}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=Attribute;GUID={8B50A861-2D66-4ca0-ACC6-4906F926FEF6};FQName=OPC UA Profile::Attribute;@ENDSTEREO;$DES;$CLT={3A67A527-BB77-42c3-82C6-2A99D14E7E37}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={CD68C471-A863-460a-BB32-B97CCE9EF011}$XID;$NAM=MOFProps$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$BEH=redefinedProperty$BEH;$PAR=0$PAR;$DES={7F8BCA74-6735-4378-A542-F3D326058C2A}$DES;$CLT={3A67A527-BB77-42c3-82C6-2A99D14E7E37}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
 					</attribute>
 					<attribute xmi:idref="EAID_3D094909_9A37_46e6_A1EE_3FB32BDCD997" name="ValueRank" scope="Public">
 						<initial body="-1"/>
@@ -5189,7 +5223,7 @@
 						<style/>
 						<styleex value="volatile=0;"/>
 						<tags/>
-						<xrefs value="$XREFPROP=$XID={59BAD683-D7BF-4b0e-A243-2E8BDB94C281}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=Attribute;GUID={8B50A861-2D66-4ca0-ACC6-4906F926FEF6};FQName=OPC UA Profile::Attribute;@ENDSTEREO;$DES;$CLT={3D094909-9A37-46e6-A1EE-3FB32BDCD997}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={3527D90C-16CF-4f16-99F7-37DEA9912E88}$XID;$NAM=MOFProps$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$BEH=redefinedProperty$BEH;$PAR=0$PAR;$DES={9F69988E-B1A9-4009-ADA2-6B71F78331ED}$DES;$CLT={3D094909-9A37-46e6-A1EE-3FB32BDCD997}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+						<xrefs value="$XREFPROP=$XID={3527D90C-16CF-4f16-99F7-37DEA9912E88}$XID;$NAM=MOFProps$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$BEH=redefinedProperty$BEH;$PAR=0$PAR;$DES={9F69988E-B1A9-4009-ADA2-6B71F78331ED}$DES;$CLT={3D094909-9A37-46e6-A1EE-3FB32BDCD997}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={59BAD683-D7BF-4b0e-A243-2E8BDB94C281}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=Attribute;GUID={8B50A861-2D66-4ca0-ACC6-4906F926FEF6};FQName=OPC UA Profile::Attribute;@ENDSTEREO;$DES;$CLT={3D094909-9A37-46e6-A1EE-3FB32BDCD997}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
 					</attribute>
 				</attributes>
 				<links>
@@ -5446,6 +5480,140 @@
 				<links>
 					<Extension xmi:id="EAID_EF0281E9_2FBE_4a88_89A4_DE391DBC9D99" start="EAID_A8A5395A_29A2_46d1_87CF_D0E227078118" end="EAID_66DF6EE3_98E9_4245_8FBB_9F1FD594182F"/>
 					<Extension xmi:id="EAID_EFF75AA0_B9F7_4b81_8323_94022A5B2DA2" start="EAID_A8A5395A_29A2_46d1_87CF_D0E227078118" end="EAID_F91C3A31_2E39_4fd6_AF6B_F85E2F0D39E4"/>
+				</links>
+			</element>
+			<element xmi:idref="EAPK_B5894D76_4981_4983_BA8D_F4532ABEA556" xmi:type="uml:Package" name="Objects" scope="public">
+				<model package2="EAID_B5894D76_4981_4983_BA8D_F4532ABEA556" package="EAPK_F3BC04A6_120B_428e_BA99_EB5ABE02F25C" tpos="0" ea_localid="17" ea_eleType="package"/>
+				<properties isSpecification="false" sType="Package" nType="0" scope="public"/>
+				<project author="will" version="1.0" phase="1.0" created="2019-05-16 09:08:15" modified="2019-05-16 09:08:15" complexity="1" status="Proposed"/>
+				<code gentype="&lt;none&gt;"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="MixinType"/>
+				<packageproperties version="1.0"/>
+				<paths/>
+				<times created="2019-05-16 09:08:15" modified="2019-05-16 09:08:15"/>
+				<flags iscontrolled="FALSE" isprotected="FALSE" usedtd="FALSE" logxml="FALSE"/>
+			</element>
+			<element xmi:idref="EAID_A3749DBE_81F3_4618_91B5_2C1CD9BD0C95" xmi:type="uml:Object" name="http://opcfoundation.org/UA/MTConnect/2.0/" scope="public" classifier="EAID_4B4FF7CF_D547_4793_9077_D7CBA4B11FD0">
+				<model package="EAPK_B5894D76_4981_4983_BA8D_F4532ABEA556" tpos="0" ea_localid="170" ea_eleType="element"/>
+				<properties isSpecification="false" sType="Object" nType="0" classname="NamespaceMetadataType" scope="public" isAbstract="false"/>
+				<project author="will" version="1.0" phase="1.0" created="2019-05-16 09:12:17" modified="2019-05-16 09:15:41" complexity="1" status="Proposed"/>
+				<code gentype="OPC UA"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="Objects"/>
+				<attributes>
+					<attribute xmi:idref="EAID_69991B02_B66B_4770_B7FB_9B8CC0B9004E" name="IsNamespaceSubset" scope="Public">
+						<initial body="false"/>
+						<documentation/>
+						<model ea_localid="161" ea_guid="{69991B02-B66B-4770-B7FB-9B8CC0B9004E}"/>
+						<properties type="String" collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="3"/>
+						<stereotype/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_7A2FDA85_D004_4548_B778_4A28BB19556F" name="NamespacePublicationDate" scope="Public">
+						<initial body="2018-10-31T00:00:00Z"/>
+						<documentation/>
+						<model ea_localid="160" ea_guid="{7A2FDA85-D004-4548-B778-4A28BB19556F}"/>
+						<properties type="DateTime" collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="2"/>
+						<stereotype/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_061D5E75_4BD5_44a4_8C45_0688EEE1D1EA" name="NamespaceUri" scope="Public">
+						<initial body="http://opcfoundation.org/UA/MTConnect/2.0/"/>
+						<documentation/>
+						<model ea_localid="158" ea_guid="{061D5E75-4BD5-44a4-8C45-0688EEE1D1EA}"/>
+						<properties type="String" collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="0"/>
+						<stereotype/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_E679D667_5D5D_453e_B1EA_29762617A4A4" name="NamespaceVersion" scope="Public">
+						<initial body="2.00"/>
+						<documentation/>
+						<model ea_localid="159" ea_guid="{E679D667-5D5D-453e-B1EA-29762617A4A4}"/>
+						<properties type="String" collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="1"/>
+						<stereotype/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_A4F782D5_6CBA_470e_B7F8_A76471129F73" name="StaticNodeIdTypes" scope="Public">
+						<initial body="[0]"/>
+						<documentation/>
+						<model ea_localid="162" ea_guid="{A4F782D5-6CBA-470e-B7F8-A76471129F73}"/>
+						<properties type="IdType" collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="4"/>
+						<stereotype/>
+						<bounds lower="1" upper="*"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_11D2B404_156D_4713_858C_6521FDECB067" name="StaticNumericNodeIdRange" scope="Public">
+						<initial body="[1:1073741824]"/>
+						<documentation/>
+						<model ea_localid="163" ea_guid="{11D2B404-156D-4713-858C-6521FDECB067}"/>
+						<properties type="NumericRange" collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="5"/>
+						<stereotype/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+					<attribute xmi:idref="EAID_02BD1FB2_A8D7_4644_8B9D_46FE707ECC67" name="StaticStringNodeIdPattern" scope="Public">
+						<initial/>
+						<documentation/>
+						<model ea_localid="164" ea_guid="{02BD1FB2-A8D7-4644-8B9D-46FE707ECC67}"/>
+						<properties type="String" collection="false" static="0" duplicates="0" changeability="changeable"/>
+						<coords ordered="0"/>
+						<containment containment="Not Specified" position="6"/>
+						<stereotype/>
+						<bounds lower="1" upper="1"/>
+						<options/>
+						<style/>
+						<styleex value="volatile=0;"/>
+						<tags/>
+						<xrefs/>
+					</attribute>
+				</attributes>
+				<links>
+					<Association xmi:id="EAID_22A55439_F569_4933_B769_75C80513FB11" start="EAID_A3749DBE_81F3_4618_91B5_2C1CD9BD0C95" end="EAID_5B25E76A_BC58_4d9a_A192_BCF618E53C91"/>
 				</links>
 			</element>
 		</elements>
@@ -6505,6 +6673,41 @@
 				<extendedProperties virtualInheritance="0"/>
 				<style/>
 				<xrefs value="$XREFPROP=$XID={36AFFCC3-DB38-44c9-989F-596D2A0A45F6}$XID;$NAM=CustomProperties$NAM;$TYP=connector property$TYP;$VIS=Public$VIS;$DES=@PROP=@NAME=isSubstitutable@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=0@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={25BF38A8-B9E2-4a1c-ABC1-AEA666CAF0E6}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<tags/>
+			</connector>
+			<connector xmi:idref="EAID_22A55439_F569_4933_B769_75C80513FB11">
+				<source xmi:idref="EAID_A3749DBE_81F3_4618_91B5_2C1CD9BD0C95">
+					<model ea_localid="170" type="Object" name="http://opcfoundation.org/UA/MTConnect/2.0/"/>
+					<role name="Namespaces" visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_5B25E76A_BC58_4d9a_A192_BCF618E53C91">
+					<model ea_localid="67" type="Object" name="Namespaces"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Unspecified;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</target>
+				<model ea_localid="117"/>
+				<properties ea_type="Association" direction="Destination -&gt; Source"/>
+				<modifiers isRoot="false" isLeaf="false"/>
+				<parameterSubstitutions/>
+				<documentation/>
+				<appearance linemode="2" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels lt="+Namespaces"/>
+				<extendedProperties virtualInheritance="0"/>
+				<style/>
+				<xrefs/>
 				<tags/>
 			</connector>
 			<connector xmi:idref="EAID_3C57DD9B_3770_4152_B763_58E83C40CBCB">

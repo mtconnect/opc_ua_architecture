@@ -195,6 +195,14 @@ RSpec.describe LatexModel, 'MixinType definitions' do
       it 'should have a property uuid with documentation' do
         expect(@type.relation('uuid').documentation).to eq('Only required with Device')
       end
+
+      it 'should have a relation, ActiveState, with two invariants' do
+        as = @type.relation('ActiveState')
+        expect(as).to_not be_nil
+
+        expect(as.invariants['FalseState']).to eq('Inactive')
+        expect(as.invariants['TrueState']).to eq('Active')        
+      end      
     end
     
   end  

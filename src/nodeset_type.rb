@@ -12,10 +12,10 @@ class NodesetType < Type
   attr_reader :node_id
 
   class OwnerReference
-    attr_reader :name, :node_id, :constraints
-    def initialize(name, node_id, constraints)
-      puts "Creating Owner ref #{name} #{constraints.inspect}"
-      @name, @node_id, @constraints = name, node_id, constraints
+    attr_reader :name, :node_id, :invariants
+    def initialize(name, node_id, invariants)
+      puts "Creating Owner ref #{name} #{invariants.inspect}"
+      @name, @node_id, @invariants = name, node_id, invariants
     end
   end
   
@@ -130,13 +130,13 @@ class NodesetType < Type
     # Add values for slots
     add_value(ele, ref) if ref.type == 'uml:Slot'
 
-    # puts "#{ref.name}: #{owner.constraints.inspect} #{ref.target.type.name}"
-    if owner.constraints and owner.constraints[ref.name]
+    # puts "#{ref.name}: #{owner.invariants.inspect} #{ref.target.type.name}"
+    if owner.invariants and owner.invariants[ref.name]
       if ref.target.type.name == 'LocalizedText'
         value = ele.add_element('Value').
                   add_element('LocalizedText', { 'xmlns' => 'http://opcfoundation.org/UA/2008/02/Types.xsd' })
         value.add_element('Locale').add_text('en')
-        value.add_element('Text').add_text(owner.constraints[ref.name])
+        value.add_element('Text').add_text(owner.invariants[ref.name])
       else
         raise "Do not know how to assign value for #{ref.target.type.name}"
       end
@@ -203,7 +203,7 @@ class NodesetType < Type
       refs, ele = node('UAObject', nid, ref.name, parent: owner.node_id)
     end
 
-    pnt = OwnerReference.new(ref.name, nid, ref.constraints)
+    pnt = OwnerReference.new(ref.name, nid, ref.invariants)
     path = (path.dup << ref.name)
     ref.target.type.instantiate_relations(refs, pnt, path)
 
@@ -236,7 +236,7 @@ class NodesetType < Type
       'Enumeration'
     elsif @type == 'uml:DataType'
       'DataType'
-    elsif @type == 'uml:Object'
+    elsif @type == 'uml:Object' or @type == 'uml:InstanceSpecification'
       'Object'
     elsif is_a_type?('BaseObjectType') or is_a_type?('BaseEventType')
       'ObjectType'

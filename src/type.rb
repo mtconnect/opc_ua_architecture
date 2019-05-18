@@ -5,7 +5,7 @@ class Type
   include Extensions
   
   attr_reader :name, :id, :type, :model, :json, :parent, :children, :relations, :stereotype,
-              :constraints, :extended, :documentation, :literals
+              :constraints, :extended, :documentation, :literals, :invariants
   attr_accessor :class_link
 
   @@types_by_id = {}
@@ -107,7 +107,16 @@ class Type
     @class_link = nil
 
     associations = []
-    unless @type == 'uml:PrimitiveType' or @type == 'uml:Enumeration'
+    if @type == 'uml:InstanceSpecification'
+      @extended.xpath('./attributes/attribute').each do |a|
+        associations << Relation.create_association(self, a)
+      end
+      @extended.xpath('./attributes/links').each do |l|
+        
+        associations << Relation.create_association(self, a)
+      end
+      associations.compact!
+    elsif @type != 'uml:PrimitiveType' and @type != 'uml:Enumeration'
       e.element_children.each do |r|
         associations << Relation.create_association(self, r)
       end
@@ -116,6 +125,7 @@ class Type
 
     #@relations, @constraints = associations.partition { |e| e.class != Relation::Constraint }
     @constraints = {}
+    @invariants = {}
     @relations = associations
 
     @children = []
@@ -174,7 +184,7 @@ class Type
     @relations.each do |r|
       r.resolve_types
     end
-    if @xmi.include?('classifier')
+    if @xmi['classifier']
       @classifier = resolve_type(@xmi['classifier'])
     else
       @classifier = nil
@@ -220,8 +230,7 @@ class Type
   end
 
   def self.resolve_type(ref)
-    id = ref['$ref'] if ref
-    type = @@types_by_id[id] if id
+    type = @@types_by_id[ref]
   end
 
   def resolve_type(ref)

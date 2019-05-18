@@ -136,10 +136,10 @@ class LatexType < Type
     end
   end
 
-  def generate_constraints(f)
-    unless @constraints.empty?
+  def generate_constraints(f, obj = self)
+    unless obj.constraints.empty?
       f.puts "\\paragraph{Constraints}\n"
-      @constraints.each do |c|
+      obj.constraints.each do |c|
         f.puts "\\begin{itemize}"
         f.puts "\\item Constraint \\texttt{#{c.name}}: "
         f.puts "   \\indent \\begin{lstlisting}"
@@ -147,6 +147,21 @@ class LatexType < Type
         f.puts "\\end{lstlisting}"
         f.puts "Documentation: #{c.documentation}" if c.documentation
         f.puts "\n\\end{itemize}"
+      end
+    end
+
+    unless obj.invariants.empty?
+      f.puts "\\paragraph{Invariants for #{obj.name}}\n"
+      f.puts "\\begin{itemize}"
+      obj.invariants.each do |k, v|
+        f.puts "\\item Property \\texttt{#{k}}: \\texttt{#{v}}"
+      end
+      f.puts "\\end{itemize}"
+    end
+
+    if obj.equal?(self)
+      @relations.each do |r|
+        generate_constraints(f, r)
       end
     end
   end

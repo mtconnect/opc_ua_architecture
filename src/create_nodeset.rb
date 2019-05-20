@@ -75,7 +75,6 @@ end
 
 formatter = REXML::Formatters::Pretty.new(2)
 formatter.compact = true
-=begin
 text = ""
 formatter.write(TypeDict, text)
 type = Type.type_for_name('Opc.Ua.MTConnect(Binary)')
@@ -93,11 +92,10 @@ type.add_base64_value(text)
 File.open('./MTConnect.TypeDictionary.XML.xml', 'w') do |f|
   f << text
 end  
-=end
 
 File.open('./Opc.Ua.MTConnect.Nodeset2.xml', 'w') do |f|
   formatter.write(NodesetModel.document, f)  
 end
 
-Ids.save
+NodesetModel.ids.save
 

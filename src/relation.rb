@@ -10,7 +10,7 @@ module Relation
     return if r.name == 'memberEnd'
 
     if r.name == 'attribute'
-        Slot.new(owner, r)
+      Slot.new(owner, r)
     else
       case r['type']
       when 'uml:Generalization'
@@ -20,7 +20,6 @@ module Relation
         Realization.new(owner, r)
 
       when 'uml:Dependency'
-        puts "!!! Creating a dependency..."
         Dependency.new(owner, r)
 
       when 'uml:Property'
@@ -348,6 +347,10 @@ module Relation
       @name = 'Supertype' unless @name
     end
 
+    def resolve_types
+      super
+    end
+
     def reference_type
       'HasSubtype'
     end
@@ -378,9 +381,8 @@ module Relation
     def initialize(owner, a)
       super(owner, a)
       @name = a['name']
-      props = a.at('./properties')
-      t = Type.type_for_name(props['type'])
-      @target = Connection.new('type', t)
+      @props = a.at('./properties')
+      @target = Connection.new('type', Type::LazyPointer.new(@props['type']))
       init = a.at('./initial')
       @value = init['body'] if init
     end
@@ -412,7 +414,9 @@ module Relation
     def resolve_types
       super
     rescue
-      puts "Warn: Cannot resolve type #{@owner.name}::#{@name}"
+      puts "Warn: Cannot resolve type #{@owner.name}::#{@name} #{@props}"
+      puts $!
+      puts $!.backtrace.join("\n")
     end
   end
 end

@@ -99,7 +99,7 @@ class NodesetType < Type
 
   def add_value(ele, ref)
     value = ele.add_element('Value')
-    resolved = ref.target.type.get_attribute_like(/Value/) || ref
+    resolved = ref.target.type.get_attribute_like('Value') || ref
     ref_type = resolved.target.type
     
     if ref.value and ref.value[0] == "["
@@ -218,13 +218,14 @@ class NodesetType < Type
         create_relationship(refs, a, owner, path)
       elsif a.source.type.id != @id
         create_object_reference(refs, a)        
-      else
-        puts "!!! #{@name}::#{a.source.type.name} cannot generate"
+      elsif !a.is_attribute? 
+        puts "!!! Cannot generate relation #{a.class} #{@name}::#{a.name} -> #{a.final_target.type.name}"
       end
     end
   end
 
   def add_mixin_relations(refs, owner, path)
+    # puts "---> Adding mixin relations: #{owner.name}"
     @parent.add_mixin_relations(refs, owner, path) if @parent
     relationships(refs, owner, path)
   end
@@ -244,7 +245,7 @@ class NodesetType < Type
       'VariableType'
     elsif is_a_type?('References')
       'ReferenceType'
-    elsif  @stereotype and @stereotype.name == 'mixin'
+    elsif  @stereotype and @stereotype == 'mixin'
       'Mixin'
     elsif @type == 'uml:Stereotype'
       'Stereotype'
@@ -255,6 +256,8 @@ class NodesetType < Type
   end
   
   def generate_object_or_variable(nt)
+    # puts "-> #{@name} -- #{nt}"
+    
     case nt
     when 'ObjectType'
       NodesetModel.root << REXML::Comment.new(" Definition of Object #{@name} #{node_id} ")
@@ -263,7 +266,7 @@ class NodesetType < Type
       refs, = node('UAObjectType', node_id, @name, abstract: @abstract)
 
     when 'VariableType'
-      v = get_attribute_like(/ValueRank$/)
+      v = get_attribute_like('ValueRank')
       NodesetModel.root << REXML::Comment.new(" Definition of Variable #{@name} #{node_id} ")
       print "** Generating VariableType"
       NodesetModel.ids.add_node_class(node_id, @name, 'VariableType')
@@ -273,7 +276,7 @@ class NodesetType < Type
     when 'ReferenceType'
       NodesetModel.root << REXML::Comment.new(" Definition of Reference #{@name} #{node_id} ")
       print "** Generating ReferenceType"
-      symmetric = get_attribute_like(/Symmetric$/, /Attribute/)
+      symmetric = get_attribute_like('Symmetric', /Attribute/)
       is_symmetric = symmetric.default
       NodesetModel.ids.add_node_class(node_id, @name, 'ReferenceType')
       refs, = node('UAReferenceType', node_id, @name, abstract: @abstract, symmetric: is_symmetric)
@@ -286,7 +289,7 @@ class NodesetType < Type
       puts " for #{@name}"      
     
       node_reference(refs, @parent.name, 'HasSubtype', @parent.node_id, forward: false)
-      
+
       @mixin.add_mixin_relations(refs, self, [browse_name]) if @mixin
       relationships(refs, self, [browse_name])
     end
@@ -299,7 +302,7 @@ class NodesetType < Type
     refs, node = node('UADataType', node_id, @name)
     enum_nid = NodesetModel.ids.id_for("#{browse_name}/EnumStrings")
     
-    # node.add_element('Description').add_text(@documentation) if @documentation
+    node.add_element('Description').add_text(@documentation) if @documentation
     node_reference(refs, 'Enumeration', 'HasSubtype', NodesetModel.ids['Enumeration'], forward: false)
     node_reference(refs, 'EnumStrings', 'HasProperty', enum_nid)
 
@@ -315,10 +318,9 @@ class NodesetType < Type
             add_element('xs:restriction', { 'base' => 'xs:string' })
     
     defs = node.add_element('Definition', { 'Name' => @name })
-    @literals.each do |l|
-      name, value = l['name'].split('=')
+    @literals.each do |name, value|
       field = defs.add_element('Field', { 'Name' => name, 'Value' => value })
-      field.add_element('Description').add_text(l['documentation']) if l['documentation']
+      # field.add_element('Description').add_text(l['documentation']) if l['documentation']
 
       text = values.add_element('LocalizedText')
       text.add_element('Locale').add_text('en')
@@ -409,6 +411,7 @@ class NodesetType < Type
   end
 
   def add_component_ref(name, id)
+    # puts "Adding refs for #{@name} -> #{name}"
     node_reference(@refs, name, 'HasComponent', id)
   end
 
@@ -416,9 +419,9 @@ class NodesetType < Type
     puts "** Generating DataType for #{@name}"
     NodesetModel.ids.add_node_class(node_id, @name, 'DataType')
     NodesetModel.root << REXML::Comment.new(" Definition of DataType #{@name} #{node_id} ")
-    refs, node = node('UADataType', node_id, @name)
-    #node.add_element('Description').add_text(@documentation) if @documentation
-    node_reference(refs, 'BaseDataType', 'HasSubtype', NodesetModel.ids['Structure'], forward: false)
+    @refs, node = node('UADataType', node_id, @name)
+    node.add_element('Description').add_text(@documentation) if @documentation
+    node_reference(@refs, 'BaseDataType', 'HasSubtype', NodesetModel.ids['Structure'], forward: false)
     
     defs = node.add_element('Definition', { 'Name' => @name })
     @relations.each do |r|
@@ -452,7 +455,7 @@ class NodesetType < Type
     create_json_encoding
   end
 
-  def generate_instance    
+  def generate_instance
     print "++ Generating #{@classifier.base_type} #{@name}"
     NodesetModel.root << REXML::Comment.new(" Instantiation of Object #{@name} #{node_id} ")
     if @classifier.base_type == 'Variable'

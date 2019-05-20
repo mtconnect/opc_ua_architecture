@@ -85,7 +85,7 @@ class NodesetModel < Model
                        'Namespace' => "http://opcfoundation.org/UA/",
                        'Location' => "Opc.Ua.BinarySchema.bsd" })
 
-    return @type_dict
+    return @@type_dict
   end
 
   def self.xml_type_dict
@@ -117,6 +117,7 @@ class NodesetModel < Model
   end
 
   def generate_nodeset
+    puts "Generating model #{@name}"
     @types.each do |type|
       if type.parent.nil? or type.parent.model != self
         recurse_types(type)
@@ -127,7 +128,7 @@ class NodesetModel < Model
   def recurse_types(type)
     if type.type == 'uml:Class' or type.type == 'uml:Stereotype' or
         type.type == 'uml:Enumeration' or type.type == 'uml:DataType' or
-        type.type == 'uml:Object'
+        type.type == 'uml:Object' or type.type == 'uml:InstanceSpecification'
       type.generate_nodeset
     end
 

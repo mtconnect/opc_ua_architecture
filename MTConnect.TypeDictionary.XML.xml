@@ -250,45 +250,4 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name='YesNoDataType' type='mtc:YesNoDataTypeEnum'/>
-  <xs:simpleType name='CountDirectionDataTypeEnum'>
-    <xs:restriction base='xs:string'>
-      <xs:enumeration value='DOWN'/>
-      <xs:enumeration value='UP'/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name='CountDirectionDataType' type='mtc:CountDirectionDataTypeEnum'/>
-  <xs:simpleType name='CutterStatusDataTypeEnum'>
-    <xs:restriction base='xs:string'>
-      <xs:enumeration value='AVAILABLE'/>
-      <xs:enumeration value='ALLOCATED'/>
-      <xs:enumeration value='BROKEN'/>
-      <xs:enumeration value='EXPIRED'/>
-      <xs:enumeration value='MEASURED'/>
-      <xs:enumeration value='NEW'/>
-      <xs:enumeration value='NOT_REGISTERED'/>
-      <xs:enumeration value='RECONDITIONED'/>
-      <xs:enumeration value='UNALLOCATE'/>
-      <xs:enumeration value='UNAVAILABLE'/>
-      <xs:enumeration value='UNKNOWN'/>
-      <xs:enumeration value='USED'/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name='CutterStatusDataType' type='mtc:CutterStatusDataTypeEnum'/>
-  <xs:simpleType name='CuttingToolDefintionFormatDataTypeEnum'>
-    <xs:restriction base='xs:string'>
-      <xs:enumeration value='XML'/>
-      <xs:enumeration value='EXPRESS'/>
-      <xs:enumeration value='TEXT'/>
-      <xs:enumeration value='UNDEFINED'/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name='CuttingToolDefintionFormatDataType' type='mtc:CuttingToolDefintionFormatDataTypeEnum'/>
-  <xs:simpleType name='MTLocationDataTypeEnum'>
-    <xs:restriction base='xs:string'>
-      <xs:enumeration value='CRIB'/>
-      <xs:enumeration value='POT'/>
-      <xs:enumeration value='STATION'/>
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name='MTLocationDataType' type='mtc:MTLocationDataTypeEnum'/>
 </xs:schema>

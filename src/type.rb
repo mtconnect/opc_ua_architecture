@@ -19,6 +19,7 @@ class Type
 
     def initialize(obj)
       @tid = @type = nil
+      @lazy_lambdas = []
       
       case obj
       when String
@@ -32,6 +33,14 @@ class Type
 
       else
         raise "Pointer created for unknown type: #{obj.class}"
+      end
+    end
+
+    def lazy(&block)
+      if @type
+        @type.instance_eval(&block)
+      else
+        @lazy_lambdas << block
       end
     end
 
@@ -50,14 +59,25 @@ class Type
     def resolve
       unless @type
         @type = Type.type_for_id(@tid)
-        if @type.nil? and @tid !~ /^EAID/ and @tid =~ /^EA[^_]+_([A-Za-z]+)/
-          # puts "Could not find #{@tid}, Looking up type by name: #{$1}"
-          @type = Type.type_for_name($1)
-          # puts "  Found type for #{@type.name}" if @type
+        if @type.nil? and @tid !~ /^EAID/
+          if @tid =~ /^EA[^_]+_([A-Za-z]+)/
+            # puts "Could not find #{@tid}, Looking up type by name: #{$1}"
+            @type = Type.type_for_name($1)
+            # puts "  Found type for #{@type.name}" if @type
+          else
+            @type = Type.type_for_name(@tid)
+          end
         end
         
-        puts "!!! Cannot find type for #{@tid}" unless @type
+        if @type
+          @lazy_lambdas.each do |block|
+            @type.instance_eval(&block)
+          end
+        else
+          puts "!!! Cannot find type for #{@tid}"
+        end
       end
+      
       !@type.nil?
     end
 
@@ -94,19 +114,21 @@ class Type
         r = Relation::Association.new(owner, assoc)
         owner.add_relation(r)
       end
+      
     when 'uml:Realization'
       oid = assoc['client']
       owner = LazyPointer.new(oid)
       r = Relation::Realization.new(owner, assoc)
-      # puts "+ Adding realization #{r.stereotype} for #{owner.name}"
-      owner.add_relation(r)
+      # puts "+ Adding realization #{r.stereotype} for #{r.is_mixin?} -- #{oid}"
+      # puts "   ++ #{owner.name}" if owner.resolved?
+      owner.lazy { self.add_relation(r) }
 
     when 'uml:Dependency'
       oid = assoc['client']
       owner = LazyPointer.new(oid)
       r = Relation::Dependency.new(owner, assoc)
+      owner.lazy { self.add_relation(r) }      
       # puts "+ Adding dependency #{r.stereotype} for #{owner.name}"
-      owner.add_relation(r)
 
     else
       puts "!!! unknown association type: #{assoc['type']}"
@@ -183,6 +205,8 @@ class Type
 
     @children = []
 
+    # puts "Adding type #{@name} for id #{@id}"
+
     @@types_by_id[@id] = self
     @@types_by_name[@name] = self
 
@@ -218,6 +242,7 @@ class Type
 
   def check_mixin
     @mixin = nil
+    # puts "Checking mixin for #{@name}"
     @relations.each do |r|
       if r.is_mixin?
         @mixin = r.target.type

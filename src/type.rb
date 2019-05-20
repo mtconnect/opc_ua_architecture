@@ -111,17 +111,21 @@ class Type
       @extended.xpath('./attributes/attribute').each do |a|
         associations << Relation.create_association(self, a)
       end
-      @extended.xpath('./attributes/links').each do |l|
-        
-        associations << Relation.create_association(self, a)
+      @extended.xpath('./links/Association').each do |l|
+        id = l['id']
+        assoc = l.document.at("//ownedAttribute[@association='#{id}']")
+        oid = l['start']
+        p oid
+        owner = @@types_by_id[oid]
+        p "#{owner.name}"
+        associations << Relation.create_association(owner, assoc)
       end
-      associations.compact!
     elsif @type != 'uml:PrimitiveType' and @type != 'uml:Enumeration'
       e.element_children.each do |r|
         associations << Relation.create_association(self, r)
       end
-      associations.compact!
     end
+    associations.compact!
 
     #@relations, @constraints = associations.partition { |e| e.class != Relation::Constraint }
     @constraints = {}

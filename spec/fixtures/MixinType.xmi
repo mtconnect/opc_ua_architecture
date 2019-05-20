@@ -298,14 +298,14 @@
 						<generalization xmi:type="uml:Generalization" xmi:id="EAID_039600F4_0850_40e5_924F_6B6BAFBF7F9D" general="EAID_9887318C_1DEF_47ad_A805_12D4FE773371"/>
 					</packagedElement>
 					<packagedElement xmi:type="uml:InstanceSpecification" xmi:id="EAID_5B25E76A_BC58_4d9a_A192_BCF618E53C91" name="Namespaces" classifier="EAID_9B8AEA96_2048_4771_A6D9_B3AF9537BCEF">
-						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_srcA55439_F569_4933_B769_75C80513FB11" name="Namespaces" association="EAID_22A55439_F569_4933_B769_75C80513FB11">
+						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_dst5EE330_5221_490b_B4AE_0ED38240BE49" association="EAID_645EE330_5221_490b_B4AE_0ED38240BE49">
 							<type xmi:idref="EAID_A3749DBE_81F3_4618_91B5_2C1CD9BD0C95"/>
 						</ownedAttribute>
 					</packagedElement>
-					<packagedElement xmi:type="uml:Association" xmi:id="EAID_22A55439_F569_4933_B769_75C80513FB11">
-						<memberEnd xmi:idref="EAID_dstA55439_F569_4933_B769_75C80513FB11"/>
-						<memberEnd xmi:idref="EAID_srcA55439_F569_4933_B769_75C80513FB11"/>
-						<ownedEnd xmi:type="uml:Property" xmi:id="EAID_dstA55439_F569_4933_B769_75C80513FB11" association="EAID_22A55439_F569_4933_B769_75C80513FB11">
+					<packagedElement xmi:type="uml:Association" xmi:id="EAID_645EE330_5221_490b_B4AE_0ED38240BE49" name="Namespaces">
+						<memberEnd xmi:idref="EAID_dst5EE330_5221_490b_B4AE_0ED38240BE49"/>
+						<memberEnd xmi:idref="EAID_src5EE330_5221_490b_B4AE_0ED38240BE49"/>
+						<ownedEnd xmi:type="uml:Property" xmi:id="EAID_src5EE330_5221_490b_B4AE_0ED38240BE49" association="EAID_645EE330_5221_490b_B4AE_0ED38240BE49">
 							<type xmi:idref="EAID_5B25E76A_BC58_4d9a_A192_BCF618E53C91"/>
 						</ownedEnd>
 					</packagedElement>
@@ -2342,7 +2342,7 @@
 						<style/>
 						<styleex value="IsLiteral=0;"/>
 						<tags/>
-						<xrefs value="$XREFPROP=$XID={9392F1EE-3877-4d9c-8C37-78FA971D1F5F}$XID;$NAM=MOFProps$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$BEH=redefinedProperty$BEH;$PAR=0$PAR;$DES={7F8BCA74-6735-4378-A542-F3D326058C2A}$DES;$CLT={62635656-93F1-49e7-89A4-CA7AD8E9D853}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={E9986394-E4F5-4d7d-A0D8-9C3314751649}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=Attribute;GUID={8B50A861-2D66-4ca0-ACC6-4906F926FEF6};FQName=OPC UA Profile::Attribute;@ENDSTEREO;$DES;$CLT={62635656-93F1-49e7-89A4-CA7AD8E9D853}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+						<xrefs value="$XREFPROP=$XID={E9986394-E4F5-4d7d-A0D8-9C3314751649}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=Attribute;GUID={8B50A861-2D66-4ca0-ACC6-4906F926FEF6};FQName=OPC UA Profile::Attribute;@ENDSTEREO;$DES;$CLT={62635656-93F1-49e7-89A4-CA7AD8E9D853}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={9392F1EE-3877-4d9c-8C37-78FA971D1F5F}$XID;$NAM=MOFProps$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$BEH=redefinedProperty$BEH;$PAR=0$PAR;$DES={7F8BCA74-6735-4378-A542-F3D326058C2A}$DES;$CLT={62635656-93F1-49e7-89A4-CA7AD8E9D853}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
 					</attribute>
 					<attribute xmi:idref="EAID_006C36A4_E314_4d32_AFCC_CAE4EB485EBC" name="DataTypeVersion" scope="Public">
 						<initial/>
@@ -2611,7 +2611,7 @@
 					</attribute>
 				</attributes>
 				<links>
-					<Association xmi:id="EAID_22A55439_F569_4933_B769_75C80513FB11" start="EAID_A3749DBE_81F3_4618_91B5_2C1CD9BD0C95" end="EAID_5B25E76A_BC58_4d9a_A192_BCF618E53C91"/>
+					<Association xmi:id="EAID_645EE330_5221_490b_B4AE_0ED38240BE49" start="EAID_5B25E76A_BC58_4d9a_A192_BCF618E53C91" end="EAID_A3749DBE_81F3_4618_91B5_2C1CD9BD0C95"/>
 				</links>
 			</element>
 			<element xmi:idref="EAID_9B8AEA96_2048_4771_A6D9_B3AF9537BCEF" xmi:type="uml:Class" name="NamespacesType" scope="public">
@@ -5119,7 +5119,7 @@
 						<style/>
 						<styleex value="volatile=0;"/>
 						<tags/>
-						<xrefs value="$XREFPROP=$XID={0E1718CA-65BB-458e-8A71-1C1D070F5E6E}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=Attribute;GUID={8B50A861-2D66-4ca0-ACC6-4906F926FEF6};FQName=OPC UA Profile::Attribute;@ENDSTEREO;$DES;$CLT={0660C08A-2F1F-4acb-8594-249EBEF4598B}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={9C1D9334-CB05-4253-BF05-2BB63D77A79B}$XID;$NAM=MOFProps$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$BEH=redefinedProperty$BEH;$PAR=0$PAR;$DES={9F69988E-B1A9-4009-ADA2-6B71F78331ED}$DES;$CLT={0660C08A-2F1F-4acb-8594-249EBEF4598B}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+						<xrefs value="$XREFPROP=$XID={9C1D9334-CB05-4253-BF05-2BB63D77A79B}$XID;$NAM=MOFProps$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$BEH=redefinedProperty$BEH;$PAR=0$PAR;$DES={9F69988E-B1A9-4009-ADA2-6B71F78331ED}$DES;$CLT={0660C08A-2F1F-4acb-8594-249EBEF4598B}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={0E1718CA-65BB-458e-8A71-1C1D070F5E6E}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=Attribute;GUID={8B50A861-2D66-4ca0-ACC6-4906F926FEF6};FQName=OPC UA Profile::Attribute;@ENDSTEREO;$DES;$CLT={0660C08A-2F1F-4acb-8594-249EBEF4598B}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
 					</attribute>
 				</attributes>
 				<links>
@@ -5223,7 +5223,7 @@
 						<style/>
 						<styleex value="volatile=0;"/>
 						<tags/>
-						<xrefs value="$XREFPROP=$XID={3527D90C-16CF-4f16-99F7-37DEA9912E88}$XID;$NAM=MOFProps$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$BEH=redefinedProperty$BEH;$PAR=0$PAR;$DES={9F69988E-B1A9-4009-ADA2-6B71F78331ED}$DES;$CLT={3D094909-9A37-46e6-A1EE-3FB32BDCD997}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={59BAD683-D7BF-4b0e-A243-2E8BDB94C281}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=Attribute;GUID={8B50A861-2D66-4ca0-ACC6-4906F926FEF6};FQName=OPC UA Profile::Attribute;@ENDSTEREO;$DES;$CLT={3D094909-9A37-46e6-A1EE-3FB32BDCD997}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+						<xrefs value="$XREFPROP=$XID={59BAD683-D7BF-4b0e-A243-2E8BDB94C281}$XID;$NAM=Stereotypes$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=Attribute;GUID={8B50A861-2D66-4ca0-ACC6-4906F926FEF6};FQName=OPC UA Profile::Attribute;@ENDSTEREO;$DES;$CLT={3D094909-9A37-46e6-A1EE-3FB32BDCD997}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={3527D90C-16CF-4f16-99F7-37DEA9912E88}$XID;$NAM=MOFProps$NAM;$TYP=attribute property$TYP;$VIS=Public$VIS;$BEH=redefinedProperty$BEH;$PAR=0$PAR;$DES={9F69988E-B1A9-4009-ADA2-6B71F78331ED}$DES;$CLT={3D094909-9A37-46e6-A1EE-3FB32BDCD997}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
 					</attribute>
 				</attributes>
 				<links>
@@ -5613,7 +5613,7 @@
 					</attribute>
 				</attributes>
 				<links>
-					<Association xmi:id="EAID_22A55439_F569_4933_B769_75C80513FB11" start="EAID_A3749DBE_81F3_4618_91B5_2C1CD9BD0C95" end="EAID_5B25E76A_BC58_4d9a_A192_BCF618E53C91"/>
+					<Association xmi:id="EAID_645EE330_5221_490b_B4AE_0ED38240BE49" start="EAID_5B25E76A_BC58_4d9a_A192_BCF618E53C91" end="EAID_A3749DBE_81F3_4618_91B5_2C1CD9BD0C95"/>
 				</links>
 			</element>
 		</elements>
@@ -6675,19 +6675,8 @@
 				<xrefs value="$XREFPROP=$XID={36AFFCC3-DB38-44c9-989F-596D2A0A45F6}$XID;$NAM=CustomProperties$NAM;$TYP=connector property$TYP;$VIS=Public$VIS;$DES=@PROP=@NAME=isSubstitutable@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=0@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={25BF38A8-B9E2-4a1c-ABC1-AEA666CAF0E6}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
 				<tags/>
 			</connector>
-			<connector xmi:idref="EAID_22A55439_F569_4933_B769_75C80513FB11">
-				<source xmi:idref="EAID_A3749DBE_81F3_4618_91B5_2C1CD9BD0C95">
-					<model ea_localid="170" type="Object" name="http://opcfoundation.org/UA/MTConnect/2.0/"/>
-					<role name="Namespaces" visibility="Public" targetScope="instance"/>
-					<type aggregation="none" containment="Unspecified"/>
-					<constraints/>
-					<modifiers isOrdered="false" changeable="none" isNavigable="false"/>
-					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
-					<documentation/>
-					<xrefs/>
-					<tags/>
-				</source>
-				<target xmi:idref="EAID_5B25E76A_BC58_4d9a_A192_BCF618E53C91">
+			<connector xmi:idref="EAID_645EE330_5221_490b_B4AE_0ED38240BE49" name="Namespaces">
+				<source xmi:idref="EAID_5B25E76A_BC58_4d9a_A192_BCF618E53C91">
 					<model ea_localid="67" type="Object" name="Namespaces"/>
 					<role visibility="Public" targetScope="instance"/>
 					<type aggregation="none" containment="Unspecified"/>
@@ -6697,18 +6686,31 @@
 					<documentation/>
 					<xrefs/>
 					<tags/>
+				</source>
+				<target xmi:idref="EAID_A3749DBE_81F3_4618_91B5_2C1CD9BD0C95">
+					<model ea_localid="170" type="Object" name="http://opcfoundation.org/UA/MTConnect/2.0/"/>
+					<role visibility="Public" targetScope="instance"/>
+					<type aggregation="none" containment="Unspecified"/>
+					<constraints/>
+					<modifiers isOrdered="false" changeable="none" isNavigable="true"/>
+					<style value="Union=0;Derived=0;AllowDuplicates=0;Owned=0;Navigable=Navigable;"/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
 				</target>
-				<model ea_localid="117"/>
-				<properties ea_type="Association" direction="Destination -&gt; Source"/>
+				<model ea_localid="118"/>
+				<properties ea_type="Association" stereotype="HasComponent" direction="Source -&gt; Destination"/>
 				<modifiers isRoot="false" isLeaf="false"/>
 				<parameterSubstitutions/>
 				<documentation/>
 				<appearance linemode="2" linecolor="-1" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
-				<labels lt="+Namespaces"/>
-				<extendedProperties virtualInheritance="0"/>
+				<labels mb=" &#xA;«HasComponent»" mt="Namespaces"/>
+				<extendedProperties conditional=" &#xA;«HasComponent»"/>
 				<style/>
-				<xrefs/>
-				<tags/>
+				<xrefs value="$XREFPROP=$XID={FF7F96C0-C6D9-436e-B538-C2D46413949E}$XID;$NAM=Stereotypes$NAM;$TYP=connector property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=HasComponent;GUID={8073FA87-D7B4-4834-8927-5B188428D981};FQName=OPC UA Profile::HasComponent;@ENDSTEREO;$DES;$CLT={645EE330-5221-490b-B4AE-0ED38240BE49}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<tags>
+					<tag xmi:id="EAID_CB37C63D_47AC_ff47_8759_10D95475A3F4" name="Symmetric" value="false" notes="Values: True,False&#xA;Default: false&#xA;"/>
+				</tags>
 			</connector>
 			<connector xmi:idref="EAID_3C57DD9B_3770_4152_B763_58E83C40CBCB">
 				<source xmi:idref="EAID_4634C948_B2BE_4e63_AD9B_5577485572EA">
@@ -9143,6 +9145,7 @@
 	<OPC_UA_Profile:Attribute base_Property="EAID_7F8BCA74_6735_4378_A542_F3D326058C2A"/>
 	<OPC_UA_Profile:Attribute base_Property="EAID_9F69988E_B1A9_4009_ADA2_6B71F78331ED"/>
 	<OPC_UA_Profile:Attribute base_Property="EAID_62635656_93F1_49e7_89A4_CA7AD8E9D853"/>
+	<OPC_UA_Profile:HasComponent base_Association="EAID_645EE330_5221_490b_B4AE_0ED38240BE49" Symmetric="false"/>
 	<OPC_UA_Profile:Attribute base_Property="EAID_EA95F040_14B4_49e2_8386_F997D78D9F0C"/>
 	<OPC_UA_Profile:Attribute base_Property="EAID_CB02A6CC_7E34_4bcb_AFA3_EC999BC9EB51"/>
 	<OPC_UA_Profile:Attribute base_Property="EAID_EA011D21_A66C_4cd3_B013_394F4A08504C"/>

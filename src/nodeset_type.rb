@@ -167,13 +167,13 @@ class NodesetType < Type
   end
 
   def create_relationship(refs, a, owner, path)
-    #puts "    Creating relationship"
+    puts "    Creating relationship"
     if a.is_property?
       reference(refs, a, path)
       variable_property(a, owner, path)
     elsif a.is_a? Relation::Association
-      #puts "      Checking OPC object ref"
-      if @type == 'uml:Object' && a.target.type.is_opc? 
+      puts "      Checking OPC object ref"
+      if @type == 'uml:InstanceSpecification' && a.target.type.is_opc? 
         create_opc_object_reference(refs, a)
       else
         reference(refs, a, path)
@@ -213,7 +213,7 @@ class NodesetType < Type
   end
 
   def is_opc_instance?
-    @type == 'uml:Object' and @classifier.is_opc?
+    @type == 'uml:InstanceSpecification' and @classifier.is_opc?
   end
   
   def relationships(refs, owner, path = [])
@@ -308,7 +308,9 @@ class NodesetType < Type
                                    { 'xmlns' => 'http://opcfoundation.org/UA/2008/02/Types.xsd'})
 
     # Create type dict entry
-    struct = NodesetModel.type_dict_root.add_element('opc:EnumeratedType', {'Name' => @name, 'LengthInBits' => '32', 'BaseType' => "ua:ExtensionObject" })
+    struct = NodesetModel.type_dict_root.add_element('opc:EnumeratedType', {'Name' => @name,
+                                                                            'LengthInBits' => '32',
+                                                                            'BaseType' => "ua:ExtensionObject" })
     res = NodesetModel.xml_type_dict_root.add_element('xs:simpleType', {'name' => "#{@name}Enum" }).
             add_element('xs:restriction', { 'base' => 'xs:string' })
     
@@ -453,7 +455,7 @@ class NodesetType < Type
   def generate_instance    
     print "++ Generating #{@classifier.base_type} #{@name}"
     NodesetModel.root << REXML::Comment.new(" Instantiation of Object #{@name} #{node_id} ")
-    if (@classifier.base_type == 'Variable')
+    if @classifier.base_type == 'Variable'
       puts "::#{@classifier.name} - #{@classifier.variable_data_type.name}"
       NodesetModel.ids.add_node_class(node_id, @name, 'Variable')
       @refs, @node = node('UAVariable', node_id, @name, data_type: @classifier.variable_data_type.node_alias)

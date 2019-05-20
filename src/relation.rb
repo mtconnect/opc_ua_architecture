@@ -10,7 +10,7 @@ module Relation
     return if r.name == 'memberEnd'
 
     if r.name == 'attribute'
-        Slot.new(owner, r)      
+        Slot.new(owner, r)
     else
       case r['type']
       when 'uml:Generalization'
@@ -35,9 +35,6 @@ module Relation
 
       when 'uml:Constraint'
         Constraint.new(owner, r)
-
-      when 'uml:Slot'
-        Slot.new(owner, r)
 
       else
         puts "!! Unknown relation type: #{r.name} :: #{r['id']} - #{r['type']} for #{owner.name}"

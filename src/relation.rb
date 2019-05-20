@@ -66,21 +66,19 @@ module Relation
     class Connection
       attr_accessor :name, :type, :type_id, :multiplicity
       
-      def initialize(name, type_id, type = nil)
+      def initialize(name, type)
         @multiplicity = nil
         @name = name
         @type = type
-        @type_id = type_id
       end
 
       def resolve_type
-        if @type.nil? and @type_id
-          @type = Type.type_for_id(@type_id)
+        if @type.resolved?
+          @type_id = @type.id
+          true
+        else
+          false
         end
-        if @type.nil?
-          puts "    Connection: Cannot resolve type: '#{@type_id}' for #{@name}"
-        end
-        !@type.nil?
       end
     end
     
@@ -97,7 +95,7 @@ module Relation
       @extended = r.at("//connector[@idref='#{@id}']")
       @multiplicity, @optional = get_multiplicity(r)
 
-      @source = Connection.new('Source', nil, owner)
+      @source = Connection.new('Source', owner)
       @source.multiplicity = @multiplicity
       @stereotype = @target = nil
     end
@@ -154,7 +152,7 @@ module Relation
       if @target.nil?
         puts "    !!!! cannot resolve type for #{@owner.name}::#{@name} no target"
       else
-        unless @target.resolve_type or @target.type_id =~ /^EA/
+        unless @target.resolve_type or @target.type.internal?
           raise "    !!!! cannot resolve target for #{@owner.name}::#{@name} #{self.class.name}"
         end
       end
@@ -185,8 +183,8 @@ module Relation
       
       attr_accessor :name, :optional, :navigable, :xmi
       
-      def initialize(e, tid, type = nil)
-        super(e['name'], tid, type)
+      def initialize(e, type)
+        super(e['name'], type)
 
         @multiplicity, @optional = get_multiplicity(e)
         @navigable = false
@@ -206,19 +204,19 @@ module Relation
       super(owner, r)
 
       tid = r.at('type')['idref']
-      @final_target = @target = End.new(r, tid)
+      @final_target = @target = End.new(r, Type::LazyPointer.new(tid))
       
       aid = r['association']
       assoc = r.document.at("//packagedElement[@id='#{aid}']")
       src = assoc.at('./ownedEnd')
       @assoc_type = assoc['type']
-      @source = End.new(src, nil, owner)
+      @source = End.new(src, owner)
       
       @association = r.at("//connector[@idref='#{aid}']")
       unpack_extended_properties(@association)
 
       if @assoc_type == 'uml:AssociationClass'
-        @target = End.new(r, aid)
+        @target = End.new(r, Type::LazyPointer.new(aid))
         # Always a folder
         @stereotype = "Organizes"
       end
@@ -228,7 +226,6 @@ module Relation
       @optional = @target.optional
 
       assoc.xpath('./ownedRule[@type="uml:Constraint"]').each do |c|
-        
         name = c['name']
         spec = c.at('./specification')
         props =  @association.at("./constraints/constraint[@name='#{name}']")
@@ -275,7 +272,7 @@ module Relation
     end
 
     def link_target(reference, type)
-      @target = Connection.new(reference, nil, type)
+      @target = Connection.new(reference, type)
     end
 
     def resolve_types
@@ -288,7 +285,7 @@ module Relation
       end
       
       if is_folder?
-        @target = Connection.new('OrganizedBy', nil, Type.type_for_name('FolderType'))
+        @target = Connection.new('OrganizedBy', Type.type_for_name('FolderType'))
       end
     end
   end
@@ -310,7 +307,7 @@ module Relation
       end
 
       type = a.at('type')['idref']
-      @target = Connection.new('type', type)
+      @target = Connection.new('type', Type::LazyPointer.new(type))
     end
     
     def is_property?
@@ -341,7 +338,7 @@ module Relation
       unpack_extended_properties(@dependency)
 
       @name = (@stereotype && @stereotype) unless @name
-      @target = Connection.new('Target', r[attr])
+      @target = Connection.new('Target', Type::LazyPointer.new(r[attr]))
     end
   end
 
@@ -383,7 +380,7 @@ module Relation
       @name = a['name']
       props = a.at('./properties')
       t = Type.type_for_name(props['type'])
-      @target = Connection.new('type', nil, t)
+      @target = Connection.new('type', t)
       init = a.at('./initial')
       @value = init['body'] if init
     end

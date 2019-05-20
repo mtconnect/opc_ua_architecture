@@ -158,7 +158,7 @@ RSpec.describe NodesetModel, 'MixinType Nodeset definitions' do
 
     it 'should have a metadata object' do
       expect(@object).to_not be_nil
-      expect(@object.relations.count).to eq(7)
+      expect(@object.relations.count).to eq(8)
       nodeIdTypes = @object.relation('StaticNodeIdTypes')
       expect(nodeIdTypes.is_array?).to be true
       expect(nodeIdTypes.value).to eq('[0]')

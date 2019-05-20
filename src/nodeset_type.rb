@@ -14,7 +14,7 @@ class NodesetType < Type
   class OwnerReference
     attr_reader :name, :node_id, :invariants
     def initialize(name, node_id, invariants)
-      puts "Creating Owner ref #{name} #{invariants.inspect}"
+      # puts "Creating Owner ref #{name} #{invariants.inspect}"
       @name, @node_id, @invariants = name, node_id, invariants
     end
   end
@@ -128,7 +128,7 @@ class NodesetType < Type
     node_reference(refs, owner.name, 'HasProperty', owner.node_id, forward: false)
 
     # Add values for slots
-    add_value(ele, ref) if ref.type == 'uml:Slot'
+    add_value(ele, ref) if Relation::Slot === ref
 
     # puts "#{ref.name}: #{owner.invariants.inspect} #{ref.target.type.name}"
     if owner.invariants and owner.invariants[ref.name]
@@ -154,31 +154,26 @@ class NodesetType < Type
     attrs
   end
 
-  def create_opc_object_reference(refs, a)
-    slot, = a.target.type.relations.select { |t| t.name == 'NodeId' }
+  def create_object_reference(refs, a)
+    slot, = a.source.type.relations.select { |t| t.name == 'NodeId' }
     if slot
       nodeId = slot.value
     else
-      nodeId = a.target.type.node_id
+      nodeId = a.source.type.node_id
     end
     node_reference(refs, a.name, a.reference_type_alias,
-                   nodeId, a.target.type.name,
-                   forward: a.target.navigable)
+                   nodeId, a.source.type.name,
+                   forward: false)
   end
 
   def create_relationship(refs, a, owner, path)
-    puts "    Creating relationship"
+    # puts "    Creating relationship #{a.name}"
     if a.is_property?
       reference(refs, a, path)
       variable_property(a, owner, path)
     elsif a.is_a? Relation::Association
-      puts "      Checking OPC object ref"
-      if @type == 'uml:InstanceSpecification' && a.target.type.is_opc? 
-        create_opc_object_reference(refs, a)
-      else
-        reference(refs, a, path)
-        component(a, owner, path)
-      end
+      reference(refs, a, path)
+      component(a, owner, path)
     end
   end
 
@@ -219,7 +214,12 @@ class NodesetType < Type
   def relationships(refs, owner, path = [])
     @relations.each do |a|
       if !a.is_attribute? and a.name
+        # puts "Relationship #{a.name} for #{owner.name}"
         create_relationship(refs, a, owner, path)
+      elsif a.source.type.id != @id
+        create_object_reference(refs, a)        
+      else
+        puts "!!! #{@name}::#{a.source.type.name} cannot generate"
       end
     end
   end

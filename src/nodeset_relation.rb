@@ -51,14 +51,6 @@ module Relation
       else
         @target.type.node_id
       end
-    end
-    
-    def target_node_id
-      if is_folder?
-        NodesetModel.ids['FolderType']
-      else
-        @target.type.node_id
-      end
     end    
   end
 

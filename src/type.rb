@@ -8,6 +8,68 @@ class Type
               :constraints, :extended, :documentation, :literals, :invariants
   attr_accessor :class_link
 
+  class LazyPointer
+    @@pointers = []
+
+    def self.resolve
+      @@pointers.each do |o|
+        o.resolve
+      end
+    end
+
+    def initialize(obj)
+      @tid = @type = nil
+      
+      case obj
+      when String
+        @tid = obj
+        @type = Type.type_for_id(@tid)
+        @@pointers << self unless @type
+
+      when Type
+        @type = obj
+        @tid = @type.id
+
+      else
+        raise "Pointer created for unknown type: #{obj.class}"
+      end
+    end
+
+    def id
+      @tid
+    end
+
+    def resolved?
+      !@type.nil?
+    end
+
+    def internal?
+      @tid =~ /^EA/
+    end
+
+    def resolve
+      unless @type
+        @type = Type.type_for_id(@tid)
+        if @type.nil? and @tid !~ /^EAID/ and @tid =~ /^EA[^_]+_([A-Za-z]+)/
+          # puts "Could not find #{@tid}, Looking up type by name: #{$1}"
+          @type = Type.type_for_name($1)
+          # puts "  Found type for #{@type.name}" if @type
+        end
+        
+        puts "!!! Cannot find type for #{@tid}" unless @type
+      end
+      !@type.nil?
+    end
+
+    def method_missing(m, *args, &block)
+      unless @type
+        raise "!!! Calling #{m} on unresolved type #{@tid}"
+      else
+        @type.send(m, *args, &block)
+      end
+    end    
+  end
+
   @@types_by_id = {}
   @@types_by_name = {}
 
@@ -34,27 +96,17 @@ class Type
       end
     when 'uml:Realization'
       oid = assoc['client']
-
-      owner = @@types_by_id[oid]
-      unless owner.nil?
-        r = Relation::Realization.new(owner, assoc)
-        # puts "+ Adding realization #{r.stereotype} for #{owner.name}"
-        owner.add_relation(r)
-      else
-        puts "!!! Cannot resolve Realization: #{oid}}"
-      end
+      owner = LazyPointer.new(oid)
+      r = Relation::Realization.new(owner, assoc)
+      # puts "+ Adding realization #{r.stereotype} for #{owner.name}"
+      owner.add_relation(r)
 
     when 'uml:Dependency'
       oid = assoc['client']
-      
-      owner = @@types_by_id[oid]
-      unless owner.nil?
-        r = Relation::Dependency.new(owner, assoc)
-        puts "+ Adding dependency #{r.stereotype} for #{owner.name}"
-        owner.add_relation(r)
-      else
-        puts "!!! Cannot resolve Dependency: #{oid}"
-      end
+      owner = LazyPointer.new(oid)
+      r = Relation::Dependency.new(owner, assoc)
+      # puts "+ Adding dependency #{r.stereotype} for #{owner.name}"
+      owner.add_relation(r)
 
     else
       puts "!!! unknown association type: #{assoc['type']}"
@@ -63,6 +115,7 @@ class Type
   end
 
   def self.connect_model
+    Type::LazyPointer.resolve
     resolve_types
     connect_children
   end
@@ -114,11 +167,7 @@ class Type
       @extended.xpath('./links/Association').each do |l|
         id = l['id']
         assoc = l.document.at("//ownedAttribute[@association='#{id}']")
-        oid = l['start']
-        p oid
-        owner = @@types_by_id[oid]
-        p "#{owner.name}"
-        associations << Relation.create_association(owner, assoc)
+        associations << Relation.create_association(LazyPointer.new(l['start']), assoc)
       end
     elsif @type != 'uml:PrimitiveType' and @type != 'uml:Enumeration'
       e.element_children.each do |r|
@@ -137,7 +186,17 @@ class Type
     @@types_by_id[@id] = self
     @@types_by_name[@name] = self
 
+    if @xmi['classifier']
+      @classifier = LazyPointer.new(@xmi['classifier'])
+    else
+      @classifier = nil
+    end
+    
     @model.add_type(self)
+  end
+
+  def resolved?
+    true
   end
 
   def add_relation(rel)
@@ -187,11 +246,6 @@ class Type
   def resolve_types
     @relations.each do |r|
       r.resolve_types
-    end
-    if @xmi['classifier']
-      @classifier = resolve_type(@xmi['classifier'])
-    else
-      @classifier = nil
     end
   end
 

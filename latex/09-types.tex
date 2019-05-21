@@ -1,4 +1,4 @@
-% Generated 2019-05-20 21:23:08 -0700
+% Generated 2019-05-20 21:41:10 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -150,6 +150,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTComponentType (See section \ref{type:MTComponentType})} \\
 Has\-Property & Variable & Iso841Class & String & Property\-Type & Optional \\
+Has\-Property & Variable & Name & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & Uuid & String & Property\-Type & Mandatory \\
 Has\-Property & Variable & Version & String & Property\-Type & Optional \\
 \end{tabu}
 \end{table} 
@@ -8567,7 +8569,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 Symmetric & \multicolumn{5}{|l|}{false} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of HierarchicalReferences (See \cite{UAPart5} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of NonHierarchicalReferences (See \cite{UAPart5} Documentation)} \\
 \end{tabu}
 \end{table} 
 
@@ -8589,10 +8591,10 @@ Symmetric & \multicolumn{5}{|l|}{false} \\
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{HasMTComposition} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
-Symmetric & \multicolumn{5}{|l|}{false} \\
+Symmetric & \multicolumn{5}{|l|}{true} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of HierarchicalReferences (See \cite{UAPart5} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of NonHierarchicalReferences (See \cite{UAPart5} Documentation)} \\
 \end{tabu}
 \end{table} 
 
@@ -8614,10 +8616,10 @@ Symmetric & \multicolumn{5}{|l|}{false} \\
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{HasMTReference} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
-Symmetric & \multicolumn{5}{|l|}{false} \\
+Symmetric & \multicolumn{5}{|l|}{true} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of HierarchicalReferences (See \cite{UAPart5} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of NonHierarchicalReferences (See \cite{UAPart5} Documentation)} \\
 \end{tabu}
 \end{table} 
 
@@ -8642,10 +8644,10 @@ The \mtmodel{Source} relation to a \gls{MTComponent} or \gls{MTDataItem}.
 \tabucline[1.5pt]{}
 BrowseName & \multicolumn{5}{|l|}{HasMTSource} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
-Symmetric & \multicolumn{5}{|l|}{false} \\
+Symmetric & \multicolumn{5}{|l|}{true} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of HierarchicalReferences (See \cite{UAPart5} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of NonHierarchicalReferences (See \cite{UAPart5} Documentation)} \\
 \end{tabu}
 \end{table} 
 
@@ -8674,7 +8676,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 Symmetric & \multicolumn{5}{|l|}{false} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of HierarchicalReferences (See \cite{UAPart5} Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of NonHierarchicalReferences (See \cite{UAPart5} Documentation)} \\
 \end{tabu}
 \end{table} 
 

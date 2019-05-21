@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-05-21T03:21:44Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-05-21T04:41:24Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-05-21T03:21:44Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-05-21T03:21:44Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-05-21T04:41:24Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-05-21T04:41:24Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -1149,6 +1149,10 @@ aGVtYT4=
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2021</Reference>
       <!-- HasProperty -  - Iso841Class ns=1;i=2017 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2017</Reference>
+      <!-- HasProperty -  - Name ns=1;i=3668 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3668</Reference>
+      <!-- HasProperty -  - Uuid ns=1;i=3669 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3669</Reference>
       <!-- HasProperty -  - Version ns=1;i=2016 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2016</Reference>
     </References>
@@ -1161,6 +1165,30 @@ aGVtYT4=
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTDeviceType ns=1;i=2015   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2015</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTDeviceType::Name : String[1] -->
+  <UAVariable NodeId='ns=1;i=3668' BrowseName='1:Name' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2015'>
+    <DisplayName>Name</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - MTDeviceType ns=1;i=2015   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2015</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTDeviceType::Uuid : String[1] -->
+  <UAVariable NodeId='ns=1;i=3669' BrowseName='1:Uuid' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2015'>
+    <DisplayName>Uuid</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - (Reverse) - MTDeviceType ns=1;i=2015   -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2015</Reference>
     </References>
@@ -9329,40 +9357,40 @@ Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
   <UAReferenceType NodeId='ns=1;i=2680' BrowseName='1:HasMTClassType' Symmetric='false'>
     <DisplayName>HasMTClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - HierarchicalReferences i=33   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>i=33</Reference>
+      <!-- HasSubtype - (Reverse) - NonHierarchicalReferences i=32   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=32</Reference>
     </References>
   </UAReferenceType>
   <!-- Definition of Reference HasMTComposition ns=1;i=2687 -->
-  <UAReferenceType NodeId='ns=1;i=2687' BrowseName='1:HasMTComposition' Symmetric='false'>
+  <UAReferenceType NodeId='ns=1;i=2687' BrowseName='1:HasMTComposition' Symmetric='true'>
     <DisplayName>HasMTComposition</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - HierarchicalReferences i=33   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>i=33</Reference>
+      <!-- HasSubtype - (Reverse) - NonHierarchicalReferences i=32   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=32</Reference>
     </References>
   </UAReferenceType>
   <!-- Definition of Reference HasMTReference ns=1;i=2672 -->
-  <UAReferenceType NodeId='ns=1;i=2672' BrowseName='1:HasMTReference' Symmetric='false'>
+  <UAReferenceType NodeId='ns=1;i=2672' BrowseName='1:HasMTReference' Symmetric='true'>
     <DisplayName>HasMTReference</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - HierarchicalReferences i=33   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>i=33</Reference>
+      <!-- HasSubtype - (Reverse) - NonHierarchicalReferences i=32   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=32</Reference>
     </References>
   </UAReferenceType>
   <!-- Definition of Reference HasMTSource ns=1;i=2689 -->
-  <UAReferenceType NodeId='ns=1;i=2689' BrowseName='1:HasMTSource' Symmetric='false'>
+  <UAReferenceType NodeId='ns=1;i=2689' BrowseName='1:HasMTSource' Symmetric='true'>
     <DisplayName>HasMTSource</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - HierarchicalReferences i=33   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>i=33</Reference>
+      <!-- HasSubtype - (Reverse) - NonHierarchicalReferences i=32   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=32</Reference>
     </References>
   </UAReferenceType>
   <!-- Definition of Reference HasMTSubClassType ns=1;i=2683 -->
   <UAReferenceType NodeId='ns=1;i=2683' BrowseName='1:HasMTSubClassType' Symmetric='false'>
     <DisplayName>HasMTSubClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - HierarchicalReferences i=33   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>i=33</Reference>
+      <!-- HasSubtype - (Reverse) - NonHierarchicalReferences i=32   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=32</Reference>
     </References>
   </UAReferenceType>
 </UANodeSet>

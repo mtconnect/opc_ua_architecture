@@ -254,24 +254,17 @@ EOT
       f.puts "\\paragraph{Operations}\n"
       
       f.puts "\\begin{itemize}"
-      @operations.each do |op|
-        f.print "  \\item \\texttt{#{op['name']}("
-        if op['parameters']
-          f.print op['parameters'].map { |param|
-            ((param['type'] and !param['type'].empty?) ? param['type'] : "") +
-              param['name']
-          }.join(', ')
-        end
+      @operations.each do |name, docs|
+        f.print "  \\item \\texttt{#{name}("
         f.print ")}"
-        if op['specification']
+        if false
           f.puts "\\\\\n    Specification:"
           f.puts "   \\indent \\begin{lstlisting}"
-          f.puts op['specification']
-          f.puts "\\end{lstlisting}"
-          
+          f.puts specs
+          f.puts "\\end{lstlisting}"          
         end
-        if op['documentation']
-          f.puts "\n    Documentation: #{op['documentation']}"
+        if docs
+          f.puts "\n    Documentation: #{docs}"
         end
         f.puts
       end

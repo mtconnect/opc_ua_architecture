@@ -999,38 +999,38 @@
 				<packagedElement xmi:type="uml:Package" xmi:id="EAPK_45B9068F_CB88_4e57_BDB0_B6F2075008D9" name="Conditions">
 					<packagedElement xmi:type="uml:Activity" xmi:id="EAID_F736B2AB_81A8_4575_A9DA_EA331B37F152" name="Condition Branch">
 						<group xmi:type="uml:ActivityPartition" xmi:id="EAID_A1B88BA9_712B_48d6_A1E2_01B363401300" name="Branch 0">
-							<node xmi:idref="EAID_32EDAE18_FA0E_4e7c_8B1D_C0323FF45EC7"/>
 							<node xmi:idref="EAID_5906E9CF_A102_406c_B4A7_28EE0BB69352"/>
+							<node xmi:idref="EAID_32EDAE18_FA0E_4e7c_8B1D_C0323FF45EC7"/>
 						</group>
+						<node xmi:type="uml:OpaqueAction" xmi:id="EAID_5906E9CF_A102_406c_B4A7_28EE0BB69352" name="Normal 154">
+							<incoming xmi:idref="EAID_D721BC1B_50D0_420a_B851_D8A0B674B715"/>
+						</node>
 						<node xmi:type="uml:OpaqueAction" xmi:id="EAID_32EDAE18_FA0E_4e7c_8B1D_C0323FF45EC7" name="Fault 154">
 							<outgoing xmi:idref="EAID_D721BC1B_50D0_420a_B851_D8A0B674B715"/>
 						</node>
 						<edge xmi:type="uml:ControlFlow" xmi:id="EAID_D721BC1B_50D0_420a_B851_D8A0B674B715" source="EAID_32EDAE18_FA0E_4e7c_8B1D_C0323FF45EC7" target="EAID_5906E9CF_A102_406c_B4A7_28EE0BB69352"/>
-						<node xmi:type="uml:OpaqueAction" xmi:id="EAID_5906E9CF_A102_406c_B4A7_28EE0BB69352" name="Normal 154">
-							<incoming xmi:idref="EAID_D721BC1B_50D0_420a_B851_D8A0B674B715"/>
-						</node>
 						<group xmi:type="uml:ActivityPartition" xmi:id="EAID_DFB1761A_054C_46ad_9B83_A6C7E0F00483" name="Branch 1">
-							<node xmi:idref="EAID_70BF7082_494E_4c01_9F86_23E37CA4BC78"/>
 							<node xmi:idref="EAID_E130106E_1F71_4cbb_929E_AECA44407656"/>
+							<node xmi:idref="EAID_70BF7082_494E_4c01_9F86_23E37CA4BC78"/>
 						</group>
+						<node xmi:type="uml:OpaqueAction" xmi:id="EAID_E130106E_1F71_4cbb_929E_AECA44407656" name="Normal">
+							<incoming xmi:idref="EAID_769DCE2C_2F2B_44d5_BCDA_7A56D099C968"/>
+						</node>
 						<node xmi:type="uml:OpaqueAction" xmi:id="EAID_70BF7082_494E_4c01_9F86_23E37CA4BC78" name="Fault 155">
 							<outgoing xmi:idref="EAID_769DCE2C_2F2B_44d5_BCDA_7A56D099C968"/>
 						</node>
 						<edge xmi:type="uml:ControlFlow" xmi:id="EAID_769DCE2C_2F2B_44d5_BCDA_7A56D099C968" source="EAID_70BF7082_494E_4c01_9F86_23E37CA4BC78" target="EAID_E130106E_1F71_4cbb_929E_AECA44407656"/>
-						<node xmi:type="uml:OpaqueAction" xmi:id="EAID_E130106E_1F71_4cbb_929E_AECA44407656" name="Normal">
-							<incoming xmi:idref="EAID_769DCE2C_2F2B_44d5_BCDA_7A56D099C968"/>
-						</node>
 						<group xmi:type="uml:ActivityPartition" xmi:id="EAID_C2F06CD2_163D_46b1_A554_787A6C33F12A" name="Branch 2">
-							<node xmi:idref="EAID_8E548F20_BE3C_4d75_B89A_523CC0840F8D"/>
 							<node xmi:idref="EAID_236764D6_06D6_4d02_8C2A_8204ED58D60D"/>
+							<node xmi:idref="EAID_8E548F20_BE3C_4d75_B89A_523CC0840F8D"/>
 						</group>
-						<node xmi:type="uml:OpaqueAction" xmi:id="EAID_8E548F20_BE3C_4d75_B89A_523CC0840F8D" name="Normal 157">
-							<incoming xmi:idref="EAID_FBD4FF96_222F_4d86_80F4_A933E0452A94"/>
-						</node>
 						<node xmi:type="uml:OpaqueAction" xmi:id="EAID_236764D6_06D6_4d02_8C2A_8204ED58D60D" name="Warning 157">
 							<outgoing xmi:idref="EAID_FBD4FF96_222F_4d86_80F4_A933E0452A94"/>
 						</node>
 						<edge xmi:type="uml:ControlFlow" xmi:id="EAID_FBD4FF96_222F_4d86_80F4_A933E0452A94" source="EAID_236764D6_06D6_4d02_8C2A_8204ED58D60D" target="EAID_8E548F20_BE3C_4d75_B89A_523CC0840F8D"/>
+						<node xmi:type="uml:OpaqueAction" xmi:id="EAID_8E548F20_BE3C_4d75_B89A_523CC0840F8D" name="Normal 157">
+							<incoming xmi:idref="EAID_FBD4FF96_222F_4d86_80F4_A933E0452A94"/>
+						</node>
 					</packagedElement>
 					<packagedElement xmi:type="uml:Class" xmi:id="EAID_3781D7B5_BC41_4eae_ABD9_3976B56AA093" name="MTConditionType">
 						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_D5B9D565_1581_4ed4_A547_55C481A4798F" name="MTSeverity">
@@ -1092,11 +1092,6 @@
 					</packagedElement>
 					<packagedElement xmi:type="uml:StateMachine" xmi:id="EAID_95015CA0_4494_49de_9E93_78A222F5F123" name="Simple Activation ">
 						<region xmi:type="uml:Region" xmi:id="EAID_053FF653_84B2_4a14_A8CA_AA2D5F42B59D" name="Simple Condition Activation">
-							<subvertex xmi:type="uml:State" xmi:id="EAID_03FB0394_A4F2_41d0_9FC7_29140A5BA734" name="Fault">
-								<incoming xmi:idref="EAID_72B9E88B_AFE8_4316_862E_CF64958A28A3"/>
-								<outgoing xmi:idref="EAID_E08385E9_103B_4877_A998_9D194C19826B"/>
-							</subvertex>
-							<transition xmi:type="uml:Transition" xmi:id="EAID_E08385E9_103B_4877_A998_9D194C19826B" kind="external" source="EAID_03FB0394_A4F2_41d0_9FC7_29140A5BA734" target="EAID_256C636A_C4D1_48f2_AED6_7711DB9C3219"/>
 							<subvertex xmi:type="uml:Pseudostate" xmi:id="EAID_73524B59_944B_4f3b_8BFD_582B004B4247" name="Initial">
 								<outgoing xmi:idref="EAID_3B5F7B7E_0FCD_48d2_AAA7_6AF2090DD2A7"/>
 							</subvertex>
@@ -1107,6 +1102,11 @@
 								<outgoing xmi:idref="EAID_72B9E88B_AFE8_4316_862E_CF64958A28A3"/>
 							</subvertex>
 							<transition xmi:type="uml:Transition" xmi:id="EAID_72B9E88B_AFE8_4316_862E_CF64958A28A3" kind="external" source="EAID_256C636A_C4D1_48f2_AED6_7711DB9C3219" target="EAID_03FB0394_A4F2_41d0_9FC7_29140A5BA734"/>
+							<subvertex xmi:type="uml:State" xmi:id="EAID_03FB0394_A4F2_41d0_9FC7_29140A5BA734" name="Fault">
+								<incoming xmi:idref="EAID_72B9E88B_AFE8_4316_862E_CF64958A28A3"/>
+								<outgoing xmi:idref="EAID_E08385E9_103B_4877_A998_9D194C19826B"/>
+							</subvertex>
+							<transition xmi:type="uml:Transition" xmi:id="EAID_E08385E9_103B_4877_A998_9D194C19826B" kind="external" source="EAID_03FB0394_A4F2_41d0_9FC7_29140A5BA734" target="EAID_256C636A_C4D1_48f2_AED6_7711DB9C3219"/>
 						</region>
 					</packagedElement>
 					<packagedElement xmi:type="uml:Dependency" xmi:id="EAID_197B2FF9_A4FB_4bd7_8104_E7059564BA65" supplier="EAPK_2FCB7D99_70EE_4c30_9514_182FE8A7FF85" client="EAPK_45B9068F_CB88_4e57_BDB0_B6F2075008D9"/>
@@ -2720,10 +2720,20 @@
 							<outgoing xmi:idref="EAID_5018A60B_9C01_4818_88C0_EB84C738E736"/>
 						</node>
 						<group xmi:type="uml:ActivityPartition" xmi:id="EAID_089D658D_9DBE_46e5_96F5_899160BD2498" name="OPC-UA">
-							<node xmi:idref="EAID_62EC0C4D_2121_45dd_8F63_2398E89EE8C0"/>
-							<node xmi:idref="EAID_BDDE8695_AAA0_4ebc_B18D_9862AD2D6814"/>
 							<node xmi:idref="EAID_561BEF53_C0C3_48b8_B954_F7DCD73CD610"/>
+							<node xmi:idref="EAID_BDDE8695_AAA0_4ebc_B18D_9862AD2D6814"/>
+							<node xmi:idref="EAID_62EC0C4D_2121_45dd_8F63_2398E89EE8C0"/>
 						</group>
+						<node xmi:type="uml:OpaqueAction" xmi:id="EAID_561BEF53_C0C3_48b8_B954_F7DCD73CD610" name="Set status code">
+							<incoming xmi:idref="EAID_FD2B9F35_D953_4da4_9767_DD0026F2CD31"/>
+							<outgoing xmi:idref="EAID_218D7E35_E321_48fc_A583_72D4C4B0C5FC"/>
+						</node>
+						<edge xmi:type="uml:ObjectFlow" xmi:id="EAID_218D7E35_E321_48fc_A583_72D4C4B0C5FC" name="StatusCode  = Uncertain_NoCommunicationLastUsable" source="EAID_561BEF53_C0C3_48b8_B954_F7DCD73CD610" target="EAID_E0C58920_AD57_4fe7_B6DA_D433DA422EE8"/>
+						<node xmi:type="uml:OpaqueAction" xmi:id="EAID_BDDE8695_AAA0_4ebc_B18D_9862AD2D6814" name="Set Event Timestamp UTC">
+							<incoming xmi:idref="EAID_E1998F75_DE5C_4caf_8071_8A255A34C099"/>
+							<outgoing xmi:idref="EAID_BEE187FE_E6E9_4559_8B9A_D4ECA52E2A49"/>
+						</node>
+						<edge xmi:type="uml:ControlFlow" xmi:id="EAID_BEE187FE_E6E9_4559_8B9A_D4ECA52E2A49" source="EAID_BDDE8695_AAA0_4ebc_B18D_9862AD2D6814" target="EAID_68DDA979_C85B_4b68_9DCD_8AA79844DE05"/>
 						<node xmi:type="uml:DecisionNode" xmi:id="EAID_62EC0C4D_2121_45dd_8F63_2398E89EE8C0" name="Is Enumerated">
 							<incoming xmi:idref="EAID_4624F135_4BCB_47f8_8A5C_FEF466AEEF97"/>
 							<outgoing xmi:idref="EAID_D1C535FE_4F92_450b_B255_D67D9FF4ED92"/>
@@ -2731,16 +2741,6 @@
 						</node>
 						<edge xmi:type="uml:ControlFlow" xmi:id="EAID_248BCC52_2D02_46a1_A2ED_F09C71092429" name="%5Botherwise%5D" source="EAID_62EC0C4D_2121_45dd_8F63_2398E89EE8C0" target="EAID_8C9A3F38_EFA2_4c72_81F7_60AA153C7DB2"/>
 						<edge xmi:type="uml:ControlFlow" xmi:id="EAID_D1C535FE_4F92_450b_B255_D67D9FF4ED92" name="Type is MTEnumeratedEventType" source="EAID_62EC0C4D_2121_45dd_8F63_2398E89EE8C0" target="EAID_A0DE5C72_31A2_4421_8D14_7C98A6FDEBEB"/>
-						<node xmi:type="uml:OpaqueAction" xmi:id="EAID_BDDE8695_AAA0_4ebc_B18D_9862AD2D6814" name="Set Event Timestamp UTC">
-							<incoming xmi:idref="EAID_E1998F75_DE5C_4caf_8071_8A255A34C099"/>
-							<outgoing xmi:idref="EAID_BEE187FE_E6E9_4559_8B9A_D4ECA52E2A49"/>
-						</node>
-						<edge xmi:type="uml:ControlFlow" xmi:id="EAID_BEE187FE_E6E9_4559_8B9A_D4ECA52E2A49" source="EAID_BDDE8695_AAA0_4ebc_B18D_9862AD2D6814" target="EAID_68DDA979_C85B_4b68_9DCD_8AA79844DE05"/>
-						<node xmi:type="uml:OpaqueAction" xmi:id="EAID_561BEF53_C0C3_48b8_B954_F7DCD73CD610" name="Set status code">
-							<incoming xmi:idref="EAID_FD2B9F35_D953_4da4_9767_DD0026F2CD31"/>
-							<outgoing xmi:idref="EAID_218D7E35_E321_48fc_A583_72D4C4B0C5FC"/>
-						</node>
-						<edge xmi:type="uml:ObjectFlow" xmi:id="EAID_218D7E35_E321_48fc_A583_72D4C4B0C5FC" name="StatusCode  = Uncertain_NoCommunicationLastUsable" source="EAID_561BEF53_C0C3_48b8_B954_F7DCD73CD610" target="EAID_E0C58920_AD57_4fe7_B6DA_D433DA422EE8"/>
 						<node xmi:type="uml:ObjectNode" xmi:id="EAID_E0C58920_AD57_4fe7_B6DA_D433DA422EE8" name="OPC DataItem">
 							<incoming xmi:idref="EAID_BC0FF68C_6D1C_4ad8_A87B_9B7A6B418CD6"/>
 							<incoming xmi:idref="EAID_218D7E35_E321_48fc_A583_72D4C4B0C5FC"/>
@@ -6254,19 +6254,6 @@
 				<xrefs/>
 				<extendedProperties tagged="0" package_name="Conditions"/>
 			</element>
-			<element xmi:idref="EAID_32EDAE18_FA0E_4e7c_8B1D_C0323FF45EC7" xmi:type="uml:Action" name="Fault 154" scope="public">
-				<model package="EAPK_45B9068F_CB88_4e57_BDB0_B6F2075008D9" owner="EAID_A1B88BA9_712B_48d6_A1E2_01B363401300" tpos="0" ea_localid="1207" ea_eleType="element"/>
-				<properties isSpecification="false" sType="Action" nType="0" scope="public"/>
-				<project author="will" version="1.0" phase="1.0" created="2019-04-25 17:43:07" modified="2019-04-25 17:43:07" complexity="1" status="Proposed"/>
-				<code gentype="OPCUA"/>
-				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
-				<tags/>
-				<xrefs value="$XREFPROP=$XID={04E39537-B3AD-4329-9BAE-A5C6A87A9EB1}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@PROP=@NAME=kind@ENDNAME;@TYPE=ActionKind@ENDTYPE;@VALU=Opaque@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={32EDAE18-FA0E-4e7c-8B1D-C0323FF45EC7}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
-				<extendedProperties tagged="0" package_name="Conditions"/>
-				<links>
-					<ControlFlow xmi:id="EAID_D721BC1B_50D0_420a_B851_D8A0B674B715" start="EAID_32EDAE18_FA0E_4e7c_8B1D_C0323FF45EC7" end="EAID_5906E9CF_A102_406c_B4A7_28EE0BB69352"/>
-				</links>
-			</element>
 			<element xmi:idref="EAID_5906E9CF_A102_406c_B4A7_28EE0BB69352" xmi:type="uml:Action" name="Normal 154" scope="public">
 				<model package="EAPK_45B9068F_CB88_4e57_BDB0_B6F2075008D9" owner="EAID_A1B88BA9_712B_48d6_A1E2_01B363401300" tpos="0" ea_localid="1208" ea_eleType="element"/>
 				<properties isSpecification="false" sType="Action" nType="0" scope="public"/>
@@ -6275,6 +6262,19 @@
 				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
 				<tags/>
 				<xrefs value="$XREFPROP=$XID={A50129BC-75DE-4dd3-89AA-8C57572CCA83}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@PROP=@NAME=kind@ENDNAME;@TYPE=ActionKind@ENDTYPE;@VALU=Opaque@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={5906E9CF-A102-406c-B4A7-28EE0BB69352}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="Conditions"/>
+				<links>
+					<ControlFlow xmi:id="EAID_D721BC1B_50D0_420a_B851_D8A0B674B715" start="EAID_32EDAE18_FA0E_4e7c_8B1D_C0323FF45EC7" end="EAID_5906E9CF_A102_406c_B4A7_28EE0BB69352"/>
+				</links>
+			</element>
+			<element xmi:idref="EAID_32EDAE18_FA0E_4e7c_8B1D_C0323FF45EC7" xmi:type="uml:Action" name="Fault 154" scope="public">
+				<model package="EAPK_45B9068F_CB88_4e57_BDB0_B6F2075008D9" owner="EAID_A1B88BA9_712B_48d6_A1E2_01B363401300" tpos="0" ea_localid="1207" ea_eleType="element"/>
+				<properties isSpecification="false" sType="Action" nType="0" scope="public"/>
+				<project author="will" version="1.0" phase="1.0" created="2019-04-25 17:43:07" modified="2019-04-25 17:43:07" complexity="1" status="Proposed"/>
+				<code gentype="OPCUA"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs value="$XREFPROP=$XID={04E39537-B3AD-4329-9BAE-A5C6A87A9EB1}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@PROP=@NAME=kind@ENDNAME;@TYPE=ActionKind@ENDTYPE;@VALU=Opaque@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={32EDAE18-FA0E-4e7c-8B1D-C0323FF45EC7}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
 				<extendedProperties tagged="0" package_name="Conditions"/>
 				<links>
 					<ControlFlow xmi:id="EAID_D721BC1B_50D0_420a_B851_D8A0B674B715" start="EAID_32EDAE18_FA0E_4e7c_8B1D_C0323FF45EC7" end="EAID_5906E9CF_A102_406c_B4A7_28EE0BB69352"/>
@@ -6290,19 +6290,6 @@
 				<xrefs/>
 				<extendedProperties tagged="0" package_name="Conditions"/>
 			</element>
-			<element xmi:idref="EAID_70BF7082_494E_4c01_9F86_23E37CA4BC78" xmi:type="uml:Action" name="Fault 155" scope="public">
-				<model package="EAPK_45B9068F_CB88_4e57_BDB0_B6F2075008D9" owner="EAID_DFB1761A_054C_46ad_9B83_A6C7E0F00483" tpos="0" ea_localid="1210" ea_eleType="element"/>
-				<properties isSpecification="false" sType="Action" nType="0" scope="public"/>
-				<project author="will" version="1.0" phase="1.0" created="2019-04-25 17:43:07" modified="2019-04-25 17:43:07" complexity="1" status="Proposed"/>
-				<code gentype="OPCUA"/>
-				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
-				<tags/>
-				<xrefs value="$XREFPROP=$XID={552ED258-3205-44a3-ACCE-B478E40F40F4}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@PROP=@NAME=kind@ENDNAME;@TYPE=ActionKind@ENDTYPE;@VALU=Opaque@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={70BF7082-494E-4c01-9F86-23E37CA4BC78}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
-				<extendedProperties tagged="0" package_name="Conditions"/>
-				<links>
-					<ControlFlow xmi:id="EAID_769DCE2C_2F2B_44d5_BCDA_7A56D099C968" start="EAID_70BF7082_494E_4c01_9F86_23E37CA4BC78" end="EAID_E130106E_1F71_4cbb_929E_AECA44407656"/>
-				</links>
-			</element>
 			<element xmi:idref="EAID_E130106E_1F71_4cbb_929E_AECA44407656" xmi:type="uml:Action" name="Normal" scope="public">
 				<model package="EAPK_45B9068F_CB88_4e57_BDB0_B6F2075008D9" owner="EAID_DFB1761A_054C_46ad_9B83_A6C7E0F00483" tpos="0" ea_localid="1211" ea_eleType="element"/>
 				<properties isSpecification="false" sType="Action" nType="0" scope="public"/>
@@ -6311,6 +6298,19 @@
 				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
 				<tags/>
 				<xrefs value="$XREFPROP=$XID={BCAF5890-046F-4f81-99C3-900BE367F8EB}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@PROP=@NAME=kind@ENDNAME;@TYPE=ActionKind@ENDTYPE;@VALU=Opaque@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={E130106E-1F71-4cbb-929E-AECA44407656}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="Conditions"/>
+				<links>
+					<ControlFlow xmi:id="EAID_769DCE2C_2F2B_44d5_BCDA_7A56D099C968" start="EAID_70BF7082_494E_4c01_9F86_23E37CA4BC78" end="EAID_E130106E_1F71_4cbb_929E_AECA44407656"/>
+				</links>
+			</element>
+			<element xmi:idref="EAID_70BF7082_494E_4c01_9F86_23E37CA4BC78" xmi:type="uml:Action" name="Fault 155" scope="public">
+				<model package="EAPK_45B9068F_CB88_4e57_BDB0_B6F2075008D9" owner="EAID_DFB1761A_054C_46ad_9B83_A6C7E0F00483" tpos="0" ea_localid="1210" ea_eleType="element"/>
+				<properties isSpecification="false" sType="Action" nType="0" scope="public"/>
+				<project author="will" version="1.0" phase="1.0" created="2019-04-25 17:43:07" modified="2019-04-25 17:43:07" complexity="1" status="Proposed"/>
+				<code gentype="OPCUA"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs value="$XREFPROP=$XID={552ED258-3205-44a3-ACCE-B478E40F40F4}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@PROP=@NAME=kind@ENDNAME;@TYPE=ActionKind@ENDTYPE;@VALU=Opaque@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={70BF7082-494E-4c01-9F86-23E37CA4BC78}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
 				<extendedProperties tagged="0" package_name="Conditions"/>
 				<links>
 					<ControlFlow xmi:id="EAID_769DCE2C_2F2B_44d5_BCDA_7A56D099C968" start="EAID_70BF7082_494E_4c01_9F86_23E37CA4BC78" end="EAID_E130106E_1F71_4cbb_929E_AECA44407656"/>
@@ -6326,19 +6326,6 @@
 				<xrefs/>
 				<extendedProperties tagged="0" package_name="Conditions"/>
 			</element>
-			<element xmi:idref="EAID_8E548F20_BE3C_4d75_B89A_523CC0840F8D" xmi:type="uml:Action" name="Normal 157" scope="public">
-				<model package="EAPK_45B9068F_CB88_4e57_BDB0_B6F2075008D9" owner="EAID_C2F06CD2_163D_46b1_A554_787A6C33F12A" tpos="0" ea_localid="1213" ea_eleType="element"/>
-				<properties isSpecification="false" sType="Action" nType="0" scope="public"/>
-				<project author="will" version="1.0" phase="1.0" created="2019-04-25 17:43:07" modified="2019-04-25 17:43:07" complexity="1" status="Proposed"/>
-				<code gentype="OPCUA"/>
-				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
-				<tags/>
-				<xrefs value="$XREFPROP=$XID={ACE45E43-5557-4846-AE27-6CBA7A7AA6C3}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@PROP=@NAME=kind@ENDNAME;@TYPE=ActionKind@ENDTYPE;@VALU=Opaque@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={8E548F20-BE3C-4d75-B89A-523CC0840F8D}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
-				<extendedProperties tagged="0" package_name="Conditions"/>
-				<links>
-					<ControlFlow xmi:id="EAID_FBD4FF96_222F_4d86_80F4_A933E0452A94" start="EAID_236764D6_06D6_4d02_8C2A_8204ED58D60D" end="EAID_8E548F20_BE3C_4d75_B89A_523CC0840F8D"/>
-				</links>
-			</element>
 			<element xmi:idref="EAID_236764D6_06D6_4d02_8C2A_8204ED58D60D" xmi:type="uml:Action" name="Warning 157" scope="public">
 				<model package="EAPK_45B9068F_CB88_4e57_BDB0_B6F2075008D9" owner="EAID_C2F06CD2_163D_46b1_A554_787A6C33F12A" tpos="0" ea_localid="1214" ea_eleType="element"/>
 				<properties isSpecification="false" sType="Action" nType="0" scope="public"/>
@@ -6347,6 +6334,19 @@
 				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
 				<tags/>
 				<xrefs value="$XREFPROP=$XID={424636FA-0D94-4a36-B240-4FE722A91AA9}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@PROP=@NAME=kind@ENDNAME;@TYPE=ActionKind@ENDTYPE;@VALU=Opaque@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={236764D6-06D6-4d02-8C2A-8204ED58D60D}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<extendedProperties tagged="0" package_name="Conditions"/>
+				<links>
+					<ControlFlow xmi:id="EAID_FBD4FF96_222F_4d86_80F4_A933E0452A94" start="EAID_236764D6_06D6_4d02_8C2A_8204ED58D60D" end="EAID_8E548F20_BE3C_4d75_B89A_523CC0840F8D"/>
+				</links>
+			</element>
+			<element xmi:idref="EAID_8E548F20_BE3C_4d75_B89A_523CC0840F8D" xmi:type="uml:Action" name="Normal 157" scope="public">
+				<model package="EAPK_45B9068F_CB88_4e57_BDB0_B6F2075008D9" owner="EAID_C2F06CD2_163D_46b1_A554_787A6C33F12A" tpos="0" ea_localid="1213" ea_eleType="element"/>
+				<properties isSpecification="false" sType="Action" nType="0" scope="public"/>
+				<project author="will" version="1.0" phase="1.0" created="2019-04-25 17:43:07" modified="2019-04-25 17:43:07" complexity="1" status="Proposed"/>
+				<code gentype="OPCUA"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs value="$XREFPROP=$XID={ACE45E43-5557-4846-AE27-6CBA7A7AA6C3}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@PROP=@NAME=kind@ENDNAME;@TYPE=ActionKind@ENDTYPE;@VALU=Opaque@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={8E548F20-BE3C-4d75-B89A-523CC0840F8D}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
 				<extendedProperties tagged="0" package_name="Conditions"/>
 				<links>
 					<ControlFlow xmi:id="EAID_FBD4FF96_222F_4d86_80F4_A933E0452A94" start="EAID_236764D6_06D6_4d02_8C2A_8204ED58D60D" end="EAID_8E548F20_BE3C_4d75_B89A_523CC0840F8D"/>
@@ -6551,20 +6551,6 @@
 				<xrefs/>
 				<extendedProperties tagged="0" package_name="Conditions"/>
 			</element>
-			<element xmi:idref="EAID_03FB0394_A4F2_41d0_9FC7_29140A5BA734" xmi:type="uml:State" name="Fault" scope="public">
-				<model package="EAPK_45B9068F_CB88_4e57_BDB0_B6F2075008D9" owner="EAID_053FF653_84B2_4a14_A8CA_AA2D5F42B59D" tpos="0" ea_localid="1219" ea_eleType="element"/>
-				<properties isSpecification="false" sType="State" nType="0" scope="public"/>
-				<project author="will" version="1.0" phase="1.0" created="2019-04-25 17:43:07" modified="2019-04-25 17:43:07" complexity="1" status="Proposed"/>
-				<code gentype="OPCUA"/>
-				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=0;HSwimLanes=0;BorderStyle=0;"/>
-				<tags/>
-				<xrefs/>
-				<extendedProperties tagged="0" package_name="Conditions"/>
-				<links>
-					<StateFlow xmi:id="EAID_E08385E9_103B_4877_A998_9D194C19826B" start="EAID_03FB0394_A4F2_41d0_9FC7_29140A5BA734" end="EAID_256C636A_C4D1_48f2_AED6_7711DB9C3219"/>
-					<StateFlow xmi:id="EAID_72B9E88B_AFE8_4316_862E_CF64958A28A3" start="EAID_256C636A_C4D1_48f2_AED6_7711DB9C3219" end="EAID_03FB0394_A4F2_41d0_9FC7_29140A5BA734"/>
-				</links>
-			</element>
 			<element xmi:idref="EAID_73524B59_944B_4f3b_8BFD_582B004B4247" xmi:type="uml:StateNode" name="Initial" scope="public">
 				<model package="EAPK_45B9068F_CB88_4e57_BDB0_B6F2075008D9" owner="EAID_053FF653_84B2_4a14_A8CA_AA2D5F42B59D" tpos="0" ea_localid="1221" ea_eleType="element"/>
 				<properties isSpecification="false" sType="StateNode" nType="3" scope="public"/>
@@ -6591,6 +6577,20 @@
 					<StateFlow xmi:id="EAID_72B9E88B_AFE8_4316_862E_CF64958A28A3" start="EAID_256C636A_C4D1_48f2_AED6_7711DB9C3219" end="EAID_03FB0394_A4F2_41d0_9FC7_29140A5BA734"/>
 					<StateFlow xmi:id="EAID_3B5F7B7E_0FCD_48d2_AAA7_6AF2090DD2A7" start="EAID_73524B59_944B_4f3b_8BFD_582B004B4247" end="EAID_256C636A_C4D1_48f2_AED6_7711DB9C3219"/>
 					<StateFlow xmi:id="EAID_E08385E9_103B_4877_A998_9D194C19826B" start="EAID_03FB0394_A4F2_41d0_9FC7_29140A5BA734" end="EAID_256C636A_C4D1_48f2_AED6_7711DB9C3219"/>
+				</links>
+			</element>
+			<element xmi:idref="EAID_03FB0394_A4F2_41d0_9FC7_29140A5BA734" xmi:type="uml:State" name="Fault" scope="public">
+				<model package="EAPK_45B9068F_CB88_4e57_BDB0_B6F2075008D9" owner="EAID_053FF653_84B2_4a14_A8CA_AA2D5F42B59D" tpos="0" ea_localid="1219" ea_eleType="element"/>
+				<properties isSpecification="false" sType="State" nType="0" scope="public"/>
+				<project author="will" version="1.0" phase="1.0" created="2019-04-25 17:43:07" modified="2019-04-25 17:43:07" complexity="1" status="Proposed"/>
+				<code gentype="OPCUA"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=0;HSwimLanes=0;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0" package_name="Conditions"/>
+				<links>
+					<StateFlow xmi:id="EAID_E08385E9_103B_4877_A998_9D194C19826B" start="EAID_03FB0394_A4F2_41d0_9FC7_29140A5BA734" end="EAID_256C636A_C4D1_48f2_AED6_7711DB9C3219"/>
+					<StateFlow xmi:id="EAID_72B9E88B_AFE8_4316_862E_CF64958A28A3" start="EAID_256C636A_C4D1_48f2_AED6_7711DB9C3219" end="EAID_03FB0394_A4F2_41d0_9FC7_29140A5BA734"/>
 				</links>
 			</element>
 			<element xmi:idref="EAPK_2FCB7D99_70EE_4c30_9514_182FE8A7FF85" xmi:type="uml:Package" name="Data Items" scope="public">
@@ -7139,7 +7139,7 @@
 						<code/>
 						<style/>
 						<styleex/>
-						<documentation/>
+						<documentation value="To be defined.&#xA;"/>
 						<tags/>
 						<xrefs/>
 					</operation>
@@ -13479,19 +13479,18 @@
 				<xrefs/>
 				<extendedProperties tagged="0" package_name="Streaming Data"/>
 			</element>
-			<element xmi:idref="EAID_62EC0C4D_2121_45dd_8F63_2398E89EE8C0" xmi:type="uml:Decision" name="Is Enumerated" scope="public">
-				<model package="EAPK_D9511121_300B_413a_855E_500A30F7E164" owner="EAID_089D658D_9DBE_46e5_96F5_899160BD2498" tpos="0" ea_localid="1550" ea_eleType="element"/>
-				<properties isSpecification="false" sType="Decision" nType="0" scope="public"/>
+			<element xmi:idref="EAID_561BEF53_C0C3_48b8_B954_F7DCD73CD610" xmi:type="uml:Action" name="Set status code" scope="public">
+				<model package="EAPK_D9511121_300B_413a_855E_500A30F7E164" owner="EAID_089D658D_9DBE_46e5_96F5_899160BD2498" tpos="0" ea_localid="1552" ea_eleType="element"/>
+				<properties isSpecification="false" sType="Action" nType="0" scope="public"/>
 				<project author="will" version="1.0" phase="1.0" created="2019-04-25 17:43:07" modified="2019-04-25 17:43:07" complexity="1" status="Proposed"/>
 				<code gentype="OPCUA"/>
 				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
 				<tags/>
-				<xrefs/>
+				<xrefs value="$XREFPROP=$XID={6ADC8D8A-AAFB-4b35-A62A-AD5E77282234}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@PROP=@NAME=kind@ENDNAME;@TYPE=ActionKind@ENDTYPE;@VALU=Opaque@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={561BEF53-C0C3-48b8-B954-F7DCD73CD610}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
 				<extendedProperties tagged="0" package_name="Streaming Data"/>
 				<links>
-					<ControlFlow xmi:id="EAID_248BCC52_2D02_46a1_A2ED_F09C71092429" start="EAID_62EC0C4D_2121_45dd_8F63_2398E89EE8C0" end="EAID_8C9A3F38_EFA2_4c72_81F7_60AA153C7DB2"/>
-					<ControlFlow xmi:id="EAID_D1C535FE_4F92_450b_B255_D67D9FF4ED92" start="EAID_62EC0C4D_2121_45dd_8F63_2398E89EE8C0" end="EAID_A0DE5C72_31A2_4421_8D14_7C98A6FDEBEB"/>
-					<ControlFlow xmi:id="EAID_4624F135_4BCB_47f8_8A5C_FEF466AEEF97" start="EAID_68DDA979_C85B_4b68_9DCD_8AA79844DE05" end="EAID_62EC0C4D_2121_45dd_8F63_2398E89EE8C0"/>
+					<ObjectFlow xmi:id="EAID_218D7E35_E321_48fc_A583_72D4C4B0C5FC" start="EAID_561BEF53_C0C3_48b8_B954_F7DCD73CD610" end="EAID_E0C58920_AD57_4fe7_B6DA_D433DA422EE8"/>
+					<ControlFlow xmi:id="EAID_FD2B9F35_D953_4da4_9767_DD0026F2CD31" start="EAID_68DDA979_C85B_4b68_9DCD_8AA79844DE05" end="EAID_561BEF53_C0C3_48b8_B954_F7DCD73CD610"/>
 				</links>
 			</element>
 			<element xmi:idref="EAID_BDDE8695_AAA0_4ebc_B18D_9862AD2D6814" xmi:type="uml:Action" name="Set Event Timestamp UTC" scope="public">
@@ -13508,18 +13507,19 @@
 					<ObjectFlow xmi:id="EAID_E1998F75_DE5C_4caf_8071_8A255A34C099" start="EAID_F7625762_0C89_4927_BEEC_714F80CF2ACF" end="EAID_BDDE8695_AAA0_4ebc_B18D_9862AD2D6814"/>
 				</links>
 			</element>
-			<element xmi:idref="EAID_561BEF53_C0C3_48b8_B954_F7DCD73CD610" xmi:type="uml:Action" name="Set status code" scope="public">
-				<model package="EAPK_D9511121_300B_413a_855E_500A30F7E164" owner="EAID_089D658D_9DBE_46e5_96F5_899160BD2498" tpos="0" ea_localid="1552" ea_eleType="element"/>
-				<properties isSpecification="false" sType="Action" nType="0" scope="public"/>
+			<element xmi:idref="EAID_62EC0C4D_2121_45dd_8F63_2398E89EE8C0" xmi:type="uml:Decision" name="Is Enumerated" scope="public">
+				<model package="EAPK_D9511121_300B_413a_855E_500A30F7E164" owner="EAID_089D658D_9DBE_46e5_96F5_899160BD2498" tpos="0" ea_localid="1550" ea_eleType="element"/>
+				<properties isSpecification="false" sType="Decision" nType="0" scope="public"/>
 				<project author="will" version="1.0" phase="1.0" created="2019-04-25 17:43:07" modified="2019-04-25 17:43:07" complexity="1" status="Proposed"/>
 				<code gentype="OPCUA"/>
 				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
 				<tags/>
-				<xrefs value="$XREFPROP=$XID={6ADC8D8A-AAFB-4b35-A62A-AD5E77282234}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@PROP=@NAME=kind@ENDNAME;@TYPE=ActionKind@ENDTYPE;@VALU=Opaque@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={561BEF53-C0C3-48b8-B954-F7DCD73CD610}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<xrefs/>
 				<extendedProperties tagged="0" package_name="Streaming Data"/>
 				<links>
-					<ObjectFlow xmi:id="EAID_218D7E35_E321_48fc_A583_72D4C4B0C5FC" start="EAID_561BEF53_C0C3_48b8_B954_F7DCD73CD610" end="EAID_E0C58920_AD57_4fe7_B6DA_D433DA422EE8"/>
-					<ControlFlow xmi:id="EAID_FD2B9F35_D953_4da4_9767_DD0026F2CD31" start="EAID_68DDA979_C85B_4b68_9DCD_8AA79844DE05" end="EAID_561BEF53_C0C3_48b8_B954_F7DCD73CD610"/>
+					<ControlFlow xmi:id="EAID_248BCC52_2D02_46a1_A2ED_F09C71092429" start="EAID_62EC0C4D_2121_45dd_8F63_2398E89EE8C0" end="EAID_8C9A3F38_EFA2_4c72_81F7_60AA153C7DB2"/>
+					<ControlFlow xmi:id="EAID_D1C535FE_4F92_450b_B255_D67D9FF4ED92" start="EAID_62EC0C4D_2121_45dd_8F63_2398E89EE8C0" end="EAID_A0DE5C72_31A2_4421_8D14_7C98A6FDEBEB"/>
+					<ControlFlow xmi:id="EAID_4624F135_4BCB_47f8_8A5C_FEF466AEEF97" start="EAID_68DDA979_C85B_4b68_9DCD_8AA79844DE05" end="EAID_62EC0C4D_2121_45dd_8F63_2398E89EE8C0"/>
 				</links>
 			</element>
 			<element xmi:idref="EAID_E0C58920_AD57_4fe7_B6DA_D433DA422EE8" xmi:type="uml:ObjectNode" name="OPC DataItem" scope="public">
@@ -20206,9 +20206,9 @@
 					<tag xmi:id="EAID_CB37C63D_47AC_ff47_B123_5B0B1A133ECF" name="Symmetric" value="false" notes="Values: True,False&#xA;Default: false&#xA;"/>
 				</tags>
 			</connector>
-			<connector xmi:idref="EAID_E08385E9_103B_4877_A998_9D194C19826B">
-				<source xmi:idref="EAID_03FB0394_A4F2_41d0_9FC7_29140A5BA734">
-					<model ea_localid="1219" type="State" name="Fault"/>
+			<connector xmi:idref="EAID_3B5F7B7E_0FCD_48d2_AAA7_6AF2090DD2A7">
+				<source xmi:idref="EAID_73524B59_944B_4f3b_8BFD_582B004B4247">
+					<model ea_localid="1221" type="StateNode" name="Initial"/>
 					<role visibility="Public"/>
 					<type aggregation="none"/>
 					<constraints/>
@@ -20229,14 +20229,14 @@
 					<xrefs/>
 					<tags/>
 				</target>
-				<model ea_localid="1334"/>
+				<model ea_localid="1332"/>
 				<properties ea_type="StateFlow" direction="Source -&gt; Destination"/>
 				<documentation/>
 				<appearance linemode="2" linecolor="0" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
 				<labels/>
 				<extendedProperties virtualInheritance="0"/>
 				<style/>
-				<xrefs value="$XREFPROP=$XID={81C98F87-0974-40f3-B64F-A987560CB4BD}$XID;$NAM=CustomProperties$NAM;$TYP=connector property$TYP;$VIS=Public$VIS;$DES=@PROP=@NAME=kind@ENDNAME;@TYPE=TransitionKind@ENDTYPE;@VALU=external@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=isEffect@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=False@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={E08385E9-103B-4877-A998-9D194C19826B}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<xrefs value="$XREFPROP=$XID={9231F2CA-E3C1-4263-9B35-7279208A5A81}$XID;$NAM=CustomProperties$NAM;$TYP=connector property$TYP;$VIS=Public$VIS;$DES=@PROP=@NAME=kind@ENDNAME;@TYPE=TransitionKind@ENDTYPE;@VALU=external@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=isEffect@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=False@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={3B5F7B7E-0FCD-48d2-AAA7-6AF2090DD2A7}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
 				<tags/>
 			</connector>
 			<connector xmi:idref="EAID_72B9E88B_AFE8_4316_862E_CF64958A28A3">
@@ -20272,9 +20272,9 @@
 				<xrefs value="$XREFPROP=$XID={8BBA823E-79E6-4223-973A-8FE46A4DBA0A}$XID;$NAM=CustomProperties$NAM;$TYP=connector property$TYP;$VIS=Public$VIS;$DES=@PROP=@NAME=kind@ENDNAME;@TYPE=TransitionKind@ENDTYPE;@VALU=external@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=isEffect@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=False@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={72B9E88B-AFE8-4316-862E-CF64958A28A3}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
 				<tags/>
 			</connector>
-			<connector xmi:idref="EAID_3B5F7B7E_0FCD_48d2_AAA7_6AF2090DD2A7">
-				<source xmi:idref="EAID_73524B59_944B_4f3b_8BFD_582B004B4247">
-					<model ea_localid="1221" type="StateNode" name="Initial"/>
+			<connector xmi:idref="EAID_E08385E9_103B_4877_A998_9D194C19826B">
+				<source xmi:idref="EAID_03FB0394_A4F2_41d0_9FC7_29140A5BA734">
+					<model ea_localid="1219" type="State" name="Fault"/>
 					<role visibility="Public"/>
 					<type aggregation="none"/>
 					<constraints/>
@@ -20295,14 +20295,14 @@
 					<xrefs/>
 					<tags/>
 				</target>
-				<model ea_localid="1332"/>
+				<model ea_localid="1334"/>
 				<properties ea_type="StateFlow" direction="Source -&gt; Destination"/>
 				<documentation/>
 				<appearance linemode="2" linecolor="0" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
 				<labels/>
 				<extendedProperties virtualInheritance="0"/>
 				<style/>
-				<xrefs value="$XREFPROP=$XID={9231F2CA-E3C1-4263-9B35-7279208A5A81}$XID;$NAM=CustomProperties$NAM;$TYP=connector property$TYP;$VIS=Public$VIS;$DES=@PROP=@NAME=kind@ENDNAME;@TYPE=TransitionKind@ENDTYPE;@VALU=external@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=isEffect@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=False@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={3B5F7B7E-0FCD-48d2-AAA7-6AF2090DD2A7}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
+				<xrefs value="$XREFPROP=$XID={81C98F87-0974-40f3-B64F-A987560CB4BD}$XID;$NAM=CustomProperties$NAM;$TYP=connector property$TYP;$VIS=Public$VIS;$DES=@PROP=@NAME=kind@ENDNAME;@TYPE=TransitionKind@ENDTYPE;@VALU=external@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;@PROP=@NAME=isEffect@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=False@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={E08385E9-103B-4877-A998-9D194C19826B}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
 				<tags/>
 			</connector>
 			<connector xmi:idref="EAID_197B2FF9_A4FB_4bd7_8104_E7059564BA65">
@@ -30155,39 +30155,6 @@
 				<xrefs/>
 				<tags/>
 			</connector>
-			<connector xmi:idref="EAID_248BCC52_2D02_46a1_A2ED_F09C71092429" name="%5Botherwise%5D">
-				<source xmi:idref="EAID_62EC0C4D_2121_45dd_8F63_2398E89EE8C0">
-					<model ea_localid="1550" type="Decision" name="Is Enumerated"/>
-					<role visibility="Public"/>
-					<type aggregation="none"/>
-					<constraints/>
-					<modifiers isOrdered="false" isNavigable="false"/>
-					<style/>
-					<documentation/>
-					<xrefs/>
-					<tags/>
-				</source>
-				<target xmi:idref="EAID_8C9A3F38_EFA2_4c72_81F7_60AA153C7DB2">
-					<model ea_localid="1554" type="Action" name="Set DataValue to CDATA"/>
-					<role visibility="Public"/>
-					<type aggregation="none"/>
-					<constraints/>
-					<modifiers isOrdered="false" isNavigable="false"/>
-					<style/>
-					<documentation/>
-					<xrefs/>
-					<tags/>
-				</target>
-				<model ea_localid="1056"/>
-				<properties ea_type="ControlFlow" direction="Source -&gt; Destination"/>
-				<documentation/>
-				<appearance linemode="2" linecolor="0" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
-				<labels rt="%5Botherwise%5D"/>
-				<extendedProperties virtualInheritance="0"/>
-				<style/>
-				<xrefs/>
-				<tags/>
-			</connector>
 			<connector xmi:idref="EAID_218D7E35_E321_48fc_A583_72D4C4B0C5FC" name="StatusCode  = Uncertain_NoCommunicationLastUsable">
 				<source xmi:idref="EAID_561BEF53_C0C3_48b8_B954_F7DCD73CD610">
 					<model ea_localid="1552" type="Action" name="Set status code"/>
@@ -30216,6 +30183,39 @@
 				<documentation/>
 				<appearance linemode="2" linecolor="0" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
 				<labels rt="StatusCode  = Uncertain_NoCommunicationLastUsable"/>
+				<extendedProperties virtualInheritance="0"/>
+				<style/>
+				<xrefs/>
+				<tags/>
+			</connector>
+			<connector xmi:idref="EAID_248BCC52_2D02_46a1_A2ED_F09C71092429" name="%5Botherwise%5D">
+				<source xmi:idref="EAID_62EC0C4D_2121_45dd_8F63_2398E89EE8C0">
+					<model ea_localid="1550" type="Decision" name="Is Enumerated"/>
+					<role visibility="Public"/>
+					<type aggregation="none"/>
+					<constraints/>
+					<modifiers isOrdered="false" isNavigable="false"/>
+					<style/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</source>
+				<target xmi:idref="EAID_8C9A3F38_EFA2_4c72_81F7_60AA153C7DB2">
+					<model ea_localid="1554" type="Action" name="Set DataValue to CDATA"/>
+					<role visibility="Public"/>
+					<type aggregation="none"/>
+					<constraints/>
+					<modifiers isOrdered="false" isNavigable="false"/>
+					<style/>
+					<documentation/>
+					<xrefs/>
+					<tags/>
+				</target>
+				<model ea_localid="1056"/>
+				<properties ea_type="ControlFlow" direction="Source -&gt; Destination"/>
+				<documentation/>
+				<appearance linemode="2" linecolor="0" linewidth="0" seqno="0" headStyle="0" lineStyle="0"/>
+				<labels rt="%5Botherwise%5D"/>
 				<extendedProperties virtualInheritance="0"/>
 				<style/>
 				<xrefs/>

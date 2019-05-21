@@ -168,7 +168,16 @@ class Type
 
     unpack_extended_properties(@extended)
 
-    @operations = e['operations'] || []
+    @operations = @xmi.xpath('./ownedOperation').map do |op|
+      name = op['name']
+      ext = op.document.at("//operation[@idref='#{op['id']}']")
+      if ext
+        doc = ext.at('./documentation')['value']
+      end
+      puts "Could not find docs for for #{@name}::#{name}" unless doc
+      [name, doc]
+    end
+    
     @abstract = e['isAbstract'] || false
     @model = model
     @literals = []

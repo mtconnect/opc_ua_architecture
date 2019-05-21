@@ -264,7 +264,7 @@ EOT
           f.puts "\\end{lstlisting}"          
         end
         if docs
-          f.puts "\n    Documentation: #{docs}"
+          f.puts "\\newline    Documentation: #{docs}"
         end
         f.puts
       end

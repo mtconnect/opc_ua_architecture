@@ -172,8 +172,10 @@ The rules for determining the \gls{BrowseName} for the MTConnect \gls{MTComponen
   \item The browse name is the \gls{QName} of the XML Element of the \gls{MTComponent}. \label{item:component-browse-name}
   \item The \uaterm{HasTypeDefinition} references a type that is created by appending the word \gls{Type} to the \gls{QName} of the \gls{MTComponent} element. For example, a \mtmodel{Controller} will have a \gls{BrowseName} of \mtmodel{Controller} and a \gls{HasTypeDefinition} referencing \mtmodel{ControllerType}.
   \item The \uaterm{ObjectType} is only defined once for all \glspl{MTComponent} of that type. There is no \texttt{MT} prepended to the front of the \uaterm{ObjectType} \uaterm{BrowseName}.
-  \item If there are two \glspl{MTComponent} with the same \glspl{BrowseName} or if the \gls{MTComponent} are \mtmodel{Linear} or \mtmodel{Rotary}, they must have the \mtmodel{name} attribute appended in square brackets (\texttt{[]}) to the name as specified in item \ref{item:component-browse-name}. 
-  \item For example, if there are two \mtmodel{Path} \glspl{MTComponent} with names \xml{name="P1"} and \xml{name="P2"}, the \glspl{BrowseName} will be as follows: \xml{Path[P1]} and \xml{Path[P2]} where each \gls{HaveTypeDefinition} of \mtmodel{PathType}.
+  \item If there are two \glspl{MTComponent} with the same \glspl{BrowseName} or if the \gls{MTComponent} are \mtmodel{Linear} or \mtmodel{Rotary}, they must have the \mtmodel{name} attribute appended in square brackets (\texttt{[]}) to the name as specified in item \ref{item:component-browse-name}.
+  \begin{enumerate}
+    \item For example, if there are two \mtmodel{Path} \glspl{MTComponent} with names \xml{name="P1"} and \xml{name="P2"}, the \glspl{BrowseName} will be as follows: \xml{Path[P1]} and \xml{Path[P2]} where each \gls{HaveTypeDefinition} of \mtmodel{PathType}.
+  \end{enumerate}
 \end{enumerate}
 
 The rules for \gls{Composition} elements MUST be applied in strict sequence as follows: 
@@ -181,7 +183,9 @@ The rules for \gls{Composition} elements MUST be applied in strict sequence as f
 \begin{enumerate}
   \item  \gls{Composition} elements in the MTConnect model will be represented instantiated with the \gls{BrowseName} of the \gls{Composition} \gls{type} converted to \gls{PascalCase}. \label{item:composition-browse-name}
   \item If two \gls{Composition} elements of the same \gls{MTComponent} have the same \gls{type}, they must have the \mtmodel{name} attribute appended in square brackets (\texttt{[]}) to the name as specified in item \ref{item:composition-browse-name}.
-  \item For example, a component has two \xml{type="TANK"}s with the names \xml{name="top"} and \xml{name="bottom"}, the \glspl{BrowseName} will be \xml{Tank[top]} and \xml{Tank[bottom]} respectively.
+  \begin{enumerate}
+    \item For example, a component has two \xml{type="TANK"}s with the names \xml{name="top"} and \xml{name="bottom"}, the \glspl{BrowseName} will be \xml{Tank[top]} and \xml{Tank[bottom]} respectively.
+  \end{enumerate}
   \item The type is placed is the \mtmodel{MTTypeName} \gls{Property}.
 \end{enumerate}
 
@@ -668,29 +672,7 @@ The second set of \glspl{MTDataItem} starting on line~\ref{line:electric-amperag
 
 The \mtmodel{AverageAmperage} on line~\ref{line:electric-average-amperage} has a \mtmodel{ResetTrigger}, specified using the \mtmodel{ResetTrigger} element having \gls{CDATA} \mtmodel{ACTION_COMPLETE}, indicating that the \mtmodel{Average} statistic is taken only when the current \mtmodel{Action} has \mtmodel{Completed}, as defined by the process. This \gls{MTDataItem} will only update on when the \mtmodel{ResetTrigger} fires.
 
-Table~\ref{table:reset-trigger-to-status-code} provides the OPC UA \uamodel{StatusCode}s suggested values that need to be added in the working group to represent the MTConnect \mtmodel{ResetTrigger} model. The OPC Foundation TAC is asked to consider the addition of these additional status codes to support this capability in the MTConnect standard.
-
-\begin{table}[ht]
-  \centering
-  \caption{MTConnect \mtmodel{ResetTrigger} to OPC UA \uamodel{StatusCode} mapping}
-  \label{table:reset-trigger-to-status-code}
-  \tabulinesep=3pt
-  \fontsize{9pt}{11pt}\selectfont
-  \begin{tabu} to 6in {|X|X|X[2]|} \everyrow{\hline}
-    \hline
-    \rowfont\bfseries {\mtmodel{ResetTrigger}} & {\uamodel{StatusCode}} & {Description} \\
-    \tabucline[1.5pt]{}
-    \mtmodel{ACTION_COMPLETE} & \uamodel{Good_ActionCompleteReset} & The value of the Data Entity that is measuring an action or operation was reset upon completion of that action or operation. \\
-    \mtmodel{ANNUAL} & \uamodel{Good_AnnualReset} & The value of the Data Entity was reset at the end of a 12-month period. \\
-    \mtmodel{DAY} & \uamodel{Good_DayReset} & The value of the Data Entity was reset at the end of a 24-hour period. \\
-    \mtmodel{MAINTENANCE} & \uamodel{Good_MaintenanceReset} & The value of the Data Entity was reset upon completion of a maintenance event. \\
-    \mtmodel{MANUAL} &  \uamodel{Good_ManualReset} & The value of the Data Entity was reset based on a physical reset action. \\
-    \mtmodel{MONTH} & \uamodel{Good_MonthReset} & The value of the Data Entity was reset at the end of a monthly period. \\
-    \mtmodel{POWER_ON} & \uamodel{Good_PowerOnReset} & The value of the Data Entity was reset when power was applied to the piece of equipment after a planned or unplanned interruption of power has occurred. \\
-    \mtmodel{SHIFT} & \uamodel{Good_ShiftReset} & The value of the Data Entity was reset at the end of a work shift. \\
-    \mtmodel{WEEK} & \uamodel{Good_WeekReset} & The value of the Data Entity was reset at the end of a 7-day period. \\
-  \end{tabu}
-\end{table}
+The property \mtmodel{ResetTriggeredReason} will be set to the MTConnect value and the \uamodel{StatusCode}, as prescribed in \cite{UAPart4}, will have the \uamodel{SemanticsChanged} bit number fourteen (14:14) set to 1 (0x4000). The resulting status will inform the client application to check the \mtmodel{ResetTriggeredReason} property to determine the reason the statistic was reset. If the \uamodel{StatusCode} is not set, the \mtmodel{ResetTriggeredReason} value will be undefined and may retain the previous reset reason.
 
 \begin{figure}[ht]
   \centering
@@ -804,6 +786,12 @@ The \glspl{MTDataItem} with \gls{category} \mtmodel{SAMPLE} are mapped to the \m
 \end{lstlisting}
 
 The OPC UA \uamodel{DataVariableType}s are monitored items and have three attribtues that are updated when the value changes. They are the \uamodel{Value} in the instance of the \gls{DataVariable}, the \uamodel{Time}, and the \uamodel{Quality}. When the value is given, not \mtmodel{UNAVAILABLE}, the \uamodel{Quality} will be set to the Status Code of \uamodel{Good}, the \uamodel{Time} will be set to the \xml{timestamp} attribute and the \uamodel{Value} set to the contents of the \gls{CDATA} converted to a \uamodel{Double} precision value.
+
+\paragraph{Statistics and Reset Trigger}
+
+MTConnect supports data items that provide statistical values for various numeric quantities. The statistics can be reset at arbitrary points in time by indicating the reason for the reset in the attribute \mtmodel{resetTriggered} in the streaming data. The client application is then aware of the occurrence of the reset and why it occurred.
+
+When the \mtmodel{resetTriggered} attribute is give, the property in the \mtmodel{MTNumericDataItemType}, this is included in all numeric data items, will set the \mtmodel{MTResetTriggeredReason} to the enumerated value. The update will also set the \uamodel{SemanticsChanged}, bit 14 of the \uamodel{StatusCode} (see \cite{UAPart4} \textit{Section 7.34 StatusCode}, associated with the data update to indicate to the client application that it should interrogate the \mtmodel{MTResetTriggeredReason} property. 
 
 \subsubsection{String and Numeric Events}\label{sec:sting-numeric-events}
 

@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-05-21T04:41:24Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-05-21T20:14:33Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-05-21T04:41:24Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-05-21T04:41:24Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-05-21T20:14:33Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-05-21T20:14:33Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -2786,6 +2786,8 @@ UksnIFZhbHVlPScxJy8+Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
       <Reference ReferenceType='HasComponent'>ns=1;i=2814</Reference>
       <!-- HasProperty -  - CoordinateSystem ns=1;i=2822 MTCoordinateSystemType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2822</Reference>
+      <!-- HasProperty -  - Duration ns=1;i=3671 Duration  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3671</Reference>
       <!-- HasProperty -  - InitialValue ns=1;i=2823 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2823</Reference>
       <!-- HasProperty -  - MinimumDeltaFilter ns=1;i=2826 Float  -->
@@ -2794,6 +2796,8 @@ UksnIFZhbHVlPScxJy8+Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
       <Reference ReferenceType='HasProperty'>ns=1;i=2821</Reference>
       <!-- HasProperty -  - ResetTrigger ns=1;i=2824 MTResetTriggerType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2824</Reference>
+      <!-- HasProperty -  - ResetTriggeredReason ns=1;i=3675 MTResetTriggerType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3675</Reference>
       <!-- HasProperty -  - SignificantDigits ns=1;i=2819 Int16  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2819</Reference>
       <!-- HasProperty -  - Statistic ns=1;i=2820 MTStatisticType  -->
@@ -2990,6 +2994,18 @@ UksnIFZhbHVlPScxJy8+Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2438</Reference>
     </References>
   </UAVariable>
+  <!-- MTNumericEventType::Duration : Duration[0..1] -->
+  <UAVariable NodeId='ns=1;i=3671' BrowseName='1:Duration' ValueRank='-1' DataType='i=290' ParentNodeId='ns=1;i=2438'>
+    <DisplayName>Duration</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Duration i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTNumericEventType ns=1;i=2438   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2438</Reference>
+    </References>
+  </UAVariable>
   <!-- MTNumericEventType::InitialValue : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=2823' BrowseName='1:InitialValue' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=2438'>
     <DisplayName>InitialValue</DisplayName>
@@ -3029,6 +3045,18 @@ UksnIFZhbHVlPScxJy8+Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
   <!-- MTNumericEventType::ResetTrigger : MTResetTriggerType[0..1] -->
   <UAVariable NodeId='ns=1;i=2824' BrowseName='1:ResetTrigger' ValueRank='-1' DataType='ns=1;i=2636' ParentNodeId='ns=1;i=2438'>
     <DisplayName>ResetTrigger</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - MTResetTriggerType i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTNumericEventType ns=1;i=2438   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2438</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTNumericEventType::ResetTriggeredReason : MTResetTriggerType[0..1] -->
+  <UAVariable NodeId='ns=1;i=3675' BrowseName='1:ResetTriggeredReason' ValueRank='-1' DataType='ns=1;i=2636' ParentNodeId='ns=1;i=2438'>
+    <DisplayName>ResetTriggeredReason</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - MTResetTriggerType i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
@@ -3377,6 +3405,8 @@ OCcvPgo8L29wYzpFbnVtZXJhdGVkVHlwZT4=
       <Reference ReferenceType='HasComponent'>ns=1;i=2848</Reference>
       <!-- HasProperty -  - CoordinateSystem ns=1;i=2856 MTCoordinateSystemType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2856</Reference>
+      <!-- HasProperty -  - Duration ns=1;i=3672 Duration  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3672</Reference>
       <!-- HasProperty -  - InitialValue ns=1;i=2857 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2857</Reference>
       <!-- HasProperty -  - MinimumDeltaFilter ns=1;i=2860 Float  -->
@@ -3385,6 +3415,8 @@ OCcvPgo8L29wYzpFbnVtZXJhdGVkVHlwZT4=
       <Reference ReferenceType='HasProperty'>ns=1;i=2855</Reference>
       <!-- HasProperty -  - ResetTrigger ns=1;i=2858 MTResetTriggerType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2858</Reference>
+      <!-- HasProperty -  - ResetTriggeredReason ns=1;i=3676 MTResetTriggerType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3676</Reference>
       <!-- HasProperty -  - SignificantDigits ns=1;i=2853 Int16  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2853</Reference>
       <!-- HasProperty -  - Statistic ns=1;i=2854 MTStatisticType  -->
@@ -3581,6 +3613,18 @@ OCcvPgo8L29wYzpFbnVtZXJhdGVkVHlwZT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2429</Reference>
     </References>
   </UAVariable>
+  <!-- MTSampleType::Duration : Duration[0..1] -->
+  <UAVariable NodeId='ns=1;i=3672' BrowseName='1:Duration' ValueRank='-1' DataType='i=290' ParentNodeId='ns=1;i=2429'>
+    <DisplayName>Duration</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Duration i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2429   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2429</Reference>
+    </References>
+  </UAVariable>
   <!-- MTSampleType::InitialValue : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=2857' BrowseName='1:InitialValue' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=2429'>
     <DisplayName>InitialValue</DisplayName>
@@ -3620,6 +3664,18 @@ OCcvPgo8L29wYzpFbnVtZXJhdGVkVHlwZT4=
   <!-- MTSampleType::ResetTrigger : MTResetTriggerType[0..1] -->
   <UAVariable NodeId='ns=1;i=2858' BrowseName='1:ResetTrigger' ValueRank='-1' DataType='ns=1;i=2636' ParentNodeId='ns=1;i=2429'>
     <DisplayName>ResetTrigger</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - MTResetTriggerType i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTSampleType ns=1;i=2429   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2429</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTSampleType::ResetTriggeredReason : MTResetTriggerType[0..1] -->
+  <UAVariable NodeId='ns=1;i=3676' BrowseName='1:ResetTriggeredReason' ValueRank='-1' DataType='ns=1;i=2636' ParentNodeId='ns=1;i=2429'>
+    <DisplayName>ResetTriggeredReason</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - MTResetTriggerType i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
@@ -4044,6 +4100,8 @@ YWx1ZT0nNycvPgo8L29wYzpFbnVtZXJhdGVkVHlwZT4=
       <Reference ReferenceType='HasComponent'>ns=1;i=2890</Reference>
       <!-- HasProperty -  - CoordinateSystem ns=1;i=2898 MTCoordinateSystemType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2898</Reference>
+      <!-- HasProperty -  - Duration ns=1;i=3673 Duration  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3673</Reference>
       <!-- HasProperty -  - InitialValue ns=1;i=2899 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2899</Reference>
       <!-- HasProperty -  - MinimumDeltaFilter ns=1;i=2902 Float  -->
@@ -4052,6 +4110,8 @@ YWx1ZT0nNycvPgo8L29wYzpFbnVtZXJhdGVkVHlwZT4=
       <Reference ReferenceType='HasProperty'>ns=1;i=2897</Reference>
       <!-- HasProperty -  - ResetTrigger ns=1;i=2900 MTResetTriggerType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2900</Reference>
+      <!-- HasProperty -  - ResetTriggeredReason ns=1;i=3677 MTResetTriggerType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3677</Reference>
       <!-- HasProperty -  - SignificantDigits ns=1;i=2895 Int16  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2895</Reference>
       <!-- HasProperty -  - Statistic ns=1;i=2896 MTStatisticType  -->
@@ -4250,6 +4310,18 @@ YWx1ZT0nNycvPgo8L29wYzpFbnVtZXJhdGVkVHlwZT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2641</Reference>
     </References>
   </UAVariable>
+  <!-- MTThreeSpaceSampleType::Duration : Duration[0..1] -->
+  <UAVariable NodeId='ns=1;i=3673' BrowseName='1:Duration' ValueRank='-1' DataType='i=290' ParentNodeId='ns=1;i=2641'>
+    <DisplayName>Duration</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Duration i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTThreeSpaceSampleType ns=1;i=2641   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2641</Reference>
+    </References>
+  </UAVariable>
   <!-- MTThreeSpaceSampleType::InitialValue : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=2899' BrowseName='1:InitialValue' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=2641'>
     <DisplayName>InitialValue</DisplayName>
@@ -4289,6 +4361,18 @@ YWx1ZT0nNycvPgo8L29wYzpFbnVtZXJhdGVkVHlwZT4=
   <!-- MTThreeSpaceSampleType::ResetTrigger : MTResetTriggerType[0..1] -->
   <UAVariable NodeId='ns=1;i=2900' BrowseName='1:ResetTrigger' ValueRank='-1' DataType='ns=1;i=2636' ParentNodeId='ns=1;i=2641'>
     <DisplayName>ResetTrigger</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - MTResetTriggerType i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTThreeSpaceSampleType ns=1;i=2641   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2641</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTThreeSpaceSampleType::ResetTriggeredReason : MTResetTriggerType[0..1] -->
+  <UAVariable NodeId='ns=1;i=3677' BrowseName='1:ResetTriggeredReason' ValueRank='-1' DataType='ns=1;i=2636' ParentNodeId='ns=1;i=2641'>
+    <DisplayName>ResetTriggeredReason</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - MTResetTriggerType i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>

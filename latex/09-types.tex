@@ -1,4 +1,4 @@
-% Generated 2019-05-20 21:41:10 -0700
+% Generated 2019-05-21 13:14:18 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -1580,62 +1580,6 @@ Represents the \mtmodel{representation} attribute of the MTConnect \gls{MTDataIt
 \FloatBarrier
 \item \texttt{SourceData::String:} The text that is the \gls{CDATA} of the \mtmodel{Source} element.
 
-\item \textbf{Allowable Values} for \texttt{MTCategoryType}
-\FloatBarrier
-
-Represents the \gls{category} attribute of the MTConnect \gls{MTDataItem}.
-
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{MTCategoryType} Enumeration}
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Name} & {Index} \\
-\tabucline[1.5pt]{}
-\texttt{EVENT} & \texttt{0} \\
-\texttt{CONDITION} & \texttt{1} \\
-\texttt{SAMPLE} & \texttt{2} \\
-\end{tabu}
-\end{table} 
-\FloatBarrier
-\item \textbf{Allowable Values} for \texttt{MTRepresentationType}
-\FloatBarrier
-
-Represents the \mtmodel{representation} attribute of the MTConnect \gls{MTDataItem}.
-
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{MTRepresentationType} Enumeration}
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Name} & {Index} \\
-\tabucline[1.5pt]{}
-\texttt{DISCRETE} & \texttt{0} \\
-\texttt{TIME_SERIES} & \texttt{1} \\
-\texttt{VALUE} & \texttt{2} \\
-\end{tabu}
-\end{table} 
-\FloatBarrier
-\end{itemize}
-\paragraph{Operations}
-\begin{itemize}
-  \item \texttt{getStatusCode()}
-    Documentation: To be defined.
-
-\end{itemize}
-\paragraph{Dependencies and Relationships}
-
-\begin{itemize}
-\item Dependency on MTCategoryType
-
-This class relates to \texttt{MTCategoryType} (See section \ref{type:MTCategoryType}) for a(n) \texttt{} relationship.
-
-\item Dependency on MTRepresentationType
-
-This class relates to \texttt{MTRepresentationType} (See section \ref{type:MTRepresentationType}) for a(n) \texttt{} relationship.
-
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{<<mixin>> MTNumericDataItemType}}
@@ -1663,10 +1607,12 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MTDataItemType (See section \ref{type:MTDataItemType})} \\
 Has\-Property & Variable & Coordinate\-System & MT\-Coordinate\-System\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Duration & Duration & Property\-Type & Optional \\
 Has\-Property & Variable & Initial\-Value & Double & Property\-Type & Optional \\
 Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
 Has\-Property & Variable & Native\-Units & String & Property\-Type & Optional \\
 Has\-Property & Variable & Reset\-Trigger & MT\-Reset\-Trigger\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Reset\-Triggered\-Reason & MT\-Reset\-Trigger\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Significant\-Digits & Int16 & Property\-Type & Optional \\
 Has\-Property & Variable & Statistic & MT\-Statistic\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Units & String & Property\-Type & Optional \\
@@ -1699,6 +1645,8 @@ Represents the \mtmodel{coordinateSystem} attribute of the MTConnect \gls{MTData
 \FloatBarrier
 \item \texttt{MinimumDeltaFilter::Float:} Represents the MTConnect \mtmodel{Filter} subtype of \mtmodel{MinimumDeltaFilter}.
 
+\item \texttt{ResetTrigger::MTResetTriggerType:} If a \mtmodel{ResetTrigger} is given, when an \mtmodel{resetTriggered} attribtue is given in an event, the \uamodel{StatusCode} MUST have bit 14 set \uamodel{SemanticsChanged} and the \mtmodel{ResetTriggeredReason} must be set to the value of the \mtmodel{resetTriggered} attribute.
+
 \item \textbf{Allowable Values} for \texttt{MTResetTriggerType}
 \FloatBarrier
 
@@ -1708,6 +1656,31 @@ These need to become \uamodel{Good_} status code in OPC UA.
 \centering 
   \caption{\texttt{MTResetTriggerType} Enumeration}
   \label{enum:MTResetTriggerType}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{ACTION_COMPLETE} & \texttt{0} \\
+\texttt{ANNUAL} & \texttt{1} \\
+\texttt{DAY} & \texttt{2} \\
+\texttt{MAINTENANCE} & \texttt{3} \\
+\texttt{MANUAL} & \texttt{4} \\
+\texttt{MONTH} & \texttt{5} \\
+\texttt{POWER_ON} & \texttt{6} \\
+\texttt{SHIFT} & \texttt{7} \\
+\texttt{WEEK} & \texttt{8} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\item \textbf{Allowable Values} for \texttt{MTResetTriggerType}
+\FloatBarrier
+
+These need to become \uamodel{Good_} status code in OPC UA.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTResetTriggerType} Enumeration}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|r|} \everyrow{\hline}
 \hline
@@ -1749,6 +1722,13 @@ These need to become \uamodel{Good_} status code in OPC UA.
 \end{tabu}
 \end{table} 
 \FloatBarrier
+\end{itemize}
+\paragraph{Operations}
+\begin{itemize}
+  \item \texttt{getStatusCode()}\newline    Documentation: When the \mtmodel{ResetTrigger} is set because a statistic has been reset and the duration is present, the \uamodel{StatusCode} will have the \uamodel{SemanticsChanged} bit set (14:14) of the status code as defined in \cite{UAPart4}.
+
+When this bit is set, the client should refer to the ResetTriggered property to ascertain the reason for the bit being set.
+
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTEventClassType}}
@@ -1900,10 +1880,12 @@ Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} 
 Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & Optional \\
 Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
 Has\-Property & Variable & Coordinate\-System & MT\-Coordinate\-System\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Duration & Duration & Property\-Type & Optional \\
 Has\-Property & Variable & Initial\-Value & Double & Property\-Type & Optional \\
 Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
 Has\-Property & Variable & Native\-Units & String & Property\-Type & Optional \\
 Has\-Property & Variable & Reset\-Trigger & MT\-Reset\-Trigger\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Reset\-Triggered\-Reason & MT\-Reset\-Trigger\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Significant\-Digits & Int16 & Property\-Type & Optional \\
 Has\-Property & Variable & Statistic & MT\-Statistic\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Units & String & Property\-Type & Optional \\
@@ -1962,10 +1944,12 @@ Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} 
 Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & Optional \\
 Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
 Has\-Property & Variable & Coordinate\-System & MT\-Coordinate\-System\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Duration & Duration & Property\-Type & Optional \\
 Has\-Property & Variable & Initial\-Value & Double & Property\-Type & Optional \\
 Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
 Has\-Property & Variable & Native\-Units & String & Property\-Type & Optional \\
 Has\-Property & Variable & Reset\-Trigger & MT\-Reset\-Trigger\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Reset\-Triggered\-Reason & MT\-Reset\-Trigger\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Significant\-Digits & Int16 & Property\-Type & Optional \\
 Has\-Property & Variable & Statistic & MT\-Statistic\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Units & String & Property\-Type & Optional \\
@@ -2080,10 +2064,12 @@ Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} 
 Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & Optional \\
 Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
 Has\-Property & Variable & Coordinate\-System & MT\-Coordinate\-System\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Duration & Duration & Property\-Type & Optional \\
 Has\-Property & Variable & Initial\-Value & Double & Property\-Type & Optional \\
 Has\-Property & Variable & Minimum\-Delta\-Filter & Float & Property\-Type & Optional \\
 Has\-Property & Variable & Native\-Units & String & Property\-Type & Optional \\
 Has\-Property & Variable & Reset\-Trigger & MT\-Reset\-Trigger\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Reset\-Triggered\-Reason & MT\-Reset\-Trigger\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Significant\-Digits & Int16 & Property\-Type & Optional \\
 Has\-Property & Variable & Statistic & MT\-Statistic\-Type & Property\-Type & Optional \\
 Has\-Property & Variable & Units & String & Property\-Type & Optional \\

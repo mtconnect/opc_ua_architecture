@@ -218,7 +218,7 @@ class NodesetType < Type
       elsif a.source.type.id != @id
         create_object_reference(refs, a)        
       elsif !a.is_attribute? 
-        puts "!!! Cannot generate relation #{a.class} #{@name}::#{a.name} -> #{a.final_target.type.name}"
+        puts "!!! Cannot generate relation <<#{a.stereotype}>> #{@name}::#{a.name} #{a.source.type.name} -> #{a.final_target.type.name}"
       end
     end
   end
@@ -246,6 +246,8 @@ class NodesetType < Type
       'ReferenceType'
     elsif  @stereotype and @stereotype == 'mixin'
       'Mixin'
+    elsif @stereotype and @stereotype == 'metaclass'
+      'Metaclass'
     elsif @type == 'uml:Stereotype'
       'Stereotype'
     else
@@ -494,6 +496,8 @@ class NodesetType < Type
       generate_data_type
     when 'Object'
       generate_instance
+    when 'Metaclass'
+      puts "Skipping metaclass #{@name}"
     else
       generate_object_or_variable(nt)
     end

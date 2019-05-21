@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-05-21T00:54:54Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-05-21T01:18:14Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-05-21T00:54:54Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-05-21T00:54:54Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-05-21T01:18:14Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-05-21T01:18:14Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -188,6 +188,8 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2732</Reference>
       <!-- HasProperty -  - NamespaceUri ns=1;i=2731 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2731</Reference>
+      <!-- HasComponent - (Reverse) -  i=93 OPC Binary  -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>i=93</Reference>
       <!-- HasComponent -  - AssetEventDataType ns=1;i=2746   -->
       <Reference ReferenceType='HasComponent'>ns=1;i=2746</Reference>
       <!-- HasComponent -  - MTCategoryType ns=1;i=2767   -->
@@ -508,6 +510,8 @@ YXRlZFR5cGU+Cjwvb3BjOlR5cGVEaWN0aW9uYXJ5Pg==
       <Reference ReferenceType='HasProperty'>ns=1;i=2736</Reference>
       <!-- HasProperty -  - NamespaceUri ns=1;i=2735 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2735</Reference>
+      <!-- HasComponent - (Reverse) -  i=92 XML Schema  -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>i=92</Reference>
       <!-- HasComponent -  - AssetEventDataType ns=1;i=2749   -->
       <Reference ReferenceType='HasComponent'>ns=1;i=2749</Reference>
       <!-- HasComponent -  - MTCategoryType ns=1;i=2770   -->

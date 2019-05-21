@@ -74,7 +74,7 @@ class Type
             @type.instance_eval(&block)
           end
         else
-          puts "!!! Cannot find type for #{@tid}"
+          puts "Warn: Cannot find type for #{@tid}"
         end
       end
       

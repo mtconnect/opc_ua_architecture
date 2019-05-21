@@ -255,7 +255,7 @@ class NodesetType < Type
   end
   
   def generate_object_or_variable(nt)
-    puts "-> #{@name} -- #{nt}"
+    # puts "-> #{@name} -- #{nt}"
     
     case nt
     when 'ObjectType'

@@ -81,7 +81,6 @@ class NodesetType < Type
   
   def node_reference(refs, name, type, target, target_type = nil, forward: true)
     refs << REXML::Comment.new(" #{type} - #{!forward ? '(Reverse)' : ''} - #{name} #{target} #{target_type}  ")
-    ref = REXML::Element.new('Reference')
     ref = refs.add_element('Reference', { 'ReferenceType' => type })
     ref.add_attribute('IsForward', 'false') unless forward
     ref.add_text(target)
@@ -256,7 +255,7 @@ class NodesetType < Type
   end
   
   def generate_object_or_variable(nt)
-    # puts "-> #{@name} -- #{nt}"
+    puts "-> #{@name} -- #{nt}"
     
     case nt
     when 'ObjectType'

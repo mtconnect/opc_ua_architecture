@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-05-20T23:15:18Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-05-20T23:41:48Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-05-20T23:15:18Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-05-20T23:15:18Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-05-20T23:41:48Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-05-20T23:41:48Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -9321,4 +9321,44 @@ Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2476</Reference>
     </References>
   </UAObjectType>
+  <!-- Definition of Reference HasMTClassType ns=1;i=2680 -->
+  <UAReferenceType NodeId='ns=1;i=2680' BrowseName='1:HasMTClassType' Symmetric='false'>
+    <DisplayName>HasMTClassType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - HierarchialReferences ns=1;i=2006   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2006</Reference>
+    </References>
+  </UAReferenceType>
+  <!-- Definition of Reference HasMTComposition ns=1;i=2687 -->
+  <UAReferenceType NodeId='ns=1;i=2687' BrowseName='1:HasMTComposition' Symmetric='false'>
+    <DisplayName>HasMTComposition</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - HierarchialReferences ns=1;i=2006   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2006</Reference>
+    </References>
+  </UAReferenceType>
+  <!-- Definition of Reference HasMTReference ns=1;i=2672 -->
+  <UAReferenceType NodeId='ns=1;i=2672' BrowseName='1:HasMTReference' Symmetric='false'>
+    <DisplayName>HasMTReference</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - HierarchialReferences ns=1;i=2006   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2006</Reference>
+    </References>
+  </UAReferenceType>
+  <!-- Definition of Reference HasMTSource ns=1;i=2689 -->
+  <UAReferenceType NodeId='ns=1;i=2689' BrowseName='1:HasMTSource' Symmetric='false'>
+    <DisplayName>HasMTSource</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - HierarchialReferences ns=1;i=2006   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2006</Reference>
+    </References>
+  </UAReferenceType>
+  <!-- Definition of Reference HasMTSubClassType ns=1;i=2683 -->
+  <UAReferenceType NodeId='ns=1;i=2683' BrowseName='1:HasMTSubClassType' Symmetric='false'>
+    <DisplayName>HasMTSubClassType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - HierarchialReferences ns=1;i=2006   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2006</Reference>
+    </References>
+  </UAReferenceType>
 </UANodeSet>

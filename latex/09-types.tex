@@ -1,4 +1,4 @@
-% Generated 2019-05-04 21:28:32 -0700
+% Generated 2019-05-20 19:57:14 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -1969,7 +1969,7 @@ Has\-Property & Variable & Units & String & Property\-Type & Optional \\
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
-\item \texttt{Supertype::AnalogUnitType:} \item \texttt{Supertype::AnalogUnitType:} All DataItems with category SAMPLE
+\item \texttt{Supertype::AnalogUnitType:} All DataItems with category SAMPLE
 
 \end{itemize}
 \paragraph{Dependencies and Relationships}
@@ -2265,6 +2265,24 @@ inactive, then the \mtmodel{NativeSeverity} will be cleared.
 \end{table} 
 \FloatBarrier
 \end{itemize}
+
+\paragraph{Static values for ActiveState}
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTConditionType::ActiveState} Values}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Value} \\
+\tabucline[1.5pt]{}
+\texttt{FalseState} & \texttt{Inactive} \\
+\texttt{TrueState} & \texttt{Active} \\
+\end{tabu}
+\end{table} 
+\begin{itemize}
+\item Property \texttt{FalseState}: \texttt{Inactive}
+\item Property \texttt{TrueState}: \texttt{Active}
+\end{itemize}
 \paragraph{Dependencies and Relationships}
 
 \begin{itemize}
@@ -2346,6 +2364,15 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 \subsection{Sample Data Item Types} \label{model:SampleDataItemTypes}
+
+The MTConnect Standard has the definitions of \glspl{Sample} in 
+Section 8.1 of the MTConnect Standard Part 2 \cite{MTCPart2} and the definition of the 
+values can be found in Section 5.3 of MTConnect Standard Part 3 \cite{MTCPart3}. 
+
+The description of each type was copied from the MTConnect Standard,
+but this not the definitive text for each type. For authoritative normative text, 
+please refer to the sources \cite{MTCPart2} and \cite{MTCPart3}.
+
 \subsubsection{Defintion of \texttt{ MTSampleClassType}}
   \label{type:MTSampleClassType}
 
@@ -6477,6 +6504,11 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 \subsection{Data Item Sub Types} \label{model:DataItemSubTypes}
+
+he \glspl{subType} are related to the various \glspl{Variable} using the \uamodel{HasMTSubClassType}. 
+These provide the the second level type classifiaction of the MTConnect \glspl{MTDataItem} and 
+also the \uamodel{ConditionSubClassId} for the \glspl{MTCondition}.
+
 \subsubsection{Defintion of \texttt{ MTDataItemSubClassType}}
   \label{type:MTDataItemSubClassType}
 
@@ -8498,7 +8530,7 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \FloatBarrier
 
-\subsubsection{Defintion of \texttt{<<stereotype>> Deprecated}}
+\subsubsection{Defintion of \texttt{ <<Deprecated>>}}
   \label{type:Deprecated}
 
 \FloatBarrier
@@ -8506,24 +8538,146 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 An MTConnect deprecated entity that is kept for backward compatibility.
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{<<stereotype>> Dynamic Type}}
-  \label{type:Dynamic Type}
+\subsubsection{Defintion of \texttt{ <<HasMTClassType>>}}
+  \label{type:HasMTClassType}
 
 \FloatBarrier
 
-A dynamic type indicates that the class browse name and type will be 
-determined at configuration time based on the MTConnect \gls{MTDevice}
-elements.
+A \gls{MTDataItem} is representated in OPC UA as a sub-type of the most appropriate \uamodel{BaseDataVariableType}. 
+The type is derived from the MTConnect \gls{type} attribute and references the corect \mtmodel{..ClassType}.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{<<HasMTClassType>>} Definition}
+  \label{table:HasMTClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{HasMTClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+Symmetric & \multicolumn{5}{|l|}{false} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of HierarchicalReferences (See \cite{UAPart5} Documentation)} \\
+\end{tabu}
+\end{table} 
+
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{<<stereotype>> Mixes In}}
+\subsubsection{Defintion of \texttt{ <<HasMTComposition>>}}
+  \label{type:HasMTComposition}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{<<HasMTComposition>>} Definition}
+  \label{table:HasMTComposition}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{HasMTComposition} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+Symmetric & \multicolumn{5}{|l|}{false} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of HierarchicalReferences (See \cite{UAPart5} Documentation)} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ <<HasMTReference>>}}
+  \label{type:HasMTReference}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{<<HasMTReference>>} Definition}
+  \label{table:HasMTReference}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{HasMTReference} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+Symmetric & \multicolumn{5}{|l|}{false} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of HierarchicalReferences (See \cite{UAPart5} Documentation)} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ <<HasMTSource>>}}
+  \label{type:HasMTSource}
+
+\FloatBarrier
+
+The \mtmodel{Source} relation to a \gls{MTComponent} or \gls{MTDataItem}.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{<<HasMTSource>>} Definition}
+  \label{table:HasMTSource}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{HasMTSource} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+Symmetric & \multicolumn{5}{|l|}{false} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of HierarchicalReferences (See \cite{UAPart5} Documentation)} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ <<HasMTSubClassType>>}}
+  \label{type:HasMTSubClassType}
+
+\FloatBarrier
+
+A \gls{MTDataItem} is representated in OPC UA as a sub-type of the most appropriate \uamodel{BaseDataVariableType}. 
+The sub-type is derived from the MTConnect \gls{subType} attribute and references the corect \mtmodel{..ClassType}.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{<<HasMTSubClassType>>} Definition}
+  \label{table:HasMTSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{HasMTSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+Symmetric & \multicolumn{5}{|l|}{false} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of HierarchicalReferences (See \cite{UAPart5} Documentation)} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ <<Mixes In>>}}
   \label{type:Mixes In}
 
 \FloatBarrier
-
-This stereotype is associated with the dependency between a type and a mixin. See Section \ref{type:mixin} for a complete 
-description of the mixin.
-
 \paragraph{Dependencies and Relationships}
 
 \begin{itemize}
@@ -8533,33 +8687,7 @@ This class relates to \texttt{Realization} (See section \ref{type:Realization}) 
 
 \end{itemize}
 \FloatBarrier
-\subsubsection{Defintion of \texttt{<<stereotype>> Mixes In}}
-  \label{type:Mixes In}
-
-\FloatBarrier
-\paragraph{Dependencies and Relationships}
-
-\begin{itemize}
-\item Dependency on Realization
-
-This class relates to \texttt{Realization} (See section \ref{type:Realization}) for a(n) \texttt{} relationship.
-
-\end{itemize}
-\FloatBarrier
-\subsubsection{Defintion of \texttt{<<stereotype>> bind}}
-  \label{type:bind}
-
-\FloatBarrier
-
-When a dynamic type (See Section \ref{type:Dynamic Type}) creates an instance where the super-type
-can be associated based on the data item category and type, the \texttt{Type Factory} will 
-specify which supertype is to be referenced.
-
-The \texttt{bind} stereotype indicates the relationship between the dynamic sub-type and the 
-parent type are resolved based on the MTConnect DataItem meta data.
-
-\FloatBarrier
-\subsubsection{Defintion of \texttt{<<stereotype>> mixin}}
+\subsubsection{Defintion of \texttt{ <<mixin>>}}
   \label{type:mixin}
 
 \FloatBarrier
@@ -8579,7 +8707,7 @@ This class relates to \texttt{Class} (See section \ref{type:Class}) for a(n) \te
 
 \end{itemize}
 \FloatBarrier
-\subsubsection{Defintion of \texttt{<<stereotype>> use}}
+\subsubsection{Defintion of \texttt{ <<use>>}}
   \label{type:use}
 
 \FloatBarrier
@@ -8590,7 +8718,7 @@ that a specific factory is being employed by another type to create dynamic
 properties or relationships.
 
 \FloatBarrier
-\subsubsection{Defintion of \texttt{<<stereotype>> values}}
+\subsubsection{Defintion of \texttt{ <<values>>}}
   \label{type:values}
 
 \FloatBarrier

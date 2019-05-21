@@ -2624,7 +2624,6 @@
 							<type xmi:idref="EAOPCUA_Direction"/>
 						</ownedAttribute>
 					</packagedElement>
-					<packagedElement xmi:type="uml:Stereotype" xmi:id="EAID_EF09BEEE_8D89_45f8_A35C_7AA1C3F45FC2" name="bind"/>
 					<packagedElement xmi:type="uml:Class" xmi:id="EAID_469D59EC_A912_494d_B938_87072FB0C7F7" name="Class">
 						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_8C1A723C_1142_4fc3_9D50_5CF9A4314AB6" name="isActive">
 							<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000321_1142_4fc3_9D50_5CF9A4314AB6" value="1"/>
@@ -2633,7 +2632,6 @@
 						</ownedAttribute>
 					</packagedElement>
 					<packagedElement xmi:type="uml:Stereotype" xmi:id="EAID_5449E069_6B9E_4577_A76C_EDC78BAAC6D4" name="Deprecated"/>
-					<packagedElement xmi:type="uml:Stereotype" xmi:id="EAID_2CB04451_EC8B_45b5_8A8F_71E19775F386" name="Dynamic Type"/>
 					<packagedElement xmi:type="uml:Stereotype" xmi:id="EAID_E54B93DC_3593_45cd_96C8_DEA96F00062D" name="HasMTClassType">
 						<ownedAttribute xmi:type="uml:Property" xmi:id="EAID_B894CE36_1620_4e0c_9C89_C9A8E2B7A306" name="Symmetric">
 							<lowerValue xmi:type="uml:LiteralInteger" xmi:id="EAID_LI000323_1620_4e0c_9C89_C9A8E2B7A306" value="1"/>
@@ -3824,11 +3822,19 @@
 	</uml:Model>
 	<xmi:Extension extender="Enterprise Architect" extenderID="6.5">
 		<elements>
-			<element xmi:idref="EAPK_BC1DA78C_6FA9_4351_BB70_A051ABC3485C">
-				<packageproperties/>
-				<paths/>
+			<element xmi:idref="EAPK_BC1DA78C_6FA9_4351_BB70_A051ABC3485C" xmi:type="uml:Package" name="Model" scope="public">
+				<model package2="EAID_BC1DA78C_6FA9_4351_BB70_A051ABC3485C" tpos="0" ea_localid="2" ea_eleType="package"/>
+				<properties isSpecification="false" sType="Package" nType="0" scope="public"/>
+				<project author="will" version="1.0" phase="1.0" created="2019-05-20 18:47:48" modified="2019-05-20 18:47:48" complexity="1" status="Proposed"/>
+				<code gentype="OPCUA"/>
+				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
+				<tags/>
+				<xrefs/>
+				<extendedProperties tagged="0"/>
+				<packageproperties version="1.0" owner="will" xmiver="Enterprise Architect XMI 2.1/UML 2.1"/>
+				<paths xmlpath="Model.xml"/>
 				<times created="2012-04-17 00:00:00" modified="2012-04-17 00:00:00" lastloaddate="2019-04-25 17:51:17" lastsavedate="2019-04-25 17:51:17"/>
-				<flags iscontrolled="FALSE" isprotected="FALSE" batchsave="0" batchload="0" usedtd="FALSE" logxml="FALSE" packageFlags="isModel=1;"/>
+				<flags iscontrolled="FALSE" isprotected="FALSE" batchsave="0" batchload="0" usedtd="FALSE" logxml="FALSE" packageFlags="isModel=1;Recurse=1;"/>
 			</element>
 			<element xmi:idref="EAPK_2214FC7F_6A9A_49cc_95DC_D5DC2305C2B6" xmi:type="uml:Package" name="MTConnectAssets" scope="public">
 				<model package2="EAID_2214FC7F_6A9A_49cc_95DC_D5DC2305C2B6" package="EAPK_BC1DA78C_6FA9_4351_BB70_A051ABC3485C" tpos="0" ea_localid="62" ea_eleType="package"/>
@@ -11219,8 +11225,8 @@
 			</element>
 			<element xmi:idref="EAPK_1E19B347_36DB_47b5_8B3F_CB64C61E66C7" xmi:type="uml:Package" name="Sample Data Item Types" scope="public">
 				<model package2="EAID_1E19B347_36DB_47b5_8B3F_CB64C61E66C7" package="EAPK_2E50749C_011C_405c_9A24_25AE04D530A7" tpos="0" ea_localid="76" ea_eleType="package"/>
-				<properties isSpecification="false" sType="Package" nType="0" scope="public"/>
-				<project author="will" version="1.0" phase="1.0" created="2019-04-25 17:43:06" modified="2019-05-02 17:34:11" complexity="1" status="Proposed"/>
+				<properties documentation="The MTConnect Standard has the definitions of \glspl{Sample} in &#xA;Section 8.1 of the MTConnect Standard Part 2 \cite{MTCPart2} and the definition of the &#xA;values can be found in Section 5.3 of MTConnect Standard Part 3 \cite{MTCPart3}. &#xA;&#xA;The description of each type was copied from the MTConnect Standard,&#xA;but this not the definitive text for each type. For authoritative normative text, &#xA;please refer to the sources \cite{MTCPart2} and \cite{MTCPart3}." isSpecification="false" sType="Package" nType="0" scope="public"/>
+				<project author="will" version="1.0" phase="1.0" created="2019-04-25 17:43:06" modified="2019-05-20 19:24:07" complexity="1" status="Proposed"/>
 				<code gentype="OPCUA"/>
 				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
 				<tags/>
@@ -11228,7 +11234,7 @@
 				<extendedProperties tagged="0" package_name="Data Item Types"/>
 				<packageproperties version="1.0"/>
 				<paths/>
-				<times created="2019-04-25 00:00:00" modified="2019-05-03 16:07:23" lastloaddate="2019-04-25 17:51:21" lastsavedate="2019-04-25 17:51:21"/>
+				<times created="2019-04-25 00:00:00" modified="2019-05-20 19:24:07" lastloaddate="2019-04-25 17:51:21" lastsavedate="2019-04-25 17:51:21"/>
 				<flags iscontrolled="FALSE" isprotected="FALSE" batchsave="0" batchload="0" usedtd="FALSE" logxml="FALSE"/>
 			</element>
 			<element xmi:idref="EAID_EB1F833E_E129_4a56_8238_E2D1B9C59289" xmi:type="uml:Class" name="AccelerationClassType" scope="public">
@@ -13039,16 +13045,6 @@
 					<Extension xmi:id="EAID_EEE28ACD_6FE8_4271_B9E5_5CBFA67A71AE" start="EAID_D51CE920_BCBB_4924_964D_867336BD6884" end="EAID_C29F452D_5EF6_4e52_A76A_25E3D072DC73"/>
 				</links>
 			</element>
-			<element xmi:idref="EAID_EF09BEEE_8D89_45f8_A35C_7AA1C3F45FC2" xmi:type="uml:Class" name="bind" scope="public">
-				<model package="EAPK_50902D49_F8B6_4076_BF26_74E6012429BA" tpos="0" ea_localid="1529" ea_eleType="element"/>
-				<properties documentation="When a dynamic type (See Section \ref{type:Dynamic Type}) creates an instance where the super-type&#xA;can be associated based on the data item category and type, the \texttt{Type Factory} will &#xA;specify which supertype is to be referenced.&#xA;&#xA;The \texttt{bind} stereotype indicates the relationship between the dynamic sub-type and the &#xA;parent type are resolved based on the MTConnect DataItem meta data." isSpecification="false" sType="Class" nType="0" scope="public" stereotype="stereotype" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
-				<project author="will" version="1.0" phase="1.0" created="2019-04-25 17:43:07" modified="2019-05-03 16:07:24" complexity="1" status="Proposed"/>
-				<code gentype="OPCUA"/>
-				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
-				<tags/>
-				<xrefs value="$XREFPROP=$XID={B5FA801D-4B29-430d-A94D-14065653F254}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=stereotype;GUID={4D369199-08A2-4b01-8C62-A1C1541D5BE2};@ENDSTEREO;$DES;$CLT={EF09BEEE-8D89-45f8-A35C-7AA1C3F45FC2}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={6DB53177-57E4-459d-9356-2922C7B2E1E6}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@PROP=@NAME=isActive@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=0@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={EF09BEEE-8D89-45f8-A35C-7AA1C3F45FC2}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
-				<extendedProperties tagged="0" package_name="MTConnect Device Profile"/>
-			</element>
 			<element xmi:idref="EAID_469D59EC_A912_494d_B938_87072FB0C7F7" xmi:type="uml:Class" name="Class" scope="public">
 				<model package="EAPK_50902D49_F8B6_4076_BF26_74E6012429BA" tpos="0" ea_localid="1530" ea_eleType="element"/>
 				<properties isSpecification="false" sType="Class" nType="0" scope="public" stereotype="metaclass" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
@@ -13087,16 +13083,6 @@
 				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
 				<tags/>
 				<xrefs value="$XREFPROP=$XID={F3CB7787-1DB0-4597-BA2C-1ECB9D20E8C2}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=stereotype;GUID={4D369199-08A2-4b01-8C62-A1C1541D5BE2};@ENDSTEREO;$DES;$CLT={5449E069-6B9E-4577-A76C-EDC78BAAC6D4}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={304C877C-FDC4-4ae1-8B02-D8C086F24A6F}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@PROP=@NAME=isActive@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=0@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={5449E069-6B9E-4577-A76C-EDC78BAAC6D4}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
-				<extendedProperties tagged="0" package_name="MTConnect Device Profile"/>
-			</element>
-			<element xmi:idref="EAID_2CB04451_EC8B_45b5_8A8F_71E19775F386" xmi:type="uml:Class" name="Dynamic Type" scope="public">
-				<model package="EAPK_50902D49_F8B6_4076_BF26_74E6012429BA" tpos="0" ea_localid="1532" ea_eleType="element"/>
-				<properties documentation="A dynamic type indicates that the class browse name and type will be &#xA;determined at configuration time based on the MTConnect \gls{MTDevice}&#xA;elements." isSpecification="false" sType="Class" nType="0" scope="public" stereotype="stereotype" isRoot="false" isLeaf="false" isAbstract="false" isActive="false"/>
-				<project author="will" version="1.0" phase="1.0" created="2019-04-25 17:43:07" modified="2019-05-03 16:07:24" complexity="1" status="Proposed"/>
-				<code gentype="OPCUA"/>
-				<style appearance="BackColor=-1;BorderColor=-1;BorderWidth=-1;FontColor=-1;VSwimLanes=1;HSwimLanes=1;BorderStyle=0;"/>
-				<tags/>
-				<xrefs value="$XREFPROP=$XID={B964FC3C-1B08-4498-B1CF-FDB05DED5177}$XID;$NAM=Stereotypes$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@STEREO;Name=stereotype;GUID={4D369199-08A2-4b01-8C62-A1C1541D5BE2};@ENDSTEREO;$DES;$CLT={2CB04451-EC8B-45b5-8A8F-71E19775F386}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;$XREFPROP=$XID={FC1F45C8-9D8F-433d-8FE5-80E733F4C923}$XID;$NAM=CustomProperties$NAM;$TYP=element property$TYP;$VIS=Public$VIS;$PAR=0$PAR;$DES=@PROP=@NAME=isActive@ENDNAME;@TYPE=Boolean@ENDTYPE;@VALU=0@ENDVALU;@PRMT=@ENDPRMT;@ENDPROP;$DES;$CLT={2CB04451-EC8B-45b5-8A8F-71E19775F386}$CLT;$SUP=&lt;none&gt;$SUP;$ENDXREF;"/>
 				<extendedProperties tagged="0" package_name="MTConnect Device Profile"/>
 			</element>
 			<element xmi:idref="EAID_E54B93DC_3593_45cd_96C8_DEA96F00062D" xmi:type="uml:Class" name="HasMTClassType" scope="public">

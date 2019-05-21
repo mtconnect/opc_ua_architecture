@@ -151,7 +151,29 @@ class LatexType < Type
     end
 
     unless obj.invariants.empty?
-      f.puts "\\paragraph{Invariants for #{obj.name}}\n"
+      f.puts "\n\\paragraph{Static values for #{obj.name}}\n"
+
+      f.puts <<EOT
+\\begin{table}[ht]
+\\centering 
+  \\caption{\\texttt{#{escape_name}::#{obj.name}} Values}
+\\tabulinesep=3pt
+\\begin{tabu} to 6in {|l|l|} \\everyrow{\\hline}
+\\hline
+\\rowfont\\bfseries {Name} & {Value} \\\\
+\\tabucline[1.5pt]{}
+EOT
+
+      obj.invariants.each do |name, value|
+        f.puts "\\texttt{#{name}} & \\texttt{#{value}} \\\\"
+      end
+      
+      f.puts <<EOT
+\\end{tabu}
+\\end{table} 
+EOT
+
+      
       f.puts "\\begin{itemize}"
       obj.invariants.each do |k, v|
         f.puts "\\item Property \\texttt{#{k}}: \\texttt{#{v}}"
@@ -280,7 +302,7 @@ EOT
       f.puts "DataType & \\multicolumn{5}{|l|}{#{a.target.type.name}} \\\\"
     elsif is_reference?
       a = get_attribute_like('Symmetric')
-      t = a.json['defaultValue'] || 'false'
+      t = a.default || 'false'
       f.puts "Symmetric & \\multicolumn{5}{|l|}{#{t}} \\\\"
     end
 

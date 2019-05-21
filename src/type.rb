@@ -288,7 +288,7 @@ class Type
 
   def escape_name
     n = @name.gsub('{', '\{').gsub('}', '\}')
-    n = "<<#{n}>>" if @type == 'UMLStereotype'
+    n = "<<#{n}>>" if @type == 'uml:Stereotype'
     n
   end
 
@@ -297,7 +297,7 @@ class Type
   end
 
   def stereotype_name
-    if @stereotype
+    if @stereotype and @stereotype != 'stereotype'
       "<<#{@stereotype}>>"
     else
       ''

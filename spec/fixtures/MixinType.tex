@@ -41,7 +41,20 @@ Has\-Component & Variable & <Integer\-Event> & Int32[] & Integer\-Event\-Type & 
 \item \texttt{uuid::String:} Only required with Device
 
 \end{itemize}
-\paragraph{Invariants for ActiveState}
+
+\paragraph{Static values for ActiveState}
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ComponentType::ActiveState} Values}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|l|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Value} \\
+\tabucline[1.5pt]{}
+\texttt{FalseState} & \texttt{Inactive} \\
+\texttt{TrueState} & \texttt{Active} \\
+\end{tabu}
+\end{table} 
 \begin{itemize}
 \item Property \texttt{FalseState}: \texttt{Inactive}
 \item Property \texttt{TrueState}: \texttt{Active}

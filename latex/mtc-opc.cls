@@ -176,7 +176,7 @@
       \LARGE{Part 1: Device} \\%
       \parindent=0.5in%
       \vspace{1in}%
-      \LARGE{Release 2.0} \\%
+      \LARGE{\getversiontext\ \getversionnum} \\%
       \parindent=0.5in%
       \vspace{12pt}%
       \LARGE{\@preparedon} \\%

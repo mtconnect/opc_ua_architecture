@@ -71,6 +71,9 @@
   section=subsubsection]{glossaries-extra}
 \usepackage{mdframed}
 \usepackage[titletoc,title]{appendix}
+\usepackage{rotating}
+\usepackage{graphicx}
+
 \renewcommand{\appendixname}{Annex}
 
 \usepackage{titlesec}
@@ -155,29 +158,59 @@
 \newcommand{\preparedon}[1]{\gdef\@preparedon{#1}}
 \newcommand{\versiontext}[1]{\gdef\@versiontext{#1}}
 
+\newsavebox\titlecontent
+
+\newcommand{\maketitlecontent}{%
+  \savebox\titlecontent{%
+    \bfseries%
+    \begin{tabu}to 5in{X}%
+      \protect \vspace{1in} \quad \\%
+      \parindent=0.5in%
+      \vspace{18pt}%
+      \huge{OPC 30070-1} \\%
+      \parindent=0.5in%
+      \vspace{18pt}%
+      \LARGE{OPC UA for MTConnect} \\%
+      \parindent=0.5in%
+      \vspace{18pt}%
+      \LARGE{Part 1: Device} \\%
+      \parindent=0.5in%
+      \vspace{1in}%
+      \LARGE{Release 2.0} \\%
+      \parindent=0.5in%
+      \vspace{12pt}%
+      \LARGE{\@preparedon} \\%
+    \end{tabu}%
+  }%
+}
+
+
 \renewcommand{\maketitle}{%
+  \maketitlecontent
   \begin{titlepage}%
-    \begin{center}%
-      \quad \\ \vspace{0.25in}
-      \includegraphics[width=0.4\linewidth]{opc-logo.jpg} \hspace{0.25in}
-      \includegraphics[width=0.4\linewidth]{mtconnect.png} \\%
-    \end{center}%
-    \quad \\ \vspace{0.1in}
-    \begin{center}%
-      \huge{\@doctitle} \protect\\%
-      \LARGE{\quad \protect\\\@versiontext\space\@versionnum \protect\\ \quad \protect\\\@preparedon} \protect\\%
-    \end{center}%
+    \tabulinesep=1pt%
+    \taburulecolor |light-gray|{black}%
+    \begin{tabu}to 6in{|X|X|X[0.15]|}%
+      \hline%
+      \includegraphics[width=1.0\linewidth]{opc-logo.jpg} &%
+      \includegraphics[width=1.0\linewidth]{mtconnect.png} &  \cellcolor{light-gray} \\ \tabucline{1-2}%
+      \multicolumn{2}{|l|}{%%
+        \usebox{\titlecontent}%
+      }%
+      & \bfseries\cellcolor{light-gray}\center{\rotatebox[origin=lB]{270}{\LARGE{OPC UA Companion Specification}}} \\ \tabucline{1-2}%
+      \multicolumn{2}{|l|}{%
+        \mtconnect is a registered trademark of AMT - The Association for%
+      } & \cellcolor{light-gray} \\ %
+      \multicolumn{2}{|l|}{%
+        Manufacturing Technology. Use of \mtconnect is limited to use as specified %
+      } & \cellcolor{light-gray} \\ %
+      \multicolumn{2}{|l|}{%
+        on http://www.mtconnect.org/ %
+      } & \cellcolor{light-gray} \\ \tabucline{1-3} %
+    \end{tabu}%
     \vfill%
-    % \hspace*{\fill}%
-    % \begin{tabular}[t]{l@{}}%
-    % Prepared for: \@preparedfor \\%
-    %	Prepared by: \@preparedby \\%
-    %	Prepared on: \@preparedon \\%
-    % \end{tabular}%
-    % \vfill%
-    \noindent \footnotesize{\mtconnect is a registered trademark of AMT - The Association for Manufacturing Technology. Use of \mtconnect is limited to use as specified on \url{http://www.mtconnect.org/}.}%
   \end{titlepage}%
-  \setcounter{page}{1}%
+  \setcounter{page}{1}
 }
 
 % ************************************ %

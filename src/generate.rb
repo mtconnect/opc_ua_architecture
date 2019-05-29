@@ -25,20 +25,22 @@ end
 parser.parse!
 
 
-Models = ['Components', 'Component Types', 'Data Items',
-          'Conditions', 'Data Item Types', 'Sample Data Item Types',
-          'Controlled Vocab Data Item Types', 'Numeric Event Data Item Types',
-          'String Event Data Item Types', 'Condition Data Item Types',
-          'Data Item Sub Types', 'MTConnect Device Profile']
-
 if (Options[:assets])
-  Models << 'Assets'
-  Models << 'Cutting Tool'
-  Models << 'Assets Profile'
+  Models = ['Assets', 'Cutting Tool', 'Assets Profile']
+  DocumentFile = './assets/09-types.tex'
+  NodesetFile = './Opc.Ua.MTConnect.Assets.Nodeset2.xml'
+else
+  Models = ['Components', 'Component Types', 'Data Items',
+            'Conditions', 'Data Item Types', 'Sample Data Item Types',
+            'Controlled Vocab Data Item Types', 'Numeric Event Data Item Types',
+            'String Event Data Item Types', 'Condition Data Item Types',
+            'Data Item Sub Types', 'MTConnect Device Profile']
+ DocumentFile = './latex/09-types.tex'
+ NodesetFile = './Opc.Ua.MTConnect.Nodeset2.xml'
 end
 
 xmiDoc = nil
-File.open(File.join(File.dirname(__FILE__), '..', 'MTConnect Devices EA.xmi')) do |xmi|
+File.open(File.join(File.dirname(__FILE__), '..', 'MTConnect OPC UA EA.xmi')) do |xmi|
   xmiDoc = Nokogiri::XML(xmi).slop!
   xmiDoc.remove_namespaces!
   RootModel = xmiDoc.at('//packagedElement[@type="uml:Package" and @name="Model"]')
@@ -47,7 +49,6 @@ end
 SkipModels = Set.new
 SkipModels.add('UMLStandardProfile')
 SkipModels.add('Device Example')
-SkipModels.add('MTConnectAssets')
 
 unless ARGV.first
   puts "At least one directve docs or nodeset must be given"

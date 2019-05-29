@@ -93,7 +93,7 @@ File.open('./MTConnect.TypeDictionary.XML.xml', 'w') do |f|
   f << text
 end  
 
-File.open('./Opc.Ua.MTConnect.Nodeset2.xml', 'w') do |f|
+File.open(NodesetFile, 'w') do |f|
   formatter.write(NodesetModel.document, f)  
 end
 

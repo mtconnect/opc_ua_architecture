@@ -127,9 +127,9 @@ class NodesetType < Type
     node_reference(refs, owner.name, 'HasProperty', owner.node_id, forward: false)
 
     # Add values for slots
-    add_value(ele, ref) if Relation::Slot === ref
+    add_value(ele, ref) if ref.value and !ref.value.empty?
 
-    # puts "#{ref.name}: #{owner.invariants.inspect} #{ref.target.type.name}"
+    # puts "#{ref.name}: #{owner.invariants.inspect} #{ref.target.type.name} default: #{ref.value}" if ref.value
     if owner.invariants and owner.invariants[ref.name]
       if ref.target.type.name == 'LocalizedText'
         value = ele.add_element('Value').
@@ -140,6 +140,7 @@ class NodesetType < Type
         raise "Do not know how to assign value for #{ref.target.type.name}"
       end
     end
+    
   end
 
   def collect_references

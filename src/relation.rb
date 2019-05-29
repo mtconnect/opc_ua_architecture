@@ -99,6 +99,10 @@ module Relation
       @stereotype = @target = nil
     end
 
+    def value
+      nil
+    end
+
     def final_target
       @target
     end
@@ -296,7 +300,7 @@ module Relation
       super(owner, a)
       @name = a['name']
       dv = a.at('defaultValue')
-      @default =  dv['value'] if dv
+      @default = dv['value'] if dv
 
       element = a.at("//element[@idref='#{owner.id}']")
       if element
@@ -311,6 +315,10 @@ module Relation
     rescue
       puts "Error creating relation: #{a.to_s}"
       raise
+    end
+
+    def value
+      @default
     end
     
     def is_property?
@@ -380,8 +388,6 @@ module Relation
   end
 
   class Slot < Relation
-    attr_reader :value
-    
     def initialize(owner, a)
       super(owner, a)
       @name = a['name']

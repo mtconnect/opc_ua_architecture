@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<opc:TypeDictionary DefaultByteOrder='LittleEndian' TargetNamespace='http://opcfoundation.org/UA/MTConnect/v2/' xmlns:opc='http://opcfoundation.org/BinarySchema/' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:ua='http://opcfoundation.org/UA/' xmlns:tns='http://opcfoundation.org/UA/'>
+  <opc:Import Namespace='http://opcfoundation.org/UA/' Location='Opc.Ua.BinarySchema.bsd'/>
+  <opc:EnumeratedType Name='CountDirectionDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='DOWN' Value='0'/>
+    <opc:EnumeratedValue Name='UP' Value='1'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='CutterStatusDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='AVAILABLE' Value='1'/>
+    <opc:EnumeratedValue Name='ALLOCATED' Value='2'/>
+    <opc:EnumeratedValue Name='BROKEN' Value='4'/>
+    <opc:EnumeratedValue Name='EXPIRED' Value='16'/>
+    <opc:EnumeratedValue Name='MEASURED' Value='32'/>
+    <opc:EnumeratedValue Name='NEW' Value='64'/>
+    <opc:EnumeratedValue Name='NOT_REGISTERED' Value='128'/>
+    <opc:EnumeratedValue Name='RECONDITIONED' Value='256'/>
+    <opc:EnumeratedValue Name='UNALLOCATE' Value='512'/>
+    <opc:EnumeratedValue Name='UNAVAILABLE' Value='1024'/>
+    <opc:EnumeratedValue Name='UNKNOWN' Value='2048'/>
+    <opc:EnumeratedValue Name='USED' Value='4096'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='CuttingToolDefintionFormatDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='XML' Value='0'/>
+    <opc:EnumeratedValue Name='EXPRESS' Value='1'/>
+    <opc:EnumeratedValue Name='TEXT' Value='2'/>
+    <opc:EnumeratedValue Name='UNDEFINED' Value='3'/>
+  </opc:EnumeratedType>
+  <opc:EnumeratedType Name='MTLocationDataType' LengthInBits='32' BaseType='ua:ExtensionObject'>
+    <opc:EnumeratedValue Name='CRIB' Value='0'/>
+    <opc:EnumeratedValue Name='POT' Value='1'/>
+    <opc:EnumeratedValue Name='STATION' Value='2'/>
+  </opc:EnumeratedType>
+</opc:TypeDictionary>

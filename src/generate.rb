@@ -30,6 +30,7 @@ if (Options[:assets])
   DocumentFile = './assets/09-types.tex'
   NodesetFile = './Opc.Ua.MTConnect.Assets.Nodeset2.xml'
   OpcNodeIdFile = './MTConnect.Assets.NodeIds.csv'
+  TypeDictionary = './MTConnect.TypeDictionary.Assets'
 else
   Models = ['Components', 'Component Types', 'Data Items',
             'Conditions', 'Data Item Types', 'Sample Data Item Types',
@@ -39,6 +40,7 @@ else
  DocumentFile = './latex/09-types.tex'
  NodesetFile = './Opc.Ua.MTConnect.Nodeset2.xml'
  OpcNodeIdFile = './MTConnect.NodeIds.csv'
+ TypeDictionary = './MTConnect.TypeDictionary'
 end
 
 xmiDoc = nil

@@ -80,7 +80,7 @@ formatter.write(TypeDict, text)
 type = Type.type_for_name('Opc.Ua.MTConnect(Binary)')
 type.add_base64_value(text)
 
-File.open('./MTConnect.TypeDictionary.Binary.xml', 'w') do |f|
+File.open("./#{TypeDictionary}.Binary.xml", 'w') do |f|
   f << text
 end  
 
@@ -89,7 +89,7 @@ formatter.write(XmlTypeDict, text)
 type = Type.type_for_name('Opc.Ua.MTConnect(XML)')
 type.add_base64_value(text)
 
-File.open('./MTConnect.TypeDictionary.XML.xml', 'w') do |f|
+File.open("./#{TypeDictionary}.XML.xml", 'w') do |f|
   f << text
 end  
 

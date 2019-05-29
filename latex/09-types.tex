@@ -1,4 +1,4 @@
-% Generated 2019-05-21 13:14:18 -0700
+% Generated 2019-05-29 09:09:09 -0400
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -1723,13 +1723,6 @@ These need to become \uamodel{Good_} status code in OPC UA.
 \end{table} 
 \FloatBarrier
 \end{itemize}
-\paragraph{Operations}
-\begin{itemize}
-  \item \texttt{getStatusCode()}\newline    Documentation: When the \mtmodel{ResetTrigger} is set because a statistic has been reset and the duration is present, the \uamodel{StatusCode} will have the \uamodel{SemanticsChanged} bit set (14:14) of the status code as defined in \cite{UAPart4}.
-
-When this bit is set, the client should refer to the ResetTriggered property to ascertain the reason for the bit being set.
-
-\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTEventClassType}}
   \label{type:MTEventClassType}
@@ -2325,6 +2318,7 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of BaseConditionClassType (See \cite{UAPart9} Documentation)} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{CuttingToolClassType} & \multicolumn{2}{|l|}{See section \ref{type:CuttingToolClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{MTConditionClassType} & \multicolumn{2}{|l|}{See section \ref{type:MTConditionClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{MTEventClassType} & \multicolumn{2}{|l|}{See section \ref{type:MTEventClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{MTSampleClassType} & \multicolumn{2}{|l|}{See section \ref{type:MTSampleClassType}} \\

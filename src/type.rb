@@ -20,19 +20,21 @@ class Type
     def initialize(obj)
       @tid = @type = nil
       @lazy_lambdas = []
-      
+
       case obj
       when String
         @tid = obj
         @type = Type.type_for_id(@tid)
         @@pointers << self unless @type
 
+        raise "ID required when String" if @tid.nil? or @tid.empty?
+
       when Type
         @type = obj
         @tid = @type.id
 
       else
-        raise "Pointer created for unknown type: #{obj.class}"
+        raise "Pointer created for unknown type: #{obj.class} '#{@tid}' '#{@type}'"
       end
     end
 
@@ -60,7 +62,7 @@ class Type
       unless @type
         @type = Type.type_for_id(@tid)
         if @type.nil? and @tid !~ /^EAID/
-          if @tid =~ /^EA[^_]+_([A-Za-z]+)/
+          if @tid =~ /^EA[^_]+_([0-9A-Za-z]+)/
             # puts "Could not find #{@tid}, Looking up type by name: #{$1}"
             @type = Type.type_for_name($1)
             # puts "  Found type for #{@type.name}" if @type

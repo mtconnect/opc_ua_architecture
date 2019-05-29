@@ -4,8 +4,8 @@ require 'latex_model'
 LatexModel.skip_models = SkipModels
 LatexModel.new(RootModel).find_definitions
 
-puts "\nGenerating LaTex"
-File.open('./latex/09-types.tex', 'w') do |f|
+puts "\nGenerating LaTex to #{DocumentFile}"
+File.open(DocumentFile, 'w') do |f|
   f.puts "% Generated #{Time.now}"
 
   Models.each do |m|

@@ -307,6 +307,10 @@ module Relation
 
       type = a.at('type')['idref']
       @target = Connection.new('type', Type::LazyPointer.new(type))
+
+    rescue
+      puts "Error creating relation: #{a.to_s}"
+      raise
     end
     
     def is_property?

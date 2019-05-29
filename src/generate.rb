@@ -26,7 +26,7 @@ parser.parse!
 
 
 if (Options[:assets])
-  Models = ['Assets', 'Cutting Tool', 'Assets Profile']
+  Models = ['Assets', 'Cutting Tool', 'Measurements', 'Assets Profile']
   DocumentFile = './assets/09-types.tex'
   NodesetFile = './Opc.Ua.MTConnect.Assets.Nodeset2.xml'
 else

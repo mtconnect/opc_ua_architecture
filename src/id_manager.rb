@@ -130,7 +130,7 @@ class IdManager
     pat = /#{Namespace}:/o
     CSV.open(@file, 'wb') do |csv|
       @ids.keys.sort.each do |key|
-        if key !~ pat or @referenced.include?(key)
+        if true # key !~ pat or @referenced.include?(key)
           csv << [key, @ids[key], @aliases.include?(key)]
         end
       end

@@ -29,6 +29,7 @@ if (Options[:assets])
   Models = ['Assets', 'Cutting Tool', 'Measurements', 'Assets Profile']
   DocumentFile = './assets/09-types.tex'
   NodesetFile = './Opc.Ua.MTConnect.Assets.Nodeset2.xml'
+  OpcNodeIdFile = './MTConnect.Assets.NodeIds.csv'
 else
   Models = ['Components', 'Component Types', 'Data Items',
             'Conditions', 'Data Item Types', 'Sample Data Item Types',
@@ -37,6 +38,7 @@ else
             'Data Item Sub Types', 'MTConnect Device Profile']
  DocumentFile = './latex/09-types.tex'
  NodesetFile = './Opc.Ua.MTConnect.Nodeset2.xml'
+ OpcNodeIdFile = './MTConnect.NodeIds.csv'
 end
 
 xmiDoc = nil

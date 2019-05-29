@@ -13,7 +13,7 @@ NamespaceUri = 'http://opcfoundation.org/UA/MTConnect/v2/'
 puts "\nGenerating Nodeset"
 
 puts "Regenerating based Nodeset Ids" if Options[:clean]
-NodesetModel.create_id_manager('MTConnectNodeIds.csv', 'MTConnect.NodeIds.csv', Options[:clean])
+NodesetModel.create_id_manager('MTConnectNodeIds.csv', OpcNodeIdFile, Options[:clean])
 
 NodesetModel.skip_models = SkipModels
 NodesetModel.new(RootModel).find_definitions

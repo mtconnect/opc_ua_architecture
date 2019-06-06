@@ -197,16 +197,8 @@
       \multicolumn{2}{|l|}{%%
         \usebox{\titlecontent}%
       }%
-      & \bfseries\cellcolor{light-gray}\center{\rotatebox[origin=lB]{270}{\LARGE{OPC UA Companion Specification}}} \\ \tabucline{1-2}%
-      \multicolumn{2}{|l|}{%
-        \mtconnect is a registered trademark of AMT - The Association for%
-      } & \cellcolor{light-gray} \\ %
-      \multicolumn{2}{|l|}{%
-        Manufacturing Technology. Use of \mtconnect is limited to use as specified %
-      } & \cellcolor{light-gray} \\ %
-      \multicolumn{2}{|l|}{%
-        on http://www.mtconnect.org/ %
-      } & \cellcolor{light-gray} \\ \tabucline{1-3} %
+      & \bfseries\cellcolor{light-gray}\center{\rotatebox[origin=lB]{270}{\LARGE{OPC UA Companion Specification}}} \\ %
+      \multicolumn{2}{|l|}{\protect \quad} & \cellcolor{light-gray} \vspace{0.5in} \\ \tabucline{1-3} %
     \end{tabu}%
     \vfill%
   \end{titlepage}%
@@ -246,7 +238,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{\@preparedon}
-\lfoot{\@doctitleshort { -} \@versiontext\space\@versionnum}
+\lfoot{OPC 30070-1 \@doctitleshort { -} \@versiontext\space\@versionnum}
 \rfoot{\thepage}
 \renewcommand{\headrulewidth}{0pt}
 

@@ -53,9 +53,10 @@ style=alphabetic,
 % *********************** REQUIRED INITIAL INPUTS ************************* %
 % ************************************************************************* %
 
-\docnum{OPC UA}							% Document "number"
-\doctitle{OPC UA for \mtconnect Part 1: Device}                 % Full document title
-\doctitleshort{OPC UA: for \mtconnect Part 1: Device \newline OPC UA Companion Specification}				% Shortened document title
+\docnum{OPC 30070-1}							% Document "number"
+\doctitle{\@docnum: \@doctitleshort \@doctitlepart \newline OPC UA Companion Specification}
+\doctitleshort{OPC UA for \mtconnect}		% Shortened document title
+\doctitlepart{Part 1: Device Model}
 \versionnum{2.00.00}						% MTConnect version
 
 \preparedfor{MTConnect Institute and OPC Foundation}		% Should not change!!!
@@ -80,8 +81,8 @@ style=alphabetic,
   \taburulecolor |light-gray|{black}
   \begin{tabu} to 5.75in {X[0.6] X X[0.3] X[1.1]}
     Specification Type: & Industry Standard Specification & Comments: & \\ \tabucline[1pt]{2-2} \tabucline[1pt]{4-4}
-    Document Number & \bfseries{OPC 30070-1} & & \\ \tabucline[1pt]{2-2}
-    Title: & {OPC UA for \mtconnect \newline Part 1: Device} & Date: & \today \\  \tabucline[1pt]{2-2} \tabucline[1pt]{4-4}
+    Document Number & \bfseries{ \getdocnum } & & \\ \tabucline[1pt]{2-2}
+    Title: & {\getdoctitleshort \newline \getdoctitlepart} & Date: & \today \\  \tabucline[1pt]{2-2} \tabucline[1pt]{4-4}
     Version: & \getversiontext\ \getversionnum & Software: & LaTeX  \\ \tabucline[1pt]{2-2} \tabucline[1pt]{4-4}
     Authors: & William Sobel, Randy Armstrong, John Turner, Russell Waddell, Shaurabh Singh & Source: & OPC\_UA\_MTConnect\_\getversionnum.pdf \\  \tabucline[1pt]{2-2} \tabucline[1pt]{4-4}
     Owner: & MTConnect Institute & Status: &  \getversiontext \\

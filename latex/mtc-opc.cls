@@ -141,6 +141,7 @@
 
 \newcommand\@docnum{}
 \newcommand\@doctitle{}
+\newcommand\@doctitlepart{}
 \newcommand\@versionnum{}
 \newcommand\@preparedfor{}
 \newcommand\@preparedby{}
@@ -149,9 +150,13 @@
 
 \newcommand\getversionnum{\@versionnum}
 \newcommand\getversiontext{\@versiontext}
+\newcommand\getdocnum{\@docnum}
+\newcommand\getdoctitle{\@doctitle}
+\newcommand\getdoctitlepart{\@doctitlepart}
 
 \newcommand{\docnum}[1]{\gdef\@docnum{#1}}
 \newcommand{\doctitle}[1]{\gdef\@doctitle{#1}}
+\newcommand{\doctitlepart}[1]{\gdef\@doctitlepart{#1}}
 \newcommand{\versionnum}[1]{\gdef\@versionnum{#1}}
 \newcommand{\preparedfor}[1]{\gdef\@preparedfor{#1}}
 \newcommand{\preparedby}[1]{\gdef\@preparedby{#1}}
@@ -167,13 +172,13 @@
       \protect \vspace{1in} \quad \\%
       \parindent=0.5in%
       \vspace{18pt}%
-      \huge{OPC 30070-1} \\%
+      \huge{\@docnum} \\%
       \parindent=0.5in%
       \vspace{18pt}%
-      \LARGE{OPC UA for MTConnect} \\%
+      \LARGE{\@doctitleshort} \\%
       \parindent=0.5in%
       \vspace{18pt}%
-      \LARGE{Part 1: Device} \\%
+      \LARGE{\@doctitlepart} \\%
       \parindent=0.5in%
       \vspace{1in}%
       \LARGE{\getversiontext\ \getversionnum} \\%
@@ -233,12 +238,13 @@
 % ********************************* %
 
 \newcommand\@doctitleshort{}
+\newcommand\getdoctitleshort{\@doctitleshort}
 \newcommand{\doctitleshort}[1]{\gdef\@doctitleshort{#1}}
 
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{\@preparedon}
-\lfoot{OPC 30070-1 \@doctitleshort { -} \@versiontext\space\@versionnum}
+\lfoot{OPC 30070-1 \@doctitleshort \newline \@doctitlepart { -} \@versiontext\space\@versionnum}
 \rfoot{\thepage}
 \renewcommand{\headrulewidth}{0pt}
 

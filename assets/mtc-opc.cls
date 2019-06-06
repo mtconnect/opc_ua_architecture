@@ -1,1 +1,1 @@
-../latex/mtc-opc.cls
+../devices/mtc-opc.cls

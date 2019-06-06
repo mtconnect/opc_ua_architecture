@@ -23,10 +23,10 @@ parser.parse!
 
 AssetModels = ['Assets', 'Cutting Tool', 'Measurements', 'Assets Profile']
 
+AssetDirectory = 'assets'
 AssetDocumentFile = './assets/09-types.tex'
 AssetNodesetFile = './Opc.Ua.MTConnect.Assets.Nodeset2.xml'
 AssetTypeDictionary = './MTConnect.Assets.TypeDictionary'
-AssetDirectory = 'assets'
 
 DeviceModels = ['Components', 'Component Types', 'Data Items',
             'Conditions', 'Data Item Types', 'Sample Data Item Types',
@@ -34,10 +34,10 @@ DeviceModels = ['Components', 'Component Types', 'Data Items',
             'String Event Data Item Types', 'Condition Data Item Types',
             'Data Item Sub Types', 'MTConnect Device Profile']
 
-DeviceDocumentFile = './latex/09-types.tex'
+DeviceDirectory = 'devices'
+DeviceDocumentFile = './devices/09-types.tex'
 DeviceNodesetFile = './Opc.Ua.MTConnect.Devices.Nodeset2.xml'
 DeviceTypeDictionary = './MTConnect.Devices.TypeDictionary'
-DeviceDirectory = 'latex'
 
 NodesetFile = './Opc.Ua.MTConnect.Nodeset2.xml'
 OpcNodeIdFile = './MTConnect.NodeIds.csv'

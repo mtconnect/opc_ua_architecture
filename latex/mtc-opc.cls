@@ -141,6 +141,7 @@
 
 \newcommand\@docnum{}
 \newcommand\@doctitle{}
+\newcommand\@doctitleshort{}
 \newcommand\@doctitlepart{}
 \newcommand\@versionnum{}
 \newcommand\@preparedfor{}
@@ -153,7 +154,9 @@
 \newcommand\getdocnum{\@docnum}
 \newcommand\getdoctitle{\@doctitle}
 \newcommand\getdoctitlepart{\@doctitlepart}
+\newcommand\getdoctitleshort{\@doctitleshort}
 
+\newcommand{\doctitleshort}[1]{\gdef\@doctitleshort{#1}}
 \newcommand{\docnum}[1]{\gdef\@docnum{#1}}
 \newcommand{\doctitle}[1]{\gdef\@doctitle{#1}}
 \newcommand{\doctitlepart}[1]{\gdef\@doctitlepart{#1}}
@@ -237,14 +240,10 @@
 % 	Header and Footer Definitions   %
 % ********************************* %
 
-\newcommand\@doctitleshort{}
-\newcommand\getdoctitleshort{\@doctitleshort}
-\newcommand{\doctitleshort}[1]{\gdef\@doctitleshort{#1}}
-
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{\@preparedon}
-\lfoot{OPC 30070-1 \@doctitleshort \newline \@doctitlepart { -} \@versiontext\space\@versionnum}
+\lfoot{\@doctitle \newline \@doctitlepart { -} \@versiontext\space\@versionnum}
 \rfoot{\thepage}
 \renewcommand{\headrulewidth}{0pt}
 

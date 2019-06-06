@@ -53,11 +53,11 @@ style=alphabetic,
 % *********************** REQUIRED INITIAL INPUTS ************************* %
 % ************************************************************************* %
 
-\docnum{OPC 30070-1}							% Document "number"
+\docnum{OPC 30070-2}							% Document "number"
 \doctitleshort{OPC UA for \mtconnect}		% Shortened document title
 \doctitle{\getdocnum: \getdoctitleshort}
-\doctitlepart{Part 1: Device Model}
-\versionnum{2.00.00}						% MTConnect version
+\doctitlepart{Part 2: Asset Model}
+\versionnum{2.00.00 RC1}					% MTConnect version
 
 \preparedfor{MTConnect Institute and OPC Foundation}		% Should not change!!!
 \preparedby{MTConnect Institute, OPC Foundation}				% Author
@@ -98,22 +98,7 @@ style=alphabetic,
     \begin{tabu} to 6in {|X[-1]|X[-1.25]|X[-0.75]|X[5.25]|X[-0.75]|} \everyrow{\hline}
         \hline
         \rowfont \bfseries Version & Date & Reason & Comments & Mantis \\        
-        2.00.00 & 2019-06-05 & Revision & Definition of Nodes Representing MTConnec Conditions & \mantis{4730} \\
-        2.00 RC9 & 2019-05-21 & Revision & Page 62: Reset trigger to status code relationships & \mantis{4630} \\
-        2.00 RC9 & 2019-05-21 & Revision & Added sub-bullets for examples in section 8 & \mantis{4739} \\
-        2.00 RC9 & 2019-03-04 & Revision & Added PathFeedrateOverride & \mantis{4655} \\
-        2.00 RC9 & 2019-02-26 & Revision & Added Assets Folder in preparation for Part 4.0 & \mantis{4641} \\
-        2.00 RC9 & 2019-02-26 & Revision & Changed ClassType references from EnumValues to EnumStrings & \mantis{4640} \\
-        2.00 RC8 & 2019-02-18 & Revision & Added list of tables & \mantis{4631} \\
-        2.00 RC8 & 2019-02-18 & Revision & Added table for reset triggers and suggested status codes & \mantis{4630} \\
-        2.00 RC8 & 2019-02-18 & Revision & Removed data rate issue from page 77 & \mantis{4629} \\
-        2.00 RC7 & 2019-02-12 & Revision & 2.0 RC6: 8.4.6.2 MTConnect Condition Branching Example -- Need to improve documentation of condition branching & \mantis{4608} \\        
-        2.00 RC7 & 2019-02-12 & Revision & Document 2.0 RC 6: 8.4.7 Messages -- need to improve message handling & \mantis{4607} \\
-        2.00 RC7 & 2019-02-12 & Node Ids & List of NodeIds as CSV & \mantis{4612} \\
-        2.00 RC7 & 2019-02-12 & Revision & A chapter for Profiles and Namespaces needs to be added &  \mantis{4611} \\
-        2.00.06 & 2019-01-22 & Revision & Added missing class types and made MTMessageType a Variable instead of an Event &\\
-        2.00.05 & 2018-12-09 & Revision & Fixed Composition & \\
-        2.00.04 & 2018-11-30 & Initial & Initial Release Candidate & \\ 
+        2.00.00 RC1 & 2019-06-06 & Initial & Initial Release Candidate & \\ 
     \end{tabu}
 \end{table}
 
@@ -143,7 +128,7 @@ style=alphabetic,
 
 \input 02-companion-specification-goals.tex
 
-\input 03-who-will-benefit.tex
+%\input 03-who-will-benefit.tex
 
 \input 04-normative-references.tex
 
@@ -153,7 +138,7 @@ style=alphabetic,
 
 \input 062-opc-ua.tex
 
-\input 07-use-cases.tex
+% \input 07-use-cases.tex
 
 \input 08-mtconnect-mapping.tex
 

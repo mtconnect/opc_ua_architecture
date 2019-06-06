@@ -14,10 +14,6 @@ Options = {}
 parser = OptionParser.new do |opts|
   opts.banner = "Usage: create_documentation.rb [options] [docs|nodeset]"
 
-  opts.on("-a", "--[no-]assets", "Include assets") do |v|
-    Options[:assets] = v
-  end
-
   opts.on("-r", "--[no-]clean", "Regenerate Nodeset Ids") do |v|
     Options[:clean] = v
   end
@@ -25,23 +21,27 @@ end
 parser.parse!
 
 
-if (Options[:assets])
-  Models = ['Assets', 'Cutting Tool', 'Measurements', 'Assets Profile']
-  DocumentFile = './assets/09-types.tex'
-  NodesetFile = './Opc.Ua.MTConnect.Assets.Nodeset2.xml'
-  OpcNodeIdFile = './MTConnect.Assets.NodeIds.csv'
-  TypeDictionary = './MTConnect.TypeDictionary.Assets'
-else
-  Models = ['Components', 'Component Types', 'Data Items',
+AssetModels = ['Assets', 'Cutting Tool', 'Measurements', 'Assets Profile']
+
+AssetDocumentFile = './assets/09-types.tex'
+AssetNodesetFile = './Opc.Ua.MTConnect.Assets.Nodeset2.xml'
+AssetTypeDictionary = './MTConnect.Assets.TypeDictionary'
+AssetDirectory = 'assets'
+
+DeviceModels = ['Components', 'Component Types', 'Data Items',
             'Conditions', 'Data Item Types', 'Sample Data Item Types',
             'Controlled Vocab Data Item Types', 'Numeric Event Data Item Types',
             'String Event Data Item Types', 'Condition Data Item Types',
             'Data Item Sub Types', 'MTConnect Device Profile']
- DocumentFile = './latex/09-types.tex'
- NodesetFile = './Opc.Ua.MTConnect.Nodeset2.xml'
- OpcNodeIdFile = './MTConnect.NodeIds.csv'
- TypeDictionary = './MTConnect.TypeDictionary'
-end
+
+DeviceDocumentFile = './latex/09-types.tex'
+DeviceNodesetFile = './Opc.Ua.MTConnect.Devices.Nodeset2.xml'
+DeviceTypeDictionary = './MTConnect.Devices.TypeDictionary'
+DeviceDirectory = 'latex'
+
+NodesetFile = './Opc.Ua.MTConnect.Nodeset2.xml'
+OpcNodeIdFile = './MTConnect.NodeIds.csv'
+TypeDictionary = './MTConnect.TypeDictionary'
 
 xmiDoc = nil
 File.open(File.join(File.dirname(__FILE__), '..', 'MTConnect OPC UA EA.xmi')) do |xmi|
@@ -51,7 +51,6 @@ File.open(File.join(File.dirname(__FILE__), '..', 'MTConnect OPC UA EA.xmi')) do
 end
 
 SkipModels = Set.new
-SkipModels.add('UMLStandardProfile')
 SkipModels.add('Device Example')
 
 unless ARGV.first

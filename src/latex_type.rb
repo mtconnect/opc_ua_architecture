@@ -11,11 +11,11 @@ module Diagram
   end
 
   def png_diagram_file_name
-    "./latex/#{png_diagram_name}"
+    "./#{LatexModel.directory}/#{png_diagram_name}"
   end
 
   def tex_diagram_file_name
-    "./latex/#{tex_diagram_name}"
+    "./#{LatexModel.directory}/#{tex_diagram_name}"
   end
 
   def png_diagram_exists?
@@ -56,7 +56,7 @@ module Document
   end
 
   def documentation_file_name
-    "./latex/#{documentation_name}"
+    "./#{LatexModel.directory}/#{documentation_name}"
   end
 
 
@@ -417,7 +417,7 @@ EOT
   end
 
   def generate_class_diagram
-    File.open("latex/classes/#{@name.gsub(/[<>]/, '-')}.tex", 'w') do |f|
+    File.open("./#{LatexModel.directory}/classes/#{@name.gsub(/[<>]/, '-')}.tex", 'w') do |f|
       if @abstract
         f.puts "\\umlabstract{#{@name}}{"
       else
@@ -491,6 +491,6 @@ EOT
 
     f.puts "\\FloatBarrier"
 
-    generate_class_diagram    
+    # generate_class_diagram    
   end
 end

@@ -1,0 +1,128 @@
+\section{Profiles and Namespaces} \label{profiles-and-namespaces}
+\subsection{Namespace Metadata}
+
+Table~\ref{table:namespacemetadata} defines the \uaterm{namespace} \uaterm{metadata} for this specification. The \gls{Object} is used to provide information for the \uaterm{namespace} and an indication about static \glspl{Node}. Static \glspl{Node} are identical for all \glspl{Attribute} in all \glspl{Server}, including the \uaterm{Value} \gls{Attribute}. See \cite{UAPart5} for more details.
+
+The information is provided as \gls{Object} of type \uamodel{NamespaceMetadataType}. This \gls{Object} is a component of the \uaterm{Namespaces} \gls{Object} that is part of the \gls{Server} \gls{Object}. The \uamodel{NamespaceMetadataType} \uamodel{ObjectType} and its \glspl{Property} are defined in \cite{UAPart5}.
+
+The version information is also provided as part of the \uamodel{ModelTableEntry} in the \gls{UANodeSet} XML file. The \gls{UANodeSet} \gls{xml} schema is defined in \cite{UAPart6}.
+
+\begin{table}[ht]
+\centering 
+  \caption{\uamodel{NamespaceMetadata} \gls{Object} for this Specification}
+  \label{table:namespacemetadata}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-0.5]|X[-0.75]|X[-0.5]|X|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{3}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{3}{|l|}{http://www.opcfoundation.org/UA/MTConnect/2.0/} \\
+\rowfont \bfseries References & BrowseName & DataType & Value \\
+\tabucline[1.5pt]{}
+HasProperty & NamespaceUri & String & http://www.opcfoundation.org/UA/MTConnect/2.0/ \\
+HasProperty & NamespaceVersion & String & 2.0 \\
+HasProperty & NamespacePublicationDate & DateTime & 2018-10-31T00:00:00 \\
+HasProperty & IsNamespaceSubset & Boolean &  False \\
+HasProperty & StaticNodeIdTypes & IdType[] &  [0] \\
+HasProperty & StaticNumericNodeIdRange & NumericRange[] & [1:1073741824]\\
+HasProperty & StaticStringNodeIdPattern & String & \\
+\end{tabu}
+\end{table}
+
+\subsection{Conformance Units and Profiles}
+
+This chapter defines the corresponding \uaterm{Profiles} and \uaterm{Conformance Units} for the OPC UA Information Model for MTConnect. \uaterm{Profiles} are named groupings of \uaterm{Conformance Units}. \uaterm{Facets} are \uaterm{Profiles} that will be combined with other \uaterm{Profiles} to define the complete functionality of an OPC UA \gls{Server} or \uaterm{Client}.
+
+\subsubsection{Server}
+
+Table~\ref{table:server-conformance} defines the \gls{Server} based \uaterm{ConformanceUnits}.
+
+\begin{table}[ht]
+\centering 
+  \caption{MTConnect \uaterm{Server} Information Model}
+  \label{table:server-conformance}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-0.25]|X|X[-0.25]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries Conformance Unit & Description & Optional/ Mandatory \\
+MTConnect Base Functionality & The server supports the \uaterm{BaseObjectModel}. This includes exposing all mandatory objects, variables, methods, and data types. & M \\ 
+Availability & The Server must support the \mtmodel{Availability} \gls{MTDataItem} to indicate if data is available from the device. & M \\ 
+Device & The Server has at least one root \mtuatype{MTDeviceType} & M \\ 
+AssetChanged Data Item & The Server must support the MTConnect AssetChanged and AssetRemoved data items  & O \\ 
+Message & The Server must support the MTConnect Message data item and publish \mtuatype{MTMessageEventType} \uamodel{Event}s & M \\ 
+Condition & The server must support the MTConnect \mtuatype{MTConditionType} type and provide correct activation states  & M \\ 
+Condition Branches & The server must support MTConnect \mtuatype{MTConditionType} condition branches to represent multiple MTConnect Condition parallel activations & O \\ 
+Three Space Sample & The server must support the \mtuatype{MTThreeSpaceSampleType} data type to provide a spacial coordinate & M \\ 
+MTHasClassType and MTHasSubClassType & The server must have \mtuatype{MTSampleType}, \mtuatype{MTStringEventType} \mtuatype{MTMessageType}, \mtuatype{MTNumericEventType}, and \mtuatype{MTControlledVariableType} with relationships to the MTConnect Class types associated with the MTConnect \mtmodel{DataItem} \mtmodel{type} and \mtmodel{subType} & M \\ 
+MTConnect meta data & DataItems represented in OPC UA must have the full meta data required by the MTConnect standard for all attributes & M \\ 
+Engineer Units & All \mtuatype{MTSampleType} data items must have the \uamodel{EngineeringUnits} follow the prescribed Units as specified in the MTConnect standard.  & M \\ 
+\end{tabu}
+\end{table}
+
+\subsubsection{Client}
+
+Table~\ref{table:client-conformance} defines the \uaterm{Client} based \uaterm{ConformanceUnits}.
+
+\begin{table}[ht]
+\centering 
+  \caption{MTConnect \uaterm{Client} Information Model}
+  \label{table:client-conformance}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-0.25]|X|X[-0.25]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries Conformance Unit & Description & Optional/ Mandatory \\
+MTConnect Base Functionality & The client supports the \uaterm{BaseObjectModel}. This includes exposing all mandatory objects, variables, methods, and data types. & M \\
+Availability & The client must interpret the \mtmodel{Availability} \gls{MTDataItem} to indicate if data is available from the device. & M \\
+\end{tabu}
+\end{table}
+
+\FloatBarrier
+
+\subsection{Handling of OPC UA Namespaces}
+
+\uaterm{Namespaces} are used by OPC UA to create unique identifiers across different naming authorities. The Attributes \gls{NodeId} and \gls{BrowseName} are identifiers. A \gls{Node} in the UA \gls{AddressSpace} is unambiguously identified using a NodeId. Unlike \glspl{NodeId}, the \gls{BrowseName} cannot be used to unambiguously identify a \gls{Node}. Different \glspl{Node} may have the same \gls{BrowseName}. They are used to build a browse path between two Nodes or to define a standard \gls{Property}.
+
+\glspl{Server} may often choose to use the same namespace for the \gls{NodeId} and the \gls{BrowseName}. However, if they want to provide a standard \gls{Property}, its gls{BrowseName} shall have the \uaterm{namespace} of the standards body although the \uaterm{namespace} of the \gls{NodeId} reflects something else, for example the \uamodel{EngineeringUnits} \gls{Property}. All \glspl{NodeId} of \glspl{Node} not defined in this specification shall not use the standard \uaterm{namespaces}.
+
+Table~\ref{table:server-namespaces} provides a list of mandatory and optional namespaces used in an MTConnect OPC UA \gls{Server}.
+
+\begin{table}[ht]
+\centering 
+  \caption{Namespaces used in a MTConnect Server}
+  \label{table:server-namespaces}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-0.85]|X|X[-0.2]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries NamespaceURI & Description & Use \\
+http://www.opcfoundation.org/UA/ & \uaterm{Namespace} for \glspl{NodeId} and \glspl{BrowseName} defined in the OPC UA specification. This \uaterm{namespace} shall have \uaterm{namespace} index 0. & Mandatory \\
+Local Server URI & \uaterm{Namespace} for nodes defined in the local server. This may include types and instances used in an \uaterm{AutoID} Device represented by the \gls{Server}. This \uaterm{namespace} shall have \uaterm{namespace} index 1. & Mandatory \\
+http://www.opcfoundation.org/UA/MTConnect/2.0/ & \uaterm{Namespace} for \glspl{NodeId} and \glspl{BrowseName} defined in this specification. The \uaterm{namespace} index is \gls{Server} specific. & Mandatory \\
+Vendor specific types & A \gls{Server} may provide vendor-specific types like types derived from \uaterm{ObjectTypes} defined in this specification in a vendor-specific \uaterm{namespace}. & Optional \\
+Vendor specific instances & A \gls{Server} provides vendor-specific instances of the standard types or vendor-specific instances of vendor-specific types in a vendor-specific \uaterm{namespace}. It is recommended to separate vendor specific types and vendor specific instances into two or more \uaterm{namespaces}. & Mandatory \\
+\end{tabu}
+\end{table}
+
+Table~\ref{table:namespaces} provides a list of \uaterm{namespaces} and their index used for \glspl{BrowseName} in this specification. The default \uaterm{namespace} of this specification is not listed since all \glspl{BrowseName} without prefix use this default \uaterm{namespace}.
+
+\begin{table}[ht]
+\centering 
+  \caption{Namespaces used used in this specification}
+  \label{table:namespaces}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[1.2]|X|X|} \everyrow{\hline}
+\hline
+\rowfont\bfseries NamespaceURI & Namespace Index & Example \\
+http://www.opcfoundation.org/UA/ & 0 &0:EngineeringUnits \\
+http://www.opcfoundation.org/UA/MTConnect/2.0/ & 1 & 1:MTDevice \\
+\end{tabu}
+\end{table}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:

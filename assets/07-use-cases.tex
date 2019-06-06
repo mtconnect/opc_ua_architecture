@@ -1,0 +1,70 @@
+\section{Use Cases}
+
+MTConnect is concerned with getting semantic data or information from manufacturing systems so it can be analyzed and communicated to other pieces of equipment in the ecosystem. The goal of MTConnect is to provide the data in a way that can enable other systems to create value for the manufacturing industry. 
+
+The use cases examine the architecture from the perspective of multiple personae and how the MTConnect domain model enables technology that addresses their requirements. There are numerous use cases for MTConnect; many that do not exist because the ecosystem is not mature enough to support those use cases. The design of the semantic model envisioned the need for extensibility and new manufacturing processes that were not widely available when MTConnect began. The model in OPC UA is also extensible and will be able to track the evolution of MTConnect. As well, as OPC UA advances, MTConnect will revise to make use of the latest capabilities like publish/subscribe.
+
+What follows is a non-exhaustive list of use cases illustrating the benefits of the MTConnect domain-specific semantic information model when integrated with the OPC UA communication and information modeling framework to increase the community of users by leveraging the achievements of both standards bodies.
+
+\subsection{Machine Tool Manufacturer with Existing MTConnect Implementation}
+
+Figure \ref{fig:devicemanufacturingusecase}, illustrates the use case for a manufacturer of a piece of equipment (device) that needs to connect to other systems. OPC UA provides the communication platform, and the MTConnect semantics provide meaning and structure to device data. Figure \ref{fig:devicemanufacturingusecase} shows several clients developed for different purposes that can access information produced by the device via OPC UA.
+
+\input diagrams/DeviceManufacturingUseCase.tex
+
+The MTConnect or OPC UA interface may reside directly on the machine or on a separate device that communicates with the machine. The location for the interface is up to the implementer.
+
+\input diagrams/DeviceManufacturerNativeMTConnect.tex
+
+The device manufacturer may also have a native MTConnect device and make use of an MTConnect to OPC UA gateway to provide information to OPC UA clients (see Figure \ref{fig:devicemanufacturernativemtconnect} and Figure \ref{fig:devicemanufacturerseparateagent}); this companion specification allows for information flow between clients and servers that support either MTConnect or OPC UA.
+
+The benefit of providing options allows the largest number of application access to the data and enables the application developers to require the least amount of effort to ingest and analyze the data. The goal of the device manufacturer is to make their equipment capable of participating in the ecosystem of manufacturing technology that will improve the value and effectiveness of their products. 
+
+\input diagrams/DeviceManufacturerSeparateAgent.tex
+
+\FloatBarrier
+
+\subsection{Software Vendor}
+
+An \gls{isv} has the principle concern of connecting to as many pieces of equipment as possible as quickly as possible. There are three aspects of interoperability that address this concern, protocol, syntactic and semantic. The first concern requires that the application can communicate to the piece of equipment using a protocol that is well understood by both the sender and receiver and widely used across the industry. 
+
+Protocols like \gls{http}, \gls{modbus}, and  \gls{mqtt} provide a level of protocol connectivity and communication with well-understood request and response formats that open and widely available. These protocols do not provide an information model; they provide access to data as an undefined set of bytes that need to be interpreted by the application.
+
+The next level of interoperability is syntactic. Frameworks like \gls{opc}, \gls{uml}, and \gls{owl} provide a foundation with the ability to express an \gls{ontology}, but does not provide the \gls{ontology} itself. \gls{opc} provides a model that has been designed for the industrial domain but is generic across many verticle applications. 
+
+The last level is the semantic interoperability where they provide the meaning and structure of the data, the \gls{ontology}, and allow for the information to be understood and analyzed. From an application perspective, the ability to rapidly implement solutions requires that data be well-understood with definitions for all the information so that the solution does not need to be modified for every piece of equipment. 
+
+
+Figure \ref{fig:isvusecase} illustrates the use case for an \gls{isv} supplying products to industrial equipment users. A typical \gls{isv} offering includes gateway(s) that convert information between MTConnect and OPC UA and may also provide additional features required for MTConnect implementations; e.g. enhanced security features. The OPC Unified Architecture for MTConnect Companion Specification allows the \gls{isv} to extend the MTConnect-OPC UA information model with application specific constructs. These can be easily accessed via any standard OPC UA client product and will function in parallel to existing features provided by MTConnect. Figure \ref{fig:isvusecase} shows an ISV product that consumes data from MTConnect and OPC UA enabled devices and then makes it available via MTConnect and OPC UA.
+
+\input diagrams/ISVUseCase.tex
+\FloatBarrier
+
+\subsection{Data Scientist}
+
+Cloud-based analytics platforms, such as Microsoft Azure\textsuperscript{\textregistered} Cloud provide factory connectivity solutions based on OPC UA for data ingest and analysis. Data Scientists, like \glspl{isv}, need semantic data that where the acquisition and categorization of the incoming data do not dominate the project. The primary focus of a data scientist is to find interesting insights; to do so requires the information has normalized units and vocabulary so deeper correlations can be uncovered. 
+
+With a common information model and representations of other aspects of the manufacturing process that utilizes the OPC information model, such as PLC Open and ISA-95, the information can be combined with additional context to provide a better understanding of the impact on the manufacturing systems and provide more profound insights to the users.
+
+\FloatBarrier
+
+\subsection{Industrial Systems Integrator}
+
+\cite{MTCPart5} provides a data-centric approach to equipment integration using an observation based architecture where the devices do not instruct each other, but they observe the requests of different pieces of equipment and respond by providing the necessary services. The model uses MTConnect ability to publish changes to special event \glspl{MTDataItem} that provide a request/response framework to allow the equipment to organize activities. This is the section of the MTConnect standard referred to as \gls{interfaces}.
+
+MTConnect can benefit from OPC UA's discovery mechanisms to incorporate devices as they enter the interactive ecosystem.  UA will also increase the available equipment that can participate in the MTConnect Interfaces model by supplying a standard for advanced industrial automation without the need for additional \glspl{plc} and expensive centralized control systems.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{diagrams/device-integration.eps}
+    \caption{MTConnect OPC UA and ROS Device Integration}
+    \label{fig:mtconnect-ros-opc}
+\end{figure}
+
+Figure~\ref{fig:mtconnect-ros-opc} shows how two devices can interact without any additional components. The combination of the two standards allows for more extensive semantic interoperability between equipment and applications,  but also semantic interoperability between manufacturing equipment. 
+
+\FloatBarrier
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:

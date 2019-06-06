@@ -5,6 +5,14 @@ class LatexModel < Model
   include Diagram
   include Document
 
+  def self.directory=(dir)
+    @@directory = dir
+  end
+
+  def self.directory
+    @@directory
+  end
+
   def self.type_class
     LatexType
   end

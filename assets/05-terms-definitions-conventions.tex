@@ -1,0 +1,239 @@
+\section{Terms, Definitions and Conventions}\label{termsdefinitionsconventions}
+
+\subsection{Overview}
+
+The basic concepts of OPC UA and MTConnect are pre-requisites for understanding and interpreting the content provided in this companion specification. Additionally, the terms and definitions given in \cite{UAPart1}, \cite{UAPart2}, \cite{UAPart3}, \cite{UAPart5}, \cite{UAPart7}, \cite{UAPart10}, and \cite{MTCPart1}, (see section \ref{normativereferences}), as well as the following, apply to this document. 
+
+\subsection{Conventions}\label{conventions}
+Following are basic conventions that shall be followed for all formal definitions used: MTConnect Terms will be displayed as follows using italic font (\mtterm{MTConnect Term}). OPC UA Terms will use bold italic fonts (\uaterm{OPC UA Term}). Terms will be linked to the associated glossary entry if available.
+
+MTConnect \gls{xml} literals and code will appear in monospace \xml{MTConnectCode} and OPC UA literals and UA Model will appear as bold monospace \uamodel{UAObjectsAndTypes}.
+
+\subsection{Terms and Acronnyms}
+
+\printglossary[type=opc]
+
+\printglossary[type=mtc]
+
+\printacronyms  
+
+\subsubsection{Conventions for Node descriptions}
+
+\gls{Node} definitions are specified using tables (see Table \ref{table:TypeDefinitionTable}).
+
+\glspl{Attribute} are defined by providing the Attribute name and a value, or a description of the value.
+
+\glspl{Reference} are defined by providing the \gls{ReferenceType} name, the \gls{BrowseName} of the \gls{TargetNode} and its \gls{NodeClass}.
+
+\begin{itemize}
+    \item If the \gls{TargetNode} is a component of the \gls{Node} being defined in the table the \glspl{Attribute} of the composed Node are defined in the same row of the table. 
+    \item The \gls{DataType} is only specified for Variables; "[<number>]" indicates a single-dimensional array, for multi-dimensional arrays the expression is repeated for each dimension (e.g. [2][3] for a two-dimensional array). For all arrays the \glspl{ArrayDimension} is set as identified by \uamodel{<number>} values. If no \uamodel{<number>} is set, the corresponding dimension is set to 0, indicating an unknown size. If no number is provided at all the \glspl{ArrayDimension} can be omitted. If no brackets are provided, it identifies a scalar \gls{DataType} and the \gls{ValueRank} is set to the corresponding value (see \cite{UAPart3}). In addition, \glspl{ArrayDimension} is set to \uamodel{null} or is omitted. If it can be \uamodel{Any} or \uamodel{ScalarOrOneDimension}, the value is put into \uamodel{"<value>"}, so either \uamodel{"Any"} or \uamodel{"ScalarOrOneDimension"} and the \gls{ValueRank} is set to the corresponding value (see \cite{UAPart3}) and the \glspl{ArrayDimension} is set to \uamodel{null} or is omitted. Examples are given in Table \ref{table:ExamplesOfDataTypes}.
+    \item The \gls{TypeDefinition} is specified for \glspl{Object} and \glspl{Variable}.
+    \item The \gls{TypeDefinition} column specifies a symbolic name for a \gls{NodeId}, i.e. the specified \gls{Node} points with a \gls{HasTypeDefinition} \gls{Reference} to the corresponding \gls{Node}.
+    \item The \gls{ModellingRule} of the referenced component is provided by specifying the symbolic name of the rule in \gls{ModellingRule}. In the \gls{AddressSpace}, the \gls{Node} shall use a \gls{HasModellingRule} \gls{Reference} to point to the corresponding \gls{ModellingRule} \gls{Object}.
+\end{itemize}
+
+\begin{table}[ht]
+\centering 
+  \caption{Examples of DataTypes}
+  \label{table:ExamplesOfDataTypes}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|p{2cm}|l|l|l|p{4cm}|} \everyrow{\hline}
+\hline
+\rowfont \bfseries Notation & DataType & ValueRank & ArrayDimensions & Description \\
+\tabucline[1.5pt]{}
+Int32 & Int32 & -1 & omitted or null & A scalar Int32. \\
+Int32[]	& Int32 & 1 & omitted or \{0\} & Single-dimensional array of Int32 with an unknown size. \\
+Int32[][] & Int32 & 2 & omitted or \{0,0\} & Two-dimensional array of Int32 with unknown sizes for both dimensions. \\
+Int32[3][] & Int32 & 2 & \{3,0\} & Two-dimensional array of Int32 with a size of 3 for the first dimension and an unknown size for the second dimension. \\
+Int32[5][3] & Int32 & 2 & \{5,3\} & Two-dimensional array of Int32 with a size of 5 for the first dimension and a size of 3 for the second dimension. \\
+Int32\{Any\} & Int32 & -2 & omitted or null & An Int32 where it is unknown if it is scalar or array with any number of dimensions. \\
+Int32 \{ScalarOrOneDimension\} & Int32 & -3 & omitted or null & An Int32 where it is either a single-dimensional array or a scalar. \\
+
+\end{tabu}
+\end{table} 
+
+\FloatBarrier
+
+If the \gls{NodeId} of a \gls{DataType} is provided, the symbolic name of the \gls{Node} representing the \gls{DataType} shall be used.
+
+Nodes of all other \glspl{NodeClass} cannot be defined in the same table; therefore only the used \gls{ReferenceType}, their \gls{NodeClass} and their \gls{BrowseName} are specified. A reference to another part of this document points to their definition.
+
+Table \ref{table:TypeDefinitionTable} illustrates the table. If no components are provided, the \gls{DataType}, \gls{TypeDefinition} and \gls{ModellingRule} columns may be omitted and only a Comment column is introduced to point to the \gls{Node} definition.
+
+\begin{table}[ht]
+\centering 
+  \caption{Type Definition Table}
+  \label{table:TypeDefinitionTable}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|p{2cm}|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+Attribute name & \multicolumn{5}{|l|}{Attribute value. If it is an optional Attribute that is not set "--" will be used.} \\
+{} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & TypeDefinition & {Modeling Rule} \\
+\tabucline[1.5pt]{}
+ReferenceType name & NodeClass of the target Node. & BrowseName of the target Node. If the Reference is to be instantiated by the server, then the value of the target Node's BrowseName is "--". & DataType of the referenced Node, only applicable for Variable. & TypeDefinition of the referenced Node, only applicable for Variable and Object. & Referenced ModellingRule of the referenced Object. \\
+
+\multicolumn{6}{|l|}{Note: Notes referencing footnotes of the table content.} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+
+
+Components of \glspl{Node} can be complex that is containing components by themselves. The \gls{TypeDefinition}, \gls{NodeClass}, \gls{DataType} and \gls{ModellingRule} can be derived from the type definitions, and the symbolic name can be created. Therefore, those containing components are not explicitly specified; they are implicitly specified by the type definitions.
+
+\subsubsection{NodeIds and BrowseNames}
+
+\paragraph{NodeIds}
+
+The \glspl{NodeId} of all \glspl{Node} described in this standard are only symbolic names. Annex A defines the actual \glspl{NodeId}.
+
+The symbolic name of each \gls{Node} defined in this specification is its \gls{BrowseName}, or, when it is part of another Node, the \gls{BrowseName} of the other \gls{Node}, a ".", and the \gls{BrowseName} of itself. In this case "part of" means that the whole has a \gls{HasProperty} or \gls{HasComponent} Reference to its part. Since all \glspl{Node} not being part of another \gls{Node} have a unique name in this specification, the symbolic name is unique.
+
+The namespace for all \glspl{NodeId} defined in this specification is defined in Annex A. The namespace for this \uaterm{NamespaceIndex} is Server-specific and depends on the position of the namespace URI in the server namespace table.
+
+Note that this specification not only defines concrete \glspl{Node}, but also requires that some Nodes shall be generated, for example one for each Session running on the Server. The \glspl{NodeId} of those \glspl{Node} are Server-specific, including the namespace. But the \uaterm{NamespaceIndex} of those \glspl{Node} cannot be the \uaterm{NamespaceIndex} used for the Nodes defined in this specification, because they are not defined by this specification but generated by the Server.
+
+\paragraph{BrowseNames}
+The text part of the \uaterm{BrowseNames} for all \gls{Node}s defined in this specification is specified in the tables defining the Nodes. The \uaterm{NamespaceIndex} for all \uaterm{BrowseNames} defined in this specification is defined in Annex A.
+
+\subsubsection{Common Attributes}
+
+\paragraph{General}
+The \glspl{Attribute} of \glspl{Node}, their \uaterm{DataTypes} and descriptions are defined in \cite{UAPart3}. \glspl{Attribute} not marked as optional are mandatory and shall be provided by a Server. The following tables define if the \gls{Attribute} value is defined by this specification or if it is server-specific.
+
+For all Nodes specified in this specification, the \glspl{Attribute} named in Table \ref{table:CommonNodeAttributes} shall be set as specified in the table.
+
+
+
+\begin{table}[ht]
+\centering 
+  \caption{Common Node Attributes}
+  \label{table:CommonNodeAttributes}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|p{4cm}|p{8cm}|} \everyrow{\hline}
+\hline
+\rowfont \bfseries Attribute & Value \\
+\tabucline[1.5pt]{}
+
+DisplayName & The DisplayName is a LocalizedText. Each server shall provide the DisplayName identical to the BrowseName of the Node for the LocaleId "en". Whether the server provides translated names for other LocaleIds is server-specific.\\
+Description & Optionally a server-specific description is provided.\\
+NodeClass & Shall reflect the NodeClass of the Node.\\
+NodeId & The NodeId is described by BrowseNames.\\
+WriteMask & Optionally the WriteMask Attribute can be provided. If the WriteMask Attribute is provided, it shall set all non-server-specific Attributes to not writable. For example, the Description Attribute may be set to writable since a Server may provide a server-specific description for the Node. The NodeId shall not be writable, because it is defined for each Node in this specification.\\
+UserWriteMask & Optionally the UserWriteMask Attribute can be provided. The same rules as for the WriteMask Attribute apply.\\
+RolePermissions & Optionally server-specific role permissions can be provided.\\
+UserRolePermissions & Optionally the role permissions of the current Session can be provided. The value is server-specifc and depend on the RolePermissions Attribute (if provided) and the current Session.\\
+AccessRestrictions & Optionally server-specific access restrictions can be provided. \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+
+
+\paragraph{Objects}
+
+For all \texttt{Objects} specified in this specification, the \texttt{Attributes} named in Table \ref{table:CommonObjectAttributes} shall be set as specified in the Table \ref{table:CommonObjectAttributes}. The definitions for the \texttt{Attributes} can be found in OPC \cite{UAPart3}.
+
+\begin{table}[ht]
+\centering 
+  \caption{Common Object Attributes}
+  \label{table:CommonObjectAttributes}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|p{4cm}|p{8cm}|} \everyrow{\hline}
+\hline
+\rowfont \bfseries Attribute & Value \\
+\tabucline[1.5pt]{}
+
+EventNotifier & Whether the Node can be used to subscribe to Events or not is server-specific.\\
+
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+
+\paragraph{Variables}
+
+For all \glspl{Variable} specified in this specification, the \glspl{Attribute} named in Table \ref{table:CommonVariableAttributes} shall be set as specified in the table. The definitions for the \glspl{Attribute} can be found in \cite{UAPart3}.
+
+\begin{table}[ht]
+\centering 
+  \caption{Common Variable Attributes}
+  \label{table:CommonVariableAttributes}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|p{4cm}|p{8cm}|} \everyrow{\hline}
+\hline
+\rowfont \bfseries Attribute & Value \\
+\tabucline[1.5pt]{}
+MinimumSamplingInterval & Optionally, a server-specific minimum sampling interval is provided.\\
+AccessLevel & The access level for Variables used for type definitions is server-specific, for all other Variables defined in this specification, the access level shall allow reading; other settings are server-specific.\\
+UserAccessLevel & The value for the UserAccessLevel Attribute is server-specific. It is assumed that all Variables can be accessed by at least one user.\\
+Value & For Variables used as InstanceDeclarations, the value is server-specific; otherwise it shall represent the value described in the text.\\
+ArrayDimensions & If the ValueRank does not identify an array of a specific dimension (i.e. ValueRank <= 0) the ArrayDimensions can either be set to null or the Attribute is missing. This behaviour is server-specific.
+If the ValueRank specifies an array of a specific dimension (i.e. ValueRank > 0) then the ArrayDimensions Attribute shall be specified in the table defining the Variable.\\
+Historizing & The value for the Historizing Attribute is server-specific.\\
+AccessLevelEx & If the AccessLevelEx Attribute is provided, it shall have the bits 8, 9, and 10 set to 0, meaning that read and write operations on an individual Variable are atomic, and arrays can be partly written. \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+
+\paragraph{VariableTypes}
+For all \uamodel{VariableType} specified in this specification, the \glspl{Attribute} named in Table \ref{table:CommonVariableTypesAttributes} shall be set as specified in the table. The definitions for the \glspl{Attribute} can be found in \cite{UAPart3}.
+
+\begin{table}[ht]
+\centering 
+  \caption{Common VariableTypes Attributes}
+  \label{table:CommonVariableTypesAttributes}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|p{4cm}|p{8cm}|} \everyrow{\hline}
+\hline
+\rowfont \bfseries Attribute & Value \\
+\tabucline[1.5pt]{}
+Value & Optionally a server-specific default value can be provided.\\
+ArrayDimensions & If the ValueRank does not identify an array of a specific dimension (i.e. ValueRank <= 0) the ArrayDimensions can either be set to null or the Attribute is missing. This behaviour is server-specific.
+If the ValueRank specifies an array of a specific dimension (i.e. ValueRank > 0) then the ArrayDimensions Attribute shall be specified in the table defining the VariableType.\\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+
+\paragraph{Methods}
+For all \uamodel{Methods} specified in this specification, the \gls{Attribute} named in Table \ref{table:CommonMethodAttributes} shall be set as specified in the table. The definitions for the \glspl{Attribute} can be found in \cite{UAPart3}.
+
+\begin{table}[ht]
+\centering 
+  \caption{Common Method Attributes}
+  \label{table:CommonMethodAttributes}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|p{4cm}|p{8cm}|} \everyrow{\hline}
+\hline
+\rowfont \bfseries Attribute & Value \\
+\tabucline[1.5pt]{}
+Executable & All Methods defined in this specification shall be executable (Executable Attribute set to “True”), unless it is defined differently in the Method definition.\\
+UserExecutable & The value of the UserExecutable Attribute is server-specific. It is assumed that all Methods can be executed by at least one user. \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "main"
+%%% End:

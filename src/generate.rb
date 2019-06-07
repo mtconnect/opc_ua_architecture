@@ -20,13 +20,9 @@ parser = OptionParser.new do |opts|
 end
 parser.parse!
 
-
-AssetModels = ['Assets', 'Cutting Tool', 'Measurements', 'Assets Profile']
-
-AssetDirectory = 'assets'
-AssetDocumentFile = './assets/09-types.tex'
-AssetNodesetFile = './Opc.Ua.MTConnect.Assets.Nodeset2.xml'
-AssetTypeDictionary = './MTConnect.Assets.TypeDictionary'
+NodesetFile = './Opc.Ua.MTConnect.NodeSet2.xml'
+OpcNodeIdFile = './MTConnect.NodeIds.csv'
+TypeDictionary = './MTConnect.TypeDictionary'
 
 DeviceModels = ['Components', 'Component Types', 'Data Items',
             'Conditions', 'Data Item Types', 'Sample Data Item Types',
@@ -36,12 +32,15 @@ DeviceModels = ['Components', 'Component Types', 'Data Items',
 
 DeviceDirectory = 'devices'
 DeviceDocumentFile = './devices/09-types.tex'
-DeviceNodesetFile = './Opc.Ua.MTConnect.Devices.Nodeset2.xml'
+DeviceNodesetFile = './Opc.Ua.MTConnect.NodeSet2.Part1.xml'
 DeviceTypeDictionary = './MTConnect.Devices.TypeDictionary'
 
-NodesetFile = './Opc.Ua.MTConnect.Nodeset2.xml'
-OpcNodeIdFile = './MTConnect.NodeIds.csv'
-TypeDictionary = './MTConnect.TypeDictionary'
+AssetModels = ['Assets', 'Cutting Tool', 'Measurements', 'Assets Profile']
+
+AssetDirectory = 'assets'
+AssetDocumentFile = './assets/09-types.tex'
+AssetNodesetFile = './Opc.Ua.MTConnect.NodeSet2.Part2.xml'
+AssetTypeDictionary = './MTConnect.Assets.TypeDictionary'
 
 xmiDoc = nil
 File.open(File.join(File.dirname(__FILE__), '..', 'MTConnect OPC UA EA.xmi')) do |xmi|

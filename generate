@@ -3,6 +3,9 @@
 
 ruby src/generate.rb docs nodeset
 
-(cd latex; latexmk)
-open -a Skim latex/main.pdf
+(cd devices; latexmk)
+(cd assets; latexmk)
+
+open -a Skim devices/main.pdf
+open -a Skim assets/main.pdf
 

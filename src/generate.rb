@@ -12,7 +12,7 @@ require 'nokogiri'
 
 Options = {}
 parser = OptionParser.new do |opts|
-  opts.banner = "Usage: create_documentation.rb [options] [docs|nodeset]"
+  opts.banner = "Usage: generate.rb [options] [docs|nodeset]"
 
   opts.on("-r", "--[no-]clean", "Regenerate Nodeset Ids") do |v|
     Options[:clean] = v

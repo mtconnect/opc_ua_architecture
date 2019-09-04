@@ -5,6 +5,7 @@ module Extensions
       if @props
         @documentation = REXML::Text::unnormalize(@props['documentation']) if @props['documentation']
         @stereotype = @props['stereotype']
+        @alias = @props['alias']
       end
       d = ele.at('./documentation')
       @documentation = d['value'] if d

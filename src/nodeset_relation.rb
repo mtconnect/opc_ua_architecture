@@ -29,7 +29,11 @@ module Relation
       if NodesetModel.ids.has_id?(ref)
         NodesetModel.ids.alias_or_id(ref)
       elsif stereotype
-        stereotype.node_id
+        if String === stereotype
+          NodesetModel.ids.alias_or_id(stereotype)
+        else
+          stereotype.node_id
+        end
       else
         raise "!!!! Cannot find reference type for #{@owner.name}::#{@name}"
       end

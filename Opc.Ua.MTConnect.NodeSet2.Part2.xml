@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-06-07T00:15:12Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-09-09T23:46:17Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-06-07T00:15:12Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-06-07T00:15:12Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-09-09T23:46:17Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-09-09T23:46:17Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -187,14 +187,6 @@
       <Reference ReferenceType='HasProperty'>ns=1;i=2731</Reference>
       <!-- HasComponent - (Reverse) -  i=93 OPC Binary  -->
       <Reference ReferenceType='HasComponent' IsForward='false'>i=93</Reference>
-      <!-- HasComponent -  - CountDirectionDataType ns=1;i=4240   -->
-      <Reference ReferenceType='HasComponent'>ns=1;i=4240</Reference>
-      <!-- HasComponent -  - CutterStatusDataType ns=1;i=4246   -->
-      <Reference ReferenceType='HasComponent'>ns=1;i=4246</Reference>
-      <!-- HasComponent -  - CuttingToolDefintionFormatDataType ns=1;i=4252   -->
-      <Reference ReferenceType='HasComponent'>ns=1;i=4252</Reference>
-      <!-- HasComponent -  - MTLocationDataType ns=1;i=4258   -->
-      <Reference ReferenceType='HasComponent'>ns=1;i=4258</Reference>
     </References>
     <Value>
       <ByteString xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
@@ -467,22 +459,10 @@ YT4=
     <References>
       <!-- HasSubtype - (Reverse) - MultiStateDiscreteType i=2376   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=2376</Reference>
-      <!-- HasComponent -  - EnumValues ns=1;i=3692 CutterStatusDataType  -->
-      <Reference ReferenceType='HasComponent'>ns=1;i=3692</Reference>
+      <!-- HasProperty -  - EnumValues ns=1;i=4262 1:CutterStatusDataType/EnumValues  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4262</Reference>
     </References>
   </UAVariableType>
-  <!-- MTCutterStatusType::EnumValues : CutterStatusDataType[1] -->
-  <UAVariable NodeId='ns=1;i=3692' BrowseName='1:EnumValues' DataType='ns=1;i=3686' ParentNodeId='ns=1;i=3690'>
-    <DisplayName>EnumValues</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - CutterStatusDataType ns=1;i=3686   -->
-      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3686</Reference>
-      <!-- HasModellingRule -  - Mandatory i=78   -->
-      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - MTCutterStatusType ns=1;i=3690   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3690</Reference>
-    </References>
-  </UAVariable>
   <!-- Definition of Object MTCuttingItemType ns=1;i=3697 -->
   <UAObjectType NodeId='ns=1;i=3697' BrowseName='1:MTCuttingItemType'>
     <DisplayName>MTCuttingItemType</DisplayName>
@@ -584,7 +564,7 @@ YT4=
     </References>
   </UAVariable>
   <!-- MTCuttingItemType::MinutesItemLife : MTToolLifeType[0..1] -->
-  <UAVariable NodeId='ns=1;i=3705' BrowseName='1:MinutesItemLife' DataType='Double' ParentNodeId='ns=1;i=3697'>
+  <UAVariable NodeId='ns=1;i=3705' BrowseName='1:MinutesItemLife' DataType='i=24' ParentNodeId='ns=1;i=3697'>
     <DisplayName>MinutesItemLife</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=3917 String  -->
@@ -593,12 +573,16 @@ YT4=
       <Reference ReferenceType='HasProperty'>ns=1;i=3918</Reference>
       <!-- HasProperty -  - CountDirection ns=1;i=3919 CountDirectionDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3919</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4263 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4263</Reference>
       <!-- HasProperty -  - Initial ns=1;i=3921 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3921</Reference>
       <!-- HasProperty -  - Limit ns=1;i=3922 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3922</Reference>
       <!-- HasProperty -  - MTType ns=1;i=3923 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3923</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4264 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4264</Reference>
       <!-- HasProperty -  - Warning ns=1;i=3925 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3925</Reference>
       <!-- HasTypeDefinition -  - MTToolLifeType ns=1;i=3769   -->
@@ -645,6 +629,18 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3705</Reference>
     </References>
   </UAVariable>
+  <!-- MinutesItemLife::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=4263' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3705'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - MinutesItemLife ns=1;i=3705   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3705</Reference>
+    </References>
+  </UAVariable>
   <!-- MinutesItemLife::Initial : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=3921' BrowseName='1:Initial' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3705'>
     <DisplayName>Initial</DisplayName>
@@ -681,6 +677,21 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3705</Reference>
     </References>
   </UAVariable>
+  <!-- MinutesItemLife::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4264' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3705'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - MinutesItemLife ns=1;i=3705   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3705</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- MinutesItemLife::Warning : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=3925' BrowseName='1:Warning' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3705'>
     <DisplayName>Warning</DisplayName>
@@ -703,8 +714,8 @@ YT4=
       <Reference ReferenceType='HasProperty'>ns=1;i=3927</Reference>
       <!-- HasProperty -  - EnumStrings ns=1;i=3928 LocalizedText  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3928</Reference>
-      <!-- HasComponent -  - EnumValues ns=1;i=3929 CutterStatusDataType  -->
-      <Reference ReferenceType='HasComponent'>ns=1;i=3929</Reference>
+      <!-- HasProperty -  - EnumValues ns=1;i=4262 1:CutterStatusDataType/EnumValues  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4262</Reference>
       <!-- HasTypeDefinition -  - MTCutterStatusType ns=1;i=3690   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3690</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
@@ -749,20 +760,8 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3706</Reference>
     </References>
   </UAVariable>
-  <!-- CutterStatus::EnumValues : CutterStatusDataType[1] -->
-  <UAVariable NodeId='ns=1;i=3929' BrowseName='1:EnumValues' DataType='ns=1;i=3686' ParentNodeId='ns=1;i=3706'>
-    <DisplayName>EnumValues</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - CutterStatusDataType ns=1;i=3686   -->
-      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3686</Reference>
-      <!-- HasModellingRule -  - Mandatory i=78   -->
-      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - CutterStatus ns=1;i=3706   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3706</Reference>
-    </References>
-  </UAVariable>
   <!-- MTCuttingItemType::PartCountItemLife : MTToolLifeType[0..1] -->
-  <UAVariable NodeId='ns=1;i=3707' BrowseName='1:PartCountItemLife' DataType='Double' ParentNodeId='ns=1;i=3697'>
+  <UAVariable NodeId='ns=1;i=3707' BrowseName='1:PartCountItemLife' DataType='i=24' ParentNodeId='ns=1;i=3697'>
     <DisplayName>PartCountItemLife</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=3930 String  -->
@@ -771,12 +770,16 @@ YT4=
       <Reference ReferenceType='HasProperty'>ns=1;i=3931</Reference>
       <!-- HasProperty -  - CountDirection ns=1;i=3932 CountDirectionDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3932</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4265 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4265</Reference>
       <!-- HasProperty -  - Initial ns=1;i=3934 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3934</Reference>
       <!-- HasProperty -  - Limit ns=1;i=3935 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3935</Reference>
       <!-- HasProperty -  - MTType ns=1;i=3936 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3936</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4266 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4266</Reference>
       <!-- HasProperty -  - Warning ns=1;i=3938 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3938</Reference>
       <!-- HasTypeDefinition -  - MTToolLifeType ns=1;i=3769   -->
@@ -823,6 +826,18 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3707</Reference>
     </References>
   </UAVariable>
+  <!-- PartCountItemLife::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=4265' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3707'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - PartCountItemLife ns=1;i=3707   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3707</Reference>
+    </References>
+  </UAVariable>
   <!-- PartCountItemLife::Initial : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=3934' BrowseName='1:Initial' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3707'>
     <DisplayName>Initial</DisplayName>
@@ -859,6 +874,21 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3707</Reference>
     </References>
   </UAVariable>
+  <!-- PartCountItemLife::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4266' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3707'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - PartCountItemLife ns=1;i=3707   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3707</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- PartCountItemLife::Warning : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=3938' BrowseName='1:Warning' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3707'>
     <DisplayName>Warning</DisplayName>
@@ -872,7 +902,7 @@ YT4=
     </References>
   </UAVariable>
   <!-- MTCuttingItemType::WearItemLife : MTToolLifeType[0..1] -->
-  <UAVariable NodeId='ns=1;i=3709' BrowseName='1:WearItemLife' DataType='Double' ParentNodeId='ns=1;i=3697'>
+  <UAVariable NodeId='ns=1;i=3709' BrowseName='1:WearItemLife' DataType='i=24' ParentNodeId='ns=1;i=3697'>
     <DisplayName>WearItemLife</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=3939 String  -->
@@ -881,12 +911,16 @@ YT4=
       <Reference ReferenceType='HasProperty'>ns=1;i=3940</Reference>
       <!-- HasProperty -  - CountDirection ns=1;i=3941 CountDirectionDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3941</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4267 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4267</Reference>
       <!-- HasProperty -  - Initial ns=1;i=3943 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3943</Reference>
       <!-- HasProperty -  - Limit ns=1;i=3944 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3944</Reference>
       <!-- HasProperty -  - MTType ns=1;i=3945 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3945</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4268 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4268</Reference>
       <!-- HasProperty -  - Warning ns=1;i=3947 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3947</Reference>
       <!-- HasTypeDefinition -  - MTToolLifeType ns=1;i=3769   -->
@@ -933,6 +967,18 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3709</Reference>
     </References>
   </UAVariable>
+  <!-- WearItemLife::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=4267' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3709'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - WearItemLife ns=1;i=3709   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3709</Reference>
+    </References>
+  </UAVariable>
   <!-- WearItemLife::Initial : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=3943' BrowseName='1:Initial' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3709'>
     <DisplayName>Initial</DisplayName>
@@ -968,6 +1014,21 @@ YT4=
       <!-- HasProperty - (Reverse) - WearItemLife ns=1;i=3709   -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3709</Reference>
     </References>
+  </UAVariable>
+  <!-- WearItemLife::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4268' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3709'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - WearItemLife ns=1;i=3709   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3709</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
   </UAVariable>
   <!-- WearItemLife::Warning : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=3947' BrowseName='1:Warning' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3709'>
@@ -1115,8 +1176,8 @@ YT4=
       <Reference ReferenceType='HasProperty'>ns=1;i=3953</Reference>
       <!-- HasProperty -  - EnumStrings ns=1;i=3954 LocalizedText  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3954</Reference>
-      <!-- HasComponent -  - EnumValues ns=1;i=3955 CutterStatusDataType  -->
-      <Reference ReferenceType='HasComponent'>ns=1;i=3955</Reference>
+      <!-- HasProperty -  - EnumValues ns=1;i=4262 1:CutterStatusDataType/EnumValues  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4262</Reference>
       <!-- HasTypeDefinition -  - MTCutterStatusType ns=1;i=3690   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3690</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
@@ -1161,20 +1222,8 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3951</Reference>
     </References>
   </UAVariable>
-  <!-- CutterStatus::EnumValues : CutterStatusDataType[1] -->
-  <UAVariable NodeId='ns=1;i=3955' BrowseName='1:EnumValues' DataType='ns=1;i=3686' ParentNodeId='ns=1;i=3951'>
-    <DisplayName>EnumValues</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - CutterStatusDataType ns=1;i=3686   -->
-      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3686</Reference>
-      <!-- HasModellingRule -  - Mandatory i=78   -->
-      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - CutterStatus ns=1;i=3951   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3951</Reference>
-    </References>
-  </UAVariable>
   <!-- CuttingToolLifecycle::ToolLifePartCount : MTToolLifeType[0..1] -->
-  <UAVariable NodeId='ns=1;i=3956' BrowseName='1:ToolLifePartCount' DataType='Double' ParentNodeId='ns=1;i=3715'>
+  <UAVariable NodeId='ns=1;i=3956' BrowseName='1:ToolLifePartCount' DataType='i=24' ParentNodeId='ns=1;i=3715'>
     <DisplayName>ToolLifePartCount</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=3957 String  -->
@@ -1183,12 +1232,16 @@ YT4=
       <Reference ReferenceType='HasProperty'>ns=1;i=3958</Reference>
       <!-- HasProperty -  - CountDirection ns=1;i=3959 CountDirectionDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3959</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4269 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4269</Reference>
       <!-- HasProperty -  - Initial ns=1;i=3961 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3961</Reference>
       <!-- HasProperty -  - Limit ns=1;i=3962 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3962</Reference>
       <!-- HasProperty -  - MTType ns=1;i=3963 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3963</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4270 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4270</Reference>
       <!-- HasProperty -  - Warning ns=1;i=3965 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3965</Reference>
       <!-- HasTypeDefinition -  - MTToolLifeType ns=1;i=3769   -->
@@ -1235,6 +1288,18 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3956</Reference>
     </References>
   </UAVariable>
+  <!-- ToolLifePartCount::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=4269' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3956'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifePartCount ns=1;i=3956   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3956</Reference>
+    </References>
+  </UAVariable>
   <!-- ToolLifePartCount::Initial : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=3961' BrowseName='1:Initial' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3956'>
     <DisplayName>Initial</DisplayName>
@@ -1271,6 +1336,21 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3956</Reference>
     </References>
   </UAVariable>
+  <!-- ToolLifePartCount::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4270' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3956'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifePartCount ns=1;i=3956   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3956</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- ToolLifePartCount::Warning : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=3965' BrowseName='1:Warning' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3956'>
     <DisplayName>Warning</DisplayName>
@@ -1284,7 +1364,7 @@ YT4=
     </References>
   </UAVariable>
   <!-- CuttingToolLifecycle::ToolLifeWear : MTToolLifeType[0..1] -->
-  <UAVariable NodeId='ns=1;i=3966' BrowseName='1:ToolLifeWear' DataType='Double' ParentNodeId='ns=1;i=3715'>
+  <UAVariable NodeId='ns=1;i=3966' BrowseName='1:ToolLifeWear' DataType='i=24' ParentNodeId='ns=1;i=3715'>
     <DisplayName>ToolLifeWear</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=3967 String  -->
@@ -1293,12 +1373,16 @@ YT4=
       <Reference ReferenceType='HasProperty'>ns=1;i=3968</Reference>
       <!-- HasProperty -  - CountDirection ns=1;i=3969 CountDirectionDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3969</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4271 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4271</Reference>
       <!-- HasProperty -  - Initial ns=1;i=3971 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3971</Reference>
       <!-- HasProperty -  - Limit ns=1;i=3972 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3972</Reference>
       <!-- HasProperty -  - MTType ns=1;i=3973 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3973</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4272 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4272</Reference>
       <!-- HasProperty -  - Warning ns=1;i=3975 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3975</Reference>
       <!-- HasTypeDefinition -  - MTToolLifeType ns=1;i=3769   -->
@@ -1345,6 +1429,18 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3966</Reference>
     </References>
   </UAVariable>
+  <!-- ToolLifeWear::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=4271' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3966'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifeWear ns=1;i=3966   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3966</Reference>
+    </References>
+  </UAVariable>
   <!-- ToolLifeWear::Initial : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=3971' BrowseName='1:Initial' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3966'>
     <DisplayName>Initial</DisplayName>
@@ -1381,6 +1477,21 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3966</Reference>
     </References>
   </UAVariable>
+  <!-- ToolLifeWear::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4272' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3966'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifeWear ns=1;i=3966   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3966</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- ToolLifeWear::Warning : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=3975' BrowseName='1:Warning' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3966'>
     <DisplayName>Warning</DisplayName>
@@ -1394,19 +1505,23 @@ YT4=
     </References>
   </UAVariable>
   <!-- CuttingToolLifecycle::ProcessFeedRate : MTCuttingToolConstraintType[0..1] -->
-  <UAVariable NodeId='ns=1;i=3976' BrowseName='1:ProcessFeedRate' DataType='Double' ParentNodeId='ns=1;i=3715'>
+  <UAVariable NodeId='ns=1;i=3976' BrowseName='1:ProcessFeedRate' DataType='i=24' ParentNodeId='ns=1;i=3715'>
     <DisplayName>ProcessFeedRate</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=3977 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3977</Reference>
       <!-- HasProperty -  - ValuePrecision ns=1;i=3978 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3978</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4273 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4273</Reference>
       <!-- HasProperty -  - Maximum ns=1;i=3980 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3980</Reference>
       <!-- HasProperty -  - Minimum ns=1;i=3981 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3981</Reference>
       <!-- HasProperty -  - Nominal ns=1;i=3982 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3982</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4274 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4274</Reference>
       <!-- HasTypeDefinition -  - MTCuttingToolConstraintType ns=1;i=3717   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3717</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
@@ -1435,6 +1550,18 @@ YT4=
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - ProcessFeedRate ns=1;i=3976   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3976</Reference>
+    </References>
+  </UAVariable>
+  <!-- ProcessFeedRate::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=4273' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3976'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - (Reverse) - ProcessFeedRate ns=1;i=3976   -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3976</Reference>
     </References>
@@ -1475,16 +1602,35 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3976</Reference>
     </References>
   </UAVariable>
+  <!-- ProcessFeedRate::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4274' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3976'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ProcessFeedRate ns=1;i=3976   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3976</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- CuttingToolLifecycle::ReconditionCount : MTReconditionCountType[0..1] -->
-  <UAVariable NodeId='ns=1;i=3984' BrowseName='1:ReconditionCount' DataType='Int32' ParentNodeId='ns=1;i=3715'>
+  <UAVariable NodeId='ns=1;i=3984' BrowseName='1:ReconditionCount' DataType='i=24' ParentNodeId='ns=1;i=3715'>
     <DisplayName>ReconditionCount</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=3985 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3985</Reference>
       <!-- HasProperty -  - ValuePrecision ns=1;i=3986 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3986</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4275 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4275</Reference>
       <!-- HasProperty -  - MaximumCount ns=1;i=3988 Int32  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3988</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4276 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4276</Reference>
       <!-- HasTypeDefinition -  - MTReconditionCountType ns=1;i=3764   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3764</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
@@ -1517,6 +1663,18 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3984</Reference>
     </References>
   </UAVariable>
+  <!-- ReconditionCount::DataType : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4275' BrowseName='1:DataType' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3984'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ReconditionCount ns=1;i=3984   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3984</Reference>
+    </References>
+  </UAVariable>
   <!-- ReconditionCount::MaximumCount : Int32[0..1] -->
   <UAVariable NodeId='ns=1;i=3988' BrowseName='1:MaximumCount' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3984'>
     <DisplayName>MaximumCount</DisplayName>
@@ -1529,20 +1687,39 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3984</Reference>
     </References>
   </UAVariable>
+  <!-- ReconditionCount::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4276' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3984'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ReconditionCount ns=1;i=3984   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3984</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- CuttingToolLifecycle::ProcessSpindleSpeed : MTCuttingToolConstraintType[0..1] -->
-  <UAVariable NodeId='ns=1;i=3990' BrowseName='1:ProcessSpindleSpeed' DataType='Double' ParentNodeId='ns=1;i=3715'>
+  <UAVariable NodeId='ns=1;i=3990' BrowseName='1:ProcessSpindleSpeed' DataType='i=24' ParentNodeId='ns=1;i=3715'>
     <DisplayName>ProcessSpindleSpeed</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=3991 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3991</Reference>
       <!-- HasProperty -  - ValuePrecision ns=1;i=3992 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3992</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4277 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4277</Reference>
       <!-- HasProperty -  - Maximum ns=1;i=3994 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3994</Reference>
       <!-- HasProperty -  - Minimum ns=1;i=3995 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3995</Reference>
       <!-- HasProperty -  - Nominal ns=1;i=3996 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3996</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4278 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4278</Reference>
       <!-- HasTypeDefinition -  - MTCuttingToolConstraintType ns=1;i=3717   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3717</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
@@ -1571,6 +1748,18 @@ YT4=
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - ProcessSpindleSpeed ns=1;i=3990   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3990</Reference>
+    </References>
+  </UAVariable>
+  <!-- ProcessSpindleSpeed::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=4277' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3990'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - (Reverse) - ProcessSpindleSpeed ns=1;i=3990   -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3990</Reference>
     </References>
@@ -1611,20 +1800,39 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3990</Reference>
     </References>
   </UAVariable>
+  <!-- ProcessSpindleSpeed::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4278' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3990'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ProcessSpindleSpeed ns=1;i=3990   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3990</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- CuttingToolLifecycle::Location : MTLocationType[0..1] -->
-  <UAVariable NodeId='ns=1;i=3998' BrowseName='1:Location' DataType='Int32' ParentNodeId='ns=1;i=3715'>
+  <UAVariable NodeId='ns=1;i=3998' BrowseName='1:Location' DataType='i=24' ParentNodeId='ns=1;i=3715'>
     <DisplayName>Location</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=3999 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3999</Reference>
       <!-- HasProperty -  - ValuePrecision ns=1;i=4000 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4000</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4279 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4279</Reference>
       <!-- HasProperty -  - NegativeOverlap ns=1;i=4002 Int32  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4002</Reference>
       <!-- HasProperty -  - PositiveOverlap ns=1;i=4003 Int32  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4003</Reference>
       <!-- HasProperty -  - Type ns=1;i=4004 MTLocationDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4004</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4280 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4280</Reference>
       <!-- HasTypeDefinition -  - MTLocationType ns=1;i=3757   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3757</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
@@ -1653,6 +1861,18 @@ YT4=
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - Location ns=1;i=3998   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3998</Reference>
+    </References>
+  </UAVariable>
+  <!-- Location::DataType : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4279' BrowseName='1:DataType' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3998'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - (Reverse) - Location ns=1;i=3998   -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3998</Reference>
     </References>
@@ -1693,8 +1913,23 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3998</Reference>
     </References>
   </UAVariable>
+  <!-- Location::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4280' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3998'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - Location ns=1;i=3998   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3998</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- CuttingToolLifecycle::ToolLifeMinutes : MTToolLifeType[0..1] -->
-  <UAVariable NodeId='ns=1;i=4006' BrowseName='1:ToolLifeMinutes' DataType='Double' ParentNodeId='ns=1;i=3715'>
+  <UAVariable NodeId='ns=1;i=4006' BrowseName='1:ToolLifeMinutes' DataType='i=24' ParentNodeId='ns=1;i=3715'>
     <DisplayName>ToolLifeMinutes</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=4007 String  -->
@@ -1703,12 +1938,16 @@ YT4=
       <Reference ReferenceType='HasProperty'>ns=1;i=4008</Reference>
       <!-- HasProperty -  - CountDirection ns=1;i=4009 CountDirectionDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4009</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4281 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4281</Reference>
       <!-- HasProperty -  - Initial ns=1;i=4011 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4011</Reference>
       <!-- HasProperty -  - Limit ns=1;i=4012 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4012</Reference>
       <!-- HasProperty -  - MTType ns=1;i=4013 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4013</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4282 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4282</Reference>
       <!-- HasProperty -  - Warning ns=1;i=4015 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4015</Reference>
       <!-- HasTypeDefinition -  - MTToolLifeType ns=1;i=3769   -->
@@ -1755,6 +1994,18 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4006</Reference>
     </References>
   </UAVariable>
+  <!-- ToolLifeMinutes::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=4281' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4006'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifeMinutes ns=1;i=4006   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4006</Reference>
+    </References>
+  </UAVariable>
   <!-- ToolLifeMinutes::Initial : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=4011' BrowseName='1:Initial' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4006'>
     <DisplayName>Initial</DisplayName>
@@ -1790,6 +2041,21 @@ YT4=
       <!-- HasProperty - (Reverse) - ToolLifeMinutes ns=1;i=4006   -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4006</Reference>
     </References>
+  </UAVariable>
+  <!-- ToolLifeMinutes::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4282' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=4006'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifeMinutes ns=1;i=4006   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4006</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
   </UAVariable>
   <!-- ToolLifeMinutes::Warning : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=4015' BrowseName='1:Warning' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4006'>
@@ -1914,19 +2180,35 @@ YT4=
     </References>
   </UAVariable>
   <!-- Definition of Variable MTCuttingToolConstraintType ns=1;i=3717 -->
-  <UAVariableType NodeId='ns=1;i=3717' BrowseName='1:MTCuttingToolConstraintType' ValueRank='-1' DataType='Double'>
+  <UAVariableType NodeId='ns=1;i=3717' BrowseName='1:MTCuttingToolConstraintType' ValueRank='-1' DataType='i=24'>
     <DisplayName>MTCuttingToolConstraintType</DisplayName>
     <References>
       <!-- HasSubtype - (Reverse) - DataItemType i=2365   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=2365</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=3718 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3718</Reference>
       <!-- HasProperty -  - Maximum ns=1;i=3719 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3719</Reference>
       <!-- HasProperty -  - Minimum ns=1;i=3720 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3720</Reference>
       <!-- HasProperty -  - Nominal ns=1;i=3721 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3721</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=3722 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3722</Reference>
     </References>
   </UAVariableType>
+  <!-- MTCuttingToolConstraintType::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=3718' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3717'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - MTCuttingToolConstraintType ns=1;i=3717   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3717</Reference>
+    </References>
+  </UAVariable>
   <!-- MTCuttingToolConstraintType::Maximum : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=3719' BrowseName='1:Maximum' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3717'>
     <DisplayName>Maximum</DisplayName>
@@ -1963,8 +2245,23 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3717</Reference>
     </References>
   </UAVariable>
+  <!-- MTCuttingToolConstraintType::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=3722' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3717'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - MTCuttingToolConstraintType ns=1;i=3717   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3717</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- Definition of Variable MTCuttingToolMeasurementType ns=1;i=3742 -->
-  <UAVariableType NodeId='ns=1;i=3742' BrowseName='1:MTCuttingToolMeasurementType' IsAbstract='true' ValueRank='-1' DataType='Double'>
+  <UAVariableType NodeId='ns=1;i=3742' BrowseName='1:MTCuttingToolMeasurementType' IsAbstract='true' ValueRank='-1' DataType='i=24'>
     <DisplayName>MTCuttingToolMeasurementType</DisplayName>
     <References>
       <!-- HasSubtype - (Reverse) - MTCuttingToolConstraintType ns=1;i=3717   -->
@@ -2223,8 +2520,8 @@ YT4=
       <Reference ReferenceType='HasProperty'>ns=1;i=4029</Reference>
       <!-- HasProperty -  - EnumStrings ns=1;i=4030 LocalizedText  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4030</Reference>
-      <!-- HasComponent -  - EnumValues ns=1;i=4031 CutterStatusDataType  -->
-      <Reference ReferenceType='HasComponent'>ns=1;i=4031</Reference>
+      <!-- HasProperty -  - EnumValues ns=1;i=4262 1:CutterStatusDataType/EnumValues  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4262</Reference>
       <!-- HasTypeDefinition -  - MTCutterStatusType ns=1;i=3690   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3690</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
@@ -2269,20 +2566,8 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3733</Reference>
     </References>
   </UAVariable>
-  <!-- CutterStatus::EnumValues : CutterStatusDataType[1] -->
-  <UAVariable NodeId='ns=1;i=4031' BrowseName='1:EnumValues' DataType='ns=1;i=3686' ParentNodeId='ns=1;i=3733'>
-    <DisplayName>EnumValues</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - CutterStatusDataType ns=1;i=3686   -->
-      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3686</Reference>
-      <!-- HasModellingRule -  - Mandatory i=78   -->
-      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - CutterStatus ns=1;i=3733   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=3733</Reference>
-    </References>
-  </UAVariable>
   <!-- MTCuttingToolLifeCycleType::ToolLifePartCount : MTToolLifeType[0..1] -->
-  <UAVariable NodeId='ns=1;i=3734' BrowseName='1:ToolLifePartCount' DataType='Double' ParentNodeId='ns=1;i=3728'>
+  <UAVariable NodeId='ns=1;i=3734' BrowseName='1:ToolLifePartCount' DataType='i=24' ParentNodeId='ns=1;i=3728'>
     <DisplayName>ToolLifePartCount</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=4032 String  -->
@@ -2291,12 +2576,16 @@ YT4=
       <Reference ReferenceType='HasProperty'>ns=1;i=4033</Reference>
       <!-- HasProperty -  - CountDirection ns=1;i=4034 CountDirectionDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4034</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4283 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4283</Reference>
       <!-- HasProperty -  - Initial ns=1;i=4036 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4036</Reference>
       <!-- HasProperty -  - Limit ns=1;i=4037 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4037</Reference>
       <!-- HasProperty -  - MTType ns=1;i=4038 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4038</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4284 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4284</Reference>
       <!-- HasProperty -  - Warning ns=1;i=4040 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4040</Reference>
       <!-- HasTypeDefinition -  - MTToolLifeType ns=1;i=3769   -->
@@ -2343,6 +2632,18 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3734</Reference>
     </References>
   </UAVariable>
+  <!-- ToolLifePartCount::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=4283' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3734'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifePartCount ns=1;i=3734   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3734</Reference>
+    </References>
+  </UAVariable>
   <!-- ToolLifePartCount::Initial : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=4036' BrowseName='1:Initial' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3734'>
     <DisplayName>Initial</DisplayName>
@@ -2379,6 +2680,21 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3734</Reference>
     </References>
   </UAVariable>
+  <!-- ToolLifePartCount::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4284' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3734'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifePartCount ns=1;i=3734   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3734</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- ToolLifePartCount::Warning : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=4040' BrowseName='1:Warning' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3734'>
     <DisplayName>Warning</DisplayName>
@@ -2392,7 +2708,7 @@ YT4=
     </References>
   </UAVariable>
   <!-- MTCuttingToolLifeCycleType::ToolLifeWear : MTToolLifeType[0..1] -->
-  <UAVariable NodeId='ns=1;i=3735' BrowseName='1:ToolLifeWear' DataType='Double' ParentNodeId='ns=1;i=3728'>
+  <UAVariable NodeId='ns=1;i=3735' BrowseName='1:ToolLifeWear' DataType='i=24' ParentNodeId='ns=1;i=3728'>
     <DisplayName>ToolLifeWear</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=4041 String  -->
@@ -2401,12 +2717,16 @@ YT4=
       <Reference ReferenceType='HasProperty'>ns=1;i=4042</Reference>
       <!-- HasProperty -  - CountDirection ns=1;i=4043 CountDirectionDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4043</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4285 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4285</Reference>
       <!-- HasProperty -  - Initial ns=1;i=4045 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4045</Reference>
       <!-- HasProperty -  - Limit ns=1;i=4046 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4046</Reference>
       <!-- HasProperty -  - MTType ns=1;i=4047 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4047</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4286 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4286</Reference>
       <!-- HasProperty -  - Warning ns=1;i=4049 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4049</Reference>
       <!-- HasTypeDefinition -  - MTToolLifeType ns=1;i=3769   -->
@@ -2453,6 +2773,18 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3735</Reference>
     </References>
   </UAVariable>
+  <!-- ToolLifeWear::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=4285' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3735'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifeWear ns=1;i=3735   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3735</Reference>
+    </References>
+  </UAVariable>
   <!-- ToolLifeWear::Initial : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=4045' BrowseName='1:Initial' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3735'>
     <DisplayName>Initial</DisplayName>
@@ -2489,6 +2821,21 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3735</Reference>
     </References>
   </UAVariable>
+  <!-- ToolLifeWear::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4286' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3735'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifeWear ns=1;i=3735   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3735</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- ToolLifeWear::Warning : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=4049' BrowseName='1:Warning' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3735'>
     <DisplayName>Warning</DisplayName>
@@ -2502,19 +2849,23 @@ YT4=
     </References>
   </UAVariable>
   <!-- MTCuttingToolLifeCycleType::ProcessFeedRate : MTCuttingToolConstraintType[0..1] -->
-  <UAVariable NodeId='ns=1;i=3736' BrowseName='1:ProcessFeedRate' DataType='Double' ParentNodeId='ns=1;i=3728'>
+  <UAVariable NodeId='ns=1;i=3736' BrowseName='1:ProcessFeedRate' DataType='i=24' ParentNodeId='ns=1;i=3728'>
     <DisplayName>ProcessFeedRate</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=4050 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4050</Reference>
       <!-- HasProperty -  - ValuePrecision ns=1;i=4051 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4051</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4287 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4287</Reference>
       <!-- HasProperty -  - Maximum ns=1;i=4053 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4053</Reference>
       <!-- HasProperty -  - Minimum ns=1;i=4054 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4054</Reference>
       <!-- HasProperty -  - Nominal ns=1;i=4055 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4055</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4288 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4288</Reference>
       <!-- HasTypeDefinition -  - MTCuttingToolConstraintType ns=1;i=3717   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3717</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
@@ -2543,6 +2894,18 @@ YT4=
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - ProcessFeedRate ns=1;i=3736   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3736</Reference>
+    </References>
+  </UAVariable>
+  <!-- ProcessFeedRate::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=4287' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3736'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - (Reverse) - ProcessFeedRate ns=1;i=3736   -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3736</Reference>
     </References>
@@ -2583,16 +2946,35 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3736</Reference>
     </References>
   </UAVariable>
+  <!-- ProcessFeedRate::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4288' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3736'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ProcessFeedRate ns=1;i=3736   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3736</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- MTCuttingToolLifeCycleType::ReconditionCount : MTReconditionCountType[0..1] -->
-  <UAVariable NodeId='ns=1;i=3737' BrowseName='1:ReconditionCount' DataType='Int32' ParentNodeId='ns=1;i=3728'>
+  <UAVariable NodeId='ns=1;i=3737' BrowseName='1:ReconditionCount' DataType='i=24' ParentNodeId='ns=1;i=3728'>
     <DisplayName>ReconditionCount</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=4057 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4057</Reference>
       <!-- HasProperty -  - ValuePrecision ns=1;i=4058 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4058</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4289 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4289</Reference>
       <!-- HasProperty -  - MaximumCount ns=1;i=4060 Int32  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4060</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4290 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4290</Reference>
       <!-- HasTypeDefinition -  - MTReconditionCountType ns=1;i=3764   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3764</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
@@ -2625,6 +3007,18 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3737</Reference>
     </References>
   </UAVariable>
+  <!-- ReconditionCount::DataType : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4289' BrowseName='1:DataType' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3737'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ReconditionCount ns=1;i=3737   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3737</Reference>
+    </References>
+  </UAVariable>
   <!-- ReconditionCount::MaximumCount : Int32[0..1] -->
   <UAVariable NodeId='ns=1;i=4060' BrowseName='1:MaximumCount' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3737'>
     <DisplayName>MaximumCount</DisplayName>
@@ -2637,20 +3031,39 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3737</Reference>
     </References>
   </UAVariable>
+  <!-- ReconditionCount::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4290' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3737'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ReconditionCount ns=1;i=3737   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3737</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- MTCuttingToolLifeCycleType::ProcessSpindleSpeed : MTCuttingToolConstraintType[0..1] -->
-  <UAVariable NodeId='ns=1;i=3739' BrowseName='1:ProcessSpindleSpeed' DataType='Double' ParentNodeId='ns=1;i=3728'>
+  <UAVariable NodeId='ns=1;i=3739' BrowseName='1:ProcessSpindleSpeed' DataType='i=24' ParentNodeId='ns=1;i=3728'>
     <DisplayName>ProcessSpindleSpeed</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=4062 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4062</Reference>
       <!-- HasProperty -  - ValuePrecision ns=1;i=4063 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4063</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4291 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4291</Reference>
       <!-- HasProperty -  - Maximum ns=1;i=4065 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4065</Reference>
       <!-- HasProperty -  - Minimum ns=1;i=4066 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4066</Reference>
       <!-- HasProperty -  - Nominal ns=1;i=4067 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4067</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4292 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4292</Reference>
       <!-- HasTypeDefinition -  - MTCuttingToolConstraintType ns=1;i=3717   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3717</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
@@ -2679,6 +3092,18 @@ YT4=
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - ProcessSpindleSpeed ns=1;i=3739   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3739</Reference>
+    </References>
+  </UAVariable>
+  <!-- ProcessSpindleSpeed::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=4291' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3739'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - (Reverse) - ProcessSpindleSpeed ns=1;i=3739   -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3739</Reference>
     </References>
@@ -2719,20 +3144,39 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3739</Reference>
     </References>
   </UAVariable>
+  <!-- ProcessSpindleSpeed::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4292' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3739'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ProcessSpindleSpeed ns=1;i=3739   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3739</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- MTCuttingToolLifeCycleType::Location : MTLocationType[0..1] -->
-  <UAVariable NodeId='ns=1;i=3740' BrowseName='1:Location' DataType='Int32' ParentNodeId='ns=1;i=3728'>
+  <UAVariable NodeId='ns=1;i=3740' BrowseName='1:Location' DataType='i=24' ParentNodeId='ns=1;i=3728'>
     <DisplayName>Location</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=4069 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4069</Reference>
       <!-- HasProperty -  - ValuePrecision ns=1;i=4070 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4070</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4293 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4293</Reference>
       <!-- HasProperty -  - NegativeOverlap ns=1;i=4072 Int32  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4072</Reference>
       <!-- HasProperty -  - PositiveOverlap ns=1;i=4073 Int32  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4073</Reference>
       <!-- HasProperty -  - Type ns=1;i=4074 MTLocationDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4074</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4294 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4294</Reference>
       <!-- HasTypeDefinition -  - MTLocationType ns=1;i=3757   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3757</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
@@ -2761,6 +3205,18 @@ YT4=
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - Location ns=1;i=3740   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3740</Reference>
+    </References>
+  </UAVariable>
+  <!-- Location::DataType : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4293' BrowseName='1:DataType' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3740'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - (Reverse) - Location ns=1;i=3740   -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3740</Reference>
     </References>
@@ -2801,8 +3257,23 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3740</Reference>
     </References>
   </UAVariable>
+  <!-- Location::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4294' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3740'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - Location ns=1;i=3740   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3740</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- MTCuttingToolLifeCycleType::ToolLifeMinutes : MTToolLifeType[0..1] -->
-  <UAVariable NodeId='ns=1;i=3741' BrowseName='1:ToolLifeMinutes' DataType='Double' ParentNodeId='ns=1;i=3728'>
+  <UAVariable NodeId='ns=1;i=3741' BrowseName='1:ToolLifeMinutes' DataType='i=24' ParentNodeId='ns=1;i=3728'>
     <DisplayName>ToolLifeMinutes</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=4076 String  -->
@@ -2811,12 +3282,16 @@ YT4=
       <Reference ReferenceType='HasProperty'>ns=1;i=4077</Reference>
       <!-- HasProperty -  - CountDirection ns=1;i=4078 CountDirectionDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4078</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4295 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4295</Reference>
       <!-- HasProperty -  - Initial ns=1;i=4080 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4080</Reference>
       <!-- HasProperty -  - Limit ns=1;i=4081 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4081</Reference>
       <!-- HasProperty -  - MTType ns=1;i=4082 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4082</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4296 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4296</Reference>
       <!-- HasProperty -  - Warning ns=1;i=4084 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4084</Reference>
       <!-- HasTypeDefinition -  - MTToolLifeType ns=1;i=3769   -->
@@ -2863,6 +3338,18 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3741</Reference>
     </References>
   </UAVariable>
+  <!-- ToolLifeMinutes::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=4295' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3741'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifeMinutes ns=1;i=3741   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3741</Reference>
+    </References>
+  </UAVariable>
   <!-- ToolLifeMinutes::Initial : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=4080' BrowseName='1:Initial' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3741'>
     <DisplayName>Initial</DisplayName>
@@ -2898,6 +3385,21 @@ YT4=
       <!-- HasProperty - (Reverse) - ToolLifeMinutes ns=1;i=3741   -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3741</Reference>
     </References>
+  </UAVariable>
+  <!-- ToolLifeMinutes::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4296' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3741'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifeMinutes ns=1;i=3741   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3741</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
   </UAVariable>
   <!-- ToolLifeMinutes::Warning : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=4084' BrowseName='1:Warning' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3741'>
@@ -3173,8 +3675,8 @@ YT4=
       <Reference ReferenceType='HasProperty'>ns=1;i=4099</Reference>
       <!-- HasProperty -  - EnumStrings ns=1;i=4100 LocalizedText  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4100</Reference>
-      <!-- HasComponent -  - EnumValues ns=1;i=4101 CutterStatusDataType  -->
-      <Reference ReferenceType='HasComponent'>ns=1;i=4101</Reference>
+      <!-- HasProperty -  - EnumValues ns=1;i=4262 1:CutterStatusDataType/EnumValues  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4262</Reference>
       <!-- HasTypeDefinition -  - MTCutterStatusType ns=1;i=3690   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3690</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
@@ -3219,20 +3721,8 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4097</Reference>
     </References>
   </UAVariable>
-  <!-- CutterStatus::EnumValues : CutterStatusDataType[1] -->
-  <UAVariable NodeId='ns=1;i=4101' BrowseName='1:EnumValues' DataType='ns=1;i=3686' ParentNodeId='ns=1;i=4097'>
-    <DisplayName>EnumValues</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - CutterStatusDataType ns=1;i=3686   -->
-      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3686</Reference>
-      <!-- HasModellingRule -  - Mandatory i=78   -->
-      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - CutterStatus ns=1;i=4097   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=4097</Reference>
-    </References>
-  </UAVariable>
   <!-- CuttingToolLifecycle::ToolLifePartCount : MTToolLifeType[0..1] -->
-  <UAVariable NodeId='ns=1;i=4102' BrowseName='1:ToolLifePartCount' DataType='Double' ParentNodeId='ns=1;i=4093'>
+  <UAVariable NodeId='ns=1;i=4102' BrowseName='1:ToolLifePartCount' DataType='i=24' ParentNodeId='ns=1;i=4093'>
     <DisplayName>ToolLifePartCount</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=4103 String  -->
@@ -3241,12 +3731,16 @@ YT4=
       <Reference ReferenceType='HasProperty'>ns=1;i=4104</Reference>
       <!-- HasProperty -  - CountDirection ns=1;i=4105 CountDirectionDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4105</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4297 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4297</Reference>
       <!-- HasProperty -  - Initial ns=1;i=4107 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4107</Reference>
       <!-- HasProperty -  - Limit ns=1;i=4108 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4108</Reference>
       <!-- HasProperty -  - MTType ns=1;i=4109 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4109</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4298 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4298</Reference>
       <!-- HasProperty -  - Warning ns=1;i=4111 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4111</Reference>
       <!-- HasTypeDefinition -  - MTToolLifeType ns=1;i=3769   -->
@@ -3293,6 +3787,18 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4102</Reference>
     </References>
   </UAVariable>
+  <!-- ToolLifePartCount::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=4297' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4102'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifePartCount ns=1;i=4102   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4102</Reference>
+    </References>
+  </UAVariable>
   <!-- ToolLifePartCount::Initial : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=4107' BrowseName='1:Initial' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4102'>
     <DisplayName>Initial</DisplayName>
@@ -3329,6 +3835,21 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4102</Reference>
     </References>
   </UAVariable>
+  <!-- ToolLifePartCount::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4298' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=4102'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifePartCount ns=1;i=4102   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4102</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- ToolLifePartCount::Warning : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=4111' BrowseName='1:Warning' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4102'>
     <DisplayName>Warning</DisplayName>
@@ -3342,7 +3863,7 @@ YT4=
     </References>
   </UAVariable>
   <!-- CuttingToolLifecycle::ToolLifeWear : MTToolLifeType[0..1] -->
-  <UAVariable NodeId='ns=1;i=4112' BrowseName='1:ToolLifeWear' DataType='Double' ParentNodeId='ns=1;i=4093'>
+  <UAVariable NodeId='ns=1;i=4112' BrowseName='1:ToolLifeWear' DataType='i=24' ParentNodeId='ns=1;i=4093'>
     <DisplayName>ToolLifeWear</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=4113 String  -->
@@ -3351,12 +3872,16 @@ YT4=
       <Reference ReferenceType='HasProperty'>ns=1;i=4114</Reference>
       <!-- HasProperty -  - CountDirection ns=1;i=4115 CountDirectionDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4115</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4299 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4299</Reference>
       <!-- HasProperty -  - Initial ns=1;i=4117 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4117</Reference>
       <!-- HasProperty -  - Limit ns=1;i=4118 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4118</Reference>
       <!-- HasProperty -  - MTType ns=1;i=4119 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4119</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4300 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4300</Reference>
       <!-- HasProperty -  - Warning ns=1;i=4121 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4121</Reference>
       <!-- HasTypeDefinition -  - MTToolLifeType ns=1;i=3769   -->
@@ -3403,6 +3928,18 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4112</Reference>
     </References>
   </UAVariable>
+  <!-- ToolLifeWear::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=4299' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4112'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifeWear ns=1;i=4112   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4112</Reference>
+    </References>
+  </UAVariable>
   <!-- ToolLifeWear::Initial : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=4117' BrowseName='1:Initial' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4112'>
     <DisplayName>Initial</DisplayName>
@@ -3439,6 +3976,21 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4112</Reference>
     </References>
   </UAVariable>
+  <!-- ToolLifeWear::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4300' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=4112'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifeWear ns=1;i=4112   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4112</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- ToolLifeWear::Warning : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=4121' BrowseName='1:Warning' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4112'>
     <DisplayName>Warning</DisplayName>
@@ -3452,19 +4004,23 @@ YT4=
     </References>
   </UAVariable>
   <!-- CuttingToolLifecycle::ProcessFeedRate : MTCuttingToolConstraintType[0..1] -->
-  <UAVariable NodeId='ns=1;i=4122' BrowseName='1:ProcessFeedRate' DataType='Double' ParentNodeId='ns=1;i=4093'>
+  <UAVariable NodeId='ns=1;i=4122' BrowseName='1:ProcessFeedRate' DataType='i=24' ParentNodeId='ns=1;i=4093'>
     <DisplayName>ProcessFeedRate</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=4123 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4123</Reference>
       <!-- HasProperty -  - ValuePrecision ns=1;i=4124 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4124</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4301 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4301</Reference>
       <!-- HasProperty -  - Maximum ns=1;i=4126 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4126</Reference>
       <!-- HasProperty -  - Minimum ns=1;i=4127 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4127</Reference>
       <!-- HasProperty -  - Nominal ns=1;i=4128 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4128</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4302 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4302</Reference>
       <!-- HasTypeDefinition -  - MTCuttingToolConstraintType ns=1;i=3717   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3717</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
@@ -3493,6 +4049,18 @@ YT4=
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - ProcessFeedRate ns=1;i=4122   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4122</Reference>
+    </References>
+  </UAVariable>
+  <!-- ProcessFeedRate::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=4301' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4122'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - (Reverse) - ProcessFeedRate ns=1;i=4122   -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4122</Reference>
     </References>
@@ -3533,16 +4101,35 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4122</Reference>
     </References>
   </UAVariable>
+  <!-- ProcessFeedRate::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4302' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=4122'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ProcessFeedRate ns=1;i=4122   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4122</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- CuttingToolLifecycle::ReconditionCount : MTReconditionCountType[0..1] -->
-  <UAVariable NodeId='ns=1;i=4130' BrowseName='1:ReconditionCount' DataType='Int32' ParentNodeId='ns=1;i=4093'>
+  <UAVariable NodeId='ns=1;i=4130' BrowseName='1:ReconditionCount' DataType='i=24' ParentNodeId='ns=1;i=4093'>
     <DisplayName>ReconditionCount</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=4131 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4131</Reference>
       <!-- HasProperty -  - ValuePrecision ns=1;i=4132 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4132</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4303 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4303</Reference>
       <!-- HasProperty -  - MaximumCount ns=1;i=4134 Int32  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4134</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4304 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4304</Reference>
       <!-- HasTypeDefinition -  - MTReconditionCountType ns=1;i=3764   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3764</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
@@ -3575,6 +4162,18 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4130</Reference>
     </References>
   </UAVariable>
+  <!-- ReconditionCount::DataType : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4303' BrowseName='1:DataType' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=4130'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ReconditionCount ns=1;i=4130   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4130</Reference>
+    </References>
+  </UAVariable>
   <!-- ReconditionCount::MaximumCount : Int32[0..1] -->
   <UAVariable NodeId='ns=1;i=4134' BrowseName='1:MaximumCount' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=4130'>
     <DisplayName>MaximumCount</DisplayName>
@@ -3587,20 +4186,39 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4130</Reference>
     </References>
   </UAVariable>
+  <!-- ReconditionCount::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4304' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=4130'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ReconditionCount ns=1;i=4130   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4130</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- CuttingToolLifecycle::ProcessSpindleSpeed : MTCuttingToolConstraintType[0..1] -->
-  <UAVariable NodeId='ns=1;i=4136' BrowseName='1:ProcessSpindleSpeed' DataType='Double' ParentNodeId='ns=1;i=4093'>
+  <UAVariable NodeId='ns=1;i=4136' BrowseName='1:ProcessSpindleSpeed' DataType='i=24' ParentNodeId='ns=1;i=4093'>
     <DisplayName>ProcessSpindleSpeed</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=4137 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4137</Reference>
       <!-- HasProperty -  - ValuePrecision ns=1;i=4138 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4138</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4305 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4305</Reference>
       <!-- HasProperty -  - Maximum ns=1;i=4140 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4140</Reference>
       <!-- HasProperty -  - Minimum ns=1;i=4141 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4141</Reference>
       <!-- HasProperty -  - Nominal ns=1;i=4142 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4142</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4306 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4306</Reference>
       <!-- HasTypeDefinition -  - MTCuttingToolConstraintType ns=1;i=3717   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3717</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
@@ -3629,6 +4247,18 @@ YT4=
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - ProcessSpindleSpeed ns=1;i=4136   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4136</Reference>
+    </References>
+  </UAVariable>
+  <!-- ProcessSpindleSpeed::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=4305' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4136'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - (Reverse) - ProcessSpindleSpeed ns=1;i=4136   -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4136</Reference>
     </References>
@@ -3669,20 +4299,39 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4136</Reference>
     </References>
   </UAVariable>
+  <!-- ProcessSpindleSpeed::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4306' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=4136'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ProcessSpindleSpeed ns=1;i=4136   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4136</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- CuttingToolLifecycle::Location : MTLocationType[0..1] -->
-  <UAVariable NodeId='ns=1;i=4144' BrowseName='1:Location' DataType='Int32' ParentNodeId='ns=1;i=4093'>
+  <UAVariable NodeId='ns=1;i=4144' BrowseName='1:Location' DataType='i=24' ParentNodeId='ns=1;i=4093'>
     <DisplayName>Location</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=4145 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4145</Reference>
       <!-- HasProperty -  - ValuePrecision ns=1;i=4146 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4146</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4307 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4307</Reference>
       <!-- HasProperty -  - NegativeOverlap ns=1;i=4148 Int32  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4148</Reference>
       <!-- HasProperty -  - PositiveOverlap ns=1;i=4149 Int32  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4149</Reference>
       <!-- HasProperty -  - Type ns=1;i=4150 MTLocationDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4150</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4308 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4308</Reference>
       <!-- HasTypeDefinition -  - MTLocationType ns=1;i=3757   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3757</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
@@ -3711,6 +4360,18 @@ YT4=
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - Location ns=1;i=4144   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4144</Reference>
+    </References>
+  </UAVariable>
+  <!-- Location::DataType : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4307' BrowseName='1:DataType' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=4144'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - (Reverse) - Location ns=1;i=4144   -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4144</Reference>
     </References>
@@ -3751,8 +4412,23 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4144</Reference>
     </References>
   </UAVariable>
+  <!-- Location::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4308' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=4144'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - Location ns=1;i=4144   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4144</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- CuttingToolLifecycle::ToolLifeMinutes : MTToolLifeType[0..1] -->
-  <UAVariable NodeId='ns=1;i=4152' BrowseName='1:ToolLifeMinutes' DataType='Double' ParentNodeId='ns=1;i=4093'>
+  <UAVariable NodeId='ns=1;i=4152' BrowseName='1:ToolLifeMinutes' DataType='i=24' ParentNodeId='ns=1;i=4093'>
     <DisplayName>ToolLifeMinutes</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=4153 String  -->
@@ -3761,12 +4437,16 @@ YT4=
       <Reference ReferenceType='HasProperty'>ns=1;i=4154</Reference>
       <!-- HasProperty -  - CountDirection ns=1;i=4155 CountDirectionDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4155</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4309 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4309</Reference>
       <!-- HasProperty -  - Initial ns=1;i=4157 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4157</Reference>
       <!-- HasProperty -  - Limit ns=1;i=4158 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4158</Reference>
       <!-- HasProperty -  - MTType ns=1;i=4159 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4159</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4310 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4310</Reference>
       <!-- HasProperty -  - Warning ns=1;i=4161 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4161</Reference>
       <!-- HasTypeDefinition -  - MTToolLifeType ns=1;i=3769   -->
@@ -3813,6 +4493,18 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4152</Reference>
     </References>
   </UAVariable>
+  <!-- ToolLifeMinutes::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=4309' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4152'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifeMinutes ns=1;i=4152   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4152</Reference>
+    </References>
+  </UAVariable>
   <!-- ToolLifeMinutes::Initial : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=4157' BrowseName='1:Initial' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4152'>
     <DisplayName>Initial</DisplayName>
@@ -3848,6 +4540,21 @@ YT4=
       <!-- HasProperty - (Reverse) - ToolLifeMinutes ns=1;i=4152   -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4152</Reference>
     </References>
+  </UAVariable>
+  <!-- ToolLifeMinutes::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4310' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=4152'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifeMinutes ns=1;i=4152   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4152</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
   </UAVariable>
   <!-- ToolLifeMinutes::Warning : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=4161' BrowseName='1:Warning' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4152'>
@@ -4051,8 +4758,8 @@ YT4=
       <Reference ReferenceType='HasProperty'>ns=1;i=4175</Reference>
       <!-- HasProperty -  - EnumStrings ns=1;i=4176 LocalizedText  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4176</Reference>
-      <!-- HasComponent -  - EnumValues ns=1;i=4177 CutterStatusDataType  -->
-      <Reference ReferenceType='HasComponent'>ns=1;i=4177</Reference>
+      <!-- HasProperty -  - EnumValues ns=1;i=4262 1:CutterStatusDataType/EnumValues  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4262</Reference>
       <!-- HasTypeDefinition -  - MTCutterStatusType ns=1;i=3690   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3690</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
@@ -4097,20 +4804,8 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4173</Reference>
     </References>
   </UAVariable>
-  <!-- CutterStatus::EnumValues : CutterStatusDataType[1] -->
-  <UAVariable NodeId='ns=1;i=4177' BrowseName='1:EnumValues' DataType='ns=1;i=3686' ParentNodeId='ns=1;i=4173'>
-    <DisplayName>EnumValues</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - CutterStatusDataType ns=1;i=3686   -->
-      <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3686</Reference>
-      <!-- HasModellingRule -  - Mandatory i=78   -->
-      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - CutterStatus ns=1;i=4173   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=4173</Reference>
-    </References>
-  </UAVariable>
   <!-- CuttingToolLifecycle::ToolLifePartCount : MTToolLifeType[0..1] -->
-  <UAVariable NodeId='ns=1;i=4178' BrowseName='1:ToolLifePartCount' DataType='Double' ParentNodeId='ns=1;i=3756'>
+  <UAVariable NodeId='ns=1;i=4178' BrowseName='1:ToolLifePartCount' DataType='i=24' ParentNodeId='ns=1;i=3756'>
     <DisplayName>ToolLifePartCount</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=4179 String  -->
@@ -4119,12 +4814,16 @@ YT4=
       <Reference ReferenceType='HasProperty'>ns=1;i=4180</Reference>
       <!-- HasProperty -  - CountDirection ns=1;i=4181 CountDirectionDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4181</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4311 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4311</Reference>
       <!-- HasProperty -  - Initial ns=1;i=4183 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4183</Reference>
       <!-- HasProperty -  - Limit ns=1;i=4184 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4184</Reference>
       <!-- HasProperty -  - MTType ns=1;i=4185 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4185</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4312 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4312</Reference>
       <!-- HasProperty -  - Warning ns=1;i=4187 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4187</Reference>
       <!-- HasTypeDefinition -  - MTToolLifeType ns=1;i=3769   -->
@@ -4171,6 +4870,18 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4178</Reference>
     </References>
   </UAVariable>
+  <!-- ToolLifePartCount::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=4311' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4178'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifePartCount ns=1;i=4178   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4178</Reference>
+    </References>
+  </UAVariable>
   <!-- ToolLifePartCount::Initial : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=4183' BrowseName='1:Initial' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4178'>
     <DisplayName>Initial</DisplayName>
@@ -4207,6 +4918,21 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4178</Reference>
     </References>
   </UAVariable>
+  <!-- ToolLifePartCount::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4312' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=4178'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifePartCount ns=1;i=4178   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4178</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- ToolLifePartCount::Warning : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=4187' BrowseName='1:Warning' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4178'>
     <DisplayName>Warning</DisplayName>
@@ -4220,7 +4946,7 @@ YT4=
     </References>
   </UAVariable>
   <!-- CuttingToolLifecycle::ToolLifeWear : MTToolLifeType[0..1] -->
-  <UAVariable NodeId='ns=1;i=4188' BrowseName='1:ToolLifeWear' DataType='Double' ParentNodeId='ns=1;i=3756'>
+  <UAVariable NodeId='ns=1;i=4188' BrowseName='1:ToolLifeWear' DataType='i=24' ParentNodeId='ns=1;i=3756'>
     <DisplayName>ToolLifeWear</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=4189 String  -->
@@ -4229,12 +4955,16 @@ YT4=
       <Reference ReferenceType='HasProperty'>ns=1;i=4190</Reference>
       <!-- HasProperty -  - CountDirection ns=1;i=4191 CountDirectionDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4191</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4313 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4313</Reference>
       <!-- HasProperty -  - Initial ns=1;i=4193 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4193</Reference>
       <!-- HasProperty -  - Limit ns=1;i=4194 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4194</Reference>
       <!-- HasProperty -  - MTType ns=1;i=4195 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4195</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4314 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4314</Reference>
       <!-- HasProperty -  - Warning ns=1;i=4197 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4197</Reference>
       <!-- HasTypeDefinition -  - MTToolLifeType ns=1;i=3769   -->
@@ -4281,6 +5011,18 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4188</Reference>
     </References>
   </UAVariable>
+  <!-- ToolLifeWear::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=4313' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4188'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifeWear ns=1;i=4188   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4188</Reference>
+    </References>
+  </UAVariable>
   <!-- ToolLifeWear::Initial : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=4193' BrowseName='1:Initial' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4188'>
     <DisplayName>Initial</DisplayName>
@@ -4317,6 +5059,21 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4188</Reference>
     </References>
   </UAVariable>
+  <!-- ToolLifeWear::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4314' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=4188'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifeWear ns=1;i=4188   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4188</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- ToolLifeWear::Warning : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=4197' BrowseName='1:Warning' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4188'>
     <DisplayName>Warning</DisplayName>
@@ -4330,19 +5087,23 @@ YT4=
     </References>
   </UAVariable>
   <!-- CuttingToolLifecycle::ProcessFeedRate : MTCuttingToolConstraintType[0..1] -->
-  <UAVariable NodeId='ns=1;i=4198' BrowseName='1:ProcessFeedRate' DataType='Double' ParentNodeId='ns=1;i=3756'>
+  <UAVariable NodeId='ns=1;i=4198' BrowseName='1:ProcessFeedRate' DataType='i=24' ParentNodeId='ns=1;i=3756'>
     <DisplayName>ProcessFeedRate</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=4199 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4199</Reference>
       <!-- HasProperty -  - ValuePrecision ns=1;i=4200 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4200</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4315 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4315</Reference>
       <!-- HasProperty -  - Maximum ns=1;i=4202 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4202</Reference>
       <!-- HasProperty -  - Minimum ns=1;i=4203 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4203</Reference>
       <!-- HasProperty -  - Nominal ns=1;i=4204 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4204</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4316 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4316</Reference>
       <!-- HasTypeDefinition -  - MTCuttingToolConstraintType ns=1;i=3717   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3717</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
@@ -4371,6 +5132,18 @@ YT4=
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - ProcessFeedRate ns=1;i=4198   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4198</Reference>
+    </References>
+  </UAVariable>
+  <!-- ProcessFeedRate::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=4315' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4198'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - (Reverse) - ProcessFeedRate ns=1;i=4198   -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4198</Reference>
     </References>
@@ -4411,16 +5184,35 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4198</Reference>
     </References>
   </UAVariable>
+  <!-- ProcessFeedRate::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4316' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=4198'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ProcessFeedRate ns=1;i=4198   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4198</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- CuttingToolLifecycle::ReconditionCount : MTReconditionCountType[0..1] -->
-  <UAVariable NodeId='ns=1;i=4206' BrowseName='1:ReconditionCount' DataType='Int32' ParentNodeId='ns=1;i=3756'>
+  <UAVariable NodeId='ns=1;i=4206' BrowseName='1:ReconditionCount' DataType='i=24' ParentNodeId='ns=1;i=3756'>
     <DisplayName>ReconditionCount</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=4207 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4207</Reference>
       <!-- HasProperty -  - ValuePrecision ns=1;i=4208 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4208</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4317 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4317</Reference>
       <!-- HasProperty -  - MaximumCount ns=1;i=4210 Int32  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4210</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4318 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4318</Reference>
       <!-- HasTypeDefinition -  - MTReconditionCountType ns=1;i=3764   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3764</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
@@ -4453,6 +5245,18 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4206</Reference>
     </References>
   </UAVariable>
+  <!-- ReconditionCount::DataType : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4317' BrowseName='1:DataType' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=4206'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ReconditionCount ns=1;i=4206   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4206</Reference>
+    </References>
+  </UAVariable>
   <!-- ReconditionCount::MaximumCount : Int32[0..1] -->
   <UAVariable NodeId='ns=1;i=4210' BrowseName='1:MaximumCount' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=4206'>
     <DisplayName>MaximumCount</DisplayName>
@@ -4465,20 +5269,39 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4206</Reference>
     </References>
   </UAVariable>
+  <!-- ReconditionCount::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4318' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=4206'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ReconditionCount ns=1;i=4206   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4206</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- CuttingToolLifecycle::ProcessSpindleSpeed : MTCuttingToolConstraintType[0..1] -->
-  <UAVariable NodeId='ns=1;i=4212' BrowseName='1:ProcessSpindleSpeed' DataType='Double' ParentNodeId='ns=1;i=3756'>
+  <UAVariable NodeId='ns=1;i=4212' BrowseName='1:ProcessSpindleSpeed' DataType='i=24' ParentNodeId='ns=1;i=3756'>
     <DisplayName>ProcessSpindleSpeed</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=4213 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4213</Reference>
       <!-- HasProperty -  - ValuePrecision ns=1;i=4214 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4214</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4319 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4319</Reference>
       <!-- HasProperty -  - Maximum ns=1;i=4216 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4216</Reference>
       <!-- HasProperty -  - Minimum ns=1;i=4217 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4217</Reference>
       <!-- HasProperty -  - Nominal ns=1;i=4218 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4218</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4320 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4320</Reference>
       <!-- HasTypeDefinition -  - MTCuttingToolConstraintType ns=1;i=3717   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3717</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
@@ -4507,6 +5330,18 @@ YT4=
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - ProcessSpindleSpeed ns=1;i=4212   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4212</Reference>
+    </References>
+  </UAVariable>
+  <!-- ProcessSpindleSpeed::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=4319' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4212'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - (Reverse) - ProcessSpindleSpeed ns=1;i=4212   -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4212</Reference>
     </References>
@@ -4547,20 +5382,39 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4212</Reference>
     </References>
   </UAVariable>
+  <!-- ProcessSpindleSpeed::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4320' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=4212'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ProcessSpindleSpeed ns=1;i=4212   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4212</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- CuttingToolLifecycle::Location : MTLocationType[0..1] -->
-  <UAVariable NodeId='ns=1;i=4220' BrowseName='1:Location' DataType='Int32' ParentNodeId='ns=1;i=3756'>
+  <UAVariable NodeId='ns=1;i=4220' BrowseName='1:Location' DataType='i=24' ParentNodeId='ns=1;i=3756'>
     <DisplayName>Location</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=4221 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4221</Reference>
       <!-- HasProperty -  - ValuePrecision ns=1;i=4222 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4222</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4321 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4321</Reference>
       <!-- HasProperty -  - NegativeOverlap ns=1;i=4224 Int32  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4224</Reference>
       <!-- HasProperty -  - PositiveOverlap ns=1;i=4225 Int32  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4225</Reference>
       <!-- HasProperty -  - Type ns=1;i=4226 MTLocationDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4226</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4322 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4322</Reference>
       <!-- HasTypeDefinition -  - MTLocationType ns=1;i=3757   -->
       <Reference ReferenceType='HasTypeDefinition'>ns=1;i=3757</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
@@ -4589,6 +5443,18 @@ YT4=
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Optional i=80   -->
       <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - Location ns=1;i=4220   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4220</Reference>
+    </References>
+  </UAVariable>
+  <!-- Location::DataType : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4321' BrowseName='1:DataType' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=4220'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
       <!-- HasProperty - (Reverse) - Location ns=1;i=4220   -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4220</Reference>
     </References>
@@ -4629,8 +5495,23 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4220</Reference>
     </References>
   </UAVariable>
+  <!-- Location::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4322' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=4220'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - Location ns=1;i=4220   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4220</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- CuttingToolLifecycle::ToolLifeMinutes : MTToolLifeType[0..1] -->
-  <UAVariable NodeId='ns=1;i=4228' BrowseName='1:ToolLifeMinutes' DataType='Double' ParentNodeId='ns=1;i=3756'>
+  <UAVariable NodeId='ns=1;i=4228' BrowseName='1:ToolLifeMinutes' DataType='i=24' ParentNodeId='ns=1;i=3756'>
     <DisplayName>ToolLifeMinutes</DisplayName>
     <References>
       <!-- HasProperty -  - Definition ns=1;i=4229 String  -->
@@ -4639,12 +5520,16 @@ YT4=
       <Reference ReferenceType='HasProperty'>ns=1;i=4230</Reference>
       <!-- HasProperty -  - CountDirection ns=1;i=4231 CountDirectionDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4231</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=4323 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4323</Reference>
       <!-- HasProperty -  - Initial ns=1;i=4233 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4233</Reference>
       <!-- HasProperty -  - Limit ns=1;i=4234 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4234</Reference>
       <!-- HasProperty -  - MTType ns=1;i=4235 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4235</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=4324 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4324</Reference>
       <!-- HasProperty -  - Warning ns=1;i=4237 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=4237</Reference>
       <!-- HasTypeDefinition -  - MTToolLifeType ns=1;i=3769   -->
@@ -4691,6 +5576,18 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4228</Reference>
     </References>
   </UAVariable>
+  <!-- ToolLifeMinutes::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=4323' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4228'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifeMinutes ns=1;i=4228   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4228</Reference>
+    </References>
+  </UAVariable>
   <!-- ToolLifeMinutes::Initial : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=4233' BrowseName='1:Initial' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4228'>
     <DisplayName>Initial</DisplayName>
@@ -4727,6 +5624,21 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4228</Reference>
     </References>
   </UAVariable>
+  <!-- ToolLifeMinutes::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=4324' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=4228'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ToolLifeMinutes ns=1;i=4228   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4228</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- ToolLifeMinutes::Warning : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=4237' BrowseName='1:Warning' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=4228'>
     <DisplayName>Warning</DisplayName>
@@ -4740,19 +5652,35 @@ YT4=
     </References>
   </UAVariable>
   <!-- Definition of Variable MTLocationType ns=1;i=3757 -->
-  <UAVariableType NodeId='ns=1;i=3757' BrowseName='1:MTLocationType' ValueRank='-1' DataType='Int32'>
+  <UAVariableType NodeId='ns=1;i=3757' BrowseName='1:MTLocationType' ValueRank='-1' DataType='i=24'>
     <DisplayName>MTLocationType</DisplayName>
     <References>
       <!-- HasSubtype - (Reverse) - DataItemType i=2365   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=2365</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=3758 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3758</Reference>
       <!-- HasProperty -  - NegativeOverlap ns=1;i=3759 Int32  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3759</Reference>
       <!-- HasProperty -  - PositiveOverlap ns=1;i=3760 Int32  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3760</Reference>
       <!-- HasProperty -  - Type ns=1;i=3761 MTLocationDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3761</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=3762 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3762</Reference>
     </References>
   </UAVariableType>
+  <!-- MTLocationType::DataType : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=3758' BrowseName='1:DataType' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3757'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - MTLocationType ns=1;i=3757   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3757</Reference>
+    </References>
+  </UAVariable>
   <!-- MTLocationType::NegativeOverlap : Int32[0..1] -->
   <UAVariable NodeId='ns=1;i=3759' BrowseName='1:NegativeOverlap' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3757'>
     <DisplayName>NegativeOverlap</DisplayName>
@@ -4789,16 +5717,47 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3757</Reference>
     </References>
   </UAVariable>
+  <!-- MTLocationType::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=3762' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3757'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - MTLocationType ns=1;i=3757   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3757</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- Definition of Variable MTReconditionCountType ns=1;i=3764 -->
-  <UAVariableType NodeId='ns=1;i=3764' BrowseName='1:MTReconditionCountType' ValueRank='-1' DataType='Int32'>
+  <UAVariableType NodeId='ns=1;i=3764' BrowseName='1:MTReconditionCountType' ValueRank='-1' DataType='i=24'>
     <DisplayName>MTReconditionCountType</DisplayName>
     <References>
       <!-- HasSubtype - (Reverse) - DataItemType i=2365   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=2365</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=3765 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3765</Reference>
       <!-- HasProperty -  - MaximumCount ns=1;i=3766 Int32  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3766</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=3767 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3767</Reference>
     </References>
   </UAVariableType>
+  <!-- MTReconditionCountType::DataType : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=3765' BrowseName='1:DataType' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3764'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - MTReconditionCountType ns=1;i=3764   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3764</Reference>
+    </References>
+  </UAVariable>
   <!-- MTReconditionCountType::MaximumCount : Int32[0..1] -->
   <UAVariable NodeId='ns=1;i=3766' BrowseName='1:MaximumCount' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3764'>
     <DisplayName>MaximumCount</DisplayName>
@@ -4811,20 +5770,39 @@ YT4=
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3764</Reference>
     </References>
   </UAVariable>
+  <!-- MTReconditionCountType::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=3767' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3764'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - MTReconditionCountType ns=1;i=3764   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3764</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
+  </UAVariable>
   <!-- Definition of Variable MTToolLifeType ns=1;i=3769 -->
-  <UAVariableType NodeId='ns=1;i=3769' BrowseName='1:MTToolLifeType' ValueRank='-1' DataType='Double'>
+  <UAVariableType NodeId='ns=1;i=3769' BrowseName='1:MTToolLifeType' ValueRank='-1' DataType='i=24'>
     <DisplayName>MTToolLifeType</DisplayName>
     <References>
       <!-- HasSubtype - (Reverse) - DataItemType i=2365   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=2365</Reference>
       <!-- HasProperty -  - CountDirection ns=1;i=3770 CountDirectionDataType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3770</Reference>
+      <!-- HasProperty -  - DataType ns=1;i=3771 Double  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3771</Reference>
       <!-- HasProperty -  - Initial ns=1;i=3772 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3772</Reference>
       <!-- HasProperty -  - Limit ns=1;i=3773 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3773</Reference>
       <!-- HasProperty -  - MTType ns=1;i=3774 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3774</Reference>
+      <!-- HasProperty -  - ValueRank ns=1;i=3775 Int32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=3775</Reference>
       <!-- HasProperty -  - Warning ns=1;i=3776 Double  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3776</Reference>
     </References>
@@ -4834,6 +5812,18 @@ YT4=
     <DisplayName>CountDirection</DisplayName>
     <References>
       <!-- HasTypeDefinition -  - CountDirectionDataType i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - MTToolLifeType ns=1;i=3769   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3769</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTToolLifeType::DataType : Double[1] -->
+  <UAVariable NodeId='ns=1;i=3771' BrowseName='1:DataType' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3769'>
+    <DisplayName>DataType</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Double i=68 PropertyType  -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
       <!-- HasModellingRule -  - Mandatory i=78   -->
       <Reference ReferenceType='HasModellingRule'>i=78</Reference>
@@ -4876,6 +5866,21 @@ YT4=
       <!-- HasProperty - (Reverse) - MTToolLifeType ns=1;i=3769   -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3769</Reference>
     </References>
+  </UAVariable>
+  <!-- MTToolLifeType::ValueRank : Int32[1] -->
+  <UAVariable NodeId='ns=1;i=3775' BrowseName='1:ValueRank' ValueRank='-1' DataType='Int32' ParentNodeId='ns=1;i=3769'>
+    <DisplayName>ValueRank</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Int32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - MTToolLifeType ns=1;i=3769   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3769</Reference>
+    </References>
+    <Value>
+      <Int32 xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>-1</Int32>
+    </Value>
   </UAVariable>
   <!-- MTToolLifeType::Warning : Double[0..1] -->
   <UAVariable NodeId='ns=1;i=3776' BrowseName='1:Warning' ValueRank='-1' DataType='Double' ParentNodeId='ns=1;i=3769'>
@@ -6357,53 +7362,6 @@ YT4=
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
-  <!-- Default Binary encoding of CountDirectionDataType -->
-  <UAObject NodeId='ns=1;i=4239' BrowseName='Default Binary'>
-    <DisplayName>Default Binary</DisplayName>
-    <References>
-      <!-- HasEncoding - (Reverse) - CountDirectionDataType ns=1;i=3685   -->
-      <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=3685</Reference>
-      <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
-      <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=4240   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=4240</Reference>
-    </References>
-  </UAObject>
-  <!-- Binary DataTypeDescription for CountDirectionDataType -->
-  <UAVariable NodeId='ns=1;i=4240' BrowseName='1:CountDirectionDataType' DataType='String' ParentNodeId='ns=1;i=2729'>
-    <DisplayName>CountDirectionDataType</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
-      <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasProperty -  - DictionaryFragment ns=1;i=4241   -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=4241</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=2729   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2729</Reference>
-    </References>
-    <Value>
-      <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>CountDirectionDataType</String>
-    </Value>
-  </UAVariable>
-  <!-- DictionaryFragment for CountDirectionDataType -->
-  <UAVariable NodeId='ns=1;i=4241' BrowseName='1:DictionaryFragment' DataType='ByteString' ParentNodeId='ns=1;i=4240'>
-    <DisplayName>DictionaryFragment</DisplayName>
-    <References>
-      <!-- HasProperty - (Reverse) - Owner ns=1;i=4240   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4240</Reference>
-      <!-- HasTypeDefinition -  - PropertyType i=68   -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-    </References>
-    <Value>
-      <ByteString xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
-        <![CDATA[PG9wYzpFbnVtZXJhdGVkVHlwZSBOYW1lPSdDb3VudERpcmVjdGlvbkRhdGFU
-eXBlJyBMZW5ndGhJbkJpdHM9JzMyJyBCYXNlVHlwZT0ndWE6RXh0ZW5zaW9u
-T2JqZWN0Jz4KICA8b3BjOkVudW1lcmF0ZWRWYWx1ZSBOYW1lPSdET1dOJyBW
-YWx1ZT0nMCcvPgogIDxvcGM6RW51bWVyYXRlZFZhbHVlIE5hbWU9J1VQJyBW
-YWx1ZT0nMScvPgo8L29wYzpFbnVtZXJhdGVkVHlwZT4=
-]]>
-      </ByteString>
-    </Value>
-  </UAVariable>
   <!-- Default XML encoding of CountDirectionDataType -->
   <UAObject NodeId='ns=1;i=4242' BrowseName='Default XML'>
     <DisplayName>Default XML</DisplayName>
@@ -6517,65 +7475,6 @@ YWx1ZT0nMScvPgo8L29wYzpFbnVtZXJhdGVkVHlwZT4=
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
-  <!-- Default Binary encoding of CutterStatusDataType -->
-  <UAObject NodeId='ns=1;i=4245' BrowseName='Default Binary'>
-    <DisplayName>Default Binary</DisplayName>
-    <References>
-      <!-- HasEncoding - (Reverse) - CutterStatusDataType ns=1;i=3686   -->
-      <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=3686</Reference>
-      <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
-      <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=4246   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=4246</Reference>
-    </References>
-  </UAObject>
-  <!-- Binary DataTypeDescription for CutterStatusDataType -->
-  <UAVariable NodeId='ns=1;i=4246' BrowseName='1:CutterStatusDataType' DataType='String' ParentNodeId='ns=1;i=2729'>
-    <DisplayName>CutterStatusDataType</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
-      <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasProperty -  - DictionaryFragment ns=1;i=4247   -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=4247</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=2729   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2729</Reference>
-    </References>
-    <Value>
-      <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>CutterStatusDataType</String>
-    </Value>
-  </UAVariable>
-  <!-- DictionaryFragment for CutterStatusDataType -->
-  <UAVariable NodeId='ns=1;i=4247' BrowseName='1:DictionaryFragment' DataType='ByteString' ParentNodeId='ns=1;i=4246'>
-    <DisplayName>DictionaryFragment</DisplayName>
-    <References>
-      <!-- HasProperty - (Reverse) - Owner ns=1;i=4246   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4246</Reference>
-      <!-- HasTypeDefinition -  - PropertyType i=68   -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-    </References>
-    <Value>
-      <ByteString xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
-        <![CDATA[PG9wYzpFbnVtZXJhdGVkVHlwZSBOYW1lPSdDdXR0ZXJTdGF0dXNEYXRhVHlw
-ZScgTGVuZ3RoSW5CaXRzPSczMicgQmFzZVR5cGU9J3VhOkV4dGVuc2lvbk9i
-amVjdCc+CiAgPG9wYzpFbnVtZXJhdGVkVmFsdWUgTmFtZT0nQVZBSUxBQkxF
-JyBWYWx1ZT0nMScvPgogIDxvcGM6RW51bWVyYXRlZFZhbHVlIE5hbWU9J0FM
-TE9DQVRFRCcgVmFsdWU9JzInLz4KICA8b3BjOkVudW1lcmF0ZWRWYWx1ZSBO
-YW1lPSdCUk9LRU4nIFZhbHVlPSc0Jy8+CiAgPG9wYzpFbnVtZXJhdGVkVmFs
-dWUgTmFtZT0nRVhQSVJFRCcgVmFsdWU9JzE2Jy8+CiAgPG9wYzpFbnVtZXJh
-dGVkVmFsdWUgTmFtZT0nTUVBU1VSRUQnIFZhbHVlPSczMicvPgogIDxvcGM6
-RW51bWVyYXRlZFZhbHVlIE5hbWU9J05FVycgVmFsdWU9JzY0Jy8+CiAgPG9w
-YzpFbnVtZXJhdGVkVmFsdWUgTmFtZT0nTk9UX1JFR0lTVEVSRUQnIFZhbHVl
-PScxMjgnLz4KICA8b3BjOkVudW1lcmF0ZWRWYWx1ZSBOYW1lPSdSRUNPTkRJ
-VElPTkVEJyBWYWx1ZT0nMjU2Jy8+CiAgPG9wYzpFbnVtZXJhdGVkVmFsdWUg
-TmFtZT0nVU5BTExPQ0FURScgVmFsdWU9JzUxMicvPgogIDxvcGM6RW51bWVy
-YXRlZFZhbHVlIE5hbWU9J1VOQVZBSUxBQkxFJyBWYWx1ZT0nMTAyNCcvPgog
-IDxvcGM6RW51bWVyYXRlZFZhbHVlIE5hbWU9J1VOS05PV04nIFZhbHVlPScy
-MDQ4Jy8+CiAgPG9wYzpFbnVtZXJhdGVkVmFsdWUgTmFtZT0nVVNFRCcgVmFs
-dWU9JzQwOTYnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
-]]>
-      </ByteString>
-    </Value>
-  </UAVariable>
   <!-- Default XML encoding of CutterStatusDataType -->
   <UAObject NodeId='ns=1;i=4248' BrowseName='Default XML'>
     <DisplayName>Default XML</DisplayName>
@@ -6649,56 +7548,6 @@ dWU9JzQwOTYnLz4KPC9vcGM6RW51bWVyYXRlZFR5cGU+
       </ListOfLocalizedText>
     </Value>
   </UAVariable>
-  <!-- Default Binary encoding of CuttingToolDefintionFormatDataType -->
-  <UAObject NodeId='ns=1;i=4251' BrowseName='Default Binary'>
-    <DisplayName>Default Binary</DisplayName>
-    <References>
-      <!-- HasEncoding - (Reverse) - CuttingToolDefintionFormatDataType ns=1;i=3687   -->
-      <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=3687</Reference>
-      <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
-      <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=4252   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=4252</Reference>
-    </References>
-  </UAObject>
-  <!-- Binary DataTypeDescription for CuttingToolDefintionFormatDataType -->
-  <UAVariable NodeId='ns=1;i=4252' BrowseName='1:CuttingToolDefintionFormatDataType' DataType='String' ParentNodeId='ns=1;i=2729'>
-    <DisplayName>CuttingToolDefintionFormatDataType</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
-      <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasProperty -  - DictionaryFragment ns=1;i=4253   -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=4253</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=2729   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2729</Reference>
-    </References>
-    <Value>
-      <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>CuttingToolDefintionFormatDataType</String>
-    </Value>
-  </UAVariable>
-  <!-- DictionaryFragment for CuttingToolDefintionFormatDataType -->
-  <UAVariable NodeId='ns=1;i=4253' BrowseName='1:DictionaryFragment' DataType='ByteString' ParentNodeId='ns=1;i=4252'>
-    <DisplayName>DictionaryFragment</DisplayName>
-    <References>
-      <!-- HasProperty - (Reverse) - Owner ns=1;i=4252   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4252</Reference>
-      <!-- HasTypeDefinition -  - PropertyType i=68   -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-    </References>
-    <Value>
-      <ByteString xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
-        <![CDATA[PG9wYzpFbnVtZXJhdGVkVHlwZSBOYW1lPSdDdXR0aW5nVG9vbERlZmludGlv
-bkZvcm1hdERhdGFUeXBlJyBMZW5ndGhJbkJpdHM9JzMyJyBCYXNlVHlwZT0n
-dWE6RXh0ZW5zaW9uT2JqZWN0Jz4KICA8b3BjOkVudW1lcmF0ZWRWYWx1ZSBO
-YW1lPSdYTUwnIFZhbHVlPScwJy8+CiAgPG9wYzpFbnVtZXJhdGVkVmFsdWUg
-TmFtZT0nRVhQUkVTUycgVmFsdWU9JzEnLz4KICA8b3BjOkVudW1lcmF0ZWRW
-YWx1ZSBOYW1lPSdURVhUJyBWYWx1ZT0nMicvPgogIDxvcGM6RW51bWVyYXRl
-ZFZhbHVlIE5hbWU9J1VOREVGSU5FRCcgVmFsdWU9JzMnLz4KPC9vcGM6RW51
-bWVyYXRlZFR5cGU+
-]]>
-      </ByteString>
-    </Value>
-  </UAVariable>
   <!-- Default XML encoding of CuttingToolDefintionFormatDataType -->
   <UAObject NodeId='ns=1;i=4254' BrowseName='Default XML'>
     <DisplayName>Default XML</DisplayName>
@@ -6765,54 +7614,6 @@ bWVyYXRlZFR5cGU+
           <Text>STATION</Text>
         </LocalizedText>
       </ListOfLocalizedText>
-    </Value>
-  </UAVariable>
-  <!-- Default Binary encoding of MTLocationDataType -->
-  <UAObject NodeId='ns=1;i=4257' BrowseName='Default Binary'>
-    <DisplayName>Default Binary</DisplayName>
-    <References>
-      <!-- HasEncoding - (Reverse) - MTLocationDataType ns=1;i=3688   -->
-      <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=3688</Reference>
-      <!-- HasTypeDefinition -  - DataTypeEncodingType i=76   -->
-      <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
-      <!-- HasDescription -  - HasDescription ns=1;i=4258   -->
-      <Reference ReferenceType='HasDescription'>ns=1;i=4258</Reference>
-    </References>
-  </UAObject>
-  <!-- Binary DataTypeDescription for MTLocationDataType -->
-  <UAVariable NodeId='ns=1;i=4258' BrowseName='1:MTLocationDataType' DataType='String' ParentNodeId='ns=1;i=2729'>
-    <DisplayName>MTLocationDataType</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
-      <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
-      <!-- HasProperty -  - DictionaryFragment ns=1;i=4259   -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=4259</Reference>
-      <!-- HasComponent - (Reverse) - Opc.Ua.MTConnect ns=1;i=2729   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2729</Reference>
-    </References>
-    <Value>
-      <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>MTLocationDataType</String>
-    </Value>
-  </UAVariable>
-  <!-- DictionaryFragment for MTLocationDataType -->
-  <UAVariable NodeId='ns=1;i=4259' BrowseName='1:DictionaryFragment' DataType='ByteString' ParentNodeId='ns=1;i=4258'>
-    <DisplayName>DictionaryFragment</DisplayName>
-    <References>
-      <!-- HasProperty - (Reverse) - Owner ns=1;i=4258   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4258</Reference>
-      <!-- HasTypeDefinition -  - PropertyType i=68   -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-    </References>
-    <Value>
-      <ByteString xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
-        <![CDATA[PG9wYzpFbnVtZXJhdGVkVHlwZSBOYW1lPSdNVExvY2F0aW9uRGF0YVR5cGUn
-IExlbmd0aEluQml0cz0nMzInIEJhc2VUeXBlPSd1YTpFeHRlbnNpb25PYmpl
-Y3QnPgogIDxvcGM6RW51bWVyYXRlZFZhbHVlIE5hbWU9J0NSSUInIFZhbHVl
-PScwJy8+CiAgPG9wYzpFbnVtZXJhdGVkVmFsdWUgTmFtZT0nUE9UJyBWYWx1
-ZT0nMScvPgogIDxvcGM6RW51bWVyYXRlZFZhbHVlIE5hbWU9J1NUQVRJT04n
-IFZhbHVlPScyJy8+Cjwvb3BjOkVudW1lcmF0ZWRUeXBlPg==
-]]>
-      </ByteString>
     </Value>
   </UAVariable>
   <!-- Default XML encoding of MTLocationDataType -->

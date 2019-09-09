@@ -172,8 +172,17 @@ class NodesetType < Type
       reference(refs, a, path)
       variable_property(a, owner, path)
     elsif a.is_a? Relation::Association
-      reference(refs, a, path)
-      component(a, owner, path)
+      puts "++++ Creating relation #{a.name} #{a.final_target.type.node_class}"
+      if a.final_target.type.node_class == 'Enumeration'
+        values = NodesetModel.ids.id_for("#{a.final_target.type.browse_name}/#{a.name}")
+        puts "+++++ Creating reference to #{a.final_target.type.browse_name}/#{a.name} #{values}"
+        node_reference(refs, a.name, 'HasProperty', values,
+                       "#{a.final_target.type.browse_name}/#{a.name}")
+        
+      else
+        reference(refs, a, path)
+        component(a, owner, path)
+      end
     end
   end
 
@@ -214,9 +223,10 @@ class NodesetType < Type
   def relationships(refs, owner, path = [])
     @relations.each do |a|
       if !a.is_attribute? and a.name
-        # puts "Relationship #{a.name} for #{owner.name}"
+        puts "*** Relationship #{a.name} for #{owner.name}"
         create_relationship(refs, a, owner, path)
       elsif a.source.type.id != @id
+        puts "*** Generate object reverse relation <<#{a.stereotype}>> #{@name}::#{a.name} -> #{a.source.type.name}"
         create_object_reference(refs, a)        
       elsif !a.is_attribute? 
         puts "!!! Cannot generate relation <<#{a.stereotype}>> #{@name}::#{a.name} #{a.source.type.name} -> #{a.final_target.type.name}"
@@ -345,7 +355,7 @@ class NodesetType < Type
 
     node << value_ele
 
-    create_binary_encoding(struct)
+    # create_binary_encoding(struct)
     create_xml_encoding
   end
 

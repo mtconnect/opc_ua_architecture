@@ -1,4 +1,4 @@
-% Generated 2019-06-06 16:44:57 -0700
+% Generated 2019-09-03 17:23:15 -0700
 \subsection{Assets} \label{model:Assets}
 \subsubsection{Defintion of \texttt{ MTAssetType}}
   \label{type:MTAssetType}
@@ -135,11 +135,11 @@ Has\-Property & Variable & Item\-Id & String & Property\-Type & Optional \\
 Has\-Property & Variable & Locus & String & Property\-Type & Optional \\
 Has\-Property & Variable & Manufactures & String[] & Property\-Type & Optional \\
 Has\-Property & Variable & MT\-Description & String & Property\-Type & Optional \\
-Has\-Component & Variable & Minutes\-Item\-Life & Double & MT\-Tool\-Life\-Type & Optional \\
+Has\-Component & Variable & Minutes\-Item\-Life & Base\-Data\-Type & MT\-Tool\-Life\-Type & Optional \\
 Has\-Component & Variable & Cutter\-Status & UInteger & MT\-Cutter\-Status\-Type & Optional \\
-Has\-Component & Variable & Part\-Count\-Item\-Life & Double & MT\-Tool\-Life\-Type & Optional \\
+Has\-Component & Variable & Part\-Count\-Item\-Life & Base\-Data\-Type & MT\-Tool\-Life\-Type & Optional \\
 Organizes & Object & <Folder> & MT\-Cutting\-Tool\-Measurement\-Type[] & Folder\-Type & Optional \\
-Has\-Component & Variable & Wear\-Item\-Life & Double & MT\-Tool\-Life\-Type & Optional \\
+Has\-Component & Variable & Wear\-Item\-Life & Base\-Data\-Type & MT\-Tool\-Life\-Type & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -267,9 +267,11 @@ DataType & \multicolumn{5}{|l|}{Double} \\
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of DataItemType (See \cite{UAPart8} Documentation)} \\
 HasSubtype & VariableType & \multicolumn{2}{l}{MTCuttingToolMeasurementType} & \multicolumn{2}{|l|}{See section \ref{type:MTCuttingToolMeasurementType}} \\
+Has\-Property & Variable & Data\-Type & Double & Property\-Type & Mandatory \\
 Has\-Property & Variable & Maximum & Double & Property\-Type & Optional \\
 Has\-Property & Variable & Minimum & Double & Property\-Type & Optional \\
 Has\-Property & Variable & Nominal & Double & Property\-Type & Optional \\
+Has\-Property & Variable & Value\-Rank & Int32 & Property\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -411,15 +413,15 @@ Has\-Property & Variable & Connection\-Code\-Machine\-Side & String & Property\-
 Has\-Property & Variable & Program\-Tool\-Group & String & Property\-Type & Optional \\
 Has\-Property & Variable & Program\-Tool\-Number & Int32 & Property\-Type & Optional \\
 Has\-Component & Variable & Cutter\-Status & UInteger & MT\-Cutter\-Status\-Type & Mandatory \\
-Has\-Component & Variable & Tool\-Life\-Part\-Count & Double & MT\-Tool\-Life\-Type & Optional \\
-Has\-Component & Variable & Tool\-Life\-Wear & Double & MT\-Tool\-Life\-Type & Optional \\
-Has\-Component & Variable & Process\-Feed\-Rate & Double & MT\-Cutting\-Tool\-Constraint\-Type & Optional \\
-Has\-Component & Variable & Recondition\-Count & Int32 & MT\-Recondition\-Count\-Type & Optional \\
+Has\-Component & Variable & Tool\-Life\-Part\-Count & Base\-Data\-Type & MT\-Tool\-Life\-Type & Optional \\
+Has\-Component & Variable & Tool\-Life\-Wear & Base\-Data\-Type & MT\-Tool\-Life\-Type & Optional \\
+Has\-Component & Variable & Process\-Feed\-Rate & Base\-Data\-Type & MT\-Cutting\-Tool\-Constraint\-Type & Optional \\
+Has\-Component & Variable & Recondition\-Count & Base\-Data\-Type & MT\-Recondition\-Count\-Type & Optional \\
 Organizes & Object & <Folder> & MT\-Cutting\-Item\-Type[] & Folder\-Type & Optional \\
-Has\-Component & Variable & Process\-Spindle\-Speed & Double & MT\-Cutting\-Tool\-Constraint\-Type & Optional \\
+Has\-Component & Variable & Process\-Spindle\-Speed & Base\-Data\-Type & MT\-Cutting\-Tool\-Constraint\-Type & Optional \\
 Organizes & Object & <Folder> & MT\-Cutting\-Tool\-Measurement\-Type[] & Folder\-Type & Optional \\
-Has\-Component & Variable & Location & Int32 & MT\-Location\-Type & Optional \\
-Has\-Component & Variable & Tool\-Life\-Minutes & Double & MT\-Tool\-Life\-Type & Optional \\
+Has\-Component & Variable & Location & Base\-Data\-Type & MT\-Location\-Type & Optional \\
+Has\-Component & Variable & Tool\-Life\-Minutes & Base\-Data\-Type & MT\-Tool\-Life\-Type & Optional \\
 \end{tabu}
 \end{table} 
 
@@ -475,9 +477,11 @@ DataType & \multicolumn{5}{|l|}{Int32} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of DataItemType (See \cite{UAPart8} Documentation)} \\
+Has\-Property & Variable & Data\-Type & Int32 & Property\-Type & Mandatory \\
 Has\-Property & Variable & Negative\-Overlap & Int32 & Property\-Type & Optional \\
 Has\-Property & Variable & Positive\-Overlap & Int32 & Property\-Type & Optional \\
 Has\-Property & Variable & Type & MT\-Location\-Data\-Type & Property\-Type & Mandatory \\
+Has\-Property & Variable & Value\-Rank & Int32 & Property\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -526,7 +530,9 @@ DataType & \multicolumn{5}{|l|}{Int32} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of DataItemType (See \cite{UAPart8} Documentation)} \\
+Has\-Property & Variable & Data\-Type & Int32 & Property\-Type & Mandatory \\
 Has\-Property & Variable & Maximum\-Count & Int32 & Property\-Type & Optional \\
+Has\-Property & Variable & Value\-Rank & Int32 & Property\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -554,9 +560,11 @@ DataType & \multicolumn{5}{|l|}{Double} \\
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of DataItemType (See \cite{UAPart8} Documentation)} \\
 Has\-Property & Variable & Count\-Direction & Count\-Direction\-Data\-Type & Property\-Type & Mandatory \\
+Has\-Property & Variable & Data\-Type & Double & Property\-Type & Mandatory \\
 Has\-Property & Variable & Initial & Double & Property\-Type & Optional \\
 Has\-Property & Variable & Limit & Double & Property\-Type & Optional \\
 Has\-Property & Variable & MT\-Type & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & Value\-Rank & Int32 & Property\-Type & Mandatory \\
 Has\-Property & Variable & Warning & Double & Property\-Type & Optional \\
 \end{tabu}
 \end{table} 

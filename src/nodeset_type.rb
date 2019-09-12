@@ -174,11 +174,12 @@ class NodesetType < Type
     elsif a.is_a? Relation::Association
       puts "++++ Creating relation #{a.name} #{a.final_target.type.node_class}"
       if a.final_target.type.node_class == 'Enumeration'
-        values = NodesetModel.ids.id_for("#{a.final_target.type.browse_name}/#{a.name}")
-        puts "+++++ Creating reference to #{a.final_target.type.browse_name}/#{a.name} #{values}"
-        node_reference(refs, a.name, 'HasProperty', values,
-                       "#{a.final_target.type.browse_name}/#{a.name}")
-        
+        target_name = "#{a.final_target.type.browse_name}/#{a.name}"
+        raise "Cannot find node id for #{target_name} when creating relation" unless NodesetModel.ids.has_id?(target_name)
+        values = NodesetModel.ids.id_for(target_name)
+        rel_type = a.stereotype ? a.stereotype : 'HasProperty'
+        puts "+++++ Creating reference to #{target_name} <<#{rel_type}>> #{values}"
+        node_reference(refs, a.name, rel_type, values, target_name)
       else
         reference(refs, a, path)
         component(a, owner, path)
@@ -225,7 +226,7 @@ class NodesetType < Type
       if !a.is_attribute? and a.name
         puts "*** Relationship #{a.name} for #{owner.name}"
         create_relationship(refs, a, owner, path)
-      elsif a.source.type.id != @id
+      elsif a.source.type.id != @id # When this is a reverse relationship for Object instantiation
         puts "*** Generate object reverse relation <<#{a.stereotype}>> #{@name}::#{a.name} -> #{a.source.type.name}"
         create_object_reference(refs, a)        
       elsif !a.is_attribute? 

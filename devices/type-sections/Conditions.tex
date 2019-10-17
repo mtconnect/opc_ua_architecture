@@ -6,13 +6,13 @@ The Condition model is different from the Event model for a lot of the same reas
 
 In MTConnect, the \gls{MTCondition} keeps the active state as well. In streaming (\gls{sample}), the \glspl{MTCondition} like an event stream. With a \gls{current}, all active conditions are reported, even if there are multiple active conditions for a given type. Usually, an \gls{MTEvent} can only have one value at a time, MTConnect \gls{MTCondition} is different and can have multiple values, as in the case where there are multiple system alarms for a component or a syntax errors in a part program.
 
-The Condition uses the attribute \xml{nativeCode} as you use the BranchId in the UA Condition. Each unique \xml{nativeCode} is consider another activation of the Condition. Only when a \mtmodel{Normal} with no \xml{nativeCode} cleared all active Conditions, or each are cleared separately (going back to a Normal state), does the condition report Normal when for a \mtmodel{current} request.
+Each unique \xml{nativeCode} is consider another activation of the Condition. Only when a \mtmodel{Normal} with no \xml{nativeCode} cleared all active Conditions, or each are cleared separately (going back to a Normal state), does the condition report Normal when for a \mtmodel{current} request.
 
 \gls{MTCondition} provides a stateful way of managing \mtmodel{Alarms} in a similar way to OPC UA, but since we are not addressing the requirements of an interactive model (we are read-only), we are only reporting on the states of the conditions. 
 
 The documentation for the condition behavior in MTConnect can be found in Section 5.7 and 5.8 of \cite{MTCPart3} and an overview in \cite{MTCPart2}.
 
-The MTConnect Data Item with Category of \mtmodel{CONDITION} are mapped to the OPC UA \glspl{ConditionType}  in \cite{UAPart9} with a \uamodel{TwoStateVariableType} that represents the current state of all the active \uaterm{branches} of this \mtmodel{Condition}.
+The MTConnect Data Item with Category of \mtmodel{CONDITION} are mapped to the OPC UA \glspl{ConditionType} in \cite{UAPart9} with a \uamodel{TwoStateVariableType} that represents the current state of all active \mtmodel{Condition}.
 
 %%% Local Variables:
 %%% mode: latex

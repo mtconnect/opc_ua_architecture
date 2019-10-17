@@ -73,6 +73,7 @@
 \usepackage[titletoc,title]{appendix}
 \usepackage{rotating}
 \usepackage{graphicx}
+\usepackage[normalem]{ulem}
 
 \renewcommand{\appendixname}{Annex}
 

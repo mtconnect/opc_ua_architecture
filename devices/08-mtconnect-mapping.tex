@@ -587,8 +587,6 @@ The \mtmodel{PATH_POSITION} is mapped to the \mtuatype{MTThreeSpaceSampleType} t
 
 The \mtuatype{MTThreeSpaceSampleType} uses the \mtuatype{ThreeSpacePositionDataType} that contains an \mtterm{X, Y, and Z} \uamodel{Field}. If one of the dimensions cannot be provided, it must be set to \uamodel{NaN}.
 
-The two \mtmodel{Conditions} in this component capable of branching. The model will use the \uamodel{BranchId} in this case. This occurs when there are multiple simultaneous problems with either the logic or motion program in the controller. These cases will be discussed in the section on the streaming data.
-
 \begin{figure}[ht]
   \centering
   \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/path-component.png}
@@ -853,7 +851,7 @@ The \mtuatype{MTConditionType} has a \gls{Property} called \uamodel{ActiveState}
           <Warning sequence="503" timestamp="2018-10-31T20:45:19.9981Z" dataItemId="afb596b0" type="AMPERAGE" compositionId="b7792870" name="Soverload" qualifier="HIGH" nativeCode="MOT-WARN">Spindle Motor Warning</Warning> |\label{line:amp-503}|
           <Fault sequence="652" timestamp="2018-10-31T20:49:19.9981Z" dataItemId="afb596b0" type="AMPERAGE" compositionId="b7792870" name="Soverload" qualifier="HIGH" nativeCode="MOT-OVR">Spindle Motor Overload</Fault> |\label{line:amp-652}|
         </Condition>
-\end{lstlisting}
+\end{lstlisting} %
 
 The instance of the \mtuatype{MTConditionType} will contain the last state of the \gls{Condition} as most recently observed. Each time an MTConnect \gls{MTCondition} activates or deactivates, an \gls{Condition} \gls{Event} will be created associated with the instance if the \mtuatype{MTConditionType} \gls{NodeId}. 
 
@@ -889,47 +887,43 @@ The \gls{ConditionType} and \uamodel{EventType} properties will be set as follow
   \item[\ldots] The remaining \glspl{Property} will be set from the \gls{xml} attributes of the same name.
 \end{description}
 
-\paragraph{MTConnect Condition Branching Example}
+\paragraph{MTConnect Condition Parallel Activation}
 
-MTConnect allows for multiple \mtmodel{Condition}s of the same type to be active at the same time. This is similar to the concept of \uaterm{Branching} in OPC UA. In MTConnect the conditions can be differentiated by their \mtmodel{nativeCode} or \gls{CDATA}. In the following example, the attribute \mtmodel{nativeCode} is used to indicate the association to the same \uaterm{Branch} and is mapped to a branch id as illustrated in Figure~\ref{fig:condition-branching}. In this diagram there are three branches--0, 1, and 2--that are represent PLC alarms and are mapped to the \mtmodel{LOGIC_PROGRAM}. Each of these unique \mtmodel{nativeCode}s is mapped to a unique branch ID and is tacked separately. Only when the final condition transitions to normal, indicated by a \mtterm{Normal} with no \mtterm{nativeCode}, is the \gls{MTCondition} considered cleared and completely inactive.
+MTConnect allows for multiple \mtmodel{Condition}s of the same type to be active at the same time. In MTConnect the conditions can be differentiated by their \mtmodel{nativeCode} or \gls{CDATA}. In the following example, the attribute \mtmodel{nativeCode} is used to indicate the independent activations of the \mtmodel{Condition}. In this diagram, there are three activation--0, 1, and 2--of the PLC alarms and are associated with the \mtmodel{LOGIC_PROGRAM}. Each of the unique \mtmodel{nativeCode}s is mapped an \uamodel{Event}  and tracked separately. Each activation of a \mtmodel{Condition} sends another \uamodel{Event} and tracks the states through the \uamodel{Event} system.
 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/condition-branching.png}
-  \caption{Condition Branching}
-  \label{fig:condition-branching}
-\end{figure}
+The \mtmodel{Condition} is instantiated in the \uamodel{AddressSpace} as an \uamodel{Object} and acts as the source of the \uamodel{Event}s when they are sent. The individual activation and deactivations are tracked using the \uamodel{Event} mechanism as described in \cite{UAPart3} and \cite{UAPart4}.
 
-Table~\ref{table:ua-condition-states} represents the state transitions of the key OPC UA \uamodel{Condition} model and the \mtuatype{MTConditionType}. The text that follows will refer to this table and the MTConnect \gls{xml} to illustrate the expected behavior.
+\sout{Table~\ref{table:ua-condition-states} represents the state transitions of the key OPC UA \uamodel{Condition} model and the \mtuatype{MTConditionType}. The text that follows will refer to this table and the MTConnect \gls{xml} to illustrate the expected behavior.}
 
 \begin{table}[ht]
-\centering 
+  \centering 
   \caption{\mtuamodel{LogicProgramCondition} States}
   \label{table:ua-condition-states}
-\fontsize{9pt}{11pt}\selectfont
-\tabulinesep=3pt
-\newcounter{condrownumbers}
-\newcommand\rownumber{\stepcounter{condrownumbers}\arabic{condrownumbers}}
-\begin{tabu} to 6in {|X[0.25,r]|X[r]|X|X|X|X[3]|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Seq} & {Branch Id} & {Active} & {Retain} & {Native Code} & {Message} \\
-\tabucline[1.5pt]{}
-\rownumber & NULL & false & false & NULL & NULL \\
-\rownumber & 0 & true & true & PLC--154 & PIN SENSOR MALF \\
-\rownumber & 1 & true & true & PLC--155 & WORK NO. ERROR(0 OR >9999) \\
-\rownumber & 2 & true & true & PLC--157 & WARMING UP!!! \\
-\rownumber & 0 & false & false & PLC--154 & PIN SENSOR MALF \\
-\rownumber & 2 & false & false & PLC--157 & WARMING UP!!! \\
-\rownumber & 1 & false & false & PLC--155 & WORK NO. ERROR(0 OR >9999) \\
-\rownumber & NULL & false & false & NULL & NULL \\
-\end{tabu}
+  \fontsize{9pt}{11pt}\selectfont
+  \tabulinesep=3pt
+  \newcounter{condrownumbers}
+  \newcommand\rownumber{\stepcounter{condrownumbers}\arabic{condrownumbers}}
+  \begin{tabu} to 6in {|X[0.25,r]|X|X|X|X[3]|} \everyrow{\hline}
+    \hline
+    \rowfont\bfseries {Seq} & {Active} & {Retain} & {Native Code} & {Message} \\
+    \tabucline[1.5pt]{}
+    \rownumber & false & false & NULL & NULL \\
+    \rownumber & true & true & PLC--154 & PIN SENSOR MALF \\
+    \rownumber & true & true & PLC--155 & WORK NO. ERROR(0 OR >9999) \\
+    \rownumber & true & true & PLC--157 & WARMING UP!!! \\
+    \rownumber & false & false & PLC--154 & PIN SENSOR MALF \\
+    \rownumber & false & false & PLC--157 & WARMING UP!!! \\
+    \rownumber & false & false & PLC--155 & WORK NO. ERROR(0 OR >9999) \\
+    \rownumber & false & false & NULL & NULL \\
+  \end{tabu}
 \end{table}
+
 
 MTConnect uses the \mtmodel{nativeCode} to determine the uniqueness of each activation of the Condition. If the \mtterm{Path} component has a \gls{MTDataItem} with a \gls{type} of \mtmodel{LOGIC_PROGRAM} and there listing~\ref{lst:controller-component}.
 
 The initial state of the system is given in Table~\ref{table:ua-condition-states} Row~1. When the condition is inactive, the \uamodel{AciveState} property is \uamodel{false} and the \uamodel{Retain} flag is also set to \uamodel{false}. This corresponds to Listing~\ref{lst:path-logic-program-condition-0} and the \mtmodel{Normal} initial condition state with no \mtmodel{nativeCode} indicating there are no active conditions.
 
-\begin{lstlisting}[firstnumber=last,escapechar=|,%
+\begin{lstlisting}[firstnumber=1,escapechar=|,%
     caption={Path Logic Program Initial Normal State},label={lst:path-logic-program-condition-0}]
   <ComponentStream componentId="a4a7bdf0" component="Path" name="P1">
     <Condition>
@@ -938,7 +932,7 @@ The initial state of the system is given in Table~\ref{table:ua-condition-states
   </ComponentStream>
 \end{lstlisting}
 
-The first fault occurred with the \mtmodel{nativeCode} \mtmodel{PLC-154} and creates the first branch as shown in Listing~\ref{lst:path-logic-program-condition-1}. If there is only one branch, then the \uamodel{BranchId} will not be required and may remain \uamodel{NULL}. In this example we are setting the \uamodel{BranchId} to 1 as shown in Row~2 of Table~\ref{table:ua-condition-states}. A \mtmodel{Fault} indicates a situation where the piece of equipment is no longer able to continue functioning and needs manual intervention.
+The first fault occurred with the \mtmodel{nativeCode} \mtmodel{PLC-154} and creates the \uamodel{Event} dispatch as shown in Listing~\ref{lst:path-logic-program-condition-1}. A \mtmodel{Fault} indicates a situation where the piece of equipment is no longer able to continue functioning and needs manual intervention.
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Path Logic Program First Fault PLC-154},label={lst:path-logic-program-condition-1}]
@@ -949,7 +943,7 @@ The first fault occurred with the \mtmodel{nativeCode} \mtmodel{PLC-154} and cre
   </ComponentStream>
 \end{lstlisting}
 
-The second \mtmodel{Fault} is given in Listing~\ref{lst:path-logic-program-condition-2} where a second PLC alarm is active. The native code is different than the previous condition, so a second branch must be created. The branch will assigned the number 1 for this instance and a OPC UA branch will be activated as illustrated in Row~3 of Table~\ref{table:ua-condition-states}. 
+The second \mtmodel{Fault} is given in Listing~\ref{lst:path-logic-program-condition-2} where a second PLC alarm is active. The native code is different than the previous condition, so a second \uamodel{Event} must be created and sent as a unique activation of this \mtmodel{Condition}.
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Path Logic Program Second Fault PLC-155},label={lst:path-logic-program-condition-2}]
@@ -960,7 +954,7 @@ The second \mtmodel{Fault} is given in Listing~\ref{lst:path-logic-program-condi
   </ComponentStream>
 \end{lstlisting}
 
-The warning in Listing~\ref{lst:path-logic-program-condition-3} indicates the machine is warming up and other operations are disabled. This condition has another \mtmodel{nativeCode} and therefor, like the previous condition, must create another branch. In this instance the \uamodel{BranchId} will be 2. The \mtmodel{Warning} will be represented in UA as a \uamodel{severity} and represents something that is of concern but not stopping the process. The warning is given by Row~4 of Table~\ref{table:ua-condition-states}.
+The warning in Listing~\ref{lst:path-logic-program-condition-3} indicates the machine is warming up and other operations are disabled. This condition has another \mtmodel{nativeCode} and therefor, like the previous condition, another \uamodel{Event} must sent. The \mtmodel{Warning} will be represented in UA as a \uamodel{severity} and represents something that is of concern but not stopping the process. The warning is given by Row~4 of Table~\ref{table:ua-condition-states}.}
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Path Logic Program Warning PLC-157},label={lst:path-logic-program-condition-3}]
@@ -993,7 +987,7 @@ In Listing~\ref{lst:path-logic-program-condition-5}, when the sensor malfunction
   </ComponentStream>
 \end{lstlisting}
 
-Listing~\ref{lst:path-logic-program-condition-6} represents the final \mtmodel{Normal} transition that clears all the currently active conditions and indicates that all the \mtmodel{Conditions} are now inactive or cleared and back to a \mtmodel{Normal} state. Row~7 of Table~\ref{table:ua-condition-states} shows the clearing of the final branch and then we clear everything in Row~8.
+Listing~\ref{lst:path-logic-program-condition-6} represents the final \mtmodel{Normal} transition that clears all the currently active conditions and indicates that all the \mtmodel{Conditions} are now inactive or cleared and back to a \mtmodel{Normal} state. Row~7 of Table~\ref{table:ua-condition-states} shows the clearing of the final activation and then we clear everything in Row~8.
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Path Logic Program Back to Normal, All Clear},label={lst:path-logic-program-condition-6}]

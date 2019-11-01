@@ -189,7 +189,7 @@ The rules for \gls{Composition} elements MUST be applied in strict sequence as f
   \item The type is placed is the \mtmodel{MTTypeName} \gls{Property}.
 \end{enumerate}
 
-\subsubsection{\mtmodel{DataItem} \uamodel{HasTypeDefinition} and \gls{BrowseName} Conventions}
+\subsubsection{\mtmodel{DataItem} \uamodel{HasTypeDefinition} and \uamodel{BrowseName} Conventions}
 \label{sec:data-item-conventions}
 
 The MTConnect \gls{MTDataItem} represents multiple OPC UA \uamodel{DataVariableType}s as well as UA \uamodel{ConditionType}s as described in parts \cite{UAPart8} and \cite{UAPart9} respectively. The mapping rules MUST be applied in strict sequence as follows:
@@ -292,7 +292,7 @@ In Table~\ref{table:mtconnect-to-ua-eu-mapping}, the mapping between the MTConne
 
 The \uamodel{namespaceUri} will be set to \url{http://www.opcfoundation.org/UA/units/un/cefact} as specified in \cite{UAPart8} and the values from Table~\ref{table:mtconnect-to-ua-eu-mapping} must be used..
 
-The \mtmodel{MILLIMETER_3D} unit is special since it will be represented by the \mtuatype{MTThreeSpaceSampleType}. The individual values of the  \mtuadatatype{ThreeSpacePositionDataType} will be given in $millimeters$ and a \uamodel{displayName} of $mm(\mathbb{R}^{3})$; the \uamodel{EngineeringUnits} will be provided for consistency. The \uamodel{EURange} will not work since it cannot represent three space volumetric constraints and the \uamodel{EURange} \gls{Property} will not be created.
+The \mtmodel{MILLIMETER_3D} unit is special since it will be represented by the \mtuatype{MTThreeSpaceSampleType}. The individual values of the  \mtuadatatype{ThreeSpaceSampleDataType} will be given in $millimeters$ and a \uamodel{displayName} of $mm(\mathbb{R}^{3})$; the \uamodel{EngineeringUnits} will be provided for consistency. The \uamodel{EURange} will not work since it cannot represent three space volumetric constraints and the \uamodel{EURange} \gls{Property} will not be created.
 
 \begin{table}[ht]
   \centering 
@@ -572,7 +572,7 @@ The MTConnect information model does not differentiate between the two controlle
         </Controller>
 \end{lstlisting}
 
-The \mtmodel{Controller} has two \mtmodel{DataItems}, \mtmodel{Message} and \mtmodel{EmergencyStop} as shown in Figure~\ref{fig:controller-component}. The \mtuatype{MTMessageType} is an \uamodel{Variable} where the data type is a \mtuatype{MessageEventDataType}.
+The \mtmodel{Controller} has two \mtmodel{DataItems}, \mtmodel{Message} and \mtmodel{EmergencyStop} as shown in Figure~\ref{fig:controller-component}. The \mtuatype{MTMessageType} is an \uamodel{Variable} where the data type is a \mtuatype{MessageDataType}.
 
 \begin{figure}[ht]
   \centering
@@ -585,7 +585,7 @@ Figure~\ref{fig:path-component} illustrates the \mtmodel{Path} component. Many o
 
 The \mtmodel{PATH_POSITION} is mapped to the \mtuatype{MTThreeSpaceSampleType} that represents a spacial coordinate in three space ($\mathbb{R}^{3}$) with each coordinate given in millimeters. The \uamodel{EngineeringUnits} for this type will therefor always be mapped to \uamodel{MMT} in the \uamodel{UNECE} conventions.
 
-The \mtuatype{MTThreeSpaceSampleType} uses the \mtuatype{ThreeSpacePositionDataType} that contains an \mtterm{X, Y, and Z} \uamodel{Field}. If one of the dimensions cannot be provided, it must be set to \uamodel{NaN}.
+The \mtuatype{MTThreeSpaceSampleType} uses the \mtuatype{ThreeSpaceSampleDataType} that contains an \mtterm{X, Y, and Z} \uamodel{Field}. If one of the dimensions cannot be provided, it must be set to \uamodel{NaN}.
 
 \begin{figure}[ht]
   \centering
@@ -837,27 +837,32 @@ The \uamodel{SourceTimestamp} and \uamodel{Quality} will be handled as described
 
 \FloatBarrier
 
-\subsubsection{Conditions}
+\subsubsection{Conditions}\label{sec:mapping-conditions}
 
-\glspl{MTCondition} are represented by the \mtuatype{MTConditionType} that is a subtype of the \uamodel{ConditonType}. The MTConnect \glspl{MTCondition} are a representation of the  state of various alarms and health of a \gls{MTComponent} of the machine. There are three states for a condition in MTConnect, they are \mtmodel{Normal}, \mtmodel{Warning}, and \mtmodel{Fault} and have the semantic meaning \textit{operating normally}, \textit{a situation has been observed, but may self-correct}, and \textit{a failure has occured and needs manual intervention}. More information can be found in MTConnect \cite{MTCPart2} and \cite{MTCPart3} of the MTConnect Standard for Condition modeling and behavior.
+\glspl{MTCondition} are represented by the \mtuatype{MTConditionType} that is a subtype of the \uamodel{BaseObjectType}. The MTConnect \glspl{MTCondition} are a representation of the state of various alarms and health of a \gls{MTComponent} of the machine. There are three states for a condition in MTConnect, they are \mtmodel{Normal}, \mtmodel{Warning}, and \mtmodel{Fault} and have the semantic meaning \textit{operating normally}, \textit{a situation has been observed, but may self-correct}, and \textit{a failure has occured and needs manual intervention} respectively. More information can be found in MTConnect \cite{MTCPart2} and \cite{MTCPart3} of the MTConnect Standard for Condition modeling and behavior.
 
-The \mtuatype{MTConditionType} has a \gls{Property} called \uamodel{ActiveState} that represents if there are any \mtmodel{Warnings} or \mtmodel{Faults} currently active. The \uamodel{ActiveState} is an OPC UA \uamodel{TwoStateVariableType} \uamodel{Variable} defined in \cite{UAPart8}. When a Condition is \mtmodel{Normal}, the \uamodel{ActiveState} is \uamodel{False}, otherwise when either a \mtmodel{Warning} or \mtmodel{Fault} is present, the \uamodel{ActiveState} is \uamodel{True}.
+When a \gls{MTCondition} becomes active in MTConnect, it will transition from \mtmodel{Normal} to \mtmodel{Warning} or \mtmodel{Fault}. The transition will cause an \uamodel{Event} to be dispatched of the \mtuamodel{MTConditionEventType}. The \mtuatype{MTConditionEventType} has a \gls{Property} called \uamodel{ActiveState} that represents if there are any \mtmodel{Warnings} or \mtmodel{Faults} currently active. The \uamodel{ActiveState} is an OPC UA \uamodel{TwoStateVariableType} \uamodel{Variable} defined in \cite{UAPart8}. When a Condition is \mtmodel{Normal}, the \uamodel{ActiveState} is \uamodel{False}, otherwise when either a \mtmodel{Warning} or \mtmodel{Fault} is present, the \uamodel{ActiveState} is \uamodel{True}.
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Rotary C Component Stream},label={lst:rotary-component-stream}]
-      <ComponentStream componentId="zf476090" component="Rotary" name="C" nativeName="S">
-        <Condition>
-          <Normal sequence="201" timestamp="2018-10-31T20:34:19.9981Z" dataItemId="afb596b0" type="AMPERAGE" compositionId="b7792870" name="Soverload"/> |\label{line:amp-201}|
-          <Warning sequence="503" timestamp="2018-10-31T20:45:19.9981Z" dataItemId="afb596b0" type="AMPERAGE" compositionId="b7792870" name="Soverload" qualifier="HIGH" nativeCode="MOT-WARN">Spindle Motor Warning</Warning> |\label{line:amp-503}|
-          <Fault sequence="652" timestamp="2018-10-31T20:49:19.9981Z" dataItemId="afb596b0" type="AMPERAGE" compositionId="b7792870" name="Soverload" qualifier="HIGH" nativeCode="MOT-OVR">Spindle Motor Overload</Fault> |\label{line:amp-652}|
-        </Condition>
+<ComponentStream componentId="zf476090" component="Rotary" name="C" nativeName="S">
+  <Condition>
+    <Normal sequence="201" timestamp="2018-10-31T20:34:19.9981Z" dataItemId="afb596b0" type="AMPERAGE" compositionId="b7792870" name="Soverload"/> |\label{line:amp-201}|
+    <Warning sequence="503" timestamp="2018-10-31T20:45:19.9981Z" dataItemId="afb596b0" type="AMPERAGE" compositionId="b7792870" name="Soverload" qualifier="HIGH" nativeCode="MOT-WARN">Spindle Motor Warning</Warning> |\label{line:amp-503}|
+    <Fault sequence="652" timestamp="2018-10-31T20:49:19.9981Z" dataItemId="afb596b0" type="AMPERAGE" compositionId="b7792870" name="Soverload" qualifier="HIGH" nativeCode="MOT-OVR">Spindle Motor Overload</Fault> |\label{line:amp-652}|
+  </Condition>
+  ...
 \end{lstlisting} %
 
-The instance of the \mtuatype{MTConditionType} will contain the last state of the \gls{Condition} as most recently observed. Each time an MTConnect \gls{MTCondition} activates or deactivates, an \gls{Condition} \gls{Event} will be created associated with the instance if the \mtuatype{MTConditionType} \gls{NodeId}. 
+Each time an MTConnect \gls{MTCondition} activates or deactivates, an \gls{Condition} \gls{Event} will be reported associated with the meta-data instance of the \mtuatype{MTConditionType} in the address space using the \gls{NodeId} as the \uamodel{SourceId}. 
 
-\mtuatype{MTConditionType} is a subtype of the \gls{Event} and therefor is instantiated in the address space as an \gls{Object} to maintain the \uamodel{ActiveState} as well as each occurance of the \gls{MTCondition} results in a instance of the \uamodel{Event} being published as specified in \cite{UAPart3} and \cite{UAPart9}.
+\mtuatype{MTConditionEventType} is a subtype of the \gls{Event} and is never instantiated in the address space as an \gls{Object}.
 
 \paragraph{Mapping Conditions}
+
+
+
+Every time a condition is reported as a separate instance, as described in \cite{MTCPart3}, it is consider another activation of the \mtmodel{Condition} and will be associated with a unique \uamodel{ConditionId} as the specific \gls{NodeId} of the \mtuamodel{MTConditionEventType}. Only when a \mtmodel{Normal} with no \xml{nativeCode} cleared all active Conditions, or each are cleared separately (going back to a Normal state), does the condition report Normal when for a \mtmodel{current} request. When all active \glspl{MTCondition} are cleared, an \mtuamodel{MTConditionEventType} for each active \uamodel{Condition} must be reported with the \mtmodel{ActiveState} set to \uamodel{False} and the \uamodel{Retain} set to \uamodel{False}.
 
 The \gls{ConditionType} and \uamodel{EventType} properties will be set as follows:
 
@@ -891,13 +896,13 @@ The \gls{ConditionType} and \uamodel{EventType} properties will be set as follow
 
 MTConnect allows for multiple \mtmodel{Condition}s of the same type to be active at the same time. In MTConnect the conditions can be differentiated by their \mtmodel{nativeCode} or \gls{CDATA}. In the following example, the attribute \mtmodel{nativeCode} is used to indicate the independent activations of the \mtmodel{Condition}. In this diagram, there are three activation--0, 1, and 2--of the PLC alarms and are associated with the \mtmodel{LOGIC_PROGRAM}. Each of the unique \mtmodel{nativeCode}s is mapped an \uamodel{Event}  and tracked separately. Each activation of a \mtmodel{Condition} sends another \uamodel{Event} and tracks the states through the \uamodel{Event} system.
 
-The \mtmodel{Condition} is instantiated in the \uamodel{AddressSpace} as an \uamodel{Object} and acts as the source of the \uamodel{Event}s when they are sent. The individual activation and deactivations are tracked using the \uamodel{Event} mechanism as described in \cite{UAPart3} and \cite{UAPart4}.
+The \mtmodel{Condition} is instantiated in the \uamodel{AddressSpace} as an \mtuamodel{MTConditionType} and acts as the source of the \uamodel{Event}s when they are sent. The individual activation and deactivations are tracked using the \uamodel{Event} mechanism as described in \cite{UAPart3} and \cite{UAPart4}. All \uamodel{Event}s will have the same \uamodel{SourceId} since they are all produced from the same \mtuamodel{MTConditionType} instance.
 
-\sout{Table~\ref{table:ua-condition-states} represents the state transitions of the key OPC UA \uamodel{Condition} model and the \mtuatype{MTConditionType}. The text that follows will refer to this table and the MTConnect \gls{xml} to illustrate the expected behavior.}
+Table~\ref{table:ua-condition-states} represents the state transitions of the key OPC UA \uamodel{Condition} model and the reporting of \mtuatype{MTConditionEventType}. The text that follows will refer to this table and the MTConnect \gls{xml} to illustrate the expected behavior. Figure~\ref{fig:condition-branching} gives a visual representation of the event reporting.
 
 \begin{table}[ht]
   \centering 
-  \caption{\mtuamodel{LogicProgramCondition} States}
+  \caption{\texttt{LogicProgramCondition} States}
   \label{table:ua-condition-states}
   \fontsize{9pt}{11pt}\selectfont
   \tabulinesep=3pt
@@ -918,8 +923,14 @@ The \mtmodel{Condition} is instantiated in the \uamodel{AddressSpace} as an \uam
   \end{tabu}
 \end{table}
 
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=1.0\textwidth]{diagrams/mtconnect-mapping/condition-branching.png}
+  \caption{Parallel Conditions}
+  \label{fig:condition-branching}
+\end{figure}
 
-MTConnect uses the \mtmodel{nativeCode} to determine the uniqueness of each activation of the Condition. If the \mtterm{Path} component has a \gls{MTDataItem} with a \gls{type} of \mtmodel{LOGIC_PROGRAM} and there listing~\ref{lst:controller-component}.
+For this example, MTConnect uses the \mtmodel{nativeCode} to determine the uniqueness of each activation of the Condition. If the \mtterm{Path} component has a \gls{MTDataItem} with a \gls{type} of \mtmodel{LOGIC_PROGRAM} and given in listing~\ref{lst:controller-component}, the \gls{MTDataItem} will be represented in the OPC UA model as a instance of the \mtuamodel{MTConditionType} with the attributes presented as properties.
 
 The initial state of the system is given in Table~\ref{table:ua-condition-states} Row~1. When the condition is inactive, the \uamodel{AciveState} property is \uamodel{false} and the \uamodel{Retain} flag is also set to \uamodel{false}. This corresponds to Listing~\ref{lst:path-logic-program-condition-0} and the \mtmodel{Normal} initial condition state with no \mtmodel{nativeCode} indicating there are no active conditions.
 
@@ -932,7 +943,7 @@ The initial state of the system is given in Table~\ref{table:ua-condition-states
   </ComponentStream>
 \end{lstlisting}
 
-The first fault occurred with the \mtmodel{nativeCode} \mtmodel{PLC-154} and creates the \uamodel{Event} dispatch as shown in Listing~\ref{lst:path-logic-program-condition-1}. A \mtmodel{Fault} indicates a situation where the piece of equipment is no longer able to continue functioning and needs manual intervention.
+The first fault occurred with the \mtmodel{nativeCode} \mtmodel{PLC-154} and reports an \uamodel{Event} \uamodel{MTConditionEventType} as shown in Listing~\ref{lst:path-logic-program-condition-1}. A \mtmodel{Fault} indicates a situation where the piece of equipment is no longer able to continue functioning and needs manual intervention.
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Path Logic Program First Fault PLC-154},label={lst:path-logic-program-condition-1}]
@@ -943,7 +954,7 @@ The first fault occurred with the \mtmodel{nativeCode} \mtmodel{PLC-154} and cre
   </ComponentStream>
 \end{lstlisting}
 
-The second \mtmodel{Fault} is given in Listing~\ref{lst:path-logic-program-condition-2} where a second PLC alarm is active. The native code is different than the previous condition, so a second \uamodel{Event} must be created and sent as a unique activation of this \mtmodel{Condition}.
+The second \mtmodel{Fault} is given in Listing~\ref{lst:path-logic-program-condition-2} where a second PLC alarm is active. The native code is different than the previous condition, so a second \uamodel{MTConditionEventType} must be reported with a unique \uamodel{ConditionId} indicated using the \uamodel{NodeId} in the \uamodel{Event}. 
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Path Logic Program Second Fault PLC-155},label={lst:path-logic-program-condition-2}]
@@ -954,7 +965,7 @@ The second \mtmodel{Fault} is given in Listing~\ref{lst:path-logic-program-condi
   </ComponentStream>
 \end{lstlisting}
 
-The warning in Listing~\ref{lst:path-logic-program-condition-3} indicates the machine is warming up and other operations are disabled. This condition has another \mtmodel{nativeCode} and therefor, like the previous condition, another \uamodel{Event} must sent. The \mtmodel{Warning} will be represented in UA as a \uamodel{severity} and represents something that is of concern but not stopping the process. The warning is given by Row~4 of Table~\ref{table:ua-condition-states}.}
+The warning in Listing~\ref{lst:path-logic-program-condition-3} indicates the machine is warming up and other operations are disabled. This condition has another \mtmodel{nativeCode} and therefor, like the previous condition, another \uamodel{Event} must sentreported. The \mtmodel{Warning} will be represented in UA as a \uamodel{severity} and represents something that is of concern but not stopping the process. The warning is given by Row~4 of Table~\ref{table:ua-condition-states}.
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Path Logic Program Warning PLC-157},label={lst:path-logic-program-condition-3}]
@@ -965,7 +976,7 @@ The warning in Listing~\ref{lst:path-logic-program-condition-3} indicates the ma
   </ComponentStream>
 \end{lstlisting}
 
-In Listing~\ref{lst:path-logic-program-condition-4}, when the sensor malfunction is reset, the first condition will be returned to an inactive state. This is indicated by \mtmodel{Normal} and a native code of \mtmodel{PLC-154}. Since the other two conditions are still active, the \mtuatype{MTConditionType} is not inactive. In MTConnect, a \mtmodel{current} request would indicate that there is a Fault and a Warning currently active for this \mtmodel{Condition}. The clearing of this individual \mtmodel{Fault} is also represented on Row~5 of Table~\ref{table:ua-condition-states}.
+In Listing~\ref{lst:path-logic-program-condition-4}, when the sensor malfunction is reset, the first condition will be returned to an inactive state. This is indicated by \mtmodel{Normal} and a native code of \mtmodel{PLC-154}. Since the other two conditions are still active. In MTConnect, a \mtmodel{current} request would indicate that there is a Fault and a Warning currently active for this \mtmodel{Condition}. The clearing of this individual \mtmodel{Fault} is also represented on Row~5 of Table~\ref{table:ua-condition-states}. An \mtuamodel{MTConditionEventType} \uamodel{Event} will be reported with its \mtmodel{ActiveState} set to \uamodel{False} and \uamodel{Retain} property set to \uamodel{False}.
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Path Logic Program Clear Fault of PLC-154},label={lst:path-logic-program-condition-4}]
@@ -976,7 +987,7 @@ In Listing~\ref{lst:path-logic-program-condition-4}, when the sensor malfunction
   </ComponentStream>
 \end{lstlisting}
 
-In Listing~\ref{lst:path-logic-program-condition-5}, when the sensor malfunction is reset, the first condition will be returned to an inactive state. It is indicated by \mtmodel{Normal} and a native code of \mtmodel{PLC-154}. Since the other two conditions are still active, the \mtuatype{MTConditionType} is not inactive. In MTConnect, a \mtmodel{current} request would indicate that there is a Fault and a Warning currently active for this \mtmodel{Condition}. Similar to the previous state, Table~\ref{table:ua-condition-states} clears the active state of this branch on Row~6.
+In Listing~\ref{lst:path-logic-program-condition-5}, when the machine finishes warming up, the first condition will be returned to an inactive state. It is indicated by \mtmodel{Normal} and a native code of \mtmodel{PLC-157} and will be handled like the previous case. In MTConnect, a \mtmodel{current} request would indicate that there is a Fault and a Warning currently active for this \mtmodel{Condition}. Similar to the previous state, Table~\ref{table:ua-condition-states} clears the active state of this \uamodel{Event} on Row~6.
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Path Logic Program Clear Warning PLC-157},label={lst:path-logic-program-condition-5}]
@@ -1000,7 +1011,7 @@ Listing~\ref{lst:path-logic-program-condition-6} represents the final \mtmodel{N
 
 \subsubsection{Messages}
 
-The \mtuatype{MTMessageType} is a data item with an extended type that uses the \mtuatype{MessageEventDataType} to provide the \mtterm{NativeCode} and the \mtterm{Text} of the message. The \gls{CDATA} will be mapped to the \mtterm{Text} field and the \mtterm{NativeCode} will be mapped to the field of the UA \uamodel{DataType} if it is provided as an \mtmodel{attribute}.
+The \mtuatype{MTMessageType} is a data item with an extended type that uses the \mtuatype{MessageDataType} to provide the \mtterm{NativeCode} and the \mtterm{Text} of the message. The \gls{CDATA} will be mapped to the \mtterm{Text} field and the \mtterm{NativeCode} will be mapped to the field of the UA \uamodel{DataType} if it is provided as an \mtmodel{attribute}.
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
     caption={Path Motion Program Normal},label={lst:path-motion-program-condition-3}]

@@ -1,4 +1,4 @@
-% Generated 2019-09-03 17:23:15 -0700
+% Generated 2019-10-31 19:14:08 -0700
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -110,11 +110,11 @@ Has\-Property & Variable & Sample\-Rate & Float & Property\-Type & Optional \\
 Has\-Property & Variable & Uuid & String & Property\-Type & Optional \\
 Has\-Property & Variable & Xml\-Id & String & Property\-Type & Mandatory \\
 Has\-Component & Object & Description & \multicolumn{2}{l|}{MTDescriptionType} & Optional \\
-Has\-Component & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType[]} & Optional \\
+Has\-Component & Object & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType[]} & Optional \\
 Has\-Component & Object & Configuration & \multicolumn{2}{l|}{MTConfigurationType} & Optional \\
 Has\-Component & Variable & <MT\-Three\-Space\-Sample> & Three\-Space\-Sample\-Data\-Type & MT\-Three\-Space\-Sample\-Type & Mandatory \\
 Has\-Component & Variable & <MT\-Controlled\-Vocab\-Event> & UInteger[] & MT\-Controlled\-Vocab\-Event\-Type & Optional \\
-Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType[]} & Optional \\
+Has\-Condition & Object & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType[]} & Optional \\
 Has\-Component & Variable & <MT\-Asset\-Event> & Asset\-Event\-Data\-Type[] & MT\-Asset\-Event\-Type & Optional \\
 Has\-Component & Variable & <MT\-Sample> & Number[] & MT\-Sample\-Type & Optional \\
 Organizes & Object & Compositions & MT\-Composition\-Type[] & Folder\-Type & Optional \\
@@ -1357,7 +1357,7 @@ Has\-Property & Variable & Xml\-Id & String & Property\-Type & Mandatory \\
 Has\-MT\-Source & Object & <Base\-Object> & \multicolumn{2}{l|}{BaseObjectType} & Optional \\
 Has\-MT\-Composition & Object & <MT\-Composition> & \multicolumn{2}{l|}{MTCompositionType} & Optional \\
 Has\-MT\-Sub\-Class\-Type & Object & <MT\-Data\-Item\-Sub\-Class> & \multicolumn{2}{l|}{MTDataItemSubClassType} & Optional \\
-Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
+Has\-Condition & Object & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
 Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & Optional \\
 Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
 \end{tabu}
@@ -1476,7 +1476,7 @@ Has\-Property & Variable & Xml\-Id & String & Property\-Type & Mandatory \\
 Has\-MT\-Source & Object & <Base\-Object> & \multicolumn{2}{l|}{BaseObjectType} & Optional \\
 Has\-MT\-Composition & Object & <MT\-Composition> & \multicolumn{2}{l|}{MTCompositionType} & Optional \\
 Has\-MT\-Sub\-Class\-Type & Object & <MT\-Data\-Item\-Sub\-Class> & \multicolumn{2}{l|}{MTDataItemSubClassType} & Optional \\
-Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
+Has\-Condition & Object & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
 Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & Optional \\
 Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
 Has\-Property & Variable & Value\-As\-Text & String & Property\-Type & Mandatory \\
@@ -1525,7 +1525,7 @@ Has\-Property & Variable & Xml\-Id & String & Property\-Type & Mandatory \\
 Has\-MT\-Source & Object & <Base\-Object> & \multicolumn{2}{l|}{BaseObjectType} & Optional \\
 Has\-MT\-Composition & Object & <MT\-Composition> & \multicolumn{2}{l|}{MTCompositionType} & Optional \\
 Has\-MT\-Sub\-Class\-Type & Object & <MT\-Data\-Item\-Sub\-Class> & \multicolumn{2}{l|}{MTDataItemSubClassType} & Optional \\
-Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
+Has\-Condition & Object & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
 Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & Optional \\
 Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
 \end{tabu}
@@ -1785,7 +1785,7 @@ Has\-Property & Variable & Native\-Code & String & Property\-Type & Optional \\
 
 \FloatBarrier
 
-The message is a sub-type of the \uaterm{DataVariableType} using the \mtuatype{MessageEventDataType} to 
+The message is a sub-type of the \uaterm{DataVariableType} using the \mtuatype{MessageDataType} to 
 represent the values for \mtterm{NativeCode} and \mtterm{Text} of the message from the \gls{CDATA} of the 
 MTConnect Streams message.
 
@@ -1818,7 +1818,7 @@ Has\-Property & Variable & Xml\-Id & String & Property\-Type & Mandatory \\
 Has\-MT\-Source & Object & <Base\-Object> & \multicolumn{2}{l|}{BaseObjectType} & Optional \\
 Has\-MT\-Composition & Object & <MT\-Composition> & \multicolumn{2}{l|}{MTCompositionType} & Optional \\
 Has\-MT\-Sub\-Class\-Type & Object & <MT\-Data\-Item\-Sub\-Class> & \multicolumn{2}{l|}{MTDataItemSubClassType} & Optional \\
-Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
+Has\-Condition & Object & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
 Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & Optional \\
 Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
 \end{tabu}
@@ -1869,7 +1869,7 @@ Has\-Property & Variable & Xml\-Id & String & Property\-Type & Mandatory \\
 Has\-MT\-Source & Object & <Base\-Object> & \multicolumn{2}{l|}{BaseObjectType} & Optional \\
 Has\-MT\-Composition & Object & <MT\-Composition> & \multicolumn{2}{l|}{MTCompositionType} & Optional \\
 Has\-MT\-Sub\-Class\-Type & Object & <MT\-Data\-Item\-Sub\-Class> & \multicolumn{2}{l|}{MTDataItemSubClassType} & Optional \\
-Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
+Has\-Condition & Object & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
 Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & Optional \\
 Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
 Has\-Property & Variable & Coordinate\-System & MT\-Coordinate\-System\-Type & Property\-Type & Optional \\
@@ -1933,7 +1933,7 @@ Has\-Property & Variable & Xml\-Id & String & Property\-Type & Mandatory \\
 Has\-MT\-Source & Object & <Base\-Object> & \multicolumn{2}{l|}{BaseObjectType} & Optional \\
 Has\-MT\-Composition & Object & <MT\-Composition> & \multicolumn{2}{l|}{MTCompositionType} & Optional \\
 Has\-MT\-Sub\-Class\-Type & Object & <MT\-Data\-Item\-Sub\-Class> & \multicolumn{2}{l|}{MTDataItemSubClassType} & Optional \\
-Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
+Has\-Condition & Object & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
 Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & Optional \\
 Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
 Has\-Property & Variable & Coordinate\-System & MT\-Coordinate\-System\-Type & Property\-Type & Optional \\
@@ -2003,7 +2003,7 @@ Has\-Property & Variable & Xml\-Id & String & Property\-Type & Mandatory \\
 Has\-MT\-Source & Object & <Base\-Object> & \multicolumn{2}{l|}{BaseObjectType} & Optional \\
 Has\-MT\-Composition & Object & <MT\-Composition> & \multicolumn{2}{l|}{MTCompositionType} & Optional \\
 Has\-MT\-Sub\-Class\-Type & Object & <MT\-Data\-Item\-Sub\-Class> & \multicolumn{2}{l|}{MTDataItemSubClassType} & Optional \\
-Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
+Has\-Condition & Object & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
 Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & Optional \\
 Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
 \end{tabu}
@@ -2053,7 +2053,7 @@ Has\-Property & Variable & Xml\-Id & String & Property\-Type & Mandatory \\
 Has\-MT\-Source & Object & <Base\-Object> & \multicolumn{2}{l|}{BaseObjectType} & Optional \\
 Has\-MT\-Composition & Object & <MT\-Composition> & \multicolumn{2}{l|}{MTCompositionType} & Optional \\
 Has\-MT\-Sub\-Class\-Type & Object & <MT\-Data\-Item\-Sub\-Class> & \multicolumn{2}{l|}{MTDataItemSubClassType} & Optional \\
-Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
+Has\-Condition & Object & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
 Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & Optional \\
 Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
 Has\-Property & Variable & Coordinate\-System & MT\-Coordinate\-System\-Type & Property\-Type & Optional \\
@@ -2144,63 +2144,44 @@ Represents a position in a three space coordinate system. The positions must be 
 
 \input ./type-sections/Conditions.tex
 
-\subsubsection{Defintion of \texttt{ MTConditionType}}
-  \label{type:MTConditionType}
+\subsubsection{Defintion of \texttt{ MTConditionEventType}}
+  \label{type:MTConditionEventType}
 
 \FloatBarrier
 
-The condition type is a derived from the UA \mtmodel{ContitionType}. The Normal state of 
-the condition is indicated by the ActiveState if \mtmodel{FALSE}. The severity 
-is used to represent the MTConnect condition states of Warning and Fault with the values of
-500 and 1000 respectively. 
+The condition type is a derived from the UA \uamodel{ContitionType}. When the \mtmodel{Warning} or \mtmodel{Fault} state occurs, an \mtuamodel{MTConditionEventType} \uamodel{Event} is created and with the \mtmodel{ActiveState} set to \uamodel{True} and \uamodel{Retain} set to \uamodel{True}.
+The severity is used to represent the MTConnect condition states of Warning and Fault with the values of 500 and 1000 respectively. 
 
-An \mtmodel{MTConditionType} instance will be created for event MTConnect \gls{MTDataItem} with a 
-\gls{category} of \mtmodel{CONDITION}. The \mtmodel{MTConditionType} instance will be instantiated 
-with the \uamodel{Retain} flag set to true when the condition \uamodel{ActiveState} is true. 
+A new \uamodel{NodeId} will be created for every unique instance of the MTConnect \mtmodel{Condition} reported.  When the \mtmodel{Condition} goes back to Normal, the \mtmodel{ActiveState} is set  to \uamodel{False} and \uamodel{Retain} is also set to \uamodel{False} with the \uamodel{NodeId} of the associated \mtmodel{Condition}. If multiple MTConnect \mtmodel{Condition}s have been cleared at the same time, all currently active \mtuamodel{MTConditionEventType} \uamodel{Event}s will need to be created as inactive.
 
-The \gls{BrowseName} of the condition uses the same naming convention as the  MTConnect
-\gls{MTDataItem} types with \gls{MTCondition} appended as a suffix. For example the 
-condition with \gls{type} of \mtmodel{TEMPERATURE} will have the browse name of 
-\mtmodel{TemperatureCondition} as opposed to the \mtuatype{MTSampleType} of \mtmodel{Temperature}.
+The \mtuamodel{MTConditionEventType} must set the \uamodel{BaseEvent} \uamodel{SourceId} to the related \mtuamodel{MTConditionType} that represents the meta-data for this Condition.
 
-If a \mtmodel{Source} of the \gls{MTDataItem} is provided, then the \uamodel{HasCondition} relationship 
-will be from the source \gls{MTDataItem} to the \gls{MTCondition} instance. Otherwise it will be 
-related to the MTConnect \gls{MTComponent} containing the \mtuatype{MTComponentType} instance.
+The \mtuamodel{MTConditionEventType} will never be instantiated in the \uaterm{AddressSpace} as an \uamodel{Object}. 
+
 
 \begin{table}[ht]
 \centering 
-  \caption{\texttt{MTConditionType} Definition}
-  \label{table:MTConditionType}
+  \caption{\texttt{MTConditionEventType} Definition}
+  \label{table:MTConditionEventType}
 \fontsize{9pt}{11pt}\selectfont
 \tabulinesep=3pt
 \begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
 \hline
 \rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
 \tabucline[1.5pt]{}
-BrowseName & \multicolumn{5}{|l|}{MTConditionType} \\
+BrowseName & \multicolumn{5}{|l|}{MTConditionEventType} \\
 IsAbstract & \multicolumn{5}{|l|}{False} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of ConditionType (See \cite{UAPart9} Documentation)} \\
-Has\-Property & Variable & Category & MT\-Category\-Type & Property\-Type & Mandatory \\
-Has\-Property & Variable & MT\-Sub\-Type\-Name & String & Property\-Type & Optional \\
-Has\-Property & Variable & MT\-Type\-Name & String & Property\-Type & Mandatory \\
-Has\-Property & Variable & Name & String & Property\-Type & Optional \\
-Has\-Property & Variable & Period\-Filter & Float & Property\-Type & Optional \\
-Has\-Property & Variable & Representation & MT\-Representation\-Type & Property\-Type & Optional \\
-Has\-Property & Variable & Sample\-Rate & Double & Property\-Type & Optional \\
-Has\-Property & Variable & Source\-Data & String & Property\-Type & Optional \\
-Has\-Property & Variable & Xml\-Id & String & Property\-Type & Mandatory \\
-Has\-MT\-Source & Object & <Base\-Object> & \multicolumn{2}{l|}{BaseObjectType} & Optional \\
-Has\-MT\-Composition & Object & <MT\-Composition> & \multicolumn{2}{l|}{MTCompositionType} & Optional \\
-Has\-MT\-Sub\-Class\-Type & Object & <MT\-Data\-Item\-Sub\-Class> & \multicolumn{2}{l|}{MTDataItemSubClassType} & Optional \\
-Has\-Condition & Event & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
-Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & Optional \\
-Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
+Has\-Property & Variable & Data\-Item\-Id & String & Property\-Type & Mandatory \\
 Has\-Property & Variable & MT\-Severity & MT\-Severity\-Data\-Type & Property\-Type & Mandatory \\
+Has\-Property & Variable & MT\-Sub\-Type\-Name & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & MT\-Type\-Name & String & Property\-Type & Mandatory \\
 Has\-Property & Variable & Native\-Code & String & Property\-Type & Optional \\
 Has\-Property & Variable & Native\-Severity & String & Property\-Type & Optional \\
 Has\-Property & Variable & Qualifier & Qualifier\-Data\-Type & Property\-Type & Optional \\
+Has\-Component & Object & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Mandatory \\
 Has\-Component & Variable & Active\-State & Localized\-Text & Two\-State\-Variable\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
@@ -2256,7 +2237,7 @@ inactive, then the \mtmodel{NativeSeverity} will be cleared.
 \paragraph{Static values for ActiveState}
 \begin{table}[ht]
 \centering 
-  \caption{\texttt{MTConditionType::ActiveState} Values}
+  \caption{\texttt{MTConditionEventType::ActiveState} Values}
 \tabulinesep=3pt
 \begin{tabu} to 6in {|l|l|} \everyrow{\hline}
 \hline
@@ -2270,6 +2251,54 @@ inactive, then the \mtmodel{NativeSeverity} will be cleared.
 \item Property \texttt{FalseState}: \texttt{Inactive}
 \item Property \texttt{TrueState}: \texttt{Active}
 \end{itemize}
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MTConditionType}}
+  \label{type:MTConditionType}
+
+\FloatBarrier
+
+An \mtmodel{MTConditionType} instance will be created for event MTConnect \gls{MTDataItem} with a 
+\gls{category} of \mtmodel{CONDITION}. 
+
+The \gls{BrowseName} of the condition uses the same naming convention as the  MTConnect
+\gls{MTDataItem} types with \gls{MTCondition} appended as a suffix. For example the 
+condition with \gls{type} of \mtmodel{TEMPERATURE} will have the browse name of 
+\mtmodel{TemperatureCondition} as opposed to the \mtuatype{MTSampleType} of \mtmodel{Temperature}.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTConditionType} Definition}
+  \label{table:MTConditionType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTConditionType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart5} Documentation)} \\
+Has\-Property & Variable & Category & MT\-Category\-Type & Property\-Type & Mandatory \\
+Has\-Property & Variable & MT\-Sub\-Type\-Name & String & Property\-Type & Optional \\
+Has\-Property & Variable & MT\-Type\-Name & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & Name & String & Property\-Type & Optional \\
+Has\-Property & Variable & Period\-Filter & Float & Property\-Type & Optional \\
+Has\-Property & Variable & Representation & MT\-Representation\-Type & Property\-Type & Optional \\
+Has\-Property & Variable & Sample\-Rate & Double & Property\-Type & Optional \\
+Has\-Property & Variable & Source\-Data & String & Property\-Type & Optional \\
+Has\-Property & Variable & Xml\-Id & String & Property\-Type & Mandatory \\
+Has\-MT\-Source & Object & <Base\-Object> & \multicolumn{2}{l|}{BaseObjectType} & Optional \\
+Has\-MT\-Composition & Object & <MT\-Composition> & \multicolumn{2}{l|}{MTCompositionType} & Optional \\
+Has\-MT\-Sub\-Class\-Type & Object & <MT\-Data\-Item\-Sub\-Class> & \multicolumn{2}{l|}{MTDataItemSubClassType} & Optional \\
+Has\-Condition & Object & <MT\-Condition> & \multicolumn{2}{l|}{MTConditionType} & Optional \\
+Has\-Component & Object & Constraints & \multicolumn{2}{l|}{MTConstraintType} & Optional \\
+Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
+\end{tabu}
+\end{table} 
+
+
 \paragraph{Dependencies and Relationships}
 
 \begin{itemize}
@@ -2318,7 +2347,6 @@ IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of BaseConditionClassType (See \cite{UAPart9} Documentation)} \\
-HasSubtype & ObjectType & \multicolumn{2}{l}{CuttingToolClassType} & \multicolumn{2}{|l|}{See section \ref{type:CuttingToolClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{MTConditionClassType} & \multicolumn{2}{|l|}{See section \ref{type:MTConditionClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{MTEventClassType} & \multicolumn{2}{|l|}{See section \ref{type:MTEventClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{MTSampleClassType} & \multicolumn{2}{|l|}{See section \ref{type:MTSampleClassType}} \\
@@ -8671,8 +8699,6 @@ Symmetric & \multicolumn{5}{|l|}{false} \\
 \begin{itemize}
 \item Dependency on Realization
 
-This class relates to \texttt{Realization} (See section \ref{type:Realization}) for a(n) \texttt{} relationship.
-
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ <<mixin>>}}
@@ -8690,8 +8716,6 @@ from existing OPC/UA types, this mechanism allows for this relationship to be ex
 
 \begin{itemize}
 \item Dependency on Class
-
-This class relates to \texttt{Class} (See section \ref{type:Class}) for a(n) \texttt{} relationship.
 
 \end{itemize}
 \FloatBarrier
@@ -8718,8 +8742,6 @@ values for the type.
 
 \begin{itemize}
 \item Dependency on Association
-
-This class relates to \texttt{Association} (See section \ref{type:Association}) for a(n) \texttt{} relationship.
 
 \end{itemize}
 \FloatBarrier

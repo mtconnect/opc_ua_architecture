@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-09-10T00:37:50Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-11-01T02:14:28Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-09-10T00:37:50Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-09-10T00:37:50Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-11-01T02:14:28Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-11-01T02:14:28Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -5886,8 +5886,8 @@ YT4=
   <UAObjectType NodeId='ns=1;i=3825' BrowseName='1:CuttingToolClassType' IsAbstract='true'>
     <DisplayName>CuttingToolClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTDataItemClassType ns=1;i=2425   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2425</Reference>
+      <!-- HasSubtype - (Reverse) - BaseConditionClassType i=11163   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=11163</Reference>
       <!-- HasProperty -  - Code ns=1;i=3826 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3826</Reference>
       <!-- HasProperty -  - Units ns=1;i=3827 String  -->

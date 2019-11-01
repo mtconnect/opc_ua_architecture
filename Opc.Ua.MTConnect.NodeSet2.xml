@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-09-10T00:37:51Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2019-11-01T02:14:29Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-09-10T00:37:51Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-09-10T00:37:51Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2019-11-01T02:14:29Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2019-11-01T02:14:29Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -4410,12 +4410,256 @@ dHVyZWRUeXBlPg==
       <Reference ReferenceType='HasTypeDefinition'>i=76</Reference>
     </References>
   </UAObject>
+  <!-- Definition of Object MTConditionEventType ns=1;i=4326 -->
+  <UAObjectType NodeId='ns=1;i=4326' BrowseName='1:MTConditionEventType'>
+    <DisplayName>MTConditionEventType</DisplayName>
+    <References>
+      <!-- HasSubtype - (Reverse) - ConditionType i=2782   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=2782</Reference>
+      <!-- HasProperty -  - DataItemId ns=1;i=4327 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4327</Reference>
+      <!-- HasProperty -  - MTSeverity ns=1;i=4328 MTSeverityDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4328</Reference>
+      <!-- HasProperty -  - MTSubTypeName ns=1;i=4329 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4329</Reference>
+      <!-- HasProperty -  - MTTypeName ns=1;i=4330 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4330</Reference>
+      <!-- HasProperty -  - NativeCode ns=1;i=4331 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4331</Reference>
+      <!-- HasProperty -  - NativeSeverity ns=1;i=4332 String  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4332</Reference>
+      <!-- HasProperty -  - Qualifier ns=1;i=4333 QualifierDataType  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4333</Reference>
+      <!-- HasComponent -  - ActiveState ns=1;i=4336 TwoStateVariableType  -->
+      <Reference ReferenceType='HasComponent'>ns=1;i=4336</Reference>
+    </References>
+  </UAObjectType>
+  <!-- MTConditionEventType::DataItemId : String[1] -->
+  <UAVariable NodeId='ns=1;i=4327' BrowseName='1:DataItemId' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=4326'>
+    <DisplayName>DataItemId</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - MTConditionEventType ns=1;i=4326   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4326</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTConditionEventType::MTSeverity : MTSeverityDataType[1] -->
+  <UAVariable NodeId='ns=1;i=4328' BrowseName='1:MTSeverity' ValueRank='-1' DataType='ns=1;i=2669' ParentNodeId='ns=1;i=4326'>
+    <DisplayName>MTSeverity</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - MTSeverityDataType i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - MTConditionEventType ns=1;i=4326   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4326</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTConditionEventType::MTSubTypeName : String[1] -->
+  <UAVariable NodeId='ns=1;i=4329' BrowseName='1:MTSubTypeName' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=4326'>
+    <DisplayName>MTSubTypeName</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - MTConditionEventType ns=1;i=4326   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4326</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTConditionEventType::MTTypeName : String[1] -->
+  <UAVariable NodeId='ns=1;i=4330' BrowseName='1:MTTypeName' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=4326'>
+    <DisplayName>MTTypeName</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - MTConditionEventType ns=1;i=4326   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4326</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTConditionEventType::NativeCode : String[0..1] -->
+  <UAVariable NodeId='ns=1;i=4331' BrowseName='1:NativeCode' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=4326'>
+    <DisplayName>NativeCode</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTConditionEventType ns=1;i=4326   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4326</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTConditionEventType::NativeSeverity : String[0..1] -->
+  <UAVariable NodeId='ns=1;i=4332' BrowseName='1:NativeSeverity' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=4326'>
+    <DisplayName>NativeSeverity</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTConditionEventType ns=1;i=4326   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4326</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTConditionEventType::Qualifier : QualifierDataType[0..1] -->
+  <UAVariable NodeId='ns=1;i=4333' BrowseName='1:Qualifier' ValueRank='-1' DataType='ns=1;i=2668' ParentNodeId='ns=1;i=4326'>
+    <DisplayName>Qualifier</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - QualifierDataType i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - MTConditionEventType ns=1;i=4326   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4326</Reference>
+    </References>
+  </UAVariable>
+  <!-- MTConditionEventType::ActiveState : TwoStateVariableType[1] -->
+  <UAVariable NodeId='ns=1;i=4336' BrowseName='1:ActiveState' DataType='LocalizedText' ParentNodeId='ns=1;i=4326'>
+    <DisplayName>ActiveState</DisplayName>
+    <References>
+      <!-- HasProperty -  - EffectiveDisplayName ns=1;i=4337 LocalizedText  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4337</Reference>
+      <!-- HasProperty -  - Id ns=1;i=4338 Boolean  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4338</Reference>
+      <!-- HasProperty -  - Name ns=1;i=4339 QualifiedName  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4339</Reference>
+      <!-- HasProperty -  - Number ns=1;i=4340 UInt32  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4340</Reference>
+      <!-- HasProperty -  - EffectiveTransitionTime ns=1;i=4341 UtcTime  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4341</Reference>
+      <!-- HasProperty -  - FalseState ns=1;i=4342 LocalizedText  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4342</Reference>
+      <!-- HasProperty -  - TransitionTime ns=1;i=4343 UtcTime  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4343</Reference>
+      <!-- HasProperty -  - TrueState ns=1;i=4344 LocalizedText  -->
+      <Reference ReferenceType='HasProperty'>ns=1;i=4344</Reference>
+      <!-- HasTypeDefinition -  - TwoStateVariableType i=8995   -->
+      <Reference ReferenceType='HasTypeDefinition'>i=8995</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasComponent - (Reverse) - MTConditionEventType ns=1;i=4326   -->
+      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=4326</Reference>
+    </References>
+  </UAVariable>
+  <!-- ActiveState::EffectiveDisplayName : LocalizedText[0..1] -->
+  <UAVariable NodeId='ns=1;i=4337' BrowseName='1:EffectiveDisplayName' ValueRank='-1' DataType='LocalizedText' ParentNodeId='ns=1;i=4336'>
+    <DisplayName>EffectiveDisplayName</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - LocalizedText i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - ActiveState ns=1;i=4336   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4336</Reference>
+    </References>
+  </UAVariable>
+  <!-- ActiveState::Id : Boolean[1] -->
+  <UAVariable NodeId='ns=1;i=4338' BrowseName='1:Id' ValueRank='-1' DataType='Boolean' ParentNodeId='ns=1;i=4336'>
+    <DisplayName>Id</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - Boolean i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Mandatory i=78   -->
+      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
+      <!-- HasProperty - (Reverse) - ActiveState ns=1;i=4336   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4336</Reference>
+    </References>
+  </UAVariable>
+  <!-- ActiveState::Name : QualifiedName[0..1] -->
+  <UAVariable NodeId='ns=1;i=4339' BrowseName='1:Name' ValueRank='-1' DataType='QualifiedName' ParentNodeId='ns=1;i=4336'>
+    <DisplayName>Name</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - QualifiedName i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - ActiveState ns=1;i=4336   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4336</Reference>
+    </References>
+  </UAVariable>
+  <!-- ActiveState::Number : UInt32[0..1] -->
+  <UAVariable NodeId='ns=1;i=4340' BrowseName='1:Number' ValueRank='-1' DataType='UInt32' ParentNodeId='ns=1;i=4336'>
+    <DisplayName>Number</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - UInt32 i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - ActiveState ns=1;i=4336   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4336</Reference>
+    </References>
+  </UAVariable>
+  <!-- ActiveState::EffectiveTransitionTime : UtcTime[0..1] -->
+  <UAVariable NodeId='ns=1;i=4341' BrowseName='1:EffectiveTransitionTime' ValueRank='-1' DataType='i=294' ParentNodeId='ns=1;i=4336'>
+    <DisplayName>EffectiveTransitionTime</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - UtcTime i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - ActiveState ns=1;i=4336   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4336</Reference>
+    </References>
+  </UAVariable>
+  <!-- ActiveState::FalseState : LocalizedText[0..1] -->
+  <UAVariable NodeId='ns=1;i=4342' BrowseName='1:FalseState' ValueRank='-1' DataType='LocalizedText' ParentNodeId='ns=1;i=4336'>
+    <DisplayName>FalseState</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - LocalizedText i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - ActiveState ns=1;i=4336   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4336</Reference>
+    </References>
+    <Value>
+      <LocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <Locale>en</Locale>
+        <Text>Inactive</Text>
+      </LocalizedText>
+    </Value>
+  </UAVariable>
+  <!-- ActiveState::TransitionTime : UtcTime[0..1] -->
+  <UAVariable NodeId='ns=1;i=4343' BrowseName='1:TransitionTime' ValueRank='-1' DataType='i=294' ParentNodeId='ns=1;i=4336'>
+    <DisplayName>TransitionTime</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - UtcTime i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - ActiveState ns=1;i=4336   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4336</Reference>
+    </References>
+  </UAVariable>
+  <!-- ActiveState::TrueState : LocalizedText[0..1] -->
+  <UAVariable NodeId='ns=1;i=4344' BrowseName='1:TrueState' ValueRank='-1' DataType='LocalizedText' ParentNodeId='ns=1;i=4336'>
+    <DisplayName>TrueState</DisplayName>
+    <References>
+      <!-- HasTypeDefinition -  - LocalizedText i=68 PropertyType  -->
+      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
+      <!-- HasModellingRule -  - Optional i=80   -->
+      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
+      <!-- HasProperty - (Reverse) - ActiveState ns=1;i=4336   -->
+      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=4336</Reference>
+    </References>
+    <Value>
+      <LocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
+        <Locale>en</Locale>
+        <Text>Active</Text>
+      </LocalizedText>
+    </Value>
+  </UAVariable>
   <!-- Definition of Object MTConditionType ns=1;i=2660 -->
   <UAObjectType NodeId='ns=1;i=2660' BrowseName='1:MTConditionType'>
     <DisplayName>MTConditionType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - ConditionType i=2782   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>i=2782</Reference>
+      <!-- HasSubtype - (Reverse) - BaseObjectType i=58   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=58</Reference>
       <!-- HasProperty -  - Category ns=1;i=2917 MTCategoryType  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2917</Reference>
       <!-- HasProperty -  - MTSubTypeName ns=1;i=2919 String  -->
@@ -4436,16 +4680,6 @@ dHVyZWRUeXBlPg==
       <Reference ReferenceType='HasProperty'>ns=1;i=2915</Reference>
       <!-- HasComponent -  - Constraints ns=1;i=2924 MTConstraintType  -->
       <Reference ReferenceType='HasComponent'>ns=1;i=2924</Reference>
-      <!-- HasProperty -  - MTSeverity ns=1;i=2663 MTSeverityDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2663</Reference>
-      <!-- HasProperty -  - NativeCode ns=1;i=2661 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2661</Reference>
-      <!-- HasProperty -  - NativeSeverity ns=1;i=2662 String  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2662</Reference>
-      <!-- HasProperty -  - Qualifier ns=1;i=2664 QualifierDataType  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2664</Reference>
-      <!-- HasComponent -  - ActiveState ns=1;i=2666 TwoStateVariableType  -->
-      <Reference ReferenceType='HasComponent'>ns=1;i=2666</Reference>
     </References>
   </UAObjectType>
   <!-- MTConditionType::Category : MTCategoryType[1] -->
@@ -4623,190 +4857,6 @@ dHVyZWRUeXBlPg==
       <!-- HasProperty - (Reverse) - Constraints ns=1;i=2924   -->
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2924</Reference>
     </References>
-  </UAVariable>
-  <!-- MTConditionType::MTSeverity : MTSeverityDataType[1] -->
-  <UAVariable NodeId='ns=1;i=2663' BrowseName='1:MTSeverity' ValueRank='-1' DataType='ns=1;i=2669' ParentNodeId='ns=1;i=2660'>
-    <DisplayName>MTSeverity</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - MTSeverityDataType i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Mandatory i=78   -->
-      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasProperty - (Reverse) - MTConditionType ns=1;i=2660   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2660</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTConditionType::NativeCode : String[0..1] -->
-  <UAVariable NodeId='ns=1;i=2661' BrowseName='1:NativeCode' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2660'>
-    <DisplayName>NativeCode</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTConditionType ns=1;i=2660   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2660</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTConditionType::NativeSeverity : String[0..1] -->
-  <UAVariable NodeId='ns=1;i=2662' BrowseName='1:NativeSeverity' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=2660'>
-    <DisplayName>NativeSeverity</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTConditionType ns=1;i=2660   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2660</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTConditionType::Qualifier : QualifierDataType[0..1] -->
-  <UAVariable NodeId='ns=1;i=2664' BrowseName='1:Qualifier' ValueRank='-1' DataType='ns=1;i=2668' ParentNodeId='ns=1;i=2660'>
-    <DisplayName>Qualifier</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - QualifierDataType i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - MTConditionType ns=1;i=2660   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2660</Reference>
-    </References>
-  </UAVariable>
-  <!-- MTConditionType::ActiveState : TwoStateVariableType[1] -->
-  <UAVariable NodeId='ns=1;i=2666' BrowseName='1:ActiveState' DataType='LocalizedText' ParentNodeId='ns=1;i=2660'>
-    <DisplayName>ActiveState</DisplayName>
-    <References>
-      <!-- HasProperty -  - EffectiveDisplayName ns=1;i=2932 LocalizedText  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2932</Reference>
-      <!-- HasProperty -  - Id ns=1;i=2929 Boolean  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2929</Reference>
-      <!-- HasProperty -  - Name ns=1;i=2930 QualifiedName  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2930</Reference>
-      <!-- HasProperty -  - Number ns=1;i=2931 UInt32  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2931</Reference>
-      <!-- HasProperty -  - EffectiveTransitionTime ns=1;i=2934 UtcTime  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2934</Reference>
-      <!-- HasProperty -  - FalseState ns=1;i=2936 LocalizedText  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2936</Reference>
-      <!-- HasProperty -  - TransitionTime ns=1;i=2933 UtcTime  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2933</Reference>
-      <!-- HasProperty -  - TrueState ns=1;i=2935 LocalizedText  -->
-      <Reference ReferenceType='HasProperty'>ns=1;i=2935</Reference>
-      <!-- HasTypeDefinition -  - TwoStateVariableType i=8995   -->
-      <Reference ReferenceType='HasTypeDefinition'>i=8995</Reference>
-      <!-- HasModellingRule -  - Mandatory i=78   -->
-      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasComponent - (Reverse) - MTConditionType ns=1;i=2660   -->
-      <Reference ReferenceType='HasComponent' IsForward='false'>ns=1;i=2660</Reference>
-    </References>
-  </UAVariable>
-  <!-- ActiveState::EffectiveDisplayName : LocalizedText[0..1] -->
-  <UAVariable NodeId='ns=1;i=2932' BrowseName='1:EffectiveDisplayName' ValueRank='-1' DataType='LocalizedText' ParentNodeId='ns=1;i=2666'>
-    <DisplayName>EffectiveDisplayName</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - LocalizedText i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - ActiveState ns=1;i=2666   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2666</Reference>
-    </References>
-  </UAVariable>
-  <!-- ActiveState::Id : Boolean[1] -->
-  <UAVariable NodeId='ns=1;i=2929' BrowseName='1:Id' ValueRank='-1' DataType='Boolean' ParentNodeId='ns=1;i=2666'>
-    <DisplayName>Id</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - Boolean i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Mandatory i=78   -->
-      <Reference ReferenceType='HasModellingRule'>i=78</Reference>
-      <!-- HasProperty - (Reverse) - ActiveState ns=1;i=2666   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2666</Reference>
-    </References>
-  </UAVariable>
-  <!-- ActiveState::Name : QualifiedName[0..1] -->
-  <UAVariable NodeId='ns=1;i=2930' BrowseName='1:Name' ValueRank='-1' DataType='QualifiedName' ParentNodeId='ns=1;i=2666'>
-    <DisplayName>Name</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - QualifiedName i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - ActiveState ns=1;i=2666   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2666</Reference>
-    </References>
-  </UAVariable>
-  <!-- ActiveState::Number : UInt32[0..1] -->
-  <UAVariable NodeId='ns=1;i=2931' BrowseName='1:Number' ValueRank='-1' DataType='UInt32' ParentNodeId='ns=1;i=2666'>
-    <DisplayName>Number</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - UInt32 i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - ActiveState ns=1;i=2666   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2666</Reference>
-    </References>
-  </UAVariable>
-  <!-- ActiveState::EffectiveTransitionTime : UtcTime[0..1] -->
-  <UAVariable NodeId='ns=1;i=2934' BrowseName='1:EffectiveTransitionTime' ValueRank='-1' DataType='i=294' ParentNodeId='ns=1;i=2666'>
-    <DisplayName>EffectiveTransitionTime</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - UtcTime i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - ActiveState ns=1;i=2666   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2666</Reference>
-    </References>
-  </UAVariable>
-  <!-- ActiveState::FalseState : LocalizedText[0..1] -->
-  <UAVariable NodeId='ns=1;i=2936' BrowseName='1:FalseState' ValueRank='-1' DataType='LocalizedText' ParentNodeId='ns=1;i=2666'>
-    <DisplayName>FalseState</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - LocalizedText i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - ActiveState ns=1;i=2666   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2666</Reference>
-    </References>
-    <Value>
-      <LocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
-        <Locale>en</Locale>
-        <Text>Inactive</Text>
-      </LocalizedText>
-    </Value>
-  </UAVariable>
-  <!-- ActiveState::TransitionTime : UtcTime[0..1] -->
-  <UAVariable NodeId='ns=1;i=2933' BrowseName='1:TransitionTime' ValueRank='-1' DataType='i=294' ParentNodeId='ns=1;i=2666'>
-    <DisplayName>TransitionTime</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - UtcTime i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - ActiveState ns=1;i=2666   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2666</Reference>
-    </References>
-  </UAVariable>
-  <!-- ActiveState::TrueState : LocalizedText[0..1] -->
-  <UAVariable NodeId='ns=1;i=2935' BrowseName='1:TrueState' ValueRank='-1' DataType='LocalizedText' ParentNodeId='ns=1;i=2666'>
-    <DisplayName>TrueState</DisplayName>
-    <References>
-      <!-- HasTypeDefinition -  - LocalizedText i=68 PropertyType  -->
-      <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
-      <!-- HasModellingRule -  - Optional i=80   -->
-      <Reference ReferenceType='HasModellingRule'>i=80</Reference>
-      <!-- HasProperty - (Reverse) - ActiveState ns=1;i=2666   -->
-      <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=2666</Reference>
-    </References>
-    <Value>
-      <LocalizedText xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>
-        <Locale>en</Locale>
-        <Text>Active</Text>
-      </LocalizedText>
-    </Value>
   </UAVariable>
   <!-- Definition of Enumeration MTSeverityDataType ns=1;i=2669 -->
   <UADataType NodeId='ns=1;i=2669' BrowseName='1:MTSeverityDataType'>
@@ -13382,8 +13432,8 @@ dHVyZWRUeXBlPg==
   <UAObjectType NodeId='ns=1;i=3825' BrowseName='1:CuttingToolClassType' IsAbstract='true'>
     <DisplayName>CuttingToolClassType</DisplayName>
     <References>
-      <!-- HasSubtype - (Reverse) - MTDataItemClassType ns=1;i=2425   -->
-      <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2425</Reference>
+      <!-- HasSubtype - (Reverse) - BaseConditionClassType i=11163   -->
+      <Reference ReferenceType='HasSubtype' IsForward='false'>i=11163</Reference>
       <!-- HasProperty -  - Code ns=1;i=3826 String  -->
       <Reference ReferenceType='HasProperty'>ns=1;i=3826</Reference>
       <!-- HasProperty -  - Units ns=1;i=3827 String  -->

@@ -1,4 +1,4 @@
-% Generated 2019-09-03 17:23:15 -0700
+% Generated 2019-10-31 19:14:09 -0700
 \subsection{Assets} \label{model:Assets}
 \subsubsection{Defintion of \texttt{ MTAssetType}}
   \label{type:MTAssetType}
@@ -73,42 +73,10 @@ DataType & \multicolumn{5}{|l|}{UInteger} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
 \multicolumn{6}{|l|}{Subtype of MultiStateDiscreteType (See \cite{UAPart8} Documentation)} \\
-Has\-Component & Variable & Enum\-Values & Cutter\-Status\-Data\-Type & Cutter\-Status\-Data\-Type & Mandatory \\
 \end{tabu}
 \end{table} 
 
 
-\FloatBarrier
-\paragraph{Referenced Properties and Objects}
-
-\begin{itemize}
-\item \textbf{Allowable Values} for \texttt{CutterStatusDataType}
-\FloatBarrier
-\begin{table}[ht]
-\centering 
-  \caption{\texttt{CutterStatusDataType} Enumeration}
-  \label{enum:CutterStatusDataType}
-\tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
-\hline
-\rowfont\bfseries {Name} & {Index} \\
-\tabucline[1.5pt]{}
-\texttt{AVAILABLE} & \texttt{1} \\
-\texttt{ALLOCATED} & \texttt{2} \\
-\texttt{BROKEN} & \texttt{4} \\
-\texttt{EXPIRED} & \texttt{16} \\
-\texttt{MEASURED} & \texttt{32} \\
-\texttt{NEW} & \texttt{64} \\
-\texttt{NOT_REGISTERED} & \texttt{128} \\
-\texttt{RECONDITIONED} & \texttt{256} \\
-\texttt{UNALLOCATE} & \texttt{512} \\
-\texttt{UNAVAILABLE} & \texttt{1024} \\
-\texttt{UNKNOWN} & \texttt{2048} \\
-\texttt{USED} & \texttt{4096} \\
-\end{tabu}
-\end{table} 
-\FloatBarrier
-\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTCuttingItemType}}
   \label{type:MTCuttingItemType}
@@ -311,7 +279,7 @@ Has\-Property & Variable & Enginering\-Units & EUInformation & Property\-Type & 
 Has\-Property & Variable & Native\-Units & String & Property\-Type & Optional \\
 Has\-Property & Variable & Significant\-Digits & UInt32 & Property\-Type & Optional \\
 Has\-Property & Variable & Units & String & Property\-Type & Optional \\
-Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MTDataItemClassType} & Mandatory \\
+Has\-MT\-Class\-Type & Object & <Cutting\-Tool\-Class> & \multicolumn{2}{l|}{CuttingToolClassType} & Mandatory \\
 \end{tabu}
 \end{table} 
 
@@ -634,7 +602,7 @@ BrowseName & \multicolumn{5}{|l|}{CuttingToolClassType} \\
 IsAbstract & \multicolumn{5}{|l|}{True} \\
 \tabucline[1.5pt]{}
 \rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
-\multicolumn{6}{|l|}{Subtype of MTDataItemClassType (See Data Item Types Documentation)} \\
+\multicolumn{6}{|l|}{Subtype of BaseConditionClassType (See \cite{UAPart9} Documentation)} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{BodyDiameterMaxClassType} & \multicolumn{2}{|l|}{See section \ref{type:BodyDiameterMaxClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{BodyLengthMaxClassType} & \multicolumn{2}{|l|}{See section \ref{type:BodyLengthMaxClassType}} \\
 HasSubtype & ObjectType & \multicolumn{2}{l}{CuttingDiameterMaxType} & \multicolumn{2}{|l|}{See section \ref{type:CuttingDiameterMaxType}} \\

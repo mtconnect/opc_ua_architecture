@@ -357,7 +357,7 @@ EOT
   def generate_dependencies(f)
 
     deps = dependencies.select { |d|
-      d.target.type.stereotype.nil? or d.target.type.stereotype !~ /Factory/
+      d.target.type.stereotype.nil? or not (d.target.type.stereotype =~ /Factory/)
     }
 
     if !deps.empty? or @mixin
@@ -378,8 +378,11 @@ EOT
         else
           f.puts "\\item Dependency on #{target.type.name}\n\n"
           rel = dep.stereotype && dep.stereotype
-          puts "Cannot find stereo for #{@name}::#{dep.name} to #{target.type.name}" unless rel
-          f.puts "This class relates to \\texttt{#{target.type.name}} (#{target.type.reference}) for a(n) \\texttt{#{rel}} relationship.\n\n"
+          if rel
+            f.puts "This class relates to \\texttt{#{target.type.name}} (#{target.type.reference}) for a(n) \\texttt{#{rel}} relationship.\n\n"
+          else
+            puts "Cannot find stereo for #{@name}::#{dep.name} to #{target.type.name}"
+          end
         end
       end
     

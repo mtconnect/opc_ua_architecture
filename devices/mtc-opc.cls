@@ -130,8 +130,8 @@
 
 \setlength\paperheight{11in}
 \setlength\paperwidth{8.5in}
-\setlength\oddsidemargin{0.25in}
-\setlength\evensidemargin{0.25in}
+\setlength\oddsidemargin{0in}
+\setlength\evensidemargin{0in}
 
 \setlength\parindent{0pt}
 \setlength\parskip{1em}
@@ -144,6 +144,7 @@
 \newcommand\@doctitle{}
 \newcommand\@doctitleshort{}
 \newcommand\@doctitlepart{}
+\newcommand\@doctitlesubpart{}
 \newcommand\@versionnum{}
 \newcommand\@preparedfor{}
 \newcommand\@preparedby{}
@@ -155,12 +156,14 @@
 \newcommand\getdocnum{\@docnum}
 \newcommand\getdoctitle{\@doctitle}
 \newcommand\getdoctitlepart{\@doctitlepart}
+\newcommand\getdoctitlesubpart{\@doctitlesubpart}
 \newcommand\getdoctitleshort{\@doctitleshort}
 
 \newcommand{\doctitleshort}[1]{\gdef\@doctitleshort{#1}}
 \newcommand{\docnum}[1]{\gdef\@docnum{#1}}
 \newcommand{\doctitle}[1]{\gdef\@doctitle{#1}}
 \newcommand{\doctitlepart}[1]{\gdef\@doctitlepart{#1}}
+\newcommand{\doctitlesubpart}[1]{\gdef\@doctitlesubpart{#1}}
 \newcommand{\versionnum}[1]{\gdef\@versionnum{#1}}
 \newcommand{\preparedfor}[1]{\gdef\@preparedfor{#1}}
 \newcommand{\preparedby}[1]{\gdef\@preparedby{#1}}
@@ -184,11 +187,15 @@
       \vspace{18pt}%
       \LARGE{\@doctitlepart} \\%
       \parindent=0.5in%
+      \vspace{6pt}%
+      \LARGE{\@doctitlesubpart} \\%
+      \parindent=0.5in%
       \vspace{1in}%
       \LARGE{\getversiontext\ \getversionnum} \\%
       \parindent=0.5in%
       \vspace{12pt}%
       \LARGE{\@preparedon} \\%
+      \vspace{2.5in}%
     \end{tabu}%
   }%
 }
@@ -199,15 +206,16 @@
   \begin{titlepage}%
     \tabulinesep=1pt%
     \taburulecolor |light-gray|{black}%
-    \begin{tabu}to 6in{|X|X|X[0.15]|}%
+    \begin{tabu}to 6.5in{|X|X|X[0.15]|}%
       \hline%
       \includegraphics[width=1.0\linewidth]{opc-logo.jpg} &%
       \includegraphics[width=1.0\linewidth]{mtconnect.png} &  \cellcolor{light-gray} \\ \tabucline{1-2}%
       \multicolumn{2}{|l|}{%%
         \usebox{\titlecontent}%
       }%
-      & \bfseries\cellcolor{light-gray}\center{\rotatebox[origin=lB]{270}{\LARGE{OPC UA Companion Specification}}} \\ %
-      \multicolumn{2}{|l|}{\protect \quad} & \cellcolor{light-gray} \vspace{0.5in} \\ \tabucline{1-3} %
+      & \vspace{-2in}%
+      \bfseries\cellcolor{light-gray}\center{\rotatebox[origin=lB]{270}{\LARGE{OPC UA Companion Specification \@doctitlesubpart}}} \\ %
+      \tabucline{1-3} %
     \end{tabu}%
     \vfill%
   \end{titlepage}%
@@ -244,7 +252,7 @@
 \pagestyle{fancy}
 \fancyhf{}
 \rhead{\@preparedon}
-\lfoot{\@doctitle \newline \@doctitlepart { -} \@versiontext\space\@versionnum}
+\lfoot{\@doctitle \newline \@doctitlepart \space \@doctitlesubpart { --} \@versiontext\space\@versionnum}
 \rfoot{\thepage}
 \renewcommand{\headrulewidth}{0pt}
 

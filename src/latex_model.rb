@@ -27,16 +27,22 @@ class LatexModel < Model
   end
 
   def generate_latex(f)
-    puts "Generating model #{@name}"
-    f.puts "\\subsection{#{@name}} \\label{model:#{short_name}}"
+    file = "./model-sections/#{short_name}.tex"
+    f.puts "\\input #{file}"
 
-    generate_diagram(f)
-
-    generate_documentation(f)
-
-    @types.each do |type|
-      if type.parent.nil? or type.parent.model != self
-        recurse_types(f, type)
+    File.open("#{@@directory}/#{file}", "w") do |fs|
+      puts "Generating model #{@name}"
+      fs.puts "% Generated #{Time.now}"
+      fs.puts "\\subsection{#{@name}} \\label{model:#{short_name}}"
+      
+      generate_diagram(fs)
+      
+      generate_documentation(fs)
+      
+      @types.each do |type|
+        if type.parent.nil? or type.parent.model != self
+          recurse_types(fs, type)
+        end
       end
     end
   end

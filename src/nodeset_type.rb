@@ -146,7 +146,7 @@ class NodesetType < Type
   def collect_references
     attrs = (@parent && @parent.collect_references) || {}
     @relations.select do |a|
-      if !a.is_attribute? and a.name and
+      if !a.is_attribute? and a.name and 
         (a.is_property? or a.is_a?(Relation::Association))
         attrs[a.name] = a
       end
@@ -167,6 +167,8 @@ class NodesetType < Type
   end
 
   def create_relationship(refs, a, owner, path)
+    return if a.is_derived?
+    
     # puts "    Creating relationship #{a.name}"
     if a.is_property?
       reference(refs, a, path)

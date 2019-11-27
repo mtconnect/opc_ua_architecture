@@ -209,7 +209,6 @@ class Type
     end
     associations.compact!
 
-    #@relations, @constraints = associations.partition { |e| e.class != Relation::Constraint }
     @constraints = {}
     @invariants = {}
     @relations = associations

@@ -131,6 +131,10 @@ module Relation
       false
     end
 
+    def is_derived?
+      false
+    end
+
     def node_class
       raise "Unknown ndoe class #{self.class.name} for #{@owner.name} '#{@name}'"
     end
@@ -214,6 +218,7 @@ module Relation
       src = assoc.at('./ownedEnd')
       @assoc_type = assoc['type']
       @source = End.new(src, owner)
+      @is_derived = assoc['isDerived']
       
       @association = r.at("//connector[@idref='#{aid}']")
       unpack_extended_properties(@association)
@@ -248,6 +253,10 @@ module Relation
       true
     end
 
+    def is_derived?
+      @is_derived
+    end
+    
     def target_node_name
       @target.type.name
     end

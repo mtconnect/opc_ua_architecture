@@ -114,8 +114,8 @@ class LatexType < Type
     @relations.each do |r|
       if r.is_reference?
         begin
-          # puts "  Ref: '#{r.name}' '#{r.stereotype}' '#{r.final_target.type.name}' #{r.target_node_name}"
-          next if r.stereotype and r.stereotype =~ /Attribute/
+          # puts "  Ref: '#{r.name}' '#{r.stereotype}' '#{r.final_target.type.name}' #{r.target_node_name} #{r.is_derived?}"
+          next if r.is_derived? or (r.stereotype and r.stereotype =~ /Attribute/)  
           
           array = '[]' if r.is_array?
           

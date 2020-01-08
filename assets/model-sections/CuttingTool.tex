@@ -1,0 +1,525 @@
+% Generated 2019-11-12 19:49:26 -0600
+\subsection{Cutting Tool} \label{model:CuttingTool}
+\subsubsection{Defintion of \texttt{ MTCutterStatusType}}
+  \label{type:MTCutterStatusType}
+
+\FloatBarrier
+
+The values CutterStatus element can be a combined set of Status elements.  The MTConnect Standard allows 
+any set of statuses to be combined, but only certain combinations make sense.  A Cutting Tool \shouldnot be 
+both \mtmodel{NEW} and \mtmodel{USED} at the same time.  There are no rules in the schema to enforce this, but this 
+is left to the implementer. The following combinations \mustnot occur: 
+
+\begin{itemize}
+  \item \mtmodel{NEW} \mustnot be used with \mtmodel{USED}, \mtmodel{RECONDITIONED}, or \mtmodel{EXPIRED}. 
+  \item \mtmodel{UNKNOWN} \mustnot be used with any other status. 
+  \item \mtmodel{ALLOCATED} and \mtmodel{UNALLOCATED} \mustnot be used together.
+  \item \mtmodel{AVAILABLE} and \mtmodel{UNAVAILABLE} \mustnot be used together.
+  \item If the tool is \mtmodel{EXPIRED}, \mtmodel{BROKEN}, or \mtmodel{NOT_REGISTERED} it \mustnot be \mtmodel{AVAILABLE}.
+  \item All other combinations are allowed.
+\end{itemize}
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTCutterStatusType} Definition}
+  \label{table:MTCutterStatusType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTCutterStatusType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-2} \\
+DataType & \multicolumn{5}{|l|}{UInteger} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MultiStateDiscreteType (See \cite{UAPart8} Documentation)} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MTCuttingItemType}}
+  \label{type:MTCuttingItemType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTCuttingItemType} Definition}
+  \label{table:MTCuttingItemType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTCuttingItemType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart5} Documentation)} \\
+Has\-Property & Variable & Grade & String & Property\-Type & Optional \\
+Has\-Property & Variable & Indices & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & Item\-Id & String & Property\-Type & Optional \\
+Has\-Property & Variable & Locus & String & Property\-Type & Optional \\
+Has\-Property & Variable & Manufactures & String[] & Property\-Type & Optional \\
+Has\-Property & Variable & MT\-Description & String & Property\-Type & Optional \\
+Has\-Component & Variable & Minutes\-Item\-Life & Base\-Data\-Type & MT\-Tool\-Life\-Type & Optional \\
+Has\-Component & Variable & Cutter\-Status & UInteger & MT\-Cutter\-Status\-Type & Optional \\
+Has\-Component & Variable & Part\-Count\-Item\-Life & Base\-Data\-Type & MT\-Tool\-Life\-Type & Optional \\
+Organizes & Object & <Folder> & MT\-Cutting\-Tool\-Measurement\-Type[] & Folder\-Type & Optional \\
+Has\-Component & Variable & Wear\-Item\-Life & Base\-Data\-Type & MT\-Tool\-Life\-Type & Optional \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\paragraph{Referenced Properties and Objects}
+
+\begin{itemize}
+\item \texttt{Indices::String:} TODO: We may want to create a special type for the indices.
+
+\end{itemize}
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MTCuttingItemsFolderType}}
+  \label{type:MTCuttingItemsFolderType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTCuttingItemsFolderType} Definition}
+  \label{table:MTCuttingItemsFolderType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTCuttingItemsFolderType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of FolderType (See \cite{UAPart5} Documentation)} \\
+Has\-Property & Variable & Count & Int32 & Property\-Type & Mandatory \\
+Organizes & Object & <Folder> & MT\-Cutting\-Tool\-Life\-Cycle\-Type & Folder\-Type & Mandatory \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MTCuttingItemsFolderType}}
+  \label{type:MTCuttingItemsFolderType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTCuttingItemsFolderType} Definition}
+  \label{table:MTCuttingItemsFolderType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTCuttingItemsFolderType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+Has\-Property & Variable & Count & Int32 & Property\-Type & Mandatory \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MTCuttingToolArchetypeType}}
+  \label{type:MTCuttingToolArchetypeType}
+
+\FloatBarrier
+
+The \mtuatype{MTCuttingToolArchetypeType} \mtterm{Information Model} represents the information about
+a of cutting tool that is common to all cutting toos of that kind. It contains only the constraints
+on the measurements and the limits of use, but as it deos not represent a physical cutting tool, there
+can be not measured values.
+ 
+
+MTConnect Standard will adopt the ISO 13399 structure when formulating the vocabulary 
+for Cutting Tool geometries and structure to be represented in the CuttingToolArchetype.  
+The nominal values provided in the \mtuatype{MTCuttingToolLifeCycleType} section are only concerned with two 
+aspects of the Cutting Tool, the Cutting Tool and the Cutting Item.  The Tool Item, Adaptive 
+Item, and Assembly Item will only be covered in the \mtuatype{MTCuttingToolDefinitionType} section of this 
+document since this section contains the full ISO 13399 information about a Cutting Tool.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTCuttingToolArchetypeType} Definition}
+  \label{table:MTCuttingToolArchetypeType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTCuttingToolArchetypeType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTAssetType (See Assets Documentation)} \\
+Has\-Property & Variable & Manufacturers & String[] & Property\-Type & Optional \\
+Has\-Property & Variable & Serial\-Number & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & Tool\-Id & String & Property\-Type & Mandatory \\
+Has\-Component & Object & Cutting\-Tool\-Lifecycle & \multicolumn{2}{l|}{MTCuttingToolLifeCycleType} & Optional \\
+Has\-Component & Object & Cutting\-Tool\-Definition & \multicolumn{2}{l|}{MTCuttingToolDefinitionType} & Optional \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MTCuttingToolConstraintType}}
+  \label{type:MTCuttingToolConstraintType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTCuttingToolConstraintType} Definition}
+  \label{table:MTCuttingToolConstraintType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTCuttingToolConstraintType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Double} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of DataItemType (See \cite{UAPart8} Documentation)} \\
+HasSubtype & VariableType & \multicolumn{2}{l}{MTCuttingToolMeasurementType} & \multicolumn{2}{|l|}{See section \ref{type:MTCuttingToolMeasurementType}} \\
+Has\-Property & Variable & Data\-Type & Double & Property\-Type & Mandatory \\
+Has\-Property & Variable & Maximum & Double & Property\-Type & Optional \\
+Has\-Property & Variable & Minimum & Double & Property\-Type & Optional \\
+Has\-Property & Variable & Nominal & Double & Property\-Type & Optional \\
+Has\-Property & Variable & Value\-Rank & Int32 & Property\-Type & Mandatory \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MTCuttingToolMeasurementType}}
+  \label{type:MTCuttingToolMeasurementType}
+
+\FloatBarrier
+
+The \mtmodel{MTCuttingToolMeasurementsType} is used for all measurements where the \gls{BrowseName} provides
+the semantic information regarding the measurement type along with the \mtmodel{Code} \gls{Property} which 
+refers to the ISO 13399 term. 
+
+The measurements \gls{BrowseName} will be taken from the \mtterm{Element} name of the measurement. 
+The reset of the information will be included per the MTConnect standard.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTCuttingToolMeasurementType} Definition}
+  \label{table:MTCuttingToolMeasurementType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTCuttingToolMeasurementType} \\
+IsAbstract & \multicolumn{5}{|l|}{True} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Double} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTCuttingToolConstraintType (See section \ref{type:MTCuttingToolConstraintType})} \\
+Has\-Property & Variable & Code & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & Enginering\-Units & EUInformation & Property\-Type & Optional \\
+Has\-Property & Variable & Native\-Units & String & Property\-Type & Optional \\
+Has\-Property & Variable & Significant\-Digits & UInt32 & Property\-Type & Optional \\
+Has\-Property & Variable & Units & String & Property\-Type & Optional \\
+Has\-MT\-Class\-Type & Object & <Cutting\-Tool\-Class> & \multicolumn{2}{l|}{CuttingToolClassType} & Mandatory \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\paragraph{Referenced Properties and Objects}
+
+\begin{itemize}
+\item \texttt{Code::String:} Refers to the ISO 13399 constraints {\color{red} (TODO: Need reference to the ISO specification for the codes)}.
+
+\end{itemize}
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MTCuttingToolDefinitionType}}
+  \label{type:MTCuttingToolDefinitionType}
+
+\FloatBarrier
+
+The CuttingToolDefinition contains the detailed structure of the Cutting Tool. The
+information contained in this element will be static during its lifecycle. Currently we are
+referring to the external ISO 13399 standard to provide the complete definition and composition
+of the Cutting Tool.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTCuttingToolDefinitionType} Definition}
+  \label{table:MTCuttingToolDefinitionType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTCuttingToolDefinitionType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart5} Documentation)} \\
+Has\-Property & Variable & Format & Cutting\-Tool\-Defintion\-Format\-Data\-Type & Property\-Type & Optional \\
+Has\-Component & Object & Data & \multicolumn{2}{l|}{FileType} & Mandatory \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\paragraph{Referenced Properties and Objects}
+
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{CuttingToolDefintionFormatDataType}
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{CuttingToolDefintionFormatDataType} Enumeration}
+  \label{enum:CuttingToolDefintionFormatDataType}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{XML} & \texttt{0} \\
+\texttt{EXPRESS} & \texttt{1} \\
+\texttt{TEXT} & \texttt{2} \\
+\texttt{UNDEFINED} & \texttt{3} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\end{itemize}
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MTCuttingToolLifeCycleType}}
+  \label{type:MTCuttingToolLifeCycleType}
+
+\FloatBarrier
+
+The life cycle refers to the data pertaining to the application or the use of the tool.  This data is 
+provided by various pieces of equipment (i.e. machine tool, presetter) and statistical 
+process control applications.  Life cycle data will not remain static, but will change 
+periodically when a tool is used or measured.  The life cycle has three conceptual parts; tool 
+and Cutting Item identity, properties, and measurements.
+
+The CuttingToolLifeCycle contains data for the entire tool assembly.  The specific Cutting Items 
+that are part of the CuttingToolLifeCycle are contained in the CuttingItems element.  Each 
+\mtuatype{MTCuttingItem} has similar properties as the assembly; identity, properties, and measurements.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTCuttingToolLifeCycleType} Definition}
+  \label{table:MTCuttingToolLifeCycleType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTCuttingToolLifeCycleType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart5} Documentation)} \\
+Has\-Property & Variable & Connection\-Code\-Machine\-Side & String & Property\-Type & Optional \\
+Has\-Property & Variable & Program\-Tool\-Group & String & Property\-Type & Optional \\
+Has\-Property & Variable & Program\-Tool\-Number & Int32 & Property\-Type & Optional \\
+Has\-Component & Variable & Cutter\-Status & UInteger & MT\-Cutter\-Status\-Type & Mandatory \\
+Has\-Component & Variable & Tool\-Life\-Part\-Count & Base\-Data\-Type & MT\-Tool\-Life\-Type & Optional \\
+Has\-Component & Variable & Tool\-Life\-Wear & Base\-Data\-Type & MT\-Tool\-Life\-Type & Optional \\
+Has\-Component & Variable & Process\-Feed\-Rate & Base\-Data\-Type & MT\-Cutting\-Tool\-Constraint\-Type & Optional \\
+Has\-Component & Variable & Recondition\-Count & Base\-Data\-Type & MT\-Recondition\-Count\-Type & Optional \\
+Organizes & Object & <Folder> & MT\-Cutting\-Item\-Type[] & Folder\-Type & Optional \\
+Has\-Component & Variable & Process\-Spindle\-Speed & Base\-Data\-Type & MT\-Cutting\-Tool\-Constraint\-Type & Optional \\
+Organizes & Object & <Folder> & MT\-Cutting\-Tool\-Measurement\-Type[] & Folder\-Type & Optional \\
+Has\-Component & Variable & Location & Base\-Data\-Type & MT\-Location\-Type & Optional \\
+Has\-Component & Variable & Tool\-Life\-Minutes & Base\-Data\-Type & MT\-Tool\-Life\-Type & Optional \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MTCuttingToolType}}
+  \label{type:MTCuttingToolType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTCuttingToolType} Definition}
+  \label{table:MTCuttingToolType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTCuttingToolType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTAssetType (See Assets Documentation)} \\
+Has\-Property & Variable & Manufacturers & String[] & Property\-Type & Optional \\
+Has\-Property & Variable & Serial\-Number & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & Tool\-Id & String & Property\-Type & Mandatory \\
+Has\-Component & Object & Cutting\-Tool\-Architype & \multicolumn{2}{l|}{MTCuttingToolArchetypeType} & Optional \\
+Has\-Component & Object & Cutting\-Tool\-Lifecycle & \multicolumn{2}{l|}{MTCuttingToolLifeCycleType} & Mandatory \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MTLocationType}}
+  \label{type:MTLocationType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTLocationType} Definition}
+  \label{table:MTLocationType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTLocationType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Int32} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of DataItemType (See \cite{UAPart8} Documentation)} \\
+Has\-Property & Variable & Data\-Type & Int32 & Property\-Type & Mandatory \\
+Has\-Property & Variable & Negative\-Overlap & Int32 & Property\-Type & Optional \\
+Has\-Property & Variable & Positive\-Overlap & Int32 & Property\-Type & Optional \\
+Has\-Property & Variable & Type & MT\-Location\-Data\-Type & Property\-Type & Mandatory \\
+Has\-Property & Variable & Value\-Rank & Int32 & Property\-Type & Mandatory \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\paragraph{Referenced Properties and Objects}
+
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{MTLocationDataType}
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTLocationDataType} Enumeration}
+  \label{enum:MTLocationDataType}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{CRIB} & \texttt{0} \\
+\texttt{POT} & \texttt{1} \\
+\texttt{STATION} & \texttt{2} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\end{itemize}
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MTReconditionCountType}}
+  \label{type:MTReconditionCountType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTReconditionCountType} Definition}
+  \label{table:MTReconditionCountType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTReconditionCountType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Int32} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of DataItemType (See \cite{UAPart8} Documentation)} \\
+Has\-Property & Variable & Data\-Type & Int32 & Property\-Type & Mandatory \\
+Has\-Property & Variable & Maximum\-Count & Int32 & Property\-Type & Optional \\
+Has\-Property & Variable & Value\-Rank & Int32 & Property\-Type & Mandatory \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MTToolLifeType}}
+  \label{type:MTToolLifeType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTToolLifeType} Definition}
+  \label{table:MTToolLifeType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTToolLifeType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+ValueRank & \multicolumn{5}{|l|}{-1} \\
+DataType & \multicolumn{5}{|l|}{Double} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of DataItemType (See \cite{UAPart8} Documentation)} \\
+Has\-Property & Variable & Count\-Direction & Count\-Direction\-Data\-Type & Property\-Type & Mandatory \\
+Has\-Property & Variable & Data\-Type & Double & Property\-Type & Mandatory \\
+Has\-Property & Variable & Initial & Double & Property\-Type & Optional \\
+Has\-Property & Variable & Limit & Double & Property\-Type & Optional \\
+Has\-Property & Variable & MT\-Type & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & Value\-Rank & Int32 & Property\-Type & Mandatory \\
+Has\-Property & Variable & Warning & Double & Property\-Type & Optional \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\paragraph{Referenced Properties and Objects}
+
+\begin{itemize}
+\item \textbf{Allowable Values} for \texttt{CountDirectionDataType}
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{CountDirectionDataType} Enumeration}
+  \label{enum:CountDirectionDataType}
+\tabulinesep=3pt
+\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Name} & {Index} \\
+\tabucline[1.5pt]{}
+\texttt{DOWN} & \texttt{0} \\
+\texttt{UP} & \texttt{1} \\
+\end{tabu}
+\end{table} 
+\FloatBarrier
+\end{itemize}
+\FloatBarrier

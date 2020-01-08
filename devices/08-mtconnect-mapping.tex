@@ -8,7 +8,7 @@ OPC UA defines abstractions representing data, relationships, and events from de
 
 MTConnect has similar capabilities but uses a different structural model where the meta-data and the streaming values are in separate documents to normalize the data flow in a similar way that many publish-subscribe protocols separate the structure from the data. MTConnect also supports a store-and-forward capability like many message brokers in a \gls{mom} architecture to enable resilience and recovery of data in the event of connectivity problems.
 
-When translating from MTConnect to \gls{opc} \gls{ua}, the MTConnect abstractions of \glspl{MTDataItem} are converted using the OPC UA  \gls{DataVariable} abstractions as given in \cite{UAPart8}.  The relationships are mapped to multiple \gls{DataVariable} types where the category and the type determine the correct mapping. Conditions are mapped a sub-type of the OPC UA \gls{ConditionType} in a similar way. The behavior of the OPC UA \glspl{Condition} can be found in \cite{UAPart9}.
+When translating from MTConnect to \gls{opc} \gls{ua}, the MTConnect abstractions of \glspl{MTDataItem} are converted using the OPC UA  \gls{DataVariable} abstractions as given in \cite{UAPart8}.  The relationships are mapped to multiple \gls{DataVariable} types where the category and the type determine the correct mapping. Conditions are mapped a sub-type of the OPC UA \uamodel{BaseObjectType} representing the meta-data associated with the MTConnect \gls{MTCondition}. The \uamodel{Condition} mapping to the events can be found in Section~\ref{sec:mapping-conditions}.
 
 \subsection{MTConnect UML Representation of OPC}
 
@@ -192,7 +192,7 @@ The rules for \gls{Composition} elements MUST be applied in strict sequence as f
 \subsubsection{\mtmodel{DataItem} \uamodel{HasTypeDefinition} and \uamodel{BrowseName} Conventions}
 \label{sec:data-item-conventions}
 
-The MTConnect \gls{MTDataItem} represents multiple OPC UA \uamodel{DataVariableType}s as well as UA \uamodel{ConditionType}s as described in parts \cite{UAPart8} and \cite{UAPart9} respectively. The mapping rules MUST be applied in strict sequence as follows:
+The MTConnect \gls{MTDataItem} represents multiple OPC UA \uamodel{DataVariableType}s as described in parts \cite{UAPart8}. The mapping rules MUST be applied in strict sequence as follows:
 
 \begin{enumerate}
   \item Determine the \gls{MTDataItem} \gls{TypeDefinition} for the \gls{HasTypeDefinition} \gls{Reference}:
@@ -386,7 +386,7 @@ The \mtmodel{Device} is mapped to an \mtuatype{MTDeviceType} object in the MTCon
 
 \input{diagrams/mtconnect-mapping/device-model.tex}
 
-Every device must have a \uamodel{HasNotifier} relationship with the \gls{Server} UA Object as the source to enable conditions and event notification. The \uamodel{HasNotifier} relationships are flowed down through the component hierarchy where the \glspl{Object} each have a \uamodel{HasNotifier} relationship with the parent. The MTConnect \glspl{MTDataItem} will have require a \uamodel{HasEventSource} relationship with the parent \gls{MTComponent} when the \gls{MTDataItem} is associated with a \gls{MTCondition} where the \mtmodel{Source} element of the \gls{MTCondition} references the \gls{MTDataItem} \mtmodel{id}. 
+Every device must have a \uamodel{HasNotifier} relationship with the \gls{Server} UA Object as the source to enable conditions and event notification. The \uamodel{HasNotifier} relationships are flowed down through the component hierarchy where the \glspl{Object} each have a \uamodel{HasNotifier} relationship with the parent. 
 
 The treatment of the component relationships will be covered in the \gls{MTDataItem} examples.
 
@@ -447,11 +447,9 @@ MTConnect \glspl{MTDataItem} of \gls{category} \mtmodel{CONDITION} are special t
 
 The \mtuatype{MTConditionType} has a naming rule similar to the \gls{MTDataItem} referenced above. The same rule applies with \mtmodel{Condition} appended. In this case the condition is of \gls{type} \mtmodel{POSITION} so the \gls{BrowseName} is \mtmodel{PositionCondition}. This is to differentiate the \glspl{MTCondition} from other \glspl{MTDataItem}.
 
-The \mtuatype{MTConditionType} is decendent of the \uamodel{BaseEventType} described in \cite{UAPart5} and \cite{UAPart9}, so it has two functions in the UA model. It represents the overall state of the UA \gls{Condition} and also it represents each event as the various MTConnect \gls{MTCondition} changes are reported as represented in the \xml{MTConnectStreams} described in \cite{MTCPart3}.
+The \mtuatype{MTConditionType} is decendent of the \uamodel{BaseObjectType} described in \cite{UAPart5}. It represents the metadata associated with all \uamodel{Event}s that are activated when a \mtmodel{Condition} is reported as described in \cite{MTCPart3}. The \uamodel{HasNotifier} reference must be created between the \xml{SimpleCnc:}\mtuatype{MTDeviceType} object and the \mtmodel{Axes} object to allow for the events to flow down to the conditions for each of the components. The relationship of the condition in Figure~\ref{fig:linear-x-component} illustrates the relationships between the \mtmodel{Component} and the related condition in the notification hierarchy.
 
-The \uamodel{HasNotifier} reference must be created between the \xml{SimpleCnc:}\mtuatype{MTDeviceType} object and the \mtmodel{Axes} object to allow for the events to flow down to the conditions for each of the components. The relationship of the condition in Figure~\ref{fig:linear-x-component} illustrates the relationships between the \mtmodel{Component} and the related condition in the notification hierarchy.
-
-The \xml{Linear[x]} component uses a \uamodel{HasNotifier} reference sourced from the parent \uamodel{Axes} \gls{Object}. The condition, having a \mtmodel{MTClassType} and a \uamodel{ConditionClassId} of \mtuatype{PositionClassType}, is connected to the \xml{Linear[X]} axis with a \uamodel{HasCondition} relationship to indicate the source of the events for the \gls{ConditionType}.
+The \xml{Linear[x]} component uses a \uamodel{HasNotifier} reference sourced from the parent \uamodel{Axes} \gls{Object}. The condition, having a \mtmodel{MTClassType} of \mtuatype{PositionClassType}, is connected to the \xml{Linear[X]} axis with a \uamodel{HasCondition} relationship to indicate the source of the events for the \gls{ConditionType}.
 
 \FloatBarrier
 
@@ -526,9 +524,7 @@ Figure~\ref{fig:rotary-c-load} represents the \mtmodel{Load} \gls{MTDataItem} fo
 
 \FloatBarrier
 
-Figure~\ref{fig:rotary-c-amperage} illustrates the \mtmodel{Amperage} \gls{MTDataItem} corresponding to the Listing~\ref{lst:rotary-c-example} Lines~\ref{line:rotary-c-amperage}-\ref{line:rotary-c-amperage-condition}. Unlike the previous example of a MTConnect \gls{MTCondition} relating to the MTConnect \gls{MTComponent}, the \mtmodel{Source} element under the \gls{MTDataItem} references the \gls{MTDataItem} with \gls{type} \mtmodel{AMPERAGE}. When the \mtmodel{Source} refers to a \gls{MTDataItem} that is part of the same MTConnect \gls{MTComponent}, the UA \uamodel{Variable} is given a \gls{Reference} \uamodel{HasEventSource} from the \mtmodel{RotaryType} (\xml{Rotary[C]}) and a \uamodel{HasCondition} \gls{Reference} is created between the \gls{Variable} to the \mtuatype{MTConditionType}.
-
-As stated above, the \uamodel{HasNotifier} \glspl{Reference} must be established between all \glspl{MTComponent} back to the \mtuatype{MTDeviceType} that has a reference from the \gls{Server}. The \mtmodel{MotorAmperage} and \mtmodel{MotorAmperageCondition} demonstrate the naming rule where the \gls{Composition} \gls{type} is converted to \gls{PascalCase} and then prepended to the \gls{MTDataItem} \gls{type}. 
+Figure~\ref{fig:rotary-c-amperage} illustrates the \mtmodel{Amperage} \gls{MTDataItem} corresponding to the Listing~\ref{lst:rotary-c-example} Lines~\ref{line:rotary-c-amperage}-\ref{line:rotary-c-amperage-condition}. As stated above, the \uamodel{HasNotifier} \glspl{Reference} must be established between all \glspl{MTComponent} back to the \mtuatype{MTDeviceType} that has a reference from the \gls{Server}. The \mtmodel{MotorAmperage} and \mtmodel{MotorAmperageCondition} demonstrate the naming rule where the \gls{Composition} \gls{type} is converted to \gls{PascalCase} and then prepended to the \gls{MTDataItem} \gls{type}. 
 
 \begin{figure}[ht]
   \centering

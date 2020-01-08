@@ -1,0 +1,75 @@
+% Generated 2019-11-12 19:49:26 -0600
+\subsection{Data Item Types} \label{model:DataItemTypes}
+
+The data item types represent the MTConnect types as defined in Section 8 of the 
+MTConnect Standard Part 2 \cite{MTCPart2} and are represented using the XML \gls{type} 
+\mtmodel{attribute}. The type and sub-type relationships are given in the standard and are 
+not documented in the companion specifiction. 
+
+The model of the types is similar to the OPC UA condition classes as given in OPC UA Part 9
+\cite{UAPart9}. Since MTConnect conditions use the same type system as the data items, 
+the representation of the data item type will be derived from the \texttt{BaseConditionClassType}. 
+The MTConnect Types will not use the \mtmodel{...ClassType}, but will be the name as specified
+in the MTConnect standard with \mtmodel{Type} appended.
+
+For example: The \mtmodel{CONTOLLER_MODE} will be given as the \mtmodel{ControllerModeType}. 
+The relationship to the \gls{MTDataItem} OPC UA types are presented so that it will be
+easier to map the MTConnect types to the correct super class as given in the OPC UA model.
+
+
+
+\subsubsection{Defintion of \texttt{ MTDataItemClassType}}
+  \label{type:MTDataItemClassType}
+
+\FloatBarrier
+
+Abstract base class for all the data item class types. The names are created by pascal typing the names
+and then generating appending \mtmodel{Type}.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTDataItemClassType} Definition}
+  \label{table:MTDataItemClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTDataItemClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{True} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of BaseConditionClassType (See \cite{UAPart9} Documentation)} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{MTConditionClassType} & \multicolumn{2}{|l|}{See section \ref{type:MTConditionClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{MTEventClassType} & \multicolumn{2}{|l|}{See section \ref{type:MTEventClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{MTSampleClassType} & \multicolumn{2}{|l|}{See section \ref{type:MTSampleClassType}} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MTMessageClassType}}
+  \label{type:MTMessageClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTMessageClassType} Definition}
+  \label{table:MTMessageClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTMessageClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTEventClassType (See Data Items Documentation)} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier

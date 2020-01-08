@@ -1,0 +1,38 @@
+% Generated 2019-11-12 19:49:26 -0600
+\subsection{Assets} \label{model:Assets}
+\subsubsection{Defintion of \texttt{ MTAssetType}}
+  \label{type:MTAssetType}
+
+\FloatBarrier
+
+An Asset is a container type XML element used to organize information describing an 
+entity that is not a piece of equipment.  Asset is an abstract type and will never 
+appear directly in the MTConnect information model.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTAssetType} Definition}
+  \label{table:MTAssetType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTAssetType} \\
+IsAbstract & \multicolumn{5}{|l|}{True} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of BaseObjectType (See \cite{UAPart5} Documentation)} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{MTCuttingToolArchetypeType} & \multicolumn{2}{|l|}{See section \ref{type:MTCuttingToolArchetypeType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{MTCuttingToolType} & \multicolumn{2}{|l|}{See section \ref{type:MTCuttingToolType}} \\
+Has\-Property & Variable & Asset\-Id & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & Device\-Uuid & String & Property\-Type & Mandatory \\
+Has\-Property & Variable & MT\-Description & String & Property\-Type & Optional \\
+Has\-Property & Variable & Removed & Boolean & Property\-Type & Optional \\
+Has\-Property & Variable & Timestamp & Date\-Time & Property\-Type & Mandatory \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier

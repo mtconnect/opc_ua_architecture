@@ -1,0 +1,2017 @@
+% Generated 2019-11-12 19:49:26 -0600
+\subsection{Data Item Sub Types} \label{model:DataItemSubTypes}
+
+he \glspl{subType} are related to the various \glspl{Variable} using the \uamodel{HasMTSubClassType}. 
+These provide the the second level type classifiaction of the MTConnect \glspl{MTDataItem} and 
+also the \uamodel{ConditionSubClassId} for the \glspl{MTCondition}.
+
+\subsubsection{Defintion of \texttt{ MTDataItemSubClassType}}
+  \label{type:MTDataItemSubClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MTDataItemSubClassType} Definition}
+  \label{table:MTDataItemSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MTDataItemSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{True} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of BaseConditionClassType (See \cite{UAPart9} Documentation)} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{RelativeSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:RelativeSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{RemainingSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:RemainingSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{RequestSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:RequestSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{ResponseSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:ResponseSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{RockwellSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:RockwellSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{RotarySubClassType} & \multicolumn{2}{|l|}{See section \ref{type:RotarySubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{SetUpSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:SetUpSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{ShoreSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:ShoreSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{StandardSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:StandardSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{SwitchedSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:SwitchedSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{TargetSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:TargetSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{ToolChangeStopSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:ToolChangeStopSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{ToolEdgeSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:ToolEdgeSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{ToolGroupSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:ToolGroupSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{ToolSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:ToolSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{UasbleSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:UasbleSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{VerticalSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:VerticalSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{VickersSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:VickersSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{VolumeSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:VolumeSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{WeightSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:WeightSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{WorkingSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:WorkingSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{WorkpieceSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:WorkpieceSubClassType}} \\
+\multicolumn{6}{|l|}{Continued...} \\
+\end{tabu}
+\end{table}
+\begin{table}[ht]
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{LineSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:LineSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{LoadedSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:LoadedSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{MachineAxisLockSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:MachineAxisLockSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{MaintenanceSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:MaintenanceSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{ManualUnclampSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:ManualUnclampSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{MaximumSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:MaximumSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{MinimumSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:MinimumSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{MohsSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:MohsSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{MoleSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:MoleSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{MotionSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:MotionSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{NoScaleSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:NoScaleSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{OperatingSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:OperatingSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{OperatorSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:OperatorSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{OptionalStopSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:OptionalStopSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{OverrideSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:OverrideSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{PoweredSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:PoweredSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{PrimarySubClassType} & \multicolumn{2}{|l|}{See section \ref{type:PrimarySubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{ProbeSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:ProbeSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{ProcessSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:ProcessSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{ProgrammedSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:ProgrammedSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{RadialSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:RadialSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{RapidSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:RapidSubClassType}} \\
+\multicolumn{6}{|l|}{Continued...} \\
+\end{tabu}
+\end{table}
+\begin{table}[ht]
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{AlternatingSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:AlternatingSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{AScaleSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:AScaleSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{AuxiliarySubClassType} & \multicolumn{2}{|l|}{See section \ref{type:AuxiliarySubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{BadSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:BadSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{BrinellSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:BrinellSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{BScaleSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:BScaleSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{CommandedSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:CommandedSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{ControlSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:ControlSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{CScaleSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:CScaleSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{DelaySubClassType} & \multicolumn{2}{|l|}{See section \ref{type:DelaySubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{DirectSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:DirectSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{DryRunSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:DryRunSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{DScaleSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:DScaleSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{FixtureSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:FixtureSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{GoodSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:GoodSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{IncrementalSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:IncrementalSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{JobSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:JobSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{KineticSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:KineticSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{LateralSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:LateralSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{LeebSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:LeebSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{LengthSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:LengthSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{LinearSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:LinearSubClassType}} \\
+\multicolumn{6}{|l|}{Continued...} \\
+\end{tabu}
+\end{table}
+\begin{table}[ht]
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{AbsoluteSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:AbsoluteSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{ActionSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:ActionSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{ActualSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:ActualSubClassType}} \\
+HasSubtype & ObjectType & \multicolumn{2}{l}{AllSubClassType} & \multicolumn{2}{|l|}{See section \ref{type:AllSubClassType}} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ AbsoluteSubClassType}}
+  \label{type:AbsoluteSubClassType}
+
+\FloatBarrier
+
+The magnitude or measurement of a type irrespective of its relation to other values.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{AbsoluteSubClassType} Definition}
+  \label{table:AbsoluteSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{AbsoluteSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ActionSubClassType}}
+  \label{type:ActionSubClassType}
+
+\FloatBarrier
+
+An indication of the operating state or value of a type.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ActionSubClassType} Definition}
+  \label{table:ActionSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ActionSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ActualSubClassType}}
+  \label{type:ActualSubClassType}
+
+\FloatBarrier
+
+The measured value of the a type.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ActualSubClassType} Definition}
+  \label{table:ActualSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ActualSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ AllSubClassType}}
+  \label{type:AllSubClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{AllSubClassType} Definition}
+  \label{table:AllSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{AllSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ AlternatingSubClassType}}
+  \label{type:AlternatingSubClassType}
+
+\FloatBarrier
+
+The measurement of a type occurring in turn repeatedly.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{AlternatingSubClassType} Definition}
+  \label{table:AlternatingSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{AlternatingSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ AScaleSubClassType}}
+  \label{type:AScaleSubClassType}
+
+\FloatBarrier
+
+A Scale weighting factor for the measurement of sound level.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{AScaleSubClassType} Definition}
+  \label{table:AScaleSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{AScaleSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ AuxiliarySubClassType}}
+  \label{type:AuxiliarySubClassType}
+
+\FloatBarrier
+
+Example: When multiple locations on a piece of bar stock are referenced as the indication for the \mtmodel{END_OF_BAR}, 
+the additional location(s) MUST be designated as \mtmodel{AUXILIARY} indication(s) for the \mtmodel{END_OF_BAR}.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{AuxiliarySubClassType} Definition}
+  \label{table:AuxiliarySubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{AuxiliarySubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ BadSubClassType}}
+  \label{type:BadSubClassType}
+
+\FloatBarrier
+
+Indicates the count of incorrect parts produced.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{BadSubClassType} Definition}
+  \label{table:BadSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{BadSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ BrinellSubClassType}}
+  \label{type:BrinellSubClassType}
+
+\FloatBarrier
+
+A scale to measure the resistance to deformation of a surface.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{BrinellSubClassType} Definition}
+  \label{table:BrinellSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{BrinellSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ BScaleSubClassType}}
+  \label{type:BScaleSubClassType}
+
+\FloatBarrier
+
+B Scale weighting factor for the measurement of sound level.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{BScaleSubClassType} Definition}
+  \label{table:BScaleSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{BScaleSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ CommandedSubClassType}}
+  \label{type:CommandedSubClassType}
+
+\FloatBarrier
+
+The value as specified by the Controller type component.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{CommandedSubClassType} Definition}
+  \label{table:CommandedSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{CommandedSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ControlSubClassType}}
+  \label{type:ControlSubClassType}
+
+\FloatBarrier
+
+The state of the enabling signal or control logic that enables or disables the function or operation of the \textit{Structural Element}.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ControlSubClassType} Definition}
+  \label{table:ControlSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ControlSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ CScaleSubClassType}}
+  \label{type:CScaleSubClassType}
+
+\FloatBarrier
+
+C Scale weighting factor for the measurement of sound level.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{CScaleSubClassType} Definition}
+  \label{table:CScaleSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{CScaleSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ DelaySubClassType}}
+  \label{type:DelaySubClassType}
+
+\FloatBarrier
+
+Measurement of the time that a piece of equipment is waiting for an event or an action to occur.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{DelaySubClassType} Definition}
+  \label{table:DelaySubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{DelaySubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ DirectSubClassType}}
+  \label{type:DirectSubClassType}
+
+\FloatBarrier
+
+Measurement of DC current or voltage.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{DirectSubClassType} Definition}
+  \label{table:DirectSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{DirectSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ DryRunSubClassType}}
+  \label{type:DryRunSubClassType}
+
+\FloatBarrier
+
+A setting or operator selection used to execute a test mode to confirm the execution of machine functions.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{DryRunSubClassType} Definition}
+  \label{table:DryRunSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{DryRunSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ DScaleSubClassType}}
+  \label{type:DScaleSubClassType}
+
+\FloatBarrier
+
+D Scale weighting factor for the measurement of sound level.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{DScaleSubClassType} Definition}
+  \label{table:DScaleSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{DScaleSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ FixtureSubClassType}}
+  \label{type:FixtureSubClassType}
+
+\FloatBarrier
+
+Fixture denotes a specifc type of a piece of equipment.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{FixtureSubClassType} Definition}
+  \label{table:FixtureSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{FixtureSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ GoodSubClassType}}
+  \label{type:GoodSubClassType}
+
+\FloatBarrier
+
+Indicates the count of correct parts made.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{GoodSubClassType} Definition}
+  \label{table:GoodSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{GoodSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ IncrementalSubClassType}}
+  \label{type:IncrementalSubClassType}
+
+\FloatBarrier
+
+A small change which could be either positive or negative in a Type's value or function.
+
+Example: The position of a block of program code relative to the occurrence of the last \mtmodel{LINE_LABEL} encountered in the control program.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{IncrementalSubClassType} Definition}
+  \label{table:IncrementalSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{IncrementalSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ JobSubClassType}}
+  \label{type:JobSubClassType}
+
+\FloatBarrier
+
+The value of a signal or calculation issued to adjust the feedrate of the axes associated with a Path component when the axes, 
+or a single axis, are being operated in a manual mode or method (jogging).
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{JobSubClassType} Definition}
+  \label{table:JobSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{JobSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ KineticSubClassType}}
+  \label{type:KineticSubClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{KineticSubClassType} Definition}
+  \label{table:KineticSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{KineticSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ LateralSubClassType}}
+  \label{type:LateralSubClassType}
+
+\FloatBarrier
+
+An indication of the position of a mechanism that may move in a lateral direction. The mechanism is represented by 
+a \mtmodel{Composition} type component.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{LateralSubClassType} Definition}
+  \label{table:LateralSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{LateralSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ LeebSubClassType}}
+  \label{type:LeebSubClassType}
+
+\FloatBarrier
+
+A scale to measure the elasticity of a surface.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{LeebSubClassType} Definition}
+  \label{table:LeebSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{LeebSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ LengthSubClassType}}
+  \label{type:LengthSubClassType}
+
+\FloatBarrier
+
+The measurement or extent of something from end to end.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{LengthSubClassType} Definition}
+  \label{table:LengthSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{LengthSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ LinearSubClassType}}
+  \label{type:LinearSubClassType}
+
+\FloatBarrier
+
+The direction of motion.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{LinearSubClassType} Definition}
+  \label{table:LinearSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{LinearSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ LineSubClassType}}
+  \label{type:LineSubClassType}
+
+\FloatBarrier
+
+The state of the power source for the \textit{Structural Element}.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{LineSubClassType} Definition}
+  \label{table:LineSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{LineSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ LoadedSubClassType}}
+  \label{type:LoadedSubClassType}
+
+\FloatBarrier
+
+An indication that the sub-parts of a piece of equipment are under load.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{LoadedSubClassType} Definition}
+  \label{table:LoadedSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{LoadedSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MachineAxisLockSubClassType}}
+  \label{type:MachineAxisLockSubClassType}
+
+\FloatBarrier
+
+A setting or operator selection that changes the behavior of the controller on a piece of equipment.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MachineAxisLockSubClassType} Definition}
+  \label{table:MachineAxisLockSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MachineAxisLockSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MaintenanceSubClassType}}
+  \label{type:MaintenanceSubClassType}
+
+\FloatBarrier
+
+The identifier of the person currently responsible for performing maintenance on the piece of equipment.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MaintenanceSubClassType} Definition}
+  \label{table:MaintenanceSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MaintenanceSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ManualUnclampSubClassType}}
+  \label{type:ManualUnclampSubClassType}
+
+\FloatBarrier
+
+An indication of the state of an operator controlled interlock that can inhibit the ability to 
+initiate an unclamp action of an electronically controlled chuck.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ManualUnclampSubClassType} Definition}
+  \label{table:ManualUnclampSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ManualUnclampSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MaximumSubClassType}}
+  \label{type:MaximumSubClassType}
+
+\FloatBarrier
+
+Maximum or peak value recorded for the data item during the calculation period.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MaximumSubClassType} Definition}
+  \label{table:MaximumSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MaximumSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MinimumSubClassType}}
+  \label{type:MinimumSubClassType}
+
+\FloatBarrier
+
+Minimum value recorded for the data item during the calculation period.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MinimumSubClassType} Definition}
+  \label{table:MinimumSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MinimumSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MohsSubClassType}}
+  \label{type:MohsSubClassType}
+
+\FloatBarrier
+
+A scale to measure the resistance to scratching of a surface.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MohsSubClassType} Definition}
+  \label{table:MohsSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MohsSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MoleSubClassType}}
+  \label{type:MoleSubClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MoleSubClassType} Definition}
+  \label{table:MoleSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MoleSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ MotionSubClassType}}
+  \label{type:MotionSubClassType}
+
+\FloatBarrier
+
+An indication of the open or closed state of a mechanism. The mechanism is represented by a \mtmodel{Composition} type component.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{MotionSubClassType} Definition}
+  \label{table:MotionSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{MotionSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ NoScaleSubClassType}}
+  \label{type:NoScaleSubClassType}
+
+\FloatBarrier
+
+No weighting factor on the frequency scale for the measurement of sound level.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{NoScaleSubClassType} Definition}
+  \label{table:NoScaleSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{NoScaleSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ OperatingSubClassType}}
+  \label{type:OperatingSubClassType}
+
+\FloatBarrier
+
+An indication that the major sub-parts of a piece of equipment are powered or performing any activity whether producing a part or product or not. 
+
+Example: For traditional machine tools, this includes when the piece of equipment is \mtmodel{WORKING} or it is idle.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{OperatingSubClassType} Definition}
+  \label{table:OperatingSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{OperatingSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ OperatorSubClassType}}
+  \label{type:OperatorSubClassType}
+
+\FloatBarrier
+
+The identifier of the person currently responsible for operating the piece of equipment.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{OperatorSubClassType} Definition}
+  \label{table:OperatorSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{OperatorSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ OptionalStopSubClassType}}
+  \label{type:OptionalStopSubClassType}
+
+\FloatBarrier
+
+A setting or operator selection that changes the behavior of the controller on a piece of equipment.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{OptionalStopSubClassType} Definition}
+  \label{table:OptionalStopSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{OptionalStopSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ OverrideSubClassType}}
+  \label{type:OverrideSubClassType}
+
+\FloatBarrier
+
+The operator's overridden value.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{OverrideSubClassType} Definition}
+  \label{table:OverrideSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{OverrideSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ PoweredSubClassType}}
+  \label{type:PoweredSubClassType}
+
+\FloatBarrier
+
+An indication that primary power is applied to the piece of equipment and, as a minimum, the controller 
+or logic portion of the piece of equipment is powered and functioning or components that are required to remain on are powered.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{PoweredSubClassType} Definition}
+  \label{table:PoweredSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{PoweredSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ PrimarySubClassType}}
+  \label{type:PrimarySubClassType}
+
+\FloatBarrier
+
+Specific applications MAY reference one or more locations on a piece of bar stock as the indication 
+for the \mtmodel{END_OF_BAR}. The main or most important location MUST be 
+designated as the \mtmodel{PRIMARY} indication for the \mtmodel{END_OF_BAR}.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{PrimarySubClassType} Definition}
+  \label{table:PrimarySubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{PrimarySubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ProbeSubClassType}}
+  \label{type:ProbeSubClassType}
+
+\FloatBarrier
+
+The position provided by a measurement probe.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ProbeSubClassType} Definition}
+  \label{table:ProbeSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ProbeSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ProcessSubClassType}}
+  \label{type:ProcessSubClassType}
+
+\FloatBarrier
+
+The measurement of the time from the beginning of production of a part or product on a piece of equipment 
+until the time that production is complete for that part or product on that piece of equipment. 
+This includes the time that the piece of equipment is running, producing parts or products, or in the process of producing parts.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ProcessSubClassType} Definition}
+  \label{table:ProcessSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ProcessSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ProgrammedSubClassType}}
+  \label{type:ProgrammedSubClassType}
+
+\FloatBarrier
+
+The value of a signal or calculation issued to adjust the feedrate of the axes associated with a \mtmodel{Path} 
+component when the axes, or a single axis, are operating as specified by a logic or motion program or set by a switch.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ProgrammedSubClassType} Definition}
+  \label{table:ProgrammedSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ProgrammedSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ RadialSubClassType}}
+  \label{type:RadialSubClassType}
+
+\FloatBarrier
+
+A reference to a radial type tool offset variable.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{RadialSubClassType} Definition}
+  \label{table:RadialSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{RadialSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ RapidSubClassType}}
+  \label{type:RapidSubClassType}
+
+\FloatBarrier
+
+The value of a signal or calculation issued to adjust the feedrate of the axes associated with a \mtmodel{Path} 
+component when the axes, or a single axis, are being operated in a rapid positioning mode or method (rapid).
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{RapidSubClassType} Definition}
+  \label{table:RapidSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{RapidSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ RelativeSubClassType}}
+  \label{type:RelativeSubClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{RelativeSubClassType} Definition}
+  \label{table:RelativeSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{RelativeSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ RemainingSubClassType}}
+  \label{type:RemainingSubClassType}
+
+\FloatBarrier
+
+The remaining amount of the type specified.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{RemainingSubClassType} Definition}
+  \label{table:RemainingSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{RemainingSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ RequestSubClassType}}
+  \label{type:RequestSubClassType}
+
+\FloatBarrier
+
+\mtmodel{Request} subtype identifies if the data item defined for MTConnect Interaction Model \cite{MTCPart5} represents a request.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{RequestSubClassType} Definition}
+  \label{table:RequestSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{RequestSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ResponseSubClassType}}
+  \label{type:ResponseSubClassType}
+
+\FloatBarrier
+
+\mtmodel{Response} subtype identifies if the data item defined for MTConnect Interaction Model \cite{MTCPart5} represents a response.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ResponseSubClassType} Definition}
+  \label{table:ResponseSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ResponseSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ RockwellSubClassType}}
+  \label{type:RockwellSubClassType}
+
+\FloatBarrier
+
+A scale to measure the resistance to deformation of a surface.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{RockwellSubClassType} Definition}
+  \label{table:RockwellSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{RockwellSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ RotarySubClassType}}
+  \label{type:RotarySubClassType}
+
+\FloatBarrier
+
+The rotational direction of a rotary motion using the right hand rule convention.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{RotarySubClassType} Definition}
+  \label{table:RotarySubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{RotarySubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ SetUpSubClassType}}
+  \label{type:SetUpSubClassType}
+
+\FloatBarrier
+
+The identifier of the person currently responsible for operating the piece of equipment.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{SetUpSubClassType} Definition}
+  \label{table:SetUpSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{SetUpSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ShoreSubClassType}}
+  \label{type:ShoreSubClassType}
+
+\FloatBarrier
+
+A scale to measure the resistance to deformation of a surface.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ShoreSubClassType} Definition}
+  \label{table:ShoreSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ShoreSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ StandardSubClassType}}
+  \label{type:StandardSubClassType}
+
+\FloatBarrier
+
+The standard or original value of an object.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{StandardSubClassType} Definition}
+  \label{table:StandardSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{StandardSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ SwitchedSubClassType}}
+  \label{type:SwitchedSubClassType}
+
+\FloatBarrier
+
+An indication of the activation state of a mechanism represented by a \mtmodel{Composition} type component.
+
+The activation state indicates whether the \mtmodel{Composition} element is activated or not.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{SwitchedSubClassType} Definition}
+  \label{table:SwitchedSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{SwitchedSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ TargetSubClassType}}
+  \label{type:TargetSubClassType}
+
+\FloatBarrier
+
+Indicates the number of parts that are projected or planned to be produced.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{TargetSubClassType} Definition}
+  \label{table:TargetSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{TargetSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ToolChangeStopSubClassType}}
+  \label{type:ToolChangeStopSubClassType}
+
+\FloatBarrier
+
+A setting or operator selection that changes the behavior of the controller on a piece of equipment.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ToolChangeStopSubClassType} Definition}
+  \label{table:ToolChangeStopSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ToolChangeStopSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ToolEdgeSubClassType}}
+  \label{type:ToolEdgeSubClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ToolEdgeSubClassType} Definition}
+  \label{table:ToolEdgeSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ToolEdgeSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ToolGroupSubClassType}}
+  \label{type:ToolGroupSubClassType}
+
+\FloatBarrier
+
+The tool group a specific tool is assigned to in the part program.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ToolGroupSubClassType} Definition}
+  \label{table:ToolGroupSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ToolGroupSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ ToolSubClassType}}
+  \label{type:ToolSubClassType}
+
+\FloatBarrier
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{ToolSubClassType} Definition}
+  \label{table:ToolSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{ToolSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ UasbleSubClassType}}
+  \label{type:UasbleSubClassType}
+
+\FloatBarrier
+
+The remaining useable value of an object.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{UasbleSubClassType} Definition}
+  \label{table:UasbleSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{UasbleSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ VerticalSubClassType}}
+  \label{type:VerticalSubClassType}
+
+\FloatBarrier
+
+An indication of the position of a mechanism that may move in a vertical direction.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{VerticalSubClassType} Definition}
+  \label{table:VerticalSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{VerticalSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ VickersSubClassType}}
+  \label{type:VickersSubClassType}
+
+\FloatBarrier
+
+A scale to measure the resistance to deformation of a surface.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{VickersSubClassType} Definition}
+  \label{table:VickersSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{VickersSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ VolumeSubClassType}}
+  \label{type:VolumeSubClassType}
+
+\FloatBarrier
+
+A measurement of space accupied by a physical object.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{VolumeSubClassType} Definition}
+  \label{table:VolumeSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{VolumeSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ WeightSubClassType}}
+  \label{type:WeightSubClassType}
+
+\FloatBarrier
+
+A physical object's relative mass.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{WeightSubClassType} Definition}
+  \label{table:WeightSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{WeightSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ WorkingSubClassType}}
+  \label{type:WorkingSubClassType}
+
+\FloatBarrier
+
+An indication that a piece of equipment is performing any activity.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{WorkingSubClassType} Definition}
+  \label{table:WorkingSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{WorkingSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier
+\subsubsection{Defintion of \texttt{ WorkpieceSubClassType}}
+  \label{type:WorkpieceSubClassType}
+
+\FloatBarrier
+
+A physical object being or to be worked on with a tool or machine.
+
+\begin{table}[ht]
+\centering 
+  \caption{\texttt{WorkpieceSubClassType} Definition}
+  \label{table:WorkpieceSubClassType}
+\fontsize{9pt}{11pt}\selectfont
+\tabulinesep=3pt
+\begin{tabu} to 6in {|X[-1.35]|X[-0.7]|X[-1.75]|X[-1.5]|X[-1]|X[-0.7]|} \everyrow{\hline}
+\hline
+\rowfont\bfseries {Attribute} & \multicolumn{5}{|l|}{Value} \\
+\tabucline[1.5pt]{}
+BrowseName & \multicolumn{5}{|l|}{WorkpieceSubClassType} \\
+IsAbstract & \multicolumn{5}{|l|}{False} \\
+\tabucline[1.5pt]{}
+\rowfont \bfseries References & NodeClass & BrowseName & DataType & Type\-Definition & {Modeling\-Rule} \\
+\multicolumn{6}{|l|}{Subtype of MTDataItemSubClassType (See section \ref{type:MTDataItemSubClassType})} \\
+\end{tabu}
+\end{table} 
+
+
+\FloatBarrier

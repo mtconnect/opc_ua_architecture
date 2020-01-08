@@ -1,0 +1,166 @@
+% ************************************************************************* %
+% ********************** MTCONNECT DOCUMENT TEMPLATE ********************** %
+% ************************************************************************* %
+% 	FILENAME: 		mtconnect.tex											%
+%	VERSION:		0.1														%
+% 	DATE:			02/13/2018												%
+%	PORTED BY:		Moneer Helu												%
+%	ADDRESS:		Engineering Laboratory									%
+%					National Institute of Standards and Technology (NIST)	%
+%					100 Bureau Drive										%
+%					Mailstop 8260											%
+%					Gaithersburg, MD 20899									%
+%					United States of America								%
+% 	EMAIL:			moneer.helu@nist.gov									%
+% 	DESCRIPTION:	Template for MTConnect documentation;					%
+% 					Initial attempt for testing and discussion				%
+% 	USAGE:			\documentclass[options]{mtconnect}						%
+% ************************************************************************* %
+
+\documentclass{mtc-opc}	% Load mtconnect document class
+
+\usepackage[
+backend=biber,
+style=alphabetic,
+]{biblatex}
+
+\definecolor{light-gray}{gray}{0.90}
+
+\addbibresource{opc.bib}
+\addbibresource{mtc.bib}
+\addbibresource{references.bib}
+
+\defbibheading{bibliography}[\bibname]{%
+  \subsection{#1}}
+  
+%Package for subsubsubsection/paragraph command
+\usepackage{titlesec}
+\setcounter{secnumdepth}{4}
+
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
+
+% Initialize the glossaries and acronyms
+\input{acronyms.tex}
+\input{opc-terms.tex}
+\input{mtc-terms.tex}
+
+\begin{document}			% Begin document here
+
+% ************************************************************************* %
+% *********************** REQUIRED INITIAL INPUTS ************************* %
+% ************************************************************************* %
+
+\docnum{OPC 30070-1}							% Document "number"
+\doctitleshort{OPC UA for \mtconnect}		% Shortened document title
+\doctitle{\getdocnum: \getdoctitleshort}
+\doctitlepart{Part 1: Device Model}
+\doctitlesubpart{Errata}
+\versionnum{2.00.01}						% MTConnect version
+
+\preparedfor{MTConnect Institute and OPC Foundation}		% Should not change!!!
+\preparedby{MTConnect Institute, OPC Foundation}				% Author
+\preparedon{\today}			% Date prepared
+\versiontext{Release}
+
+% ************************************************************************* %
+% ******************* FRONT MATTER (DO NOT CHANGE!!!) ********************* %
+% ************************************************************************* %
+
+\begin{nolinenumbers}
+	\maketitle				% Title page
+
+\pagenumbering{roman}
+
+\begin{mdframed}[innerleftmargin=0pt,innerrightmargin=0pt,%
+  backgroundcolor=light-gray,linewidth=1pt]%
+  \fontsize{9pt}{11pt}\selectfont
+  \tabulinesep=8pt
+  \taburowcolors[1]{light-gray .. light-gray}
+  \taburulecolor |light-gray|{black}
+  \begin{tabu} to 5.75in {X[0.6] X X[0.3] X[1.1]}
+    Specification Type: & Industry Standard Specification & Comments: & \\ \tabucline[1pt]{2-2} \tabucline[1pt]{4-4}
+    Document Number & \bfseries{ \getdocnum } & & \\ \tabucline[1pt]{2-2}
+    Title: & {\getdoctitleshort \newline \getdoctitlepart \space \getdoctitlesubpart} & Date: & \today \\  \tabucline[1pt]{2-2} \tabucline[1pt]{4-4}
+    Version: & \getversiontext\ \getversionnum & Software: & LaTeX  \\ \tabucline[1pt]{2-2} \tabucline[1pt]{4-4}
+    Authors: & William Sobel, Randy Armstrong, John Turner, Russell Waddell, Shaurabh Singh & Source: & OPC\_UA\_MTConnect\_Errata\_\getversionnum.pdf \\  \tabucline[1pt]{2-2} \tabucline[1pt]{4-4}
+    Owner: & MTConnect Institute & Status: &  \getversiontext \\
+  \end{tabu}
+\end{mdframed}
+
+\textbf{\Large {Document History}}
+
+\begin{table}[ht]
+    \centering
+    \fontsize{9pt}{11pt}\selectfont
+    \tabulinesep=3pt
+    \begin{tabu} to 6in {|X[-1]|X[-1.25]|X[-0.75]|X[5.25]|X[-0.75]|} \everyrow{\hline}
+        \hline
+        \rowfont \bfseries Version & Date & Reason & Comments & Mantis \\        
+        2.00.01 & 2019-11-01 & Revision & Mapping the Native Code to a Condition Branch Semantic Correction & \mantis{4883} \\
+    \end{tabu}
+\end{table}
+
+\clearpage
+\tableofcontents
+\thispagestyle{fancy}
+
+\clearpage
+\listoffigures
+
+\clearpage
+\listoftables
+
+\clearpage
+
+\end{nolinenumbers}
+
+\input 00-legal.tex
+
+% ************************************************************************* %
+% ******************** ENTER DOCUMENT CONTENT BELOW *********************** %
+% ************************************************************************* %
+\glsresetall
+\pagenumbering{arabic}
+
+\input 01-scope.tex
+
+\clearpage
+
+\input 04-normative-references.tex
+
+\clearpage
+
+\input E01-condition-erratum.tex
+
+\setcounter{section}{8}
+\setcounter{subsection}{4}
+\setcounter{subsubsection}{5}
+
+\input 081-condition-streams.tex
+
+\clearpage
+
+\section{MTConnect OPC UA Types}\label{mtconnect_information_model}
+\FloatBarrier
+
+\setcounter{subsection}{3}
+\setcounter{subsubsection}{0}
+
+\input ./model-sections/Conditions.tex
+
+\clearpage
+
+\renewcommand{\appendixname}{Annex}
+\begin{appendices}
+  \input ./A1-namespace.tex
+\end{appendices}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

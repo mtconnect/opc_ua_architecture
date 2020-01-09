@@ -59,8 +59,9 @@ module Relation
     include Extensions
     
     attr_reader :id, :name, :type, :xmi, :multiplicity,
-                :source, :target, :owner, :documentation,
-                :stereotype, :constraints, :invariants
+                :source, :target, :owner, :stereotype,
+                :constraints, :invariants, :assoc
+    attr_accessor :documentation
 
     class Connection
       attr_accessor :name, :type, :type_id, :multiplicity
@@ -91,11 +92,12 @@ module Relation
       @invariants = {}
        
       @multiplicity, @optional = get_multiplicity(r)
+      @assoc = r['association']
 
       @stereotype = xmi_stereotype(r)
       @documentation = xmi_documentation(r)
 
-      $logger.debug "       -- :: Creating Relation <<#{@stereotype}>> #{@name} #{@id}" 
+      $logger.debug "       -- :: Creating Relation <<#{@stereotype}>> #{@name} #{@id} #{@assoc}" 
       
       @source = Connection.new('Source', owner)
       @source.multiplicity = @multiplicity

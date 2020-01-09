@@ -7,8 +7,8 @@ class Type
   include Extensions
   
   attr_reader :name, :id, :type, :model, :json, :parent, :children, :relations, :stereotype,
-              :constraints, :extended, :documentation, :literals, :invariants, :classifier
-  attr_accessor :class_link
+              :constraints, :extended, :literals, :invariants, :classifier, :assoc
+  attr_accessor :class_link, :documentation
 
   class LazyPointer
     @@pointers = []
@@ -108,10 +108,17 @@ class Type
   def self.add_free_association(assoc)
     case assoc['xmi:type']
     when 'uml:Association'
-      if assoc.xpath('./ownedEnd').length == 2
-        raise "!!! Adding free association -- need to fix: #{assoc.inspect}"
-        r = Relation::Association.new(owner, assoc)
-        owner.add_relation(r)
+      comment = assoc.at('./ownedComment')
+      doc = comment['body'].gsub(/<[\/]?[a-z]+>/, '') if comment
+
+      if doc
+        oend = assoc.at('./ownedEnd')
+        tid = oend['type'] if oend
+        owner = LazyPointer.new(tid) if tid
+        if owner
+          aid = oend['association']
+          owner.lazy { owner.relation_by_assoc(aid).documentation = doc }
+        end
       end
       
     when 'uml:Realization'
@@ -225,6 +232,16 @@ class Type
 
   def relation(name)
     rel, = @relations.find { |a| a.name == name }
+    rel
+  end
+
+  def relation_by_id(id)
+    rel, = @relations.find { |a| a.id == id }
+    rel
+  end
+
+  def relation_by_assoc(id)
+    rel, = @relations.find { |a| a.assoc == id }
     rel
   end
 

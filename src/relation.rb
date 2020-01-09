@@ -83,7 +83,6 @@ module Relation
     
     def initialize(owner, r)
       @owner = owner
-      @source = owner
       @id = r['xmi:id']
       @name = r['name']
       @type = r['xmi:type']
@@ -96,7 +95,7 @@ module Relation
       @stereotype = xmi_stereotype(r)
       @documentation = xmi_documentation(r)
 
-      $logger.debug "       -- :: Creating Relation <<#{@stereotype}>> #{@owner.name}::#{@name} #{@id}"
+      $logger.debug "       -- :: Creating Relation <<#{@stereotype}>> #{@name} #{@id}" 
       
       @source = Connection.new('Source', owner)
       @source.multiplicity = @multiplicity
@@ -349,21 +348,30 @@ module Relation
   end
 
   class Dependency < Relation
-    def initialize(owner, r, attr = 'supplier')
-      super(owner, r)
-      @dependency = r.at("//connector[@idref='#{@id}']")
+    def initialize(owner, r)
+      unless owner
+        cli = r.at("./client")
+        cid = cli['xmi:idref']
 
-      @documentation = xmi_documentation(r)
-      @stereotype = xmi_stereotype(r)
+        owner = Type::LazyPointer.new(cid)
+      end
+      
+      
+      super(owner, r)
+      
+      sup = r.at("./supplier")
+      sid = sup['xmi:idref']
 
       @name = (@stereotype && @stereotype) unless @name
-      @target = Connection.new('Target', Type::LazyPointer.new(r[attr]))
+      @target = Connection.new('Target', Type::LazyPointer.new(sid))
     end
   end
 
-  class Generalization < Dependency
+  class Generalization < Relation
     def initialize(owner, r)
-      super(owner, r, 'general')
+      super(owner, r)
+      
+      @target = Connection.new('Target', Type::LazyPointer.new(r['general']))
       @name = 'Supertype' unless @name
     end
 
@@ -386,12 +394,11 @@ module Relation
   
   class Realization < Dependency
     def initialize(owner, r)
-      super(owner, r, 'supplier')
-      @name = 'Realization' unless @name      
+      super(owner, r)
     end
 
     def is_mixin?
-      @stereotype and @stereotype == 'Mixes In'
+      @stereotype and @stereotype == 'Mixes_In'
     end
   end
 

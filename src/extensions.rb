@@ -4,6 +4,8 @@ module Extensions
     type = e['xmi:type']
     attr = if type == 'uml:Class'
              'base_Class'
+           elsif type == 'uml:Realization'
+             'base_Realization'
            else
              if e['association']
                id = e['association']
@@ -25,9 +27,17 @@ module Extensions
   end
 
   def get_multiplicity(r)
-    upper = lower = '1'
-    upper = r.at('upperValue')['value'] if r.at('upperValue')
-    lower = r.at('lowerValue')['value'] if r.at('lowerValue')
+    lower = upper = '1'
+    if r.at('upperValue')
+      upper = r.at('upperValue')['value']
+    end
+    
+    if r.at('lowerValue')
+      lower = r.at('lowerValue')['value']
+      lower = '0' unless lower
+    end
+
+    $logger.debug "  Multiplicity for #{r.to_s}: #{lower} #{upper}"
 
     [lower == upper ? upper : "#{lower}..#{upper}",
      optional = lower == '0']

@@ -106,7 +106,7 @@ class Type
   end
 
   def self.add_free_association(assoc)
-    case assoc['type']
+    case assoc['xmi:type']
     when 'uml:Association'
       if assoc.xpath('./ownedEnd').length == 2
         raise "!!! Adding free association -- need to fix: #{assoc.inspect}"
@@ -115,22 +115,20 @@ class Type
       end
       
     when 'uml:Realization'
-      oid = assoc['client']
-      owner = LazyPointer.new(oid)
-      r = Relation::Realization.new(owner, assoc)
-      $loggeer.debug "+ Adding realization #{r.stereotype} for #{r.is_mixin?} -- #{oid}"
-      $loggeer.debug "   ++ #{owner.name}" if owner.resolved?
-      owner.lazy { self.add_relation(r) }
+      $logger.debug " Creating uml:Realization"
+      r = Relation::Realization.new(nil, assoc)
+      $logger.debug "+ Adding realization #{r.stereotype} for #{r.is_mixin?} -- #{r.owner.id}"
+      $logger.debug "   ++ #{r.owner.name}" if r.owner.resolved?
+      r.owner.lazy { self.add_relation(r) }
 
     when 'uml:Dependency'
-      oid = assoc['client']
-      owner = LazyPointer.new(oid)
-      r = Relation::Dependency.new(owner, assoc)
-      owner.lazy { self.add_relation(r) }      
-      $loggeer.debug "+ Adding dependency #{r.stereotype} for #{owner.name}"
+      $logger.debug " Creating uml:Dependency"
+      r = Relation::Dependency.new(nil, assoc)
+      r.owner.lazy { self.add_relation(r) }      
+      $logger.debug "+ Adding dependency #{r.stereotype} for #{r.owner.id}"
 
     else
-      $loggeer.error "!!! unknown association type: #{assoc['type']}"
+      $logger.error "!!! unknown association type: #{assoc['xmi:type']}"
     end
       
   end

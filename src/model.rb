@@ -83,17 +83,14 @@ class Model
       end
     end
 
-    if (depth == 0)
-      # Grab free associations
-      self.class.models.each do |k, v|
-        $logger.debug "Getting associations for #{v}"
-        v.xmi.xpath('./uml:packagedElement[@xmi:type="uml:Association" or @xmi:type="uml:Realization" or @xmi:type="uml:Dependency"]').each do |e|
-          #self.class.type_class.add_free_association(e)
-        end
-      end
-      Type.connect_model
+    $logger.debug "Getting associations for #{@name}"
+    @xmi.xpath('./packagedElement[@xmi:type="uml:Realization" or @xmi:type="uml:Dependency"]').each do |e|
+      self.class.type_class.add_free_association(e)
     end
 
+    if depth == 0
+      Type.connect_model
+    end
   end
   
 end

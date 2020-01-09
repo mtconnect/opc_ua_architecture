@@ -442,12 +442,7 @@ module Relation
     end
 
     def resolve_types
-      unless @target
-        @target = @owner.classifier.relations.find do |a|
-          a.id == @target_id
-        end
-      end
-      
+      @target = @owner.classifier.relation_by_id(@target_id) unless @target
       
     rescue
       $logger.warn "Cannot resolve type #{@owner.name}::#{@name} #{@xmi.to_s}"

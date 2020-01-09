@@ -194,9 +194,11 @@ class Type
       e.ownedLiteral.each do |lit|
         @literals << lit['name'].split('=')
       end
-    elsif @type != 'uml:Stereotype'
+    else
       e.element_children.each do |r|
-        associations << Relation.create_association(self, r)
+        if r.name != 'ownedAttribute' or r['type']
+          associations << Relation.create_association(self, r)
+        end
       end
     end
     associations.compact!

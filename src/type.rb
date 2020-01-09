@@ -1,11 +1,13 @@
+require 'logger'
 require 'relation'
 require 'extensions'
+
 
 class Type
   include Extensions
   
   attr_reader :name, :id, :type, :model, :json, :parent, :children, :relations, :stereotype,
-              :constraints, :extended, :documentation, :literals, :invariants
+              :constraints, :extended, :documentation, :literals, :invariants, :classifier
   attr_accessor :class_link
 
   class LazyPointer
@@ -61,14 +63,9 @@ class Type
     def resolve
       unless @type
         @type = Type.type_for_id(@tid)
-        if @type.nil? and @tid !~ /^EAID/
-          if @tid =~ /^EA[^_]+_([0-9A-Za-z]+)/
-            # puts "Could not find #{@tid}, Looking up type by name: #{$1}"
-            @type = Type.type_for_name($1)
-            # puts "  Found type for #{@type.name}" if @type
-          else
-            @type = Type.type_for_name(@tid)
-          end
+        if @type.nil?
+          $logger.debug " --> Looking up type for #{@tid}"
+          @type = Type.type_for_name(@tid)          
         end
         
         if @type
@@ -76,7 +73,7 @@ class Type
             @type.instance_eval(&block)
           end
         else
-          puts "Warn: Cannot find type for #{@tid}"
+          $logger.warn "Warn: Cannot find type for #{@tid}"
         end
       end
       
@@ -121,8 +118,8 @@ class Type
       oid = assoc['client']
       owner = LazyPointer.new(oid)
       r = Relation::Realization.new(owner, assoc)
-      # puts "+ Adding realization #{r.stereotype} for #{r.is_mixin?} -- #{oid}"
-      # puts "   ++ #{owner.name}" if owner.resolved?
+      $loggeer.debug "+ Adding realization #{r.stereotype} for #{r.is_mixin?} -- #{oid}"
+      $loggeer.debug "   ++ #{owner.name}" if owner.resolved?
       owner.lazy { self.add_relation(r) }
 
     when 'uml:Dependency'
@@ -130,10 +127,10 @@ class Type
       owner = LazyPointer.new(oid)
       r = Relation::Dependency.new(owner, assoc)
       owner.lazy { self.add_relation(r) }      
-      # puts "+ Adding dependency #{r.stereotype} for #{owner.name}"
+      $loggeer.debug "+ Adding dependency #{r.stereotype} for #{owner.name}"
 
     else
-      puts "!!! unknown association type: #{assoc['type']}"
+      $loggeer.error "!!! unknown association type: #{assoc['type']}"
     end
       
   end
@@ -154,6 +151,7 @@ class Type
 
   def self.resolve_types
     @@types_by_id.each do |id, type|
+      $logger.debug "     -- Resolving types for #{type.name}"
       type.resolve_types
       type.check_mixin
     end
@@ -161,54 +159,43 @@ class Type
 
   def initialize(model, e)
     @xmi = e
-    @id = e['id']
+    @id = e['xmi:id']
 
-    @extended = e.at("//element[@idref='#{@id}']")
-
+    @documentation = xmi_documentation(e)
+    @stereotype = xmi_stereotype(e)
+    
     @name = e['name']
-    @type = e['type']
-
-    unpack_extended_properties(@extended)
-
+    @type = e['xmi:type']
+    
+    $logger.debug "  -- Creating class <<#{@stereotype}>> #{@name} : #{@type}"
+    
     @operations = @xmi.xpath('./ownedOperation').map do |op|
       name = op['name']
-      ext = op.document.at("//operation[@idref='#{op['id']}']")
-      if ext
-        doc = ext.at('./documentation')['value']
-      end
-      puts "Could not find docs for for #{@name}::#{name}" unless doc
+      doc = xmi_documentation(op)
+      
+      $logger.warn "Could not find docs for for #{@name}::#{name}" unless doc
       [name, doc]
     end
     
     @abstract = e['isAbstract'] || false
     @model = model
     @literals = []
-    if @type == 'uml:Enumeration'
-      e.ownedLiteral.each do |lit|
-        @literals << lit['name'].split('=')
-      end
-    end
 
     @aliased = false
     @class_link = nil
 
     associations = []
-    if @type == 'uml:InstanceSpecification'
-      @extended.xpath('./attributes/attribute').each do |a|
-        associations << Relation.create_association(self, a)
+    if @type == 'uml:Enumeration'
+      e.ownedLiteral.each do |lit|
+        @literals << lit['name'].split('=')
       end
-      @extended.xpath('./links/Association').each do |l|
-        id = l['id']
-        assoc = l.document.at("//ownedAttribute[@association='#{id}']")
-        associations << Relation.create_association(LazyPointer.new(l['start']), assoc)
-      end
-    elsif @type != 'uml:PrimitiveType' and @type != 'uml:Enumeration'
+    elsif @type != 'uml:Stereotype'
       e.element_children.each do |r|
         associations << Relation.create_association(self, r)
       end
     end
     associations.compact!
-
+    
     @constraints = {}
     @invariants = {}
     @relations = associations
@@ -219,13 +206,14 @@ class Type
 
     @@types_by_id[@id] = self
     @@types_by_name[@name] = self
-
-    if @xmi['classifier']
-      @classifier = LazyPointer.new(@xmi['classifier'])
-    else
-      @classifier = nil
-    end
     
+    @classifier = nil
+    if @type == 'uml:InstanceSpecification'
+      klass = @xmi.at('./classifier')
+      @classifier = LazyPointer.new(klass['xmi:idref']) if klass
+    end
+
+    raise "Unknown name for #{@xmi.to_s}" unless @name
     @model.add_type(self)
   end
 
@@ -256,7 +244,7 @@ class Type
     @relations.each do |r|
       if r.is_mixin?
         @mixin = r.target.type
-        # puts "==>  Found Mixin #{r.target.name} for #{@name}"
+        $logger.debug "==>  Found Mixin #{r.target.name} for #{@name}"
         return
       end
     end
@@ -344,12 +332,12 @@ class Type
   end
 
   def get_attribute_like(name, stereo = nil)
-    #puts "getting attribtue '#{@name}::#{name}' #{stereo.inspect} #{@relations.length}"
+    $logger.debug "getting attribute '#{@name}::#{name}' #{stereo.inspect} #{@relations.length}"
     @relations.each do |a|
-      #puts "---- Checking '#{a.name}' '#{a.stereotype}'"
+      $logger.debug "---- Checking '#{a.name}' '#{a.stereotype}'"
       if a.name == name and
         (stereo.nil? or (a.stereotype and a.stereotype =~ stereo))
-        #puts "----  >> Found #{a.name}"
+        $logger.debug "----  >> Found #{a.name}"
         return a
       end
     end

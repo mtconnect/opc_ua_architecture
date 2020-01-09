@@ -30,15 +30,15 @@ class Model
   end
 
   def initialize(e)
-    @id = e['id']
+    @id = e['xmi:id']
     @name = e['name']
-    @type = e['type']
+    @type = e['xmi:type']
     @xmi = e
     @types = []
     @is_opc = !((@name =~ /OPC/).nil?)
 
-    @extended = e.at("//element[@idref='#{@id}']")
-    unpack_extended_properties(@extended)
+    comment = e.at('./ownedComment')
+    @documentation = comment['body'].gsub(/<[\/]?[a-z]+>/, '') if comment
     
     @@models[@name] = self
   end
@@ -61,33 +61,34 @@ class Model
   end
 
   def find_definitions(depth = 0)
-    #puts "#{'  ' * depth}Finding classes for '#{@name}'"
-    @xmi.xpath('./packagedElement[@type="uml:DataType" or @type="uml:Enumeration" or @type="uml:PrimitiveType"]').each do |e|
-      #puts "#{'  ' * depth}#{@name}::#{e['name']} #{e['type']}"
+    $logger.info "#{'  ' * depth}Finding classes for '#{@name}' '#{@type}'"
+
+    @xmi.xpath('./packagedElement[@xmi:type="uml:DataType" or @xmi:type="uml:Enumeration" or @xmi:type="uml:PrimitiveType"]').each do |e|
+      $logger.debug "#{'  ' * depth}#{@name}::#{e['name']} #{e['xmi:type']}"
       self.class.type_class.new(self, e)
     end    
 
-    @xmi.xpath('./packagedElement[@type="uml:Class" or @type="uml:Object" or @type="uml:Stereotype" or @type="uml:AssociationClass" or @type="uml:InstanceSpecification"]').each do |e|
-      # puts "#{'  ' * depth}#{@name}::#{e['name']} #{e['type']}"
+    @xmi.xpath('./packagedElement[@xmi:type="uml:Class" or @xmi:type="uml:Object" or @xmi:type="uml:Stereotype" or @xmi:type="uml:AssociationClass" or @xmi:type="uml:InstanceSpecification"]', $namespaces).each do |e|
+      $logger.debug "#{'  ' * depth}#{@name}::#{e['name']} #{e['xmi:type']}"
       self.class.type_class.new(self, e)
     end
 
-    @xmi.xpath('./packagedElement[@type="uml:Package" or @type="uml:Profile"]').each do |e|
+    @xmi.xpath('./packagedElement[@xmi:type="uml:Package" or @xmi:type="uml:Profile"]').each do |e|
       unless @@skip_models.include?(e['name'])
-        # puts "Recursing model: #{e['name']}"
+        $logger.debug "Recursing model: #{e['name']}"
         model = self.class.new(e)
         model.find_definitions(depth + 1)
       else
-        # puts "Skipping model #{e['name']}"
+        $logger.info "Skipping model #{e['name']}"
       end
     end
 
     if (depth == 0)
       # Grab free associations
       self.class.models.each do |k, v|
-        # puts "Getting associations for #{v}"
-        v.xmi.xpath('./packagedElement[@type="uml:Association" or @type="uml:Realization" or @type="uml:Dependency"]').each do |e|
-          self.class.type_class.add_free_association(e)
+        $logger.debug "Getting associations for #{v}"
+        v.xmi.xpath('./uml:packagedElement[@xmi:type="uml:Association" or @xmi:type="uml:Realization" or @xmi:type="uml:Dependency"]').each do |e|
+          #self.class.type_class.add_free_association(e)
         end
       end
       Type.connect_model

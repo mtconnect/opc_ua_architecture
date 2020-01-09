@@ -1,6 +1,7 @@
 # Add directory to path
 $: << File.dirname(__FILE__)
 
+require 'logger'
 require 'optparse'
 require 'json'
 require 'set'
@@ -17,8 +18,18 @@ parser = OptionParser.new do |opts|
   opts.on("-r", "--[no-]clean", "Regenerate Nodeset Ids") do |v|
     Options[:clean] = v
   end
+
+  opts.on('-d', '--[no-]debug', 'Debug logging') do |v|
+    Options[:debug] = v
+  end
 end
 parser.parse!
+
+$logger = Logger.new(STDOUT)
+$logger.level = Options[:debug] ? Logger::DEBUG : Logger::INFO 
+$logger.formatter = proc do |severity, datetime, progname, msg|
+  "#{severity}: #{msg}\n"
+end
 
 NodesetFile = './Opc.Ua.MTConnect.NodeSet2.xml'
 OpcNodeIdFile = './MTConnect.NodeIds.csv'
@@ -35,7 +46,7 @@ DeviceDocumentFile = './devices/09-types.tex'
 DeviceNodesetFile = './Opc.Ua.MTConnect.NodeSet2.Part1.xml'
 DeviceTypeDictionary = './MTConnect.Devices.TypeDictionary'
 
-AssetModels = ['Assets', 'Cutting Tool', 'Measurements', 'Assets Profile']
+AssetModels = [] # 'Assets', 'Cutting Tool', 'Measurements', 'Assets Profile']
 
 AssetDirectory = 'assets'
 AssetDocumentFile = './assets/09-types.tex'
@@ -43,18 +54,21 @@ AssetNodesetFile = './Opc.Ua.MTConnect.NodeSet2.Part2.xml'
 AssetTypeDictionary = './MTConnect.Assets.TypeDictionary'
 
 xmiDoc = nil
-File.open(File.join(File.dirname(__FILE__), '..', 'MTConnect OPC UA EA.xmi')) do |xmi|
+File.open(File.join(File.dirname(__FILE__), '..', 'MTConnect OPC UA MD Clean.xml')) do |xmi|
   xmiDoc = Nokogiri::XML(xmi).slop!
-  xmiDoc.remove_namespaces!
-  RootModel = xmiDoc.at('//packagedElement[@type="uml:Package" and @name="Model"]')
+  RootModel = xmiDoc.at('//uml:Model')
 end
+
+$namespaces = Hash[xmiDoc.namespaces.map { |k, v| [k.split(':').last, v] }]
 
 SkipModels = Set.new
 SkipModels.add('Device Example')
+SkipModels.add('Streaming Events')
+SkipModels.add('MTConnectAssets')
 
 unless ARGV.first
-  puts "At least one directve docs or nodeset must be given"
-  puts parser.help
+  $logger.error "At least one directve docs or nodeset must be given"
+  $logger.error parser.help
   exit
 end
 
@@ -73,7 +87,7 @@ operations.each do |op|
     load 'create_nodeset.rb'
     
   else
-    puts "Invalid option #{op}"
-    puts parser.help
+    $logger.error "Invalid option #{op}"
+    $logger.fatal parser.help
   end
 end

@@ -7,37 +7,40 @@ module Relation
   end
   
   def self.create_association(owner, r)
-    return if r.name == 'memberEnd'
+    return nil if r.name == 'memberEnd' or r.name == 'classifier'
 
-    if r.name == 'attribute'
-      Slot.new(owner, r)
-    else
-      case r['type']
-      when 'uml:Generalization'
-        Generalization.new(owner, r)
-
-      when 'uml:Realization'
-        Realization.new(owner, r)
-
-      when 'uml:Dependency'
-        Dependency.new(owner, r)
-
-      when 'uml:Property'
-        if r['association']
-          Association.new(owner, r)
-        else
-          Attribute.new(owner, r)
-        end
-
-      when 'uml:Association', 'uml:Link'
+    case r['xmi:type']
+    when 'uml:Generalization'
+      Generalization.new(owner, r)
+      
+    when 'uml:Realization'
+      Realization.new(owner, r)
+      
+    when 'uml:Dependency'
+      Dependency.new(owner, r)
+      
+    when 'uml:Property'
+      if r['association']
         Association.new(owner, r)
-
-      when 'uml:Constraint'
-        Constraint.new(owner, r)
-
       else
-        puts "!! Unknown relation type: #{r.name} :: #{r['id']} - #{r['type']} for #{owner.name}"
+        Attribute.new(owner, r)
       end
+      
+    when 'uml:Association', 'uml:Link'
+      Association.new(owner, r)
+      
+    when 'uml:Constraint'
+      Constraint.new(owner, r)
+      
+    when 'uml:Slot'
+      Slot.new(owner, r)
+      
+    when 'uml:Comment'
+      nil
+      
+    else
+      $logger.error "!! Unknown relation type: #{r.name} :: #{r['xmi:id']} - #{r['xmi:type']} for #{owner.name}"
+      nil
     end
   end
 
@@ -49,9 +52,6 @@ module Relation
     def initialize(owner, r)
       @name = r['name']
       @specification = r['specification']
-
-      @extended = r.at("//connector[@idref='#{@id}']")
-      unpack_extended_properties(@extended)
     end
   end
 
@@ -84,19 +84,23 @@ module Relation
     def initialize(owner, r)
       @owner = owner
       @source = owner
-      @id = r['id']
+      @id = r['xmi:id']
       @name = r['name']
-      @type = r['type']
+      @type = r['xmi:type']
       @xmi = r
       @constraints = {}
       @invariants = {}
        
-      @extended = r.at("//connector[@idref='#{@id}']")
       @multiplicity, @optional = get_multiplicity(r)
 
+      @stereotype = xmi_stereotype(r)
+      @documentation = xmi_documentation(r)
+
+      $logger.debug "       -- :: Creating Relation <<#{@stereotype}>> #{@owner.name}::#{@name} #{@id}"
+      
       @source = Connection.new('Source', owner)
       @source.multiplicity = @multiplicity
-      @stereotype = @target = nil
+      @target = nil
     end
 
     def value
@@ -157,7 +161,7 @@ module Relation
 
     def resolve_types
       if @target.nil?
-        puts "    !!!! cannot resolve type for #{@owner.name}::#{@name} no target"
+        $logger.error "    !!!! cannot resolve type for #{@owner.name}::#{@name} no target"
       else
         unless @target.resolve_type or @target.type.internal?
           raise "    !!!! cannot resolve target for #{@owner.name}::#{@name} #{self.class.name}"
@@ -210,18 +214,15 @@ module Relation
     def initialize(owner, r)
       super(owner, r)
 
-      tid = r.at('type')['idref']
+      tid = r['type']
       @final_target = @target = End.new(r, Type::LazyPointer.new(tid))
       
       aid = r['association']
-      assoc = r.document.at("//packagedElement[@id='#{aid}']")
+      assoc = r.document.at("//packagedElement[@xmi:id='#{aid}']")
       src = assoc.at('./ownedEnd')
       @assoc_type = assoc['type']
       @source = End.new(src, owner)
       @is_derived = assoc['isDerived']
-      
-      @association = r.at("//connector[@idref='#{aid}']")
-      unpack_extended_properties(@association)
 
       if @assoc_type == 'uml:AssociationClass'
         @target = End.new(r, Type::LazyPointer.new(aid))
@@ -311,18 +312,14 @@ module Relation
       dv = a.at('defaultValue')
       @default = dv['value'] if dv
 
-      element = a.at("//element[@idref='#{owner.id}']")
-      if element
-        attr = element.at("./attributes/attribute[@idref='#{@id}']")
-        @stereotype = attr.stereotype['stereotype'] if attr.at('./stereotype')
-        @documentation = attr.documentation['value'] if attr.at('./documentation')
-      end
-
-      type = a.at('type')['idref']
+      @stereotype = xmi_stereotype(a)
+      @documentation = xmi_documentation(a)
+      
+      type = a['type']
       @target = Connection.new('type', Type::LazyPointer.new(type))
 
     rescue
-      puts "Error creating relation: #{a.to_s}"
+      $logger.error "Error creating relation: #{a.to_s}"
       raise
     end
 
@@ -355,7 +352,9 @@ module Relation
     def initialize(owner, r, attr = 'supplier')
       super(owner, r)
       @dependency = r.at("//connector[@idref='#{@id}']")
-      unpack_extended_properties(@dependency)
+
+      @documentation = xmi_documentation(r)
+      @stereotype = xmi_stereotype(r)
 
       @name = (@stereotype && @stereotype) unless @name
       @target = Connection.new('Target', Type::LazyPointer.new(r[attr]))
@@ -399,11 +398,14 @@ module Relation
   class Slot < Relation
     def initialize(owner, a)
       super(owner, a)
-      @name = a['name']
-      @props = a.at('./properties')
-      @target = Connection.new('type', Type::LazyPointer.new(@props['type']))
-      init = a.at('./initial')
-      @value = init['body'] if init
+      @target_id = a['definingFeature']
+      @target = nil
+      v = a.at('./value')
+      @value = v['value'] if v
+    end
+
+    def name
+      @target.name
     end
 
     def value
@@ -431,11 +433,17 @@ module Relation
     end
 
     def resolve_types
-      super
+      unless @target
+        @target = @owner.classifier.relations.find do |a|
+          a.id == @target_id
+        end
+      end
+      
+      
     rescue
-      puts "Warn: Cannot resolve type #{@owner.name}::#{@name} #{@props}"
-      puts $!
-      puts $!.backtrace.join("\n")
+      $logger.warn "Cannot resolve type #{@owner.name}::#{@name} #{@xmi.to_s}"
+      $logger.warn $!
+      $logger.warn $!.backtrace.join("\n")
     end
   end
 end

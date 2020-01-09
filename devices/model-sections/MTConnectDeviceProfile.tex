@@ -1,4 +1,4 @@
-% Generated 2019-11-12 19:49:26 -0600
+% Generated 2020-01-08 23:29:32 -0800
 \subsection{MTConnect Device Profile} \label{model:MTConnectDeviceProfile}
 
 \begin{figure}[ht]
@@ -10,21 +10,13 @@
 
 \FloatBarrier
 
-\subsubsection{Defintion of \texttt{ <<Deprecated>>}}
-  \label{type:Deprecated}
-
-\FloatBarrier
-
-An MTConnect deprecated entity that is kept for backward compatibility.
-
-\FloatBarrier
 \subsubsection{Defintion of \texttt{ <<HasMTClassType>>}}
   \label{type:HasMTClassType}
 
 \FloatBarrier
 
-A \gls{MTDataItem} is representated in OPC UA as a sub-type of the most appropriate \uamodel{BaseDataVariableType}. 
-The type is derived from the MTConnect \gls{type} attribute and references the corect \mtmodel{..ClassType}.
+A \gls{MTDataItem} is representated in OPC UA as a sub-type of the most appropriate \uamodel{BaseDataVariableType}. The type is derived from the MTConnect \gls{type} attribute and references the corect \mtmodel{..ClassType}
+
 
 \begin{table}[ht]
 \centering 
@@ -130,8 +122,7 @@ Symmetric & \multicolumn{5}{|l|}{true} \\
 
 \FloatBarrier
 
-A \gls{MTDataItem} is representated in OPC UA as a sub-type of the most appropriate \uamodel{BaseDataVariableType}. 
-The sub-type is derived from the MTConnect \gls{subType} attribute and references the corect \mtmodel{..ClassType}.
+A \gls{MTDataItem} is representated in OPC UA as a sub-type of the most appropriate \uamodel{BaseDataVariableType}. The sub-type is derived from the MTConnect \gls{subType} attribute and references the corect \mtmodel{..ClassType}.
 
 \begin{table}[ht]
 \centering 
@@ -158,40 +149,18 @@ Symmetric & \multicolumn{5}{|l|}{false} \\
   \label{type:Mixes In}
 
 \FloatBarrier
-\paragraph{Dependencies and Relationships}
-
-\begin{itemize}
-\item Dependency on Realization
-
-\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ <<mixin>>}}
   \label{type:mixin}
 
 \FloatBarrier
 
-The mixin pattern injects the properties and operations into the types 
+The mixin pattern injects the properties and operations into the types
 that are related to the using the \texttt{Mixes In} dependency. Mixins allow for
-lightweight multiple inheritance. Since OPC/UA does not allow for multiple inheritance 
+lightweight multiple inheritance. Since OPC/UA does not allow for multiple inheritance
 and the MTConnect  types require the same set of properties when they are sub-typed
 from existing OPC/UA types, this mechanism allows for this relationship to be expressed.
 
-\paragraph{Dependencies and Relationships}
-
-\begin{itemize}
-\item Dependency on Class
-
-\end{itemize}
-\FloatBarrier
-\subsubsection{Defintion of \texttt{ <<use>>}}
-  \label{type:use}
-
-\FloatBarrier
-
-The use stereotype indicates that one class uses another as a helper to perform 
-a specific operation or activity. This stereotype is mainly used to indicate
-that a specific factory is being employed by another type to create dynamic
-properties or relationships.
 
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ <<values>>}}
@@ -199,13 +168,8 @@ properties or relationships.
 
 \FloatBarrier
 
-For controlled vocabularies of enumerated types, specifies the relationship to the allowable 
-values for the type.
+For controlled vocabularies of enumerated types, specifies the relationship to the allowable
+values for the type
 
-\paragraph{Dependencies and Relationships}
 
-\begin{itemize}
-\item Dependency on Association
-
-\end{itemize}
 \FloatBarrier

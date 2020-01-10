@@ -1,4 +1,4 @@
-% Generated 2020-01-09 17:13:24 -0800
+% Generated 2020-01-09 18:51:19 -0800
 \subsection{Data Items} \label{model:DataItems}
 
 \begin{figure}[ht]
@@ -92,6 +92,8 @@ Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MT
 
 The abstract type for all data items types that are specifically for \mtmodel{CONDITION} \gls{category}.
 
+An XML element which provides the information and data reported from a piece of equipment for those dataitem elements defined with a category attribute of condition category in the mtconnectdevices document.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTConditionClassType} Definition}
@@ -127,6 +129,8 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{SystemClassType} & \multicolumn{2}{
 The MTConnect constraints. The Values or the Minimum, Maximum, and Nominal values should be 
 provided. Multiple Values can be provided as an array as a set of allowable values for this
 \gls{MTDataItem}.
+
+A constraint is used by a software application to evaluate the validity of the reported data.
 
 \begin{table}[ht]
 \centering 
@@ -212,6 +216,8 @@ Has\-Property & Variable & Value\-As\-Text & String & Property\-Type & Mandatory
 
 The data item mixin will inject the properties and the methods into the related 
 classes. This facility is similar to the Ruby module mixin or the Scala traits.
+
+data entity describing a piece of information reported about a piece of equipment.
 
 \begin{table}[ht]
 \centering 
@@ -367,6 +373,8 @@ Represents the \mtmodel{coordinateSystem} attribute of the MTConnect \gls{MTData
 
 These need to become \uamodel{Good_} status code in OPC UA.
 
+resettrigger is an optional XML element that identifies the type of event that may cause a reset to occur. It is additional information regarding the meaning of the data that establishes an understanding of the time frame that the data represents so that the data may be correctly understood by a client software application.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTResetTriggerType} Enumeration}
@@ -393,6 +401,8 @@ These need to become \uamodel{Good_} status code in OPC UA.
 
 These need to become \uamodel{Good_} status code in OPC UA.
 
+resettrigger is an optional XML element that identifies the type of event that may cause a reset to occur. It is additional information regarding the meaning of the data that establishes an understanding of the time frame that the data represents so that the data may be correctly understood by a client software application.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTResetTriggerType} Enumeration}
@@ -417,6 +427,9 @@ These need to become \uamodel{Good_} status code in OPC UA.
 
 \item \textbf{Allowable Values} for \texttt{MTStatisticType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTStatisticType} Enumeration}
@@ -446,6 +459,8 @@ These need to become \uamodel{Good_} status code in OPC UA.
 
 The base type class for all data items with a \gls{category} of \mtmodel{EVENT}.
 
+An XML element which provides the information and data reported from a piece of equipment for those dataitem elements defined with a category attribute of event category in the mtconnectdevices document.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTEventClassType} Definition}
@@ -474,6 +489,9 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{MTStringEventClassType} & \multicol
   \label{type:MTMessageEventType}
 
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTMessageEventType} Definition}
@@ -503,6 +521,8 @@ Has\-Property & Variable & Native\-Code & String & Property\-Type & Optional \\
 The message is a sub-type of the \uaterm{DataVariableType} using the \mtuatype{MessageDataType} to 
 represent the values for \mtterm{NativeCode} and \mtterm{Text} of the message from the \gls{CDATA} of the 
 MTConnect Streams message.
+
+Any text string of information to be transferred from a piece of equipment to a client software application.
 
 \begin{table}[ht]
 \centering 
@@ -618,6 +638,8 @@ In ammendment 1, the \uamodel{EURange} is optional. \uamodel{EngineeringUnits} f
 
 The \uamodel{EURange} will becreated if the \mtmodel{Constraints} element exists and both \mtmodel{Maximum} 
 and \mtmodel{Minimum} values are given.
+
+An XML element that provides the information and data reported from a piece of equipment for those dataitem elements defined with a category attribute of sample category in the mtconnectdevices document. 
 
 \begin{table}[ht]
 \centering 
@@ -796,6 +818,9 @@ Has\-Property & Variable & Engineering\-Units & EUInformation & Property\-Type &
   \label{type:MessageDataType}
 
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MessageDataType} DataType}

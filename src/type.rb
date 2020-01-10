@@ -191,10 +191,19 @@ class Type
     @xmi = e
     @id = e['xmi:id']
 
-    @documentation = xmi_documentation(e)
+    @name = e['name']
+
+    
+    @documentation = xmi_documentation(e) || ''
+
+    
+    sn = @name.sub(/^MT/, '').sub(/Type$/, '').sub(/Class$/, '').sub(/Sub$/, '')
+    doc = Glossary[sn] || Glossary[sn.upcase]
+    if doc
+      @documentation << "\n\n" << doc.description      
+    end
     @stereotype = xmi_stereotype(e)
     
-    @name = e['name']
     @type = e['xmi:type']
     
     $logger.debug "  -- Creating class <<#{@stereotype}>> #{@name} : #{@type}"

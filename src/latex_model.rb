@@ -21,7 +21,7 @@ class LatexModel < Model
     if @@models[model]
       @@models[model].generate_latex(f)
     else
-      puts "Cannot find model: #{model}"
+      $logger.fatal "Cannot find model: #{model}"
       exit
     end
   end
@@ -31,7 +31,7 @@ class LatexModel < Model
     f.puts "\\input #{file}"
 
     File.open("#{@@directory}/#{file}", "w") do |fs|
-      puts "Generating model #{@name}"
+      $logger.info "Generating model #{@name}"
       fs.puts "% Generated #{Time.now}"
       fs.puts "\\subsection{#{@name}} \\label{model:#{short_name}}"
       

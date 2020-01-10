@@ -4,7 +4,7 @@ require 'latex_model'
 LatexModel.skip_models = SkipModels
 LatexModel.new(RootModel).find_definitions
 
-puts "\nGenerating Devices LaTex to #{DeviceDocumentFile}"
+$logger.info "\nGenerating Devices LaTex to #{DeviceDocumentFile}"
 File.open(DeviceDocumentFile, 'w') do |f|
   f.puts "% Generated #{Time.now}"
   
@@ -15,7 +15,7 @@ File.open(DeviceDocumentFile, 'w') do |f|
 end
 
 if false
-  puts "\nGenerating Asset LaTex to #{AssetDocumentFile}"
+  $logger.info "\nGenerating Asset LaTex to #{AssetDocumentFile}"
   File.open(AssetDocumentFile, 'w') do |f|
     f.puts "% Generated #{Time.now}"
     

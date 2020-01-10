@@ -1,4 +1,4 @@
-% Generated 2020-01-09 17:13:24 -0800
+% Generated 2020-01-09 18:51:19 -0800
 \subsection{Conditions} \label{model:Conditions}
 
 \begin{figure}[ht]
@@ -90,6 +90,9 @@ inactive, then the \mtmodel{NativeSeverity} will be cleared.
 
 \item \textbf{Allowable Values} for \texttt{QualifierDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{QualifierDataType} Enumeration}
@@ -122,6 +125,8 @@ The \gls{BrowseName} of the condition uses the same naming convention as the  MT
 \gls{MTDataItem} types with \gls{MTCondition} appended as a suffix. For example the 
 condition with \gls{type} of \mtmodel{TEMPERATURE} will have the browse name of 
 \mtmodel{TemperatureCondition} as opposed to the \mtuatype{MTSampleType} of \mtmodel{Temperature}.
+
+An XML element which provides the information and data reported from a piece of equipment for those dataitem elements defined with a category attribute of condition category in the mtconnectdevices document.
 
 \begin{table}[ht]
 \centering 

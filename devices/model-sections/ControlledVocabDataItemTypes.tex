@@ -1,4 +1,4 @@
-% Generated 2020-01-09 17:13:24 -0800
+% Generated 2020-01-09 18:51:19 -0800
 \subsection{Controlled Vocab Data Item Types} \label{model:ControlledVocabDataItemTypes}
 
 The MTConnect Standard has the definitions of \glspl{MTEvent} in 
@@ -88,6 +88,8 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{ControllerModeClassType} & \multico
 
 Represents the operational state of an apparatus for moving or controlling.
 
+Represents the operational state of an apparatus for moving or controlling a mechanism or system.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ActuatorStateClassType} Definition}
@@ -114,6 +116,9 @@ Has\-Property & Variable & Enum\-Strings & Active\-State\-Data\-Type & Active\-S
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{ActiveStateDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ActiveStateDataType} Enumeration}
@@ -137,6 +142,8 @@ Has\-Property & Variable & Enum\-Strings & Active\-State\-Data\-Type & Active\-S
 
 Represents the Agent's ability to communicate with the data source. This MUST be provided for a 
 Device Element and MAY be provided for any other Structural Element.
+
+Represents the agent's ability to communicate with the data source.
 
 \begin{table}[ht]
 \centering 
@@ -164,6 +171,9 @@ Has\-Property & Variable & Enum\-Strings & Availability\-Data\-Type & Availabili
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{AvailabilityDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{AvailabilityDataType} Enumeration}
@@ -191,6 +201,10 @@ This is used in conjunction with \mtmodel{COUPLED_AXES} to indicate the way they
 The coupling MUST be viewed from the perspective of a specific axis. Therefore, a \mtmodel{MASTER} coupling 
 indicates that this axis is the master for the \mtmodel{COUPLED_AXES}.
 
+Describes the way the axes will be associated to each other. 
+  
+ This is used in conjunction with coupledaxes event to indicate the way they are interacting.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{AxisCouplingClassType} Definition}
@@ -217,6 +231,9 @@ Has\-Property & Variable & Enum\-Strings & Axis\-Coupling\-Data\-Type & Axis\-Co
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{AxisCouplingDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{AxisCouplingDataType} Enumeration}
@@ -239,6 +256,8 @@ Has\-Property & Variable & Enum\-Strings & Axis\-Coupling\-Data\-Type & Axis\-Co
   \label{type:AxisInterlockClassType}
 
 \FloatBarrier
+
+An indicator of the state of the axis lockout function when power has been removed and the axis is allowed to move freely.
 
 An indicator of the state of the axis lockout function when power has been removed and the axis is allowed to move freely.
 
@@ -268,6 +287,9 @@ Has\-Property & Variable & Enum\-Strings & Active\-State\-Data\-Type & Active\-S
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{ActiveStateDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ActiveStateDataType} Enumeration}
@@ -289,6 +311,8 @@ Has\-Property & Variable & Enum\-Strings & Active\-State\-Data\-Type & Active\-S
 \FloatBarrier
 
 An indicator of the controlled state of a \mtmodel{LINEAR} or \mtmodel{ROTARY} component representing an axis.
+
+An indicator of the controlled state of a linear or rotary component representing an axis.
 
 \begin{table}[ht]
 \centering 
@@ -316,6 +340,9 @@ Has\-Property & Variable & Enum\-Strings & Axis\-State\-Data\-Type & Axis\-State
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{AxisStateDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{AxisStateDataType} Enumeration}
@@ -341,6 +368,8 @@ Has\-Property & Variable & Enum\-Strings & Axis\-State\-Data\-Type & Axis\-State
 
 An indication of the state of an interlock function or control logic state intended to prevent the 
 associated \mtmodel{Chuck} composition or function from being operated.
+
+An indication of the state of an interlock function or control logic state intended to prevent the associated chuck component from being operated.
 
 \begin{table}[ht]
 \centering 
@@ -368,6 +397,9 @@ Has\-Property & Variable & Enum\-Strings & Active\-State\-Data\-Type & Active\-S
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{ActiveStateDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ActiveStateDataType} Enumeration}
@@ -391,6 +423,8 @@ Has\-Property & Variable & Enum\-Strings & Active\-State\-Data\-Type & Active\-S
 An indication of the operating state of a mechanism that holds a part or stock material during a 
 manufacturing process. It may also represent a mechanism that holds any other mechanism 
 in place within a piece of equipment.
+
+An indication of the operating state of a mechanism that holds a part or stock material during a manufacturing process. It may also represent a mechanism that holds any other mechanism in place within a piece of equipment.
 
 \begin{table}[ht]
 \centering 
@@ -418,6 +452,9 @@ Has\-Property & Variable & Enum\-Strings & Open\-State\-Data\-Type & Open\-State
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{OpenStateDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{OpenStateDataType} Enumeration}
@@ -439,6 +476,8 @@ Has\-Property & Variable & Enum\-Strings & Open\-State\-Data\-Type & Open\-State
   \label{type:CloseChuckClassType}
 
 \FloatBarrier
+
+Service to close a chuck.
 
 Service to close a chuck.
 
@@ -468,6 +507,9 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
@@ -491,6 +533,8 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
   \label{type:CloseDoorClassType}
 
 \FloatBarrier
+
+Service to close a door.
 
 Service to close a door.
 
@@ -520,6 +564,9 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
@@ -549,6 +596,8 @@ A \gls{subType} MUST always be specified.
 
 A \mtmodel{compositionId} MUST always be specified.
 
+An indication of the operating condition of a mechanism represented by a composition type element.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{CompositionStateClassType} Definition}
@@ -575,6 +624,9 @@ Has\-Property & Variable & Enum\-Strings & Composition\-State\-Data\-Type & Comp
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{CompositionStateDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{CompositionStateDataType} Enumeration}
@@ -608,6 +660,8 @@ Has\-Property & Variable & Enum\-Strings & Composition\-State\-Data\-Type & Comp
 
 The current mode of the \mtmodel{Controller} component.
 
+The current operating mode of the controller component.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ControllerModeClassType} Definition}
@@ -634,6 +688,9 @@ Has\-Property & Variable & Enum\-Strings & Controller\-Mode\-Data\-Type & Contro
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{ControllerModeDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ControllerModeDataType} Enumeration}
@@ -657,6 +714,8 @@ Has\-Property & Variable & Enum\-Strings & Controller\-Mode\-Data\-Type & Contro
   \label{type:ControllerModeOverrideClassType}
 
 \FloatBarrier
+
+A setting or operator selection that changes the behavior of a piece of equipment.
 
 A setting or operator selection that changes the behavior of a piece of equipment.
 
@@ -686,6 +745,9 @@ Has\-Property & Variable & Enum\-Strings & On\-Off\-Data\-Type & On\-Off\-Data\-
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{OnOffDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{OnOffDataType} Enumeration}
@@ -708,6 +770,8 @@ Has\-Property & Variable & Enum\-Strings & On\-Off\-Data\-Type & On\-Off\-Data\-
 \FloatBarrier
 
 The direction of motion. A \gls{subType} MUST always be specified.
+
+The direction of motion.
 
 \begin{table}[ht]
 \centering 
@@ -735,6 +799,9 @@ Has\-Property & Variable & Enum\-Strings & Direction\-Data\-Type & Direction\-Da
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{DirectionDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{DirectionDataType} Enumeration}
@@ -759,6 +826,8 @@ Has\-Property & Variable & Enum\-Strings & Direction\-Data\-Type & Direction\-Da
 \FloatBarrier
 
 The opened or closed state of the door.
+
+The operational state of a door type component or composition element.
 
 \begin{table}[ht]
 \centering 
@@ -786,6 +855,9 @@ Has\-Property & Variable & Enum\-Strings & Open\-State\-Data\-Type & Open\-State
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{OpenStateDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{OpenStateDataType} Enumeration}
@@ -808,6 +880,8 @@ Has\-Property & Variable & Enum\-Strings & Open\-State\-Data\-Type & Open\-State
 \FloatBarrier
 
 The current state of the emergency stop signal.
+
+The current state of the emergency stop signal for a piece of equipment, controller path, or any other component or subsystem of a piece of equipment.
 
 \begin{table}[ht]
 \centering 
@@ -835,6 +909,9 @@ Has\-Property & Variable & Enum\-Strings & Emergency\-Stop\-Data\-Type & Emergen
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{EmergencyStopDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{EmergencyStopDataType} Enumeration}
@@ -855,6 +932,8 @@ Has\-Property & Variable & Enum\-Strings & Emergency\-Stop\-Data\-Type & Emergen
   \label{type:EndOfBarClassType}
 
 \FloatBarrier
+
+An indication of whether the end of a piece of bar stock being feed by a bar feeder has been reached.
 
 An indication of whether the end of a piece of bar stock being feed by a bar feeder has been reached.
 
@@ -884,6 +963,9 @@ Has\-Property & Variable & Enum\-Strings & Yes\-No\-Data\-Type & Yes\-No\-Data\-
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{YesNoDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{YesNoDataType} Enumeration}
@@ -909,6 +991,8 @@ An indication that a piece of equipment, or a sub-part of a piece of
 equipment, is performing specific types of activities.
 
 A \gls{subType} MUST always be specified.
+
+An indication that a piece of equipment, or a sub-part of a piece of equipment, is performing specific types of activities.
 
 \begin{table}[ht]
 \centering 
@@ -936,6 +1020,9 @@ Has\-Property & Variable & Enum\-Strings & On\-Off\-Data\-Type & On\-Off\-Data\-
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{OnOffDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{OnOffDataType} Enumeration}
@@ -957,6 +1044,8 @@ Has\-Property & Variable & Enum\-Strings & On\-Off\-Data\-Type & On\-Off\-Data\-
 \FloatBarrier
 
 The execution status of the \mtmodel{Controller} or \mtmodel{Path}.
+
+The execution status of the controller.
 
 \begin{table}[ht]
 \centering 
@@ -984,6 +1073,9 @@ Has\-Property & Variable & Enum\-Strings & Execution\-Data\-Type & Execution\-Da
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{ExecutionDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ExecutionDataType} Enumeration}
@@ -1016,6 +1108,8 @@ The current intended production status of the device or component.
 Typically, the \texttt{FUNCTIONAL_MODE} SHOULD be modeled as a data item for the Device element, but 
 MAY be modeled for any Structural Element in the XML document.
 
+The current intended production status of the device or component.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{FunctionalModeClassType} Definition}
@@ -1042,6 +1136,9 @@ Has\-Property & Variable & Enum\-Strings & Functional\-Mode\-Data\-Type & Functi
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{FunctionalModeDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{FunctionalModeDataType} Enumeration}
@@ -1067,6 +1164,8 @@ Has\-Property & Variable & Enum\-Strings & Functional\-Mode\-Data\-Type & Functi
 \FloatBarrier
 
 The current functional or operational state of an Interface type element indicating whether the Interface is active or not currently functioning.
+
+An indication of the operational state of an interface component component.
 
 \begin{table}[ht]
 \centering 
@@ -1094,6 +1193,9 @@ Has\-Property & Variable & Enum\-Strings & Interface\-Status\-Data\-Type & Inter
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{InterfaceStatusDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStatusDataType} Enumeration}
@@ -1114,6 +1216,8 @@ Has\-Property & Variable & Enum\-Strings & Interface\-Status\-Data\-Type & Inter
   \label{type:MaterialChangeClassType}
 
 \FloatBarrier
+
+Service to change the type of material or product being loaded or fed to a piece of equipment.
 
 Service to change the type of material or product being loaded or fed to a piece of equipment.
 
@@ -1143,6 +1247,9 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
@@ -1167,6 +1274,8 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 \FloatBarrier
 
 Service to advance material or feed product to a piece of equipment from a continuous or bulk source.
+
+Service to advance material or feed product to a piece of equipment from a continuous or bulk source. 
 
 \begin{table}[ht]
 \centering 
@@ -1194,6 +1303,9 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
@@ -1216,6 +1328,8 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
   \label{type:MaterialLoadClassType}
 
 \FloatBarrier
+
+Service to load a piece of material or product.
 
 Service to load a piece of material or product.
 
@@ -1245,6 +1359,9 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
@@ -1267,6 +1384,8 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
   \label{type:MaterialRetractClassType}
 
 \FloatBarrier
+
+Service to remove or retract material or product.
 
 Service to remove or retract material or product.
 
@@ -1296,6 +1415,9 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
@@ -1318,6 +1440,8 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
   \label{type:MaterialUnloadClassType}
 
 \FloatBarrier
+
+Service to unload a piece of material or product.
 
 Service to unload a piece of material or product.
 
@@ -1347,6 +1471,9 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
@@ -1371,6 +1498,8 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 \FloatBarrier
 
 Service to open a chuck.
+
+Service to open a chuck. 
 
 \begin{table}[ht]
 \centering 
@@ -1398,6 +1527,9 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
@@ -1422,6 +1554,8 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 \FloatBarrier
 
 Service to open a door.
+
+Service to open a door. 
 
 \begin{table}[ht]
 \centering 
@@ -1449,6 +1583,9 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
@@ -1473,6 +1610,8 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 \FloatBarrier
 
 Service to change the part or product associated with a piece of equipment to a different part or product.
+
+Service to change the part or product associated with a piece of equipment to a different part or product.  
 
 \begin{table}[ht]
 \centering 
@@ -1500,6 +1639,9 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{InterfaceStateDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
@@ -1525,6 +1667,8 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 
 Describes the operational relationship between a \mtmodel{PATH} \textit{Structural Element} and another \mtmodel{PATH} 
 \textit{Structural Element} for pieces of equipment comprised of multiple logical groupings of controlled axes or other logical operations.
+
+Describes the operational relationship between a path structural element and another path structural element for pieces of equipment comprised of multiple logical groupings of controlled axes or other logical operations.
 
 \begin{table}[ht]
 \centering 
@@ -1552,6 +1696,9 @@ Has\-Property & Variable & Enum\-Strings & Path\-Mode\-Data\-Type & Path\-Mode\-
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{PathModeDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{PathModeDataType} Enumeration}
@@ -1581,6 +1728,8 @@ perform its functions.
 
  DEPRECATION WARNING: \texttt{PowerState} may be deprecated in the future.
 
+The indication of the status of the source of energy for a structural element to allow it to perform its intended function or the state of an enabling signal providing permission for the structural element to perform its functions.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{PowerStateClassType} Definition}
@@ -1607,6 +1756,9 @@ Has\-Property & Variable & Enum\-Strings & On\-Off\-Data\-Type & On\-Off\-Data\-
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{OnOffDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{OnOffDataType} Enumeration}
@@ -1630,6 +1782,9 @@ Has\-Property & Variable & Enum\-Strings & On\-Off\-Data\-Type & On\-Off\-Data\-
 An indication of the status of the \mtmodel{Controller} component’s program editing mode.
 
 On many controls, a program can be edited while another program is currently being executed.
+
+An indication of the status of the controller components program editing mode. 
+ On many controls, a program can be edited while another program is currently being executed.
 
 \begin{table}[ht]
 \centering 
@@ -1657,6 +1812,9 @@ Has\-Property & Variable & Enum\-Strings & Program\-Edit\-Data\-Type & Program\-
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{ProgramEditDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ProgramEditDataType} Enumeration}
@@ -1680,6 +1838,8 @@ Has\-Property & Variable & Enum\-Strings & Program\-Edit\-Data\-Type & Program\-
 \FloatBarrier
 
 The current operating mode for a \mtmodel{Rotary} type axis.
+
+The current operating mode for a rotary type axis.
 
 \begin{table}[ht]
 \centering 
@@ -1707,6 +1867,9 @@ Has\-Property & Variable & Enum\-Strings & Rotary\-Mode\-Data\-Type & Rotary\-Mo
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{RotaryModeDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{RotaryModeDataType} Enumeration}
@@ -1728,6 +1891,8 @@ Has\-Property & Variable & Enum\-Strings & Rotary\-Mode\-Data\-Type & Rotary\-Mo
   \label{type:SpindleInterlockClassType}
 
 \FloatBarrier
+
+An indication of the status of the spindle for a piece of equipment when power has been removed and it is free to rotate.
 
 An indication of the status of the spindle for a piece of equipment when power has been removed and it is free to rotate.
 
@@ -1757,6 +1922,9 @@ Has\-Property & Variable & Enum\-Strings & Active\-State\-Data\-Type & Active\-S
 \begin{itemize}
 \item \textbf{Allowable Values} for \texttt{ActiveStateDataType}
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ActiveStateDataType} Enumeration}

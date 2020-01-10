@@ -1,4 +1,4 @@
-% Generated 2020-01-09 17:13:24 -0800
+% Generated 2020-01-09 18:51:19 -0800
 \subsection{Data Item Types} \label{model:DataItemTypes}
 
 The data item types represent the MTConnect types as defined in Section 8 of the 
@@ -25,6 +25,8 @@ easier to map the MTConnect types to the correct super class as given in the OPC
 
 Abstract base class for all the data item class types. The names are created by pascal typing the names
 and then generating appending \mtmodel{Type}.
+
+data entity describing a piece of information reported about a piece of equipment.
 
 \begin{table}[ht]
 \centering 
@@ -53,6 +55,11 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{MTSampleClassType} & \multicolumn{2
   \label{type:MTMessageClassType}
 
 \FloatBarrier
+
+
+
+Any text string of information to be transferred from a piece of equipment to a client software application.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTMessageClassType} Definition}

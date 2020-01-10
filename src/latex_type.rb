@@ -129,7 +129,7 @@ class LatexType < Type
 
           f.puts "#{hyphenate(r.reference_type)} & #{r.target.type.base_type} & #{hyphenate(r.browse_name)} & #{type_info} & #{r.rule} \\\\"
         rescue
-          puts "#{$!}: #{@name}::#{r.name} #{r.final_target.name} #{r.final_target.type_id} #{r.final_target.type}"
+          $logger.error "#{$!}: #{@name}::#{r.name} #{r.final_target.name} #{r.final_target.type_id} #{r.final_target.type}"
           raise 
         end
       end
@@ -220,10 +220,10 @@ EOT
   end
 
   def generate_attribute_docs(f, header)
-    puts "Generating docs for #{@name}"
+    $logger.info "Generating docs for #{@name}"
     relations_with_documentation =
       @relations.select { |r|
-      puts "  Looking for docs for #{r.target.inspect}" if r.target.type.nil?
+      $logger.debug "  Looking for docs for #{r.target.inspect}" if r.target.type.nil?
       r.documentation or r.target.type.type == 'uml:Enumeration'
     }
 
@@ -321,7 +321,7 @@ EOT
 
   def generate_enumerations(f)
     if @type == 'uml:Enumeration'
-      puts "***** =====> Generating Enumerations for #{@name}"
+      $logger.debug "***** =====> Generating Enumerations for #{@name}"
       
       generate_documentation(f)
 
@@ -381,7 +381,7 @@ EOT
           if rel
             f.puts "This class relates to \\texttt{#{target.type.name}} (#{target.type.reference}) for a(n) \\texttt{#{rel}} relationship.\n\n"
           else
-            puts "Cannot find stereo for #{@name}::#{dep.name} to #{target.type.name}"
+            $logger.error "Cannot find stereo for #{@name}::#{dep.name} to #{target.type.name}"
           end
         end
       end

@@ -1,4 +1,4 @@
-% Generated 2020-01-09 17:13:24 -0800
+% Generated 2020-01-09 18:51:19 -0800
 \subsection{String Event Data Item Types} \label{model:StringEventDataItemTypes}
 \subsubsection{Defintion of \texttt{ MTStringEventClassType}}
   \label{type:MTStringEventClassType}
@@ -64,6 +64,11 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{AssetRemovedClassType} & \multicolu
   \label{type:AssetChangedClassType}
 
 \FloatBarrier
+
+
+
+The value of the cdata for the event MUST be the assetid of the asset that has been added or changed. There will not be a separate message for new assets.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{AssetChangedClassType} Definition}
@@ -88,6 +93,11 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{type:AssetRemovedClassType}
 
 \FloatBarrier
+
+
+
+The value of the cdata for the event MUST be the assetid of the asset that has been removed. The asset will still be visible if requested with the includeremoved parameter as described in the protocol section. When assets are removed they are not moved to the beginning of the most recently modified list. 
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{AssetRemovedClassType} Definition}
@@ -116,6 +126,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 The line of code or command being executed by a \mtmodel{Controller} \mtterm{Structural Element}.
 
 The value reported for \mtmodel{Block} MUST include the entire expression for a line of program code, including all parameters.
+
+The line of code or command being executed by a controller structural element.
 
 \begin{table}[ht]
 \centering 
@@ -148,6 +160,8 @@ The valid data value for \mtmodel{COUPLED_AXES} SHOULD be a space-delimited set 
 axes reported as the value of the name attribute for each axis. If name is not available,
 the piece of equipment MUST report the value of the nativeName attribute for each axis.
 
+Refers to the set of associated axes.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{CoupledAxesClassType} Definition}
@@ -172,6 +186,11 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{type:LineClassType}
 
 \FloatBarrier
+
+
+
+DEPRECATED in Version 1.4.0.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{LineClassType} Definition}
@@ -198,6 +217,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 An optional identifier for a \mtmodel{BLOCK} of code in a \mtmodel{PROGRAM}.
+
+An optional identifier for a block event of code in a program event.
 
 \begin{table}[ht]
 \centering 
@@ -226,6 +247,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The identifier of a material used or consumed in the manufacturing process.
 
+The identifier of a material used or consumed in the manufacturing process.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MaterialClassType} Definition}
@@ -250,6 +273,11 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{type:MessageClassType}
 
 \FloatBarrier
+
+
+
+Any text string of information to be transferred from a piece of equipment to a client software application.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MessageClassType} Definition}
@@ -279,6 +307,8 @@ The identifier of the person currently responsible for operating the piece of eq
 
 DEPRECATION WARNING: May be deprecated in the future. See \mtmodel{USER} below.
 
+The identifier of the person currently responsible for operating the piece of equipment.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{OperatorIdClassType} Definition}
@@ -303,6 +333,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{type:PalletIdClassType}
 
 \FloatBarrier
+
+The identifier for a pallet.
 
 The identifier for a pallet.
 
@@ -333,6 +365,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 An identifier of a part in a manufacturing operation.
 
+An identifier of a part in a manufacturing operation.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{PartIdClassType} Definition}
@@ -359,6 +393,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 An identifier of a part or product moving through the manufacturing process.
+
+An identifier of a part or product moving through the manufacturing process. 
+ The valid data value must be a text string. 
 
 \begin{table}[ht]
 \centering 
@@ -387,6 +424,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The name of the logic or motion program being executed by the \mtmodel{Controller} or \mtmodel{Path} component.
 
+The name of the logic or motion program being executed by the controller component.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ProgramClassType} Definition}
@@ -413,6 +452,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 A comment or non-executable statement in the control program.
+
+A comment or non-executable statement in the control program.
+ The valid data value must be a text string.
 
 \begin{table}[ht]
 \centering 
@@ -441,6 +483,10 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The name of the program being edited. This is used in conjunction with \mtmodel{PROGRAM_EDIT} when in \mtmodel{ACTIVE} state.
 
+The name of the program being edited. 
+ This is used in conjunction with programedit event when in active value state. 
+ The valid data value must be a text string.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ProgramEditNameClassType} Definition}
@@ -465,6 +511,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{type:ProgramHeaderClassType}
 
 \FloatBarrier
+
+The non-executable header section of the control program.
 
 The non-executable header section of the control program.
 
@@ -495,6 +543,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The serial number associated with a \mtmodel{Component}, \mtmodel{Asset}, or \mtmodel{Device}.
 
+The serial number associated with a component, asset mtconnectassets, or device. The valid data value must be a text string.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{SerialNumberClassType} Definition}
@@ -522,6 +572,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The identifier of an individual tool asset
 
+The identifier of an individual tool asset.The valid data value must be a text string.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ToolAssetIdClassType} Definition}
@@ -548,6 +600,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 The identifier of a tool provided by the piece of equipment controller.
+
+The identifier assigned by the controller component to a cutting tool when in use by a piece of equipment. 
+ The valid data value must be a text string.
 
 \begin{table}[ht]
 \centering 
@@ -583,6 +638,8 @@ a table or list where the actual tool offset values are stored.
 
 A \gls{subType} MUST always be specified.
 
+A reference to the tool offset variables applied to the active cutting tool associated with a path in a controller type component.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ToolOffsetClassType} Definition}
@@ -612,6 +669,8 @@ The identifier of the person currently responsible for operating the piece of eq
 
 A \gls{subType} MUST always be specified.
 
+The identifier of the person currently responsible for operating the piece of equipment.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{UserClassType} Definition}
@@ -638,6 +697,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 The identifier for the type of wire used as the cutting mechanism in Electrical Discharge Machining or similar processes.
+
+A string like piece or filament of relatively rigid or flexible material provided in a variety of diameters.
 
 \begin{table}[ht]
 \centering 
@@ -697,6 +758,8 @@ The valid data value MUST be a text string.
 
 The reported value returned for \mtmodel{WORK_OFFSET} identifies the location in a table or list 
 where the actual tool offset values are stored.
+
+A reference to the offset variables for a work piece or part associated with a path in a controller type component.
 
 \begin{table}[ht]
 \centering 

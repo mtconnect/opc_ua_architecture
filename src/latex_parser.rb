@@ -3,7 +3,7 @@ require 'treetop'
 require 'set'
 require 'memoist'
 
-Treetop.load 'latex'
+Treetop.load 'src/latex'
 
 class LatexParser
   attr_reader :entries
@@ -11,8 +11,8 @@ class LatexParser
   def parse_glossary(file)
     res = parse(File.read(file))
     unless res
-      puts failure_reason
-      puts terminal_failures.join("\n")
+      $logger.fatal failure_reason
+      $logger.fatal terminal_failures.join("\n")
       exit
     end
 
@@ -33,8 +33,17 @@ class LatexParser
 
       name = e.name
       @entries[name] = e
-      @entries[e.name_property] = e unless e.name_property.start_with?(/[a-z]/)
+      unless e.name_property.start_with?(/[a-z]/)
+        puts "Adding #{e.name_property}"
+        @entries[e.name_property] = e
+      end
+      if e.has_key?(:elementname)
+        puts "Adding #{e.elementname}"
+        @entries[e.elementname] = e
+      end        
       @entries[e.plural] = e if e.has_key?(:plural)
+
+      puts "Adding #{name}"
 
       if e.name_list.length == 1 and e.has_key?(:plural)
         plural = e.plural.downcase
@@ -45,9 +54,9 @@ class LatexParser
       end
     end
 
-    puts "Entries: #{@entries.length}"
+    $logger.info "Entries: #{@entries.length}"
     @indexes.each do |kind, list|
-      puts "  #{kind}: #{list.count}"
+      $logger.info "  #{kind}: #{list.count}"
     end
   end
 
@@ -96,7 +105,7 @@ class LatexParser
     r = entries(m)
     return r if r
 
-    puts "Cannot resovle '#{m}', tried '#{plural(m.to_s)}' and '#{singular(m.to_s)}'"
+    $logger.error "Cannot resovle '#{m}', tried '#{plural(m.to_s)}' and '#{singular(m.to_s)}'"
     super
   end
 
@@ -185,7 +194,7 @@ module Latex
     
     def method_missing(method, *args, &block)
       if !keys.include?(method)
-        puts "Cannot find entry: #{@name} #{keys.inspect}"      
+        $logger.error "Cannot find entry: #{@name} #{keys.inspect}"      
         super
       else
         keys[method]
@@ -193,8 +202,8 @@ module Latex
     end
     
     def dump
-      puts "Name: #{name.inspect}"
-      puts "Keys: #{keys.inspect}"
+      $logger.info "Name: #{name.inspect}"
+      $logger.info "Keys: #{keys.inspect}"
     end
     
     def to_s

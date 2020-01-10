@@ -1,4 +1,4 @@
-% Generated 2020-01-09 17:13:24 -0800
+% Generated 2020-01-09 18:51:19 -0800
 \subsection{Sample Data Item Types} \label{model:SampleDataItemTypes}
 
 The MTConnect Standard has the definitions of \glspl{Sample} in 
@@ -15,6 +15,8 @@ please refer to the sources \cite{MTCPart2} and \cite{MTCPart3}.
 \FloatBarrier
 
 The base type class for all data items with a \gls{category} of \mtmodel{SAMPLE}.
+
+An XML element that provides the information and data reported from a piece of equipment for those dataitem elements defined with a category attribute of sample category in the mtconnectdevices document. 
 
 \begin{table}[ht]
 \centering 
@@ -93,6 +95,8 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{LoadClassType} & \multicolumn{2}{|l
 
 Rate of change of velocity. $\frac{MILLIMETER}{SECOND^{2}}$
 
+The measurement of the rate of change of velocity.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{AccelerationClassType} Definition}
@@ -119,6 +123,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 The measurement of accumulated time for an activity or event. $SECOND$
+
+The measurement of accumulated time for an activity or event.
 
 \begin{table}[ht]
 \centering 
@@ -147,6 +153,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The measurement of electrical current. $AMPERE$
 
+The measurement of electrical current.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{AmperageClassType} Definition}
@@ -173,6 +181,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 The measurement of angular position. $DEGREE$
+
+The measurement of angular position.
 
 \begin{table}[ht]
 \centering 
@@ -201,6 +211,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 Rate of change of angular velocity.  $\frac{DEGREE}{SECOND^{2}}$
 
+The measurement rate of change of angular velocity.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{AngularAccelerationClassType} Definition}
@@ -227,6 +239,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 Rate of change of angular position. $\frac{DEGREE}{SECOND}$
+
+The measurement of the rate of change of angular position.
 
 \begin{table}[ht]
 \centering 
@@ -255,6 +269,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The feedrate of a linear axis. $\frac{MILLIMETER}{SECOND}$
 
+The measurement of the feedrate of a linear axis.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{AxisFeedrateClassType} Definition}
@@ -281,6 +297,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 The value provided by a timing device at a specific point in time. $TIMESTAMP$
+
+The value provided by a timing device at a specific point in time.
 
 \begin{table}[ht]
 \centering 
@@ -309,6 +327,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 Percentage of one component within a mixture of components. $PERCENT$
 
+The measurement of the percentage of one component within a mixture of components
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ConcentrationClassType} Definition}
@@ -335,6 +355,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 The ability of a material to conduct electricity. $\frac{SIEMENS}{METER}$
+
+The measurement of the ability of a material to conduct electricity.
 
 \begin{table}[ht]
 \centering 
@@ -363,6 +385,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The change in position of an object. $MILLIMETER$
 
+The measurement of the change in position of an object.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{DisplacementClassType} Definition}
@@ -389,6 +413,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 The measurement of electrical energy consumption by a component. $WATT \times SECOND$
+
+The measurement of electrical energy consumption by a component.
 
 \begin{table}[ht]
 \centering 
@@ -425,6 +451,8 @@ A subType MUST always be specified.
 
 $SECOND$
 
+The measurement of the amount of time a piece of equipment or a sub-part of a piece of equipment has performed specific activities.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{EquipmentTimerClassType} Definition}
@@ -453,6 +481,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 The measurement of the amount of a substance remaining compared to the planned 
 maximum amount of that substance. $PERCENT$
 
+The measurement of the amount of a substance remaining compared to the planned maximum amount of that substance.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{FillLevelClassType} Definition}
@@ -479,6 +509,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 The rate of flow of a fluid. $\frac{LITER}{SECOND}$
+
+The measurement of the rate of flow of a fluid.
 
 \begin{table}[ht]
 \centering 
@@ -507,6 +539,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The measurement of the number of occurrences of a repeating event per unit time. $HERTZ$
 
+The measurement of the number of occurrences of a repeating event per unit time.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{FrequencyClassType} Definition}
@@ -533,6 +567,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 The length of an object. $MILLIMETER$
+
+The measurement of the length of an object.
 
 \begin{table}[ht]
 \centering 
@@ -561,6 +597,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The measure of the push or pull introduced by an actuator or exerted on an object. $NEWTON$
 
+The measurement of the push or pull introduced by an actuator or exerted on an object.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{LinearForceClassType} Definition}
@@ -587,6 +625,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 The measurement of the actual versus the standard rating of a piece of equipment. $PERCENT$
+
+The measurement of the actual versus the standard rating of a piece of equipment.
 
 \begin{table}[ht]
 \centering 
@@ -615,6 +655,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The measurement of the mass of an object(s) or an amount of material. $KILOGRAM$
 
+The measurement of the mass of an object(s) or an amount of material.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MassClassType} Definition}
@@ -642,6 +684,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The feedrate for the axes, or a single axis, associated with a \mtmodel{Path} component 
 a vector. $\frac{MILLIMETER}{SECOND}$
+
+The measurement of the feedrate for the axes, or a single axis, associated with a path component-a vector.
 
 \begin{table}[ht]
 \centering 
@@ -678,6 +722,8 @@ referenced to the coordinate system of the piece of equipment.
 
 $MILLIMETER (\mathbb{R}^{3})$
 
+A measured or calculated position of a control point associated with a controller element, or path element if provided, of a piece of equipment.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{PathPositionClassType} Definition}
@@ -704,6 +750,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 The measure of the acidity or alkalinity. $PH$
+
+A measure of the acidity or alkalinity of a solution.
 
 \begin{table}[ht]
 \centering 
@@ -738,6 +786,8 @@ MUST be reported in \mtmodel{MACHINE} coordinates.
 
 $MILLIMETER$
 
+A measured or calculated position of a component element as reported by a piece of equipment.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{PositionClassType} Definition}
@@ -766,6 +816,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 The measurement of the ratio of real power flowing to a load to the apparent power in
 that AC circuit. $PERCENT$
 
+The measurement of the ratio of real power flowing to a load to the apparent power in that AC circuit.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{PowerFactorClassType} Definition}
@@ -792,6 +844,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 The force per unit area exerted by a gas or liquid. $PASCAL$
+
+The measurement of force per unit area exerted by a gas or liquid.
 
 \begin{table}[ht]
 \centering 
@@ -827,6 +881,8 @@ but MAY be modeled for either a Controller or Path Structural Element in the XML
 A \gls{subType} MUST always be specified.
 
 $SECOND$
+
+The measurement of the amount of time a piece of equipment has performed different types of activities associated with the process being performed at that piece of equipment.
 
 \begin{table}[ht]
 \centering 
@@ -882,6 +938,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The rotational speed of a rotary axis. $\frac{REVOLUTION}{MINUTE}$
 
+The measurement of the rotational speed of a rotary axis.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{RotaryVelocityClassType} Definition}
@@ -908,6 +966,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 Measurement of a sound level or sound pressure level relative to atmospheric pressure. $DECIBEL$
+
+The measurement of a sound level or sound pressure level relative to atmospheric pressure.
 
 \begin{table}[ht]
 \centering 
@@ -936,6 +996,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The amount of deformation per unit length of an object when a load is applied. $PERCENT$
 
+The measurement of the amount of deformation per unit length of an object when a load is applied.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{StrainClassType} Definition}
@@ -962,6 +1024,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 The measurement of temperature. $CELSIUS$
+
+The measurement of temperature.
 
 \begin{table}[ht]
 \centering 
@@ -990,6 +1054,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 A measurement of a force that stretches or elongates an object. $NEWTON$
 
+The measurement of a force that stretches or elongates an object.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{TensionClassType} Definition}
@@ -1016,6 +1082,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 A measurement of angular displacement. $MICRO \cdot RADIAN$
+
+The measurement of angular displacement. 
 
 \begin{table}[ht]
 \centering 
@@ -1044,6 +1112,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The turning force exerted on an object or by an object. $NEWTON \times METER$
 
+The measurement of the turning force exerted on an object or by an object.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{TorqueClassType} Definition}
@@ -1070,6 +1140,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 The rate of change of position. $\frac{MILLIMETER}{SECOND}$
+
+The measurement of the rate of change of position of a component.
 
 \begin{table}[ht]
 \centering 
@@ -1098,6 +1170,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 A measurement of a fluid’s resistance to flow. $PASCAL \times SECOND$.
 
+The measurement of a fluids resistance to flow.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ViscosityClassType} Definition}
@@ -1124,6 +1198,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 The measurement of electrical potential between two points. $VOLT$
+
+The measurement of electrical potential between two points.
 
 \begin{table}[ht]
 \centering 
@@ -1153,6 +1229,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 The measure of the apparent power in an electrical circuit, equal to the product of 
 root-mean-square (RMS) voltage and RMS current (commonly referred to as VA). $VOLT \times AMPERE$
 
+The measurement of the apparent power in an electrical circuit, equal to the product of root-mean-square (RMS) voltage and RMS current (commonly referred to as VA).
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{VoltAmpereClassType} Definition}
@@ -1181,6 +1259,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 The measurement of reactive power in an AC electrical circuit (commonly referred to as VAR). 
 $VOLT \times AMPERE (Reactive)$
 
+The measurement of reactive power in an AC electrical circuit (commonly referred to as VAR).
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{VoltAmpereReactiveClassType} Definition}
@@ -1208,6 +1288,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The measurement of power flowing through or dissipated by an electrical circuit or 
 piece of equipment. $WATT$
+
+The measurement of power flowing through or dissipated by an electrical circuit or piece of equipment.
 
 \begin{table}[ht]
 \centering 

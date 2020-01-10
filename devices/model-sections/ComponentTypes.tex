@@ -1,4 +1,4 @@
-% Generated 2020-01-09 17:13:24 -0800
+% Generated 2020-01-09 18:51:19 -0800
 \subsection{Component Types} \label{model:ComponentTypes}
 
 \begin{figure}[ht]
@@ -19,6 +19,8 @@ All the sub types of components organized into top level organizational types.
 \FloatBarrier
 
 the information for an apparatus for moving or controlling a mechanism or system
+
+Redefined as a piece of equipment with the ability to be represented as a lower level component of a parent component element or as a composition element. See actuator type
 
 \begin{table}[ht]
 \centering 
@@ -47,6 +49,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 representing functional sub-systems that provide supplementary or extended capabilities for a piece of equipment, 
 but they are not required for the basic operation of the equipment
+
+An XML container used to organize information for lower level elements representing functional sub-systems that provide supplementary or extended capabilities for a piece of equipment, but they are not required for the basic operation of the equipment.
 
 \begin{table}[ht]
 \centering 
@@ -81,6 +85,8 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{WasteDisposalType} & \multicolumn{2
 
 a unit involved in delivering bar stock to a piece of equipment.
 
+barfeeder is an XML container that represents the information for a unit involved in delivering bar stock to a piece of equipment.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{BarFeederType} Definition}
@@ -108,6 +114,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 the information for a unit or function involved in monitoring, managing, or conditioning 
 the environment around or within a piece of equipment.
+
+environmental is an XML container that represents the information for a unit or function involved in monitoring, managing, or conditioning the environment around or within a piece of equipment.
 
 \begin{table}[ht]
 \centering 
@@ -137,6 +145,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 the information for a unit comprised of all the parts involved in moving and distributing materials, 
 parts, tooling, and other items to or from a piece of equipment
 
+loader is an XML container that represents the information for a unit comprised of all the parts involved in moving and distributing materials, parts, tooling, and other items to or from a piece of equipment.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{LoaderType} Definition}
@@ -163,6 +173,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 the information for a piece of equipment that responds to a physical stimulus and transmits a resulting impulse or value from a sensing unit
+
+The sensor unit is modeled as a lower level component called sensor.
 
 \begin{table}[ht]
 \centering 
@@ -191,6 +203,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 a unit involved in managing, positioning, storing, and delivering tooling within a piece of equipment.
 
+toolingdelivery is an XML container that represents the information for a unit involved in managing, positioning, storing, and delivering tooling within a piece of equipment.
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ToolingDeliveryType} Definition}
@@ -218,6 +233,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 the information for a unit comprised of all the parts involved in removing manufacturing byproducts from a piece of equipment
 
+wastedisposal is an XML container that represents the information for a unit comprised of all the parts involved in removing manufacturing byproducts from a piece of equipment.
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{WasteDisposalType} Definition}
@@ -244,6 +262,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 Organizes parts of the device that perform linear or rotational motion
+
+An XML container used to organize the structural element of a piece of equipment that perform linear or rotational motion.
 
 \begin{table}[ht]
 \centering 
@@ -274,6 +294,8 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{RotaryType} & \multicolumn{2}{|l|}{
 
 the movement of a physical piece of equipment, or a portion of the equipment, in a straight line.
 
+A linear axis represents the movement of a physical piece of equipment, or a portion of the equipment, in a straight line. 
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{LinearType} Definition}
@@ -300,6 +322,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 rotary movement of a physical piece of equipment or a portion of the equipment.
+
+A rotary axis represents any non-linear or rotary movement of a physical piece of equipment or a portion of the equipment. 
 
 \begin{table}[ht]
 \centering 
@@ -329,6 +353,8 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{ChuckType} & \multicolumn{2}{|l|}{S
 
 provides the information about a mechanism that holds a part or stock material in place
 
+Chuck is an XML container that provides the information about a mechanism that holds a part or stock material in place.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ChuckType} Definition}
@@ -355,6 +381,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 intelligent or computational function within a piece of equipment
+
+An XML container used to organize information about an intelligent or computational function within a piece of equipment.
 
 \begin{table}[ht]
 \centering 
@@ -384,6 +412,8 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{PathType} & \multicolumn{2}{|l|}{Se
 
 information for an independent operation or function within a \mtuatype{ControllerType}
 
+path is an XML container that represents the information for an independent operation or function within a controller.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{PathType} Definition}
@@ -411,6 +441,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 the information for a mechanical mechanism or closure that can cover, for example, a physical access portal into a piece of equipment
 
+door component is an XML container that represents the information for a mechanical mechanism or closure that can cover.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{DoorType} Definition}
@@ -435,6 +467,11 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{type:InterfacesType}
 
 \FloatBarrier
+
+
+
+An XML container that organizes information used to coordinate actions and activities between pieces of equipment that communicate information between each other. 
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{InterfacesType} Definition}
@@ -466,6 +503,8 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{MaterialHandlerInterfaceType} & \mu
 
 information used to coordinate the operations between a Bar Feeder and another piece of equipment
 
+barfeederinterface provides the set of information used to coordinate the operations between a Bar Feeder and another piece of equipment.  
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{BarFeederInterfaceType} Definition}
@@ -493,6 +532,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 information used to coordinate the operations between two pieces of equipment, one of which controls the operation of a chuck
 
+chuckinterface provides the set of information used to coordinate the operations between two pieces of equipment, one of which controls the operation of a chuck.  
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ChuckInterfaceType} Definition}
@@ -519,6 +560,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 information used to coordinate the operations between two pieces of equipment, one of which controls the operation of a door
+
+doorinterface provides the set of information used to coordinate the operations between two pieces of equipment, one of which controls the operation of a door. 
 
 \begin{table}[ht]
 \centering 
@@ -549,6 +592,8 @@ set of information used to coordinate the operations between a piece of equipmen
 and another associated piece of equipment used to automatically handle various types of 
 materials or services associated with the original piece of equipment
 
+materialhandlerinterface provides the set of information used to coordinate the operations between a piece of equipment and another associated piece of equipment used to automatically handle various types of materials or services associated with the original piece of equipment. 
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MaterialHandlerInterfaceType} Definition}
@@ -573,6 +618,11 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{type:ResourcesType}
 
 \FloatBarrier
+
+
+
+An XML container used to organize information for lower level elements representing types of items, materials, and personnel that support the operation of a piece of equipment or work to be performed at a location. resources also represents materials or other items consumed or transformed by a piece of equipment for production of parts or other types of goods.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ResourcesType} Definition}
@@ -603,6 +653,8 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{PersonnelType} & \multicolumn{2}{|l
 information about materials or other items consumed or used by the piece of equipment for 
 production of parts, materials, or other types of goods
 
+materials is an XML container that provides information about materials or other items consumed or used by the piece of equipment for production of parts, materials, or other types of goods.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MaterialsType} Definition}
@@ -632,6 +684,8 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{StockType} & \multicolumn{2}{|l|}{S
 the information for the material that is used in a manufacturing process and to which 
 work is applied in a machine or piece of equipment to produce parts.
 
+stock is an XML container that represents the information for the material that is used in a manufacturing process and to which work is applied in a machine or piece of equipment to produce parts.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{StockType} Definition}
@@ -656,6 +710,12 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{type:PersonnelType}
 
 \FloatBarrier
+
+
+
+personnel is an XML container that provides information about an individual or individuals who either control, support, or otherwise interface with a piece of equipment.
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{PersonnelType} Definition}
@@ -682,6 +742,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 major sub-systems that are permanently integrated into a piece of equipment
+
+An XML container used to organize information for lower level elements representing the major sub-systems that are permanently integrated into a piece of equipment.
 
 \begin{table}[ht]
 \centering 
@@ -720,6 +782,8 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{ProtectiveType} & \multicolumn{2}{|
 
 a system comprised of all the parts involved in distribution and management of fluids that remove heat from a piece of equipment.
 
+coolant is an XML container that represents the information for a system comprised of all the parts involved in distribution and management of fluids that remove heat from a piece of equipment.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{CoolantType} Definition}
@@ -746,6 +810,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 a system that manages a chemical mixture used in a manufacturing process being performed at that piece of equipment.
+
+dielectric is an XML container that represents the information for a system that manages a chemical mixture used in a manufacturing process being performed at that piece of equipment.
 
 \begin{table}[ht]
 \centering 
@@ -774,6 +840,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 represents the information for the main power supply for device piece of equipment and the distribution of that power throughout the equipment.
 
+electric is an XML container that represents the information for the main power supply for device piece of equipment and the distribution of that power throughout the equipment. 
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ElectricType} Definition}
@@ -800,6 +868,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 a structure used to contain or isolate a piece of equipment or area.
+
+enclosure is an XML container that represents the information for a structure used to contain or isolate a piece of equipment or area.
 
 \begin{table}[ht]
 \centering 
@@ -828,6 +898,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 the information for a system that manages the delivery of materials within a piece of equipment.
 
+feeder is an XML container that represents the information for a system that manages the delivery of materials within a piece of equipment. 
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{FeederType} Definition}
@@ -854,6 +926,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 system comprised of all the parts involved in moving and distributing pressurized liquid throughout the piece of equipment.
+
+hydraulic is an XML container that represents the information for a system comprised of all the parts involved in moving and distributing pressurized liquid throughout the piece of equipment.
 
 \begin{table}[ht]
 \centering 
@@ -883,6 +957,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 a system comprised of all the parts involved in distribution and management of fluids used to 
 lubricate portions of the piece of equipment.
 
+lubrication is an XML container that represents the information for a system comprised of all the parts involved in distribution and management of fluids used to lubricate portions of the piece of equipment.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{LubricationType} Definition}
@@ -909,6 +985,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 a system comprised of all the parts involved in moving and distributing pressurized gas throughout the piece of equipment.
+
+pneumatic is an XML container that represents the information for a system comprised of all the parts involved in moving and distributing pressurized gas throughout the piece of equipment.
 
 \begin{table}[ht]
 \centering 
@@ -938,6 +1016,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 the information for a power source associated with a piece of equipment that supplies 
 energy to the manufacturing process separate from the Electric system
 
+processpower is an XML container that represents the information for a power source associated with a piece of equipment that supplies energy to the manufacturing process separate from the electric system.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ProcessPowerType} Definition}
@@ -964,6 +1044,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 the information for those functions that detect or prevent harm or damage to equipment or personnel.
+
+Protective is an XML container that represents the information for those functions that detect or prevent harm or damage to equipment or personnel.
 
 \begin{table}[ht]
 \centering 

@@ -11,6 +11,9 @@ require 'rexml/document'
 require 'rexml/xpath'
 require 'nokogiri'
 
+require 'treetop'
+require 'latex_parser'
+
 Options = {}
 parser = OptionParser.new do |opts|
   opts.banner = "Usage: generate.rb [options] [docs|nodeset]"
@@ -30,6 +33,9 @@ $logger.level = Options[:debug] ? Logger::DEBUG : Logger::INFO
 $logger.formatter = proc do |severity, datetime, progname, msg|
   "#{severity}: #{msg}\n"
 end
+
+Glossary = LatexParser.new
+Glossary.parse_glossary('mtc-terms.tex')
 
 NodesetFile = './Opc.Ua.MTConnect.NodeSet2.xml'
 OpcNodeIdFile = './MTConnect.NodeIds.csv'

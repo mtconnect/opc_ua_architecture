@@ -1,4 +1,4 @@
-% Generated 2020-01-09 17:13:24 -0800
+% Generated 2020-01-09 18:51:19 -0800
 \subsection{Data Item Sub Types} \label{model:DataItemSubTypes}
 
 he \glspl{subType} are related to the various \glspl{Variable} using the \uamodel{HasMTSubClassType}. 
@@ -9,6 +9,11 @@ also the \uamodel{ConditionSubClassId} for the \glspl{MTCondition}.
   \label{type:MTDataItemSubClassType}
 
 \FloatBarrier
+
+
+
+data entity describing a piece of information reported about a piece of equipment.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTDataItemSubClassType} Definition}
@@ -133,6 +138,8 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{AllSubClassType} & \multicolumn{2}{
 
 The magnitude or measurement of a type irrespective of its relation to other values.
 
+The position of a block of program code relative to the beginning of the control program.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{AbsoluteSubClassType} Definition}
@@ -159,6 +166,10 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 An indication of the operating state or value of a type.
+
+An indication of the operating state of a mechanism represented by a composition type component.
+ The operating state indicates whether the composition element is activated or disabled. 
+ The valid data value must be active value or inactive value.
 
 \begin{table}[ht]
 \centering 
@@ -187,6 +198,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The measured value of the a type.
 
+The measured value of the data item type given by a sensor or encoder.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ActualSubClassType} Definition}
@@ -211,6 +224,11 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{type:AllSubClassType}
 
 \FloatBarrier
+
+
+
+The count of all the parts produced.  If the subtype is not given, this is the default.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{AllSubClassType} Definition}
@@ -237,6 +255,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 The measurement of a type occurring in turn repeatedly.
+
+The measurement of alternating voltage or current.   If not specified further in statistic, defaults to RMS voltage. 
 
 \begin{table}[ht]
 \centering 
@@ -293,6 +313,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 Example: When multiple locations on a piece of bar stock are referenced as the indication for the \mtmodel{END_OF_BAR}, 
 the additional location(s) MUST be designated as \mtmodel{AUXILIARY} indication(s) for the \mtmodel{END_OF_BAR}.
 
+When multiple locations on a piece of bar stock are referenced as the indication for the endofbar event, the additional location(s) must be designated as auxiliary subtype indication(s) for the endofbar event.  
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{AuxiliarySubClassType} Definition}
@@ -320,6 +342,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 Indicates the count of incorrect parts produced.
 
+Indicates the count of incorrect parts produced.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{BadSubClassType} Definition}
@@ -344,6 +368,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{type:BrinellSubClassType}
 
 \FloatBarrier
+
+A scale to measure the resistance to deformation of a surface.
 
 A scale to measure the resistance to deformation of a surface.
 
@@ -401,6 +427,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The value as specified by the Controller type component.
 
+A value specified by the controller type component.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{CommandedSubClassType} Definition}
@@ -427,6 +455,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 The state of the enabling signal or control logic that enables or disables the function or operation of the \textit{Structural Element}.
+
+The state of the enabling signal or control logic that enables or disables the function or operation of the structural element.
 
 \begin{table}[ht]
 \centering 
@@ -482,6 +512,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 Measurement of the time that a piece of equipment is waiting for an event or an action to occur.
 
+A piece of equipment waiting for an event or an action to occur.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{DelaySubClassType} Definition}
@@ -508,6 +540,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 Measurement of DC current or voltage.
+
+The measurement of DC current or voltage.
 
 \begin{table}[ht]
 \centering 
@@ -617,6 +651,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 Indicates the count of correct parts made.
 
+Indicates the count of correct parts made.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{GoodSubClassType} Definition}
@@ -645,6 +681,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 A small change which could be either positive or negative in a Type's value or function.
 
 Example: The position of a block of program code relative to the occurrence of the last \mtmodel{LINE_LABEL} encountered in the control program.
+
+The position of a block of program code relative to the occurrence of the last linelabel event encountered in the control program.
 
 \begin{table}[ht]
 \centering 
@@ -698,6 +736,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{type:KineticSubClassType}
 
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{KineticSubClassType} Definition}
@@ -726,6 +767,10 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 An indication of the position of a mechanism that may move in a lateral direction. The mechanism is represented by 
 a \mtmodel{Composition} type component.
 
+An indication of the position of a mechanism that may move in a lateral direction.   The mechanism is represented by a composition type component. 
+ The position information indicates whether the composition element is positioned to the right, to the left, or is in transition.  
+ The valid data value must be right value, left value, or transitioning value.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{LateralSubClassType} Definition}
@@ -750,6 +795,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{type:LeebSubClassType}
 
 \FloatBarrier
+
+A scale to measure the elasticity of a surface.
 
 A scale to measure the elasticity of a surface.
 
@@ -780,6 +827,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The measurement or extent of something from end to end.
 
+The measurement of the length of an object.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{LengthSubClassType} Definition}
@@ -806,6 +855,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 The direction of motion.
+
+A linear axis represents the movement of a physical piece of equipment, or a portion of the equipment, in a straight line. 
 
 \begin{table}[ht]
 \centering 
@@ -834,6 +885,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The state of the power source for the \textit{Structural Element}.
 
+DEPRECATED in Version 1.4.0.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{LineSubClassType} Definition}
@@ -860,6 +913,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 An indication that the sub-parts of a piece of equipment are under load.
+
+Subparts of a piece of equipment are under load.
 
 \begin{table}[ht]
 \centering 
@@ -914,6 +969,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 The identifier of the person currently responsible for performing maintenance on the piece of equipment.
+
+Action related to maintenance on the piece of equipment.
 
 \begin{table}[ht]
 \centering 
@@ -970,6 +1027,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 Maximum or peak value recorded for the data item during the calculation period.
 
+The upper limit of data reported for a data item.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MaximumSubClassType} Definition}
@@ -996,6 +1055,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 Minimum value recorded for the data item during the calculation period.
+
+The lower limit of data reported for a data item.
 
 \begin{table}[ht]
 \centering 
@@ -1024,6 +1085,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 A scale to measure the resistance to scratching of a surface.
 
+A scale to measure the resistance to scratching of a surface.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MohsSubClassType} Definition}
@@ -1048,6 +1111,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{type:MoleSubClassType}
 
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MoleSubClassType} Definition}
@@ -1074,6 +1140,10 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 An indication of the open or closed state of a mechanism. The mechanism is represented by a \mtmodel{Composition} type component.
+
+An indication of the open or closed state of a mechanism.   The mechanism is represented by a composition type component. 
+ The operating state indicates whether the state of the composition element is open, closed, or unlatched.   
+ The valid data value must be open value, unlatched value, or closed value.
 
 \begin{table}[ht]
 \centering 
@@ -1131,6 +1201,8 @@ An indication that the major sub-parts of a piece of equipment are powered or pe
 
 Example: For traditional machine tools, this includes when the piece of equipment is \mtmodel{WORKING} or it is idle.
 
+A piece of equipment are powered or performing any activity.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{OperatingSubClassType} Definition}
@@ -1155,6 +1227,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{type:OperatorSubClassType}
 
 \FloatBarrier
+
+The identifier of the person currently responsible for operating the piece of equipment.
 
 The identifier of the person currently responsible for operating the piece of equipment.
 
@@ -1212,6 +1286,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The operator's overridden value.
 
+DEPRECATED: The operators overridden value.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{OverrideSubClassType} Definition}
@@ -1239,6 +1315,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 An indication that primary power is applied to the piece of equipment and, as a minimum, the controller 
 or logic portion of the piece of equipment is powered and functioning or components that are required to remain on are powered.
+
+Primary  power is  applied  to the  piece  of  equipment and,  as  a minimum, the controller or logic portion of the piece of equipment is powered and functioning or components that are required to remain on are powered.
 
 \begin{table}[ht]
 \centering 
@@ -1269,6 +1347,9 @@ Specific applications MAY reference one or more locations on a piece of bar stoc
 for the \mtmodel{END_OF_BAR}. The main or most important location MUST be 
 designated as the \mtmodel{PRIMARY} indication for the \mtmodel{END_OF_BAR}.
 
+Specific applications MAY reference one or more locations on a piece of bar stock as the indication for the endofbar event. The main or most important location must be designated as the primary subtype indication for the endofbar event.   
+ If no subtype is specified, primary subtype must be the default endofbar event indication.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{PrimarySubClassType} Definition}
@@ -1293,6 +1374,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{type:ProbeSubClassType}
 
 \FloatBarrier
+
+The position provided by a measurement probe.
 
 The position provided by a measurement probe.
 
@@ -1325,6 +1408,8 @@ The measurement of the time from the beginning of production of a part or produc
 until the time that production is complete for that part or product on that piece of equipment. 
 This includes the time that the piece of equipment is running, producing parts or products, or in the process of producing parts.
 
+The measurement of the time from the beginning of production of a part or product on a piece of equipment until the time that production is complete for that part or product on that piece of equipment.  This includes the time that the piece of equipment is running, producing parts or products, or in the process of producing parts.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ProcessSubClassType} Definition}
@@ -1353,6 +1438,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 The value of a signal or calculation issued to adjust the feedrate of the axes associated with a \mtmodel{Path} 
 component when the axes, or a single axis, are operating as specified by a logic or motion program or set by a switch.
 
+The value of a signal or calculation specified by a logic or motion program or set by a switch.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ProgrammedSubClassType} Definition}
@@ -1377,6 +1464,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{type:RadialSubClassType}
 
 \FloatBarrier
+
+A reference to a radial type tool offset variable.
 
 A reference to a radial type tool offset variable.
 
@@ -1408,6 +1497,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 The value of a signal or calculation issued to adjust the feedrate of the axes associated with a \mtmodel{Path} 
 component when the axes, or a single axis, are being operated in a rapid positioning mode or method (rapid).
 
+The value of a signal or calculation issued to adjust the feedrate of a component or composition that is operating in a rapid positioning mode.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{RapidSubClassType} Definition}
@@ -1432,6 +1523,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{type:RelativeSubClassType}
 
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{RelativeSubClassType} Definition}
@@ -1458,6 +1552,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 The remaining amount of the type specified.
+
+Remaining measure of an object or an action.
 
 \begin{table}[ht]
 \centering 
@@ -1486,6 +1582,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \mtmodel{Request} subtype identifies if the data item defined for MTConnect Interaction Model \cite{MTCPart5} represents a request.
 
+A subtype of an interface dataitem type to communicate a request. 
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{RequestSubClassType} Definition}
@@ -1513,6 +1611,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 \mtmodel{Response} subtype identifies if the data item defined for MTConnect Interaction Model \cite{MTCPart5} represents a response.
 
+A subtype of an interface dataitem type to communicate a response.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ResponseSubClassType} Definition}
@@ -1537,6 +1637,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{type:RockwellSubClassType}
 
 \FloatBarrier
+
+A scale to measure the resistance to deformation of a surface.
 
 A scale to measure the resistance to deformation of a surface.
 
@@ -1567,6 +1669,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The rotational direction of a rotary motion using the right hand rule convention.
 
+A rotary axis represents any non-linear or rotary movement of a physical piece of equipment or a portion of the equipment. 
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{RotarySubClassType} Definition}
@@ -1594,6 +1698,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The identifier of the person currently responsible for operating the piece of equipment.
 
+A structural element is being prepared or modified to begin production of product.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{SetUpSubClassType} Definition}
@@ -1618,6 +1724,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{type:ShoreSubClassType}
 
 \FloatBarrier
+
+A scale to measure the resistance to deformation of a surface.
 
 A scale to measure the resistance to deformation of a surface.
 
@@ -1648,6 +1756,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The standard or original value of an object.
 
+The standard or original length of an object.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{StandardSubClassType} Definition}
@@ -1677,6 +1787,10 @@ An indication of the activation state of a mechanism represented by a \mtmodel{C
 
 The activation state indicates whether the \mtmodel{Composition} element is activated or not.
 
+An indication of the activation state of a mechanism represented by a composition type component.
+ The activation state indicates whether the composition element is activated or not.
+ The valid data value must be on value or off value.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{SwitchedSubClassType} Definition}
@@ -1703,6 +1817,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 Indicates the number of parts that are projected or planned to be produced.
+
+The desired measure or count for a data item value.
 
 \begin{table}[ht]
 \centering 
@@ -1755,6 +1871,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{type:ToolEdgeSubClassType}
 
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ToolEdgeSubClassType} Definition}
@@ -1782,6 +1901,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 The tool group a specific tool is assigned to in the part program.
 
+An identifier for the tool group associated with a specific tool. Commonly used to designate spare tools.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ToolGroupSubClassType} Definition}
@@ -1806,6 +1927,9 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{type:ToolSubClassType}
 
 \FloatBarrier
+
+
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{ToolSubClassType} Definition}
@@ -1860,6 +1984,10 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 An indication of the position of a mechanism that may move in a vertical direction.
 
+An indication of the position of a mechanism that may move in a vertical direction. The mechanism is represented by a composition type component. 
+ The position information indicates whether the composition element is positioned to the top, to the bottom, or is in transition.  
+ The valid data value must be up value, down value, or transitioning value.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{VerticalSubClassType} Definition}
@@ -1884,6 +2012,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
   \label{type:VickersSubClassType}
 
 \FloatBarrier
+
+A scale to measure the resistance to deformation of a surface.
 
 A scale to measure the resistance to deformation of a surface.
 
@@ -1941,6 +2071,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 
 A physical object's relative mass.
 
+The total weight of the Cutting Tool in grams. The force exerted by the mass of the Cutting Tool. 
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{WeightSubClassType} Definition}
@@ -1967,6 +2099,8 @@ IsAbstract & \multicolumn{5}{|l|}{False} \\
 \FloatBarrier
 
 An indication that a piece of equipment is performing any activity.
+
+A piece of equipment performing any activity, the equipment is active and performing a function under load or not.
 
 \begin{table}[ht]
 \centering 

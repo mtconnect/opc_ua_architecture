@@ -1,4 +1,4 @@
-% Generated 2020-01-09 17:13:24 -0800
+% Generated 2020-01-09 18:51:19 -0800
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -21,6 +21,8 @@ The \glspl{MTComponent} documents the Component models and the owned objects.
 A Channel of a sensor.
 
 See ChannelType in type specifications.
+
+channel represents each sensing element connected to a sensor unit.
 
 \begin{table}[ht]
 \centering 
@@ -78,6 +80,8 @@ referencing the \mtmodel{Linear} OPC UA \gls{Type}.
 
 The meta data for the component and its relationships are static. The dynamic data will be 
 represented using the \cite{UAPart8}.
+
+An abstract XML element. Replaced in the XML document by types of component elements representing physical parts and logical functions of a piece of equipment.
 
 \begin{table}[ht]
 \centering 
@@ -170,6 +174,8 @@ The data items are added to the relationship where the \gls{MTDataItem} to \gls{
 relationship is represented by the \gls{BrowseName} Composition property of the data item.
 The data items are added to the \gls{Composition} by their \glspl{BrowseName}.
 
+An XML element used to describe the lowest level structural building blocks contained within a component element.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTCompositionType} Definition}
@@ -203,6 +209,8 @@ The abstract \mtuatype{MTConfigurationType} currently has only one sub-type, \\
 \mtuatype{MTSensorConfigurationType}. In the future, the configurations will also contain component 
 and device configuration information as sub-types.
 
+An XML element that contains technical information about a piece of equipment describing its physical layout or functional characteristics.
+
 \begin{table}[ht]
 \centering 
   \caption{\texttt{MTConfigurationType} Definition}
@@ -232,6 +240,8 @@ HasSubtype & ObjectType & \multicolumn{2}{l}{MTSensorConfigurationType} & \multi
 An MTConnect Sensor Configuration associated with the Component.
 
 See SensorConfigurationType in type-specifications.
+
+An element that can contain descriptive content defining the configuration information for sensor.
 
 \begin{table}[ht]
 \centering 
@@ -266,6 +276,8 @@ Organizes & Object & Channels & MT\-Channel\-Type[] & Folder\-Type & Optional \\
 An MTConnect Component Description.
 
 See the DescriptionType in the type-specifications.
+
+An XML element that can contain any descriptive content.
 
 \begin{table}[ht]
 \centering 

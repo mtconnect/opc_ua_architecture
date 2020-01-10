@@ -101,8 +101,9 @@ def create_nodeset(models, nodesetFile, typeDictionary)
 end
 
 create_nodeset(DeviceModels, DeviceNodesetFile, DeviceTypeDictionary)
-create_nodeset(AssetModels, AssetNodesetFile, AssetTypeDictionary)
-create_nodeset(DeviceModels + AssetModels, NodesetFile, TypeDictionary)
+
+# create_nodeset(AssetModels, AssetNodesetFile, AssetTypeDictionary)
+# create_nodeset(DeviceModels + AssetModels, NodesetFile, TypeDictionary)
   
 NodesetModel.ids.save
 

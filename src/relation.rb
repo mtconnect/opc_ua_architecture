@@ -185,6 +185,17 @@ module Relation
     def is_optional?
       @optional
     end
+
+    def get_value(a, ele)
+      v = a.at("./#{ele}")
+      if v
+        if v['xmi:type'] == 'uml:LiteralBoolean'
+          v['value'] || 'false'
+        else
+          v['value']
+        end
+      end
+    end
   end
   
   class Association < Relation
@@ -310,14 +321,7 @@ module Relation
     def initialize(owner, a)
       super(owner, a)
       @name = a['name']
-      dv = a.at('defaultValue')
-      if dv
-        if dv['xmi:type'] == 'uml:LiteralBoolean'
-          @default = dv['value'] || 'false'
-        else
-          @default = dv['value']
-        end
-      end
+      @default = get_value(a, 'defaultValue')
       
       @stereotype = xmi_stereotype(a)
       @documentation = xmi_documentation(a)
@@ -423,8 +427,7 @@ module Relation
       super(owner, a)
       @target_id = a['definingFeature']
       @target = @relation = nil
-      v = a.at('./value')
-      @value = v['value'] if v
+      @value = get_value(a, 'value')
     end
 
     def value

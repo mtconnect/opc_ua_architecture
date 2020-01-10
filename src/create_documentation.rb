@@ -14,12 +14,14 @@ File.open(DeviceDocumentFile, 'w') do |f|
   end
 end
 
-puts "\nGenerating Asset LaTex to #{AssetDocumentFile}"
-File.open(AssetDocumentFile, 'w') do |f|
-  f.puts "% Generated #{Time.now}"
-  
-  LatexModel.directory = AssetDirectory
-  AssetModels.each do |m|
-    LatexModel.generate_latex(f, m)
+if false
+  puts "\nGenerating Asset LaTex to #{AssetDocumentFile}"
+  File.open(AssetDocumentFile, 'w') do |f|
+    f.puts "% Generated #{Time.now}"
+    
+    LatexModel.directory = AssetDirectory
+    AssetModels.each do |m|
+      LatexModel.generate_latex(f, m)
+    end
   end
 end

@@ -386,6 +386,14 @@ class Type
     @parent
   end
 
+  def root
+    if get_parent.nil?
+      self
+    else
+      @parent
+    end
+  end
+
   def is_a_type?(type)
     @name == type or (@parent and @parent.is_a_type?(type))
   end

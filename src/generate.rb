@@ -46,7 +46,7 @@ DeviceDocumentFile = './devices/09-types.tex'
 DeviceNodesetFile = './Opc.Ua.MTConnect.NodeSet2.Part1.xml'
 DeviceTypeDictionary = './MTConnect.Devices.TypeDictionary'
 
-AssetModels = [] # 'Assets', 'Cutting Tool', 'Measurements', 'Assets Profile']
+AssetModels = [] # ['Assets', 'Cutting Tool', 'Measurements', 'Assets Profile']
 
 AssetDirectory = 'assets'
 AssetDocumentFile = './assets/09-types.tex'

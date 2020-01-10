@@ -98,8 +98,7 @@ class NodesetType < Type
 
   def add_value(ele, ref)
     value = ele.add_element('Value')
-    resolved = ref.target.type.get_attribute_like('Value') || ref
-    ref_type = resolved.target.type
+    ref_type = ref.target.type.root
     
     if ref.value and ref.value[0] == "["
       values = ref.value[1..-2].split(',')

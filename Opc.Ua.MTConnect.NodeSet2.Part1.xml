@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2020-01-10T21:32:56Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2020-01-10T22:35:02Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2020-01-10T21:32:56Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2020-01-10T21:32:56Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2020-01-10T22:35:02Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2020-01-10T22:35:02Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -2661,9 +2661,24 @@ Y3R1cmVkVHlwZT4=
     </References>
     <Description>Represents the \gls{category} attribute of the MTConnect \gls{MTDataItem}.</Description>
     <Definition Name='MTCategoryType'>
-      <Field Name='EVENT' Value='0'/>
-      <Field Name='CONDITION' Value='1'/>
-      <Field Name='SAMPLE' Value='2'/>
+      <Field Name='EVENT' Value='0'>
+        <Description>
+          An event category is a data item representing a discrete piece of
+          information from the piece of equipment. 
+        </Description>
+      </Field>
+      <Field Name='CONDITION' Value='1'>
+        <Description>
+          A condition category is a data item that communicates information
+          about the health of a piece of equipment and its ability to function. 
+        </Description>
+      </Field>
+      <Field Name='SAMPLE' Value='2'>
+        <Description>
+          A sample category is the reading of the value of a continuously
+          variable or analog data value.
+        </Description>
+      </Field>
     </Definition>
   </UADataType>
   <!-- MTCategoryType::EnumStrings ns=1;i=2765 -->
@@ -3167,8 +3182,17 @@ Y3R1cmVkVHlwZT4=
       \gls{MTDataItem}.
     </Description>
     <Definition Name='MTCoordinateSystemType'>
-      <Field Name='MACHINE' Value='0'/>
-      <Field Name='WORK' Value='1'/>
+      <Field Name='MACHINE' Value='0'>
+        <Description>An unchangeable coordinate system that has machine zero as its origin.</Description>
+      </Field>
+      <Field Name='WORK' Value='1'>
+        <Description>
+          The coordinate system that represents the working area for a
+          particular workpiece whose origin is shifted within the machine
+          coordinate system. If the work coordinates are not currently defined
+          in the piece of equipment, the machine coordinates will be used.
+        </Description>
+      </Field>
     </Definition>
   </UADataType>
   <!-- MTCoordinateSystemType::EnumStrings ns=1;i=2785 -->
@@ -4066,9 +4090,18 @@ Y3R1cmVkVHlwZT4=
       \gls{MTDataItem}.
     </Description>
     <Definition Name='MTRepresentationType'>
-      <Field Name='DISCRETE' Value='0'/>
-      <Field Name='TIME_SERIES' Value='1'/>
-      <Field Name='VALUE' Value='2'/>
+      <Field Name='DISCRETE' Value='0'>
+        <Description>
+          A data entity where each discrete occurrence of the data may have the
+          same value as the previous occurrence of the data.
+        </Description>
+      </Field>
+      <Field Name='TIME_SERIES' Value='1'>
+        <Description>A series of sampled data. </Description>
+      </Field>
+      <Field Name='VALUE' Value='2'>
+        <Description>The measured value of the sample data.</Description>
+      </Field>
     </Definition>
   </UADataType>
   <!-- MTRepresentationType::EnumStrings ns=1;i=2827 -->
@@ -4162,17 +4195,40 @@ Y3R1cmVkVHlwZT4=
       software application.
     </Description>
     <Definition Name='MTResetTriggerType'>
-      <Field Name='ACTION_COMPLETE' Value='0'/>
-      <Field Name='ANNUAL' Value='1'/>
-      <Field Name='DAY' Value='2'/>
-      <Field Name='MAINTENANCE' Value='3'/>
+      <Field Name='ACTION_COMPLETE' Value='0'>
+        <Description>
+          The value of the data entity that is measuring an action or operation
+          is to be reset upon completion of that action or operation.
+        </Description>
+      </Field>
+      <Field Name='ANNUAL' Value='1'>
+        <Description>The value of the data entity is to be reset at the end of a 12-month period.</Description>
+      </Field>
+      <Field Name='DAY' Value='2'>
+        <Description>The value of the data entity is to be reset at the end of a 24-hour period.</Description>
+      </Field>
+      <Field Name='MAINTENANCE' Value='3'>
+        <Description>Action related to maintenance on the piece of equipment.</Description>
+      </Field>
       <Field Name='MANUAL' Value='4'>
         <Description>Operations based on the instructions received from an external source.</Description>
       </Field>
-      <Field Name='MONTH' Value='5'/>
-      <Field Name='POWER_ON' Value='6'/>
-      <Field Name='SHIFT' Value='7'/>
-      <Field Name='WEEK' Value='8'/>
+      <Field Name='MONTH' Value='5'>
+        <Description>The value of the data entity is to be reset at the end of a monthly period.</Description>
+      </Field>
+      <Field Name='POWER_ON' Value='6'>
+        <Description>
+          The value of the data entity is to be reset when power was applied to
+          the piece of equipment after a planned or unplanned interruption of
+          power has occurred.
+        </Description>
+      </Field>
+      <Field Name='SHIFT' Value='7'>
+        <Description>The value of the data entity is to be reset at the end of a work shift.</Description>
+      </Field>
+      <Field Name='WEEK' Value='8'>
+        <Description>The value of the data entity is to be reset at the end of a 7-day period.</Description>
+      </Field>
     </Definition>
   </UADataType>
   <!-- MTResetTriggerType::EnumStrings ns=1;i=2833 -->
@@ -4777,18 +4833,43 @@ Y3R1cmVkVHlwZT4=
     </References>
     <Description></Description>
     <Definition Name='MTStatisticType'>
-      <Field Name='AVERAGE' Value='0'/>
+      <Field Name='AVERAGE' Value='0'>
+        <Description>
+          Mathematical Average value calculated for the data item during the
+          calculation period.
+        </Description>
+      </Field>
       <Field Name='MAXIMUM' Value='1'>
-        <Description>Maximum value of a data entity or attribute.</Description>
+        <Description>The upper limit of data reported for a data item.</Description>
       </Field>
-      <Field Name='MEDIAN' Value='2'/>
+      <Field Name='MEDIAN' Value='2'>
+        <Description>The middle number of a series of numbers.</Description>
+      </Field>
       <Field Name='MINIMUM' Value='3'>
-        <Description>The minimum value of a data entity or attribute.</Description>
+        <Description>The lower limit of data reported for a data item.</Description>
       </Field>
-      <Field Name='MODE' Value='4'/>
-      <Field Name='RANGE' Value='5'/>
-      <Field Name='ROOT_MEAN_SQUARE' Value='6'/>
-      <Field Name='STANDARD_DEVIATION' Value='7'/>
+      <Field Name='MODE' Value='4'>
+        <Description>The number in a series of numbers that occurs most often.</Description>
+      </Field>
+      <Field Name='RANGE' Value='5'>
+        <Description>
+          Difference between the maximum and minimum value of a data item during
+          the calculation period. Also represents Peak-to-Peak measurement in a
+          waveform.
+        </Description>
+      </Field>
+      <Field Name='ROOT_MEAN_SQUARE' Value='6'>
+        <Description>
+          Mathematical Root Mean Square (RMS) value calculated for the data item
+          during the calculation period.
+        </Description>
+      </Field>
+      <Field Name='STANDARD_DEVIATION' Value='7'>
+        <Description>
+          Statistical Standard Deviation value calculated for the data item
+          during the calculation period.
+        </Description>
+      </Field>
     </Definition>
   </UADataType>
   <!-- MTStatisticType::EnumStrings ns=1;i=2861 -->
@@ -6515,10 +6596,14 @@ dHVyZWRUeXBlPg==
     </References>
     <Description> </Description>
     <Definition Name='MTSeverityDataType'>
-      <Field Name='FAULT' Value='0'/>
-      <Field Name='NORMAL' Value='1'/>
+      <Field Name='FAULT' Value='0'>
+        <Description>Fault value for a condition element.</Description>
+      </Field>
+      <Field Name='NORMAL' Value='1'>
+        <Description>Normal value for a condition element.</Description>
+      </Field>
       <Field Name='WARNING' Value='2'>
-        <Description>See warning term.</Description>
+        <Description>Warning value for a condition element.</Description>
       </Field>
     </Definition>
   </UADataType>
@@ -6589,8 +6674,12 @@ dHVyZWRUeXBlPg==
     </References>
     <Description></Description>
     <Definition Name='QualifierDataType'>
-      <Field Name='HIGH' Value='0'/>
-      <Field Name='LOW' Value='1'/>
+      <Field Name='HIGH' Value='0'>
+        <Description>High qualifier value for a condition element.</Description>
+      </Field>
+      <Field Name='LOW' Value='1'>
+        <Description>Low qualifier value for a condition element.</Description>
+      </Field>
     </Definition>
   </UADataType>
   <!-- QualifierDataType::EnumStrings ns=1;i=2943 -->
@@ -8059,7 +8148,9 @@ dHVyZWRUeXBlPg==
     </References>
     <Description></Description>
     <Definition Name='FunctionalModeDataType'>
-      <Field Name='MAINTENANCE' Value='0'/>
+      <Field Name='MAINTENANCE' Value='0'>
+        <Description>Action related to maintenance on the piece of equipment.</Description>
+      </Field>
       <Field Name='PRODUCTION' Value='1'>
         <Description>A structural element is currently producing product.</Description>
       </Field>

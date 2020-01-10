@@ -13,10 +13,10 @@ class Type
   class Literal
     attr_reader :name, :value, :description
     
-    def initialize(name, value)
+    def initialize(name, value, suffix = '')
       @name, @value = name, value
-      sn = name.gsub('_', '').downcase << " value"
-      ent = Glossary[sn]
+      base = name.gsub('_', '').downcase
+      ent = Glossary[base + suffix] || Glossary[base] || Glossary[base + ' value']
       @description = ent.description if ent and !ent.description.empty?
     end
   end
@@ -235,9 +235,10 @@ class Type
 
     associations = []
     if @type == 'uml:Enumeration'
+      suffix = ' ' + @name.sub(/^MT/, '').sub(/Type$/, '').downcase
       e.ownedLiteral.each do |lit|
         name, value = lit['name'].split('=')
-        @literals << Literal.new(name, value)
+        @literals << Literal.new(name, value, suffix)
       end
     else
       e.element_children.each do |r|

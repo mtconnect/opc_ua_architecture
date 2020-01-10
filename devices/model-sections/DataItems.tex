@@ -1,4 +1,4 @@
-% Generated 2020-01-10 13:32:54 -0800
+% Generated 2020-01-10 14:19:52 -0800
 \subsection{Data Items} \label{model:DataItems}
 
 \begin{figure}[ht]
@@ -293,9 +293,9 @@ Represents the \gls{category} attribute of the MTConnect \gls{MTDataItem}.
 \hline
 \rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{EVENT} & \texttt{0} &  \\
-\texttt{CONDITION} & \texttt{1} &  \\
-\texttt{SAMPLE} & \texttt{2} &  \\
+\texttt{EVENT} & \texttt{0} & An event category is a data item representing a discrete piece of information from the piece of equipment.  \\
+\texttt{CONDITION} & \texttt{1} & A condition category is a data item that communicates information about the health of a piece of equipment and its ability to function.  \\
+\texttt{SAMPLE} & \texttt{2} & A sample category is the reading of the value of a continuously variable or analog data value. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -323,9 +323,9 @@ Represents the \mtmodel{representation} attribute of the MTConnect \gls{MTDataIt
 \hline
 \rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{DISCRETE} & \texttt{0} &  \\
-\texttt{TIME_SERIES} & \texttt{1} &  \\
-\texttt{VALUE} & \texttt{2} &  \\
+\texttt{DISCRETE} & \texttt{0} & A data entity where each discrete occurrence of the data may have the same value as the previous occurrence of the data. \\
+\texttt{TIME_SERIES} & \texttt{1} & A series of sampled data.  \\
+\texttt{VALUE} & \texttt{2} & The measured value of the sample data. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -393,8 +393,8 @@ Represents the \mtmodel{coordinateSystem} attribute of the MTConnect \gls{MTData
 \hline
 \rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{MACHINE} & \texttt{0} &  \\
-\texttt{WORK} & \texttt{1} &  \\
+\texttt{MACHINE} & \texttt{0} & An unchangeable coordinate system that has machine zero as its origin. \\
+\texttt{WORK} & \texttt{1} & The coordinate system that represents the working area for a particular workpiece whose origin is shifted within the machine coordinate system. If the work coordinates are not currently defined in the piece of equipment, the machine coordinates will be used. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -424,15 +424,15 @@ resettrigger is an optional XML element that identifies the type of event that m
 \hline
 \rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{ACTION_COMPLETE} & \texttt{0} &  \\
-\texttt{ANNUAL} & \texttt{1} &  \\
-\texttt{DAY} & \texttt{2} &  \\
-\texttt{MAINTENANCE} & \texttt{3} &  \\
+\texttt{ACTION_COMPLETE} & \texttt{0} & The value of the data entity that is measuring an action or operation is to be reset upon completion of that action or operation. \\
+\texttt{ANNUAL} & \texttt{1} & The value of the data entity is to be reset at the end of a 12-month period. \\
+\texttt{DAY} & \texttt{2} & The value of the data entity is to be reset at the end of a 24-hour period. \\
+\texttt{MAINTENANCE} & \texttt{3} & Action related to maintenance on the piece of equipment. \\
 \texttt{MANUAL} & \texttt{4} & Operations based on the instructions received from an external source. \\
-\texttt{MONTH} & \texttt{5} &  \\
-\texttt{POWER_ON} & \texttt{6} &  \\
-\texttt{SHIFT} & \texttt{7} &  \\
-\texttt{WEEK} & \texttt{8} &  \\
+\texttt{MONTH} & \texttt{5} & The value of the data entity is to be reset at the end of a monthly period. \\
+\texttt{POWER_ON} & \texttt{6} & The value of the data entity is to be reset when power was applied to the piece of equipment after a planned or unplanned interruption of power has occurred. \\
+\texttt{SHIFT} & \texttt{7} & The value of the data entity is to be reset at the end of a work shift. \\
+\texttt{WEEK} & \texttt{8} & The value of the data entity is to be reset at the end of a 7-day period. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -451,15 +451,15 @@ resettrigger is an optional XML element that identifies the type of event that m
 \hline
 \rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{ACTION_COMPLETE} & \texttt{0} &  \\
-\texttt{ANNUAL} & \texttt{1} &  \\
-\texttt{DAY} & \texttt{2} &  \\
-\texttt{MAINTENANCE} & \texttt{3} &  \\
+\texttt{ACTION_COMPLETE} & \texttt{0} & The value of the data entity that is measuring an action or operation is to be reset upon completion of that action or operation. \\
+\texttt{ANNUAL} & \texttt{1} & The value of the data entity is to be reset at the end of a 12-month period. \\
+\texttt{DAY} & \texttt{2} & The value of the data entity is to be reset at the end of a 24-hour period. \\
+\texttt{MAINTENANCE} & \texttt{3} & Action related to maintenance on the piece of equipment. \\
 \texttt{MANUAL} & \texttt{4} & Operations based on the instructions received from an external source. \\
-\texttt{MONTH} & \texttt{5} &  \\
-\texttt{POWER_ON} & \texttt{6} &  \\
-\texttt{SHIFT} & \texttt{7} &  \\
-\texttt{WEEK} & \texttt{8} &  \\
+\texttt{MONTH} & \texttt{5} & The value of the data entity is to be reset at the end of a monthly period. \\
+\texttt{POWER_ON} & \texttt{6} & The value of the data entity is to be reset when power was applied to the piece of equipment after a planned or unplanned interruption of power has occurred. \\
+\texttt{SHIFT} & \texttt{7} & The value of the data entity is to be reset at the end of a work shift. \\
+\texttt{WEEK} & \texttt{8} & The value of the data entity is to be reset at the end of a 7-day period. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -481,14 +481,14 @@ resettrigger is an optional XML element that identifies the type of event that m
 \hline
 \rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{AVERAGE} & \texttt{0} &  \\
-\texttt{MAXIMUM} & \texttt{1} & Maximum value of a data entity or attribute. \\
-\texttt{MEDIAN} & \texttt{2} &  \\
-\texttt{MINIMUM} & \texttt{3} & The minimum value of a data entity or attribute. \\
-\texttt{MODE} & \texttt{4} &  \\
-\texttt{RANGE} & \texttt{5} &  \\
-\texttt{ROOT_MEAN_SQUARE} & \texttt{6} &  \\
-\texttt{STANDARD_DEVIATION} & \texttt{7} &  \\
+\texttt{AVERAGE} & \texttt{0} & Mathematical Average value calculated for the data item during the calculation period. \\
+\texttt{MAXIMUM} & \texttt{1} & The upper limit of data reported for a data item. \\
+\texttt{MEDIAN} & \texttt{2} & The middle number of a series of numbers. \\
+\texttt{MINIMUM} & \texttt{3} & The lower limit of data reported for a data item. \\
+\texttt{MODE} & \texttt{4} & The number in a series of numbers that occurs most often. \\
+\texttt{RANGE} & \texttt{5} & Difference between the maximum and minimum value of a data item during the calculation period.  Also represents Peak-to-Peak measurement in a waveform. \\
+\texttt{ROOT_MEAN_SQUARE} & \texttt{6} & Mathematical Root Mean Square (RMS) value calculated for the data item during the calculation period. \\
+\texttt{STANDARD_DEVIATION} & \texttt{7} & Statistical Standard Deviation value calculated for the data item during the calculation period. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier

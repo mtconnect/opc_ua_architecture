@@ -1,0 +1,145 @@
+
+grammar Latex
+  rule top
+    (glossary / long_glossary / whitespace / comment)+
+  end
+
+  rule glossary
+    entry '{' name_tokens:( name / whitespace )+ '}' whitespace?
+      '{' properties:(property / whitespace)+ '}' <GlossaryEntry>
+  end
+  
+  rule long_glossary
+    long_entry '{' name_tokens:( name / whitespace )+ '}' whitespace?
+      '{' properties:(property / whitespace)+ '}'
+      whitespace? long_description:block? <GlossaryEntry>
+  end
+  
+  rule entry
+    "\\newglossaryentry" {
+      def value
+        "GlossaryEntry"
+      end
+    }
+  end
+   
+  rule long_entry
+    "\\longnewglossaryentry" {
+      def value
+        "LongGlossaryEntry"
+      end
+    }
+  end
+
+  rule newline
+    '\\newline' {
+      def value
+        "\n"
+      end
+    }
+  end
+  
+  rule command
+    "\\" name:name content:block? <Command>
+  end
+
+  rule name
+    [A-Za-z0-9_:-]+ {
+      def value
+        text_value
+      end
+    }
+  end
+  
+  rule spaces
+    ( " " )*
+  end
+  
+  rule property
+    key:key space "=" space context:value space ( "," )? (whitespace)? <Property>
+  end
+  
+  rule key
+    ( [A-Za-z0-9_-] )+ {
+      def value
+        text_value
+      end
+    }
+  end
+  
+  rule value
+    v:(quoted / name / command) {
+      def value
+        v.value
+      end
+    }
+  end
+  
+  rule quoted
+    '{' content:(quoted_text+)? '}' {
+      def value
+        if  content.elements
+          content.elements.map { |e| e.value }.join
+        else
+          ""
+        end
+      end
+    }
+  end
+
+  rule quoted_text
+    content:(text / newline / escaped / command / block) {
+      def value
+        content.value
+      end
+    }
+  end
+
+  rule text
+    [^{}%\\&]+ {
+      def value
+        text_value
+      end
+    } 
+  end
+
+  rule block
+    '{' values:quoted_text*  '}' {
+      def value
+        values.elements.map { |e| e.value }.join
+      end
+    }
+  end
+
+  rule escaped
+    '\\' c:[%_&{}\#\\] {
+       def value
+         c.text_value
+       end
+     }
+  end
+  
+  rule whitespace
+    ( " " / "\n" )+ {
+      def value
+        nil
+      end
+    }
+  end
+  
+  rule space
+    ( " " )*
+  end
+  
+  rule comment
+    '%' [^\n]* ("\n" / end_of_file) ( whitespace )? {
+      def value
+        nil
+      end
+    }
+  end
+  
+  rule end_of_file
+    !.
+  end
+end

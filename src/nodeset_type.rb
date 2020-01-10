@@ -74,7 +74,7 @@ class NodesetType < Type
     node.add_attribute('ParentNodeId', parent) if parent
 
     node.add_element('DisplayName').add_text(display_name || clean_name)
-    node.add_element('Description').add_text(@documentation) if @documentation
+    node.add_element('Description').add_text(@documentation) if @documentation and !@documentation.empty?
 
     refs = node.add_element('References')
     
@@ -335,17 +335,20 @@ class NodesetType < Type
             add_element('xs:restriction', { 'base' => 'xs:string' })
     
     defs = node.add_element('Definition', { 'Name' => @name })
-    @literals.each do |name, value|
-      field = defs.add_element('Field', { 'Name' => name, 'Value' => value })
-      # field.add_element('Description').add_text(l['documentation']) if l['documentation']
+    @literals.each do |lit|
+      field = defs.add_element('Field', { 'Name' => lit.name, 'Value' => lit.value })
+      if lit.description
+        field.add_element('Description').add_text(lit.description)
+      end
+      
 
       text = values.add_element('LocalizedText')
       text.add_element('Locale').add_text('en')
-      text.add_element('Text').add_text(name)
+      text.add_element('Text').add_text(lit.name)
 
       # For type dict
-      struct.add_element('opc:EnumeratedValue', { 'Name' => name, 'Value' =>  value})
-      res.add_element('xs:enumeration', { 'value' => name })
+      struct.add_element('opc:EnumeratedValue', { 'Name' => lit.name, 'Value' => lit.value})
+      res.add_element('xs:enumeration', { 'value' => lit.name })
     end
     NodesetModel.xml_type_dict_root.add_element('xs:element', { 'name' => @name, 'type' => "mtc:#{@name}Enum" })
     

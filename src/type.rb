@@ -10,6 +10,17 @@ class Type
               :constraints, :extended, :literals, :invariants, :classifier, :assoc, :xmi
   attr_accessor :documentation
 
+  class Literal
+    attr_reader :name, :value, :description
+    
+    def initialize(name, value)
+      @name, @value = name, value
+      sn = name.gsub('_', '').downcase << " value"
+      ent = Glossary[sn]
+      @description = ent.description if ent and !ent.description.empty?
+    end
+  end
+
   class LazyPointer
     @@pointers = []
 
@@ -225,7 +236,8 @@ class Type
     associations = []
     if @type == 'uml:Enumeration'
       e.ownedLiteral.each do |lit|
-        @literals << lit['name'].split('=')
+        name, value = lit['name'].split('=')
+        @literals << Literal.new(name, value)
       end
     else
       e.element_children.each do |r|

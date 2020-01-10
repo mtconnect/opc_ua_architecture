@@ -1,4 +1,4 @@
-% Generated 2020-01-09 18:51:19 -0800
+% Generated 2020-01-10 13:32:54 -0800
 \subsection{Components} \label{model:Components}
 
 \begin{figure}[ht]
@@ -49,6 +49,21 @@ Has\-Property & Variable & Number & Int32 & Property\-Type & Mandatory \\
 \end{table} 
 
 
+\FloatBarrier
+\paragraph{Referenced Properties and Objects}
+
+\begin{itemize}
+\item \texttt{CalibrationDate : UtcTime:}  Date upon which the sensor unit was last calibrated. 
+
+\item \texttt{CalibrationInitials : String:}  The initials of the person verifying the validity of the calibration data.
+
+\item \texttt{Name : String:}  The name of an element or a piece of equipment.
+
+\item \texttt{NextCalibrationDate : UtcTime:}  Date upon which the sensor unit is next scheduled to be calibrated. 
+
+\item \texttt{Number : Int32:}  A unique identifier that will only refer to a specific sensing element.
+
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTComponentType}}
   \label{type:MTComponentType}
@@ -131,6 +146,21 @@ Organizes & Object & Components & MT\-Component\-Type[] & Folder\-Type & Optiona
 
 
 \FloatBarrier
+\paragraph{Referenced Properties and Objects}
+
+\begin{itemize}
+\item \texttt{Name : String:}  The name of an element or a piece of equipment.
+
+\item \texttt{NativeName : String:}  The common name normally associated with a piece of equipment or an element.
+
+\item \texttt{SampleInterval : Float:}  An optional attribute that is an indication provided by a piece of equipment describing the interval in milliseconds between the completion of the reading of the data associated with the device element until the beginning of the next sampling of that data.
+
+\item \texttt{SampleRate : Float:}  The rate at which successive samples of a data item are recorded by a piece of equipment.
+
+\item \texttt{Uuid : String:}  The unique identifier for an XML element.
+
+\end{itemize}
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ MTDeviceType}}
   \label{type:MTDeviceType}
 
@@ -161,6 +191,19 @@ Has\-Property & Variable & Version & String & Property\-Type & Optional \\
 \end{table} 
 
 
+\FloatBarrier
+\paragraph{Referenced Properties and Objects}
+
+\begin{itemize}
+\item \texttt{Iso841Class : String:}  DEPRECATED in MTConnect Version 1.1.
+
+\item \texttt{Name : String:}  The name of an element or a piece of equipment.
+
+\item \texttt{Uuid : String:}  The unique identifier for an XML element.
+
+\item \texttt{Version : String:}  The protocol version number.
+
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTCompositionType}}
   \label{type:MTCompositionType}
@@ -199,6 +242,15 @@ Has\-Property & Variable & Xml\-Id & String & Property\-Type & Mandatory \\
 \end{table} 
 
 
+\FloatBarrier
+\paragraph{Referenced Properties and Objects}
+
+\begin{itemize}
+\item \texttt{Name : String:}  The name of an element or a piece of equipment.
+
+\item \texttt{Uuid : String:}  The unique identifier for an XML element.
+
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTConfigurationType}}
   \label{type:MTConfigurationType}
@@ -268,6 +320,17 @@ Organizes & Object & Channels & MT\-Channel\-Type[] & Folder\-Type & Optional \\
 
 
 \FloatBarrier
+\paragraph{Referenced Properties and Objects}
+
+\begin{itemize}
+\item \texttt{CalibrationDate : UtcTime:}  Date upon which the sensor unit was last calibrated. 
+
+\item \texttt{CalibrationInitials : String:}  The initials of the person verifying the validity of the calibration data.
+
+\item \texttt{NextCalibrationDate : UtcTime:}  Date upon which the sensor unit is next scheduled to be calibrated. 
+
+\end{itemize}
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ MTDescriptionType}}
   \label{type:MTDescriptionType}
 
@@ -306,7 +369,13 @@ Has\-Property & Variable & Station & String & Property\-Type & Optional \\
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
-\item \texttt{Data::String:} From the CDATA of the Description Element in MTConnect.
+\item \texttt{Data : String:} From the CDATA of the Description Element in MTConnect.
+
+\item \texttt{Manufacturer : String:}  The name of the manufacturer of the physical or logical part of a piece of equipment represented by an XML element.
+
+\item \texttt{SerialNumber : String:}  The serial number associated with a piece of equipment. 
+
+\item \texttt{Station : String:}  The station where the physical part or logical function of a piece of equipment is located when it is part of a manufacturing unit or cell with multiple stations.
 
 \end{itemize}
 \FloatBarrier

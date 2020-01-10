@@ -325,6 +325,13 @@ module Relation
       
       @stereotype = xmi_stereotype(a)
       @documentation = xmi_documentation(a)
+
+      $logger.debug "  Searching for docs for #{owner.name}::#{name}"
+      ent = Glossary[@name.downcase]
+      if ent and !ent.description.empty?
+        @documentation = "#{@documentation} #{ent.description}"
+        $logger.debug "    -> Found #{@documentation}"
+      end
       
       type = a['type']
       @target = Connection.new('type', Type::LazyPointer.new(type))

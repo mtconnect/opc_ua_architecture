@@ -222,10 +222,10 @@ EOT
   def generate_attribute_docs(f, header)
     $logger.info "Generating docs for #{@name}"
     relations_with_documentation =
-      @relations.select { |r|
-      $logger.debug "  Looking for docs for #{r.target.inspect}" if r.target.type.nil?
-      r.documentation or r.target.type.type == 'uml:Enumeration'
-    }
+      @relations.select do |r|
+        $logger.debug "  Looking for docs for #{r.target.inspect}" if r.target.type.nil?
+        r.documentation or r.target.type.type == 'uml:Enumeration'
+      end
 
     unless relations_with_documentation.empty?
       f.puts "\\FloatBarrier"
@@ -233,7 +233,7 @@ EOT
       f.puts "\\begin{itemize}"
       relations_with_documentation.each do |r|
         if r.documentation
-          f.puts "\\item \\texttt{#{r.name}::#{r.final_target.type.name}:} #{r.documentation}\n\n"
+          f.puts "\\item \\texttt{#{r.name} : #{r.final_target.type.name}:} #{r.documentation}\n\n"
         end
         
         if r.target.type.type == 'uml:Enumeration'
@@ -337,14 +337,14 @@ EOT
 
       f.puts <<EOT
 \\tabulinesep=3pt
-\\begin{tabu} to 6in {|l|r|} \\everyrow{\\hline}
+\\begin{tabu} to 6in {|l|r|X|} \\everyrow{\\hline}
 \\hline
-\\rowfont\\bfseries {Name} & {Index} \\\\
+\\rowfont\\bfseries {Name} & {Index} & {Description} \\\\
 \\tabucline[1.5pt]{}
 EOT
       
-      @literals.each do |name, value|
-        f.puts "\\texttt{#{name}} & \\texttt{#{value}} \\\\"
+      @literals.each do |lit|
+        f.puts "\\texttt{#{lit.name}} & \\texttt{#{lit.value}} & #{lit.description} \\\\"
       end
         
       f.puts <<EOT

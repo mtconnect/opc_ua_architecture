@@ -1,4 +1,4 @@
-% Generated 2020-01-09 18:51:19 -0800
+% Generated 2020-01-10 13:32:54 -0800
 \subsection{Data Items} \label{model:DataItems}
 
 \begin{figure}[ht]
@@ -34,6 +34,15 @@ A special \gls{Variable} data type for asset change with a \mtmodel{AssetType} a
 \end{tabu}
 \end{table} 
 
+\FloatBarrier
+\paragraph{Data Type Fields}
+
+\begin{itemize}
+\item \texttt{AssetId : String:}  The unique identifier for the mtconnect asset. The identifier MUST be unique with respect to all other asset in an MTConnect installation. The identifier SHOULD be globally unique with respect to all other asset.
+
+\item \texttt{AssetType : String:}  The type of asset that was updated.
+
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTAssetEventType}}
   \label{type:MTAssetEventType}
@@ -156,6 +165,17 @@ Has\-Property & Variable & Values & String[] & Property\-Type & Optional \\
 
 
 \FloatBarrier
+\paragraph{Referenced Properties and Objects}
+
+\begin{itemize}
+\item \texttt{Maximum : Float:}  The upper limit of data reported for a data item.
+
+\item \texttt{Minimum : Float:}  The lower limit of data reported for a data item.
+
+\item \texttt{Nominal : Float:}  The target or expected value for this data item.
+
+\end{itemize}
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ MTControlledVocabEventType}}
   \label{type:MTControlledVocabEventType}
 
@@ -257,6 +277,8 @@ Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MT
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
+\item \texttt{Category : MTCategoryType:}  Specifies the kind of information provided by a data item. 
+
 \item \textbf{Allowable Values} for \texttt{MTCategoryType}
 \FloatBarrier
 
@@ -267,17 +289,25 @@ Represents the \gls{category} attribute of the MTConnect \gls{MTDataItem}.
   \caption{\texttt{MTCategoryType} Enumeration}
   \label{enum:MTCategoryType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{EVENT} & \texttt{0} \\
-\texttt{CONDITION} & \texttt{1} \\
-\texttt{SAMPLE} & \texttt{2} \\
+\texttt{EVENT} & \texttt{0} &  \\
+\texttt{CONDITION} & \texttt{1} &  \\
+\texttt{SAMPLE} & \texttt{2} &  \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\item \texttt{PeriodFilter::Float:} Represents the MTConnect \mtmodel{Filter} subtype of \mtmodel{PeriodFilter}.
+\item \texttt{Name : String:}  The name of an element or a piece of equipment.
+
+\item \texttt{PeriodFilter : Float:} Represents the MTConnect \mtmodel{Filter} subtype of \mtmodel{PeriodFilter}.
+
+\item \texttt{Representation : MTRepresentationType:}  Description of a means to interpret data consisting of multiple data points or samples reported as a single value.  
+ representation is an optional attribute.  
+ representation will define a unique format for each set of data.  
+ representation for timeseries representation, discrete representation, and value representation are defined in MTCPart2 Section 7.2.2.12.  
+ If representation is not specified, it MUST be determined to be value representation.
 
 \item \textbf{Allowable Values} for \texttt{MTRepresentationType}
 \FloatBarrier
@@ -289,17 +319,19 @@ Represents the \mtmodel{representation} attribute of the MTConnect \gls{MTDataIt
   \caption{\texttt{MTRepresentationType} Enumeration}
   \label{enum:MTRepresentationType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{DISCRETE} & \texttt{0} \\
-\texttt{TIME_SERIES} & \texttt{1} \\
-\texttt{VALUE} & \texttt{2} \\
+\texttt{DISCRETE} & \texttt{0} &  \\
+\texttt{TIME_SERIES} & \texttt{1} &  \\
+\texttt{VALUE} & \texttt{2} &  \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\item \texttt{SourceData::String:} The text that is the \gls{CDATA} of the \mtmodel{Source} element.
+\item \texttt{SampleRate : Double:}  The rate at which successive samples of a data item are recorded by a piece of equipment.
+
+\item \texttt{SourceData : String:} The text that is the \gls{CDATA} of the \mtmodel{Source} element.
 
 \end{itemize}
 \FloatBarrier
@@ -345,6 +377,8 @@ Has\-Property & Variable & Units & String & Property\-Type & Optional \\
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
+\item \texttt{CoordinateSystem : MTCoordinateSystemType:}  For measured values relative to a coordinate system like position sample, the coordinate system being used may be reported.
+
 \item \textbf{Allowable Values} for \texttt{MTCoordinateSystemType}
 \FloatBarrier
 
@@ -355,18 +389,24 @@ Represents the \mtmodel{coordinateSystem} attribute of the MTConnect \gls{MTData
   \caption{\texttt{MTCoordinateSystemType} Enumeration}
   \label{enum:MTCoordinateSystemType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{MACHINE} & \texttt{0} \\
-\texttt{WORK} & \texttt{1} \\
+\texttt{MACHINE} & \texttt{0} &  \\
+\texttt{WORK} & \texttt{1} &  \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\item \texttt{MinimumDeltaFilter::Float:} Represents the MTConnect \mtmodel{Filter} subtype of \mtmodel{MinimumDeltaFilter}.
+\item \texttt{Duration : Duration:}  The time-period over which the data was collected.
 
-\item \texttt{ResetTrigger::MTResetTriggerType:} If a \mtmodel{ResetTrigger} is given, when an \mtmodel{resetTriggered} attribtue is given in an event, the \uamodel{StatusCode} MUST have bit 14 set \uamodel{SemanticsChanged} and the \mtmodel{ResetTriggeredReason} must be set to the value of the \mtmodel{resetTriggered} attribute.
+\item \texttt{InitialValue : Double:}  initialvalue is an optional XML element that defines the starting value for a data item as well as the value to be set for the data item after a reset event.
+
+\item \texttt{MinimumDeltaFilter : Float:} Represents the MTConnect \mtmodel{Filter} subtype of \mtmodel{MinimumDeltaFilter}.
+
+\item \texttt{NativeUnits : String:}  The native units of measurement for the reported value of the data item.
+
+\item \texttt{ResetTrigger : MTResetTriggerType:} If a \mtmodel{ResetTrigger} is given, when an \mtmodel{resetTriggered} attribtue is given in an event, the \uamodel{StatusCode} MUST have bit 14 set \uamodel{SemanticsChanged} and the \mtmodel{ResetTriggeredReason} must be set to the value of the \mtmodel{resetTriggered} attribute. resettrigger is an optional XML element that identifies the type of event that may cause a reset to occur. It is additional information regarding the meaning of the data that establishes an understanding of the time frame that the data represents so that the data may be correctly understood by a client software application.
 
 \item \textbf{Allowable Values} for \texttt{MTResetTriggerType}
 \FloatBarrier
@@ -380,19 +420,19 @@ resettrigger is an optional XML element that identifies the type of event that m
   \caption{\texttt{MTResetTriggerType} Enumeration}
   \label{enum:MTResetTriggerType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{ACTION_COMPLETE} & \texttt{0} \\
-\texttt{ANNUAL} & \texttt{1} \\
-\texttt{DAY} & \texttt{2} \\
-\texttt{MAINTENANCE} & \texttt{3} \\
-\texttt{MANUAL} & \texttt{4} \\
-\texttt{MONTH} & \texttt{5} \\
-\texttt{POWER_ON} & \texttt{6} \\
-\texttt{SHIFT} & \texttt{7} \\
-\texttt{WEEK} & \texttt{8} \\
+\texttt{ACTION_COMPLETE} & \texttt{0} &  \\
+\texttt{ANNUAL} & \texttt{1} &  \\
+\texttt{DAY} & \texttt{2} &  \\
+\texttt{MAINTENANCE} & \texttt{3} &  \\
+\texttt{MANUAL} & \texttt{4} & Operations based on the instructions received from an external source. \\
+\texttt{MONTH} & \texttt{5} &  \\
+\texttt{POWER_ON} & \texttt{6} &  \\
+\texttt{SHIFT} & \texttt{7} &  \\
+\texttt{WEEK} & \texttt{8} &  \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -407,23 +447,25 @@ resettrigger is an optional XML element that identifies the type of event that m
 \centering 
   \caption{\texttt{MTResetTriggerType} Enumeration}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{ACTION_COMPLETE} & \texttt{0} \\
-\texttt{ANNUAL} & \texttt{1} \\
-\texttt{DAY} & \texttt{2} \\
-\texttt{MAINTENANCE} & \texttt{3} \\
-\texttt{MANUAL} & \texttt{4} \\
-\texttt{MONTH} & \texttt{5} \\
-\texttt{POWER_ON} & \texttt{6} \\
-\texttt{SHIFT} & \texttt{7} \\
-\texttt{WEEK} & \texttt{8} \\
+\texttt{ACTION_COMPLETE} & \texttt{0} &  \\
+\texttt{ANNUAL} & \texttt{1} &  \\
+\texttt{DAY} & \texttt{2} &  \\
+\texttt{MAINTENANCE} & \texttt{3} &  \\
+\texttt{MANUAL} & \texttt{4} & Operations based on the instructions received from an external source. \\
+\texttt{MONTH} & \texttt{5} &  \\
+\texttt{POWER_ON} & \texttt{6} &  \\
+\texttt{SHIFT} & \texttt{7} &  \\
+\texttt{WEEK} & \texttt{8} &  \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
-\item \texttt{SignificantDigits::Int16:} The significant digits is converted to a \uaterm{ValuePrecision}.
+\item \texttt{SignificantDigits : Int16:} The significant digits is converted to a \uaterm{ValuePrecision}. The number of significant digits in the reported value.
+
+\item \texttt{Statistic : MTStatisticType:}  Describes the type of statistical calculation performed on a series of data samples to provide the reported data value.
 
 \item \textbf{Allowable Values} for \texttt{MTStatisticType}
 \FloatBarrier
@@ -435,21 +477,23 @@ resettrigger is an optional XML element that identifies the type of event that m
   \caption{\texttt{MTStatisticType} Enumeration}
   \label{enum:MTStatisticType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{AVERAGE} & \texttt{0} \\
-\texttt{MAXIMUM} & \texttt{1} \\
-\texttt{MEDIAN} & \texttt{2} \\
-\texttt{MINIMUM} & \texttt{3} \\
-\texttt{MODE} & \texttt{4} \\
-\texttt{RANGE} & \texttt{5} \\
-\texttt{ROOT_MEAN_SQUARE} & \texttt{6} \\
-\texttt{STANDARD_DEVIATION} & \texttt{7} \\
+\texttt{AVERAGE} & \texttt{0} &  \\
+\texttt{MAXIMUM} & \texttt{1} & Maximum value of a data entity or attribute. \\
+\texttt{MEDIAN} & \texttt{2} &  \\
+\texttt{MINIMUM} & \texttt{3} & The minimum value of a data entity or attribute. \\
+\texttt{MODE} & \texttt{4} &  \\
+\texttt{RANGE} & \texttt{5} &  \\
+\texttt{ROOT_MEAN_SQUARE} & \texttt{6} &  \\
+\texttt{STANDARD_DEVIATION} & \texttt{7} &  \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
+\item \texttt{Units : String:}  The unit of measurement for the reported value of the data item.
+
 \end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTEventClassType}}
@@ -512,6 +556,13 @@ Has\-Property & Variable & Native\-Code & String & Property\-Type & Optional \\
 \end{table} 
 
 
+\FloatBarrier
+\paragraph{Referenced Properties and Objects}
+
+\begin{itemize}
+\item \texttt{NativeCode : String:}  The native code (usually an alpha-numeric value) generated by the controller of a piece of equipment or the element.
+
+\end{itemize}
 \FloatBarrier
 \subsubsection{Defintion of \texttt{ MTMessageType}}
   \label{type:MTMessageType}
@@ -691,7 +742,7 @@ Has\-Property & Variable & Units & String & Property\-Type & Optional \\
 \paragraph{Referenced Properties and Objects}
 
 \begin{itemize}
-\item \texttt{Supertype::AnalogUnitType:} All DataItems with category SAMPLE
+\item \texttt{Supertype : AnalogUnitType:} All DataItems with category SAMPLE
 
 \end{itemize}
 \paragraph{Dependencies and Relationships}
@@ -836,6 +887,13 @@ Has\-Property & Variable & Engineering\-Units & EUInformation & Property\-Type &
 \end{table} 
 
 \FloatBarrier
+\paragraph{Data Type Fields}
+
+\begin{itemize}
+\item \texttt{NativeCode : String:}  The native code (usually an alpha-numeric value) generated by the controller of a piece of equipment or the element.
+
+\end{itemize}
+\FloatBarrier
 \subsubsection{Defintion of \texttt{ ThreeSpaceSampleDataType}}
   \label{type:ThreeSpaceSampleDataType}
 
@@ -862,11 +920,11 @@ Represents a position in a three space coordinate system. The positions must be 
 \paragraph{Data Type Fields}
 
 \begin{itemize}
-\item \texttt{X::Double:} If not present, must be set to NaN.
+\item \texttt{X : Double:} If not present, must be set to NaN.
 
-\item \texttt{Y::Double:} If not present, must be set to NaN.
+\item \texttt{Y : Double:} If not present, must be set to NaN.
 
-\item \texttt{Z::Double:} If not present, must be set to NaN.
+\item \texttt{Z : Double:} If not present, must be set to NaN.
 
 \end{itemize}
 \FloatBarrier

@@ -1,4 +1,4 @@
-% Generated 2020-01-09 18:51:19 -0800
+% Generated 2020-01-10 13:32:54 -0800
 \subsection{Controlled Vocab Data Item Types} \label{model:ControlledVocabDataItemTypes}
 
 The MTConnect Standard has the definitions of \glspl{MTEvent} in 
@@ -124,12 +124,12 @@ Has\-Property & Variable & Enum\-Strings & Active\-State\-Data\-Type & Active\-S
   \caption{\texttt{ActiveStateDataType} Enumeration}
   \label{enum:ActiveStateDataType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{ACTIVE} & \texttt{0} \\
-\texttt{INACTIVE} & \texttt{1} \\
+\texttt{ACTIVE} & \texttt{0} & The value of the data entity that is engaging. \\
+\texttt{INACTIVE} & \texttt{1} & The value of the data entity that is not engaging. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -179,12 +179,12 @@ Has\-Property & Variable & Enum\-Strings & Availability\-Data\-Type & Availabili
   \caption{\texttt{AvailabilityDataType} Enumeration}
   \label{enum:AvailabilityDataType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{AVAILABLE} & \texttt{0} \\
-\texttt{UNAVAILABLE} & \texttt{1} \\
+\texttt{AVAILABLE} & \texttt{0} & The value or status of an XML element when it is available. \\
+\texttt{UNAVAILABLE} & \texttt{1} & The value of the data entity either when the data is not received or the entity is incapable of providing data. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -239,14 +239,14 @@ Has\-Property & Variable & Enum\-Strings & Axis\-Coupling\-Data\-Type & Axis\-Co
   \caption{\texttt{AxisCouplingDataType} Enumeration}
   \label{enum:AxisCouplingDataType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{MASTER} & \texttt{0} \\
-\texttt{SLAVE} & \texttt{1} \\
-\texttt{SYNCHRONOUS} & \texttt{2} \\
-\texttt{TANDEM} & \texttt{3} \\
+\texttt{MASTER} & \texttt{0} & It provides information or state values that influences the operation of other dataitem of similar type. \\
+\texttt{SLAVE} & \texttt{1} & The axis is a slave to the coupledaxes event \\
+\texttt{SYNCHRONOUS} & \texttt{2} & Physical or logical parts which are not physically connected to each other but are operating together. \\
+\texttt{TANDEM} & \texttt{3} & Elements are physically connected to each other and operate as a single unit. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -294,12 +294,12 @@ Has\-Property & Variable & Enum\-Strings & Active\-State\-Data\-Type & Active\-S
 \centering 
   \caption{\texttt{ActiveStateDataType} Enumeration}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{ACTIVE} & \texttt{0} \\
-\texttt{INACTIVE} & \texttt{1} \\
+\texttt{ACTIVE} & \texttt{0} & The value of the data entity that is engaging. \\
+\texttt{INACTIVE} & \texttt{1} & The value of the data entity that is not engaging. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -348,14 +348,14 @@ Has\-Property & Variable & Enum\-Strings & Axis\-State\-Data\-Type & Axis\-State
   \caption{\texttt{AxisStateDataType} Enumeration}
   \label{enum:AxisStateDataType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{HOME} & \texttt{0} \\
-\texttt{PARKED} & \texttt{1} \\
-\texttt{STOPPED} & \texttt{2} \\
-\texttt{TRAVEL} & \texttt{3} \\
+\texttt{HOME} & \texttt{0} & The component at its home position. \\
+\texttt{PARKED} & \texttt{1} & The component has been moved to a fixed position. \\
+\texttt{STOPPED} & \texttt{2} & The component is stopped. \\
+\texttt{TRAVEL} & \texttt{3} & The component is in motion. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -404,12 +404,12 @@ Has\-Property & Variable & Enum\-Strings & Active\-State\-Data\-Type & Active\-S
 \centering 
   \caption{\texttt{ActiveStateDataType} Enumeration}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{ACTIVE} & \texttt{0} \\
-\texttt{INACTIVE} & \texttt{1} \\
+\texttt{ACTIVE} & \texttt{0} & The value of the data entity that is engaging. \\
+\texttt{INACTIVE} & \texttt{1} & The value of the data entity that is not engaging. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -460,13 +460,13 @@ Has\-Property & Variable & Enum\-Strings & Open\-State\-Data\-Type & Open\-State
   \caption{\texttt{OpenStateDataType} Enumeration}
   \label{enum:OpenStateDataType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{CLOSED} & \texttt{0} \\
-\texttt{OPEN} & \texttt{1} \\
-\texttt{UNLATCHED} & \texttt{2} \\
+\texttt{CLOSED} & \texttt{0} & A component is closed to the point of a positive confirmation. \\
+\texttt{OPEN} & \texttt{1} & A component is open to the point of a positive confirmation. \\
+\texttt{UNLATCHED} & \texttt{2} & An intermediate position. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -515,15 +515,15 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
   \caption{\texttt{InterfaceStateDataType} Enumeration}
   \label{enum:InterfaceStateDataType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{ACTIVE} & \texttt{0} \\
-\texttt{COMPLETE} & \texttt{1} \\
-\texttt{FAIL} & \texttt{2} \\
-\texttt{NOT_READY} & \texttt{4} \\
-\texttt{READY} & \texttt{5} \\
+\texttt{ACTIVE} & \texttt{0} & The value of the data entity that is engaging. \\
+\texttt{COMPLETE} & \texttt{1} & Completion of an action. \\
+\texttt{FAIL} & \texttt{2} & Failure before completion of an action. \\
+\texttt{NOT_READY} & \texttt{4} & A component is not ready to engage. \\
+\texttt{READY} & \texttt{5} & A component is ready to engage. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -571,15 +571,15 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{ACTIVE} & \texttt{0} \\
-\texttt{COMPLETE} & \texttt{1} \\
-\texttt{FAIL} & \texttt{2} \\
-\texttt{NOT_READY} & \texttt{4} \\
-\texttt{READY} & \texttt{5} \\
+\texttt{ACTIVE} & \texttt{0} & The value of the data entity that is engaging. \\
+\texttt{COMPLETE} & \texttt{1} & Completion of an action. \\
+\texttt{FAIL} & \texttt{2} & Failure before completion of an action. \\
+\texttt{NOT_READY} & \texttt{4} & A component is not ready to engage. \\
+\texttt{READY} & \texttt{5} & A component is ready to engage. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -632,22 +632,22 @@ Has\-Property & Variable & Enum\-Strings & Composition\-State\-Data\-Type & Comp
   \caption{\texttt{CompositionStateDataType} Enumeration}
   \label{enum:CompositionStateDataType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{ACTIVE} & \texttt{0} \\
-\texttt{CLOSED} & \texttt{1} \\
-\texttt{DOWN} & \texttt{2} \\
-\texttt{INACTIVE} & \texttt{3} \\
-\texttt{LEFT} & \texttt{4} \\
-\texttt{OFF} & \texttt{5} \\
-\texttt{ON} & \texttt{6} \\
-\texttt{OPEN} & \texttt{7} \\
-\texttt{RIGHT} & \texttt{8} \\
-\texttt{TRANSITIONING} & \texttt{9} \\
-\texttt{UNLATCHED} & \texttt{10} \\
-\texttt{UP} & \texttt{11} \\
+\texttt{ACTIVE} & \texttt{0} & The value of the data entity that is engaging. \\
+\texttt{CLOSED} & \texttt{1} & A component is closed to the point of a positive confirmation. \\
+\texttt{DOWN} & \texttt{2} & Reduction in the behavior of a structural element. \\
+\texttt{INACTIVE} & \texttt{3} & The value of the data entity that is not engaging. \\
+\texttt{LEFT} & \texttt{4} & The position of the composition element is oriented to the left to the point of a positive confirmation. \\
+\texttt{OFF} & \texttt{5} & Off state or value. \\
+\texttt{ON} & \texttt{6} & On state or value. \\
+\texttt{OPEN} & \texttt{7} & A component is open to the point of a positive confirmation. \\
+\texttt{RIGHT} & \texttt{8} & The position of the composition element is oriented to the right to the point of a positive confirmation. \\
+\texttt{TRANSITIONING} & \texttt{9} & It is in an intermediate position of the composition element. \\
+\texttt{UNLATCHED} & \texttt{10} & An intermediate position. \\
+\texttt{UP} & \texttt{11} & Increase in the behavior of a structural element. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -696,15 +696,15 @@ Has\-Property & Variable & Enum\-Strings & Controller\-Mode\-Data\-Type & Contro
   \caption{\texttt{ControllerModeDataType} Enumeration}
   \label{enum:ControllerModeDataType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{AUTOMATIC} & \texttt{0} \\
-\texttt{EDIT} & \texttt{1} \\
-\texttt{MANUAL} & \texttt{2} \\
-\texttt{MANUAL_DATA_INPUT} & \texttt{3} \\
-\texttt{SEMI_AUTOMATIC} & \texttt{4} \\
+\texttt{AUTOMATIC} & \texttt{0} & The controller is configured to automatically execute a program. \\
+\texttt{EDIT} & \texttt{1} & The controller is currently functioning as a programming device and is not capable of executing an active program. \\
+\texttt{MANUAL} & \texttt{2} & Operations based on the instructions received from an external source. \\
+\texttt{MANUAL_DATA_INPUT} & \texttt{3} & The operator can enter a series of operations for the controller to perform. \\
+\texttt{SEMI_AUTOMATIC} & \texttt{4} & The controller  executes a single set of instructions from an active program and then stops until given a command to execute the next set of instructions. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -753,12 +753,12 @@ Has\-Property & Variable & Enum\-Strings & On\-Off\-Data\-Type & On\-Off\-Data\-
   \caption{\texttt{OnOffDataType} Enumeration}
   \label{enum:OnOffDataType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{OFF} & \texttt{0} \\
-\texttt{ON} & \texttt{1} \\
+\texttt{OFF} & \texttt{0} & Off state or value. \\
+\texttt{ON} & \texttt{1} & On state or value. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -807,14 +807,14 @@ Has\-Property & Variable & Enum\-Strings & Direction\-Data\-Type & Direction\-Da
   \caption{\texttt{DirectionDataType} Enumeration}
   \label{enum:DirectionDataType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{CLOCKWISE} & \texttt{0} \\
-\texttt{COUNTER_CLOCKWISE} & \texttt{1} \\
-\texttt{NEGATIVE} & \texttt{2} \\
-\texttt{POSITIVE} & \texttt{3} \\
+\texttt{CLOCKWISE} & \texttt{0} & A rotary component type rotating in a clockwise fashion using the right-hand rule. \\
+\texttt{COUNTER_CLOCKWISE} & \texttt{1} & A rotary component type rotating in a counter clockwise fashion using the right-hand rule. \\
+\texttt{NEGATIVE} & \texttt{2} & A linear type component is moving in the direction of decreasing position value. \\
+\texttt{POSITIVE} & \texttt{3} & A linear type component is moving in the direction of increasing position value. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -862,13 +862,13 @@ Has\-Property & Variable & Enum\-Strings & Open\-State\-Data\-Type & Open\-State
 \centering 
   \caption{\texttt{OpenStateDataType} Enumeration}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{CLOSED} & \texttt{0} \\
-\texttt{OPEN} & \texttt{1} \\
-\texttt{UNLATCHED} & \texttt{2} \\
+\texttt{CLOSED} & \texttt{0} & A component is closed to the point of a positive confirmation. \\
+\texttt{OPEN} & \texttt{1} & A component is open to the point of a positive confirmation. \\
+\texttt{UNLATCHED} & \texttt{2} & An intermediate position. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -917,12 +917,12 @@ Has\-Property & Variable & Enum\-Strings & Emergency\-Stop\-Data\-Type & Emergen
   \caption{\texttt{EmergencyStopDataType} Enumeration}
   \label{enum:EmergencyStopDataType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{ARMED} & \texttt{0} \\
-\texttt{TRIGGERED} & \texttt{1} \\
+\texttt{ARMED} & \texttt{0} & The emergency stop circuit is complete and the piece of equipment, component, or composition element is allowed to operate.  \\
+\texttt{TRIGGERED} & \texttt{1} & The operation of the piece of equipment, component, or composition element is inhibited. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -971,12 +971,12 @@ Has\-Property & Variable & Enum\-Strings & Yes\-No\-Data\-Type & Yes\-No\-Data\-
   \caption{\texttt{YesNoDataType} Enumeration}
   \label{enum:YesNoDataType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{NO} & \texttt{0} \\
-\texttt{YES} & \texttt{1} \\
+\texttt{NO} & \texttt{0} & The endofbar event has not been reached. \\
+\texttt{YES} & \texttt{1} & The endofbar event has been reached. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -1027,12 +1027,12 @@ Has\-Property & Variable & Enum\-Strings & On\-Off\-Data\-Type & On\-Off\-Data\-
 \centering 
   \caption{\texttt{OnOffDataType} Enumeration}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{OFF} & \texttt{0} \\
-\texttt{ON} & \texttt{1} \\
+\texttt{OFF} & \texttt{0} & Off state or value. \\
+\texttt{ON} & \texttt{1} & On state or value. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -1081,18 +1081,18 @@ Has\-Property & Variable & Enum\-Strings & Execution\-Data\-Type & Execution\-Da
   \caption{\texttt{ExecutionDataType} Enumeration}
   \label{enum:ExecutionDataType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{ACTIVE} & \texttt{0} \\
-\texttt{FEED_HOLD} & \texttt{1} \\
-\texttt{INTERRUPTED} & \texttt{2} \\
-\texttt{OPTIONAL_STOP} & \texttt{3} \\
-\texttt{READY} & \texttt{4} \\
-\texttt{PROGRAM_COMPLETED} & \texttt{5} \\
-\texttt{PROGRAM_STOPPED} & \texttt{6} \\
-\texttt{STOPPED} & \texttt{7} \\
+\texttt{ACTIVE} & \texttt{0} & The value of the data entity that is engaging. \\
+\texttt{FEED_HOLD} & \texttt{1} & Motion of a component has been commanded to stop at its current position. \\
+\texttt{INTERRUPTED} & \texttt{2} & The action of a component has been suspended due to an external signal. \\
+\texttt{OPTIONAL_STOP} & \texttt{3} & The controllers program has been intentionally stopped \\
+\texttt{READY} & \texttt{4} & A component is ready to engage. \\
+\texttt{PROGRAM_COMPLETED} & \texttt{5} & The execution of the controllers program has been stopped by a command from within the program. \\
+\texttt{PROGRAM_STOPPED} & \texttt{6} & The execution of the controller's program has been stopped by a command from within the program. \\
+\texttt{STOPPED} & \texttt{7} & The component is stopped. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -1144,15 +1144,15 @@ Has\-Property & Variable & Enum\-Strings & Functional\-Mode\-Data\-Type & Functi
   \caption{\texttt{FunctionalModeDataType} Enumeration}
   \label{enum:FunctionalModeDataType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{MAINTENANCE} & \texttt{0} \\
-\texttt{PRODUCTION} & \texttt{1} \\
-\texttt{PROCESS_DEVELOPMENT} & \texttt{2} \\
-\texttt{SETUP} & \texttt{3} \\
-\texttt{TEARDOWN} & \texttt{4} \\
+\texttt{MAINTENANCE} & \texttt{0} &  \\
+\texttt{PRODUCTION} & \texttt{1} & A structural element is currently producing product. \\
+\texttt{PROCESS_DEVELOPMENT} & \texttt{2} & A structural element is being used to prove-out a new process. \\
+\texttt{SETUP} & \texttt{3} & A structural element is being prepared or modified to begin production of product. \\
+\texttt{TEARDOWN} & \texttt{4} & Typically, a structural element has completed the production of a product and is being modified or returned to a neutral state such that it may then be prepared to begin production of a different product. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -1201,12 +1201,12 @@ Has\-Property & Variable & Enum\-Strings & Interface\-Status\-Data\-Type & Inter
   \caption{\texttt{InterfaceStatusDataType} Enumeration}
   \label{enum:InterfaceStatusDataType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{DISABLED} & \texttt{0} \\
-\texttt{ENABLED} & \texttt{1} \\
+\texttt{DISABLED} & \texttt{0} & A component is currently not operational. \\
+\texttt{ENABLED} & \texttt{1} & A component is currently operational and performing as expected. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -1254,15 +1254,15 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{ACTIVE} & \texttt{0} \\
-\texttt{COMPLETE} & \texttt{1} \\
-\texttt{FAIL} & \texttt{2} \\
-\texttt{NOT_READY} & \texttt{4} \\
-\texttt{READY} & \texttt{5} \\
+\texttt{ACTIVE} & \texttt{0} & The value of the data entity that is engaging. \\
+\texttt{COMPLETE} & \texttt{1} & Completion of an action. \\
+\texttt{FAIL} & \texttt{2} & Failure before completion of an action. \\
+\texttt{NOT_READY} & \texttt{4} & A component is not ready to engage. \\
+\texttt{READY} & \texttt{5} & A component is ready to engage. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -1310,15 +1310,15 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{ACTIVE} & \texttt{0} \\
-\texttt{COMPLETE} & \texttt{1} \\
-\texttt{FAIL} & \texttt{2} \\
-\texttt{NOT_READY} & \texttt{4} \\
-\texttt{READY} & \texttt{5} \\
+\texttt{ACTIVE} & \texttt{0} & The value of the data entity that is engaging. \\
+\texttt{COMPLETE} & \texttt{1} & Completion of an action. \\
+\texttt{FAIL} & \texttt{2} & Failure before completion of an action. \\
+\texttt{NOT_READY} & \texttt{4} & A component is not ready to engage. \\
+\texttt{READY} & \texttt{5} & A component is ready to engage. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -1366,15 +1366,15 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{ACTIVE} & \texttt{0} \\
-\texttt{COMPLETE} & \texttt{1} \\
-\texttt{FAIL} & \texttt{2} \\
-\texttt{NOT_READY} & \texttt{4} \\
-\texttt{READY} & \texttt{5} \\
+\texttt{ACTIVE} & \texttt{0} & The value of the data entity that is engaging. \\
+\texttt{COMPLETE} & \texttt{1} & Completion of an action. \\
+\texttt{FAIL} & \texttt{2} & Failure before completion of an action. \\
+\texttt{NOT_READY} & \texttt{4} & A component is not ready to engage. \\
+\texttt{READY} & \texttt{5} & A component is ready to engage. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -1422,15 +1422,15 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{ACTIVE} & \texttt{0} \\
-\texttt{COMPLETE} & \texttt{1} \\
-\texttt{FAIL} & \texttt{2} \\
-\texttt{NOT_READY} & \texttt{4} \\
-\texttt{READY} & \texttt{5} \\
+\texttt{ACTIVE} & \texttt{0} & The value of the data entity that is engaging. \\
+\texttt{COMPLETE} & \texttt{1} & Completion of an action. \\
+\texttt{FAIL} & \texttt{2} & Failure before completion of an action. \\
+\texttt{NOT_READY} & \texttt{4} & A component is not ready to engage. \\
+\texttt{READY} & \texttt{5} & A component is ready to engage. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -1478,15 +1478,15 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{ACTIVE} & \texttt{0} \\
-\texttt{COMPLETE} & \texttt{1} \\
-\texttt{FAIL} & \texttt{2} \\
-\texttt{NOT_READY} & \texttt{4} \\
-\texttt{READY} & \texttt{5} \\
+\texttt{ACTIVE} & \texttt{0} & The value of the data entity that is engaging. \\
+\texttt{COMPLETE} & \texttt{1} & Completion of an action. \\
+\texttt{FAIL} & \texttt{2} & Failure before completion of an action. \\
+\texttt{NOT_READY} & \texttt{4} & A component is not ready to engage. \\
+\texttt{READY} & \texttt{5} & A component is ready to engage. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -1534,15 +1534,15 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{ACTIVE} & \texttt{0} \\
-\texttt{COMPLETE} & \texttt{1} \\
-\texttt{FAIL} & \texttt{2} \\
-\texttt{NOT_READY} & \texttt{4} \\
-\texttt{READY} & \texttt{5} \\
+\texttt{ACTIVE} & \texttt{0} & The value of the data entity that is engaging. \\
+\texttt{COMPLETE} & \texttt{1} & Completion of an action. \\
+\texttt{FAIL} & \texttt{2} & Failure before completion of an action. \\
+\texttt{NOT_READY} & \texttt{4} & A component is not ready to engage. \\
+\texttt{READY} & \texttt{5} & A component is ready to engage. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -1590,15 +1590,15 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{ACTIVE} & \texttt{0} \\
-\texttt{COMPLETE} & \texttt{1} \\
-\texttt{FAIL} & \texttt{2} \\
-\texttt{NOT_READY} & \texttt{4} \\
-\texttt{READY} & \texttt{5} \\
+\texttt{ACTIVE} & \texttt{0} & The value of the data entity that is engaging. \\
+\texttt{COMPLETE} & \texttt{1} & Completion of an action. \\
+\texttt{FAIL} & \texttt{2} & Failure before completion of an action. \\
+\texttt{NOT_READY} & \texttt{4} & A component is not ready to engage. \\
+\texttt{READY} & \texttt{5} & A component is ready to engage. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -1646,15 +1646,15 @@ Has\-Property & Variable & Enum\-Strings & Interface\-State\-Data\-Type & Interf
 \centering 
   \caption{\texttt{InterfaceStateDataType} Enumeration}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{ACTIVE} & \texttt{0} \\
-\texttt{COMPLETE} & \texttt{1} \\
-\texttt{FAIL} & \texttt{2} \\
-\texttt{NOT_READY} & \texttt{4} \\
-\texttt{READY} & \texttt{5} \\
+\texttt{ACTIVE} & \texttt{0} & The value of the data entity that is engaging. \\
+\texttt{COMPLETE} & \texttt{1} & Completion of an action. \\
+\texttt{FAIL} & \texttt{2} & Failure before completion of an action. \\
+\texttt{NOT_READY} & \texttt{4} & A component is not ready to engage. \\
+\texttt{READY} & \texttt{5} & A component is ready to engage. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -1704,14 +1704,14 @@ Has\-Property & Variable & Enum\-Strings & Path\-Mode\-Data\-Type & Path\-Mode\-
   \caption{\texttt{PathModeDataType} Enumeration}
   \label{enum:PathModeDataType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{INDEPENDENT} & \texttt{0} \\
-\texttt{MASTER} & \texttt{1} \\
-\texttt{MIRROR} & \texttt{2} \\
-\texttt{SYNCHRONOUS} & \texttt{3} \\
+\texttt{INDEPENDENT} & \texttt{0} & The path is operating independently and without the influence of another path. \\
+\texttt{MASTER} & \texttt{1} & It provides information or state values that influences the operation of other dataitem of similar type. \\
+\texttt{MIRROR} & \texttt{2} & The axes associated with the path are mirroring the motion of the master value path. \\
+\texttt{SYNCHRONOUS} & \texttt{3} & Physical or logical parts which are not physically connected to each other but are operating together. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -1763,12 +1763,12 @@ Has\-Property & Variable & Enum\-Strings & On\-Off\-Data\-Type & On\-Off\-Data\-
 \centering 
   \caption{\texttt{OnOffDataType} Enumeration}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{OFF} & \texttt{0} \\
-\texttt{ON} & \texttt{1} \\
+\texttt{OFF} & \texttt{0} & Off state or value. \\
+\texttt{ON} & \texttt{1} & On state or value. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -1820,13 +1820,13 @@ Has\-Property & Variable & Enum\-Strings & Program\-Edit\-Data\-Type & Program\-
   \caption{\texttt{ProgramEditDataType} Enumeration}
   \label{enum:ProgramEditDataType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{ACTIVE} & \texttt{0} \\
-\texttt{NOT_READY} & \texttt{1} \\
-\texttt{READY} & \texttt{2} \\
+\texttt{ACTIVE} & \texttt{0} & The value of the data entity that is engaging. \\
+\texttt{NOT_READY} & \texttt{1} & A component is not ready to engage. \\
+\texttt{READY} & \texttt{2} & A component is ready to engage. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -1875,13 +1875,13 @@ Has\-Property & Variable & Enum\-Strings & Rotary\-Mode\-Data\-Type & Rotary\-Mo
   \caption{\texttt{RotaryModeDataType} Enumeration}
   \label{enum:RotaryModeDataType}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{CONTOUR} & \texttt{0} \\
-\texttt{INDEX} & \texttt{1} \\
-\texttt{SPINDLE} & \texttt{2} \\
+\texttt{CONTOUR} & \texttt{0} & The position of the axis is being interpolated. \\
+\texttt{INDEX} & \texttt{1} & The axis is configured to index. \\
+\texttt{SPINDLE} & \texttt{2} & The axis is functioning as a spindle. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier
@@ -1929,12 +1929,12 @@ Has\-Property & Variable & Enum\-Strings & Active\-State\-Data\-Type & Active\-S
 \centering 
   \caption{\texttt{ActiveStateDataType} Enumeration}
 \tabulinesep=3pt
-\begin{tabu} to 6in {|l|r|} \everyrow{\hline}
+\begin{tabu} to 6in {|l|r|X|} \everyrow{\hline}
 \hline
-\rowfont\bfseries {Name} & {Index} \\
+\rowfont\bfseries {Name} & {Index} & {Description} \\
 \tabucline[1.5pt]{}
-\texttt{ACTIVE} & \texttt{0} \\
-\texttt{INACTIVE} & \texttt{1} \\
+\texttt{ACTIVE} & \texttt{0} & The value of the data entity that is engaging. \\
+\texttt{INACTIVE} & \texttt{1} & The value of the data entity that is not engaging. \\
 \end{tabu}
 \end{table} 
 \FloatBarrier

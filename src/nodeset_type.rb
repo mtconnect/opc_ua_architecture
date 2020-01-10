@@ -74,6 +74,8 @@ class NodesetType < Type
     node.add_attribute('ParentNodeId', parent) if parent
 
     node.add_element('DisplayName').add_text(display_name || clean_name)
+    node.add_element('Description').add_text(@documentation) if @documentation
+
     refs = node.add_element('References')
     
     [refs, node]

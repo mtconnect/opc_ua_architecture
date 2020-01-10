@@ -311,8 +311,14 @@ module Relation
       super(owner, a)
       @name = a['name']
       dv = a.at('defaultValue')
-      @default = dv['value'] if dv
-
+      if dv
+        if dv['xmi:type'] == 'uml:LiteralBoolean'
+          @default = dv['value'] || 'false'
+        else
+          @default = dv['value']
+        end
+      end
+      
       @stereotype = xmi_stereotype(a)
       @documentation = xmi_documentation(a)
       
@@ -358,14 +364,22 @@ module Relation
         owner = Type::LazyPointer.new(cid)
       end
       
-      
       super(owner, r)
       
       sup = r.at("./supplier")
       sid = sup['xmi:idref']
 
-      @name = (@stereotype && @stereotype) unless @name
       @target = Connection.new('Target', Type::LazyPointer.new(sid))
+    end
+
+    def reference_type
+      @stereotype || 'HasComponent'
+    end
+
+    def reflow(source, target)
+      $logger.debug " --- Reflowing Dependency: #{source.id} -> #{target.id}"
+      @source = Connection.new('Source', source)
+      @target = Connection.new('Target', target)
     end
   end
 
@@ -408,13 +422,9 @@ module Relation
     def initialize(owner, a)
       super(owner, a)
       @target_id = a['definingFeature']
-      @target = nil
+      @target = @relation = nil
       v = a.at('./value')
       @value = v['value'] if v
-    end
-
-    def name
-      @target.name
     end
 
     def value
@@ -442,12 +452,18 @@ module Relation
     end
 
     def resolve_types
-      @target = @owner.classifier.relation_by_id(@target_id) unless @target
+      unless @relation
+        @relation = owner.classifier.relation_by_id(@target_id)        
+        raise " -- Relation not resolved for #{@target_id}" unless @relation
+        
+        @name = @relation.name
+        @target = @relation.target
+      end
       
     rescue
-      $logger.warn "Cannot resolve type #{@owner.name}::#{@name} #{@xmi.to_s}"
-      $logger.warn $!
-      $logger.warn $!.backtrace.join("\n")
+      $logger.error "Cannot resolve type #{@owner.name}::#{@name} #{@xmi.to_s}"
+      $logger.error $!
+      raise
     end
   end
 end

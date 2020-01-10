@@ -6,9 +6,9 @@ require 'extensions'
 class Type
   include Extensions
   
-  attr_reader :name, :id, :type, :model, :json, :parent, :children, :relations, :stereotype,
-              :constraints, :extended, :literals, :invariants, :classifier, :assoc
-  attr_accessor :class_link, :documentation
+  attr_reader :name, :id, :type, :model, :parent, :children, :relations, :stereotype,
+              :constraints, :extended, :literals, :invariants, :classifier, :assoc, :xmi
+  attr_accessor :documentation
 
   class LazyPointer
     @@pointers = []
@@ -17,6 +17,10 @@ class Type
       @@pointers.each do |o|
         o.resolve
       end
+    end
+
+    def _type
+      @type
     end
 
     def initialize(obj)
@@ -120,6 +124,28 @@ class Type
           owner.lazy { owner.relation_by_assoc(aid).documentation = doc }
         end
       end
+
+    when 'uml:InformationFlow'
+      rel = assoc.at('./realization')
+      if rel
+        idref = rel['xmi:idref']
+        source = LazyPointer.new(assoc.at('./informationSource')['xmi:idref'])
+        target = LazyPointer.new(assoc.at('./informationTarget')['xmi:idref'])
+
+        # Find the relization in the source or target
+        source.lazy {
+          $logger.debug "   === Finding #{idref} in the source"
+          r = relation_by_id(idref)
+          r.reflow(source, target) if r
+        }
+        target.lazy {
+          $logger.debug "   === Finding #{idref} in the target"
+          r = relation_by_id(idref)
+          r.reflow(source, target) if r
+        }
+      else
+        $logger.error "Cannot find realization for #{assoc.to_s}"
+      end
       
     when 'uml:Realization'
       $logger.debug " Creating uml:Realization"
@@ -142,15 +168,14 @@ class Type
 
   def self.connect_model
     Type::LazyPointer.resolve
-    resolve_types
     connect_children
+    resolve_types
   end
 
   def self.connect_children
     @@types_by_id.each do |id, type|
       parent = type.get_parent
       parent.add_child(type) if parent
-      type.connect_class_links
     end
   end
 
@@ -187,7 +212,6 @@ class Type
     @literals = []
 
     @aliased = false
-    @class_link = nil
 
     associations = []
     if @type == 'uml:Enumeration'
@@ -234,25 +258,25 @@ class Type
 
   def relation(name)
     rel, = @relations.find { |a| a.name == name }
+    rel = @parent.relation(name) if rel.nil? and @parent
     rel
   end
 
   def relation_by_id(id)
+    # $logger.debug " Checking #{@name} for relation #{id} parent #{@parent}"
     rel, = @relations.find { |a| a.id == id }
+    rel = @parent.relation_by_id(id) if rel.nil? and @parent
     rel
   end
 
   def relation_by_assoc(id)
     rel, = @relations.find { |a| a.assoc == id }
+    rel = @parent.relation_by_assoc(id) if rel.nil? and @parent
     rel
   end
 
   def is_opc?
     @model.is_opc?
-  end
-
-  def is_class_link?
-    @class_link
   end
 
   def check_mixin
@@ -263,18 +287,6 @@ class Type
         @mixin = r.target.type
         $logger.debug "==>  Found Mixin #{r.target.name} for #{@name}"
         return
-      end
-    end
-  end
-
-  def connect_class_links
-    if is_class_link?
-      # Find the association to the other near and far side
-      association = nil
-      @relations.delete_if { |a| association = a if a.type == 'uml:Association'; association }
-      if association
-        association.link_target('OrganizedBy', self)
-        association.source.type.relations << association
       end
     end
   end

@@ -117,7 +117,7 @@ class NodesetModel < Model
   end
 
   def generate_nodeset
-    puts "Generating model #{@name}"
+    $logger.info "Generating model #{@name}"
     @types.each do |type|
       if type.parent.nil? or type.parent.model != self
         recurse_types(type)

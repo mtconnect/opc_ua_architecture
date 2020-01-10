@@ -84,7 +84,7 @@ class Model
     end
 
     $logger.debug "Getting associations for #{@name}"
-    @xmi.xpath('./packagedElement[@xmi:type="uml:Realization" or @xmi:type="uml:Dependency" or @xmi:type="uml:Association"]').each do |e|
+    @xmi.xpath('./packagedElement[@xmi:type="uml:Realization" or @xmi:type="uml:Dependency" or @xmi:type="uml:Association" or @xmi:type="uml:InformationFlow"]').each do |e|
       self.class.type_class.add_free_association(e)
     end
 

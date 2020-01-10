@@ -10,9 +10,9 @@ require 'id_manager'
 Namespace = '1'
 NamespaceUri = 'http://opcfoundation.org/UA/MTConnect/v2/'
 
-puts "\nGenerating Nodeset"
+$logger.info "\nGenerating Nodeset"
 
-puts "Regenerating based Nodeset Ids" if Options[:clean]
+$logger.warn "Regenerating based Nodeset Ids" if Options[:clean]
 NodesetModel.create_id_manager('MTConnectNodeIds.csv', OpcNodeIdFile, Options[:clean])
 
 NodesetModel.skip_models = SkipModels
@@ -26,52 +26,52 @@ def create_nodeset(models, nodesetFile, typeDictionary)
   typeDict = NodesetModel.type_dict_document
   xmlTypeDict = NodesetModel.xml_type_dict_document
 
-  puts "Generating nodesets"
+  $logger.info "Generating nodesets"
   NodesetModel.generate_nodeset('Namespace Metadata')
   NodesetModel.generate_nodeset('MTConnect Binary')
   NodesetModel.generate_nodeset('MTConnect XML Schema')
 
   models.each do |model|
-    puts "Generating #{model}"
+    $logger.info "Generating #{model}"
     NodesetModel.generate_nodeset(model)
   end
 
   error = false
   
-  puts "Validating all references are resolved"
-  puts "  Collecting all defined node ids"
+  $logger.info "Validating all references are resolved"
+  $logger.info "  Collecting all defined node ids"
   node_ids = Set.new
   NodesetModel.root.each_element('*') do |e|
     nid = e.attribute('NodeId')
     if nid
       if node_ids.include?(nid.value)
         error = true
-        puts "!!!! Node Id #{nid.value} is a duplicate: #{e.inspect}"
+        $logger.error "!!!! Node Id #{nid.value} is a duplicate: #{e.inspect}"
       end
       node_ids << nid.value
     end
   end
   
-  puts "  Checking all references"
+  $logger.info "  Checking all references"
   NodesetModel.root.each_element('*') do |e|
     nid = e.attribute('DataType')
     if nid and nid.value =~ /^ns=1;/ and !node_ids.include?(nid.value)
-      puts "!!!! Data Type NodeId #{nid} is a broken relationship #{e.inspect}"
+      $logger.error "!!!! Data Type NodeId #{nid} is a broken relationship #{e.inspect}"
       error = true
     end
     e.each_element("./References/Reference") do |r|
       if r.text =~ /^ns=1;/ and !node_ids.include?(r.text)
-        puts "!!!! Reference #{r.text} is a broken relationship #{r.inspect} of #{e.inspect}"
+        $logger.error "!!!! Reference #{r.text} is a broken relationship #{r.inspect} of #{e.inspect}"
         error = true
       elsif r.text.nil?
-        puts "!!!! Null reference for #{r.inspect} of #{e.inspect}"
+        $logger.error "!!!! Null reference for #{r.inspect} of #{e.inspect}"
         error = true
       end
     end
   end
   
   if error
-    puts "XML is not valid"
+    $logger.error "XML is not valid"
     #  exit 1
   end
   

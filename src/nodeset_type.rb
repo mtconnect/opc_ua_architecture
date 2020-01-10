@@ -14,7 +14,7 @@ class NodesetType < Type
   class OwnerReference
     attr_reader :name, :node_id, :invariants
     def initialize(name, node_id, invariants)
-      # puts "Creating Owner ref #{name} #{invariants.inspect}"
+      $logger.debug "Creating Owner ref #{name} #{invariants.inspect}"
       @name, @node_id, @invariants = name, node_id, invariants
     end
   end
@@ -24,7 +24,7 @@ class NodesetType < Type
     @@types_by_id.each do |id, t|
       ino = t.node_id
       if check.include?(ino)
-        puts "Duplicate generated id: #{id} - #{ino}: #{check[ino].name}"
+        $logger.error "Duplicate generated id: #{id} - #{ino}: #{check[ino].name}"
       end
       check[ino] = t
     end
@@ -92,7 +92,7 @@ class NodesetType < Type
                    forward: forward)
 
   rescue
-    puts "#{$!}: #{rel.name}"
+    $logger.error "#{$!}: #{rel.name}"
     raise $!
   end
 
@@ -174,13 +174,13 @@ class NodesetType < Type
       reference(refs, a, path)
       variable_property(a, owner, path)
     elsif a.is_a? Relation::Association
-      puts "++++ Creating relation #{a.name} #{a.final_target.type.node_class}"
+      $logger.debug "++++ Creating relation #{a.name} #{a.final_target.type.node_class}"
       if a.final_target.type.node_class == 'Enumeration'
         target_name = "#{a.final_target.type.browse_name}/#{a.name}"
         raise "Cannot find node id for #{target_name} when creating relation" unless NodesetModel.ids.has_id?(target_name)
         values = NodesetModel.ids.id_for(target_name)
         rel_type = a.stereotype ? a.stereotype : 'HasProperty'
-        puts "+++++ Creating reference to #{target_name} <<#{rel_type}>> #{values}"
+        $logger.debug "+++++ Creating reference to #{target_name} <<#{rel_type}>> #{values}"
         node_reference(refs, a.name, rel_type, values, target_name)
       else
         reference(refs, a, path)
@@ -226,13 +226,13 @@ class NodesetType < Type
   def relationships(refs, owner, path = [])
     @relations.each do |a|
       if !a.is_attribute? and a.name
-        puts "*** Relationship #{a.name} for #{owner.name}"
+        $logger.debug "*** Relationship #{a.name} for #{owner.name}"
         create_relationship(refs, a, owner, path)
       elsif a.source.type.id != @id # When this is a reverse relationship for Object instantiation
-        puts "*** Generate object reverse relation <<#{a.stereotype}>> #{@name}::#{a.name} -> #{a.source.type.name}"
+        $logger.debug "*** Generate object reverse relation <<#{a.stereotype}>> #{@name}::#{a.name} -> #{a.source.type.name}"
         create_object_reference(refs, a)        
       elsif !a.is_attribute? 
-        puts "!!! Cannot generate relation <<#{a.stereotype}>> #{@name}::#{a.name} #{a.source.type.name} -> #{a.final_target.type.name}"
+        $logger.warn "!!! Cannot generate relation <<#{a.stereotype}>> #{@name}::#{a.name} #{a.source.type.name} -> #{a.final_target.type.name}"
       end
     end
   end
@@ -265,7 +265,7 @@ class NodesetType < Type
     elsif @type == 'uml:Stereotype'
       'Stereotype'
     else
-      puts "!! Do not know how to generate #{@name} #{@type} check Generalization Relationship"
+      $logger.error "!! Do not know how to generate #{@name} #{@type} check Generalization Relationship"
       'Unknown'
     end
   end
@@ -276,32 +276,33 @@ class NodesetType < Type
     case nt
     when 'ObjectType'
       NodesetModel.root << REXML::Comment.new(" Definition of Object #{@name} #{node_id} ")
-      print "** Generating ObjectType #{@name} '#{node_id}'"
+      $logger.info "** Generating ObjectType #{@name} '#{node_id}'"
       NodesetModel.ids.add_node_class(node_id, @name, 'ObjectType')
       refs, = node('UAObjectType', node_id, @name, abstract: @abstract)
 
     when 'VariableType'
       v = get_attribute_like('ValueRank')
       NodesetModel.root << REXML::Comment.new(" Definition of Variable #{@name} #{node_id} ")
-      print "** Generating VariableType"
+      $logger.info "** Generating VariableType"
       NodesetModel.ids.add_node_class(node_id, @name, 'VariableType')
       refs, = node('UAVariableType', node_id, @name, abstract: @abstract, value_rank: v.default,
                    data_type: variable_data_type.node_alias)
 
     when 'ReferenceType'
       NodesetModel.root << REXML::Comment.new(" Definition of Reference #{@name} #{node_id} ")
-      print "** Generating ReferenceType"
+      $logger.info "** Generating ReferenceType for #{@name}"
       symmetric = get_attribute_like('Symmetric', /Attribute/)
       is_symmetric = symmetric.default
+      $logger.debug "  Symmetric attribute: #{symmetric.name} = #{is_symmetric.inspect}"
       NodesetModel.ids.add_node_class(node_id, @name, 'ReferenceType')
       refs, = node('UAReferenceType', node_id, @name, abstract: @abstract, symmetric: is_symmetric)
       
     else
-      puts "-- Skipping #{nt} #{@name}"
+      $logger.debug "-- Skipping #{nt} #{@name}"
     end
     
     if refs
-      puts " for #{@name}"      
+      $logger.debug " for #{@name}"      
     
       node_reference(refs, @parent.name, 'HasSubtype', @parent.node_id, forward: false)
 
@@ -311,7 +312,7 @@ class NodesetType < Type
   end
 
   def generate_enumeration
-    puts "** Generating Enumeration for #{@name}"
+    $logger.info "** Generating Enumeration for #{@name}"
     NodesetModel.root << REXML::Comment.new(" Definition of Enumeration #{@name} #{node_id} ")
     NodesetModel.ids.add_node_class(node_id, @name, 'DataType')
     refs, node = node('UADataType', node_id, @name)
@@ -431,7 +432,7 @@ class NodesetType < Type
   end
 
   def generate_data_type
-    puts "** Generating DataType for #{@name}"
+    $logger.info "** Generating DataType for #{@name}"
     NodesetModel.ids.add_node_class(node_id, @name, 'DataType')
     NodesetModel.root << REXML::Comment.new(" Definition of DataType #{@name} #{node_id} ")
     @refs, node = node('UADataType', node_id, @name)
@@ -471,14 +472,14 @@ class NodesetType < Type
   end
 
   def generate_instance
-    print "++ Generating #{@classifier.base_type} #{@name}"
+    $logger.info "#{@classifier.base_type} #{@name}"
     NodesetModel.root << REXML::Comment.new(" Instantiation of Object #{@name} #{node_id} ")
     if @classifier.base_type == 'Variable'
-      puts "::#{@classifier.name} - #{@classifier.variable_data_type.name}"
+      $logger.info "::#{@classifier.name} - #{@classifier.variable_data_type.name}"
       NodesetModel.ids.add_node_class(node_id, @name, 'Variable')
       @refs, @node = node('UAVariable', node_id, @name, data_type: @classifier.variable_data_type.node_alias)
     else
-      puts "::#{@classifier.name}"
+      $logger.info "::#{@classifier.name}"
       NodesetModel.ids.add_node_class(node_id, @name, 'Object')
       @refs, @node = node('UAObject', node_id, @name)
     end
@@ -493,7 +494,7 @@ class NodesetType < Type
         add_element('ByteString', { 'xmlns' => "http://opcfoundation.org/UA/2008/02/Types.xsd"})
       e << REXML::CData.new([text].pack('m'), true)
     else
-      puts "!!!! Cannot add text to node"
+      $logger.error "!!!! Cannot add text to node"
       raise "Error generating text"
     end
   end
@@ -511,7 +512,7 @@ class NodesetType < Type
     when 'Object'
       generate_instance
     when 'Metaclass'
-      puts "Skipping metaclass #{@name}"
+      $logger.debug "Skipping metaclass #{@name}"
     else
       generate_object_or_variable(nt)
     end

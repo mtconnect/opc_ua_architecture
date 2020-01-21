@@ -57,9 +57,9 @@ style=alphabetic,
 \doctitleshort{OPC UA for \mtconnect}		% Shortened document title
 \doctitle{\getdocnum: \getdoctitleshort}
 \doctitlepart{Part 1: Device Model}
-\doctitlesubpart{-- Errata}
-\doctitledesc{Errata 1: Conditions}
-\versionnum{2.00.01}						% MTConnect version
+\doctitledesc{Amendment 1: Conditions}
+\doctitlesubpart{-- Amendment}
+\versionnum{2.00.01}					% MTConnect version
 
 \preparedfor{MTConnect Institute and OPC Foundation}		% Should not change!!!
 \preparedby{MTConnect Institute, OPC Foundation}				% Author
@@ -109,14 +109,17 @@ style=alphabetic,
 \thispagestyle{fancy}
 
 \clearpage
+\listoffigures
+
+\clearpage
+\listoftables
+
+\clearpage
 
 \end{nolinenumbers}
 
 \input 00-legal.tex
 
-% ************************************************************************* %
-% ******************** ENTER DOCUMENT CONTENT BELOW *********************** %
-% ************************************************************************* %
 \glsresetall
 \pagenumbering{arabic}
 
@@ -128,7 +131,37 @@ style=alphabetic,
 
 \clearpage
 
-\input E01-condition-erratum.tex
+\begin{center}
+  \large{\getdocnum \space -- \getdoctitleshort}
+  
+  \large{\getdoctitlepart}
+  
+  \large{\gettitledesc}
+\end{center}
+
+\begin{mdframed}[linecolor=black,backgroundcolor=gray!30]
+  Clause 8.4.6: Replace 8.4.6 with the following:
+\end{mdframed}
+
+\setcounter{section}{8}
+\setcounter{subsection}{4}
+\setcounter{subsubsection}{5}
+
+\input 081-condition-streams.tex
+
+\clearpage
+
+\section{MTConnect OPC UA Types}\label{mtconnect_information_model}
+\FloatBarrier
+
+\begin{mdframed}[linecolor=black,backgroundcolor=gray!30]
+  Clause 9.4: Replace 9.4 with the following:
+\end{mdframed}
+
+\setcounter{subsection}{3}
+\setcounter{subsubsection}{0}
+
+\input ./model-sections/Conditions.tex
 
 \clearpage
 

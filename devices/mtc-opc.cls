@@ -145,6 +145,7 @@
 \newcommand\@doctitleshort{}
 \newcommand\@doctitlepart{}
 \newcommand\@doctitlesubpart{}
+\newcommand\@doctitledesc{}
 \newcommand\@versionnum{}
 \newcommand\@preparedfor{}
 \newcommand\@preparedby{}
@@ -157,6 +158,7 @@
 \newcommand\getdoctitle{\@doctitle}
 \newcommand\getdoctitlepart{\@doctitlepart}
 \newcommand\getdoctitlesubpart{\@doctitlesubpart}
+\newcommand\gettitledesc{\@doctitledesc}
 \newcommand\getdoctitleshort{\@doctitleshort}
 
 \newcommand{\doctitleshort}[1]{\gdef\@doctitleshort{#1}}
@@ -164,6 +166,7 @@
 \newcommand{\doctitle}[1]{\gdef\@doctitle{#1}}
 \newcommand{\doctitlepart}[1]{\gdef\@doctitlepart{#1}}
 \newcommand{\doctitlesubpart}[1]{\gdef\@doctitlesubpart{#1}}
+\newcommand{\doctitledesc}[1]{\gdef\@doctitledesc{#1}}
 \newcommand{\versionnum}[1]{\gdef\@versionnum{#1}}
 \newcommand{\preparedfor}[1]{\gdef\@preparedfor{#1}}
 \newcommand{\preparedby}[1]{\gdef\@preparedby{#1}}
@@ -188,7 +191,7 @@
       \LARGE{\@doctitlepart} \\%
       \parindent=0.5in%
       \vspace{6pt}%
-      \LARGE{\@doctitlesubpart} \\%
+      \LARGE{\@doctitledesc} \\%
       \parindent=0.5in%
       \vspace{1in}%
       \LARGE{\getversiontext\ \getversionnum} \\%
@@ -213,7 +216,7 @@
       \multicolumn{2}{|l|}{%%
         \usebox{\titlecontent}%
       }%
-      & \vspace{-2in}%
+      & \vspace{-3in}%
       \bfseries\cellcolor{light-gray}\center{\rotatebox[origin=lB]{270}{\LARGE{OPC UA Companion Specification \@doctitlesubpart}}} \\ %
       \tabucline{1-3} %
     \end{tabu}%

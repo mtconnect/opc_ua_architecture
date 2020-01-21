@@ -843,7 +843,7 @@ The \uamodel{SourceTimestamp} and \uamodel{Quality} will be handled as described
 The \mtuatype{MTMessageType} is a data item with an extended type that uses the \mtuatype{MessageDataType} to provide the \mtterm{NativeCode} and the \mtterm{Text} of the message. The \gls{CDATA} will be mapped to the \mtterm{Text} field and the \mtterm{NativeCode} will be mapped to the field of the UA \uamodel{DataType} if it is provided as an \mtmodel{attribute}.
 
 \begin{lstlisting}[firstnumber=last,escapechar=|,%
-    caption={Path Motion Program Normal},label={lst:path-motion-program-condition-3}]
+    caption={Controller Messages},label={lst:controller-message}]
   <ComponentStream componentId="a4a7bdf0" component="Path" name="P1">
     <Events>
       <Message sequence="6241" timestamp="2018-10-31T20:37:19.9981Z" nativeCode="755" dataItemId="m17f1750">SELECT GRIPPED SURFACE</Message>

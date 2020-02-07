@@ -1,4 +1,4 @@
-% Generated 2020-01-10 14:19:52 -0800
+% Generated 2020-02-07 14:32:13 -0800
 \subsection{Conditions} \label{model:Conditions}
 
 \begin{figure}[ht]
@@ -18,14 +18,15 @@
 
 \FloatBarrier
 
-The condition type is a derived from the UA \uamodel{ContitionType}. When the \mtmodel{Warning} or \mtmodel{Fault} state occurs, an \mtuatype{MTConditionEventType} \uamodel{Event} is created and with the \mtmodel{ActiveState} set to \uamodel{True} and \uamodel{Retain} set to \uamodel{True}.
-The severity is used to represent the MTConnect condition states of Warning and Fault with the values of 500 and 1000 respectively. 
+The condition type is derived from the UA \uamodel{ContitionType}. When the \mtmodel{Warning} or \mtmodel{Fault} state occurs, an \mtuatype{MTConditionEventType} \uamodel{Event} is created with the \mtmodel{ActiveState} set to \uamodel{True} and \uamodel{Retain} set to \uamodel{True}.
+The severity is used to represent the MTConnect condition states of Warning and Fault with the values of 500 and 1000 respectively.
 
-A new \uamodel{NodeId} will be created for every unique instance of the MTConnect \mtmodel{Condition} reported.  When the \mtmodel{Condition} goes back to Normal, the \mtmodel{ActiveState} is set  to \uamodel{False} and \uamodel{Retain} is also set to \uamodel{False} with the \uamodel{NodeId} of the associated \mtmodel{Condition}. If multiple MTConnect \mtmodel{Condition}s have been cleared at the same time, all currently active \mtuatype{MTConditionEventType} \uamodel{Event}s will need to be created as inactive.
+A new \uamodel{NodeId} will be created for every unique instance of the MTConnect \mtmodel{Condition} reported.  When the \mtmodel{Condition} goes back to Normal, the \mtmodel{ActiveState} is set  to \uamodel{False} and \uamodel{Retain} is also set to \uamodel{False} with the \uamodel{NodeId} of the associated \mtmodel{Condition}. If multiple MTConnect \mtmodel{Condition}s have been cleared at the same time, all currently active \mtuatype{MTConditionEventType} \uamodel{Event}s will need to deactivated.
 
 The \mtuatype{MTConditionEventType} must set the \uamodel{BaseEvent} \uamodel{SourceNode} to the related \mtuatype{MTConditionType} that represents the meta-data for this Condition.
 
-The \mtuatype{MTConditionEventType} will never be instantiated in the \uaterm{AddressSpace} as an \uamodel{Object}. 
+The \mtuatype{MTConditionEventType} will never be instantiated in the \uaterm{AddressSpace} as an \uamodel{Object}.
+ 
 
 
 \begin{table}[ht]
@@ -63,7 +64,6 @@ Has\-Property & Variable & Qualifier & Qualifier\-Data\-Type & Property\-Type & 
 
 \item \textbf{Allowable Values} for \texttt{MTSeverityDataType}
 \FloatBarrier
-
 
 
 
@@ -130,7 +130,7 @@ The \gls{BrowseName} of the condition uses the same naming convention as the  MT
 condition with \gls{type} of \mtmodel{TEMPERATURE} will have the browse name of 
 \mtmodel{TemperatureCondition} as opposed to the \mtuatype{MTSampleType} of \mtmodel{Temperature}.
 
-An XML element which provides the information and data reported from a piece of equipment for those dataitem elements defined with a category attribute of condition category in the mtconnectdevices document.
+The information and data reported from a piece of equipment for those DataItems defined with a  category of Condition.
 
 \begin{table}[ht]
 \centering 

@@ -23,7 +23,7 @@ module Extensions
 
   def xmi_documentation(e)
     comment = e.at('./ownedComment')
-    comment['body'].gsub(/<[\/]?[a-z]+>/, '') if comment
+    comment['body'].gsub(/<[\/]?[a-z]+>/, '') if comment and comment['body']
   end
 
   def get_multiplicity(r)

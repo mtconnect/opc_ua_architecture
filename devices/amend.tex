@@ -86,7 +86,7 @@ style=alphabetic,
     Document Number & \bfseries{ \getdocnum } & & \\ \tabucline[1pt]{2-2}
     Title: & {\getdoctitleshort \newline \getdoctitlepart \newline \gettitledesc} & Date: & \today \\  \tabucline[1pt]{2-2} \tabucline[1pt]{4-4}
     Version: & \getversiontext\ \getversionnum & Software: & LaTeX  \\ \tabucline[1pt]{2-2} \tabucline[1pt]{4-4}
-    Authors: & William Sobel, Randy Armstrong, John Turner, Russell Waddell, Shaurabh Singh & Source: & OPC\_UA\_MTConnect\_Errata\_\getversionnum.pdf \\  \tabucline[1pt]{2-2} \tabucline[1pt]{4-4}
+    Authors: & William Sobel & Source: & OPC\_UA\_MTConnect\_Errata\_\getversionnum.pdf \\  \tabucline[1pt]{2-2} \tabucline[1pt]{4-4}
     Owner: & MTConnect Institute & Status: &  \getversiontext \\
   \end{tabu}
 \end{mdframed}
@@ -142,6 +142,34 @@ style=alphabetic,
 \begin{mdframed}[linecolor=black,backgroundcolor=gray!30]
   Clause 8.4.6: Replace 8.4.6 with the following:
 \end{mdframed}
+
+
+\begin{lstlisting}[firstnumber=last,%
+    caption={Controller and Path Components and Their Data Items},label={lst:controller-component}]
+        <Controller id="p5add360">
+          <DataItems>
+            <DataItem id="x7ca94e0" type="EMERGENCY_STOP" category="EVENT" name="estop"/>
+            <DataItem id="m17f1750" type="MESSAGE" category="EVENT"/>
+          </DataItems>
+          <Components>
+            <Path id="a4a7bdf0" name="P1">
+              <DataItems>
+                <DataItem id="if36ff60" type="CONTROLLER_MODE" category="EVENT"/>
+                <DataItem id="a01c7f30" type="EXECUTION" category="EVENT"/>
+                <DataItem id="k8dd9030" type="PROGRAM" category="EVENT"/>
+                <DataItem id="r63f9b10" type="CONTROLLER_MODE_OVERRIDE" subType="OPTIONAL_STOP" category="EVENT"/>
+                <DataItem id="a557d330" type="LOGIC_PROGRAM" category="CONDITION"/>
+                <DataItem id="a5b23650" type="MOTION_PROGRAM" category="CONDITION"/>
+                <DataItem id="bbafe670" type="LINE" category="EVENT"/>
+                <DataItem id="d2e9e4a0" type="PART_COUNT" category="EVENT">
+                  <InitialValue>1</InitialValue>
+                </DataItem>
+                <DataItem id="r186cd60" type="PATH_POSITION" category="SAMPLE" units="MILLIMETER_3D"/>
+              </DataItems>
+            </Path>
+          </Components>
+        </Controller>
+\end{lstlisting}
 
 \setcounter{section}{8}
 \setcounter{subsection}{4}

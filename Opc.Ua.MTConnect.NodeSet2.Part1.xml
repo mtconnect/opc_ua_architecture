@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2020-02-07T22:17:11Z'>
+<UANodeSet xmlns:xsd='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd' xsi:schemaLocation='http://opcfoundation.org/UA/2011/03/UANodeSet.xsd UANodeSet.xsd' LastModified='2020-06-18T22:46:50Z'>
   <NamespaceUris>
     <Uri>http://opcfoundation.org/UA/MTConnect/v2/</Uri>
   </NamespaceUris>
   <Models>
-    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2020-02-07T22:17:11Z'>
-      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2020-02-07T22:17:11Z'/>
+    <Model ModelUri='http://opcfoundation.org/UA/MTConnect/v2/' Version='2.00' PublicationDate='2020-06-18T22:46:50Z'>
+      <RequiredModel ModelUri='http://opcfoundation.org/UA/' Version='1.04' PublicationDate='2020-06-18T22:46:50Z'/>
     </Model>
   </Models>
   <Aliases>
@@ -92,7 +92,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3630</Reference>
     </References>
     <Value>
-      <DateTime xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>2018-10-31T00:00:00Z</DateTime>
+      <DateTime xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>2020-06-05T00:00:00Z</DateTime>
     </Value>
   </UAVariable>
   <!-- http://opcfoundation.org/UA/MTConnect/2.0/::NamespaceUri : String[1] -->
@@ -118,7 +118,7 @@
       <Reference ReferenceType='HasProperty' IsForward='false'>ns=1;i=3630</Reference>
     </References>
     <Value>
-      <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>2.0</String>
+      <String xmlns='http://opcfoundation.org/UA/2008/02/Types.xsd'>2.00.01</String>
     </Value>
   </UAVariable>
   <!-- http://opcfoundation.org/UA/MTConnect/2.0/::StaticStringNodeIdPattern : String[1] -->
@@ -2740,9 +2740,10 @@ Y3R1cmVkVHlwZT4=
     <DisplayName>MTConditionClassType</DisplayName>
     <Description>
       The abstract type for all data items types that are specifically for
-      \mtmodel{CONDITION} \gls{category}. The information and data reported from
-      a piece of equipment for those DataItems defined with a category of
-      Condition.
+      \mtmodel{CONDITION} \gls{category}. An XML element which provides the
+      information and data reported from a piece of equipment for those dataitem
+      elements defined with a category attribute of condition category in the
+      mtconnectdevices document.
     </Description>
     <References>
       <!-- HasSubtype - (Reverse) - MTDataItemClassType ns=1;i=2425   -->
@@ -3166,7 +3167,9 @@ Y3R1cmVkVHlwZT4=
     <DisplayName>MTCoordinateSystemType</DisplayName>
     <Description>
       Represents the \mtmodel{coordinateSystem} attribute of the MTConnect
-      \gls{MTDataItem}.
+      \gls{MTDataItem}. It is a reference system that associates a unique set of
+      n parameters with each point in an n-dimensional space. Ref: ISO
+      10303-218:2004
     </Description>
     <References>
       <!-- HasSubtype - (Reverse) - Enumeration i=29   -->
@@ -3176,7 +3179,9 @@ Y3R1cmVkVHlwZT4=
     </References>
     <Description>
       Represents the \mtmodel{coordinateSystem} attribute of the MTConnect
-      \gls{MTDataItem}.
+      \gls{MTDataItem}. It is a reference system that associates a unique set of
+      n parameters with each point in an n-dimensional space. Ref: ISO
+      10303-218:2004
     </Description>
     <Definition Name='MTCoordinateSystemType'>
       <Field Name='MACHINE' Value='0'>
@@ -3197,7 +3202,9 @@ Y3R1cmVkVHlwZT4=
     <DisplayName>EnumStrings</DisplayName>
     <Description>
       Represents the \mtmodel{coordinateSystem} attribute of the MTConnect
-      \gls{MTDataItem}.
+      \gls{MTDataItem}. It is a reference system that associates a unique set of
+      n parameters with each point in an n-dimensional space. Ref: ISO
+      10303-218:2004
     </Description>
     <References>
       <!-- HasTypeDefinition -  - PropertyType i=68   -->
@@ -3225,7 +3232,9 @@ Y3R1cmVkVHlwZT4=
     <DisplayName>Default XML</DisplayName>
     <Description>
       Represents the \mtmodel{coordinateSystem} attribute of the MTConnect
-      \gls{MTDataItem}.
+      \gls{MTDataItem}. It is a reference system that associates a unique set of
+      n parameters with each point in an n-dimensional space. Ref: ISO
+      10303-218:2004
     </Description>
     <References>
       <!-- HasEncoding - (Reverse) - MTCoordinateSystemType ns=1;i=2635   -->
@@ -3241,7 +3250,9 @@ Y3R1cmVkVHlwZT4=
     <DisplayName>MTCoordinateSystemType</DisplayName>
     <Description>
       Represents the \mtmodel{coordinateSystem} attribute of the MTConnect
-      \gls{MTDataItem}.
+      \gls{MTDataItem}. It is a reference system that associates a unique set of
+      n parameters with each point in an n-dimensional space. Ref: ISO
+      10303-218:2004
     </Description>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
@@ -5985,25 +5996,24 @@ dHVyZWRUeXBlPg==
   <UAObjectType NodeId='ns=1;i=4326' BrowseName='1:MTConditionEventType'>
     <DisplayName>MTConditionEventType</DisplayName>
     <Description>
-       p {padding:0px; margin:0px;} The condition type is derived from the UA
-      \uamodel{ContitionType}. When the \mtmodel{Warning} or \mtmodel{Fault}
-      state occurs, an \mtuatype{MTConditionEventType} \uamodel{Event} is
-      created with the \mtmodel{ActiveState} set to \uamodel{True} and
-      \uamodel{Retain} set to \uamodel{True}.The severity is used to represent
-      the MTConnect condition states of Warning and Fault with the values of 500
-      and 1000 respectively.A new \uamodel{NodeId} will be created for every
-      unique instance of the MTConnect \mtmodel{Condition} reported.&amp;#160;
-      When the \mtmodel{Condition} goes back to Normal, the
-      \mtmodel{ActiveState} is set&amp;#160; to \uamodel{False} and
+      The condition type is derived from the UA \uamodel{ContitionType}. When
+      the \mtmodel{Warning} or \mtmodel{Fault} state occurs, an
+      \mtuatype{MTConditionEventType} \uamodel{Event} is created with the
+      \mtmodel{ActiveState} set to \uamodel{True} and \uamodel{Retain} set to
+      \uamodel{True}. The severity is used to represent the MTConnect condition
+      states of Warning and Fault with the values of 500 and 1000 respectively.
+      A new \uamodel{NodeId} will be created for every unique instance of the
+      MTConnect \mtmodel{Condition} reported. When the \mtmodel{Condition} goes
+      back to Normal, the \mtmodel{ActiveState} is set to \uamodel{False} and
       \uamodel{Retain} is also set to \uamodel{False} with the \uamodel{NodeId}
       of the associated \mtmodel{Condition}. If multiple MTConnect
       \mtmodel{Condition}s have been cleared at the same time, all currently
-      active \mtuatype{MTConditionEventType} \uamodel{Event}s will need to be
-      created as active.The \mtuatype{MTConditionEventType} must set the
+      active \mtuatype{MTConditionEventType} \uamodel{Event}s will need to
+      deactivated. The \mtuatype{MTConditionEventType} must set the
       \uamodel{BaseEvent} \uamodel{SourceNode} to the related
       \mtuatype{MTConditionType} that represents the meta-data for this
-      Condition.The \mtuatype{MTConditionEventType} will never be instantiated
-      in the \uaterm{AddressSpace} as an \uamodel{Object}. &amp;#160; 
+      Condition. The \mtuatype{MTConditionEventType} will never be instantiated
+      in the \uaterm{AddressSpace} as an \uamodel{Object}. 
     </Description>
     <References>
       <!-- HasSubtype - (Reverse) - ConditionType i=2782   -->
@@ -6030,25 +6040,24 @@ dHVyZWRUeXBlPg==
   <UAVariable NodeId='ns=1;i=4336' BrowseName='1:ActiveState' ValueRank='-1' DataType='LocalizedText' ParentNodeId='ns=1;i=4326'>
     <DisplayName>ActiveState</DisplayName>
     <Description>
-       p {padding:0px; margin:0px;} The condition type is derived from the UA
-      \uamodel{ContitionType}. When the \mtmodel{Warning} or \mtmodel{Fault}
-      state occurs, an \mtuatype{MTConditionEventType} \uamodel{Event} is
-      created with the \mtmodel{ActiveState} set to \uamodel{True} and
-      \uamodel{Retain} set to \uamodel{True}.The severity is used to represent
-      the MTConnect condition states of Warning and Fault with the values of 500
-      and 1000 respectively.A new \uamodel{NodeId} will be created for every
-      unique instance of the MTConnect \mtmodel{Condition} reported.&amp;#160;
-      When the \mtmodel{Condition} goes back to Normal, the
-      \mtmodel{ActiveState} is set&amp;#160; to \uamodel{False} and
+      The condition type is derived from the UA \uamodel{ContitionType}. When
+      the \mtmodel{Warning} or \mtmodel{Fault} state occurs, an
+      \mtuatype{MTConditionEventType} \uamodel{Event} is created with the
+      \mtmodel{ActiveState} set to \uamodel{True} and \uamodel{Retain} set to
+      \uamodel{True}. The severity is used to represent the MTConnect condition
+      states of Warning and Fault with the values of 500 and 1000 respectively.
+      A new \uamodel{NodeId} will be created for every unique instance of the
+      MTConnect \mtmodel{Condition} reported. When the \mtmodel{Condition} goes
+      back to Normal, the \mtmodel{ActiveState} is set to \uamodel{False} and
       \uamodel{Retain} is also set to \uamodel{False} with the \uamodel{NodeId}
       of the associated \mtmodel{Condition}. If multiple MTConnect
       \mtmodel{Condition}s have been cleared at the same time, all currently
-      active \mtuatype{MTConditionEventType} \uamodel{Event}s will need to be
-      created as active.The \mtuatype{MTConditionEventType} must set the
+      active \mtuatype{MTConditionEventType} \uamodel{Event}s will need to
+      deactivated. The \mtuatype{MTConditionEventType} must set the
       \uamodel{BaseEvent} \uamodel{SourceNode} to the related
       \mtuatype{MTConditionType} that represents the meta-data for this
-      Condition.The \mtuatype{MTConditionEventType} will never be instantiated
-      in the \uaterm{AddressSpace} as an \uamodel{Object}. &amp;#160; 
+      Condition. The \mtuatype{MTConditionEventType} will never be instantiated
+      in the \uaterm{AddressSpace} as an \uamodel{Object}. 
     </Description>
     <References>
       <!-- HasTypeDefinition -  - LocalizedText i=68 PropertyType  -->
@@ -6063,25 +6072,24 @@ dHVyZWRUeXBlPg==
   <UAVariable NodeId='ns=1;i=4327' BrowseName='1:DataItemId' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=4326'>
     <DisplayName>DataItemId</DisplayName>
     <Description>
-       p {padding:0px; margin:0px;} The condition type is derived from the UA
-      \uamodel{ContitionType}. When the \mtmodel{Warning} or \mtmodel{Fault}
-      state occurs, an \mtuatype{MTConditionEventType} \uamodel{Event} is
-      created with the \mtmodel{ActiveState} set to \uamodel{True} and
-      \uamodel{Retain} set to \uamodel{True}.The severity is used to represent
-      the MTConnect condition states of Warning and Fault with the values of 500
-      and 1000 respectively.A new \uamodel{NodeId} will be created for every
-      unique instance of the MTConnect \mtmodel{Condition} reported.&amp;#160;
-      When the \mtmodel{Condition} goes back to Normal, the
-      \mtmodel{ActiveState} is set&amp;#160; to \uamodel{False} and
+      The condition type is derived from the UA \uamodel{ContitionType}. When
+      the \mtmodel{Warning} or \mtmodel{Fault} state occurs, an
+      \mtuatype{MTConditionEventType} \uamodel{Event} is created with the
+      \mtmodel{ActiveState} set to \uamodel{True} and \uamodel{Retain} set to
+      \uamodel{True}. The severity is used to represent the MTConnect condition
+      states of Warning and Fault with the values of 500 and 1000 respectively.
+      A new \uamodel{NodeId} will be created for every unique instance of the
+      MTConnect \mtmodel{Condition} reported. When the \mtmodel{Condition} goes
+      back to Normal, the \mtmodel{ActiveState} is set to \uamodel{False} and
       \uamodel{Retain} is also set to \uamodel{False} with the \uamodel{NodeId}
       of the associated \mtmodel{Condition}. If multiple MTConnect
       \mtmodel{Condition}s have been cleared at the same time, all currently
-      active \mtuatype{MTConditionEventType} \uamodel{Event}s will need to be
-      created as active.The \mtuatype{MTConditionEventType} must set the
+      active \mtuatype{MTConditionEventType} \uamodel{Event}s will need to
+      deactivated. The \mtuatype{MTConditionEventType} must set the
       \uamodel{BaseEvent} \uamodel{SourceNode} to the related
       \mtuatype{MTConditionType} that represents the meta-data for this
-      Condition.The \mtuatype{MTConditionEventType} will never be instantiated
-      in the \uaterm{AddressSpace} as an \uamodel{Object}. &amp;#160; 
+      Condition. The \mtuatype{MTConditionEventType} will never be instantiated
+      in the \uaterm{AddressSpace} as an \uamodel{Object}. 
     </Description>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
@@ -6096,25 +6104,24 @@ dHVyZWRUeXBlPg==
   <UAVariable NodeId='ns=1;i=4328' BrowseName='1:MTSeverity' ValueRank='-1' DataType='ns=1;i=2669' ParentNodeId='ns=1;i=4326'>
     <DisplayName>MTSeverity</DisplayName>
     <Description>
-       p {padding:0px; margin:0px;} The condition type is derived from the UA
-      \uamodel{ContitionType}. When the \mtmodel{Warning} or \mtmodel{Fault}
-      state occurs, an \mtuatype{MTConditionEventType} \uamodel{Event} is
-      created with the \mtmodel{ActiveState} set to \uamodel{True} and
-      \uamodel{Retain} set to \uamodel{True}.The severity is used to represent
-      the MTConnect condition states of Warning and Fault with the values of 500
-      and 1000 respectively.A new \uamodel{NodeId} will be created for every
-      unique instance of the MTConnect \mtmodel{Condition} reported.&amp;#160;
-      When the \mtmodel{Condition} goes back to Normal, the
-      \mtmodel{ActiveState} is set&amp;#160; to \uamodel{False} and
+      The condition type is derived from the UA \uamodel{ContitionType}. When
+      the \mtmodel{Warning} or \mtmodel{Fault} state occurs, an
+      \mtuatype{MTConditionEventType} \uamodel{Event} is created with the
+      \mtmodel{ActiveState} set to \uamodel{True} and \uamodel{Retain} set to
+      \uamodel{True}. The severity is used to represent the MTConnect condition
+      states of Warning and Fault with the values of 500 and 1000 respectively.
+      A new \uamodel{NodeId} will be created for every unique instance of the
+      MTConnect \mtmodel{Condition} reported. When the \mtmodel{Condition} goes
+      back to Normal, the \mtmodel{ActiveState} is set to \uamodel{False} and
       \uamodel{Retain} is also set to \uamodel{False} with the \uamodel{NodeId}
       of the associated \mtmodel{Condition}. If multiple MTConnect
       \mtmodel{Condition}s have been cleared at the same time, all currently
-      active \mtuatype{MTConditionEventType} \uamodel{Event}s will need to be
-      created as active.The \mtuatype{MTConditionEventType} must set the
+      active \mtuatype{MTConditionEventType} \uamodel{Event}s will need to
+      deactivated. The \mtuatype{MTConditionEventType} must set the
       \uamodel{BaseEvent} \uamodel{SourceNode} to the related
       \mtuatype{MTConditionType} that represents the meta-data for this
-      Condition.The \mtuatype{MTConditionEventType} will never be instantiated
-      in the \uaterm{AddressSpace} as an \uamodel{Object}. &amp;#160; 
+      Condition. The \mtuatype{MTConditionEventType} will never be instantiated
+      in the \uaterm{AddressSpace} as an \uamodel{Object}. 
     </Description>
     <References>
       <!-- HasTypeDefinition -  - MTSeverityDataType i=68 PropertyType  -->
@@ -6129,25 +6136,24 @@ dHVyZWRUeXBlPg==
   <UAVariable NodeId='ns=1;i=4329' BrowseName='1:MTSubTypeName' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=4326'>
     <DisplayName>MTSubTypeName</DisplayName>
     <Description>
-       p {padding:0px; margin:0px;} The condition type is derived from the UA
-      \uamodel{ContitionType}. When the \mtmodel{Warning} or \mtmodel{Fault}
-      state occurs, an \mtuatype{MTConditionEventType} \uamodel{Event} is
-      created with the \mtmodel{ActiveState} set to \uamodel{True} and
-      \uamodel{Retain} set to \uamodel{True}.The severity is used to represent
-      the MTConnect condition states of Warning and Fault with the values of 500
-      and 1000 respectively.A new \uamodel{NodeId} will be created for every
-      unique instance of the MTConnect \mtmodel{Condition} reported.&amp;#160;
-      When the \mtmodel{Condition} goes back to Normal, the
-      \mtmodel{ActiveState} is set&amp;#160; to \uamodel{False} and
+      The condition type is derived from the UA \uamodel{ContitionType}. When
+      the \mtmodel{Warning} or \mtmodel{Fault} state occurs, an
+      \mtuatype{MTConditionEventType} \uamodel{Event} is created with the
+      \mtmodel{ActiveState} set to \uamodel{True} and \uamodel{Retain} set to
+      \uamodel{True}. The severity is used to represent the MTConnect condition
+      states of Warning and Fault with the values of 500 and 1000 respectively.
+      A new \uamodel{NodeId} will be created for every unique instance of the
+      MTConnect \mtmodel{Condition} reported. When the \mtmodel{Condition} goes
+      back to Normal, the \mtmodel{ActiveState} is set to \uamodel{False} and
       \uamodel{Retain} is also set to \uamodel{False} with the \uamodel{NodeId}
       of the associated \mtmodel{Condition}. If multiple MTConnect
       \mtmodel{Condition}s have been cleared at the same time, all currently
-      active \mtuatype{MTConditionEventType} \uamodel{Event}s will need to be
-      created as active.The \mtuatype{MTConditionEventType} must set the
+      active \mtuatype{MTConditionEventType} \uamodel{Event}s will need to
+      deactivated. The \mtuatype{MTConditionEventType} must set the
       \uamodel{BaseEvent} \uamodel{SourceNode} to the related
       \mtuatype{MTConditionType} that represents the meta-data for this
-      Condition.The \mtuatype{MTConditionEventType} will never be instantiated
-      in the \uaterm{AddressSpace} as an \uamodel{Object}. &amp;#160; 
+      Condition. The \mtuatype{MTConditionEventType} will never be instantiated
+      in the \uaterm{AddressSpace} as an \uamodel{Object}. 
     </Description>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
@@ -6162,25 +6168,24 @@ dHVyZWRUeXBlPg==
   <UAVariable NodeId='ns=1;i=4330' BrowseName='1:MTTypeName' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=4326'>
     <DisplayName>MTTypeName</DisplayName>
     <Description>
-       p {padding:0px; margin:0px;} The condition type is derived from the UA
-      \uamodel{ContitionType}. When the \mtmodel{Warning} or \mtmodel{Fault}
-      state occurs, an \mtuatype{MTConditionEventType} \uamodel{Event} is
-      created with the \mtmodel{ActiveState} set to \uamodel{True} and
-      \uamodel{Retain} set to \uamodel{True}.The severity is used to represent
-      the MTConnect condition states of Warning and Fault with the values of 500
-      and 1000 respectively.A new \uamodel{NodeId} will be created for every
-      unique instance of the MTConnect \mtmodel{Condition} reported.&amp;#160;
-      When the \mtmodel{Condition} goes back to Normal, the
-      \mtmodel{ActiveState} is set&amp;#160; to \uamodel{False} and
+      The condition type is derived from the UA \uamodel{ContitionType}. When
+      the \mtmodel{Warning} or \mtmodel{Fault} state occurs, an
+      \mtuatype{MTConditionEventType} \uamodel{Event} is created with the
+      \mtmodel{ActiveState} set to \uamodel{True} and \uamodel{Retain} set to
+      \uamodel{True}. The severity is used to represent the MTConnect condition
+      states of Warning and Fault with the values of 500 and 1000 respectively.
+      A new \uamodel{NodeId} will be created for every unique instance of the
+      MTConnect \mtmodel{Condition} reported. When the \mtmodel{Condition} goes
+      back to Normal, the \mtmodel{ActiveState} is set to \uamodel{False} and
       \uamodel{Retain} is also set to \uamodel{False} with the \uamodel{NodeId}
       of the associated \mtmodel{Condition}. If multiple MTConnect
       \mtmodel{Condition}s have been cleared at the same time, all currently
-      active \mtuatype{MTConditionEventType} \uamodel{Event}s will need to be
-      created as active.The \mtuatype{MTConditionEventType} must set the
+      active \mtuatype{MTConditionEventType} \uamodel{Event}s will need to
+      deactivated. The \mtuatype{MTConditionEventType} must set the
       \uamodel{BaseEvent} \uamodel{SourceNode} to the related
       \mtuatype{MTConditionType} that represents the meta-data for this
-      Condition.The \mtuatype{MTConditionEventType} will never be instantiated
-      in the \uaterm{AddressSpace} as an \uamodel{Object}. &amp;#160; 
+      Condition. The \mtuatype{MTConditionEventType} will never be instantiated
+      in the \uaterm{AddressSpace} as an \uamodel{Object}. 
     </Description>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
@@ -6195,25 +6200,24 @@ dHVyZWRUeXBlPg==
   <UAVariable NodeId='ns=1;i=4331' BrowseName='1:NativeCode' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=4326'>
     <DisplayName>NativeCode</DisplayName>
     <Description>
-       p {padding:0px; margin:0px;} The condition type is derived from the UA
-      \uamodel{ContitionType}. When the \mtmodel{Warning} or \mtmodel{Fault}
-      state occurs, an \mtuatype{MTConditionEventType} \uamodel{Event} is
-      created with the \mtmodel{ActiveState} set to \uamodel{True} and
-      \uamodel{Retain} set to \uamodel{True}.The severity is used to represent
-      the MTConnect condition states of Warning and Fault with the values of 500
-      and 1000 respectively.A new \uamodel{NodeId} will be created for every
-      unique instance of the MTConnect \mtmodel{Condition} reported.&amp;#160;
-      When the \mtmodel{Condition} goes back to Normal, the
-      \mtmodel{ActiveState} is set&amp;#160; to \uamodel{False} and
+      The condition type is derived from the UA \uamodel{ContitionType}. When
+      the \mtmodel{Warning} or \mtmodel{Fault} state occurs, an
+      \mtuatype{MTConditionEventType} \uamodel{Event} is created with the
+      \mtmodel{ActiveState} set to \uamodel{True} and \uamodel{Retain} set to
+      \uamodel{True}. The severity is used to represent the MTConnect condition
+      states of Warning and Fault with the values of 500 and 1000 respectively.
+      A new \uamodel{NodeId} will be created for every unique instance of the
+      MTConnect \mtmodel{Condition} reported. When the \mtmodel{Condition} goes
+      back to Normal, the \mtmodel{ActiveState} is set to \uamodel{False} and
       \uamodel{Retain} is also set to \uamodel{False} with the \uamodel{NodeId}
       of the associated \mtmodel{Condition}. If multiple MTConnect
       \mtmodel{Condition}s have been cleared at the same time, all currently
-      active \mtuatype{MTConditionEventType} \uamodel{Event}s will need to be
-      created as active.The \mtuatype{MTConditionEventType} must set the
+      active \mtuatype{MTConditionEventType} \uamodel{Event}s will need to
+      deactivated. The \mtuatype{MTConditionEventType} must set the
       \uamodel{BaseEvent} \uamodel{SourceNode} to the related
       \mtuatype{MTConditionType} that represents the meta-data for this
-      Condition.The \mtuatype{MTConditionEventType} will never be instantiated
-      in the \uaterm{AddressSpace} as an \uamodel{Object}. &amp;#160; 
+      Condition. The \mtuatype{MTConditionEventType} will never be instantiated
+      in the \uaterm{AddressSpace} as an \uamodel{Object}. 
     </Description>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
@@ -6228,25 +6232,24 @@ dHVyZWRUeXBlPg==
   <UAVariable NodeId='ns=1;i=4332' BrowseName='1:NativeSeverity' ValueRank='-1' DataType='String' ParentNodeId='ns=1;i=4326'>
     <DisplayName>NativeSeverity</DisplayName>
     <Description>
-       p {padding:0px; margin:0px;} The condition type is derived from the UA
-      \uamodel{ContitionType}. When the \mtmodel{Warning} or \mtmodel{Fault}
-      state occurs, an \mtuatype{MTConditionEventType} \uamodel{Event} is
-      created with the \mtmodel{ActiveState} set to \uamodel{True} and
-      \uamodel{Retain} set to \uamodel{True}.The severity is used to represent
-      the MTConnect condition states of Warning and Fault with the values of 500
-      and 1000 respectively.A new \uamodel{NodeId} will be created for every
-      unique instance of the MTConnect \mtmodel{Condition} reported.&amp;#160;
-      When the \mtmodel{Condition} goes back to Normal, the
-      \mtmodel{ActiveState} is set&amp;#160; to \uamodel{False} and
+      The condition type is derived from the UA \uamodel{ContitionType}. When
+      the \mtmodel{Warning} or \mtmodel{Fault} state occurs, an
+      \mtuatype{MTConditionEventType} \uamodel{Event} is created with the
+      \mtmodel{ActiveState} set to \uamodel{True} and \uamodel{Retain} set to
+      \uamodel{True}. The severity is used to represent the MTConnect condition
+      states of Warning and Fault with the values of 500 and 1000 respectively.
+      A new \uamodel{NodeId} will be created for every unique instance of the
+      MTConnect \mtmodel{Condition} reported. When the \mtmodel{Condition} goes
+      back to Normal, the \mtmodel{ActiveState} is set to \uamodel{False} and
       \uamodel{Retain} is also set to \uamodel{False} with the \uamodel{NodeId}
       of the associated \mtmodel{Condition}. If multiple MTConnect
       \mtmodel{Condition}s have been cleared at the same time, all currently
-      active \mtuatype{MTConditionEventType} \uamodel{Event}s will need to be
-      created as active.The \mtuatype{MTConditionEventType} must set the
+      active \mtuatype{MTConditionEventType} \uamodel{Event}s will need to
+      deactivated. The \mtuatype{MTConditionEventType} must set the
       \uamodel{BaseEvent} \uamodel{SourceNode} to the related
       \mtuatype{MTConditionType} that represents the meta-data for this
-      Condition.The \mtuatype{MTConditionEventType} will never be instantiated
-      in the \uaterm{AddressSpace} as an \uamodel{Object}. &amp;#160; 
+      Condition. The \mtuatype{MTConditionEventType} will never be instantiated
+      in the \uaterm{AddressSpace} as an \uamodel{Object}. 
     </Description>
     <References>
       <!-- HasTypeDefinition -  - String i=68 PropertyType  -->
@@ -6261,25 +6264,24 @@ dHVyZWRUeXBlPg==
   <UAVariable NodeId='ns=1;i=4333' BrowseName='1:Qualifier' ValueRank='-1' DataType='ns=1;i=2668' ParentNodeId='ns=1;i=4326'>
     <DisplayName>Qualifier</DisplayName>
     <Description>
-       p {padding:0px; margin:0px;} The condition type is derived from the UA
-      \uamodel{ContitionType}. When the \mtmodel{Warning} or \mtmodel{Fault}
-      state occurs, an \mtuatype{MTConditionEventType} \uamodel{Event} is
-      created with the \mtmodel{ActiveState} set to \uamodel{True} and
-      \uamodel{Retain} set to \uamodel{True}.The severity is used to represent
-      the MTConnect condition states of Warning and Fault with the values of 500
-      and 1000 respectively.A new \uamodel{NodeId} will be created for every
-      unique instance of the MTConnect \mtmodel{Condition} reported.&amp;#160;
-      When the \mtmodel{Condition} goes back to Normal, the
-      \mtmodel{ActiveState} is set&amp;#160; to \uamodel{False} and
+      The condition type is derived from the UA \uamodel{ContitionType}. When
+      the \mtmodel{Warning} or \mtmodel{Fault} state occurs, an
+      \mtuatype{MTConditionEventType} \uamodel{Event} is created with the
+      \mtmodel{ActiveState} set to \uamodel{True} and \uamodel{Retain} set to
+      \uamodel{True}. The severity is used to represent the MTConnect condition
+      states of Warning and Fault with the values of 500 and 1000 respectively.
+      A new \uamodel{NodeId} will be created for every unique instance of the
+      MTConnect \mtmodel{Condition} reported. When the \mtmodel{Condition} goes
+      back to Normal, the \mtmodel{ActiveState} is set to \uamodel{False} and
       \uamodel{Retain} is also set to \uamodel{False} with the \uamodel{NodeId}
       of the associated \mtmodel{Condition}. If multiple MTConnect
       \mtmodel{Condition}s have been cleared at the same time, all currently
-      active \mtuatype{MTConditionEventType} \uamodel{Event}s will need to be
-      created as active.The \mtuatype{MTConditionEventType} must set the
+      active \mtuatype{MTConditionEventType} \uamodel{Event}s will need to
+      deactivated. The \mtuatype{MTConditionEventType} must set the
       \uamodel{BaseEvent} \uamodel{SourceNode} to the related
       \mtuatype{MTConditionType} that represents the meta-data for this
-      Condition.The \mtuatype{MTConditionEventType} will never be instantiated
-      in the \uaterm{AddressSpace} as an \uamodel{Object}. &amp;#160; 
+      Condition. The \mtuatype{MTConditionEventType} will never be instantiated
+      in the \uaterm{AddressSpace} as an \uamodel{Object}. 
     </Description>
     <References>
       <!-- HasTypeDefinition -  - QualifierDataType i=68 PropertyType  -->
@@ -6300,9 +6302,10 @@ dHVyZWRUeXBlPg==
       MTConnect \gls{MTDataItem} types with \gls{MTCondition} appended as a
       suffix. For example the condition with \gls{type} of \mtmodel{TEMPERATURE}
       will have the browse name of \mtmodel{TemperatureCondition} as opposed to
-      the \mtuatype{MTSampleType} of \mtmodel{Temperature}. The information and
-      data reported from a piece of equipment for those DataItems defined with a
-      category of Condition.
+      the \mtuatype{MTSampleType} of \mtmodel{Temperature}. An XML element which
+      provides the information and data reported from a piece of equipment for
+      those dataitem elements defined with a category attribute of condition
+      category in the mtconnectdevices document.
     </Description>
     <References>
       <!-- HasSubtype - (Reverse) - BaseObjectType i=58   -->
@@ -6592,14 +6595,13 @@ dHVyZWRUeXBlPg==
   <!-- Definition of Enumeration MTSeverityDataType ns=1;i=2669 -->
   <UADataType NodeId='ns=1;i=2669' BrowseName='1:MTSeverityDataType'>
     <DisplayName>MTSeverityDataType</DisplayName>
-    <Description> </Description>
     <References>
       <!-- HasSubtype - (Reverse) - Enumeration i=29   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>i=29</Reference>
       <!-- HasProperty -  - EnumStrings ns=1;i=2937   -->
       <Reference ReferenceType='HasProperty'>ns=1;i=2937</Reference>
     </References>
-    <Description> </Description>
+    <Description></Description>
     <Definition Name='MTSeverityDataType'>
       <Field Name='FAULT' Value='0'>
         <Description>Fault value for a condition element.</Description>
@@ -6615,7 +6617,6 @@ dHVyZWRUeXBlPg==
   <!-- MTSeverityDataType::EnumStrings ns=1;i=2937 -->
   <UAVariable NodeId='ns=1;i=2937' BrowseName='1:EnumStrings' ValueRank='1' DataType='LocalizedText' ParentNodeId='ns=1;i=2669'>
     <DisplayName>EnumStrings</DisplayName>
-    <Description> </Description>
     <References>
       <!-- HasTypeDefinition -  - PropertyType i=68   -->
       <Reference ReferenceType='HasTypeDefinition'>i=68</Reference>
@@ -6644,7 +6645,6 @@ dHVyZWRUeXBlPg==
   <!-- Default XML encoding of MTSeverityDataType -->
   <UAObject NodeId='ns=1;i=2941' BrowseName='Default XML'>
     <DisplayName>Default XML</DisplayName>
-    <Description> </Description>
     <References>
       <!-- HasEncoding - (Reverse) - MTSeverityDataType ns=1;i=2669   -->
       <Reference ReferenceType='HasEncoding' IsForward='false'>ns=1;i=2669</Reference>
@@ -6657,7 +6657,6 @@ dHVyZWRUeXBlPg==
   <!-- XML DataTypeDescription for MTSeverityDataType -->
   <UAVariable NodeId='ns=1;i=2942' BrowseName='1:MTSeverityDataType' DataType='String' ParentNodeId='ns=1;i=2733'>
     <DisplayName>MTSeverityDataType</DisplayName>
-    <Description> </Description>
     <References>
       <!-- HasTypeDefinition -  - DataTypeDescriptionType i=69   -->
       <Reference ReferenceType='HasTypeDefinition'>i=69</Reference>
@@ -6805,8 +6804,8 @@ dHVyZWRUeXBlPg==
   <UAObjectType NodeId='ns=1;i=2273' BrowseName='1:AmperageClassType'>
     <DisplayName>AmperageClassType</DisplayName>
     <Description>
-      The measurement of electrical current. $AMPERE$ The measurement of
-      electrical current.
+      The measurement of electrical current. $AMPERE$ DEPRECATED in Version 1.6.
+      Replaced by amperageac sample and amperagedc sample.
     </Description>
     <References>
       <!-- HasSubtype - (Reverse) - MTSampleClassType ns=1;i=2345   -->
@@ -7260,8 +7259,9 @@ dHVyZWRUeXBlPg==
   <UAObjectType NodeId='ns=1;i=2341' BrowseName='1:VoltageClassType'>
     <DisplayName>VoltageClassType</DisplayName>
     <Description>
-      The measurement of electrical potential between two points. $VOLT$ The
-      measurement of electrical potential between two points.
+      The measurement of electrical potential between two points. $VOLT$
+      DEPRECATED in Version 1.6. Replaced by voltageac sample and voltagedc
+      sample.
     </Description>
     <References>
       <!-- HasSubtype - (Reverse) - MTSampleClassType ns=1;i=2345   -->
@@ -10689,6 +10689,10 @@ dHVyZWRUeXBlPg==
   <!-- Definition of Object ToolSubClassType ns=1;i=2602 -->
   <UAObjectType NodeId='ns=1;i=2602' BrowseName='1:ToolSubClassType'>
     <DisplayName>ToolSubClassType</DisplayName>
+    <Description>
+       coordinate system referenced to the tool or to the end effector attached
+      to the mechanical interface. Ref:ISO 9787:2013
+    </Description>
     <References>
       <!-- HasSubtype - (Reverse) - MTDataItemSubClassType ns=1;i=2476   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2476</Reference>
@@ -10768,7 +10772,10 @@ dHVyZWRUeXBlPg==
   <!-- Definition of Object WorkpieceSubClassType ns=1;i=2616 -->
   <UAObjectType NodeId='ns=1;i=2616' BrowseName='1:WorkpieceSubClassType'>
     <DisplayName>WorkpieceSubClassType</DisplayName>
-    <Description>A physical object being or to be worked on with a tool or machine.</Description>
+    <Description>
+      A physical object being or to be worked on with a tool or machine. An
+      object or material on which a form of work is performed.
+    </Description>
     <References>
       <!-- HasSubtype - (Reverse) - MTDataItemSubClassType ns=1;i=2476   -->
       <Reference ReferenceType='HasSubtype' IsForward='false'>ns=1;i=2476</Reference>

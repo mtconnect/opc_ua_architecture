@@ -368,7 +368,7 @@
   type=mtc,
   category=model,
   name={Condition},
-  description={The information and data reported from a piece of equipment for those DataItems defined with a  category of Condition.}
+  description={An XML element which provides the information and data reported from a piece of equipment for those \gls{dataitem} elements defined with a \gls{category} attribute of \gls{condition category} in the \gls{mtconnectdevices} document.}
 }
 
 
@@ -813,9 +813,9 @@
   type=mtc,
   category=model,
   name={nativeName},
-  description={The common name normally associated with a piece of equipment or an element.}
+  description={The common name normally associated with a piece of equipment or an element.},
+  kind={attribute}
 }
-
 
 \newglossaryentry{nativescale}
 {
@@ -982,12 +982,9 @@
 
 \newglossaryentry{reference term}
 {
-  type={mtc},
-  category=term,
   name={Reference},
   plural={References},
-  kind={element},
-  description={\gls{reference} is a pointer to information that is associated with another \gls{structural element}.}
+  description={\gls{reference term} is a pointer to information that is associated with another \gls{structural element}.}
 }
 
 \newglossaryentry{references}
@@ -1330,9 +1327,9 @@
   type=mtc,
   category=model,
   name={subType},
-  description={A sub-categorization of the data item \gls{type}.}
+  description={A sub-categorization of the data item \gls{type}.},
+  kind={attribute}
 }
-
 
 \newglossaryentry{systems}
 {
@@ -2030,16 +2027,14 @@
 {
   type=mtc,
   category=model,
-  name={AMPERAGE},
-  elementname=\cfont{Amperage},
-  description={The measurement of electrical current.},
-  units=\cfont{\gls{ampere}},
+  name=\deprecated{AMPERAGE},
+  elementname=\deprecated{\cfont{Amperage}},
+  description={\DEPRECATED in \textit{Version 1.6}. Replaced by \gls{amperageac sample} and \gls{amperagedc sample}.},
+  units=\deprecated{\cfont{\gls{ampere}}},
   kind={type,sample},
   subtype={\gls{alternating subtype}, \gls{direct subtype}, \gls{actual subtype}, \gls{target subtype}},
   facet={\gls{float}}
 }
-
-
 
 \newglossaryentry{direct subtype}
 {
@@ -2743,15 +2738,14 @@
 {
   type=mtc,
   category=model,
-  name={VOLTAGE},
-  elementname=\cfont{Voltage},
-  description={The measurement of electrical potential between two points.},
-  units=\cfont{\gls{volt}},
+  name=\deprecated{VOLTAGE},
+  elementname=\deprecated{\cfont{Voltage}},
+  description={\DEPRECATED in \textit{Version 1.6}. Replaced by \gls{voltageac sample} and \gls{voltagedc sample}.},
+  units=\deprecated{\cfont{\gls{volt}}},
   kind={type,sample},
   subtype={\gls{alternating subtype}, \gls{direct subtype}, \gls{actual subtype}, \gls{target subtype}},
   facet={\gls{float}}
 }
-
 
 \newglossaryentry{alternating subtype}
 {
@@ -5595,7 +5589,6 @@
   facet={\gls{string}}
 }
 
-
 \newglossaryentry{assetremoved event}
 {
   type=mtc,
@@ -6591,7 +6584,7 @@
   category=model,
   name={COMPLETE},
   description={Completion of an action.},
-  kind={enum}
+  kind={enum,subtype}
 }
 
 \newglossaryentry{true value}
@@ -7704,7 +7697,7 @@
   name={HTTP Status Code}
 }
 {
-	In the MTConnect Standard, a numeric code contained in an \gls{http response} that defines a status category associated with the \gls{response}  either a success status or a category of an HTTP error.  
+	In the MTConnect Standard, a numeric code contained in an \gls{http response} that defines a status category associated with the \gls{response} either as a success status or a category of an HTTP error.  
 
 	Appears in the documents in the following form: \gls{http status code}.
 }
@@ -9154,7 +9147,6 @@
   description={  The execution of the controller's program is suspended while a secondary operation is executing or completing.  Execution will resume automatically once the secondary operation is completed.}
 }
 
-
 \newglossaryentry{endeffector}
 {
   type=mtc,
@@ -9376,7 +9368,7 @@
 \newglossaryentry{reset}
 {
   name={reset},
-  description={A reset is associated with an occurrence of a \gls{data entity} indicated by the \\\gls{resettriggered} attribute. When a reset occurs, the accumulated value or statistic are reverted back to their initial value. A \gls{data entity} with a \gls{data set} representation removes all \glspl{key-value pair}, setting the \gls{data set} to an empty set.}
+  description={A reset is associated with an occurrence of a \gls{data entity} indicated by the \gls{resettriggered} attribute. When a reset occurs, the accumulated value or statistic are reverted back to their initial value. A \gls{data entity} with a \gls{data set} representation removes all \glspl{key-value pair}, setting the \gls{data set} to an empty set.}
 }
 
 
@@ -9553,7 +9545,7 @@
   category=model,
   name={VARIABLE},
   elementname=\cfont{Variable},
-  description={ A data value whose meaning may change over time due to changes in the opertion of a piece of equipment or the process being executed on that piece of equipment.},
+  description={ A data value whose meaning may change over time due to changes in the operation of a piece of equipment or the process being executed on that piece of equipment.},
   kind={event,type}
 }
 
@@ -9563,6 +9555,7 @@
   type=mtc,
   category=model,
   name={Entry},
+  plural={Entries},
   description={An XML element representing a \gls{key-value pair} published as part of a \gls{data set}.},
   kind={element}
 }
@@ -9574,4 +9567,724 @@
   name={key},
   description={A unique identifier for each \gls{key-value pair}.},
   kind={attribute}
+}
+
+\newglossaryentry{table new}
+{
+  name={Table},
+  description={A two dimensional set of values given by a set of \glspl{key-value pair} \glspl{table entry}. Each \gls{table entry} contains a set of \glspl{key-value pair} of \glspl{table cell}. The \gls{entry} and \gls{cell} elements comprise a tabular representation of the information.},
+  plural={Tables}
+}
+
+
+\newglossaryentry{table entry}
+{
+  name={Table Entry},
+  description={A subdivision of a \gls{table new} containing a set of \glspl{key-value pair} representing \glspl{table cell}.},
+  plural={Table Entries}
+}
+
+
+\newglossaryentry{table cell}
+{
+  name={Table Cell},
+  description={A subdivision of a \gls{table entry} representing a singular value.},
+  plural={Table Cells}
+}
+
+
+\newglossaryentry{revolutionpersecondsquared}
+{
+  type=mtc,
+  category=model,
+  name={REVOLUTION/SECOND$^2$},
+  description={Revolutions per second squared.}
+}
+
+
+\newglossaryentry{degree3d}
+{
+  type=mtc,
+  category=model,
+  name={DEGREE\_3D},
+  description={A space-delimited, floating-point representation of the angular rotation in degrees around the X, Y, and Z axes relative to a cartesian coordinate system respectively in order as A, B, and C. If any of the rotations is not known, it \MUST be zero (0).}
+}
+
+
+\newglossaryentry{workenvelope}
+{
+  type=mtc,
+  category=model,
+  name={WorkEnvelope},
+  description={\gls{workenvelope} organizes information about the physical process execution space within a piece of equipment. The \gls{workenvelope} \MAY provide information regarding the physical workspace and the conditions within that workspace.},
+  kind={component,systems}
+}
+
+
+\newglossaryentry{workpiece}
+{
+  type=mtc,
+  category=model,
+  name={WORKPIECE},
+  description={An object or material on which a form of work is performed.},
+  kind={composition}
+}
+
+
+\newglossaryentry{amperageac sample}
+{
+  type=mtc,
+  category=model,
+  name={AMPERAGE\_AC},
+  elementname=\cfont{AmperageAC},
+  description={The measurement of an electrical current that reverses direction at regular short intervals.},
+  units=\cfont{\gls{ampere}},
+  kind={sample,type},
+  subtype={\gls{actual subtype}, \gls{commanded subtype}, \gls{programmed subtype}}
+}
+
+
+\newglossaryentry{amperagedc sample}
+{
+  type=mtc,
+  category=model,
+  name={AMPERAGE\_DC},
+  elementname=\cfont{AmperageDC},
+  description={The measurement of an electric current flowing in one direction only.},
+  units=\cfont{\gls{ampere}},
+  kind={sample,type},
+  subtype={\gls{actual subtype}, \gls{commanded subtype}, \gls{programmed subtype}}
+}
+
+
+\newglossaryentry{voltageac sample}
+{
+  type=mtc,
+  category=model,
+  name={VOLTAGE\_AC},
+  elementname=\cfont{VoltageAC},
+  description={The measurement of the electrical potential between two points in an electrical circuit in which the current periodically reverses direction.},
+  units=\cfont{\gls{volt}},
+  kind={sample,type},
+  subtype={\gls{actual subtype}, \gls{commanded subtype}, \gls{programmed subtype}}
+}
+
+
+\newglossaryentry{voltagedc sample}
+{
+  type=mtc,
+  category=model,
+  name={VOLTAGE\_DC},
+  elementname=\cfont{VoltageDC},
+  description={The measurement of the electrical potential between two points in an electrical circuit in which the current is unidirectional.},
+  units=\cfont{\gls{volt}},
+  kind={sample,type},
+  subtype={\gls{actual subtype}, \gls{commanded subtype}, \gls{programmed subtype}}
+}
+
+
+\newglossaryentry{xdimension sample}
+{
+  type=mtc,
+  category=model,
+  name={X\_DIMENSION},
+  elementname=\cfont{XDimension},
+  description={Measured dimension of an entity relative to the X direction of the referenced coordinate system.},
+  units=\cfont{\gls{millimeter}},
+  kind={sample,type}
+}
+
+
+\newglossaryentry{ydimension sample}
+{
+  type=mtc,
+  category=model,
+  name={Y\_DIMENSION},
+  elementname=\cfont{YDimension},
+  description={Measured dimension of an entity relative to the Y direction of the referenced coordinate system.},
+  units=\cfont{\gls{millimeter}},
+  kind={sample,type}
+}
+
+
+\newglossaryentry{zdimension sample}
+{
+  type=mtc,
+  category=model,
+  name={Z\_DIMENSION},
+  elementname=\cfont{ZDimension},
+  description={Measured dimension of an entity relative to the Z direction of the referenced coordinate system.},
+  units=\cfont{\gls{millimeter}},
+  kind={sample,type}
+}
+
+
+\newglossaryentry{diameter sample}
+{
+  type=mtc,
+  category=model,
+  name={DIAMETER},
+  elementname=\cfont{Diameter},
+  description={The measured dimension of a diameter.},
+  units=\cfont{\gls{millimeter}},
+  kind={sample,type}
+}
+
+
+\newglossaryentry{none}
+{
+  type=mtc,
+  category=model,
+  name={NONE},
+  description={ No direction.}
+}
+
+
+
+\newglossaryentry{operatingsystem event}
+{
+  type=mtc,
+  category=model,
+  name={OPERATING\_SYSTEM},
+  elementname=\cfont{OperatingSystem},
+  description={The Operating System of a component.},
+  kind={event,type},
+  subtype={\gls{license subtype}, \gls{version subtype}, \gls{releasedate subtype}, \gls{installdate subtype}, \gls{manufacturer subtype}}
+}
+
+
+\newglossaryentry{license subtype}
+{
+  type=mtc,
+  category=model,
+  name={LICENSE},
+  description={The license code to validate or activate the hardware or software.},
+  kind={subtype}
+}
+
+
+\newglossaryentry{version subtype}
+{
+  type=mtc,
+  category=model,
+  name={VERSION},
+  description={The version of the hardware or software.},
+  kind={subtype}
+}
+
+
+\newglossaryentry{releasedate subtype}
+{
+  type=mtc,
+  category=model,
+  name={RELEASE\_DATE},
+  description={The date the hardware or software was released for general use.},
+  kind={subtype}
+}
+
+
+\newglossaryentry{installdate subtype}
+{
+  type=mtc,
+  category=model,
+  name={INSTALL\_DATE},
+  description={The date the hardware or software was installed.},
+  kind={subtype}
+}
+
+
+\newglossaryentry{manufacturer subtype}
+{
+  type=mtc,
+  category=model,
+  name={MANUFACTURER},
+  description={The corporate identity for the maker of the hardware or software.},
+  kind={subtype}
+}
+
+
+\newglossaryentry{firmware event}
+{
+  type=mtc,
+  category=model,
+  name={FIRMWARE},
+  elementname=\cfont{Firmware},
+  description={The embedded software of a component.},
+  kind={event,type},
+  subtype={\gls{license subtype}, \gls{version subtype}, \gls{releasedate subtype}, \gls{installdate subtype}, \gls{manufacturer subtype}}
+}
+
+
+\newglossaryentry{application event}
+{
+  type=mtc,
+  category=model,
+  name={APPLICATION},
+  elementname=\cfont{Application},
+  description={The application on a component.},
+  kind={event,type},
+  subtype={\gls{license subtype}, \gls{version subtype}, \gls{releasedate subtype}, \gls{installdate subtype}, \gls{manufacturer subtype}}
+}
+
+
+\newglossaryentry{library event}
+{
+  type=mtc,
+  category=model,
+  name={LIBRARY},
+  elementname=\cfont{Library},
+  description={The software library on a component.},
+  kind={event,type},
+  subtype={\gls{license subtype}, \gls{version subtype}, \gls{releasedate subtype}, \gls{installdate subtype}, \gls{manufacturer subtype}}
+}
+
+
+\newglossaryentry{network event}
+{
+  type=mtc,
+  category=model,
+  name={NETWORK},
+  elementname=\cfont{Network},
+  description={Network details of a component.},
+  kind={event,type},
+  subtype={\gls{ipv4address subtype}, \gls{ipv6address subtype}, \gls{gateway subtype}, \gls{subnetmask subtype}, \gls{vlanid subtype}, \gls{macaddress subtype}, \gls{wireless subtype}}
+}
+
+
+\newglossaryentry{ipv4address subtype}
+{
+  type=mtc,
+  category=model,
+  name={IPV4\_ADDRESS},
+  description={The IPV4 network address of the component.},
+  kind={subtype}
+}
+
+
+\newglossaryentry{ipv6address subtype}
+{
+  type=mtc,
+  category=model,
+  name={IPV6\_ADDRESS},
+  description={The IPV6 network address of the component.},
+  kind={subtype}
+}
+
+
+\newglossaryentry{gateway subtype}
+{
+  type=mtc,
+  category=model,
+  name={GATEWAY},
+  description={The Gateway for the component network.},
+  kind={subtype}
+}
+
+
+\newglossaryentry{subnetmask subtype}
+{
+  type=mtc,
+  category=model,
+  name={SUBNET\_MASK},
+  description={The SubNet mask for the component network.},
+  kind={subtype}
+}
+
+
+\newglossaryentry{vlanid subtype}
+{
+  type=mtc,
+  category=model,
+  name={VLAN\_ID},
+  description={The layer2 Virtual Local Network (VLAN) ID for the component network.},
+  kind={subtype}
+}
+
+
+\newglossaryentry{macaddress subtype}
+{
+  type=mtc,
+  category=model,
+  name={MAC\_ADDRESS},
+  description={Media Access Control Address.  The unique physical address of the network hardware.},
+  kind={subtype}
+}
+
+
+\newglossaryentry{wireless subtype}
+{
+  type=mtc,
+  category=model,
+  name={WIRELESS},
+  description={Identifies whether the connection type is wireless.  },
+  kind={subtype}
+}
+
+
+\newglossaryentry{cell}
+{
+  type=mtc,
+  category=model,
+  name={Cell},
+  description={An element representing a \gls{key-value pair} published as part of an \gls{entry}.},
+  kind={element}
+}
+
+
+\newglossaryentry{definition}
+{
+  type=mtc,
+  category=model,
+  name={Definition},
+  description={The \cfont{Definition} defines the meaning of \gls{entry} and \cfont{Cell} elements associated with the \gls{dataitem} when the \gls{representation} is either \gls{dataset} or \gls{table}.},
+  kind={element}
+}
+
+
+\newglossaryentry{entrydefinitions}
+{
+  type=mtc,
+  category=model,
+  name={EntryDefinitions},
+  description={The \cfont{EntryDefinitions} aggregates \cfont{EntryDefinition} .},
+  kind={element}
+}
+
+
+\newglossaryentry{celldefinitions}
+{
+  type=mtc,
+  category=model,
+  name={CellDefinitions},
+  description={The \cfont{CellDefinitions} aggregates \cfont{CellDefinition}.},
+  kind={element}
+}
+
+
+\newglossaryentry{entrydefinition}
+{
+  type=mtc,
+  category=model,
+  name={EntryDefinition},
+  description={The semantic definition of an \gls{entry}},
+  kind={element}
+}
+
+
+\newglossaryentry{celldefinition}
+{
+  type=mtc,
+  category=model,
+  name={CellDefinition},
+  description={The semantic definition of a \cfont{Cell}.},
+  kind={element}
+}
+
+
+\newglossaryentry{orientation sample}
+{
+  type=mtc,
+  category=model,
+  name={ORIENTATION},
+  elementname=\cfont{Orientation},
+  description={A measured or calculated orientation of a plane or vector relative to a cartesian coordinate system.},
+  units=\cfont{\gls{degree3d}},
+  kind={sample,type},
+  subtype={\gls{actual subtype}, \gls{commanded subtype}}
+}
+
+
+\newglossaryentry{rotation event}
+{
+  type=mtc,
+  category=model,
+  name={ROTATION},
+  elementname=\cfont{Rotation},
+  description={A three space angular rotation relative to a coordinate system.},
+  units=\cfont{\gls{degree3d}},
+  kind={event,type}
+}
+
+
+\newglossaryentry{translation event}
+{
+  type=mtc,
+  category=model,
+  name={TRANSLATION},
+  elementname=\cfont{Translation},
+  description={A three space linear translation relative to a coordinate system.},
+  units=\cfont{\gls{millimeter3d}},
+  kind={event,type}
+}
+
+
+\newglossaryentry{engineering units}
+{
+  name={engineering units},
+  description={A quantity, dimension, or magnitude used in engineering adopted as a standard in terms of which the magnitude of other quantities of the same kind can be expressed or calculated.}
+}
+
+
+\newglossaryentry{organize}
+{
+  name={organize},
+  description={The act of containing and owning one or more elements.}
+}
+
+
+\newglossaryentry{organizer}
+{
+  name={organizer},
+  description={An element that contains and owns one or more elements.}
+}
+
+
+\newglossaryentry{observation}
+{
+  name={observation},
+  description={The observed value of a property at a point in time.}
+}
+
+
+\newglossaryentry{observe}
+{
+  name={observe},
+  description={The act of measuring or determining the value of a property at a point in time.}
+}
+
+
+\newglossaryentry{observable}
+{
+  name={observable},
+  description={A quality, property, or characteristic that can be observed.}
+}
+
+
+\newglossaryentry{coordinatesystem new}
+{
+  type=mtc,
+  category=model,
+  name={CoordinateSystem},
+  description={It is a reference system that associates a unique set of n parameters with each point in an n-dimensional space. \textit{Ref: ISO 10303-218:2004}}
+}
+
+
+\newglossaryentry{coordinatesystems}
+{
+  type=mtc,
+  category=model,
+  name={CoordinateSystems},
+  description={It aggregates \gls{coordinatesystem new} configurations for a \gls{component}.},
+  kind={type}
+}
+
+\newglossaryentry{specification}
+{
+  type=mtc,
+  category=model,
+  name={Specification},
+  description={It defines information describing the design characteristics for a piece of equipment.}
+}
+
+
+\newglossaryentry{specifications}
+{
+  type=mtc,
+  category=model,
+  name={Specifications},
+  description={It aggregates \gls{specification} elements describing the design characteristics for a piece of equipment.},
+  kind={type}
+}
+
+
+
+\newglossaryentry{dataitemidref}
+{
+  type=mtc,
+  category=model,
+  name={dataItemIdRef},
+  description={A reference to the \gls{id} attribute of the \gls{dataitem} associated with this element.},
+  kind={attribute}
+}
+
+
+\newglossaryentry{compositionidref}
+{
+  type=mtc,
+  category=model,
+  name={compositionIdRef},
+  description={A reference to the \gls{id} attribute of the \gls{composition} associated with this element.},
+  kind={attribute}
+}
+
+
+\newglossaryentry{coordinatesystemidref}
+{
+  type=mtc,
+  category=model,
+  name={coordinateSystemIdRef},
+  description={References the \gls{coordinatesystem new} for geometric \gls{specifications}.},
+  kind={attribute}
+}
+
+
+\newglossaryentry{parentidref}
+{
+  type=mtc,
+  category=model,
+  name={parentIdRef},
+  description={A pointer to the \gls{id} attribute of the parent \gls{coordinatesystem new}.},
+  kind={attribute}
+}
+
+
+\newglossaryentry{world}
+{
+  type=mtc,
+  category=model,
+  name={WORLD},
+  description={stationary coordinate system referenced to earth, which is independent of the robot motion. \texit{Ref:ISO 9787:2013}.
+  \newline For non-robotic devices, stationary coordinate system referenced to earth, which is independent of the motion of a piece of equipment.},
+  kind={type}
+}
+
+
+\newglossaryentry{base}
+{
+  type=mtc,
+  category=model,
+  name={BASE},
+  description={coordinate system referenced to the base mounting surface. \textit{Ref:ISO 9787:2013}.
+  \newline A base mounting surface is a connection surface between the arm and its supporting structure. \textit{Ref:ISO 9787:2013}.
+  \newline For non-robotic devices, it is the connection surface between the device and its supporting structure.},
+  kind={type}
+}
+
+
+\newglossaryentry{object}
+{
+  type=mtc,
+  category=model,
+  name={OBJECT},
+  description={coordinate system referenced to the object. \texit{Ref:ISO 9787:2013}},
+  kind={type}
+}
+
+
+\newglossaryentry{task}
+{
+  type=mtc,
+  category=model,
+  name={TASK},
+  description={coordinate system referenced to the site of the task. \texit{Ref:ISO 9787:2013}},
+  kind={type}
+}
+
+
+\newglossaryentry{mechanicalinterface}
+{
+  type=mtc,
+  category=model,
+  name={MECHANICAL\_INTERFACE},
+  description={coordinate system referenced to the mechanical interface. \texit{Ref:ISO 9787:2013}},
+  kind={type}
+}
+
+
+\newglossaryentry{tool}
+{
+  type=mtc,
+  category=model,
+  name={TOOL},
+  description={coordinate system referenced to the tool or to the end effector attached to the mechanical interface. \texit{Ref:ISO 9787:2013}},
+  kind={type}
+}
+
+
+\newglossaryentry{mobileplatform}
+{
+  type=mtc,
+  category=model,
+  name={MOBILE\_PLATFORM},
+  description={coordinate system referenced to one of the components of a mobile platform. \texit{Ref:ISO 8373:2012}},
+  kind={type}
+}
+
+
+\newglossaryentry{camera}
+{
+  type=mtc,
+  category=model,
+  name={CAMERA},
+  description={coordinate system referenced to the sensor which monitors the site of the task. \texit{Ref:ISO 9787:2013}},
+  kind={type}
+}
+
+
+\newglossaryentry{origin}
+{
+  type=mtc,
+  category=model,
+  name={Origin},
+  description={ The coordinates of the origin position of a coordinate system. The coordinate \MUST be in \gls{millimeter3d}.},
+  kind={element}
+}
+
+
+\newglossaryentry{transformation}
+{
+  type=mtc,
+  category=model,
+  name={Transformation},
+  description={ The process of transforming to the origin position of the coordinate system from a parent coordinate system using \glselementname{translation event} and \glselementname{rotation event}.},
+  kind={element}
+}
+
+
+\newglossaryentry{grampercubicmeter}
+{
+  type=mtc,
+  category=model,
+  name={GRAM/CUBIC\_METER},
+  description={Gram per cubic meter.},
+  kind={units}
+}
+
+
+\newglossaryentry{humidityrelative sample}
+{
+  type=mtc,
+  category=model,
+  name={HUMIDITY\_RELATIVE},
+  elementname=\cfont{HumidityRelative},
+  description={The amount of water vapor present expressed as a percent to reach saturation at the same temperature.},
+  units=\cfont{\gls{percent}},
+  kind={sample,type},
+  subtype={\gls{actual subtype}, \gls{commanded subtype}}
+}
+
+
+\newglossaryentry{humidityabsolute sample}
+{
+  type=mtc,
+  category=model,
+  name={HUMIDITY\_ABSOLUTE},
+  elementname=\cfont{HumidityAbsolute},
+  description={The amount of water vapor expressed in grams per cubic meter.},
+  units=\cfont{\gls{grampercubicmeter}},
+  kind={sample,type},
+  subtype={\gls{actual subtype}, \gls{commanded subtype}}
+}
+
+
+\newglossaryentry{humidityspecific sample}
+{
+  type=mtc,
+  category=model,
+  name={HUMIDITY\_SPECIFIC},
+  elementname=\cfont{HumiditySpecific},
+  description={The ratio of the water vapor present over the total weight of the water vapor and air present expressed as a percent.},
+  units=\cfont{\gls{percent}},
+  kind={sample,type},
+  subtype={\gls{actual subtype}, \gls{commanded subtype}}
 }

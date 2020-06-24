@@ -20,7 +20,7 @@ class IdManager
         @version = model['Version']
         @pub_date = model['PublicationDate']
 
-        puts "Version: #{@version}, PublicationDate: #{@pub_date}"
+        $logger.info "Version: #{@version}, PublicationDate: #{@pub_date}"
         
         # Copy aliases
         doc.xpath('//Aliases/Alias').each do |e|

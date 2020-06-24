@@ -34,16 +34,16 @@ class LatexParser
       name = e.name
       @entries[name] = e
       unless e.name_property.start_with?(/[a-z]/)
-        puts "Adding #{e.name_property}"
+        $logger.debug "Adding #{e.name_property}"
         @entries[e.name_property] = e
       end
       if e.has_key?(:elementname)
-        puts "Adding #{e.elementname}"
+        $logger.debug  "Adding #{e.elementname}"
         @entries[e.elementname] = e
       end        
       @entries[e.plural] = e if e.has_key?(:plural)
 
-      puts "Adding #{name}"
+      $logger.debug "Adding #{name}"
 
       if e.name_list.length == 1 and e.has_key?(:plural)
         plural = e.plural.downcase

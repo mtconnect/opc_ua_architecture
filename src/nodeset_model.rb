@@ -50,8 +50,8 @@ class NodesetModel < Model
                               "Version" => "2.00.01",
                               "PublicationDate" => "2020-06-05T00:00:00Z" }).
       add_element('RequiredModel', { "ModelUri" => "http://opcfoundation.org/UA/",
-                                     "Version" => "1.04.6",
-                                     "PublicationDate" => "2020-04-14T00:00:00Z" } )
+                                     "Version" => @@ids.version,
+                                     "PublicationDate" => @@ids.pub_date } )
 
     # Add aliases
     als = @@root.add_element('Aliases')

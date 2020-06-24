@@ -3,6 +3,9 @@ require 'set'
 require 'nokogiri'
 
 class IdManager
+  attr_reader :version, :pub_date
+
+  
   def load_reference_documents(clean)
     # Parse Reference Documents.
     if empty? or clean
@@ -11,6 +14,13 @@ class IdManager
       File.open(f) do |x|
         doc = Nokogiri::XML(x).slop!
         doc.remove_namespaces!
+
+        # Get model info
+        model = doc.UANodeSet.Models.Model
+        @version = model['Version']
+        @pub_date = model['PublicationDate']
+
+        puts "Version: #{@version}, PublicationDate: #{@pub_date}"
         
         # Copy aliases
         doc.xpath('//Aliases/Alias').each do |e|
@@ -46,7 +56,11 @@ class IdManager
     pat = /#{Namespace}:/o
 
     CSV.foreach(@file) do |key, id, als|
-      if !clean or key =~ pat
+      if key == 'Version'
+        @version = id
+      elsif  key == 'PublicationDate'
+        @pub_date = id
+      elsif !clean or key =~ pat
         @ids[key] = id
         if id =~ /ns=1;i=([0-9]+)$/o
           v = $1.to_i
@@ -129,6 +143,9 @@ class IdManager
   def save
     pat = /#{Namespace}:/o
     CSV.open(@file, 'wb') do |csv|
+      csv << ['Version', @version, nil]
+      csv << ['PublicationDate', @pub_date, nil]
+      
       @ids.keys.sort.each do |key|
         if key !~ pat or @referenced.include?(key)
           csv << [key, @ids[key], @aliases.include?(key)]

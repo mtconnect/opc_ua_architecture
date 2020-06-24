@@ -1,4 +1,4 @@
-% Generated 2020-02-07 14:32:13 -0800
+% Generated 2020-06-24 14:26:18 -0700
 \subsection{Data Items} \label{model:DataItems}
 
 \begin{figure}[ht]
@@ -101,7 +101,7 @@ Has\-MT\-Class\-Type & Object & <MT\-Data\-Item\-Class> & \multicolumn{2}{l|}{MT
 
 The abstract type for all data items types that are specifically for \mtmodel{CONDITION} \gls{category}.
 
-The information and data reported from a piece of equipment for those DataItems defined with a  category of Condition.
+An XML element which provides the information and data reported from a piece of equipment for those dataitem elements defined with a category attribute of condition category in the mtconnectdevices document.
 
 \begin{table}[ht]
 \centering 
@@ -383,6 +383,8 @@ Has\-Property & Variable & Units & String & Property\-Type & Optional \\
 \FloatBarrier
 
 Represents the \mtmodel{coordinateSystem} attribute of the MTConnect \gls{MTDataItem}.
+
+It is a reference system that associates a unique set of n parameters with each point in an n-dimensional space. Ref: ISO 10303-218:2004
 
 \begin{table}[ht]
 \centering 

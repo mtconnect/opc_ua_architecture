@@ -56,9 +56,9 @@ class IdManager
     pat = /#{Namespace}:/o
 
     CSV.foreach(@file) do |key, id, als|
-      if key == 'Version'
+      if key == 'x:Version'
         @version = id
-      elsif  key == 'PublicationDate'
+      elsif  key == 'x:PublicationDate'
         @pub_date = id
       elsif !clean or key =~ pat
         @ids[key] = id
@@ -143,8 +143,8 @@ class IdManager
   def save
     pat = /#{Namespace}:/o
     CSV.open(@file, 'wb') do |csv|
-      csv << ['Version', @version, nil]
-      csv << ['PublicationDate', @pub_date, nil]
+      csv << ['x:Version', @version, nil]
+      csv << ['x:PublicationDate', @pub_date, nil]
       
       @ids.keys.sort.each do |key|
         if key !~ pat or @referenced.include?(key)

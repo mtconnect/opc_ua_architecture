@@ -10,7 +10,7 @@ class IdManager
     # Parse Reference Documents.
     if empty? or clean
       f = File.join(File.dirname(__FILE__), '..', 'OPC_UA_Nodesets', 'Opc.Ua.NodeSet2.xml')
-      puts "Parsing OPC UA Nodeset: #{f}"
+      $logger.info "Parsing OPC UA Nodeset: #{f}"
       File.open(f) do |x|
         doc = Nokogiri::XML(x).slop!
         doc.remove_namespaces!
@@ -69,11 +69,11 @@ class IdManager
         @aliases << key if eval(als)
       end
     end
-    puts "Next is #{@next_id}"
+    $logger.info "Next is #{@next_id}"
     
   rescue
-    p $!
-    puts "File #{@file} cannot be found, starting ids from #{start}"
+    $logger.error $!.inspect
+    $logger.error  "File #{@file} cannot be found, starting ids from #{start}"
   end
 
   def add_alias(key)

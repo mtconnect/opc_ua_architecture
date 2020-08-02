@@ -1,0 +1,73 @@
+# Scope
+
+
+In September 2010, the OPC Foundation and the MTConnect Institute signed
+a memorandum of understanding to extend the reach of existing
+manufacturing data exchange standards to:
+
+-   Evolve the existing standards from each organization to provide
+    complete manufacturing technology interoperability.
+-   Provide a mechanism for continuous improvement of those standards
+    and specifications.
+-   Support the evolution of digital manufacturing systems.
+-   Provide a coordinating function to harmonize work between the
+    organizations.
+-   Educate customers and suppliers on the standards and specifications.
+-   Provide a foundation for adopting the standards, specifications, and
+    associated technology into real products.
+
+The first document produced was the MTConnect-OPC UA Companion
+Specification, Version 1.0 (2012), which defines a method for
+interoperability between the standards. It also identifies how the
+standards can be used together in manufacturing systems.
+
+This document, OPC Unified Architecture for MTConnect Companion
+Specification, Version 2.0, updates the original companion specification
+and incorporates the latest capabilities and functions.
+
+The technologies provided from these two organizations include:
+
+__OPC Foundation__
+
+OPC UA is an interoperability standard for the secure and reliable
+exchange of data and information in the industrial automation space and
+in other industries. It is platform independent and ensures the seamless
+flow of information among devices from multiple vendors. The OPC
+Foundation is responsible for the development and maintenance of this
+standard. OPC UA is a platform independent service-oriented architecture
+that integrates all the functionality of the individual OPC Classic
+specifications into one extensible framework. This multi-layered
+approach accomplishes the original design specification goals of:
+
+-   Platform independence: from an embedded microcontroller to
+    cloud-based infrastructure
+-   Secure: encryption, authentication, authorization and auditing
+-   Extensible: ability to add new features including transports without
+    affecting existing applications
+-   Comprehensive information modelling capabilities: for defining any
+    model from simple to complex
+
+__MTConnect Institute__
+
+MTConnect is a data and information exchange standard that is based on a
+data dictionary of terms describing information associated with
+manufacturing operations. The standard also defines a series of semantic
+data models that provide a clear and unambiguous representation of how
+that information relates to a manufacturing operation. The MTConnect
+Standard has been designed to:
+
+-   Enhance the data acquisition capabilities from equipment in
+    manufacturing facilities
+-   Expand the use of data driven decision making in manufacturing
+    operations
+-   Enable software applications and manufacturing equipment to move
+    toward a plug-and-play environment to reduce the cost of integration
+    of manufacturing software systems.
+
+The MTConnect Institute is responsible for development of the MTConnect
+Standard. The Institute is a 501(c)(6) not-for-profit standards
+development organization and is a subsidiary of
+[amt]{acronym-label="amt" acronym-form="singular+short"}. Its mission is
+to create open standards to foster greater interoperability between
+devices and clients by defining the structure and terminology used in
+communications in the discrete parts manufacturing sector.

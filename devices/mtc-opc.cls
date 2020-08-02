@@ -33,7 +33,8 @@
 \RequirePackage{fancyvrb}
 \RequirePackage{placeins}
 \RequirePackage{booktabs}
-\RequirePackage{tabu}
+%\RequirePackage{tabu}
+\RequirePackage{tabularx}
 \RequirePackage{times}					% Loads Adobe Times Roman Font (clone of Times New Roman)
 \RequirePackage{mathptmx}				% Loads Adobe Times Roman Math Font
 \RequirePackage{ifpdf}					% Enables switch between latex and pdflatex
@@ -48,7 +49,7 @@
 \RequirePackage{lineno}					% Loads lineno package to apply line numbers to document
 \RequirePackage{etoolbox}				% Loads etoolbox package to patch lineno package and suppress line numbers in section headings
 \RequirePackage{sectsty}				% Loads sectsty package to modify font of section headings
-\RequirePackage{xcolor}					% Loads xcolor package to define color for fonts and tables
+\RequirePackage[table]{xcolor}					% Loads xcolor package to define color for fonts and tables
 \RequirePackage{colortbl}				% Loads colortbl package to provide colors for table shading
 \RequirePackage{caption}				% Loads caption package to adjust caption font
 \RequirePackage{listings}				% Loads listings package to typeset code samples
@@ -74,10 +75,16 @@
 \usepackage{rotating}
 \usepackage{graphicx}
 \usepackage[normalem]{ulem}
-
 \renewcommand{\appendixname}{Annex}
-
 \usepackage{titlesec}
+
+
+\usepackage[citations,hybrid,smartEllipses,hashEnumerators,html,%
+           pipeTables,tableCaptions,fencedCode,codeSpans,tightLists=false,%
+           cacheDir=markdowncache]{markdown}
+           \usepackage[absolute]{textpos}
+
+\renewcommand{\markdownRendererHeadingOne}[1]{\section{#1}}
 
 % *********** %
 % 	Options   %
@@ -173,56 +180,61 @@
 \newcommand{\preparedon}[1]{\gdef\@preparedon{#1}}
 \newcommand{\versiontext}[1]{\gdef\@versiontext{#1}}
 
-\newsavebox\titlecontent
-
-\newcommand{\maketitlecontent}{%
-  \savebox\titlecontent{%
-    \bfseries%
-    \begin{tabu}to 5in{X}%
-      \protect \vspace{1in} \quad \\%
-      \parindent=0.5in%
-      \vspace{18pt}%
-      \huge{\@docnum} \\%
-      \parindent=0.5in%
-      \vspace{18pt}%
-      \LARGE{\@doctitleshort} \\%
-      \parindent=0.5in%
-      \vspace{18pt}%
-      \LARGE{\@doctitlepart} \\%
-      \parindent=0.5in%
-      \vspace{6pt}%
-      \LARGE{\@doctitledesc} \\%
-      \parindent=0.5in%
-      \vspace{1in}%
-      \LARGE{\getversiontext\ \getversionnum} \\%
-      \parindent=0.5in%
-      \vspace{12pt}%
-      \LARGE{\@preparedon} \\%
-      \vspace{2.5in}%
-    \end{tabu}%
-  }%
-}
-
+\definecolor{opcblue}{rgb}{0.31,0.5,0.74}
 
 \renewcommand{\maketitle}{%
-  \maketitlecontent
   \begin{titlepage}%
-    \tabulinesep=1pt%
-    \taburulecolor |light-gray|{black}%
-    \begin{tabu}to 6.5in{|X|X|X[0.15]|}%
-      \hline%
-      \includegraphics[width=1.0\linewidth]{opc-logo.jpg} &%
-      \includegraphics[width=1.0\linewidth]{mtconnect.png} &  \cellcolor{light-gray} \\ \tabucline{1-2}%
-      \multicolumn{2}{|l|}{%%
-        \usebox{\titlecontent}%
-      }%
-      & \vspace{-3in}%
-      \bfseries\cellcolor{light-gray}\center{\rotatebox[origin=lB]{270}{\LARGE{OPC UA Companion Specification \@doctitlesubpart}}} \\ %
-      \tabucline{1-3} %
-    \end{tabu}%
-    \vfill%
+    \TPGrid{20}{40}%
+    \textblockorigin{0in}{0in}%
+    \TPMargin{6pt}%
+    \begin{textblock}{7}(2,3.2)%
+      \includegraphics[height=0.9in]{opc-logo.jpg}%
+    \end{textblock}%
+    \begin{textblock}{7}(10,3.2)%
+      \includegraphics[height=0.9in]{mtconnect.png}%
+    \end{textblock}%
+    %
+    \TPMargin{0in}%
+    \textblockcolor{light-gray}%
+    \begin{textblock}{19}(0,9.5)%
+      \hrule%
+      \color{opcblue}    %
+      \hspace{1in} \huge{\bf{\@docnum}}%
+      \vspace{12pt}%
+    \end{textblock}%
+    %
+    \TPMargin{1in}%
+    %
+    \textblockcolor{white}%
+    \begin{textblock}{14}(2,12)%
+      \color{black}%
+      \LARGE{\bf{\@doctitleshort}}%
+      \newline%
+      \LARGE{\bf{\@doctitlepart}}%
+      \vspace{1in}%
+      \LARGE{\bf{\@doctitledesc}}%
+      \newline%
+      \LARGE{\bf{\getversiontext\ \getversionnum}}%
+      \newline%
+      \LARGE{\bf{\@preparedon}}%
+      \vspace{1in}%
+    \end{textblock}%
+    %
+    \textblockcolor{light-gray}%
+    \TPMargin{12pt}%
+    \begin{textblock}{1.5}(18.5,0)%
+      \vspace{3in}%
+      \rotatebox[origin=lB]{270}{\LARGE{\bf{OPC UA Companion Specification \@doctitlesubpart}}}%
+      \vspace{4in}%
+    \end{textblock}%
+    %
+    \newpage%
+    \textbf{}%
+    %
+    \color{black}%
+    \TPoptions{absolute=false}%
   \end{titlepage}%
-  \setcounter{page}{1}
+  \setcounter{page}{1}%
 }
 
 % ************************************ %

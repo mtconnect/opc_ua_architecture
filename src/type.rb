@@ -211,7 +211,8 @@ class Type
     sn = @name.sub(/^MT/, '').sub(/Type$/, '').sub(/Class$/, '').sub(/Sub$/, '')
     doc = Glossary[sn] || Glossary[sn.upcase]
     if doc
-      @documentation << "\n\n" << doc.description      
+      
+      @documentation << "\n\n" << doc.description
     end
     @stereotype = xmi_stereotype(e)
     

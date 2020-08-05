@@ -6,3 +6,5 @@ gem 'stringio'
 gem 'nokogiri'
 gem 'memoist'
 gem 'rspec-xml'
+
+gem 'redcarpet'

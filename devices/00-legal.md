@@ -1,9 +1,10 @@
 
-**OPC Foundation and Institute**
+**<span style="font-size: 150%">OPC Foundation and Institute</span>**
 
-\begin{center}
+
+<div align="center">
 **AGREEMENT OF USE**
-\end{center}
+</div>
 
 All terms of use defined in documents provided by the OPC Foundation and
 the MTConnect Institute and referenced in this document are hereby
@@ -12,7 +13,7 @@ conflict in terms between referenced documents and terms defined in this
 document shall default in priority to the terms defined in the original
 referenced documents.
 
-Copyright © 2018-2020, OPC Foundation, Inc.
+Copyright ^(-c-) 2018-2020, OPC Foundation, Inc.
 
 **COPYRIGHT RESTRICTIONS**
 
@@ -101,8 +102,7 @@ compliance or conformance with this specification.
 
 **TRADEMARKS**
 
-is a registered trademark of the [amt]{acronym-label="amt"
-acronym-form="singular+short"}.
+MTConnect^(-c-) is a registered trademark of the {{term(amt)}}.
 
 Most computer and software brand names have trademarks or registered
 trademarks. The individual trademarks have not been listed here.

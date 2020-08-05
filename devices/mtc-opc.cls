@@ -77,14 +77,7 @@
 \usepackage[normalem]{ulem}
 \renewcommand{\appendixname}{Annex}
 \usepackage{titlesec}
-
-
-\usepackage[citations,hybrid,smartEllipses,hashEnumerators,html,%
-           pipeTables,tableCaptions,fencedCode,codeSpans,tightLists=false,%
-           cacheDir=markdowncache]{markdown}
-           \usepackage[absolute]{textpos}
-
-\renewcommand{\markdownRendererHeadingOne}[1]{\section{#1}}
+\usepackage[absolute]{textpos}
 
 % *********** %
 % 	Options   %

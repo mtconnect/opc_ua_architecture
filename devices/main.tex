@@ -134,7 +134,9 @@ style=alphabetic,
 \color{black}
 
 
-\markdownInput{00-legal.md}
+\input{converted/00-legal.md.tex}
+
+\clearpage
 
 % ************************************************************************* %
 % ******************** ENTER DOCUMENT CONTENT BELOW *********************** %
@@ -142,15 +144,17 @@ style=alphabetic,
 \glsresetall
 \pagenumbering{arabic}
 
-\markdownInput{01-scope.md}
+\input{converted/01-scope.md.tex}
 
-%\input 02-companion-specification-goals.tex
+\clearpage
 
-%\input 03-who-will-benefit.tex
+\input{converted/02-companion-specification-goals.md.tex}
 
-%\input 04-normative-references.tex
+\input{converted/03-who-will-benefit.md.tex}
 
-%\input 05-terms-definitions-conventions.tex
+\input{converted/04-normative-references.md.tex}
+
+\input{converted/05-terms-definitions-conventions.md.tex}
 
 %\input 061-mtconnect.tex
 

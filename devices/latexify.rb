@@ -120,11 +120,11 @@ module Redcarpet
   \\caption{#{@caption}}
   \\label{table:#{@caption.gsub(' ', '')}}
   \\fontsize{9pt}{11pt}\\selectfont
-  \\begin{tablular}{6in}{#{columns}}
+  \\begin{tabular}{#{columns}}
   \\hline
 #{headers}
 #{content}
-  \\end{tablular}
+  \\end{tabular}
 \\end{table}
 EOT
         text

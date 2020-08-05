@@ -24,7 +24,9 @@ module Redcarpet
       end
 
       def header(title, level)
-        case level
+        label = nil
+        title.sub!(/\{#([^}]+)\}/) { |t| label = $1; '' }
+        head = case level
         when 1
           "\n\\section{#{title}}\n"
 
@@ -39,6 +41,12 @@ module Redcarpet
           
         when 5
           "\n\\subparagraph{#{title}}\n"
+        end
+
+        if label
+          "#{head}\\label{#{label}}\n"
+        else
+          head
         end
       end
 
@@ -78,8 +86,9 @@ module Redcarpet
 
       def paragraph(text)
         case text
-        when /^:/
-          "\nCaption: #{text}"
+        when /^: (.+)$/
+          @caption = $1
+          ''
         else
           "\n#{text}\n"
         end
@@ -102,11 +111,27 @@ module Redcarpet
       def table(header, content)
         fields = header.gsub(/\\\\ \\hline$/,'').split('&')
         headers = "    " + fields.map { |s| "\\textbf{#{s.strip}}" }.join(" & ") + " \\\\ \\hline"
-        "\n\\begin{table}\n  \\begin{tabular}{6in}\n#{headers}\n#{content}\n  \\end{tabular}\n\\end{table}\n\n"
+        columns = ('|l' * fields.size) + '|'
+        
+        text = <<EOT
+
+\\begin{table}
+  \\centering
+  \\caption{#{@caption}}
+  \\label{table:#{@caption.gsub(' ', '')}}
+  \\fontsize{9pt}{11pt}\\selectfont
+  \\begin{tablular}{6in}{#{columns}}
+  \\hline
+#{headers}
+#{content}
+  \\end{tablular}
+\\end{table}
+EOT
+        text
       end
 
       def table_row(content)
-        "    #{content[0..-4]} \\\\ \\hline"
+        "    #{content[0..-4]} \\\\ \\hline\n"
       end
 
       def table_cell(content, alignment)

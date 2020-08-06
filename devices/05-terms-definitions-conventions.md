@@ -47,6 +47,8 @@ Terms and Acronnyms
 - The {{term(TypeDefinition)}} column specifies a symbolic name for a {{term(NodeId)}}, i.e. the specified {{term(Node)}} points with a {{term(HasTypeDefinition)}} {{term(Reference)}} to the corresponding {{term(Node)}}.
 - The {{term(ModellingRule)}} of the referenced component is provided by specifying the symbolic name of the rule in {{term(ModellingRule)}}. In the {{term(AddressSpace)}}, the {{term(Node)}} shall use a {{term(HasModellingRule)}} {{term(Reference)}} to point to the corresponding {{term(ModellingRule)}} {{term(Object)}}.
 
+\FloatBarrier
+
 | Notation[0.75in] | DataType | ValueRank | ArrayDimensions | Description[2.75in] |
 |----------|----------|-----------:|-----------------|-------------|
 | Int32 | Int32 | -1 | omitted or null | A scalar Int32.

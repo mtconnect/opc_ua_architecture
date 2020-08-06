@@ -212,12 +212,14 @@ markdown = Redcarpet::Markdown.new(Redcarpet::Render::Latex, {superscript: true,
 
 Dir.mkdir('converted') unless File.exists?('converted')
 
-if ARGV[0]
-  File.write("converted/#{ARGV[1]}.tex", markdown.render(File.read(ARGV[0])))
+if ARGV.length > 0
+  files = ARGV
 else
-  Dir['*.md'].each do |f|
-    puts "Rendering #{f}"
-    File.write("converted/#{f}.tex", markdown.render(File.read(f)))
-  end
+  files = Dir['*.md']
 end
 
+files.each do |f|
+  dest = "converted/#{f}.tex"
+  puts "Rendering #{f} -> #{dest}"
+  File.write(dest, markdown.render(File.read(f)))
+end

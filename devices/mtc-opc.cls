@@ -34,6 +34,7 @@
 \RequirePackage{placeins}
 \RequirePackage{booktabs}
 %\RequirePackage{tabu}
+\RequirePackage{array}
 \RequirePackage{tabularx}
 \RequirePackage{times}					% Loads Adobe Times Roman Font (clone of Times New Roman)
 \RequirePackage{mathptmx}				% Loads Adobe Times Roman Math Font

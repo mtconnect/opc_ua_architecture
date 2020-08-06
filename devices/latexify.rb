@@ -6,9 +6,27 @@ module Redcarpet
   module Render
     class Latex < Base
 
+      class TableCell
+        attr_accessor :text, :format
+        
+        def initialize(text, format)
+          @text, @format = text, format
+        end
+      end
+
       def initialize(options = {})
         super()
         @close = []
+        @table = nil
+        reset_table
+      end
+
+      def reset_table
+        @header = []
+        @caption = ''
+        @collect_header = true
+        @collect_alignment = true
+        @cell_index = 0
       end
 
       def normal_text(text)
@@ -85,10 +103,20 @@ module Redcarpet
       end
 
       def paragraph(text)
-        case text
-        when /^: (.+)$/
-          @caption = $1
-          ''
+        if @table
+          if text =~ /^[ \t]*\[([^\]]+)\][ \t]*(\[([^\]]+)\])?/
+            caption = $1
+            if $2
+              label = $2
+            else
+              label = caption.gsub(' ', '')
+            end
+          else
+            caption = label = ''
+          end
+          text = @table.call(caption, label)
+          @table = nil
+          text
         else
           "\n#{text}\n"
         end
@@ -109,33 +137,62 @@ module Redcarpet
       end
 
       def table(header, content)
-        fields = header.gsub(/\\\\ \\hline$/,'').split('&')
-        headers = "    " + fields.map { |s| "\\textbf{#{s.strip}}" }.join(" & ") + " \\\\ \\hline"
-        columns = ('|l' * fields.size) + '|'
+        headers = @header.map { |h| h.text }.join(' & ')
+        columns = '| ' + @header.map { |c| c.format }.join(' | ') + ' |'
+
+        @caption ||= ''
+
+        reset_table
         
-        text = <<EOT
+        @table = lambda do |caption, label|
+          <<EOT
 
 \\begin{table}
   \\centering
-  \\caption{#{@caption}}
-  \\label{table:#{@caption.gsub(' ', '')}}
+  \\caption{#{caption}}
+  \\label{table:#{label}}
   \\fontsize{9pt}{11pt}\\selectfont
   \\begin{tabular}{#{columns}}
   \\hline
-#{headers}
+    #{headers} \\\\ \\hline
 #{content}
   \\end{tabular}
 \\end{table}
 EOT
-        text
+        end
+        ''
       end
 
       def table_row(content)
-        "    #{content[0..-4]} \\\\ \\hline\n"
+        @collect_header = false        
+        "    #{content[0..-4]} \\\\ \\hline\n"        
       end
 
       def table_cell(content, alignment)
-        "#{content} & "
+        if @collect_header
+          w = nil
+          s = content.sub(/\[([^\]]+)\]/) { |s| w = $1; '' }
+          format = if w
+            "p{#{w}}"
+          else
+            "l"
+          end
+        
+          @header << TableCell.new(s, format)
+          
+          content
+        else
+          if @cell_index < @header.length
+            case alignment
+            when :right
+              @header[@cell_index].format = 'r'
+            when :center
+              @header[@cell_index].format = 'c'
+            end
+            @cell_index += 1
+          end
+          "#{content} & "
+        end
       end
     end
   end
@@ -155,8 +212,12 @@ markdown = Redcarpet::Markdown.new(Redcarpet::Render::Latex, {superscript: true,
 
 Dir.mkdir('converted') unless File.exists?('converted')
 
-Dir['*.md'].each do |f|
-  puts "Rendering #{f}"
-  File.write("converted/#{f}.tex", markdown.render(File.read(f)))
+if ARGV[0]
+  File.write("converted/#{ARGV[1]}.tex", markdown.render(File.read(ARGV[0])))
+else
+  Dir['*.md'].each do |f|
+    puts "Rendering #{f}"
+    File.write("converted/#{f}.tex", markdown.render(File.read(f)))
+  end
 end
 

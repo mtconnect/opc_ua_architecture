@@ -47,10 +47,8 @@ Terms and Acronnyms
 - The {{term(TypeDefinition)}} column specifies a symbolic name for a {{term(NodeId)}}, i.e. the specified {{term(Node)}} points with a {{term(HasTypeDefinition)}} {{term(Reference)}} to the corresponding {{term(Node)}}.
 - The {{term(ModellingRule)}} of the referenced component is provided by specifying the symbolic name of the rule in {{term(ModellingRule)}}. In the {{term(AddressSpace)}}, the {{term(Node)}} shall use a {{term(HasModellingRule)}} {{term(Reference)}} to point to the corresponding {{term(ModellingRule)}} {{term(Object)}}.
 
-: Examples of DataTypes
-
-| Notation | DataType | ValueRank | ArrayDimensions | Description |
-|----------|----------|-----------|-----------------|-------------|
+| Notation[0.75in] | DataType | ValueRank | ArrayDimensions | Description[2.75in] |
+|----------|----------|-----------:|-----------------|-------------|
 | Int32 | Int32 | -1 | omitted or null | A scalar Int32.
 | Int32[]	| Int32 | 1 | omitted or \{0\} | Single-dimensional array of Int32 with an unknown size. |
 | Int32[][] | Int32 | 2 | omitted or \{0,0\} | Two-dimensional array of Int32 with unknown sizes for both dimensions. |
@@ -58,6 +56,8 @@ Terms and Acronnyms
 | Int32[5][3] | Int32 | 2 | \{5,3\} | Two-dimensional array of Int32 with a size of 5 for the first dimension and a size of 3 for the second dimension. |
 | Int32\{Any\} | Int32 | -2 | omitted or null | An Int32 where it is unknown if it is scalar or array with any number of dimensions. |
 | Int32 \{ScalarOrOneDimension\} | Int32 | -3 | omitted or null | An Int32 where it is either a single-dimensional array or a scalar.
+[Examples of DataTypes]
+
 
 
 \FloatBarrier

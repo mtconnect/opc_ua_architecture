@@ -35,14 +35,14 @@ Terms and Acronnyms
 ### Conventions for Node descriptions
 
 
-{{term(Node)}} definitions are specified using tables (see Table {{ref(table:TypeDefinitionTable)}}).
+{{term(Node)}} definitions are specified using tables (see Table {{table(TypeDefinitionTable)}}).
 
 {{termplural(Attribute)}} are defined by providing the Attribute name and a value, or a description of the value.
 
 {{termplural(Reference)}} are defined by providing the {{term(ReferenceType)}} name, the {{term(BrowseName)}} of the {{term(TargetNode)}} and its {{term(NodeClass)}}.
 
 - If the {{term(TargetNode)}} is a component of the {{term(Node)}} being defined in the table the {{termplural(Attribute)}} of the composed Node are defined in the same row of the table.
-- The {{term(DataType)}} is only specified for Variables; "[<number>]" indicates a single-dimensional array, for multi-dimensional arrays the expression is repeated for each dimension (e.g. `[2][3]` for a two-dimensional array). For all arrays the {{termplural(ArrayDimension)}} is set as identified by {{uablock(<number>)}} values. If no {{uablock(<number>)}} is set, the corresponding dimension is set to 0, indicating an unknown size. If no number is provided at all the {{termplural(ArrayDimension)}} can be omitted. If no brackets are provided, it identifies a scalar {{term(DataType)}} and the {{term(ValueRank)}} is set to the corresponding value (see {{cite(UAPart3)}}). In addition, {{termplural(ArrayDimension)}} is set to {{uablock(null)}} or is omitted. If it can be {{uablock(Any)}} or {{uablock(ScalarOrOneDimension)}}, the value is put into {{uablock("<value>")}}, so either {{uablock("Any")}} or {{uablock("ScalarOrOneDimension")}} and the {{term(ValueRank)}} is set to the corresponding value (see {{cite(UAPart3)}}) and the {{termplural(ArrayDimension)}} is set to {{uablock(null)}} or is omitted. Examples are given in Table {{ref(table:ExamplesOfDataTypes)}}.
+- The {{term(DataType)}} is only specified for Variables; "[<number>]" indicates a single-dimensional array, for multi-dimensional arrays the expression is repeated for each dimension (e.g. `[2][3]` for a two-dimensional array). For all arrays the {{termplural(ArrayDimension)}} is set as identified by {{uablock(<number>)}} values. If no {{uablock(<number>)}} is set, the corresponding dimension is set to 0, indicating an unknown size. If no number is provided at all the {{termplural(ArrayDimension)}} can be omitted. If no brackets are provided, it identifies a scalar {{term(DataType)}} and the {{term(ValueRank)}} is set to the corresponding value (see {{cite(UAPart3)}}). In addition, {{termplural(ArrayDimension)}} is set to {{uablock(null)}} or is omitted. If it can be {{uablock(Any)}} or {{uablock(ScalarOrOneDimension)}}, the value is put into {{uablock("<value>")}}, so either {{uablock("Any")}} or {{uablock("ScalarOrOneDimension")}} and the {{term(ValueRank)}} is set to the corresponding value (see {{cite(UAPart3)}}) and the {{termplural(ArrayDimension)}} is set to {{uablock(null)}} or is omitted. Examples are given in Table {{table(ExamplesOfDataTypes)}}.
 - The {{term(TypeDefinition)}} is specified for {{termplural(Object)}} and {{termplural(Variable)}}.
 - The {{term(TypeDefinition)}} column specifies a symbolic name for a {{term(NodeId)}}, i.e. the specified {{term(Node)}} points with a {{term(HasTypeDefinition)}} {{term(Reference)}} to the corresponding {{term(Node)}}.
 - The {{term(ModellingRule)}} of the referenced component is provided by specifying the symbolic name of the rule in {{term(ModellingRule)}}. In the {{term(AddressSpace)}}, the {{term(Node)}} shall use a {{term(HasModellingRule)}} {{term(Reference)}} to point to the corresponding {{term(ModellingRule)}} {{term(Object)}}.
@@ -67,16 +67,18 @@ If the {{term(NodeId)}} of a {{term(DataType)}} is provided, the symbolic name o
 
 Nodes of all other {{termplural(NodeClass)}} cannot be defined in the same table; therefore only the used {{term(ReferenceType)}}, their {{term(NodeClass)}} and their {{term(BrowseName)}} are specified. A reference to another part of this document points to their definition.
 
-Table {{ref(table:TypeDefinitionTable)}} illustrates the table. If no components are provided, the {{term(DataType)}}, {{term(TypeDefinition)}} and {{term(ModellingRule)}} columns may be omitted and only a Comment column is introduced to point to the {{term(Node)}} definition.
+Table {{table(TypeDefinitionTable)}} illustrates the table. If no components are provided, the {{term(DataType)}}, {{term(TypeDefinition)}} and {{term(ModellingRule)}} columns may be omitted and only a Comment column is introduced to point to the {{term(Node)}} definition.
 
-|Attribute[4.5cm]|Value[9.3cm]|
+|Attribute[1.88in]|Value[3.9in]|
 |----------------|------------|
 |Attribute name  |Attribute value. If it is an optional Attribute that is not set "--" will be used.|
 
-|References[2cm] | NodeClass[2cm] | BrowseName[2cm] | DataType[2cm] | TypeDefinition[2cm] | Modeling Rule[2cm] |
+|References[0.85in] | NodeClass[0.85in] | BrowseName[0.85in] | DataType[0.85in] | TypeDefinition[0.85in] | Modeling Rule[0.85in] |
 |----------------|----------------|-----------------|---------------|---------------------|--------------------|
 | ReferenceType name | NodeClass of the target Node. | BrowseName of the target Node. If the Reference is to be instantiated by the server, then the value of the target Node's BrowseName is "--". | DataType of the referenced Node, only applicable for Variable. | TypeDefinition of the referenced Node, only applicable for Variable and Object. | Referenced ModellingRule of the referenced Object.|
 |>[6] Note: Notes referencing footnotes of the table content.|
 [Type Definition Table]
 
 {{latex(\FloatBarrier)}}
+
+

@@ -45,7 +45,7 @@ class Table
       text = <<EOT
 
 \\begin{table}[ht]
-  \\centering#{label}#{caption}
+  \\centering#{caption}#{label}
   \\fontsize{9pt}{11pt}\\selectfont
 #{content}
 \\end{table}
@@ -126,13 +126,13 @@ EOT
       end
 
       def generate
-        skip = 0      
-        @cells.map do |c|
-          if skip > 0
+        skip = 0
+        cs = @cells.map do |c|
+          if c.text.empty? and skip > 0
             skip -= 1
             nil
           else          
-            skip = c.count if c.merge == :right
+            skip = c.count - 1 if c.merge == :right
             c.generate
           end
         end.compact.join(' & ')
@@ -214,6 +214,12 @@ module Redcarpet
 
           when 'latex'
             $3
+
+          when 'table'
+            "\\ref{table:#{$3}}"
+
+          when 'figure'
+            "\\ref{fig:#{$3}}"
 
           else
             "\\#{$1}{#{$3}}"

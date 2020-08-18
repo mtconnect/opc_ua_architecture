@@ -26,11 +26,11 @@ Model will appear as bold monospace .
 Terms and Acronnyms
 -------------------
 
-\printglossary[type=opc]
+{{latex(\printglossary[type=opc])}}
 
-\printglossary[type=mtc]
+{{latex(\printglossary[type=mtc])}}
 
-\printacronyms
+{{latex(\printacronyms)}}
 
 ### Conventions for Node descriptions
 
@@ -47,7 +47,7 @@ Terms and Acronnyms
 - The {{term(TypeDefinition)}} column specifies a symbolic name for a {{term(NodeId)}}, i.e. the specified {{term(Node)}} points with a {{term(HasTypeDefinition)}} {{term(Reference)}} to the corresponding {{term(Node)}}.
 - The {{term(ModellingRule)}} of the referenced component is provided by specifying the symbolic name of the rule in {{term(ModellingRule)}}. In the {{term(AddressSpace)}}, the {{term(Node)}} shall use a {{term(HasModellingRule)}} {{term(Reference)}} to point to the corresponding {{term(ModellingRule)}} {{term(Object)}}.
 
-\FloatBarrier
+{{latex(\FloatBarrier)}}
 
 | Notation[0.75in] | DataType | ValueRank | ArrayDimensions | Description[2.75in] |
 |----------|----------|-----------:|-----------------|-------------|
@@ -61,7 +61,22 @@ Terms and Acronnyms
 [Examples of DataTypes]
 
 
+{{latex(\FloatBarrier)}}
 
-\FloatBarrier
+If the {{term(NodeId)}} of a {{term(DataType)}} is provided, the symbolic name of the {{term(Node)}} representing the {{term(DataType)}} shall be used.
 
+Nodes of all other {{termplural(NodeClass)}} cannot be defined in the same table; therefore only the used {{term(ReferenceType)}}, their {{term(NodeClass)}} and their {{term(BrowseName)}} are specified. A reference to another part of this document points to their definition.
 
+Table {{ref(table:TypeDefinitionTable)}} illustrates the table. If no components are provided, the {{term(DataType)}}, {{term(TypeDefinition)}} and {{term(ModellingRule)}} columns may be omitted and only a Comment column is introduced to point to the {{term(Node)}} definition.
+
+|Attribute[4.5cm]|Value[9.3cm]|
+|----------------|------------|
+|Attribute name  |Attribute value. If it is an optional Attribute that is not set "--" will be used.|
+
+|References[2cm] | NodeClass[2cm] | BrowseName[2cm] | DataType[2cm] | TypeDefinition[2cm] | Modeling Rule[2cm] |
+|----------------|----------------|-----------------|---------------|---------------------|--------------------|
+| ReferenceType name | NodeClass of the target Node. | BrowseName of the target Node. If the Reference is to be instantiated by the server, then the value of the target Node's BrowseName is "--". | DataType of the referenced Node, only applicable for Variable. | TypeDefinition of the referenced Node, only applicable for Variable and Object. | Referenced ModellingRule of the referenced Object.|
+|>[6] Note: Notes referencing footnotes of the table content.|
+[Type Definition Table]
+
+{{latex(\FloatBarrier)}}

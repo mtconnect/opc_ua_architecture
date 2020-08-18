@@ -327,6 +327,7 @@
 \newcommand{\xml}[1]{{\fontfamily{pcr}\selectfont #1}}
 \newcommand{\mtmodel}[1]{{\fontfamily{pcr}\selectfont #1}}
 \newcommand{\uamodel}[1]{\textbf{\fontfamily{pcr}\selectfont #1}}
+\newcommand{\uablock}[1]{\uamodel{#1}}
 \newcommand{\var}[1]{\textit{\fontfamily{pcr}\selectfont @#1}}
 
 
@@ -415,6 +416,8 @@
 \newcommand*{\mtuadatatype}[1]{\hyperref[data-type:#1]{\fontfamily{pcr}\selectfont #1}}
 
 \newcommand*{\mtuamodel}[1]{\hyperref[model:#1]{\fontfamily{pcr}\selectfont #1}}
+
+\newcommand*{\mtblock}[1]{\mtuatype{#1}}
 
 % Glossary info
 

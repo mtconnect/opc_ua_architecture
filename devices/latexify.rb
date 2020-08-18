@@ -1,32 +1,224 @@
 require 'redcarpet'
 
+class Table
+  attr_reader :tables
+  
+  def initialize
+    @tabulars = []
+    @current = @caption = @label = nil
+  end
 
+  def complete
+    @current = nil
+  end
+
+  def current
+    if @current
+      @current
+    else
+      @tabulars << Tabular.new
+      @current = @tabulars.last
+    end
+  end
+
+  def  caption(text)
+    if text =~ /^[ \t]*\[([^\]]+)\][ \t]*(\[([^\]]+)\])?/
+      caption = $1
+      if $2
+        label = $2
+      else
+        label = "table:#{caption.gsub(' ', '')}"
+      end
+      @caption, @label = caption, label
+      ''
+    else
+      text
+    end
+  end
+
+  def generate    
+      caption = "\n  \\caption{#{@caption}}" if @caption
+      label = "\n  \\label{#{@label}}" if @label
+
+      content = @tabulars.map(&:generate).join('')
+      
+      text = <<EOT
+
+\\begin{table}[ht]
+  \\centering#{label}#{caption}
+  \\fontsize{9pt}{11pt}\\selectfont
+#{content}
+\\end{table}
+EOT
+      text
+  end
+  
+  class Tabular
+    attr_accessor :rows, :columns
+
+    
+    class Cell
+      attr_reader :text, :merge, :count
+      def initialize(text)
+        case text
+        when /^>\[(\d+)\]\s+(.+)$/
+          @merge = :right
+          @text = $2
+          @count = $1.to_i
+        when 'v', 'V'
+          @merge = :down
+          @text = ''
+        else
+          @text = text
+          @merge = nil
+        end                 
+      end
+
+      def generate
+        if @merge == :right
+          "\\multicolumn{#{@count}}{|l|}{#{@text}}"
+        else
+          @text
+        end
+      end
+    end
+
+    class Column
+      attr_accessor :alignment
+      
+      def initialize(name)
+        w = nil
+        @name = name.sub(/\[([^\]]+)\]/) { |s| w = $1; '' }
+        @format =  w ? "{#{w}}" : nil
+        @alignment = nil
+      end
+
+      def format
+        s =  case @alignment
+             when :right
+               'r'
+
+             when :center
+               'c'
+
+             else
+               @format ? 'p' : 'l'
+             end
+
+
+        "#{s}#{@format}"
+      end
+
+      def name
+        "\\textbf{#{@name}}"
+      end
+    end
+
+    class Row
+      attr_reader :cells
+      
+      def initialize
+        @cells = []
+      end
+
+      def add_cell(text)
+        @cells << Cell.new(text)
+      end
+
+      def generate
+        skip = 0      
+        @cells.map do |c|
+          if skip > 0
+            skip -= 1
+            nil
+          else          
+            skip = c.count if c.merge == :right
+            c.generate
+          end
+        end.compact.join(' & ')
+      end
+    end
+    
+    def initialize
+      @rows = []
+      @columns = []
+      @index = 0
+      @header = true
+      @row = nil
+      @completed = false
+    end
+
+    def add_cell(name, align)
+      if @header
+        @columns << Column.new(name)
+      else
+        @row = Row.new unless @row
+        @row.add_cell(name)
+        
+        @columns[@index].alignment = align if align
+        @index += 1
+      end
+    end
+
+    def add_row(row)
+      @rows << @row if @row
+      @header = false
+      @row = nil
+      @index = 0
+    end
+
+    def completed?
+      @completed
+    end
+
+    def complete
+      @completed = true
+    end
+
+    def generate
+      s = " \\\\ \\hline\n"
+      columns = '| ' + @columns.map(&:format).join(' | ') + ' |'
+      headers = @columns.map(&:name).join(' & ') + s
+      content = @rows.map(&:generate).join(s) + s
+      
+      text = <<EOT
+
+  \\begin{tabular}{#{columns}}
+  \\hline
+#{headers}
+#{content}
+  \\end{tabular}
+EOT
+      text
+    end
+  end
+end
 
 module Redcarpet
   module Render
     class Latex < Base
-
-      class TableCell
-        attr_accessor :text, :format
-        
-        def initialize(text, format)
-          @text, @format = text, format
-        end
-      end
-
       def initialize(options = {})
         super()
         @close = []
         @table = nil
-        reset_table
       end
 
-      def reset_table
-        @header = []
-        @caption = ''
-        @collect_header = true
-        @collect_alignment = true
-        @cell_index = 0
+      def expand_macros(text)
+        text.gsub(/\{\{([a-zA-Z0-9_]+)(\(([^\)]+)\))?\}\}/) do |s|
+          case $1
+          when 'term'
+            "\\gls{#{$3}}"
+            
+          when 'termplural'
+            "\\glspl{#{$3}}"
+
+          when 'latex'
+            $3
+
+          else
+            "\\#{$1}{#{$3}}"
+          end
+        end
       end
 
       def normal_text(text)
@@ -41,7 +233,8 @@ module Redcarpet
         block_code(code, nil)
       end
 
-      def header(title, level)
+      def header(content, level)
+        title = expand_macros(content)
         label = nil
         title.sub!(/\{#([^}]+)\}/) { |t| label = $1; '' }
         head = case level
@@ -90,11 +283,13 @@ module Redcarpet
         end
       end
 
-      def double_emphasis(text)
+      def double_emphasis(content)
+        text = expand_macros(content)
         "\\textbf{#{text}}"
       end
 
-      def emphasis(text)
+      def emphasis(content)
+        text = expand_macros(content)
         "\\textit{text}"
       end
 
@@ -102,21 +297,14 @@ module Redcarpet
         "\\newline"
       end
 
-      def paragraph(text)
+      def paragraph(content)
+        text = expand_macros(content)
         if @table
-          if text =~ /^[ \t]*\[([^\]]+)\][ \t]*(\[([^\]]+)\])?/
-            caption = $1
-            if $2
-              label = $2
-            else
-              label = caption.gsub(' ', '')
-            end
-          else
-            caption = label = ''
-          end
-          text = @table.call(caption, label)
+          text = @table.caption(text)
+          rendered = "#{@table.generate}\n"
+          rendered += "#{text}\n" if text
           @table = nil
-          text
+          rendered
         else
           "\n#{text}\n"
         end
@@ -133,66 +321,25 @@ module Redcarpet
       end
 
       def list_item(content, list_type)
-        "  \\item #{content}\n"
+        text = expand_macros(content)
+        "  \\item #{text}\n"
       end
 
       def table(header, content)
-        headers = @header.map { |h| h.text }.join(' & ')
-        columns = '| ' + @header.map { |c| c.format }.join(' | ') + ' |'
-
-        @caption ||= ''
-
-        reset_table
-        
-        @table = lambda do |caption, label|
-          <<EOT
-
-\\begin{table}
-  \\centering
-  \\caption{#{caption}}
-  \\label{table:#{label}}
-  \\fontsize{9pt}{11pt}\\selectfont
-  \\begin{tabular}{#{columns}}
-  \\hline
-    #{headers} \\\\ \\hline
-#{content}
-  \\end{tabular}
-\\end{table}
-EOT
-        end
+        @table.complete
         ''
       end
 
       def table_row(content)
-        @collect_header = false        
-        "    #{content[0..-4]} \\\\ \\hline\n"        
+        @table.current.add_row(content) if @table
+        ''
       end
 
       def table_cell(content, alignment)
-        if @collect_header
-          w = nil
-          s = content.sub(/\[([^\]]+)\]/) { |s| w = $1; '' }
-          format = if w
-            "p{#{w}}"
-          else
-            "l"
-          end
-        
-          @header << TableCell.new(s, format)
-          
-          content
-        else
-          if @cell_index < @header.length
-            case alignment
-            when :right
-              @header[@cell_index].format = 'r'
-            when :center
-              @header[@cell_index].format = 'c'
-            end
-            @cell_index += 1
-          end
-          "#{content} & "
-        end
+        text = expand_macros(content)
+        @table ||= Table.new
+        @table.current.add_cell(text, alignment)
+        ''
       end
     end
   end

@@ -193,6 +193,7 @@ module Redcarpet
         @close = []
         @table = nil
         @lazy = nil
+        @equation = false
       end
 
       def check_caption(text)
@@ -237,16 +238,20 @@ module Redcarpet
         if text =~ / ->/
           text.gsub(/ ->/, " $\\rightarrow$")
         else
+          # puts "#{text}"
           text
         end
       end
 
       def block_code(code, language)
         line = 1
-        if language =~ /^([a-z]+)@([a-z0-9]+)/i
+        if language =~ /^([a-z]+)@([a-z0-9]+)?(\{([^}]+)\})?/i
           language = $1
-          line = $2
+          line = $2 if $2
+          option = $4
         end
+
+        code.gsub!(/\{#([^}]+)\}/, '\\label{\1}')
 
         lang = "\\lstset{language=#{language.upcase},numbers=left,xleftmargin=2em}" if language
 
@@ -255,6 +260,7 @@ module Redcarpet
           options << "firstnumber=#{line}" if line
           options << "caption={#{caption}}" if caption
           options << "label={lst:#{label}}" if label
+          options << option if option
           
         <<EOT
 #{lang}
@@ -378,11 +384,7 @@ EOT
       end
 
       def entity(text)
-        text
-      end
-
-      def quote(text)
-        p text
+        puts "Entity: #{text}"
         text
       end
 
@@ -404,6 +406,11 @@ EOT
         else
           "\n#{text}\n"
         end
+      end
+
+      def highlight(text)
+        puts "Hilighting #{text}"
+        "\\textcolor{red}{#{text}}"
       end
 
       def list(content, list_type)
@@ -431,6 +438,10 @@ EOT
         ''
       end
 
+      def quote(text)
+        text
+      end
+
       def table_cell(content, alignment)
         text = expand_macros(content)
         @table ||= Table.new
@@ -445,7 +456,8 @@ EOT
           gsub('&lsquo;', '`').
           gsub('&rsquo;', "'").
           gsub('&quot;', "'").
-          gsub('&ndash;', '---')          
+          gsub('&ndash;', '--').
+          gsub('&mdash;', '---')
       end
     end
   end
@@ -456,11 +468,14 @@ markdown = Redcarpet::Markdown.new(Redcarpet::Render::Latex, {superscript: true,
                                                               fenced_code_blocks: true,
                                                               space_after_headers: true,
                                                               tables: true,
+                                                              quote: true,
                                                               strikethrough: true,
                                                               no_intra_emphasis: true,
                                                               footnotes: true,
                                                               lax_spacing: true,
                                                               underline: true,
+                                                              highlight: true,
+                                                              subscript: true,
                                                               no_images: false
                                                              })
 

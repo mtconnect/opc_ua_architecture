@@ -92,7 +92,7 @@ The rules are as follows:
 
 When the value of an attribute, such as the data item type as given in Listing {{ref(lst:type-attr-conversion)}}:
 
-```xml@1
+```xml
   <DataItem category="EVENT" id="a8ce34a00" name="mode_ovr" type="CONTROLLER_MODE_OVERRIDE"/>
   <DataItem category="EVENT" id="b8ce34a00" name="eob" type="END_OF_BAR"/>
 ```
@@ -206,21 +206,13 @@ The examples below will provide further guidance on implementing these rules.
 
 OPC UA defines the {{latex(\uamodel{EngineeringUnits)}} {{term(DataType)}} in {{termplural(UAPart8)}} as having the fields show in Table~{{table(enineering-untis-data-type)}}.
 
-{{latex(\begin{table)}}[ht]
-  {{latex(\centering)}} 
-  {{latex(\caption{\texttt{EngineeringUnits)}} DataType structure}
-   {#table:enineering-untis-data-type}
-  {{latex(\tabulinesep)}}=3pt
-  {{latex(\begin{tabu)}} to 6in {|X|X|X[3]|} {{latex(\everyrow{\hline)}}
-    {{latex(\hline)}}
-    {{latex(\rowfont)}}{{latex(\bfseries)}} {Name} & {Type} & Description \\
-    {{latex(\tabucline)}}[1.5pt]{}
-    namespaceUri & String & Identifies the organization (company, standards organization) that defines the EUInformation \\
-    unitId & Int32 & Identifier for programmatic evaluation. -1 is used if a unitId is not available. \\
-    displayName & LocalizedText & The displayName of the engineering unit is typically the abbreviation of the engineering unit, for example "h" for hour or "m/s" for meter per second. \\
-    description & LocalizedText & Contains the full name of the engineering unit such as "hour" or "meter per second". \\
-  {{latex(\end{tabu)}}
-{{latex(\end{table)}} 
+| Name | Type| Description |
+|------|-----|-------------|
+| namespaceUri | String | Identifies the organization (company, standards organization) that defines the EUInformation |
+| unitId | Int32 | Identifier for programmatic evaluation. -1 is used if a unitId is not available. |
+| displayName | LocalizedText | The displayName of the engineering unit is typically the abbreviation of the engineering unit, for example "h" for hour or "m/s" for meter per second. |
+| description | LocalizedText | Contains the full name of the engineering unit such as "hour" or "meter per second". |
+[`EngineeringUnits` DataType structure][enineering-untis-data-type]
 
 In Table~{{table(mtconnect-to-ua-eu-mapping)}}, the mapping between the MTConnect units and the OPC UA EngineeringUnits structure has been specified. There is one unit type, {{mtmodel(COUNT)}} that is unitless and therefor not mapped. The {{mtmodel(COUNT)}} is only used with {{termplural(Event)}} and therefor is not an {{latex(\uamodel{AnalogUnitType)}}, and is instantiated as an {{mtuatype(MTNumericEventType)}}.
 
@@ -228,122 +220,105 @@ The {{latex(\uamodel{namespaceUri)}} will be set to {{latex(\url{http://www.opcf
 
 The {{mtmodel(MILLIMETER_3D)}} unit is special since it will be represented by the {{mtuatype(MTThreeSpaceSampleType)}}. The individual values of the  {{latex(\mtuadatatype{ThreeSpaceSampleDataType)}} will be given in $millimeters$ and a {{latex(\uamodel{displayName)}} of $mm({{latex(\mathbb{R)}}^{3})$; the {{latex(\uamodel{EngineeringUnits)}} will be provided for consistency. The {{latex(\uamodel{EURange)}} will not work since it cannot represent three space volumetric constraints and the {{latex(\uamodel{EURange)}} {{term(Property)}} will not be created.
 
-{{latex(\begin{table)}}[ht]
-  {{latex(\centering)}} 
-  {{latex(\caption{\texttt{EngineeringUnits)}} DataType structure}
-   {#table:mtconnect-to-ua-eu-mapping}
-  {{latex(\fontsize{9pt)}}{11pt}{{latex(\selectfont)}}
-  {{latex(\tabulinesep)}}=3pt
-  {{latex(\begin{tabu)}} to 6in {|X[2.75]|X[0.75]|X|X|X[2]|} {{latex(\everyrow{\hline)}}
-    {{latex(\hline)}}
-    {{latex(\rowfont)}}{{latex(\bfseries)}} {MTConnect Unit} & {UNECE Code} & {UnitId} & {Display Name} & {Description} \\
-    {{latex(\tabucline)}}[1.5pt]{}
-    AMPERE 	& AMP & 4279632 & $A$ & Amps \\
-    CELSIUS	& CEL  & 4408652 & $^{{{latex(\circ)}}}Celsuis$ & Degrees Celsius \\
-    {{latex(\textcolor{red)}}{COUNT}	&   &  & & {{latex(\textcolor{red)}}{A counted event {{latex(\newline)}} Cannot be used for EUInformation {{latex(\vspace{2pt)}} } \\
-    DECIBEL	& 2N & 12878 & $dB$ & Sound Level \\
-    DEGREE	& DD & 17476 & $^{{{latex(\circ)}}}$  & degree [unit of angle] \\
-    DEGREE/SECOND &	E96 & 4536630 & $^{{{latex(\circ)}}}/s$ & Angular degrees per second \\
-    DEGREE/SECOND\^{}2 & M45 & 5059637 & $^{{{latex(\circ)}}}/s^{2}$ & Angular acceleration in degrees per second squared \\
-    HERTZ & HTZ & 4740186 & $Hz$ & Frequency measured in cycles per second \\
-    JOULE & JOU & 4869973 & $J$ & A measurement of energy. \\
-    KILOGRAM & KGM & 4933453 & $kg$ & kilogram \\
-    LITER & LTR & 5002322 & $l$ & Litre \\
-    LITER/SECOND & G51 & 4666673 & $l/s$ & Litre per second \\
-    MICRO_RADIAN & B97 & 4340023 & ${{latex(\mu)}} rad$ & microradian - Measurement of Tilt \\
-    MILLIMETER & MMT & 5066068 & $mm$ & millimetre \\
-    MILLIMETER/SECOND & C16 & 4403510 & $mm/s$ & millimetre per second \\
-    MILLIMETER/SECOND\^{}2 & M41 & 5059633 & $mm/s^2$ & Acceleration in millimeters per second squared \\
-    MILLIMETER_3D & MMT & 5066068 & $mm ({{latex(\mathbb{R)}}^{3})$ & A point in space identified by X, Y, and Z coordinates. \\
-    NEWTON & NEW & 5129559 & $N$ & Force in Newtons \\
-    NEWTON_METER & NU & 20053 & $N {{latex(\cdot)}} m$ & Torque, a unit for force times distance.  \\
-    OHM & OHM & 5195853 & ${{latex(\Omega)}}$ & Measure of Electrical Resistance \\
-    PASCAL & PAL & 5259596 & $Pa$ & Pressure in Newtons per square meter  \\
-    PASCAL_SECOND & C65 & 4404789 & $Pa {{latex(\cdot)}} s$ & Measurement of Viscosity \\
-    PERCENT	& P1  & 20529 & $\%\ or\ pct$ & Percent \\
-    PH & Q30 & 5321520 & $pH$ & pH (potential of Hydrogen) - A measure of the acidity or alkalinity of a solution \\
-    REVOLUTION/MINUTE & RPM & 5394509 & $r/min$ & revolutions per minute \\
-    SECOND	& SEC & 5457219 & $s$ & second [unit of time] \\
-  {{latex(\end{tabu)}}
-{{latex(\end{table)}}
+|MTConnect Unit | UNECE Code | UnitId | Display Name | Description |
+|---------------|------------|--------|--------------|-------------|
+| AMPERE 	| AMP | 4279632 | $A$ | Amps |
+| CELSIUS	| CEL  | 4408652 | $^\circ Celsuis$ | Degrees Celsius |
+| ==COUNT==	|   |  | | ==A counted event. Cannot be used for EUInformation== |
+| DECIBEL	| 2N | 12878 | $dB$ | Sound Level |
+| DEGREE	| DD | 17476 | $^\circ$  | degree [unit of angle] |
+| DEGREE/SECOND |	E96 | 4536630 | $^\circ/s$ | Angular degrees per second |
+| DEGREE/SECOND^2 | M45 | 5059637 | $^\circ/s^{2}$ | Angular acceleration in degrees per second squared |
+| HERTZ | HTZ | 4740186 | $Hz$ | Frequency measured in cycles per second |
+| JOULE | JOU | 4869973 | $J$ | A measurement of energy. |
+| KILOGRAM | KGM | 4933453 | $kg$ | kilogram |
+| LITER | LTR | 5002322 | $l$ | Litre |
+| LITER/SECOND | G51 | 4666673 | $l/s$ | Litre per second |
+| MICRO\_RADIAN | B97 | 4340023 | $\mu rad$ | microradian - Measurement of Tilt |
+| MILLIMETER | MMT | 5066068 | $mm$ | millimetre |
+| MILLIMETER/SECOND | C16 | 4403510 | $mm/s$ | millimetre per second |
+| MILLIMETER/SECOND^2 | M41 | 5059633 | $mm/s^2$ | Acceleration in millimeters per second squared |
+| MILLIMETER\_3D | MMT | 5066068 | $mm (\mathbb{R)^{3})$ | A point in space identified by X, Y, and Z coordinates. |
+| NEWTON | NEW | 5129559 | $N$ | Force in Newtons |
+| NEWTON\_METER | NU | 20053 | $N \cdot m$ | Torque, a unit for force times distance.  |
+| OHM | OHM | 5195853 | $\Omega$ | Measure of Electrical Resistance |
+| PASCAL | PAL | 5259596 | $Pa$ | Pressure in Newtons per square meter  |
+| PASCAL_SECOND | C65 | 4404789 | $Pa \cdot s$ | Measurement of Viscosity |
+| PERCENT	| P1  | 20529 | % or pct | Percent |
+| PH | Q30 | 5321520 | $pH$ | pH (potential of Hydrogen) - A measure of the acidity or alkalinity of a solution |
+| REVOLUTION/MINUTE | RPM | 5394509 | $r/min$ | revolutions per minute |
+| SECOND	| SEC | 5457219 | $s$ | second [unit of time] |
+[`EngineeringUnits` DataType structure][table:mtconnect-to-ua-eu-mapping]
 
 {{latex(\clearpage)}}
 
-{{latex(\begin{table)}}[ht]
-  {{latex(\centering)}} 
-  {{latex(\caption{\texttt{EngineeringUnits)}} DataType structure (Continued)}
-  {{latex(\fontsize{9pt)}}{11pt}{{latex(\selectfont)}}
-  {{latex(\tabulinesep)}}=3pt
-  {{latex(\begin{tabu)}} to 6in {|X[2.75]|X[0.75]|X|X|X[2]|} {{latex(\everyrow{\hline)}}
-    {{latex(\hline)}}
-    {{latex(\rowfont)}}{{latex(\bfseries)}} {MTConnect Unit} & {UNECE Code} & {UnitId} & {Display Name} & {Description} \\
-    {{latex(\tabucline)}}[1.5pt]{}
-    SIEMENS/METER & D10 & 4469040 & $S/m$ & siemens per metre - A measurement of Electrical Conductivity \\
-    VOLT & VLT & 5655636 & $V$ & volt \\
-    VOLT_AMPERE & D46 & 4469814 & $VA$ & volt - ampere \\
-    VOLT_AMPERE_REACTIVE &  & -1 & $VAR$ & Volt-Ampere Reactive  (VAR) \\
-    WATT & WTT & 5723220 & $W$ & watt \\
-    WATT_SECOND & J55 & 4863285 & $W {{latex(\cdot)}} s$ & Measurement of electrical energy, equal to one Joule
-  {{latex(\end{tabu)}}
-{{latex(\end{table)}} 
+| MTConnect Unit | UNECE Code | UnitId | Display Name | Description |
+|---------------|------------|--------|--------------|-------------|
+| SIEMENS/METER | D10 | 4469040 | $S/m$ | siemens per metre - A measurement of Electrical Conductivity |
+| VOLT | VLT | 5655636 | $V$ | volt |
+| VOLT\_AMPERE | D46 | 4469814 | $VA$ | volt - ampere |
+| VOLT\_AMPERE_REACTIVE |  | -1 | $VAR$ | Volt-Ampere Reactive  (VAR) |
+| WATT | WTT | 5723220 | $W$ | watt |
+| WATT\_SECOND | J55 | 4863285 | $W \cdot s$ | Measurement of electrical energy, equal to one Joule |
 
 {{latex(\FloatBarrier)}}
 ### Mapping Example
 
 The following is an example of mapping the MTConnect Device Meta-Model to the OPC UA MTConnect model. The example will not be a realistic machine tool configuration, but will demonstrate all the possible combinations of components, compositions, and data items and how to construct the information model using the various rules given above. The first section covers the meta model presented in {{termplural(MTCPart2)}} of the MTConnect standard. For more information on any individual entity in the model, please refer to the MTConnect documentation.
 
-#### \mtmodel{MTConnectDevices Root Element}
+#### `MTConnectDevices` Root Element
 
 The first lines shown in Listing {{ref(lst:device-header)}} of the MTConnect {{term(xml)}} representation are the root element {{mtmodel(MTConnectDevices)}} and the {{mtmodel(Header)}} element that is used for the MTConnect protocol. The only root node concern is if there are additional name-spaces declared in the root {{mtmodel(MTConnectDevices)}} element. The other area of note is the {{mtmodel(version)}} attribute of the `Header` element.  The version indicates the most current version of the MTConnect standard currently being provided by this {{term(Agent)}}. The remaining attributes are relevant during the discussion of streaming data in the following section.
 
-{{latex(\begin{lstlisting)}}[caption={Device Header},label={lst:device-header}]
-<MTConnectDevices xmlns="urn:mtconnect.org:MTConnectDevices:1.4" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:1.4 schema/MTConnectDevices_1.4.xsd">
+```xml
   <Header version="1.4.0" creationTime="2018-10-28T12:33:12Z" instanceId="12345" sender="localhost" bufferSize="1024" assetBufferSize="1024" assetCount="0"/>
   <Devices>
-{{latex(\end{lstlisting)}}
+```
+[Device Header][device-header]
 
 The MTConnect {{term(Agent)}} is capable of supporting multiple {{termplural(MTDevice)}}; a {{mtmodel(Device)}} element is the only allowed child element of the {{mtmodel(Devices)}} element. The {{term(MTDevice)}} element is the top level {{term(MTComponent)}} of the MTConnect {{term(MTComponent)}} hierarchy. The {{term(MTDevice)}} is a sub-type of the {{term(MTComponent)}} and inherits all the structure of an MTConnect {{term(MTComponent)}}. The {{mtmodel(Device)}} has three required attributes, an {{mtmodel(id)}}, a {{mtmodel(uuid)}} and a {{mtmodel(name)}} attribute. Only the {{mtmodel(id)}} is mandatory in all other components. 
 
-#### \mtmodel{Device Element}
+#### `Device` Element
 
-{{latex(\begin{lstlisting)}}[firstnumber=last,%
-    caption={`Device` Element Mapping},label={lst:device-model-device}]
+```xml@last
     <Device id="x872a3490" uuid="872a3490-bd2d-0136-3eb0-0c85909298d9" name="SimpleCnc">
       <Description manufacturer="MTConnectInstitute" model="Simple" serialNumber="12">
 				This is a simple CNC example
 			</Description>
-{{latex(\end{lstlisting)}}
+```
+[`Device` Element Mapping][device-model-device]
 
 The {{mtmodel(Description)}} element provides some characteristics of the device, namely the {{mtmodel(manufacturer)}}, {{mtmodel(serialNumber)}} and {{mtmodel(model)}}. These are all optional as is the descriptive text that is contained in the {{mtmodel(Description)}} element. The text contained in the {{term(CDATA)}} of the {{mtmodel(Description)}} element is mapped to the {{mtmodel(Data)}} property of the {{mtuatype(MTDescriptionType)}} instance.
 
 The {{mtmodel(Device)}} is mapped to an {{mtuatype(MTDeviceType)}} object in the MTConnect namespace as shown in Figure {{figure(simple-cnc-device-model)}}.
 
-{{latex(input
+![](diagrams/mtconnect-mapping/device-model.tex)
 
 Every device must have a {{latex(\uamodel{HasNotifier)}} relationship with the {{term(Server)}} UA Object as the source to enable conditions and event notification. The {{latex(\uamodel{HasNotifier)}} relationships are flowed down through the component hierarchy where the {{termplural(Object)}} each have a {{latex(\uamodel{HasNotifier)}} relationship with the parent. 
 
 The treatment of the component relationships will be covered in the {{term(MTDataItem)}} examples.
 
-#### \mtmodel{Device {{mtblock(DataItems)}}}
+#### `Device` DataItems`
 
-{{latex(\begin{lstlisting)}}[firstnumber=last,%
-    caption={Device Data Items},label={lst:device-data-items}]
+```xml@last
       <DataItems>
         <DataItem id="d5b078a0" name="avail" type="AVAILABILITY" category="EVENT"/>
         <DataItem id="e4a300e0" type="ASSET_CHANGED" category="EVENT"/>
         <DataItem id="f2df7550" type="ASSET_REMOVED" category="EVENT"/>
       </DataItems>
-{{latex(\end{lstlisting)}}
+```
+[Device Data Items][device-data-items]
 
 The device requires three data items as of MTConnect version 1.2. The {{mtmodel(AVAILABILITY)}} data item indicates if data is available from the device and the {{mtmodel(ASSET_CHANGED)}} and {{mtmodel(ASSET_REMOVED)}} data items represent the last asset inserted or updated and removed respectively. The Component adds Data items with a {{uablock(Has\-Component)}} relationship, and the BrowseName is constructed using the {{mtmodel(type)}}, {{mtmodel(sub\-Type)}}, and related {{term(Composition)}} from {{mtmodel(compositionId)}} if given. A complete example is given later in this section.
 
-{{latex(input
+
+![](diagrams/mtconnect-mapping/data-item-references.tex)
 
 Figure {{figure(mtdevice-data-item)}} demonstrates the relationship of the {{termplural(MTDataItem)}} with the parent {{mtuatype(MTComponentType)}} using a {{latex(\uamodel{HasComponent)}} relationship. The browse name is constructed to uniquely identify the DataItem and also indicate its semantic meaning within the context of the MTConnect {{mtuatype(MTComponentType)}}, in this case, an {{mtuatype(MTDeviceType)}} since the {{mtuatype(MTDeviceType)}} is a sub-type of the {{mtuatype(MTComponentType)}}. These relationships are created dynamically during the instantiation of the model and are not part of the underlying MTConnect Nodeset.
 
 Every MTConnect {{term(MTDataItem)}} has two references that provide the semantic meaning in the UA address space. This model is very similar to the {{latex(\uamodel{ConditionClassId)}} relationship for the OPC UA {{term(ConditionType)}}. These {{termplural(ClassType)}} are inherited from the same parent so they can be used for both the {{mtuatype(HasMTClassType)}} for all {{termplural(MTDataItem)}} as well as the {{latex(\uamodel{ConditionClassId)}} in {{termplural(Condition)}} since MTConnect {{termplural(MTCondition)}} are also descended from the {{term(ConditionType)}} hierarchy.
 
-{{latex(input
+![](diagrams/mtconnect-mapping/data-item-references.tex)
 
 In Figure {{figure(data-item-references)}}, the {{mtuatype(HasMTClassType)}} reference indicates the semantic meaning of the data item. For enumerated or controlled vocabulary data items, they are represented using a sub-type of the UA {{latex(\uamodel{MultiStateValueDiscreteType)}}, the {{mtuatype(MTControlledVocabEventType)}}, where the {{latex(\uamodel{EnumStrings)}} attribute is related to the NodeId of the associated enumeration data type, in this case the {{latex(\mtuaenum{AvailabilityDataType)}}. The {{mtuatype(AvailabilityClassType)}} also has {{latex(\uamodel{HasComponent)}} relationship with the {{latex(\mtuaenum{AvailabilityDataType)}} {{latex(\uamodel{Enumeration)}}.
 
@@ -351,10 +326,9 @@ MTConnect {{term(subType)}} will be mapped in the same manner as the type using 
 
 {{latex(\FloatBarrier)}}
 
-#### \mtmodel{Axes and {{mtmodel(Linear)}} Components}
+#### `Axes` and `Linear` Components
 
-{{latex(\begin{lstlisting)}}[firstnumber=last,escapechar=|,%
-    caption={Components and Conditions},label={lst:linear-x-component}]
+```xml@last
       <Components>
         <Axes id="a62a1050">
           <Components>
@@ -365,11 +339,12 @@ MTConnect {{term(subType)}} will be mapped in the same manner as the type using 
                 <DataItem id="e086dd60" type="POSITION" category="CONDITION" name="Xtravel"/>
               </DataItems>
             </Linear>
-{{latex(\end{lstlisting)}}
+```
+[Components and Conditions][linear-x-component]
 
 The {{termplural(MTComponent)}} element in Listing {{ref(lst:linear-x-component)}} is represented as a UA {{term(FolderType)}}. Within the folder, the MTConnect components are semantically identified by the element's {{term(QName)}} with a type with the suffix {{mtmodel(Type)}} appended, in this case the {{term(BrowseName)}}  {{mtmodel(Axes)}} has a {{term(HasTypeDefinition)}} relaton of {{mtmodel(AxesType)}}. 
 
-{{latex(input
+![](diagrams/mtconnect-mapping/linear-x-component.tex)
 
 Figure~{{figure(linear-x-component)}} represents the UA Object model based on  Listing~{{ref(lst:linear-x-component)}}. The {{mtmodel(Linear)}} X {{mtmodel(Axis)}}, mapped from {{mtmodel(Linear)}} element in Listing~{{ref(lst:linear-x-component)}}, has a {{term(BrowseName)}} composed of the {{term(QName)}} of the element, and the {{mtmodel(name)}} attribute appended and enclosed in square brackets `[X]`, giving the browse name of `Linear[X]` and a component type of {{mtmodel(LinearType)}} using a {{term(HasTypeDefinition)}} {{term(Reference)}}.
 
@@ -389,8 +364,7 @@ The `Linear[x]` component uses a {{latex(\uamodel{HasNotifier)}} reference sourc
 
 #### \mtmodel{Rotary Axis and {{term(MTCondition)}} sources}
 
-{{latex(\begin{lstlisting)}}[firstnumber=last,%
-    caption={Rotary C Axis},label={lst:rotary-c-example},escapechar=|]
+```xml@last{escapechar=|}
             <Rotary id="zf476090" name="C" nativeName="S">
               <DataItems>
                 <DataItem id="bbe3f010" type="ROTARY_MODE" category="EVENT">  | {#line:rotary-mode}|
@@ -415,7 +389,8 @@ The `Linear[x]` component uses a {{latex(\uamodel{HasNotifier)}} reference sourc
                 <Composition id="b7792870" type="MOTOR"/> | {#line:rotary-c-motor}|
               </Compositions>
             </Rotary>
-{{latex(\end{lstlisting)}}
+```
+[Rotary C Axis][rotary-c-example]
 
 The data item on Line~{{ref(line:rotary-mode)}} of Listing~{{ref(lst:rotary-c-example)}} with {{term(type)}} of {{mtmodel(ROTARY_MODE)}} is illustrated in Figure~{{figure(rotary-c-rotary-mode)}}. MTConnect allows for a {{mtmodel(Rotary)}} axis to provide the function of the axis, Spindle, Contour, or Index. In Many cases the Rotary Mode is a singular values, as in this case when it can only work as a spindle. This is expressed by creating a {{term(HasComponent)}} reference to a {{mtuatype(MTConstraintType)}} {{term(Object)}} and specifying the {{latex(\uamodel{Values)}} {{term(Property)}}  with the singular value of `["SPINDLE"]` indicating it can only function as a spindle. 
 

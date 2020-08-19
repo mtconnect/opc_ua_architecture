@@ -8,3 +8,4 @@ gem 'memoist'
 gem 'rspec-xml'
 
 gem 'redcarpet'
+gem 'kramdown'

@@ -31,7 +31,7 @@ Figure \ref{fig:mtcomponent-uml} represents the same model in \gls{uml}. The com
 The \glspl{UMLAssociation} are used to represent OPC UA \glspl{Reference}. UA \glspl{Property} represented using the UA \gls{HasProperty} relationships are given as \gls{uml} \glspl{Attribute} (not to be confused with the OPC UA \gls{Attribute}. \gls{uml} allows for additional information as follows: the multiplicity of a property, the data type of the property, are specified.
 
 \input{diagrams/mtconnect-mapping/mtcomponent-uml.tex}
-\FloatBarrier
+
 
 When traversing an association between two object types, the name of the source of the association is the \gls{BrowseName} of the object, and the destination is the type of object that is instantiated. If the name is not given, it represents a dynamic relationship where the \gls{BrowseName} is determined during the creation of the object model. An example is the association of the MTConnect \glspl{MTDataItem}. The rules for creating the \gls{BrowseName} are givin below in Section~\ref{sec:mapping-rules}.
 

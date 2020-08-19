@@ -21,19 +21,8 @@ class Table
     end
   end
 
-  def  caption(text)
-    if text =~ /^[ \t]*\[([^\]]+)\][ \t]*(\[([^\]]+)\])?/
-      caption = $1
-      if $2
-        label = $2
-      else
-        label = "table:#{caption.gsub(' ', '')}"
-      end
-      @caption, @label = caption, label
-      ''
-    else
-      text
-    end
+  def  caption(caption, label)
+    @caption, @label = caption, "table:#{label}"
   end
 
   def generate    
@@ -201,6 +190,21 @@ module Redcarpet
         super()
         @close = []
         @table = nil
+        @lazy = nil
+      end
+
+      def check_caption(text)
+        if text =~ /^[ \t]*\[([^\]]+)\][ \t]*(\[([^\]]+)\])?/
+          caption = $1
+          if $3
+            label = $3
+          else
+            label = caption.gsub(' ', '')
+          end
+          [caption, label]
+        else
+          nil
+        end 
       end
 
       def expand_macros(text)
@@ -228,15 +232,40 @@ module Redcarpet
       end
 
       def normal_text(text)
-        text
+        if text =~ / ->/
+          text.gsub(/ ->/, " $\\rightarrow$")
+        else
+          text
+        end
       end
 
       def block_code(code, language)
-        "\\texttt{#{code}}"
+        line = 1
+        if language =~ /^([A-Za-z]+)@(\d+)/
+          language = $1
+          line = $2
+        end
+
+        lang = "\\lstset{language=#{language.upcase},numbers=left,xleftmargin=2em}" if language
+
+        @lazy = lambda do |caption, label|
+          options = []
+          options << "firstnumber=#{line}" if line
+          options << "caption={#{caption}}" if caption
+          options << "label={lst:#{label}}" if label
+          
+        <<EOT
+#{lang}
+\\begin{lstlisting}[#{options.join(',')}]
+#{code}
+\\end{lstlisting}
+EOT
+        end
+        ''
       end
 
       def codespan(code)
-        block_code(code, nil)
+        "\\texttt{#{code}}"
       end
 
       def header(content, level)
@@ -296,20 +325,74 @@ module Redcarpet
 
       def emphasis(content)
         text = expand_macros(content)
-        "\\textit{text}"
+        "\\textit{#{text}}"
+      end
+
+      def highlight(text)
+        "\\emph{#{text}}"
+      end
+
+      def underline(content)
+        "\\underline{#{content}}"
+      end
+
+      def image(link, title, alt)
+        puts "Image: #{link}, #{title}, #{alt}"
+        if link =~ /\.tex$/
+          "\\input{#{link}}"
+        else
+          if alt
+            caption = alt
+            lt = title
+          else
+            caption = title
+            lt = title.gsub(' ', '')
+          end
+
+          label = "  \\label{fig:#{lt}}" if alt
+          
+          <<EOT
+\\begin{figure}[ht]
+  \\centering
+  \\includegraphics[width=\\textwidth]{#{link}}
+  \\caption{#{caption}}
+#{label}
+\\end{figure}
+EOT
+        end
+      end
+
+      def link(link, title, content)
+        puts "Link: #{link}, #{title}"
+        text = "\\input #{link}"
       end
 
       def linebreak
-        "\\newline"
+        " \\newline "
+      end
+
+      def hrule
+         "\\hline"
+      end
+
+      def entity(text)
+        text
       end
 
       def paragraph(content)
         text = expand_macros(content)
-        if @table
-          text = @table.caption(text)
-          rendered = "#{@table.generate}\n"
-          rendered += "#{text}\n" if text
-          @table = nil
+        
+        if @table or @lazy
+          caption, label = check_caption(text)
+          if @table
+            @table.caption(caption, label)
+            rendered = "#{@table.generate}\n"
+            @table = nil
+          else
+            rendered = @lazy.call(caption, label)
+            @lazy = nil
+          end
+          rendered += "#{text}\n" unless caption
           rendered
         else
           "\n#{text}\n"
@@ -328,7 +411,7 @@ module Redcarpet
 
       def list_item(content, list_type)
         text = expand_macros(content)
-        "  \\item #{text}\n"
+        "  \\item #{text}"
       end
 
       def table(header, content)
@@ -360,7 +443,8 @@ markdown = Redcarpet::Markdown.new(Redcarpet::Render::Latex, {superscript: true,
                                                               no_intra_emphasis: true,
                                                               footnotes: true,
                                                               lax_spacing: true,
-                                                              underline: true
+                                                              underline: true,
+                                                              no_images: false
                                                              })
 
 Dir.mkdir('converted') unless File.exists?('converted')

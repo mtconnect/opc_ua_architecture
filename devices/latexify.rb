@@ -241,7 +241,7 @@ module Redcarpet
 
       def block_code(code, language)
         line = 1
-        if language =~ /^([A-Za-z]+)@(\d+)/
+        if language =~ /^([a-z]+)@([a-z0-9]+)/i
           language = $1
           line = $2
         end
@@ -376,6 +376,11 @@ EOT
       end
 
       def entity(text)
+        text
+      end
+
+      def quote(text)
+        p text
         text
       end
 

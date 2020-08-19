@@ -186,6 +186,8 @@ end
 module Redcarpet
   module Render
     class Latex < Base
+      include Redcarpet::Render::SmartyPants
+
       def initialize(options = {})
         super()
         @close = []
@@ -434,6 +436,16 @@ EOT
         @table ||= Table.new
         @table.current.add_cell(text, alignment)
         ''
+      end
+
+      def postprocess(text)
+        super(text).
+          gsub('&ldquo;', '``').
+          gsub('&rdquo;', "''").
+          gsub('&lsquo;', '`').
+          gsub('&rsquo;', "'").
+          gsub('&quot;', "'").
+          gsub('&ndash;', '---')          
       end
     end
   end

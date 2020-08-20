@@ -42,23 +42,41 @@ Terms and Acronnyms
 {{termplural(Reference)}} are defined by providing the {{term(ReferenceType)}} name, the {{term(BrowseName)}} of the {{term(TargetNode)}} and its {{term(NodeClass)}}.
 
 - If the {{term(TargetNode)}} is a component of the {{term(Node)}} being defined in the table the {{termplural(Attribute)}} of the composed Node are defined in the same row of the table.
-- The {{term(DataType)}} is only specified for Variables; "[<number>]" indicates a single-dimensional array, for multi-dimensional arrays the expression is repeated for each dimension (e.g. `[2][3]` for a two-dimensional array). For all arrays the {{termplural(ArrayDimension)}} is set as identified by {{uablock(<number>)}} values. If no {{uablock(<number>)}} is set, the corresponding dimension is set to 0, indicating an unknown size. If no number is provided at all the {{termplural(ArrayDimension)}} can be omitted. If no brackets are provided, it identifies a scalar {{term(DataType)}} and the {{term(ValueRank)}} is set to the corresponding value (see {{cite(UAPart3)}}). In addition, {{termplural(ArrayDimension)}} is set to {{uablock(null)}} or is omitted. If it can be {{uablock(Any)}} or {{uablock(ScalarOrOneDimension)}}, the value is put into {{uablock("<value>")}}, so either {{uablock("Any")}} or {{uablock("ScalarOrOneDimension")}} and the {{term(ValueRank)}} is set to the corresponding value (see {{cite(UAPart3)}}) and the {{termplural(ArrayDimension)}} is set to {{uablock(null)}} or is omitted. Examples are given in Table {{table(ExamplesOfDataTypes)}}.
+51
+- The {{term(DataType)}} is only specified for Variables; "\[\<number\>\]"
+  indicates a single-dimensional array, for multi-dimensional arrays
+  the expression is repeated for each dimension (e.g. `[2][3]` for
+  a two-dimensional array). For all arrays the
+  {{termplural(ArrayDimension)}} is set as identified by
+  {{uablock(\<number\>)}} values. If no {{uablock(\<number\>)}} is set,
+  the corresponding dimension is set to 0, indicating an unknown
+  size. If no number is provided at all the
+  {{termplural(ArrayDimension)}} can be omitted. If no brackets are
+  provided, it identifies a scalar {{term(DataType)}} and the
+  {{term(ValueRank)}} is set to the corresponding value (see
+  {{cite(UAPart3)}}). In addition, {{termplural(ArrayDimension)}} is
+  set to {{uablock(null)}} or is omitted. If it can be
+  {{uablock(Any)}} or {{uablock(ScalarOrOneDimension)}}, the value is
+  put into {{uablock("\<value\>")}}, so either {{uablock("Any")}} or
+  {{uablock("ScalarOrOneDimension")}} and the {{term(ValueRank)}} is
+  set to the corresponding value (see {{cite(UAPart3)}}) and the
+  {{termplural(ArrayDimension)}} is set to {{uablock(null)}} or is
+  omitted. Examples are given in Table {{table(ExamplesOfDataTypes)}}.
+
 - The {{term(TypeDefinition)}} is specified for {{termplural(Object)}} and {{termplural(Variable)}}.
 - The {{term(TypeDefinition)}} column specifies a symbolic name for a {{term(NodeId)}}, i.e. the specified {{term(Node)}} points with a {{term(HasTypeDefinition)}} {{term(Reference)}} to the corresponding {{term(Node)}}.
 - The {{term(ModellingRule)}} of the referenced component is provided by specifying the symbolic name of the rule in {{term(ModellingRule)}}. In the {{term(AddressSpace)}}, the {{term(Node)}} shall use a {{term(HasModellingRule)}} {{term(Reference)}} to point to the corresponding {{term(ModellingRule)}} {{term(Object)}}.
 
 {{latex(\FloatBarrier)}}
 
-| Notation[0.75in] | DataType | ValueRank | ArrayDimensions | Description[2.75in] |
+| Notation | DataType | ValueRank | ArrayDimensions | Description(2.75in) | 
 |----------|----------|-----------:|-----------------|-------------|
-| Int32 | Int32 | -1 | omitted or null | A scalar Int32.
-| Int32[]	| Int32 | 1 | omitted or \\{0\\} | Single-dimensional array of Int32 with an unknown size. |
-| Int32[][] | Int32 | 2 | omitted or \\{0,0\\} | Two-dimensional array of Int32 with unknown sizes for both dimensions. |
-| Int32[3][] | Int32 | 2 | \\{3,0\\} | Two-dimensional array of Int32 with a size of 3 for the first dimension and an unknown size for the second dimension. |
-| Int32[5][3] | Int32 | 2 | \\{5,3\\} | Two-dimensional array of Int32 with a size of 5 for the first dimension and a size of 3 for the second dimension. |
-| Int32\{Any\} | Int32 | -2 | omitted or null | An Int32 where it is unknown if it is scalar or array with any number of dimensions. |
-| Int32 \{ScalarOrOneDimension\} | Int32 | -3 | omitted or null | An Int32 where it is either a single-dimensional array or a scalar.
-[Examples of DataTypes]
+| Int32 | Int32 | -1 | omitted or null | A scalar Int32. |
+| Int32\[\]	| Int32 | 1 | omitted or {0} | Single-dimensional array of Int32 with an unknown size. |
+| Int32\[\]\[\] | Int32 | 2 | omitted or {0,0} | Two-dimensional array of Int32 with unknown sizes for both dimensions. |
+| Int32\[3\]\[\] | Int32 | 2 | {3,0} | Two-dimensional array of Int32 with a size of 3 for the first dimension and an unknown size for the second dimension. |
+| Int32\[5\]\[3\] | Int32 | 2 |
+{:  caption="Examples of DataTypes" format-1="p 0.75in" format-5="p 2.75in" }
 
 
 {{latex(\FloatBarrier)}}
@@ -69,15 +87,18 @@ Nodes of all other {{termplural(NodeClass)}} cannot be defined in the same table
 
 Table {{table(TypeDefinitionTable)}} illustrates the table. If no components are provided, the {{term(DataType)}}, {{term(TypeDefinition)}} and {{term(ModellingRule)}} columns may be omitted and only a Comment column is introduced to point to the {{term(Node)}} definition.
 
-|Attribute[1.88in]|Value[3.9in]|
+| Attribute | Value |
 |----------------|------------|
 |Attribute name  |Attribute value. If it is an optional Attribute that is not set "--" will be used.|
+{: caption="Type Definition Table" format-1="p 1.88in" format-2="p 3.59in"}
 
-|References[0.85in] | NodeClass[0.85in] | BrowseName[0.85in] | DataType[0.85in] | TypeDefinition[0.85in] | Modeling Rule[0.85in] |
+
+| References     | NodeClass      | BrowseName      | DataType      | TypeDefinition      | Modeling Rule      |
 |----------------|----------------|-----------------|---------------|---------------------|--------------------|
 | ReferenceType name | NodeClass of the target Node. | BrowseName of the target Node. If the Reference is to be instantiated by the server, then the value of the target Node's BrowseName is "--". | DataType of the referenced Node, only applicable for Variable. | TypeDefinition of the referenced Node, only applicable for Variable and Object. | Referenced ModellingRule of the referenced Object.|
-|>[6] Note: Notes referencing footnotes of the table content.|
-[Type Definition Table]
+| {{span(6)}} Note: Notes referencing footnotes of the table content.  |
+{: format="p 0.85in" }
+
 
 {{latex(\FloatBarrier)}}
 
@@ -107,7 +128,7 @@ The {{termplural(Attribute)}} of {{termplural(Node)}}, their {{uablock(DataTypes
 
 For all Nodes specified in this specification, the {{termplural(Attribute)}} named in Table {{table(CommonNodeAttributes)}} shall be set as specified in the table.
 
-|Attribute[1.5in]|Value[3.9in]|
+| Attribute | Value |
 |----------------|------------|
 |DisplayName | The DisplayName is a LocalizedText. Each server shall provide the DisplayName identical to the BrowseName of the Node for the LocaleId "en". Whether the server provides translated names for other LocaleIds is server-specific.|
 |Description | Optionally a server-specific description is provided.|
@@ -118,16 +139,16 @@ For all Nodes specified in this specification, the {{termplural(Attribute)}} nam
 |RolePermissions | Optionally server-specific role permissions can be provided.|
 |UserRolePermissions | Optionally the role permissions of the current Session can be provided. The value is server-specifc and depend on the RolePermissions Attribute (if provided) and the current Session.|
 |AccessRestrictions | Optionally server-specific access restrictions can be provided. |
-[Common Node Attributes]
+{: caption="Common Node Attributes" format-1="p 1.5in" format-2="p 3.9in"}
 
 #### Objects
 
 For all `Objects` specified in this specification, the `Attributes` named in Table {{table(CommonObjectAttributes)}} shall be set as specified in the Table {{table(CommonObjectAttributes)}}. The definitions for the `Attributes` can be found in OPC {{termplural(UAPart3)}}.
 
-|Attribute[1.5in]|Value[3.9in]|
+|Attribute|Value|
 |----------------|------------|
 | EventNotifier | Whether the Node can be used to subscribe to Events or not is server-specific. |
-[Common Object Attributes]
+{: caption="Common Object Attributes" format-1="p 1.5in" format-2="p 3.9in"}
 
 {{latex(\FloatBarrier)}}
 
@@ -135,7 +156,7 @@ For all `Objects` specified in this specification, the `Attributes` named in Tab
 
 For all {{termplural(Variable)}} specified in this specification, the {{termplural(Attribute)}} named in Table {{table(CommonVariableAttributes)}} shall be set as specified in the table. The definitions for the {{termplural(Attribute)}} can be found in {{termplural(UAPart3)}}.
 
-|Attribute[1.5in]|Value[3.9in]|
+|Attribute|Value|
 |----------------|------------|
 | EventNotifier | Whether the Node can be used to subscribe to Events or not is server-specific. |
 | MinimumSamplingInterval | Optionally, a server-specific minimum sampling interval is provided.|
@@ -145,7 +166,7 @@ For all {{termplural(Variable)}} specified in this specification, the {{termplur
 | ArrayDimensions | If the ValueRank does not identify an array of a specific dimension (i.e. ValueRank <= 0) the ArrayDimensions can either be set to null or the Attribute is missing. This behaviour is server-specific. If the ValueRank specifies an array of a specific dimension (i.e. ValueRank > 0) then the ArrayDimensions Attribute shall be specified in the table defining the Variable.|
 | Historizing | The value for the Historizing Attribute is server-specific.|
 | AccessLevelEx | If the AccessLevelEx Attribute is provided, it shall have the bits 8, 9, and 10 set to 0, meaning that read and write operations on an individual Variable are atomic, and arrays can be partly written. |
-[Common Variable Attributes]
+{: caption="Common Variable Attributes" format-0="p 1.5in" format-1="p 3.9in"}
 
 
 {{latex(\FloatBarrier)}}
@@ -154,11 +175,11 @@ For all {{termplural(Variable)}} specified in this specification, the {{termplur
 
 For all {{latex(\uamodel{VariableType}}} specified in this specification, the {{termplural(Attribute)}} named in Table {{table(CommonVariableTypesAttributes)}} shall be set as specified in the table. The definitions for the {{termplural(Attribute)}} can be found in {{termplural(UAPart3)}}.
 
-|Attribute[1.5in]|Value[3.9in]|
+|Attribute|Value|
 |----------------|------------|
 | Value | Optionally a server-specific default value can be provided. |
 | ArrayDimensions | If the ValueRank does not identify an array of a specific dimension (i.e. ValueRank <= 0) the ArrayDimensions can either be set to null or the Attribute is missing. This behaviour is server-specific. If the ValueRank specifies an array of a specific dimension (i.e. ValueRank > 0) then the ArrayDimensions Attribute shall be specified in the table defining the VariableType. |
-[Common VariableTypes Attributes]
+{: caption="Common VariableTypes Attributes" format-0="p 1.5in" format-1="p 3.9in"}
 
 {{latex(\FloatBarrier)}}
 
@@ -166,10 +187,11 @@ For all {{latex(\uamodel{VariableType}}} specified in this specification, the {{
 
 For all {{latex(\uamodel{Methods}}} specified in this specification, the {{term(Attribute)}} named in Table {{table(CommonMethodAttributes)}} shall be set as specified in the table. The definitions for the {{termplural(Attribute)}} can be found in {{termplural(UAPart3)}}.
 
-|Attribute[1.5in]|Value[3.9in]|
+|Attribute|Value|
 |----------------|------------|
 | Executable | All Methods defined in this specification shall be executable (Executable Attribute set to “True”), unless it is defined differently in the Method definition.|
 | UserExecutable | The value of the UserExecutable Attribute is server-specific. It is assumed that all Methods can be executed by at least one user. |
-[Common Method Attributes]
+{: caption="Common Method Attributes" format-0="p 1.5in" format-1="p 3.9in"}
+
 
 {{latex(\FloatBarrier)}}

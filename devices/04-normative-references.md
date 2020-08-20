@@ -1,4 +1,4 @@
-Normative References \label{normativereferences}
+Normative References {#normativereferences}
 ====================
 
 The following referenced documents are indispensable for applying this

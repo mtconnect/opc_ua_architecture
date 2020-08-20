@@ -67,7 +67,7 @@ Standard has been designed to:
 The MTConnect Institute is responsible for development of the MTConnect
 Standard. The Institute is a 501(c)(6) not-for-profit standards
 development organization and is a subsidiary of
-[amt]{acronym-label="amt" acronym-form="singular+short"}. Its mission is
+{{term(amt)}}. Its mission is
 to create open standards to foster greater interoperability between
 devices and clients by defining the structure and terminology used in
 communications in the discrete parts manufacturing sector.

@@ -1,4 +1,4 @@
-Who Will Find Benefit from this Companion Specification? \label{whowillbenefit}
+Who Will Find Benefit from this Companion Specification? {#whowillbenefit}
 ========================================================
 
 This companion specification is written for those who:

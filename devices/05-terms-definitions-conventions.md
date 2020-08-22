@@ -90,7 +90,7 @@ Table {{table(TypeDefinitionTable)}} illustrates the table. If no components are
 | Attribute | Value |
 |----------------|------------|
 |Attribute name  |Attribute value. If it is an optional Attribute that is not set "--" will be used.|
-{: caption="Type Definition Table" format-1="p 1.88in" format-2="p 3.59in"}
+{: caption="Type Definition Table" format-1="p 1.88in" format-2="p 3.92in"}
 
 
 | References     | NodeClass      | BrowseName      | DataType      | TypeDefinition      | Modeling Rule      |
@@ -124,7 +124,7 @@ The text part of the {{uablock(BrowseNames)}} for all {{term(Node)}}s defined in
 
 #### General
 
-The {{termplural(Attribute)}} of {{termplural(Node)}}, their {{uablock(DataTypes)}} and descriptions are defined in {{termplural(UAPart3)}}. {{termplural(Attribute)}} not marked as optional are mandatory and shall be provided by a Server. The following tables define if the {{term(Attribute)}} value is defined by this specification or if it is server-specific.
+The {{termplural(Attribute)}} of {{termplural(Node)}}, their {{uablock(DataTypes)}} and descriptions are defined in {{cite(UAPart3)}}. {{termplural(Attribute)}} not marked as optional are mandatory and shall be provided by a Server. The following tables define if the {{term(Attribute)}} value is defined by this specification or if it is server-specific.
 
 For all Nodes specified in this specification, the {{termplural(Attribute)}} named in Table {{table(CommonNodeAttributes)}} shall be set as specified in the table.
 
@@ -143,7 +143,7 @@ For all Nodes specified in this specification, the {{termplural(Attribute)}} nam
 
 #### Objects
 
-For all `Objects` specified in this specification, the `Attributes` named in Table {{table(CommonObjectAttributes)}} shall be set as specified in the Table {{table(CommonObjectAttributes)}}. The definitions for the `Attributes` can be found in OPC {{termplural(UAPart3)}}.
+For all `Objects` specified in this specification, the `Attributes` named in Table {{table(CommonObjectAttributes)}} shall be set as specified in the Table {{table(CommonObjectAttributes)}}. The definitions for the `Attributes` can be found in OPC {{cite(UAPart3)}}.
 
 |Attribute|Value|
 |----------------|------------|
@@ -154,7 +154,7 @@ For all `Objects` specified in this specification, the `Attributes` named in Tab
 
 #### Variables
 
-For all {{termplural(Variable)}} specified in this specification, the {{termplural(Attribute)}} named in Table {{table(CommonVariableAttributes)}} shall be set as specified in the table. The definitions for the {{termplural(Attribute)}} can be found in {{termplural(UAPart3)}}.
+For all {{termplural(Variable)}} specified in this specification, the {{termplural(Attribute)}} named in Table {{table(CommonVariableAttributes)}} shall be set as specified in the table. The definitions for the {{termplural(Attribute)}} can be found in {{cite(UAPart3)}}.
 
 |Attribute|Value|
 |----------------|------------|
@@ -166,32 +166,32 @@ For all {{termplural(Variable)}} specified in this specification, the {{termplur
 | ArrayDimensions | If the ValueRank does not identify an array of a specific dimension (i.e. ValueRank <= 0) the ArrayDimensions can either be set to null or the Attribute is missing. This behaviour is server-specific. If the ValueRank specifies an array of a specific dimension (i.e. ValueRank > 0) then the ArrayDimensions Attribute shall be specified in the table defining the Variable.|
 | Historizing | The value for the Historizing Attribute is server-specific.|
 | AccessLevelEx | If the AccessLevelEx Attribute is provided, it shall have the bits 8, 9, and 10 set to 0, meaning that read and write operations on an individual Variable are atomic, and arrays can be partly written. |
-{: caption="Common Variable Attributes" format-0="p 1.5in" format-1="p 3.9in"}
+{: caption="Common Variable Attributes" format-1="p 1.5in" format-2="p 3.9in"}
 
 
 {{latex(\FloatBarrier)}}
 
 #### VariableTypes
 
-For all {{latex(\uamodel{VariableType}}} specified in this specification, the {{termplural(Attribute)}} named in Table {{table(CommonVariableTypesAttributes)}} shall be set as specified in the table. The definitions for the {{termplural(Attribute)}} can be found in {{termplural(UAPart3)}}.
+For all {{latex(\uamodel{VariableType}}} specified in this specification, the {{termplural(Attribute)}} named in Table {{table(CommonVariableTypesAttributes)}} shall be set as specified in the table. The definitions for the {{termplural(Attribute)}} can be found in {{cite(UAPart3)}}.
 
 |Attribute|Value|
 |----------------|------------|
 | Value | Optionally a server-specific default value can be provided. |
 | ArrayDimensions | If the ValueRank does not identify an array of a specific dimension (i.e. ValueRank <= 0) the ArrayDimensions can either be set to null or the Attribute is missing. This behaviour is server-specific. If the ValueRank specifies an array of a specific dimension (i.e. ValueRank > 0) then the ArrayDimensions Attribute shall be specified in the table defining the VariableType. |
-{: caption="Common VariableTypes Attributes" format-0="p 1.5in" format-1="p 3.9in"}
+{: caption="Common VariableTypes Attributes" format-1="p 1.5in" format-2="p 3.9in"}
 
 {{latex(\FloatBarrier)}}
 
 #### Methods
 
-For all {{latex(\uamodel{Methods}}} specified in this specification, the {{term(Attribute)}} named in Table {{table(CommonMethodAttributes)}} shall be set as specified in the table. The definitions for the {{termplural(Attribute)}} can be found in {{termplural(UAPart3)}}.
+For all {{latex(\uamodel{Methods}}} specified in this specification, the {{term(Attribute)}} named in Table {{table(CommonMethodAttributes)}} shall be set as specified in the table. The definitions for the {{termplural(Attribute)}} can be found in {{cite(UAPart3)}}.
 
 |Attribute|Value|
 |----------------|------------|
 | Executable | All Methods defined in this specification shall be executable (Executable Attribute set to “True”), unless it is defined differently in the Method definition.|
 | UserExecutable | The value of the UserExecutable Attribute is server-specific. It is assumed that all Methods can be executed by at least one user. |
-{: caption="Common Method Attributes" format-0="p 1.5in" format-1="p 3.9in"}
+{: caption="Common Method Attributes" format-1="p 1.5in" format-2="p 3.9in"}
 
 
 {{latex(\FloatBarrier)}}

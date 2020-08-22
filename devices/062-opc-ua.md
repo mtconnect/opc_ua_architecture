@@ -3,19 +3,19 @@
 OPC UA is an open and royalty free set of standards designed as a universal communications protocol.
 While there are numerous communication solutions available, OPC UA has key advantages:
 
-* A state of art security model (see {{termplural(UAPart2)}}).
+* A state of art security model (see {{cite(UAPart2)}}).
 * A fault tolerant communication protocol.
 * An information modeling framework that allows application developers to represent their data in a way that makes sense to them.
 
 OPC UA has a broad scope which delivers for economies of scale for application developers. This means that a larger number of high quality applications at a reasonable cost are available. When combined with powerful semantic models such as MTConnect, OPC UA makes it easier for end users to access data via generic commercial applications.
 
-The OPC UA model is scalable from small devices to {{term(erp)}} systems. OPC UA devices process information locally and then provide that data in a consistent format to any application requesting data - {{term(erp)}}, {{term(mes)}}, {{term(pms)}}, Maintenance Systems, {{term(hmi)}}, Smartphone or a standard Browser, for examples. For a more complete overview see {{termplural(UAPart1)}}.
+The OPC UA model is scalable from small devices to {{term(erp)}} systems. OPC UA devices process information locally and then provide that data in a consistent format to any application requesting data - {{term(erp)}}, {{term(mes)}}, {{term(pms)}}, Maintenance Systems, {{term(hmi)}}, Smartphone or a standard Browser, for examples. For a more complete overview see {{cite(UAPart1)}}.
 
 ### Basics of OPC UA
 
 As an Open Standard, OPC UA is based on standard Internet technologies - {{term(tcpip)}}, {{term(http)}} and Web Sockets.
 
-As an Extensible Standard, OPC UA provides a set of services (see {{termplural(UAPart4)}}) and a basic information model framework. This framework provides an easy manner for creating and exposing vendor defined information in a standard way. More importantly all OPC UA Clients are expected to be able to discover and use vendor defined information. This means OPC UA users can benefit from the economies of scale that come with generic visualization and historian applications. This specification is an example of an OPC UA Information Model designed to meet the needs of developers and users.
+As an Extensible Standard, OPC UA provides a set of services (see {{cite(UAPart4)}}) and a basic information model framework. This framework provides an easy manner for creating and exposing vendor defined information in a standard way. More importantly all OPC UA Clients are expected to be able to discover and use vendor defined information. This means OPC UA users can benefit from the economies of scale that come with generic visualization and historian applications. This specification is an example of an OPC UA Information Model designed to meet the needs of developers and users.
 
 OPC UA Clients can be any consumer of data from another device on the network to browser base thin clients and  {{term(erp)}} systems. The full scope of OPC UA applications are shown in Figure {{figure(scopeofopcuaent)}}.
 
@@ -38,7 +38,7 @@ OPC UA provides a framework that can be used to represent complex information as
 
 The Type Nodes are templates that define all of the children that can be present in an Instance of the Type. In the example in Figure {{figure(relsbetweeentypesandinstances)}} the `PersonType` `ObjectType` defines two children: First Name and Last Name. All instances of `PersonType` are expected to have the same children with the same {{termplural(BrowseName)}}. Within a Type the {{termplural(BrowseName)}} uniquely identify the child. This means Client applications can be designed to search for children based on the {{termplural(BrowseName)}} from the Type instead of `NodeIds`. This eliminates the need for manual reconfiguration of systems if a Client uses Types that multiple devices implement.
 
-OPC UA also supports the concept of sub typing. This allows a modeler to take an existing Type and extend it. There are rules regarding sub typing defined in {{termplural(UAPart3)}}, but in general they allow the additions to a given type or the restriction of a {{term(DataType)}} to a more specific data type. For example the modeler may decide that the existing `ObjectType` in some cases needs an additional variable. The modeler can create a subtype of the `ObjectType` and add the variable. A client that is expecting the parent type can treat the new `ObjectType` as if it was of the parent `ObjectType` and just ignore the additional variable. A client that understands the new subtype may display or otherwise process the additional variable. With regard to {{termplural(DataType)}}, if a variable is defined to have a numeric value, a sub type could restrict the Value to a float.
+OPC UA also supports the concept of sub typing. This allows a modeler to take an existing Type and extend it. There are rules regarding sub typing defined in {{cite(UAPart3)}}, but in general they allow the additions to a given type or the restriction of a {{term(DataType)}} to a more specific data type. For example the modeler may decide that the existing `ObjectType` in some cases needs an additional variable. The modeler can create a subtype of the `ObjectType` and add the variable. A client that is expecting the parent type can treat the new `ObjectType` as if it was of the parent `ObjectType` and just ignore the additional variable. A client that understands the new subtype may display or otherwise process the additional variable. With regard to {{termplural(DataType)}}, if a variable is defined to have a numeric value, a sub type could restrict the Value to a float.
 
 ![](diagrams/RelsBetweenTypesAndInstances.tex)
 
@@ -51,8 +51,8 @@ The figures above use a notation that was developed for the OPC UA specification
 ![](diagrams/OpcInfoModelNodeClassNotation.tex)
 ![](diagrams/OpcInfoModelReferencesNotation.tex)
 
-A complete description of the different types of {{termplural(Node)}} and `References` can be found in {{termplural(UAPart3)}} and the base structure is described in {{termplural(UAPart5)}}.
-OPC UA specification defines a very wide range of functionality in its basic information model. It is not expected that all clients or servers support all functionality in the OPC UA specifications. OPC UA includes the concept of profiles, which segment the functionality into testable certifiable units. This allows the development of companion specification (such as MTConnect-OPC UA) that can describe the subset of functionality that is expected to be implemented. The profiles do not restrict functionality, but generate requirements for a minimum set of functionality (see {{termplural(UAPart7)}})
+A complete description of the different types of {{termplural(Node)}} and `References` can be found in {{cite(UAPart3)}} and the base structure is described in {{cite(UAPart5)}}.
+OPC UA specification defines a very wide range of functionality in its basic information model. It is not expected that all clients or servers support all functionality in the OPC UA specifications. OPC UA includes the concept of profiles, which segment the functionality into testable certifiable units. This allows the development of companion specification (such as MTConnect-OPC UA) that can describe the subset of functionality that is expected to be implemented. The profiles do not restrict functionality, but generate requirements for a minimum set of functionality (see {{cite(UAPart7)}})
 
 
 #### Namespaces

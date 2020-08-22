@@ -47,7 +47,7 @@ With a common information model and representations of other aspects of the manu
 
 ## Industrial Systems Integrator
 
-{{termplural(MTCPart5)}} provides a data-centric approach to equipment integration using an observation based architecture where the devices do not instruct each other, but they observe the requests of different pieces of equipment and respond by providing the necessary services. The model uses MTConnect ability to publish changes to special event {{termplural(MTDataItem)}} that provide a request/response framework to allow the equipment to organize activities. This is the section of the MTConnect standard referred to as {{term(interfaces)}}.
+{{cite(MTCPart5)}} provides a data-centric approach to equipment integration using an observation based architecture where the devices do not instruct each other, but they observe the requests of different pieces of equipment and respond by providing the necessary services. The model uses MTConnect ability to publish changes to special event {{termplural(MTDataItem)}} that provide a request/response framework to allow the equipment to organize activities. This is the section of the MTConnect standard referred to as {{term(interfaces)}}.
 
 MTConnect can benefit from OPC UA's discovery mechanisms to incorporate devices as they enter the interactive ecosystem.  UA will also increase the available equipment that can participate in the MTConnect Interfaces model by supplying a standard for advanced industrial automation without the need for additional {{termplural(plc)}} and expensive centralized control systems.
 

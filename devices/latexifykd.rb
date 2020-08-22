@@ -30,31 +30,36 @@ module Kramdown
         @skip = @span = nil
         super
       end
-      
+
       def convert_macro(el, _opts)
-        el.value.gsub(/\{\{([a-zA-Z0-9_]+)(\(([^\)]+)\))?\}\}/) do |s|
-          case $1
+        el.value.sub(/\{\{([a-zA-Z0-9_]+)(\(([^\)]+)\))?\}\}/) do |s|
+          command, args = $1, $3.gsub(/\\([<>])/, '\1')
+          case command
           when 'term'
-            "\\gls{#{$3}}"
+            "\\gls{#{args}}"
             
           when 'termplural'
-            "\\glspl{#{$3}}"
+            "\\glspl{#{args}}"
 
           when 'latex'
-            $3
+            args
 
           when 'table'
-            "\\ref{table:#{$3}}"
+            "\\ref{table:#{args}}"
 
           when 'figure'
-            "\\ref{fig:#{$3}}"
+            "\\ref{fig:#{args}}"
 
           when "span"
-            @span = $3.to_i
+            @span = args.to_i
             ''
 
+          when 'markdown'
+            kd = ::Kramdown::Document.new(args.gsub(/<br\/?>/, "\n"), input: 'MTCKramdown')
+            kd.to_mtc_latex
+            
           else
-            "\\#{$1}{#{$3}}"
+            "\\#{command}{#{args}}"
           end
         end
       end
@@ -66,6 +71,7 @@ module Kramdown
           if context and not label.index(':')
             label = "#{context}:#{label}"
           end
+          caption = latex_caption(caption)
         end
         [caption, label]
       end
@@ -144,7 +150,7 @@ EOT
 
       def convert_tbody(el, opts)
         super
-      end
+      end      
 
       def convert_td(el, opts)
         text = inner(el, opts)
@@ -163,6 +169,109 @@ EOT
           end
         end
       end
+
+      def convert_ul(el, opts)
+        if el.attr['class'] == 'tight'
+          type = el.type == :ul ? 'itemize' : 'enumerate'
+          <<EOT
+\\begin{#{type}}
+\\setlength\\itemsep{0em}
+#{inner(el, opts)}
+\\end{#{type}}
+EOT
+        else
+          super
+        end
+      end
+      alias convert_ol convert_ul
+
+      def convert_text(el, opts)
+        kls =  opts[:parent].attr['class']
+        close = open = nil
+        case kls
+        when 'large'
+          open = '\\Large{'
+          close = '}'
+        end
+          
+        "#{open}#{super}#{close}"
+      end
+
+      def convert_p(el, opts)
+        text = ''
+        close = nil
+        case el.attr['class']
+        when 'center'
+          text << "\\begin{center}\n"
+          close = "\\end{center}\n"
+        end
+        
+        if el.children.size == 1 && el.children.first.type == :img
+          text << convert_img(el.children.first, opts)
+        else
+          text << "#{latex_link_target(el)}#{inner(el, opts)}\n\n"
+        end
+        text << close if close
+        
+        text
+      end
+
+      def convert_img(el, opts)
+        src = el.attr['src']
+        alt = el.attr['alt']
+        title = el.attr['title']
+
+        puts "Image: #{src}, #{alt}, #{title}"
+        if src =~ /\.tex$/
+          "\\input{#{src}}\n"
+        else
+          caption = alt
+          label = "  \\label{fig:#{title}}" if title
+          
+          <<EOT
+\\begin{figure}[ht]
+  \\centering
+  \\includegraphics[width=\\textwidth]{#{src}}
+  \\caption{#{caption}}
+#{label}
+\\end{figure}
+EOT
+        end
+      end
+
+      def latex_caption(text)
+        text.gsub(/`([^`]+)`/, '\\texttt{\1}')
+      end
+
+      def convert_labels(text)
+        text.gsub(/\{#([^}]+)}/, '\\label{\1}')
+      end
+
+      def convert_math(el, _opts)
+        convert_labels(super)
+      end
+
+
+      def convert_codeblock(el, _opts)
+        language = extract_code_language(el.attr)
+        line = (el.attr['start'] || 1).to_i
+        escape = el.attr['escape']
+        caption, label = caption_and_label(el, 'lst')
+        
+        code = el.value
+        code = convert_labels(code) if escape
+
+        options = ['numbers=left', 'xleftmargin=2em', "firstnumber=#{line}"]
+        options << "language=#{language.upcase}" if language
+        options << "caption={#{caption}}" if caption
+        options << "label={lst:#{label}}" if label
+        options << "escapechar={#{escape}}" if escape
+        
+        <<EOT
+\\begin{lstlisting}[#{options.join(',')}]
+#{code}\\end{lstlisting}
+EOT
+      end
     end
   end
 end
@@ -172,12 +281,12 @@ Dir.mkdir('converted') unless File.exists?('converted')
 if ARGV.length > 0
   files = ARGV
 else
-  files = Dir['*.md']
+  files = Dir['*.md'].sort
 end
 
 files.each do |f|
   dest = "converted/#{f}.tex"
-  puts "Rendering #{f} -> #{dest}"
+  puts "\nRendering #{f} -> #{dest}"
   kd = Kramdown::Document.new(File.read(f), input: 'MTCKramdown')
   File.write(dest, kd.to_mtc_latex)
   puts kd.warnings

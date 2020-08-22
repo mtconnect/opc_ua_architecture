@@ -1,10 +1,10 @@
 
-**<span style="font-size: 150%">OPC Foundation and Institute</span>**
+**OPC Foundation and Institute**{:.large}
 
 
-<div align="center">
+
 **AGREEMENT OF USE**
-</div>
+{:.center}
 
 All terms of use defined in documents provided by the OPC Foundation and
 the MTConnect Institute and referenced in this document are hereby
@@ -13,7 +13,7 @@ conflict in terms between referenced documents and terms defined in this
 document shall default in priority to the terms defined in the original
 referenced documents.
 
-Copyright ^(-c-) 2018-2020, OPC Foundation, Inc.
+Copyright &#169; 2018-2020, OPC Foundation, Inc.
 
 **COPYRIGHT RESTRICTIONS**
 

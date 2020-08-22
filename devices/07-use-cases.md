@@ -53,6 +53,6 @@ MTConnect can benefit from OPC UA's discovery mechanisms to incorporate devices 
 
 ![MTConnect OPC UA and ROS Device Integration](diagrams/device-integration.eps "mtconnect-ros-opc")
 
-Figure~{{figure(mtconnect-ros-opc)}} shows how two devices can interact without any additional components. The combination of the two standards allows for more extensive semantic interoperability between equipment and applications,  but also semantic interoperability between manufacturing equipment. 
+Figure&#160;{{figure(mtconnect-ros-opc)}} shows how two devices can interact without any additional components. The combination of the two standards allows for more extensive semantic interoperability between equipment and applications,  but also semantic interoperability between manufacturing equipment. 
 
 {{latex(\FloatBarrier)}}

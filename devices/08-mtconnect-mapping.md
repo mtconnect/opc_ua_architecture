@@ -8,7 +8,7 @@ OPC UA defines abstractions representing data, relationships, and events from de
 
 MTConnect has similar capabilities but uses a different structural model where the meta-data and the streaming values are in separate documents to normalize the data flow in a similar way that many publish-subscribe protocols separate the structure from the data. MTConnect also supports a store-and-forward capability like many message brokers in a {{term(mom)}} architecture to enable resilience and recovery of data in the event of connectivity problems.
 
-When translating from MTConnect to {{term(opc)}} {{term(ua)}}, the MTConnect abstractions of {{termplural(MTDataItem)}} are converted using the OPC UA  {{term(DataVariable)}} abstractions as given in {{cite(UAPart8)}}.  The relationships are mapped to multiple {{term(DataVariable)}} types where the category and the type determine the correct mapping. Conditions are mapped a sub-type of the OPC UA {{uamodel(BaseObjectType)}} representing the meta-data associated with the MTConnect {{term(MTCondition)}}. The {{uamodel(Condition)}} mapping to the events can be found in Section~{{ref(sec:mapping-conditions)}}.
+When translating from MTConnect to {{term(opc)}} {{term(ua)}}, the MTConnect abstractions of {{termplural(MTDataItem)}} are converted using the OPC UA  {{term(DataVariable)}} abstractions as given in {{cite(UAPart8)}}.  The relationships are mapped to multiple {{term(DataVariable)}} types where the category and the type determine the correct mapping. Conditions are mapped a sub-type of the OPC UA {{uamodel(BaseObjectType)}} representing the meta-data associated with the MTConnect {{term(MTCondition)}}. The {{uamodel(Condition)}} mapping to the events can be found in Section&#160;{{ref(sec:mapping-conditions)}}.
 
 ## MTConnect UML Representation of OPC
 
@@ -30,7 +30,7 @@ The {{termplural(UMLAssociation)}} are used to represent OPC UA {{termplural(Ref
 
 ![](diagrams/mtconnect-mapping/mtcomponent-uml.tex)
 
-When traversing an association between two object types, the name of the source of the association is the {{term(BrowseName)}} of the object, and the destination is the type of object that is instantiated. If the name is not given, it represents a dynamic relationship where the {{term(BrowseName)}} is determined during the creation of the object model. An example is the association of the MTConnect {{termplural(MTDataItem)}}. The rules for creating the {{term(BrowseName)}} are givin below in Section~{{ref(sec:mapping-rules)}}.
+When traversing an association between two object types, the name of the source of the association is the {{term(BrowseName)}} of the object, and the destination is the type of object that is instantiated. If the name is not given, it represents a dynamic relationship where the {{term(BrowseName)}} is determined during the creation of the object model. An example is the association of the MTConnect {{termplural(MTDataItem)}}. The rules for creating the {{term(BrowseName)}} are givin below in Section&#160;{{ref(sec:mapping-rules)}}.
 
 A reference that has a stereotype of {{term(Organizes)}}, shown by the {{termplural(MTComponent)}} recursive relationship in the {{mtuatype(MTComponentType)}}, implies an intermediate object of type {{term(FolderType)}} with the {{term(BrowseName)}} of the relationship point on the source side. The far side is not constrained within the {{term(FolderType)}} but given in the documentation as the expected contents of the folder.
 
@@ -203,7 +203,7 @@ The examples below will provide further guidance on implementing these rules.
 
 ### Mapping \mtmodel{MTDataItem {{mtmodel(units)}} to {{uamodel(EngineeringUnits)}}}
 
-OPC UA defines the {{uamodel(EngineeringUnits)}} {{term(DataType)}} in {{cite(UAPart8)}} as having the fields show in Table~{{table(enineering-untis-data-type)}}.
+OPC UA defines the {{uamodel(EngineeringUnits)}} {{term(DataType)}} in {{cite(UAPart8)}} as having the fields show in Table&#160;{{table(enineering-untis-data-type)}}.
 
 | Name | Type| Description |
 |------|-----|-------------|
@@ -213,9 +213,9 @@ OPC UA defines the {{uamodel(EngineeringUnits)}} {{term(DataType)}} in {{cite(UA
 | description | LocalizedText | Contains the full name of the engineering unit such as "hour" or "meter per second". |
 {: caption="`EngineeringUnits` DataType structure" label="enineering-untis-data-type" }
 
-In Table~{{table(mtconnect-to-ua-eu-mapping)}}, the mapping between the MTConnect units and the OPC UA EngineeringUnits structure has been specified. There is one unit type, {{mtmodel(COUNT)}} that is unitless and therefor not mapped. The {{mtmodel(COUNT)}} is only used with {{termplural(Event)}} and therefor is not an {{uamodel(AnalogUnitType)}}, and is instantiated as an {{mtuatype(MTNumericEventType)}}.
+In Table&#160;{{table(mtconnect-to-ua-eu-mapping)}}, the mapping between the MTConnect units and the OPC UA EngineeringUnits structure has been specified. There is one unit type, {{mtmodel(COUNT)}} that is unitless and therefor not mapped. The {{mtmodel(COUNT)}} is only used with {{termplural(Event)}} and therefor is not an {{uamodel(AnalogUnitType)}}, and is instantiated as an {{mtuatype(MTNumericEventType)}}.
 
-The {{uamodel(namespaceUri)}} will be set to http://www.opcfoundation.org/UA/units/un/cefact as specified in {{cite(UAPart8)}} and the values from Table~{{table(mtconnect-to-ua-eu-mapping)}} must be used..
+The {{uamodel(namespaceUri)}} will be set to http://www.opcfoundation.org/UA/units/un/cefact as specified in {{cite(UAPart8)}} and the values from Table&#160;{{table(mtconnect-to-ua-eu-mapping)}} must be used..
 
 The {{mtmodel(MILLIMETER_3D)}} unit is special since it will be represented by the {{mtuatype(MTThreeSpaceSampleType)}}. The individual values of the  {{mtuadatatype(ThreeSpaceSampleDataType)}} will be given in $millimeters$ and a {{uamodel(displayName)}} of $$ mm(\mathbb{R}^{3})$$; the {{uamodel(EngineeringUnits)}} will be provided for consistency. The {{uamodel(EURange)}} will not work since it cannot represent three space volumetric constraints and the {{uamodel(EURange)}} {{term(Property)}} will not be created.
 
@@ -348,9 +348,9 @@ The {{termplural(MTComponent)}} element in Listing {{ref(lst:linear-x-component)
 
 ![](diagrams/mtconnect-mapping/linear-x-component.tex)
 
-Figure~{{figure(linear-x-component)}} represents the UA Object model based on  Listing~{{ref(lst:linear-x-component)}}. The {{mtmodel(Linear)}} X {{mtmodel(Axis)}}, mapped from {{mtmodel(Linear)}} element in Listing~{{ref(lst:linear-x-component)}}, has a {{term(BrowseName)}} composed of the {{term(QName)}} of the element, and the {{mtmodel(name)}} attribute appended and enclosed in square brackets `[X]`, giving the browse name of `Linear[X]` and a component type of {{mtmodel(LinearType)}} using a {{term(HasTypeDefinition)}} {{term(Reference)}}.
+Figure&#160;{{figure(linear-x-component)}} represents the UA Object model based on  Listing&#160;{{ref(lst:linear-x-component)}}. The {{mtmodel(Linear)}} X {{mtmodel(Axis)}}, mapped from {{mtmodel(Linear)}} element in Listing&#160;{{ref(lst:linear-x-component)}}, has a {{term(BrowseName)}} composed of the {{term(QName)}} of the element, and the {{mtmodel(name)}} attribute appended and enclosed in square brackets `[X]`, giving the browse name of `Linear[X]` and a component type of {{mtmodel(LinearType)}} using a {{term(HasTypeDefinition)}} {{term(Reference)}}.
 
-The {{termplural(MTDataItem)}} for {{mtmodel(ActualPosition)}} and {{mtmodel(Load)}} are both of {{term(category)}} {{mtmodel(SAMPLE)}}; they contain numeric values are always mapped to the {{mtuatype(MTSampleType)}} which is derived from the UA {{uamodel(AnalogItemType)}} defined in {{cite(UAPart8)}}. The {{term(BrowseName)}} for the {{termplural(MTDataItem)}} are composed of the related {{term(Composition)}}, {{term(subType)}}, and {{term(type)}} of the {{term(MTDataItem)}} represented in {{term(PascalCase)}}. See Section~{{ref(sec:data-item-conventions)}} for details.
+The {{termplural(MTDataItem)}} for {{mtmodel(ActualPosition)}} and {{mtmodel(Load)}} are both of {{term(category)}} {{mtmodel(SAMPLE)}}; they contain numeric values are always mapped to the {{mtuatype(MTSampleType)}} which is derived from the UA {{uamodel(AnalogItemType)}} defined in {{cite(UAPart8)}}. The {{term(BrowseName)}} for the {{termplural(MTDataItem)}} are composed of the related {{term(Composition)}}, {{term(subType)}}, and {{term(type)}} of the {{term(MTDataItem)}} represented in {{term(PascalCase)}}. See Section&#160;{{ref(sec:data-item-conventions)}} for details.
 
 The {{uablock(EngineeringUnits)}} of the {{uablock(AnalogUnitType)}} will be mapped to the {{uablock(EngineeringUnits)}} {{uablock(Property)}} of the {{mtuatype(MTSampleType)}}. If the value is constrained, the {{uablock(EURange)}} will be created, otherwise it will not be specified. The remaining attributes will be represented as properties of the {{mtuatype(MTSampleType)}} converting the {{term(LowerCamelCase)}} to {{term(PascalCase)}} by changing the first character to upper-case. The {{mtblock(EVENT)}} category and complex cases will be specified in the following examples.
 
@@ -358,7 +358,7 @@ MTConnect {{termplural(MTDataItem)}} of {{term(category)}} {{mtmodel(CONDITION)}
 
 The {{mtuatype(MTConditionType)}} has a naming rule similar to the {{term(MTDataItem)}} referenced above. The same rule applies with {{mtmodel(Condition)}} appended. In this case the condition is of {{term(type)}} {{mtmodel(POSITION)}} so the {{term(BrowseName)}} is {{mtmodel(PositionCondition)}}. This is to differentiate the {{termplural(MTCondition)}} from other {{termplural(MTDataItem)}}.
 
-The {{mtuatype(MTConditionType)}} is decendent of the {{uamodel(BaseObjectType)}} described in {{cite(UAPart5)}}. It represents the metadata associated with all {{uamodel(Event)}}s that are activated when a {{mtmodel(Condition)}} is reported as described in {{cite(MTCPart3)}}. The {{uamodel(HasNotifier)}} reference must be created between the `SimpleCnc:`{{mtuatype(MTDeviceType)}} object and the {{mtmodel(Axes)}} object to allow for the events to flow down to the conditions for each of the components. The relationship of the condition in Figure~{{figure(linear-x-component)}} illustrates the relationships between the {{mtmodel(Component)}} and the related condition in the notification hierarchy.
+The {{mtuatype(MTConditionType)}} is decendent of the {{uamodel(BaseObjectType)}} described in {{cite(UAPart5)}}. It represents the metadata associated with all {{uamodel(Event)}}s that are activated when a {{mtmodel(Condition)}} is reported as described in {{cite(MTCPart3)}}. The {{uamodel(HasNotifier)}} reference must be created between the `SimpleCnc:`{{mtuatype(MTDeviceType)}} object and the {{mtmodel(Axes)}} object to allow for the events to flow down to the conditions for each of the components. The relationship of the condition in Figure&#160;{{figure(linear-x-component)}} illustrates the relationships between the {{mtmodel(Component)}} and the related condition in the notification hierarchy.
 
 The `Linear[x]` component uses a {{uamodel(HasNotifier)}} reference sourced from the parent {{uamodel(Axes)}} {{term(Object)}}. The condition, having a {{mtmodel(MTClassType)}} of {{mtuatype(PositionClassType)}}, is connected to the `Linear[X]` axis with a {{uamodel(HasCondition)}} relationship to indicate the source of the events for the {{term(ConditionType)}}.
 
@@ -394,7 +394,7 @@ w</Rotary>
 ~~~~
 {: caption="Rotary C Axis" label="rotary-c-example" start="last" escape="|" }
 
-The data item on Line~{{ref(line:rotary-mode)}} of Listing~{{ref(lst:rotary-c-example)}} with {{term(type)}} of {{mtmodel(ROTARY_MODE)}} is illustrated in Figure~{{figure(rotary-c-rotary-mode)}}. MTConnect allows for a {{mtmodel(Rotary)}} axis to provide the function of the axis, Spindle, Contour, or Index. In Many cases the Rotary Mode is a singular values, as in this case when it can only work as a spindle. This is expressed by creating a {{term(HasComponent)}} reference to a {{mtuatype(MTConstraintType)}} {{term(Object)}} and specifying the {{uamodel(Values)}} {{term(Property)}}  with the singular value of `["SPINDLE"]` indicating it can only function as a spindle. 
+The data item on Line&#160;{{ref(line:rotary-mode)}} of Listing&#160;{{ref(lst:rotary-c-example)}} with {{term(type)}} of {{mtmodel(ROTARY_MODE)}} is illustrated in Figure&#160;{{figure(rotary-c-rotary-mode)}}. MTConnect allows for a {{mtmodel(Rotary)}} axis to provide the function of the axis, Spindle, Contour, or Index. In Many cases the Rotary Mode is a singular values, as in this case when it can only work as a spindle. This is expressed by creating a {{term(HasComponent)}} reference to a {{mtuatype(MTConstraintType)}} {{term(Object)}} and specifying the {{uamodel(Values)}} {{term(Property)}}  with the singular value of `["SPINDLE"]` indicating it can only function as a spindle. 
 
 In MTConnect, the value of this data item will never be {{mtmodel(UNAVAILABLE)}} since it is bound to a single value, it will always be present and have that value regardless of the connectivity state to the data source. Since the value is static and never changes, the {{uamodel(Quality)}} will be {{uamodel(Uncertain_SubstituteValue)}} if it is never provided. In the case of constraints on a controlled vocabulary, the {{uamodel(Values)}} must always be one of the related {{uamodel(EnumStrings)}}. See {{cite(MTCPart2)}} for details on the constraints and the relationship to the {{termplural(MTDataItem)}}.
 
@@ -404,7 +404,7 @@ In MTConnect, the value of this data item will never be {{mtmodel(UNAVAILABLE)}}
 
 ![Rotary\[C\] Axis RotaryVelocity DataItem](diagrams/mtconnect-mapping/rotary-c-rotary-velocity.png "rotary-c-rotary-velocity")
 
-Figure~{{figure(rotary-c-rotary-velocity)}} corresponds to Lines~{{ref(line:programmed-rotary-velocity)}}-{{ref(line:actual-rotary-velocity)}} of Figure~{{figure(rotary-c-rotary-velocity)}}--the two rotary velocity data items differentiated by their {{termplural(subType)}} of {{mtmodel(ACTUAL)}} and {{mtmodel(PROGRAMMED)}}. In this case they share many of the same property values. The {{mtmodel(HasMTSubClassType)}} references the {{mtuatype(ActualSubClassType)}} and the {{mtuatype(ProgrammedSubClassType)}} respectively.
+Figure&#160;{{figure(rotary-c-rotary-velocity)}} corresponds to Lines&#160;{{ref(line:programmed-rotary-velocity)}}-{{ref(line:actual-rotary-velocity)}} of Figure&#160;{{figure(rotary-c-rotary-velocity)}}--the two rotary velocity data items differentiated by their {{termplural(subType)}} of {{mtmodel(ACTUAL)}} and {{mtmodel(PROGRAMMED)}}. In this case they share many of the same property values. The {{mtmodel(HasMTSubClassType)}} references the {{mtuatype(ActualSubClassType)}} and the {{mtuatype(ProgrammedSubClassType)}} respectively.
 
 In the case of the {{mtmodel(ActualRotaryVelocity)}} object, it has an additional constraint that specifies that the maximum spindle speed is 7000 RPM. This is given with the {{mtuatype(MTConstraintType)}}. 
 
@@ -414,13 +414,13 @@ If the {{uablock(Constraints)}} are given with both {{mtblock(Maximum)}} and {{m
 
 {{latex(\FloatBarrier)}}
 
-Figure~{{figure(rotary-c-load)}} represents the {{mtmodel(Load)}} {{term(MTDataItem)}} for Listing~{{ref(lst:rotary-c-example)}} Line~{{ref(line:rotary-c-load)}} as an example of a {{mtuatype(MTSampleType)}} with a {{mtmodel(units="PERCENT")}} and mapped to the {{uablock(EngineeringUnits)}} for {{uamodel(Percent)}}. There is no {{termplural(Constraint)}} so the {{mtmodel(EURange)}} is not provided as specified in {{cite(UAPart8)}}.
+Figure&#160;{{figure(rotary-c-load)}} represents the {{mtmodel(Load)}} {{term(MTDataItem)}} for Listing&#160;{{ref(lst:rotary-c-example)}} Line&#160;{{ref(line:rotary-c-load)}} as an example of a {{mtuatype(MTSampleType)}} with a {{mtmodel(units="PERCENT")}} and mapped to the {{uablock(EngineeringUnits)}} for {{uamodel(Percent)}}. There is no {{termplural(Constraint)}} so the {{mtmodel(EURange)}} is not provided as specified in {{cite(UAPart8)}}.
 
 ![Rotary\[C\] Axis Load DataItem](diagrams/mtconnect-mapping/rotary-c-load.png "rotary-c-load")
 
 {{latex(\FloatBarrier)}}
 
-Figure~{{figure(rotary-c-amperage)}} illustrates the {{mtmodel(Amperage)}} {{term(MTDataItem)}} corresponding to the Listing~{{ref(lst:rotary-c-example)}} Lines~{{ref(line:rotary-c-amperage)}}-{{ref(line:rotary-c-amperage-condition)}}. As stated above, the {{uamodel(HasNotifier)}} {{termplural(Reference)}} must be established between all {{termplural(MTComponent)}} back to the {{mtuatype(MTDeviceType)}} that has a reference from the {{term(Server)}}. The {{mtmodel(MotorAmperage)}} and {{mtmodel(MotorAmperageCondition)}} demonstrate the naming rule where the {{term(Composition)}} {{term(type)}} is converted to {{term(PascalCase)}} and then prepended to the {{term(MTDataItem)}} {{term(type)}}. 
+Figure&#160;{{figure(rotary-c-amperage)}} illustrates the {{mtmodel(Amperage)}} {{term(MTDataItem)}} corresponding to the Listing&#160;{{ref(lst:rotary-c-example)}} Lines&#160;{{ref(line:rotary-c-amperage)}}-{{ref(line:rotary-c-amperage-condition)}}. As stated above, the {{uamodel(HasNotifier)}} {{termplural(Reference)}} must be established between all {{termplural(MTComponent)}} back to the {{mtuatype(MTDeviceType)}} that has a reference from the {{term(Server)}}. The {{mtmodel(MotorAmperage)}} and {{mtmodel(MotorAmperageCondition)}} demonstrate the naming rule where the {{term(Composition)}} {{term(type)}} is converted to {{term(PascalCase)}} and then prepended to the {{term(MTDataItem)}} {{term(type)}}. 
 
 ![Rotary\[C\] Axis Motor Amperage DataItem](diagrams/mtconnect-mapping/rotary-c-amperage.png "rotary-c-amperage")
 
@@ -459,11 +459,11 @@ The MTConnect information model does not differentiate between the two controlle
 ~~~~
 {: caption="Controller and Path Components and Their Data Items" label="controller-component" }
 
-The {{mtmodel(Controller)}} has two {{mtmodel(DataItems)}}, {{mtmodel(Message)}} and {{mtmodel(EmergencyStop)}} as shown in Figure~{{figure(controller-component)}}. The {{mtuatype(MTMessageType)}} is an {{uamodel(Variable)}} where the data type is a {{mtuatype(MessageDataType)}}.
+The {{mtmodel(Controller)}} has two {{mtmodel(DataItems)}}, {{mtmodel(Message)}} and {{mtmodel(EmergencyStop)}} as shown in Figure&#160;{{figure(controller-component)}}. The {{mtuatype(MTMessageType)}} is an {{uamodel(Variable)}} where the data type is a {{mtuatype(MessageDataType)}}.
 
 [Controller Component and Data Items](diagrams/mtconnect-mapping/controller-component.png "controller-component")
 
-Figure~{{figure(path-component)}} illustrates the {{mtmodel(Path)}} component. Many of the {{termplural(MTDataItem)}} types have been covered in prior examples, so the {{mtmodel(Path)}} will only focus on the {{termplural(MTDataItem)}} that have differentiated features. Those {{termplural(MTDataItem)}} will be represented without additional properties or relations.
+Figure&#160;{{figure(path-component)}} illustrates the {{mtmodel(Path)}} component. Many of the {{termplural(MTDataItem)}} types have been covered in prior examples, so the {{mtmodel(Path)}} will only focus on the {{termplural(MTDataItem)}} that have differentiated features. Those {{termplural(MTDataItem)}} will be represented without additional properties or relations.
 
 The {{mtmodel(PATH_POSITION)}} is mapped to the {{mtuatype(MTThreeSpaceSampleType)}} that represents a spacial coordinate in three space ($$\mathbb{R}^{3}$$) with each coordinate given in millimeters. The {{uamodel(EngineeringUnits)}} for this type will therefor always be mapped to {{uamodel(MMT)}} in the {{uamodel(UNECE)}} conventions.
 
@@ -532,15 +532,15 @@ The following example is the {{mtmodel(Electric)}} system of the machine. The to
 
 ![Electric System Component First Set](diagrams/mtconnect-mapping/electric-system.png "electric-system")
 
-In the first set of {{termplural(MTDataItem)}} from Listing~{{ref(lst:electric-system)}} as shown in Figure~{{figure(electric-system)}}, the first data item on line~{{ref(line:electric-temp-60)}} has a period filter that is represented in the OPC UA {{uablock(Variable)}} Temperature as a {{mtmodel(PeriodFilter)}} {{term(Property)}} with a value of 60.0. The period filters only reports changes after the period of time has elapsed, in this case 60 seconds--the {{mtmodel(Temperature)}} will only publish changes every minute in this instance.
+In the first set of {{termplural(MTDataItem)}} from Listing&#160;{{ref(lst:electric-system)}} as shown in Figure&#160;{{figure(electric-system)}}, the first data item on line&#160;{{ref(line:electric-temp-60)}} has a period filter that is represented in the OPC UA {{uablock(Variable)}} Temperature as a {{mtmodel(PeriodFilter)}} {{term(Property)}} with a value of 60.0. The period filters only reports changes after the period of time has elapsed, in this case 60 seconds--the {{mtmodel(Temperature)}} will only publish changes every minute in this instance.
 
 The {{mtmodel(Temperature)}} {{term(Variable)}} also has a {{mtmodel(Source)}} element that references the {{mtmodel(Sensor)}} with a {{mtmodel(Configuration)}} of type {{mtuatype(MTSensorConfigurationType)}}. The {{mtmodel(SensorConfiguration)}} has information about the {{mtmodel(FirmwareVersion)}} and {{mtmodel(CalibrationDate)}} of the {{mtmodel(Sensor)}}. The {{mtmodel(Channels)}} represent the multiple inputs to the {{mtmodel(Sensor)}} unit. The first {{mtmodel(Channel)}} has a {{mtmodel(Description)}} and a {{mtmodel(CalibrationDate)}} of the probe attached to the {{mtmodel(Channel)}}. For more information on the {{mtmodel(Channel)}}, see MTConnect Devices {{cite(MTCPart2)}}.
 
-The following {{term(MTDataItem)}} on line~{{ref(line:electric-voltage-10)}} has a {{mtmodel(Filter)}} using a {{mtmodel(MINIMUM_DELTA)}} that is represened as a {{mtmodel(MinimumDeltaFilter)}} in the UA {{term(Variable)}} reprenenting the {{mtuatype(MTSampleType)}} Voltage. The {{mtmodel(MinimumDelta)}} represents the smallest amount of change before the change is reported. In this case the minimum change is 10 volts. Changes smaller than 10 volts will not be reported for this data item.
+The following {{term(MTDataItem)}} on line&#160;{{ref(line:electric-voltage-10)}} has a {{mtmodel(Filter)}} using a {{mtmodel(MINIMUM_DELTA)}} that is represened as a {{mtmodel(MinimumDeltaFilter)}} in the UA {{term(Variable)}} reprenenting the {{mtuatype(MTSampleType)}} Voltage. The {{mtmodel(MinimumDelta)}} represents the smallest amount of change before the change is reported. In this case the minimum change is 10 volts. Changes smaller than 10 volts will not be reported for this data item.
 
-The second set of {{termplural(MTDataItem)}} starting on line~{{ref(line:electric-amperage)}} shown in Figure~{{figure(electric-system-2)}} shows the relationship between the conditions and the other {{termplural(MTDataItem)}}. As has been shown before the {{termplural(MTCondition)}} here are both related to a {{term(MTDataItem)}} that is the source of the {{term(MTCondition)}}. The {{term(MTDataItem)}} therefor has a {{uamodel(HasCondition)}} relationship to the {{term(Condition)}} and the {{term(MTComponent)}} has a {{uamodel(HasEventSource)}} {{term(Reference)}} to the {{term(MTDataItem)}}. 
+The second set of {{termplural(MTDataItem)}} starting on line&#160;{{ref(line:electric-amperage)}} shown in Figure&#160;{{figure(electric-system-2)}} shows the relationship between the conditions and the other {{termplural(MTDataItem)}}. As has been shown before the {{termplural(MTCondition)}} here are both related to a {{term(MTDataItem)}} that is the source of the {{term(MTCondition)}}. The {{term(MTDataItem)}} therefor has a {{uamodel(HasCondition)}} relationship to the {{term(Condition)}} and the {{term(MTComponent)}} has a {{uamodel(HasEventSource)}} {{term(Reference)}} to the {{term(MTDataItem)}}. 
 
-The {{mtmodel(AverageAmperage)}} on line~{{ref(line:electric-average-amperage)}} has a {{mtmodel(ResetTrigger)}}, specified using the {{mtmodel(ResetTrigger)}} element having {{term(CDATA)}} {{mtmodel(ACTION_COMPLETE)}}, indicating that the {{mtmodel(Average)}} statistic is taken only when the current {{mtmodel(Action)}} has {{mtmodel(Completed)}}, as defined by the process. This {{term(MTDataItem)}} will only update on when the {{mtmodel(ResetTrigger)}} fires.
+The {{mtmodel(AverageAmperage)}} on line&#160;{{ref(line:electric-average-amperage)}} has a {{mtmodel(ResetTrigger)}}, specified using the {{mtmodel(ResetTrigger)}} element having {{term(CDATA)}} {{mtmodel(ACTION_COMPLETE)}}, indicating that the {{mtmodel(Average)}} statistic is taken only when the current {{mtmodel(Action)}} has {{mtmodel(Completed)}}, as defined by the process. This {{term(MTDataItem)}} will only update on when the {{mtmodel(ResetTrigger)}} fires.
 
 The property {{mtmodel(ResetTriggeredReason)}} will be set to the MTConnect value and the {{uamodel(StatusCode)}}, as prescribed in {{cite(UAPart4)}}, will have the {{uamodel(SemanticsChanged)}} bit number fourteen (14:14) set to 1 (0x4000). The resulting status will inform the client application to check the {{mtmodel(ResetTriggeredReason)}} property to determine the reason the statistic was reset. If the {{uamodel(StatusCode)}} is not set, the {{mtmodel(ResetTriggeredReason)}} value will be undefined and may retain the previous reset reason.
 
@@ -550,7 +550,7 @@ The property {{mtmodel(ResetTriggeredReason)}} will be set to the MTConnect valu
 
 #### \mtmodel{Coolant {{mtblock(System)}} with multiple {{mtblock(Tanks)}}}
 
-The following example in Listing~{{ref(lst:coolant-system)}} demonstrates the situation where there are multiple components and data items of the same semantic type differentiated only by {{mtmodel(name)}}. The machine has two {{mtmodel(Coolant)}} {{mtmodel(Systems)}}, one high pressure and one low pressure. Each of the two {{mtmodel(Coolant)}} {{mtmodel(Systems)}} has two tanks, a main and a reserve tank that are represented by {{termplural(Composition)}}. 
+The following example in Listing&#160;{{ref(lst:coolant-system)}} demonstrates the situation where there are multiple components and data items of the same semantic type differentiated only by {{mtmodel(name)}}. The machine has two {{mtmodel(Coolant)}} {{mtmodel(Systems)}}, one high pressure and one low pressure. Each of the two {{mtmodel(Coolant)}} {{mtmodel(Systems)}} has two tanks, a main and a reserve tank that are represented by {{termplural(Composition)}}. 
 
 ~~~~xml
 <Coolant id="x5ef9730" name="low">
@@ -576,13 +576,13 @@ The following example in Listing~{{ref(lst:coolant-system)}} demonstrates the si
 ~~~~
 {: caption="Coolant System and Sensor Configuration" label="coolant-system" }
   
-Figure~{{figure(coolant-system)}} presents the two coolant systems with names `high` and `low`. They are identical, each composed of two {{mtblock(Tank)}} compositions and each with two data items indication the {{mtblock(Fill Level)}} of the main and reserve {{mtblock(Tank)}}. The naming follows the rules for `TankFillLevel[low_main_level]` and `TankFillLevel[low_reserve_level]` for the `low` {{mtblock(Coolant System)}}. 
+Figure&#160;{{figure(coolant-system)}} presents the two coolant systems with names `high` and `low`. They are identical, each composed of two {{mtblock(Tank)}} compositions and each with two data items indication the {{mtblock(Fill Level)}} of the main and reserve {{mtblock(Tank)}}. The naming follows the rules for `TankFillLevel[low_main_level]` and `TankFillLevel[low_reserve_level]` for the `low` {{mtblock(Coolant System)}}. 
 
-The {{uablock(EngineeringUnits)}} were not included in the figure as they have been covered before. The {{mtblock(Fill Level)}} {{mtuatype(MTSampleType)}} will reference a {{mtblock(PERCENT)}} {{uablock(EUInformation)}} {{uablock(Property)}} as illustrated in the previous depiction of {{mtblock(Load)}} in Figure~{{figure(rotary-c-load)}}.
+The {{uablock(EngineeringUnits)}} were not included in the figure as they have been covered before. The {{mtblock(Fill Level)}} {{mtuatype(MTSampleType)}} will reference a {{mtblock(PERCENT)}} {{uablock(EUInformation)}} {{uablock(Property)}} as illustrated in the previous depiction of {{mtblock(Load)}} in Figure&#160;{{figure(rotary-c-load)}}.
 
 In this case the {{term(Composition)}} name is converted to *PascalCase* and prepended to the *PascalCase* of the {{term(MTDataItem)}} to create the base {{uablock(BrowseName)}}. Since there are two identical {{uablock(BrowseNames)}}, the {{mtmodel(name)}} is appended in square brackets (`[]`). The same is done for the {{term(Composition)}} {{term(BrowseName)}} and the {{term(MTComponent)}} {{term(BrowseName)}} "{{mtblock(Coolant)}}" giving `Coolant[high]` and `Coolant[low]`.
 
-The two {{mtblock(Tank)}} compositions have similar treatment where they are named `Tank[main]` and `Tank[reserve]` for each of the two components. The {{mtblock(DataItems)}} then refer to each of the appropriate tanks to correctly reference the composition they are associated with. What is not show in the Figure~{{figure(coolant-system)}} is the {{mtuatype(FillLevelClassType)}} to save space. Each of the {{mtblock(DataItems)}} will have a {{mtuatype(HasMTClassType)}} reference to the {{uablock(ClassType)}}.
+The two {{mtblock(Tank)}} compositions have similar treatment where they are named `Tank[main]` and `Tank[reserve]` for each of the two components. The {{mtblock(DataItems)}} then refer to each of the appropriate tanks to correctly reference the composition they are associated with. What is not show in the Figure&#160;{{figure(coolant-system)}} is the {{mtuatype(FillLevelClassType)}} to save space. Each of the {{mtblock(DataItems)}} will have a {{mtuatype(HasMTClassType)}} reference to the {{uablock(ClassType)}}.
 
 ![Coolant System](diagrams/mtconnect-mapping/coolant-system.png "coolant-system")
 
@@ -608,7 +608,7 @@ The following section provides the rules for taking data from the {{mtblock(MTCo
 ~~~~
 {: caption="Streams Header" label="streams-header" }
 
-Listing~{{ref(lst:streams-header)}} is an example of the {{term(xml)}} *Root Element* of the {{mtmodel(MTConnectStreams)}} Document and contains the standard namespace declarations for MTConnect and XMLSchema. If additional namespaces are present, they must be added as additional {{uamodel(namespaces)}} in the OPC UA {{uamodel(Namespace)}} as well. The {{mtmodel(MTConnectStreams)}} document begins with a {{mtmodel(Header)}} containing protocol information that represents the version of the standard referenced and the store-and-forward {{term(buffer)}} {{mtmodel(sequence)}} numbers. {{cite(MTCPart1)}} provides information on the interaction with the {{term(Agent)}} and the proper sequence of requests to receive a contiguous stream of data from any point in the sequence of data.
+Listing&#160;{{ref(lst:streams-header)}} is an example of the {{term(xml)}} *Root Element* of the {{mtmodel(MTConnectStreams)}} Document and contains the standard namespace declarations for MTConnect and XMLSchema. If additional namespaces are present, they must be added as additional {{uamodel(namespaces)}} in the OPC UA {{uamodel(Namespace)}} as well. The {{mtmodel(MTConnectStreams)}} document begins with a {{mtmodel(Header)}} containing protocol information that represents the version of the standard referenced and the store-and-forward {{term(buffer)}} {{mtmodel(sequence)}} numbers. {{cite(MTCPart1)}} provides information on the interaction with the {{term(Agent)}} and the proper sequence of requests to receive a contiguous stream of data from any point in the sequence of data.
 
 ### MTConnectStreams Device and Component Stream
 
@@ -623,7 +623,7 @@ Listing~{{ref(lst:streams-header)}} is an example of the {{term(xml)}} *Root Ele
 ~~~~
 {: caption="Component Stream" label="component-stream" start="last" escape="|" }
 
-MTConnect flattens the structure when reporting data and organizes it by {{term(MTDevice)}}, {{term(MTComponent)}} and {{term(category)}}; this is shown in  Listing~{{ref(lst:linear-component-stream)}} Line~{{ref(line:component-stream-1)}} with the {{mtmodel(DeviceStream)}}, {{mtmodel(ComponentStream)}}, and {{mtmodel(Samples)}} elements (not shown are the {{mtmodel(Events)}} and {{mtmodel(Condition)}} elements that will be address later). When the data stream is initialized or when it disconnects, the MTConnect {{term(MTDataItem)}} {{mtmodel(Value)}} is set to {{mtmodel(UNAVAILABLE)}} as shown on Line~{{ref(line:pos-unavilable)}}.
+MTConnect flattens the structure when reporting data and organizes it by {{term(MTDevice)}}, {{term(MTComponent)}} and {{term(category)}}; this is shown in  Listing&#160;{{ref(lst:linear-component-stream)}} Line&#160;{{ref(line:component-stream-1)}} with the {{mtmodel(DeviceStream)}}, {{mtmodel(ComponentStream)}}, and {{mtmodel(Samples)}} elements (not shown are the {{mtmodel(Events)}} and {{mtmodel(Condition)}} elements that will be address later). When the data stream is initialized or when it disconnects, the MTConnect {{term(MTDataItem)}} {{mtmodel(Value)}} is set to {{mtmodel(UNAVAILABLE)}} as shown on Line&#160;{{ref(line:pos-unavilable)}}.
 
 MTConnect only reports data when it changes, and each change is assigned a monotonically increasing {{mtmodel(sequence)}} number when it arrives at the MTConnect {{term(Agent)}}. In addition to the {{mtmodel(sequence)}} number; the XML attribute {{mtmodel(timestamp)}} indicates the time the observation was made. The {{mtmodel(timestamp)}} is used when setting the {{uamodel(Variable)}} {{uamodel(Time)}} along with the data and status. The data is only reported when it changes except for {{termplural(MTDataItem)}} with the {{mtmodel(representation)}} of {{mtmodel(DISCRETE)}} indicating that each value has a discrete meaning, such as a {{mtmodel(PartCount)}} where each count indicates an accrual of that many parts.
 
@@ -668,7 +668,7 @@ The {{mtuatype(MTStringEventType)}} and {{mtuatype(MTNumericEventType)}} {{termp
 ~~~~
 {: caption="Path Component Stream" label="path-component-stream" start="last" escape="|" }
 
-In Listing~{{ref(lst:path-component-stream)}} on Line~{{ref(line:prog-430)}}, the string value will be assigned to the {{mtblock(Program)}} {{term(MTDataItem)}} in the {{mtmodel(Path)}} component. The following Line~{{ref(line:pc-603)}} representing the {{mtmodel(PartCount)}} will be converted to a numeric value, in this case an {{uamodel(Int32)}} and assigned to the {{uamodel(Value)}}.
+In Listing&#160;{{ref(lst:path-component-stream)}} on Line&#160;{{ref(line:prog-430)}}, the string value will be assigned to the {{mtblock(Program)}} {{term(MTDataItem)}} in the {{mtmodel(Path)}} component. The following Line&#160;{{ref(line:pc-603)}} representing the {{mtmodel(PartCount)}} will be converted to a numeric value, in this case an {{uamodel(Int32)}} and assigned to the {{uamodel(Value)}}.
 
 All extended event types will be treated as {{mtuatype(MTStringEventType)}}s since it can support any value. It will be the responsibility of the application to interpret the value based on the extended {{term(ClassType)}} associated with the {{uamodel(Variable)}}.
 
@@ -676,7 +676,7 @@ All extended event types will be treated as {{mtuatype(MTStringEventType)}}s sin
 
 {{termplural(ControlledVocab)}} are represented as {{mtuatype(MTControlledVocabEventType)}} which is a subtype of the {{uamodel(MultiStateValueDiscreteType)}}. The {{uamodel(MultiStateValueDiscreteType)}} requires an integer index to be used for the {{uamodel(Value)}}, so the text given in MTConnect must be looked up in the {{uamodel(Ennumerations)}} in the {{uamodel(EnumStrings)}} {{term(Property)}} of the {{term(ClassType)}} referenced by the {{mtblock(HasMTTypeClass)}} association. The index can be found by matching the {{term(CDATA)}} to the {{uamodel(Fields)}} in the {{uamodel(Enumeration)}}.
 
-Referring to Listing~{{ref(lst:path-component-stream)}} Line~{{ref(line:cmode-255)}}, the values of the {{term(CDATA)}} represent the allowed enumerations in the {{mtuaenum(ControllerModeDataType)}} as shown in Table~{{table(example-ControllerModeDataType)}}. In this case the value from mtconnect is {{mtmodel(AUTOMATIC)}} and is looked up in the associated {{uamodel(EnumerationDataType)}} and the integer value is assigned to the {{uamodel(Value)}} of the {{mtuatype(MTControlledVocabEventType)}} instance, in this example the value will be `0` for {{mtmodel(AUTOMATIC)}}.
+Referring to Listing&#160;{{ref(lst:path-component-stream)}} Line&#160;{{ref(line:cmode-255)}}, the values of the {{term(CDATA)}} represent the allowed enumerations in the {{mtuaenum(ControllerModeDataType)}} as shown in Table&#160;{{table(example-ControllerModeDataType)}}. In this case the value from mtconnect is {{mtmodel(AUTOMATIC)}} and is looked up in the associated {{uamodel(EnumerationDataType)}} and the integer value is assigned to the {{uamodel(Value)}} of the {{mtuatype(MTControlledVocabEventType)}} instance, in this example the value will be `0` for {{mtmodel(AUTOMATIC)}}.
 
 | Name | Index |
 |------|------:|
@@ -686,7 +686,7 @@ Referring to Listing~{{ref(lst:path-component-stream)}} Line~{{ref(line:cmode-25
 |`MANUAL_DATA_INPUT` | `3` |
 |`SEMI_AUTOMATIC` | `4` |
 
-The {{uamodel(SourceTimestamp)}} and {{uamodel(Quality)}} will be handled as described in Section~{{ref(sec:sting-numeric-events)}} for {{mtmodel(String)}} and {{mtmodel(Numeric)}} {{termplural(MTEvent)}}.
+The {{uamodel(SourceTimestamp)}} and {{uamodel(Quality)}} will be handled as described in Section&#160;{{ref(sec:sting-numeric-events)}} for {{mtmodel(String)}} and {{mtmodel(Numeric)}} {{termplural(MTEvent)}}.
 
 {{latex(\FloatBarrier)}}
 
@@ -716,7 +716,7 @@ The representation allow for the association of meta data in the {{mtuatype(MTMe
 
 {{termplural(MTDataItem)}} with {{mtmodel(TIME_SERIES)}} {{mtmodel(representation)}} provides a mechanism to publish high frequency data by combining multiple observations into a single vector of values. The attribute {{mtmodel(sampleRate)}} is specified in the {{termplural(MTDevice)}} information model if it is immutable or for each entity with the attribute {{mtmodel(sampleRate)}} if it is variable. 
 
-In Listing~{{ref(lst:electric-timeseries)}}, both examples are given, line~{{ref(line:va-wo-sample-rate)}} does not specify the {{mtmodel(sampleRate)}} whereas line~{{ref(line:va-w-sample-rate)}} specifies the {{mtmodel(sampleRate)}}. The {{mtmodel(sampleRate)}} is always given in hertz, if not specied in the {{mtmodel(MTConnectStreams)}} document, it defaults to the value given in the {{term(MTDataItem)}}.
+In Listing&#160;{{ref(lst:electric-timeseries)}}, both examples are given, line&#160;{{ref(line:va-wo-sample-rate)}} does not specify the {{mtmodel(sampleRate)}} whereas line&#160;{{ref(line:va-w-sample-rate)}} specifies the {{mtmodel(sampleRate)}}. The {{mtmodel(sampleRate)}} is always given in hertz, if not specied in the {{mtmodel(MTConnectStreams)}} document, it defaults to the value given in the {{term(MTDataItem)}}.
 
 ~~~~xml
 <ComponentStream componentId="afb91ba0" component="Electric">
@@ -750,4 +750,4 @@ When mapping {{term(TimeSeries)}} to OPC UA, for each value in the series, compu
 
 The $$\delta$$ in Equation~({{ref(eqn:ts-delta)}}) is the time interval for each sample and by subtracting the $$\delta \times sampleCount$$ seconds, the given in Equation~({{ref(eqn:ts-first)}}) is the first timestamp in the series. Every other timestamp can be derived by adding the $$\delta \times n$$ as showin in Equation~({{ref(eqn:ts-n)}}) to the first timestamp. One can also arrive at the same result by taking the {{mtmodel(timestamp)}} and counting backward from the last, where $$r$$ is the reverse index starting at 0, $$r \times \delta $$ seconds from $$timestamp_a$$.
 
-{{term(TimeSeries)}} {{mtmodel(timestamps)}} will often be contiguous when giving a stream of values for audio displacement or other series that must be reassembled. In Listing~{{ref(lst:electric-timeseries)}}, each set of ten values are separated by 0.10 seconds which will allow for a 100hz sample frequence and continuous values from the sensor. The format is more efficient and allows for communication of waveform and high frequency data.
+{{term(TimeSeries)}} {{mtmodel(timestamps)}} will often be contiguous when giving a stream of values for audio displacement or other series that must be reassembled. In Listing&#160;{{ref(lst:electric-timeseries)}}, each set of ten values are separated by 0.10 seconds which will allow for a 100hz sample frequence and continuous values from the sensor. The format is more efficient and allows for communication of waveform and high frequency data.

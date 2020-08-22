@@ -79,6 +79,9 @@
 \renewcommand{\appendixname}{Annex}
 \usepackage{titlesec}
 \usepackage[absolute]{textpos}
+\usepackage{boldline}
+\usepackage{makecell}
+\usepackage{array}
 
 % *********** %
 % 	Options   %
@@ -457,3 +460,4 @@
 }
 
 \newcommand{\mantis}[1]{\href{https://apps.opcfoundation.org/mantis/view.php?id=#1}{#1}}
+\newcommand\btrule[1]{\specialrule{#1}{0pt}{0pt}}

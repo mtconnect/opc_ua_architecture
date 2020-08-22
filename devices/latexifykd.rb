@@ -145,7 +145,7 @@ EOT
       end
 
       def convert_thead(el, opts)
-        opts = opts.dup.merge(style: 'textbf', sep: "\\specialrule{1.5pt}{0pt}{0pt}")
+        opts = opts.dup.merge(style: 'textbf', sep: "\\btrule{1.5pt}")
         inner(el, opts)
       end
 
@@ -264,7 +264,7 @@ EOT
         options = ['numbers=left', 'xleftmargin=2em', "firstnumber=#{line}"]
         options << "language=#{language.upcase}" if language
         options << "caption={#{caption}}" if caption
-        options << "label={lst:#{label}}" if label
+        options << "label={#{label}}" if label
         options << "escapechar={#{escape}}" if escape
         
         <<EOT

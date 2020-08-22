@@ -140,11 +140,12 @@ EOT
       end
 
       def convert_tr(el, opts)
-        el.children.map {|c| send("convert_#{c.type}", c, opts) }.compact.join(' & ') << " \\\\ \\hline\n"
+        sep = opts[:sep] || "\\hline"
+        el.children.map {|c| send("convert_#{c.type}", c, opts) }.compact.join(' & ') << " \\\\ #{sep}\n"
       end
 
       def convert_thead(el, opts)
-        opts = opts.dup.merge(style: 'textbf')
+        opts = opts.dup.merge(style: 'textbf', sep: "\\specialrule{1.5pt}{0pt}{0pt}")
         inner(el, opts)
       end
 
@@ -175,9 +176,8 @@ EOT
           type = el.type == :ul ? 'itemize' : 'enumerate'
           <<EOT
 \\begin{#{type}}
-\\setlength\\itemsep{0em}
-#{inner(el, opts)}
-\\end{#{type}}
+\\setlength\\itemsep{-0.5em}
+#{inner(el, opts)}\\end{#{type}}
 EOT
         else
           super

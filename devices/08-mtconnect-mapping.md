@@ -426,7 +426,7 @@ Figure&#160;{{figure(rotary-c-amperage)}} illustrates the {{mtmodel(Amperage)}} 
 
 {{latex(\FloatBarrier)}}
 
-#### \mtmodel{Controller and {{mtmodel(Path)}} {{term(MTComponent)}}s}
+#### {{mtmodel(Controller)}} and {{mtmodel(Path)}} {{termplural(MTComponent)}}
 
 In MTConnect, the {{mtmodel(Controller)}} component represents the control system of the machine. This includes both the {{term(plc)}} and the {{term(cnc)}} of the machine. In a {{term(cnc)}} machine tool, the {{term(cnc)}} and {{term(plc)}} are often thought of as a single component of the machine since they both control the operation of the machine.
 

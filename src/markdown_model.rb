@@ -1,7 +1,7 @@
 require 'markdown_type'
 require 'model'
 
-class LatexModel < Model
+class MarkdownModel < Model
   include Diagram
   include Document
 
@@ -14,26 +14,26 @@ class LatexModel < Model
   end
 
   def self.type_class
-    LatexType
+    MarkdownType
   end
 
-  def self.generate_latex(f, model)
+  def self.generate_markdown(f, model)
     if @@models[model]
-      @@models[model].generate_latex(f)
+      @@models[model].generate_markdown(f)
     else
       $logger.fatal "Cannot find model: #{model}"
       exit
     end
   end
 
-  def generate_latex(f)
-    file = "./model-sections/#{short_name}.tex"
+  def generate_markdown(f)
+    file = "./model-sections/#{short_name}.md"
     f.puts "\\input #{file}"
 
     File.open("#{@@directory}/#{file}", "w") do |fs|
       $logger.info "Generating model #{@name}"
       fs.puts "% Generated #{Time.now}"
-      fs.puts "\\subsection{#{@name}} \\label{model:#{short_name}}"
+      fs.puts "## #{@name} {#model:#{short_name}}"
       
       generate_diagram(fs)
       
@@ -49,7 +49,7 @@ class LatexModel < Model
 
   def reference
     if @name =~ /OPC/
-      return "\\cite{#{@name.sub(/OPC /, '').gsub(' ', '').sub(/Profile/, 'Part5')}}"
+      return "{{cite(#{@name.sub(/OPC /, '').gsub(' ', '').sub(/Profile/, 'Part5')})}}"
     else
       @name
     end
@@ -58,7 +58,7 @@ class LatexModel < Model
   def recurse_types(f, type)
     if  type.type == 'uml:Class' or type.type == 'uml:Stereotype' or
         type.type == 'uml:DataType' or type.type == 'uml:AssociationClass'
-      type.generate_latex(f) 
+      type.generate_markdown(f) 
     end
 
     type.children.each do |t|

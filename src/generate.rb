@@ -11,8 +11,8 @@ require 'rexml/document'
 require 'rexml/xpath'
 require 'nokogiri'
 
-require 'treetop'
-require 'latex_parser'
+#require 'treetop'
+#require 'latex_parser'
 
 Options = {}
 parser = OptionParser.new do |opts|
@@ -34,8 +34,9 @@ $logger.formatter = proc do |severity, datetime, progname, msg|
   "#{severity}: #{msg}\n"
 end
 
-Glossary = LatexParser.new
-Glossary.parse_glossary('mtc-terms.tex')
+# Should not need to parse terms
+#Glossary = LatexParser.new
+#Glossary.parse_glossary('mtc-terms.tex')
 
 NodesetFile = './Opc.Ua.MTConnect.NodeSet2.xml'
 OpcNodeIdFile = './MTConnect.NodeIds.csv'
@@ -48,14 +49,14 @@ DeviceModels = ['Components', 'Component Types', 'Data Items',
             'Data Item Sub Types', 'MTConnect Device Profile']
 
 DeviceDirectory = 'devices'
-DeviceDocumentFile = './devices/09-types.tex'
+DeviceDocumentFile = './devices/09-types.md'
 DeviceNodesetFile = './Opc.Ua.MTConnect.NodeSet2.Part1.xml'
 DeviceTypeDictionary = './MTConnect.Devices.TypeDictionary'
 
 AssetModels = [] # ['Assets', 'Cutting Tool', 'Measurements', 'Assets Profile']
 
 AssetDirectory = 'assets'
-AssetDocumentFile = './assets/09-types.tex'
+AssetDocumentFile = './assets/09-types.md'
 AssetNodesetFile = './Opc.Ua.MTConnect.NodeSet2.Part2.xml'
 AssetTypeDictionary = './MTConnect.Assets.TypeDictionary'
 

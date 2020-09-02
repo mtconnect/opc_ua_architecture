@@ -13,11 +13,8 @@ class Type
   class Literal
     attr_reader :name, :value, :description
     
-    def initialize(name, value, suffix = '')
-      @name, @value = name, value
-      base = name.gsub('_', '').downcase
-      ent = Glossary[base + suffix] || Glossary[base] || Glossary[base + ' value']
-      @description = ent.description if ent and !ent.description.empty?
+    def initialize(name, value, description, suffix = '')
+      @name, @value, @description = name, value, description
     end
   end
 
@@ -206,14 +203,6 @@ class Type
 
     
     @documentation = xmi_documentation(e) || ''
-
-    
-    sn = @name.sub(/^MT/, '').sub(/Type$/, '').sub(/Class$/, '').sub(/Sub$/, '')
-    doc = Glossary[sn] || Glossary[sn.upcase]
-    if doc
-      
-      @documentation << "\n\n" << doc.description
-    end
     @stereotype = xmi_stereotype(e)
     
     @type = e['xmi:type']
@@ -239,7 +228,8 @@ class Type
       suffix = ' ' + @name.sub(/^MT/, '').sub(/Type$/, '').downcase
       e.ownedLiteral.each do |lit|
         name, value = lit['name'].split('=')
-        @literals << Literal.new(name, value, suffix)
+        doc = xmi_documentation(e) || ''
+        @literals << Literal.new(name, value, documentation, suffix)
       end
     else
       e.element_children.each do |r|
@@ -338,7 +328,7 @@ class Type
 
   def escape_name
     n = @name.gsub('{', '\{').gsub('}', '\}')
-    n = "<<#{n}>>" if @type == 'uml:Stereotype'
+    n = "\\<\\<#{n}\\>\\>" if @type == 'uml:Stereotype'
     n
   end
 
@@ -348,7 +338,7 @@ class Type
 
   def stereotype_name
     if @stereotype and @stereotype != 'stereotype'
-      "<<#{@stereotype}>>"
+      "\\<\\<#{@stereotype}\\>\\>"
     else
       ''
     end

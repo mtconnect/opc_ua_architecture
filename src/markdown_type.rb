@@ -81,7 +81,7 @@ class MarkdownType < Type
       else
         ref = parent.reference
       end
-      f.puts "{{span(6)}} Subtype of #{parent.name} (#{ref}) |"
+      f.puts "| {{span(6)}} Subtype of #{parent.name} (#{ref}) |"
     end
   end
 
@@ -105,17 +105,17 @@ class MarkdownType < Type
           # puts "  Ref: '#{r.name}' '#{r.stereotype}' '#{r.final_target.type.name}' #{r.target_node_name} #{r.is_derived?}"
           next if r.is_derived? or (r.stereotype and r.stereotype =~ /Attribute/)  
           
-          array = '[]' if r.is_array?
+          array = '\\[\\]' if r.is_array?
           
           if r.is_property? or r.is_folder?
-            type_info = "#{hyphenate(r.final_target.type.name)}#{array} & #{hyphenate(r.target_node_name)}"
+            type_info = "#{r.final_target.type.name}#{array} | #{r.target_node_name}"
           elsif r.target.type.is_variable?
-            type_info = "#{hyphenate(r.target.type.variable_data_type.name)}#{array} & #{hyphenate(r.target_node_name)}"
+            type_info = "#{r.target.type.variable_data_type.name}#{array} | #{r.target_node_name}"
           else
-            type_info = "\\multicolumn{2}{l|}{#{r.target_node_name}#{array}}"
+            type_info = "{{span(2)}} #{r.target_node_name}#{array}"
           end
 
-          f.puts "#{hyphenate(r.reference_type)} & #{r.target.type.base_type} & #{hyphenate(r.browse_name)} & #{type_info} & #{r.rule} \\\\"
+          f.puts "| #{r.reference_type} | #{r.target.type.base_type} | #{r.browse_name} | #{type_info} | #{r.rule} |"
         rescue
           $logger.error "#{$!}: #{@name}::#{r.name} #{r.final_target.name} #{r.final_target.type_id} #{r.final_target.type}"
           raise 
@@ -126,47 +126,32 @@ class MarkdownType < Type
 
   def generate_constraints(f, obj = self)
     unless obj.constraints.empty?
-      f.puts "\\paragraph{Constraints}\n"
+      f.puts "#### Constraints\n\n"
       obj.constraints.each do |c|
-        f.puts "\\begin{itemize}"
-        f.puts "\\item Constraint \\texttt{#{c.name}}: "
-        f.puts "   \\indent \\begin{lstlisting}"
+        f.puts "* Constraint `#{c.name}`: ```"
         f.puts c.specification
-        f.puts "\\end{lstlisting}"
-        f.puts "Documentation: #{c.documentation}" if c.documentation
-        f.puts "\n\\end{itemize}"
+        f.puts "```"
+        f.puts "  * Documentation: #{c.documentation}" if c.documentation
       end
     end
 
     unless obj.invariants.empty?
-      f.puts "\n\\paragraph{Static values for #{obj.name}}\n"
+      f.puts "#### Static values for #{obj.name}\n"
 
       f.puts <<EOT
-\\begin{table}[ht]
-\\centering 
-  \\caption{\\texttt{#{escape_name}::#{obj.name}} Values}
-\\tabulinesep=3pt
-\\begin{tabu} to 6in {|l|l|} \\everyrow{\\hline}
-\\hline
-\\rowfont\\bfseries {Name} & {Value} \\\\
-\\tabucline[1.5pt]{}
+| Name | Value |
+|------|-------|
 EOT
 
       obj.invariants.each do |name, value|
-        f.puts "\\texttt{#{name}} & \\texttt{#{value}} \\\\"
+        f.puts "| `#{name}` | `#{value}` |"
       end
       
-      f.puts <<EOT
-\\end{tabu}
-\\end{table} 
-EOT
-
+      f.puts %s{: caption="`#{escape_name}::#{obj.name}` Values"\n\n}
       
-      f.puts "\\begin{itemize}"
       obj.invariants.each do |k, v|
-        f.puts "\\item Property \\texttt{#{k}}: \\texttt{#{v}}"
+        f.puts "* Property `#{k}`: `#{v}`"
       end
-      f.puts "\\end{itemize}"
     end
 
     if obj.equal?(self)
@@ -178,7 +163,7 @@ EOT
 
   def generate_subtype(f, c)
     t = c.is_a_type?('BaseVariableType') ? 'VariableType' : 'ObjectType'
-    f.puts "HasSubtype | #{t} | {{span(2)}} #{c.escape_name} | {{span(2)} #{c.reference} |"
+    f.puts "| HasSubtype | #{t} | {{span(2)}} #{c.escape_name} | {{span(2)}} #{c.reference} |"
   end
 
   def generate_children(f)
@@ -209,8 +194,8 @@ EOT
       end
 
     unless relations_with_documentation.empty?
-      f.puts "{{FloatBarrier}}"
-      f.puts "#### #{header}\n\n"
+      f.puts "\n{{FloatBarrier}}"
+      f.puts "\n#### #{header}\n\n"
       relations_with_documentation.each do |r|
         if r.documentation
           f.puts "* `#{r.name} : #{r.final_target.type.name}`: #{r.documentation}"
@@ -218,9 +203,9 @@ EOT
         
         if r.target.type.type == 'uml:Enumeration'
           f.puts "* **Allowable Values** for `#{r.target.type.name}`"
-          f.puts "{{FloatBarrier}}"
+          f.puts "\n{{FloatBarrier}}\n\n"
           r.target.type.generate_enumerations(f)
-          f.puts "{{FloatBarrier}}"
+          f.puts "\n{{FloatBarrier}}\n\n"
         end
       end
       f.puts
@@ -231,7 +216,7 @@ EOT
   
   def generate_operations(f)
     if !@operations.empty?
-      f.puts "#### Operations"
+      f.puts "\n#### Operations"
       
       @operations.each do |name, docs|
         f.print "* `#{name}()`"
@@ -255,7 +240,6 @@ EOT
 |------------|----------|
 | BrowseName | #{@name} |
 | IsAbstract | #{@abstract.to_s.capitalize} |
-{: caption="`#{escape_name}` Definition" label="#{@name}" format-1="p 1.88in" format-2="p 3.92in" }
 EOT
 
     if is_variable?
@@ -268,9 +252,13 @@ EOT
       t = a.default || 'false'
       f.puts "| Symmetric | #{t} |"
     end
+    f.puts <<EOT
+{: caption="`#{escape_name}` Definition" label="#{@name}" format-1="p 1.88in" format-2="p 3.92in" }
 
+EOT
     
     f.puts <<EOT
+
 | References | NodeClass | BrowseName | DataType | Type-Definition   | Modeling-Rule   |
 |------------|-----------|------------|----------|-------------------|-----------------|
 EOT
@@ -282,7 +270,7 @@ EOT
     
     generate_relations(f)
 
-    f.puts "{: #{ROW_FORMAT} }"
+    f.puts "{: #{ROW_FORMAT} }\n\n"
   end
 
   def generate_enumerations(f)
@@ -292,20 +280,21 @@ EOT
       generate_documentation(f)
 
       unless @@labels.include?(@name)
-        label = "enum:#{@name}"
+        label = "label=\"enum:#{@name}\""
         @@labels.add(@name)
       end
 
       f.puts <<EOT
+
 | Name | Index | Description |
 |------|------:|-------------|
 EOT
 
       @literals.each do |lit|
-        f.puts "|`lit.name` | `#{lit.value}` | #{lit.description} |"
+        f.puts "|`#{lit.name}` | `#{lit.value}` | #{lit.description} |"
       end
         
-      f.puts %s{{: format-3="p 3in" caption="`#{escape_name}` Enumeration" #{label} }}
+      f.puts "{: format-3=\"p 3in\" caption=\"`#{escape_name}` Enumeration\" #{label} }"
     end
   end
 
@@ -316,7 +305,7 @@ EOT
     }
 
     if !deps.empty? or @mixin
-      f.puts "#### Dependencies and Relationships"
+      f.puts "\n#### Dependencies and Relationships"
 
       deps.each do |dep|
         target = dep.target
@@ -324,12 +313,12 @@ EOT
         if dep.stereotype and dep.stereotype == 'values' and
             target.type.type == 'uml:Enumeration'
           
-          f.puts "##### **Allowable Values** for `#{target.type.name}`"
-          f.puts "\\FloatBarrier"
+          f.puts "\n##### **Allowable Values** for `#{target.type.name}`"
+          f.puts "\n{{FloatBarrier}}"
           target.type.generate_enumerations(f)
-          f.puts "\\FloatBarrier"
+          f.puts "\n{{FloatBarrier}}"
         else
-          f.puts "##### Dependency on `#{target.type.name}`"
+          f.puts "\n##### Dependency on `#{target.type.name}`"
           rel = dep.stereotype && dep.stereotype
           if rel
             f.puts "This class relates to `#{target.type.name}` (#{target.type.reference}) for a(n) `#{rel}` relationship.\n\n"
@@ -339,39 +328,31 @@ EOT
         end
       end
     
-      f.puts "##### Mixes in `#{@mixin.escape_name}`, see #{@mixin.reference}" if @mixin
+      f.puts "\n##### Mixes in `#{@mixin.escape_name}`, see #{@mixin.reference}" if @mixin
     end
   end
 
   def generate_data_type(f)
-      f.puts <<EOT
-\\begin{table}[ht]
-\\centering 
-  \\caption{\\texttt{#{escape_name}} DataType}
-  \\label{data-type:#{@name}}
-\\tabulinesep=3pt
-\\begin{tabu} to 6in {|l|l|l|} \\everyrow{\\hline}
-\\hline
-\\rowfont\\bfseries {Field} & {Type} & {Optional} \\\\
-\\tabucline[1.5pt]{}
+    
+    f.puts <<EOT
+|Field|Type|Optional|
+|-----|----|--------|
 EOT
-
+    
       @relations.each do |r|
-        array = '[]' if r.is_array?
+        array = '\\[\\]' if r.is_array?
         optional = r.is_optional? ? 'Optional' : 'Mandatory'
-        f.puts "\\texttt{#{r.name}} & \\texttt{#{r.target.type.name}#{array}} & \\texttt{#{optional}} \\\\"
+        f.puts "|`#{r.name}`|`#{r.target.type.name}#{array}`|`#{optional}`|"
       end
         
-      f.puts <<EOT
-\\end{tabu}
-\\end{table} 
-
-EOT
+      f.puts "{: caption=\"`#{escape_name}` DataType\" label=\"data-type:#{@name}\""
 
       generate_attribute_docs(f, "Data Type Fields")
   end
 
   def generate_class_diagram
+    raise "unused"
+    
     File.open("./#{MarkdownModel.directory}/classes/#{@name.gsub(/[<>]/, '-')}.tex", 'w') do |f|
       if @abstract
         f.puts "\\umlabstract{#{@name}}{"
@@ -428,11 +409,14 @@ EOT
     # puts "--- Generating #{@name} #{@stereotype}"
     return if @name =~ /Factory/ or @stereotype =~ /metaclass/
 
-    f.puts <<EOT
-\\subsubsection{Defintion of \\texttt{#{stereotype_name} #{escape_name}}}
-  \\label{type:#{@name}}
+    stereo = "`#{stereotype_name}`" if stereotype_name and !stereotype_name.empty?
 
-\\FloatBarrier
+    f.puts <<EOT
+
+### Defintion of #{stereo} `#{escape_name}` {#type:#{@name}}
+
+{{FloatBarrier}}
+
 EOT
     
     generate_diagram(f)
@@ -444,7 +428,7 @@ EOT
       generate_class(f)
     end
 
-    f.puts "\\FloatBarrier"
+    f.puts "\n{{FloatBarrier}}"
 
     # generate_class_diagram    
   end

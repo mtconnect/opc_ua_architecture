@@ -422,12 +422,149 @@
 
 \newcommand*{\mtblock}[1]{\mtuatype{#1}}
 
+\newcommand*{\block}[1]{\mtuatype{#1}}
+
 % Glossary info
 
 \setglossarystyle{altlist}
 \newglossary*{opc}{OPC UA Terms}
 \newglossary*{mtc}{MTConnect Terms}
 \makeglossaries
+
+\glsaddkey
+ {occurrence}% new key
+ {0}% default value 
+ {\glsentryoccurrence}
+ {\Glsentryoccurrence}
+ {\glsoccurrence}
+ {\Glsoccurrence}
+ {\GLSoccurrence}
+ 
+ \glsaddkey
+ {units}% new key
+ {None}% default value 
+ {\glsentryunits}
+ {\Glsentryunits}
+ {\glsunits}
+ {\Glsunits}
+ {\GLSunits}
+ 
+\glsaddkey
+ {elementname}% new key
+ {}% default value 
+ {\glsentryelementname}
+ {\Glsentryelementname}
+ {\glselementname}
+ {\Glselementname}
+ {\GLSelementname}
+
+\glsaddkey
+ {representation}% new key
+ {}% default value 
+ {\glsentryrepresentation}
+ {\Glsentryrepresentation}
+ {\glsrepresentation}
+ {\Glsrepresentation}
+ {\GLSrepresentation}
+ 
+\glsaddkey
+ {code}% new key
+ {}% default value 
+ {\glsentrycode}
+ {\Glsentrycode}
+ {\glscode}
+ {\Glscode}
+ {\GLScode}
+ 
+\glsaddkey
+ {kind}% new key
+ {}% default value 
+ {\glsentrykind}
+ {\Glsentrykind}
+ {\glskind}
+ {\Glskind}
+ {\GLSkind}
+ 
+\glsaddkey
+ {attributes}% new key
+ {}% default value 
+ {\glsentryattrib}
+ {\Glsentryattrib}
+ {\glsattrib}
+ {\Glsattrib}
+ {\GLSattrib}
+ 
+\glsaddkey
+ {elements}% new key
+ {}% default value 
+ {\glsentryelem}
+ {\Glsentryelem}
+ {\glselem}
+ {\Glselem}
+ {\GLSelem}
+ 
+\glsaddkey
+ {kindplural}% new key
+ {}% default value 
+ {\glsentrykindplural}
+ {\Glsentrykindplural}
+ {\glskindplural}
+ {\Glskindplural}
+ {\GLSkindplural}
+ 
+\glsaddkey
+ {attributesplural}% new key
+ {}% default value 
+ {\glsentryattribplural}
+ {\Glsentryattribplural}
+ {\glsattribplural}
+ {\Glsattribplural}
+ {\GLSattribplural}
+ 
+\glsaddkey
+ {elementsplural}% new key
+ {}% default value 
+ {\glsentryelemplural}
+ {\Glsentryelemplural}
+ {\glselemplural}
+ {\Glselemplural}
+ {\GLSelemplural}
+
+\glsaddkey
+ {enumeration}% new key
+ {}% default value 
+ {\glsentryenum}
+ {\Glsentryenum}
+ {\glsenum}
+ {\Glsenum}
+ {\GLSenum}
+ 
+\glsaddkey
+ {facet}% new key
+ {}% default value 
+ {\glsentryfacet}
+ {\Glsentryfacet}
+ {\glsfacet}
+ {\Glsfacet}
+ {\GLSfacet}
+
+\glsaddkey
+ {deprecated}% new key
+ {false}% default value 
+ {\glsentrydeprecated}
+ {\Glsentrydeprecated}
+ {\glsdeprecated}
+ {\Glsdeprecated}
+ {\GLSdeprecated}
+
+\glsaddkey
+ {subtype}% new key
+ {}% default value 
+ {\glsentrysubtype}
+ {\Glsentrysubtype}
+ {\glssubtype}
+ {\Glssubtype}
+ {\GLSsubtype}
 
 % For acronyms, puts the long description first and then the acronym second.
 \setabbreviationstyle[acronym]{long-short}

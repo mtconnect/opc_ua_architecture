@@ -28,12 +28,12 @@ class MarkdownModel < Model
 
   def generate_markdown(f)
     file = "./model-sections/#{short_name}.md"
-    f.puts "\\input #{file}"
+    f.puts "{{input(#{file})}}"
 
     File.open("#{@@directory}/#{file}", "w") do |fs|
       $logger.info "Generating model #{@name}"
       fs.puts "% Generated #{Time.now}"
-      fs.puts "## #{@name} {#model:#{short_name}}"
+      fs.puts "\n## #{@name} {#model:#{short_name}}"
       
       generate_diagram(fs)
       

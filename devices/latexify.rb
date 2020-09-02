@@ -1,368 +1,241 @@
-require 'redcarpet'
+require 'kramdown'
 
-class Table
-  attr_reader :tables
-  
-  def initialize
-    @tabulars = []
-    @current = @caption = @label = nil
-  end
 
-  def complete
-    @current = nil
-  end
+module Kramdown
+  module Parser
+    class MTCKramdown < Kramdown
 
-  def current
-    if @current
-      @current
-    else
-      @tabulars << Tabular.new
-      @current = @tabulars.last
+      def initialize(source, options)
+        super
+        @span_parsers.unshift(:inline_macro)
+      end
+
+      INLINE_MACRO_START = /\{\{.*?\}\}/
+
+      # Parse the inline math at the current location.
+      def parse_inline_macro
+        start_line_number = @src.current_line_number
+        @src.pos += @src.matched_size
+        # puts "---- #{start_line_number} : #{@src.matched}"
+        @tree.children << Element.new(:macro, @src.matched, nil, category: :span, location: start_line_number)
+      end
+      define_parser(:inline_macro, INLINE_MACRO_START, '{{')
     end
   end
 
-  def  caption(caption, label)
-    @caption, @label = caption, "table:#{label}"
-  end
+  
+  module Converter
+    class MtcLatex < Latex
+      def initialize(root, options)
+        @multi_table = false
+        @span = nil
+        @skip = 0
+        super
+      end
 
-  def generate    
-      caption = "\n  \\caption{#{@caption}}" if @caption
-      label = "\n  \\label{#{@label}}" if @label
+      def convert_macro(el, _opts)
+        el.value.sub(/\{\{([a-zA-Z0-9_]+)(\(([^\)]+)\))?\}\}/) do |s|
+          command = $1
+          args = $3.gsub(/\\([<>])/, '\1') if $3
+          case command
+          when 'term'
+            "\\gls{#{args}}"
+            
+          when 'termplural'
+            "\\glspl{#{args}}"
 
-      content = @tabulars.map(&:generate).join('')
-      
-      text = <<EOT
+          when 'latex'
+            args
+
+          when 'table'
+            "\\ref{table:#{args}}"
+
+          when 'figure'
+            "\\ref{fig:#{args}}"
+
+          when "span"
+            @span = args.to_i
+            ''
+
+          when 'markdown'
+            kd = ::Kramdown::Document.new(args.gsub(/<br\/?>/, "\n"), input: 'MTCKramdown')
+            kd.to_mtc_latex
+            
+          else
+            "\\#{command}{#{args}}"
+          end
+        end
+      end
+
+      def caption_and_label(el, context)
+        caption = el.attr['caption']
+        if caption
+          label = el.attr['label'] || caption.gsub(/[ ]+/, '')
+          if context and not label.index(':')
+            label = "#{context}:#{label}"
+          end
+          caption = latex_caption(caption)
+        end
+        [caption, label]
+      end
+
+      def convert_table(el, opts)
+        cap, lbl = caption_and_label(el, 'table')
+        
+        # Check for multi-tables
+        if cap
+          caption = "\n  \\caption{#{cap}}"
+          label = "\n  \\label{#{lbl}}"
+        end
+
+        align = el.options[:alignment].map {|a| TABLE_ALIGNMENT_CHAR[a] }
+
+        if el.attr['format']
+          default = el.attr['format'] 
+          align.map! { |a| default }
+        end
+
+        el.attr.keys.each do |k|
+          if k =~ /^format-(\d+)/
+            align[$1.to_i - 1] = el.attr[k]
+          end
+        end
+
+        columns = '| ' + align.map do |f|
+          a, w = f.split
+          a << "{#{w}}" if w
+          a
+        end.join(' | ') + ' |'
+
+        continued = @multi_table
+        if opts[:parent].children.length > opts[:index] + 2 and
+          opts[:parent].children[opts[:index] + 1].type == :blank and
+          opts[:parent].children[opts[:index] + 2].type == :table and
+          opts[:parent].children[opts[:index] + 2].attr['caption'].nil?
+          @multi_table = true
+        else
+          @multi_table = false          
+        end
+
+        text = ''
+        if not continued
+          text = <<EOT
 
 \\begin{table}[ht]
   \\centering#{caption}#{label}
   \\fontsize{9pt}{11pt}\\selectfont
-#{content}
-\\end{table}
 EOT
-      text
-  end
-  
-  class Tabular
-    attr_accessor :rows, :columns
-
-    
-    class Cell
-      attr_reader :text, :merge, :count
-      def initialize(text)
-        case text
-        when /^>\[(\d+)\]\s+(.+)$/
-          @merge = :right
-          @text = $2
-          @count = $1.to_i
-        when 'v', 'V'
-          @merge = :down
-          @text = ''
-        else
-          @text = text
-          @merge = nil
-        end                 
-      end
-
-      def generate
-        if @merge == :right
-          "\\multicolumn{#{@count}}{|l|}{#{@text}}"
-        else
-          @text
         end
-      end
-    end
 
-    class Column
-      attr_accessor :alignment
-      
-      def initialize(name)
-        w = nil
-        @name = name.sub(/\[([^\]]+)\]/) { |s| w = $1; '' }
-        @format =  w ? "{#{w}}" : nil
-        @alignment = nil
-      end
-
-      def format
-        s =  case @alignment
-             when :right
-               'r'
-
-             when :center
-               'c'
-
-             else
-               @format ? 'p' : 'l'
-             end
-
-
-        "#{s}#{@format}"
-      end
-
-      def name
-        "\\textbf{#{@name}}"
-      end
-    end
-
-    class Row
-      attr_reader :cells
-      
-      def initialize
-        @cells = []
-      end
-
-      def add_cell(text)
-        @cells << Cell.new(text)
-      end
-
-      def generate
-        skip = 0
-        cs = @cells.map do |c|
-          if c.text.empty? and skip > 0
-            skip -= 1
-            nil
-          else          
-            skip = c.count - 1 if c.merge == :right
-            c.generate
-          end
-        end.compact.join(' & ')
-      end
-    end
-    
-    def initialize
-      @rows = []
-      @columns = []
-      @index = 0
-      @header = true
-      @row = nil
-      @completed = false
-    end
-
-    def add_cell(name, align)
-      if @header
-        @columns << Column.new(name)
-      else
-        @row = Row.new unless @row
-        @row.add_cell(name)
-        
-        @columns[@index].alignment = align if align
-        @index += 1
-      end
-    end
-
-    def add_row(row)
-      @rows << @row if @row
-      @header = false
-      @row = nil
-      @index = 0
-    end
-
-    def completed?
-      @completed
-    end
-
-    def complete
-      @completed = true
-    end
-
-    def generate
-      s = " \\\\ \\hline\n"
-      columns = '| ' + @columns.map(&:format).join(' | ') + ' |'
-      headers = @columns.map(&:name).join(' & ') + s
-      content = @rows.map(&:generate).join(s) + s
-      
-      text = <<EOT
+        text<< <<EOT
 
   \\begin{tabular}{#{columns}}
   \\hline
-#{headers}
-#{content}
+#{inner(el, opts)}
   \\end{tabular}
 EOT
-      text
-    end
-  end
-end
-
-module Redcarpet
-  module Render
-    class Latex < Base
-      include Redcarpet::Render::SmartyPants
-
-      def initialize(options = {})
-        super()
-        @close = []
-        @table = nil
-        @lazy = nil
-        @equation = false
-      end
-
-      def check_caption(text)
-        if text =~ /^[ \t]*\[([^\]]+)\][ \t]*(\[([^\]]+)\])?/
-          caption = $1
-          if $3
-            label = $3
-          else
-            label = caption.gsub(' ', '')
-          end
-          [caption, label]
-        else
-          nil
-        end 
-      end
-
-      def expand_macros(text)
-        text.gsub(/\{\{([a-zA-Z0-9_]+)(\(([^\)]+)\))?\}\}/) do |s|
-          case $1
-          when 'term'
-            "\\gls{#{$3}}"
-            
-          when 'termplural'
-            "\\glspl{#{$3}}"
-
-          when 'latex'
-            $3
-
-          when 'table'
-            "\\ref{table:#{$3}}"
-
-          when 'figure'
-            "\\ref{fig:#{$3}}"
-
-          else
-            "\\#{$1}{#{$3}}"
-          end
-        end
-      end
-
-      def normal_text(text)
-        if text =~ / ->/
-          text.gsub(/ ->/, " $\\rightarrow$")
-        else
-          # puts "#{text}"
-          text
-        end
-      end
-
-      def block_code(code, language)
-        line = 1
-        if language =~ /^([a-z]+)@([a-z0-9]+)?(\{([^}]+)\})?/i
-          language = $1
-          line = $2 if $2
-          option = $4
-        end
-
-        code.gsub!(/\{#([^}]+)\}/, '\\label{\1}')
-
-        lang = "\\lstset{language=#{language.upcase},numbers=left,xleftmargin=2em}" if language
-
-        @lazy = lambda do |caption, label|
-          options = []
-          options << "firstnumber=#{line}" if line
-          options << "caption={#{caption}}" if caption
-          options << "label={lst:#{label}}" if label
-          options << option if option
-          
-        <<EOT
-#{lang}
-\\begin{lstlisting}[#{options.join(',')}]
-#{code}
-\\end{lstlisting}
+        
+      unless @multi_table
+        text<< <<EOT
+\\end{table}    
 EOT
-        end
-        ''
+      end
+        text
       end
 
-      def codespan(code)
-        "\\texttt{#{code}}"
+      def convert_tr(el, opts)
+        sep = opts[:sep] || "\\hline"
+        el.children.map {|c| send("convert_#{c.type}", c, opts) }.compact.join(' & ') << " \\\\ #{sep}\n"
       end
 
-      def header(content, level)
-        title = expand_macros(content)
-        label = nil
-        title.sub!(/\{#([^}]+)\}/) { |t| label = $1; '' }
-        head = case level
-        when 1
-          "\n\\section{#{title}}\n"
+      def convert_thead(el, opts)
+        opts = opts.dup.merge(style: 'textbf', sep: "\\btrule{1.5pt}")
+        inner(el, opts)
+      end
 
-        when 2
-          "\n\\subsection{#{title}}\n"
+      def convert_tbody(el, opts)
+        super
+      end      
 
-        when 3
-          "\n\\subsubsection{#{title}}\n"
-          
-        when 4
-          "\n\\paragraph{#{title}}\n"
-          
-        when 5
-          "\n\\subparagraph{#{title}}\n"
-        end
-
-        if label
-          "#{head}\\label{#{label}}\n"
+      def convert_td(el, opts)
+        text = inner(el, opts)
+        if text.empty? and @skip and @skip > 0
+          @skip -= 1
+          nil
         else
-          head
-        end
-      end
-
-      def superscript(text)
-        text = "\\copyright" if text == '-c-'
-        "\\textsuperscript{#{text}}"
-      end
-
-      def raw_html(html)
-        case html
-        when /align="center"/
-          @close.push "\\end{center}"
-          "\\begin{center}"
-
-        when /style="font-size: 150%"/
-          @close.push '}'
-          "\\Large{"
-          
-        when /^<\//
-          @close.pop
-        else
-          html
-        end
-      end
-
-      def double_emphasis(content)
-        text = expand_macros(content)
-        "\\textbf{#{text}}"
-      end
-
-      def emphasis(content)
-        text = expand_macros(content)
-        "\\textit{#{text}}"
-      end
-
-      def highlight(text)
-        "\\emph{#{text}}"
-      end
-
-      def underline(content)
-        "\\underline{#{content}}"
-      end
-
-      def image(link, title, alt)
-        puts "Image: #{link}, #{title}, #{alt}"
-        if link =~ /\.tex$/
-          "\\input{#{link}}"
-        else
-          if alt
-            caption = alt
-            lt = title
-          else
-            caption = title
-            lt = title.gsub(' ', '')
+          if @span
+            text = "\\multicolumn{#{@span}}{|l|}{#{text}}"
+            @skip, @span = @skip + (@span - 1), nil
           end
+          if opts[:style]
+            "\\#{opts[:style]}{#{text}}"
+          else
+            text
+          end
+        end
+      end
 
-          label = "  \\label{fig:#{lt}}" if alt
+      def convert_ul(el, opts)
+        if el.attr['class'] == 'tight'
+          type = el.type == :ul ? 'itemize' : 'enumerate'
+          <<EOT
+\\begin{#{type}}
+\\setlength\\itemsep{-0.5em}
+#{inner(el, opts)}\\end{#{type}}
+EOT
+        else
+          super
+        end
+      end
+      alias convert_ol convert_ul
+
+      def convert_text(el, opts)
+        kls =  opts[:parent].attr['class']
+        close = open = nil
+        case kls
+        when 'large'
+          open = '\\Large{'
+          close = '}'
+        end
+          
+        "#{open}#{super}#{close}"
+      end
+
+      def convert_p(el, opts)
+        text = ''
+        close = nil
+        case el.attr['class']
+        when 'center'
+          text << "\\begin{center}\n"
+          close = "\\end{center}\n"
+        end
+        
+        if el.children.size == 1 && el.children.first.type == :img
+          text << convert_img(el.children.first, opts)
+        else
+          text << "#{latex_link_target(el)}#{inner(el, opts)}\n\n"
+        end
+        text << close if close
+        
+        text
+      end
+
+      def convert_img(el, opts)
+        src = el.attr['src']
+        alt = el.attr['alt']
+        title = el.attr['title']
+
+        puts "Image: #{src}, #{alt}, #{title}"
+        if src =~ /\.tex$/
+          "\\input{#{src}}\n"
+        else
+          caption = alt
+          label = "  \\label{fig:#{title}}" if title
           
           <<EOT
 \\begin{figure}[ht]
   \\centering
-  \\includegraphics[width=\\textwidth]{#{link}}
+  \\includegraphics[width=\\textwidth]{#{src}}
   \\caption{#{caption}}
 #{label}
 \\end{figure}
@@ -370,125 +243,56 @@ EOT
         end
       end
 
-      def link(link, title, content)
-        puts "Link: #{link}, #{title}"
-        text = "\\input #{link}"
+      def latex_caption(text)
+        text.gsub(/`([^`]+)`/, '\\texttt{\1}')
       end
 
-      def linebreak
-        " \\newline "
+      def convert_labels(text)
+        text.gsub(/\{#([^}]+)}/, '\\label{\1}')
       end
 
-      def hrule
-         "\\hline"
+      def convert_math(el, _opts)
+        convert_labels(super)
       end
 
-      def entity(text)
-        puts "Entity: #{text}"
-        text
-      end
 
-      def paragraph(content)
-        text = expand_macros(content)
+      def convert_codeblock(el, _opts)
+        language = extract_code_language(el.attr)
+        line = (el.attr['start'] || 1).to_i
+        escape = el.attr['escape']
+        caption, label = caption_and_label(el, 'lst')
         
-        if @table or @lazy
-          caption, label = check_caption(text)
-          if @table
-            @table.caption(caption, label)
-            rendered = "#{@table.generate}\n"
-            @table = nil
-          else
-            rendered = @lazy.call(caption, label)
-            @lazy = nil
-          end
-          rendered += "#{text}\n" unless caption
-          rendered
-        else
-          "\n#{text}\n"
-        end
-      end
+        code = el.value
+        code = convert_labels(code) if escape
 
-      def highlight(text)
-        puts "Hilighting #{text}"
-        "\\textcolor{red}{#{text}}"
-      end
-
-      def list(content, list_type)
-        type = case list_type
-               when :ordered
-                 'enumerate'
-               when :unordered
-                 'itemize'
-               end
-        "\n\\begin{#{type}}\n#{content}\\end{#{type}}\n"
-      end
-
-      def list_item(content, list_type)
-        text = expand_macros(content)
-        "  \\item #{text}"
-      end
-
-      def table(header, content)
-        @table.complete
-        ''
-      end
-
-      def table_row(content)
-        @table.current.add_row(content) if @table
-        ''
-      end
-
-      def quote(text)
-        text
-      end
-
-      def table_cell(content, alignment)
-        text = expand_macros(content)
-        @table ||= Table.new
-        @table.current.add_cell(text, alignment)
-        ''
-      end
-
-      def postprocess(text)
-        super(text).
-          gsub('&ldquo;', '``').
-          gsub('&rdquo;', "''").
-          gsub('&lsquo;', '`').
-          gsub('&rsquo;', "'").
-          gsub('&quot;', "'").
-          gsub('&ndash;', '--').
-          gsub('&mdash;', '---')
+        options = ['numbers=left', 'xleftmargin=2em', "firstnumber=#{line}"]
+        options << "language=#{language.upcase}" if language
+        options << "caption={#{caption}}" if caption
+        options << "label={#{label}}" if label
+        options << "escapechar={#{escape}}" if escape
+        
+        <<EOT
+\\begin{lstlisting}[#{options.join(',')}]
+#{code}\\end{lstlisting}
+EOT
       end
     end
   end
 end
 
-markdown = Redcarpet::Markdown.new(Redcarpet::Render::Latex, {superscript: true,
-                                                              autolink: true,
-                                                              fenced_code_blocks: true,
-                                                              space_after_headers: true,
-                                                              tables: true,
-                                                              quote: true,
-                                                              strikethrough: true,
-                                                              no_intra_emphasis: true,
-                                                              footnotes: true,
-                                                              lax_spacing: true,
-                                                              underline: true,
-                                                              highlight: true,
-                                                              subscript: true,
-                                                              no_images: false
-                                                             })
-
 Dir.mkdir('converted') unless File.exists?('converted')
+Dir.mkdir('converted/model-sections') unless File.exists?('converted/model-sections')
 
 if ARGV.length > 0
   files = ARGV
 else
-  files = Dir['*.md']
+  files = Dir['*.md', 'model-sections/*.md'].sort
 end
 
 files.each do |f|
   dest = "converted/#{f}.tex"
-  puts "Rendering #{f} -> #{dest}"
-  File.write(dest, markdown.render(File.read(f)))
+  puts "\nRendering #{f} -> #{dest}"
+  kd = Kramdown::Document.new(File.read(f), input: 'MTCKramdown')
+  File.write(dest, kd.to_mtc_latex)
+  puts kd.warnings
 end

@@ -690,7 +690,7 @@ The {{uamodel(SourceTimestamp)}} and {{uamodel(Quality)}} will be handled as des
 
 {{latex(\FloatBarrier)}}
 
-{{latex(\input ./converted/081-condition-streams.md.tex)}}
+{{input(./converted/081-condition-streams.md)}}
 
 ### Messages
 

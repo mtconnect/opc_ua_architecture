@@ -10,7 +10,7 @@ File.open(DeviceDocumentFile, 'w') do |f|
   
   MarkdownModel.directory = DeviceDirectory
   DeviceModels.each do |m|
-    MarkdownModel.generate_latex(f, m)
+    MarkdownModel.generate_markdown(f, m)
   end
 end
 
@@ -21,7 +21,7 @@ if false
     
     MarkdownModel.directory = AssetDirectory
     AssetModels.each do |m|
-      MarkdownModel.generate_latex(f, m)
+      MarkdownModel.generate_markdown(f, m)
     end
   end
 end

@@ -339,17 +339,17 @@ EOT
   def generate_data_type(f)
     
     f.puts <<EOT
-|Field|Type|Optional|
-|-----|----|--------|
+| Field | Type | Optional |
+|-------|------|----------|
 EOT
     
       @relations.each do |r|
         array = '\\[\\]' if r.is_array?
         optional = r.is_optional? ? 'Optional' : 'Mandatory'
-        f.puts "|`#{r.name}`|`#{r.target.type.name}#{array}`|`#{optional}`|"
+        f.puts "| `#{r.name}` | `#{r.target.type.name}#{array}` | `#{optional}` |"
       end
         
-      f.puts "{: caption=\"`#{escape_name_code}` DataType\" label=\"data-type:#{@name}\""
+      f.puts "{: caption=\"`#{escape_name_code}` DataType\" label=\"data-type:#{@name}\" }"
 
       generate_attribute_docs(f, "Data Type Fields")
   end

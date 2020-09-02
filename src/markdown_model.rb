@@ -32,7 +32,8 @@ class MarkdownModel < Model
 
     File.open("#{@@directory}/#{file}", "w") do |fs|
       $logger.info "Generating model #{@name}"
-      fs.puts "% Generated #{Time.now}"
+      fs.puts "{: comment=\"Generated #{Time.now}\" }"
+      fs.puts "{{latex(\\clearpage)}}"
       fs.puts "\n## #{@name} {#model:#{short_name}}"
       
       generate_diagram(fs)

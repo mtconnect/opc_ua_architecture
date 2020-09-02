@@ -45,20 +45,7 @@ Table {{table(server-conformance)}} defines the {{term(Server)}} based {{uablock
 | MTHasClassType and MTHasSubClassType | The server must have {{mtuatype(MTSampleType)}}, {{mtuatype(MTStringEventType)}} {{mtuatype(MTMessageType)}}, {{mtuatype(MTNumericEventType)}}, and {{mtuatype(MTControlledVariableType)}} with relationships to the MTConnect Class types associated with the MTConnect {{mtmodel(DataItem)}} {{mtmodel(type)}} and {{mtmodel(subType)}} | M |
 | MTConnect meta data | DataItems represented in OPC UA must have the full meta data required by the MTConnect standard for all attributes | M |
 | Engineer Units | All {{mtuatype(MTSampleType)}} data items must have the {{uamodel(EngineeringUnits)}} follow the prescribed Units as specified in the MTConnect standard.  | M |
-| 
-| {{latex(\rowfont)}}{{latex(\bfseries)}} Conformance Unit | Description | Optional/ Mandatory |
-| MTConnect Base Functionality | The server supports the {{uablock(BaseObjectModel)}}. This includes exposing all mandatory objects, variables, methods, and data types. | M |
-| Availability | The Server must support the {{mtmodel(Availability)}} {{term(MTDataItem)}} to indicate if data is available from the device. | M |
-| Device | The Server has at least one root {{mtuatype(MTDeviceType)}} | M |
-| AssetChanged Data Item | The Server must support the MTConnect AssetChanged and AssetRemoved data items  | O |
-| Message | The Server must support the MTConnect Message data item and publish {{mtuatype(MTMessageEventType)}} {{uamodel(Event)}}s | M |
-| Condition | The server must support the MTConnect {{mtuatype(MTConditionType)}} type and provide correct activation states  | M |
-| Condition Branches | The server must support MTConnect {{mtuatype(MTConditionType)}} condition branches to represent multiple MTConnect Condition parallel activations | O |
-| Three Space Sample | The server must support the {{mtuatype(MTThreeSpaceSampleType)}} data type to provide a spacial coordinate | M |
-| MTHasClassType and MTHasSubClassType | The server must have {{mtuatype(MTSampleType)}}, {{mtuatype(MTStringEventType)}} {{mtuatype(MTMessageType)}}, {{mtuatype(MTNumericEventType)}}, and {{mtuatype(MTControlledVariableType)}} with relationships to the MTConnect Class types associated with the MTConnect {{mtmodel(DataItem)}} {{mtmodel(type)}} and {{mtmodel(subType)}} | M |
-| MTConnect meta data | DataItems represented in OPC UA must have the full meta data required by the MTConnect standard for all attributes | M |
-| Engineer Units | All {{mtuatype(MTSampleType)}} data items must have the {{uamodel(EngineeringUnits)}} follow the prescribed Units as specified in the MTConnect standard.  | M |
-{: format-2="p"   caption="MTConnect *Server* Model" label="server-conformance" }
+{: format-2="p 3in"   caption="MTConnect Server Model" label="server-conformance" }
 
 ### Client
 
@@ -68,7 +55,7 @@ Table {{table(client-conformance)}} defines the {{uablock(Client)}} based {{uabl
 |------------------|-------------|:---------------------:|
 | MTConnect Base Functionality | The client supports the {{uablock(BaseObjectModel)}}. This includes exposing all mandatory objects, variables, methods, and data types. | M |
 | Availability | The client must interpret the {{mtmodel(Availability)}} {{term(MTDataItem)}} to indicate if data is available from the device. | M |
-{: format-2="p"   caption="MTConnect *Client* Model" label="client-conformance" }
+{: format-2="p 3in"   caption="MTConnect Client Model" label="client-conformance" }
 
 {{FloatBarrier}}
 

@@ -27,8 +27,8 @@ class MarkdownModel < Model
   end
 
   def generate_markdown(f)
-    file = "./model-sections/#{short_name}.md"
-    f.puts "{{input(#{file})}}"
+    file = "model-sections/#{short_name}.md"
+    f.puts "{{input(./converted/#{file}.tex)}}"
 
     File.open("#{@@directory}/#{file}", "w") do |fs|
       $logger.info "Generating model #{@name}"

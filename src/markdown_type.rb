@@ -56,7 +56,7 @@ module Document
     if documentation_exists?
       f.puts "{{input(#{documentation_name})}}\n\n"
     elsif @documentation
-      f.puts "\n#{@documentation}\n\n"
+      f.puts "\n#{@documentation.gsub(/^```/, '~~~~')}\n\n"
     end
   end
 end
@@ -124,13 +124,17 @@ class MarkdownType < Type
     end
   end
 
+  def escape_name_code
+    escape_name.gsub(/\\/, '')
+  end
+
+      
+
   def generate_constraints(f, obj = self)
     unless obj.constraints.empty?
       f.puts "#### Constraints\n\n"
       obj.constraints.each do |c|
-        f.puts "* Constraint `#{c.name}`: ```"
-        f.puts c.specification
-        f.puts "```"
+        f.puts "* Constraint `#{c.name}`: `#{c.specification}`"
         f.puts "  * Documentation: #{c.documentation}" if c.documentation
       end
     end
@@ -147,7 +151,7 @@ EOT
         f.puts "| `#{name}` | `#{value}` |"
       end
       
-      f.puts %s{: caption="`#{escape_name}::#{obj.name}` Values"\n\n}
+      f.puts %s{: caption="`#{escape_name_code}::#{obj.name}` Values"\n\n}
       
       obj.invariants.each do |k, v|
         f.puts "* Property `#{k}`: `#{v}`"
@@ -253,7 +257,7 @@ EOT
       f.puts "| Symmetric | #{t} |"
     end
     f.puts <<EOT
-{: caption="`#{escape_name}` Definition" label="#{@name}" format-1="p 1.88in" format-2="p 3.92in" }
+{: caption="`#{escape_name_code}` Definition" label="#{@name}" format-1="p 1.88in" format-2="p 3.92in" }
 
 EOT
     
@@ -294,7 +298,7 @@ EOT
         f.puts "|`#{lit.name}` | `#{lit.value}` | #{lit.description} |"
       end
         
-      f.puts "{: format-3=\"p 3in\" caption=\"`#{escape_name}` Enumeration\" #{label} }"
+      f.puts "{: format-3=\"p 3in\" caption=\"`#{escape_name_code}` Enumeration\" #{label} }"
     end
   end
 
@@ -328,7 +332,7 @@ EOT
         end
       end
     
-      f.puts "\n##### Mixes in `#{@mixin.escape_name}`, see #{@mixin.reference}" if @mixin
+      f.puts "\n##### Mixes in `#{@mixin.escape_name_code}`, see #{@mixin.reference}" if @mixin
     end
   end
 
@@ -345,7 +349,7 @@ EOT
         f.puts "|`#{r.name}`|`#{r.target.type.name}#{array}`|`#{optional}`|"
       end
         
-      f.puts "{: caption=\"`#{escape_name}` DataType\" label=\"data-type:#{@name}\""
+      f.puts "{: caption=\"`#{escape_name_code}` DataType\" label=\"data-type:#{@name}\""
 
       generate_attribute_docs(f, "Data Type Fields")
   end
@@ -413,7 +417,7 @@ EOT
 
     f.puts <<EOT
 
-### Defintion of #{stereo} `#{escape_name}` {#type:#{@name}}
+### Defintion of #{stereo} `#{escape_name_code}` {#type:#{@name}}
 
 {{FloatBarrier}}
 

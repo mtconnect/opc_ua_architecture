@@ -244,7 +244,7 @@ EOT
       end
 
       def latex_caption(text)
-        text.gsub(/`([^`]+)`/, '\\texttt{\1}')
+        ::Kramdown::Document.new(text, input: 'MTCKramdown').to_mtc_latex.sub(/\n$/, '')
       end
 
       def convert_labels(text)

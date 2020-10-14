@@ -67,7 +67,7 @@ class MarkdownType < Type
 
   @@labels = Set.new
 
-  ROW_FORMAT = %s{format-1="p 0.5in" format-2="p 0.5in" format-3="p 0.5in" format-4="p 1in" format-5="p 1in" format-6="p 0.5in"}
+  ROW_FORMAT = %s{format-1="p 0.85in" format-2="p 0.8in" format-3="p 1.3in" format-4="p 1.3in" format-5="p 0.85in" format-6="p 0.5in"}
 
   def reference
     "See section {{block(#{@name})}}"
@@ -167,7 +167,7 @@ EOT
 
   def generate_subtype(f, c)
     t = c.is_a_type?('BaseVariableType') ? 'VariableType' : 'ObjectType'
-    f.puts "| HasSubtype | #{t} | {{span(2)}} #{c.escape_name} | {{span(2)}} #{c.reference} |"
+    f.puts "| HasSubtype | #{t} | #{c.escape_name} | {{span(3)}} #{c.reference} |"
   end
 
   def generate_children(f)
@@ -257,7 +257,7 @@ EOT
       f.puts "| Symmetric | #{t} |"
     end
     f.puts <<EOT
-{: caption="`#{escape_name_code}` Definition" label="#{@name}" format-1="p 1.88in" format-2="p 3.92in" }
+{: caption="`#{escape_name_code}` Definition" label="#{@name}" format-1="p 0.85in" format-2="p 5.425in" }
 
 EOT
     

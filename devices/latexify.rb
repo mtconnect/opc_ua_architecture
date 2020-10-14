@@ -226,21 +226,23 @@ EOT
         title = el.attr['title']
 
         puts "Image: #{src}, #{alt}, #{title}"
+        figure = "\\begin{figure}[ht]\n"
+
         if src =~ /\.tex$/
-          "\\input{#{src}}\n"
+          figure << "\\input{#{src}}\n"
         else
-          caption = alt
-          label = "  \\label{fig:#{title}}" if title
-          
-          <<EOT
-\\begin{figure}[ht]
-  \\centering
-  \\includegraphics[width=\\textwidth]{#{src}}
-  \\caption{#{caption}}
+          figure << "\\centering{\\includegraphics[width=\\textwidth]{#{src}}}"
+        end
+
+        caption = alt
+        label = "  \\label{fig:#{title}}" if title
+        
+        figure << <<EOT
+\\captionsetup{justification=centering}
+\\caption{#{caption}}
 #{label}
 \\end{figure}
 EOT
-        end
       end
 
       def latex_caption(text)
@@ -252,6 +254,7 @@ EOT
       end
 
       def convert_math(el, _opts)
+        puts "*** Math: #{el.inspect}"
         convert_labels(super)
       end
 

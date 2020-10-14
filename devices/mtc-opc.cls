@@ -33,7 +33,6 @@
 \RequirePackage{fancyvrb}
 \RequirePackage{placeins}
 \RequirePackage{booktabs}
-%\RequirePackage{tabu}
 \RequirePackage{array}
 \RequirePackage{tabularx}
 \RequirePackage{times}					% Loads Adobe Times Roman Font (clone of Times New Roman)
@@ -74,7 +73,6 @@
 \usepackage{mdframed}
 \usepackage[titletoc,title]{appendix}
 \usepackage{rotating}
-\usepackage{graphicx}
 \usepackage[normalem]{ulem}
 \renewcommand{\appendixname}{Annex}
 \usepackage{titlesec}

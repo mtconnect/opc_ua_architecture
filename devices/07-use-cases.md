@@ -10,17 +10,17 @@ What follows is a non-exhaustive list of use cases illustrating the benefits of 
 
 Figure {{figure(devicemanufacturingusecase)}}, illustrates the use case for a manufacturer of a piece of equipment (device) that needs to connect to other systems. OPC UA provides the communication platform, and the MTConnect semantics provide meaning and structure to device data. Figure {{figure(devicemanufacturingusecase)}} shows several clients developed for different purposes that can access information produced by the device via OPC UA.
 
-![](diagrams/DeviceManufacturingUseCase.tex)
+![The Device Manufacturer Use Case](diagrams/DeviceManufacturingUseCase.tex "devicemanufacturingusecase")
 
 The MTConnect or OPC UA interface may reside directly on the machine or on a separate device that communicates with the machine. The location for the interface is up to the implementer.
 
-![](diagrams/DeviceManufacturerNativeMTConnect.tex)
+![Device Manufacturer with Native MTConnect Agent](diagrams/DeviceManufacturerNativeMTConnect.tex "devicemanufacturernativemtconnect")
 
 The device manufacturer may also have a native MTConnect device and make use of an MTConnect to OPC UA gateway to provide information to OPC UA clients (see Figure {{figure(devicemanufacturernativemtconnect)}} and Figure {{figure(devicemanufacturerseparateagent)}}); this companion specification allows for information flow between clients and servers that support either MTConnect or OPC UA.
 
 The benefit of providing options allows the largest number of application access to the data and enables the application developers to require the least amount of effort to ingest and analyze the data. The goal of the device manufacturer is to make their equipment capable of participating in the ecosystem of manufacturing technology that will improve the value and effectiveness of their products. 
 
-![](diagrams/DeviceManufacturerSeparateAgent.tex)
+![Device Manufacturer with Separate MTConnect Agent](diagrams/DeviceManufacturerSeparateAgent.tex "devicemanufacturerseparateagent")
 
 ## Software Vendor
 
@@ -35,7 +35,7 @@ The last level is the semantic interoperability where they provide the meaning a
 
 Figure {{figure(isvusecase)}} illustrates the use case for an {{term(isv)}} supplying products to industrial equipment users. A typical {{term(isv)}} offering includes gateway(s) that convert information between MTConnect and OPC UA and may also provide additional features required for MTConnect implementations; e.g. enhanced security features. The OPC Unified Architecture for MTConnect Companion Specification allows the {{term(isv)}} to extend the MTConnect-OPC UA information model with application specific constructs. These can be easily accessed via any standard OPC UA client product and will function in parallel to existing features provided by MTConnect. Figure {{figure(isvusecase)}} shows an ISV product that consumes data from MTConnect and OPC UA enabled devices and then makes it available via MTConnect and OPC UA.
 
-![](diagrams/ISVUseCase.tex)
+![The Independent Software Vendor (ISV) Use Case](diagrams/ISVUseCase.tex "isvusecase")
 
 ## Data Scientist
 

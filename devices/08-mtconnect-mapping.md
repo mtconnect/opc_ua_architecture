@@ -14,7 +14,7 @@ When translating from MTConnect to {{term(opc)}} {{term(ua)}}, the MTConnect abs
 
 This section provides instructions to translate from the OPC UA diagram representation given in section {{ref(intro-to-opc-ua)}} to the {{term(uml)}} described throughout section {{ref(mtconnect-mapping)}}. Figure {{figure(mtcomponent-ua)}} is a partial illustration of the MTConnect {{termplural(MTComponent)}} abstraction in OPC UA.
 
-![](diagrams/mtconnect-mapping/mtcomponent-ua.tex)
+![MTConnect MTComponentType in OPC UA](diagrams/mtconnect-mapping/mtcomponent-ua.tex "mtcomponent-ua")
 
 Figure {{figure(mtcomponent-uml)}} represents the same model in {{term(uml)}}. The companion specification uses the following conventions:
 
@@ -28,7 +28,7 @@ Figure {{figure(mtcomponent-uml)}} represents the same model in {{term(uml)}}. T
 
 The {{termplural(UMLAssociation)}} are used to represent OPC UA {{termplural(Reference)}}. UA {{termplural(Property)}} represented using the UA {{term(HasProperty)}} relationships are given as {{term(uml)}} {{termplural(Attribute)}} (not to be confused with the OPC UA {{term(Attribute)}}. {{term(uml)}} allows for additional information as follows: the multiplicity of a property, the data type of the property, are specified.
 
-![](diagrams/mtconnect-mapping/mtcomponent-uml.tex)
+![MTConnect MTComponentType in UML](diagrams/mtconnect-mapping/mtcomponent-uml.tex "mtcomponent-uml")
 
 When traversing an association between two object types, the name of the source of the association is the {{term(BrowseName)}} of the object, and the destination is the type of object that is instantiated. If the name is not given, it represents a dynamic relationship where the {{term(BrowseName)}} is determined during the creation of the object model. An example is the association of the MTConnect {{termplural(MTDataItem)}}. The rules for creating the {{term(BrowseName)}} are givin below in Section&#160;{{ref(sec:mapping-rules)}}.
 
@@ -42,7 +42,7 @@ OPC UA represents both class and instance diagrams using the same set of primiti
 
 The models will use a {{term(uml)}} representation that represents the members as {{term(uml)}} {{termplural(Slot)}}. There is no distinction between an attribute and a property; consult the type model for the proper associations.
 
-![](diagrams/mtconnect-mapping/example-object.tex)
+![MTConnect Example Object](diagrams/mtconnect-mapping/example-object.tex "example-object")
 
 Figure {{figure(example-object)}} represents an MTConnect {{term(MTDevice)}} with the associated values. The UA {{term(BrowseName)}} is given as the object name above, and the UA Type is given after the `:` in the header. Each of the UA {{termplural(Attribute)}} and {{termplural(Property)}} are provided below. Relationships are shown as edges that have the Reference Type, such as {{term(HasComponent)}}. The properties contained within will be created using the {{term(HasProperty)}} reference but composed as internal members for brevity.
 
@@ -253,12 +253,12 @@ The {{mtmodel(MILLIMETER_3D)}} unit is special since it will be represented by t
 
 | MTConnect Unit | UNECE Code | UnitId | Display Name | Description |
 |---------------|------------|--------|--------------|-------------|
-| SIEMENS/METER | D10 | 4469040 | $S/m$ | siemens per metre - A measurement of Electrical Conductivity |
+| SIEMENS/METER | D10 | 4469040 | $$S/m$$ | siemens per metre - A measurement of Electrical Conductivity |
 | VOLT | VLT | 5655636 | $V$ | volt |
-| VOLT\_AMPERE | D46 | 4469814 | $VA$ | volt - ampere |
-| VOLT\_AMPERE_REACTIVE |  | -1 | $VAR$ | Volt-Ampere Reactive  (VAR) |
-| WATT | WTT | 5723220 | $W$ | watt |
-| WATT\_SECOND | J55 | 4863285 | $W \cdot s$ | Measurement of electrical energy, equal to one Joule |
+| VOLT\_AMPERE | D46 | 4469814 | $$VA$$ | volt - ampere |
+| VOLT\_AMPERE_REACTIVE |  | -1 | $$VAR$$ | Volt-Ampere Reactive  (VAR) |
+| WATT | WTT | 5723220 | $$W$$ | watt |
+| WATT\_SECOND | J55 | 4863285 | $$W \cdot s$$ | Measurement of electrical energy, equal to one Joule |
 {: format-5="p 2in" }
 
 {{latex(\FloatBarrier)}}
@@ -294,7 +294,7 @@ The {{mtmodel(Description)}} element provides some characteristics of the device
 
 The {{mtmodel(Device)}} is mapped to an {{mtuatype(MTDeviceType)}} object in the MTConnect namespace as shown in Figure {{figure(simple-cnc-device-model)}}.
 
-![](diagrams/mtconnect-mapping/device-model.tex)
+![MTConnect Device Object](diagrams/mtconnect-mapping/device-model.tex "simple-cnc-device-model")
 
 Every device must have a {{uamodel(HasNotifier)}} relationship with the {{term(Server)}} UA Object as the source to enable conditions and event notification. The {{uamodel(HasNotifier)}} relationships are flowed down through the component hierarchy where the {{termplural(Object)}} each have a {{uamodel(HasNotifier)}} relationship with the parent. 
 
@@ -314,13 +314,14 @@ The treatment of the component relationships will be covered in the {{term(MTDat
 The device requires three data items as of MTConnect version 1.2. The {{mtmodel(AVAILABILITY)}} data item indicates if data is available from the device and the {{mtmodel(ASSET_CHANGED)}} and {{mtmodel(ASSET_REMOVED)}} data items represent the last asset inserted or updated and removed respectively. The Component adds Data items with a {{uablock(Has\-Component)}} relationship, and the BrowseName is constructed using the {{mtmodel(type)}}, {{mtmodel(sub\-Type)}}, and related {{term(Composition)}} from {{mtmodel(compositionId)}} if given. A complete example is given later in this section.
 
 
-![](diagrams/mtconnect-mapping/data-item-references.tex)
+![MTConnect Device Object with Data Items](diagrams/mtconnect-mapping/mtdevice-data-item.tex "mtdevice-data-item")
+
 
 Figure {{figure(mtdevice-data-item)}} demonstrates the relationship of the {{termplural(MTDataItem)}} with the parent {{mtuatype(MTComponentType)}} using a {{uamodel(HasComponent)}} relationship. The browse name is constructed to uniquely identify the DataItem and also indicate its semantic meaning within the context of the MTConnect {{mtuatype(MTComponentType)}}, in this case, an {{mtuatype(MTDeviceType)}} since the {{mtuatype(MTDeviceType)}} is a sub-type of the {{mtuatype(MTComponentType)}}. These relationships are created dynamically during the instantiation of the model and are not part of the underlying MTConnect Nodeset.
 
 Every MTConnect {{term(MTDataItem)}} has two references that provide the semantic meaning in the UA address space. This model is very similar to the {{uamodel(ConditionClassId)}} relationship for the OPC UA {{term(ConditionType)}}. These {{termplural(ClassType)}} are inherited from the same parent so they can be used for both the {{mtuatype(HasMTClassType)}} for all {{termplural(MTDataItem)}} as well as the {{uamodel(ConditionClassId)}} in {{termplural(Condition)}} since MTConnect {{termplural(MTCondition)}} are also descended from the {{term(ConditionType)}} hierarchy.
 
-![](diagrams/mtconnect-mapping/data-item-references.tex)
+![MTConnect Data Item References](diagrams/mtconnect-mapping/data-item-references.tex "data-item-references")
 
 In Figure {{figure(data-item-references)}}, the {{mtuatype(HasMTClassType)}} reference indicates the semantic meaning of the data item. For enumerated or controlled vocabulary data items, they are represented using a sub-type of the UA {{uamodel(MultiStateValueDiscreteType)}}, the {{mtuatype(MTControlledVocabEventType)}}, where the {{uamodel(EnumStrings)}} attribute is related to the NodeId of the associated enumeration data type, in this case the {{mtuaenum(AvailabilityDataType)}}. The {{mtuatype(AvailabilityClassType)}} also has {{uamodel(HasComponent)}} relationship with the {{mtuaenum(AvailabilityDataType)}} {{uamodel(Enumeration)}}.
 
@@ -346,7 +347,7 @@ MTConnect {{term(subType)}} will be mapped in the same manner as the type using 
 
 The {{termplural(MTComponent)}} element in Listing {{ref(lst:linear-x-component)}} is represented as a UA {{term(FolderType)}}. Within the folder, the MTConnect components are semantically identified by the element's {{term(QName)}} with a type with the suffix {{mtmodel(Type)}} appended, in this case the {{term(BrowseName)}}  {{mtmodel(Axes)}} has a {{term(HasTypeDefinition)}} relaton of {{mtmodel(AxesType)}}. 
 
-![](diagrams/mtconnect-mapping/linear-x-component.tex)
+![Linear X Axis Example](diagrams/mtconnect-mapping/linear-x-component.tex "linear-x-component")
 
 Figure&#160;{{figure(linear-x-component)}} represents the UA Object model based on  Listing&#160;{{ref(lst:linear-x-component)}}. The {{mtmodel(Linear)}} X {{mtmodel(Axis)}}, mapped from {{mtmodel(Linear)}} element in Listing&#160;{{ref(lst:linear-x-component)}}, has a {{term(BrowseName)}} composed of the {{term(QName)}} of the element, and the {{mtmodel(name)}} attribute appended and enclosed in square brackets `[X]`, giving the browse name of `Linear[X]` and a component type of {{mtmodel(LinearType)}} using a {{term(HasTypeDefinition)}} {{term(Reference)}}.
 

@@ -47,7 +47,7 @@ Many manufacturing activities require a piece of equipment to initiate a specifi
 
 The central component of every MTConnect System is an MTConnect {{term(Agent)}}.  The agent provides the critical link between a piece of equipment and client software applications. The {{term(Agent)}} performs several tasks within an MTConnect System.   The two major functions provided by the {{term(Agent)}} are the collection, organization, and storage of data published from one or multiple pieces of equipment and to then respond to requests for this data from client software applications. 
 
-![](diagrams/MTConnectOverview.tex)
+![MTConnect Architecture Overview](diagrams/MTConnectOverview.tex "mtconnectoverview")
 
 In an MTConnect system, the term {{mtblock("a piece of equipment")}} can represent any intelligent data source that can produce data.  Traditionally, a piece of equipment is thought of as a machine. However, a piece of equipment can also be a computer, an intelligent sensor system, a data base, and any number of other sources of data. 
  

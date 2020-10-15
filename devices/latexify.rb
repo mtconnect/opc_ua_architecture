@@ -158,6 +158,7 @@ EOT
       end      
 
       def convert_td(el, opts)
+        opts = opts.dup.merge(hypenate: true)
         text = inner(el, opts)
         if text.empty? and @skip and @skip > 0
           @skip -= 1
@@ -197,8 +198,19 @@ EOT
           open = '\\Large{'
           close = '}'
         end
+
+        text = super
+        if opts[:hypenate]
+          text = text.gsub(/[A-Za-z0-9{}]+/) do |w|
+            if w.index('{').nil? and w.length > 10
+              w.gsub(/([A-Z]+[a-z]+)(?=[A-Z])/, '\1\-\2')
+            else
+              w
+            end
+          end
+        end
           
-        "#{open}#{super}#{close}"
+        "#{open}#{text}#{close}"
       end
 
       def convert_p(el, opts)

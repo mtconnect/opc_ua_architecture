@@ -172,20 +172,8 @@ EOT
 
   def generate_children(f)
     cs = @children.dup.select { |t| t.model.name !~ /Example/ }
-    l = cs.pop(22)
-    l.each do |c|
+    cs.each do |c|
       generate_subtype(f, c)
-    end
-    
-    while !cs.empty?
-      f.puts <<EOT
-| References | NodeClass | BrowseName | DataType | Type-Definition   | Modeling-Rule   |
-|------------|-----------|------------|----------|-------------------|-----------------|
-EOT
-      l = cs.pop(22)
-      l.each do |c|
-        generate_subtype(f, c)
-      end
     end
   end
 

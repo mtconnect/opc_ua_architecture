@@ -173,7 +173,7 @@ For all {{termplural(Variable)}} specified in this specification, the {{termplur
 
 #### VariableTypes
 
-For all {{latex(\uamodel{VariableType}}} specified in this specification, the {{termplural(Attribute)}} named in Table {{table(CommonVariableTypesAttributes)}} shall be set as specified in the table. The definitions for the {{termplural(Attribute)}} can be found in {{cite(UAPart3)}}.
+For all {{uablock(VariableType)}} specified in this specification, the {{termplural(Attribute)}} named in Table {{table(CommonVariableTypesAttributes)}} shall be set as specified in the table. The definitions for the {{termplural(Attribute)}} can be found in {{cite(UAPart3)}}.
 
 |Attribute|Value|
 |----------------|------------|
@@ -185,7 +185,7 @@ For all {{latex(\uamodel{VariableType}}} specified in this specification, the {{
 
 #### Methods
 
-For all {{latex(\uamodel{Methods}}} specified in this specification, the {{term(Attribute)}} named in Table {{table(CommonMethodAttributes)}} shall be set as specified in the table. The definitions for the {{termplural(Attribute)}} can be found in {{cite(UAPart3)}}.
+For all {{uablock(Methods)}} specified in this specification, the {{term(Attribute)}} named in Table {{table(CommonMethodAttributes)}} shall be set as specified in the table. The definitions for the {{termplural(Attribute)}} can be found in {{cite(UAPart3)}}.
 
 |Attribute|Value|
 |----------------|------------|

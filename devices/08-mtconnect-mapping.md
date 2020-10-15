@@ -211,7 +211,7 @@ OPC UA defines the {{uamodel(EngineeringUnits)}} {{term(DataType)}} in {{cite(UA
 | unitId | Int32 | Identifier for programmatic evaluation. -1 is used if a unitId is not available. |
 | displayName | LocalizedText | The displayName of the engineering unit is typically the abbreviation of the engineering unit, for example "h" for hour or "m/s" for meter per second. |
 | description | LocalizedText | Contains the full name of the engineering unit such as "hour" or "meter per second". |
-{: caption="`EngineeringUnits` DataType structure" label="enineering-untis-data-type" }
+{: caption="`EngineeringUnits` DataType structure" label="enineering-untis-data-type" format-3="p 4in" }
 
 In Table&#160;{{table(mtconnect-to-ua-eu-mapping)}}, the mapping between the MTConnect units and the OPC UA EngineeringUnits structure has been specified. There is one unit type, {{mtmodel(COUNT)}} that is unitless and therefor not mapped. The {{mtmodel(COUNT)}} is only used with {{termplural(Event)}} and therefor is not an {{uamodel(AnalogUnitType)}}, and is instantiated as an {{mtuatype(MTNumericEventType)}}.
 
